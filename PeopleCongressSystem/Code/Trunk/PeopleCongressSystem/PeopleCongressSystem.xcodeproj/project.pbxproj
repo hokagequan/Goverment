@@ -8,12 +8,16 @@
 
 /* Begin PBXBuildFile section */
 		10D0D5701C4CD1D00093F687 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10D0D56F1C4CD1D00093F687 /* AppDelegate.swift */; };
-		10D0D5721C4CD1D00093F687 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10D0D5711C4CD1D00093F687 /* ViewController.swift */; };
 		10D0D5751C4CD1D00093F687 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 10D0D5731C4CD1D00093F687 /* Main.storyboard */; };
 		10D0D5781C4CD1D00093F687 /* PeopleCongressSystem.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 10D0D5761C4CD1D00093F687 /* PeopleCongressSystem.xcdatamodeld */; };
 		10D0D57A1C4CD1D00093F687 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 10D0D5791C4CD1D00093F687 /* Assets.xcassets */; };
 		10D0D57D1C4CD1D00093F687 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 10D0D57B1C4CD1D00093F687 /* LaunchScreen.storyboard */; };
 		10D0D5881C4CD1D00093F687 /* PeopleCongressSystemUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10D0D5871C4CD1D00093F687 /* PeopleCongressSystemUITests.swift */; };
+		10D0D5951C4CD9810093F687 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10D0D5941C4CD9810093F687 /* MainViewController.swift */; };
+		10D0D5971C4CDAEA0093F687 /* Home.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 10D0D5961C4CDAEA0093F687 /* Home.storyboard */; };
+		10D0D5991C4CDB330093F687 /* BusinessCard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 10D0D5981C4CDB330093F687 /* BusinessCard.storyboard */; };
+		10D0D59B1C4CDB5A0093F687 /* CheckIn.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 10D0D59A1C4CDB5A0093F687 /* CheckIn.storyboard */; };
+		10D0D59D1C4CDB680093F687 /* Me.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 10D0D59C1C4CDB680093F687 /* Me.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -29,7 +33,6 @@
 /* Begin PBXFileReference section */
 		10D0D56C1C4CD1D00093F687 /* PeopleCongressSystem.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PeopleCongressSystem.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		10D0D56F1C4CD1D00093F687 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		10D0D5711C4CD1D00093F687 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		10D0D5741C4CD1D00093F687 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		10D0D5771C4CD1D00093F687 /* PeopleCongressSystem.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = PeopleCongressSystem.xcdatamodel; sourceTree = "<group>"; };
 		10D0D5791C4CD1D00093F687 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -38,6 +41,11 @@
 		10D0D5831C4CD1D00093F687 /* PeopleCongressSystemUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PeopleCongressSystemUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		10D0D5871C4CD1D00093F687 /* PeopleCongressSystemUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PeopleCongressSystemUITests.swift; sourceTree = "<group>"; };
 		10D0D5891C4CD1D00093F687 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		10D0D5941C4CD9810093F687 /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
+		10D0D5961C4CDAEA0093F687 /* Home.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Home.storyboard; sourceTree = "<group>"; };
+		10D0D5981C4CDB330093F687 /* BusinessCard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = BusinessCard.storyboard; sourceTree = "<group>"; };
+		10D0D59A1C4CDB5A0093F687 /* CheckIn.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = CheckIn.storyboard; sourceTree = "<group>"; };
+		10D0D59C1C4CDB680093F687 /* Me.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Me.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -79,9 +87,9 @@
 		10D0D56E1C4CD1D00093F687 /* PeopleCongressSystem */ = {
 			isa = PBXGroup;
 			children = (
+				10D0D5921C4CD8F80093F687 /* ViewControllers */,
+				10D0D5931C4CD8F80093F687 /* Views */,
 				10D0D56F1C4CD1D00093F687 /* AppDelegate.swift */,
-				10D0D5711C4CD1D00093F687 /* ViewController.swift */,
-				10D0D5731C4CD1D00093F687 /* Main.storyboard */,
 				10D0D5791C4CD1D00093F687 /* Assets.xcassets */,
 				10D0D57B1C4CD1D00093F687 /* LaunchScreen.storyboard */,
 				10D0D57E1C4CD1D00093F687 /* Info.plist */,
@@ -97,6 +105,26 @@
 				10D0D5891C4CD1D00093F687 /* Info.plist */,
 			);
 			path = PeopleCongressSystemUITests;
+			sourceTree = "<group>";
+		};
+		10D0D5921C4CD8F80093F687 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				10D0D5731C4CD1D00093F687 /* Main.storyboard */,
+				10D0D5961C4CDAEA0093F687 /* Home.storyboard */,
+				10D0D5981C4CDB330093F687 /* BusinessCard.storyboard */,
+				10D0D59A1C4CDB5A0093F687 /* CheckIn.storyboard */,
+				10D0D59C1C4CDB680093F687 /* Me.storyboard */,
+				10D0D5941C4CD9810093F687 /* MainViewController.swift */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		10D0D5931C4CD8F80093F687 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -180,9 +208,13 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				10D0D59B1C4CDB5A0093F687 /* CheckIn.storyboard in Resources */,
 				10D0D57D1C4CD1D00093F687 /* LaunchScreen.storyboard in Resources */,
+				10D0D5991C4CDB330093F687 /* BusinessCard.storyboard in Resources */,
 				10D0D57A1C4CD1D00093F687 /* Assets.xcassets in Resources */,
 				10D0D5751C4CD1D00093F687 /* Main.storyboard in Resources */,
+				10D0D59D1C4CDB680093F687 /* Me.storyboard in Resources */,
+				10D0D5971C4CDAEA0093F687 /* Home.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -200,7 +232,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				10D0D5721C4CD1D00093F687 /* ViewController.swift in Sources */,
+				10D0D5951C4CD9810093F687 /* MainViewController.swift in Sources */,
 				10D0D5781C4CD1D00093F687 /* PeopleCongressSystem.xcdatamodeld in Sources */,
 				10D0D5701C4CD1D00093F687 /* AppDelegate.swift in Sources */,
 			);
@@ -231,6 +263,7 @@
 				10D0D5741C4CD1D00093F687 /* Base */,
 			);
 			name = Main.storyboard;
+			path = ..;
 			sourceTree = "<group>";
 		};
 		10D0D57B1C4CD1D00093F687 /* LaunchScreen.storyboard */ = {
