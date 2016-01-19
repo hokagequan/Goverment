@@ -14,10 +14,10 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = 'primary'
-               BlueprintIdentifier = 'F415172CBA78B07B1BBA791E'
-               BlueprintName = 'Pods-PeopleCongressSystem'
+               BlueprintIdentifier = '5394C1EE42FF22FC5A37FD94'
+               BlueprintName = 'TagListView'
                ReferencedContainer = 'container:Pods.xcodeproj'
-               BuildableName = 'Pods_PeopleCongressSystem.framework'>
+               BuildableName = 'TagListView.framework'>
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>

@@ -91,6 +91,7 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
         case .ActivityManage:
             break
         case .VariableManage:
+            self.performSegueWithIdentifier("PerformanceRecordsSegue", sender: self)
             break
         case .Analyze:
             break

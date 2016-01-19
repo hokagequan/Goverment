@@ -7,8 +7,9 @@
 //
 
 import UIKit
+import TagListView
 
-class PerformanceRecordsViewController: UIViewController {
+class PerformanceRecordsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -21,6 +22,7 @@ class PerformanceRecordsViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    // MARK: - UITableView
 
     /*
     // MARK: - Navigation

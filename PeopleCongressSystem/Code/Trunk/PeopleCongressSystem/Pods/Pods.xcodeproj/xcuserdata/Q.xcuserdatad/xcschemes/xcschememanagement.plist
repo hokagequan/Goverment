@@ -19,6 +19,11 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>TagListView.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
@@ -27,7 +32,12 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>6BB53F67644C2C1991EB7CED94EDA7DC</key>
+		<key>C2B0246E8417D6EE739DDD4A9A23EE25</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>DC3910D57286EE869A1A0641F87A5220</key>
 		<dict>
 			<key>primary</key>
 			<true/>

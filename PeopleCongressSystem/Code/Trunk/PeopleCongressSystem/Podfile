@@ -7,6 +7,7 @@ target 'PeopleCongressSystem' do
 
 pod 'Alamofire'
 pod 'HUIPatternLockView-Swift'
+pod 'TagListView'
 
 end
 

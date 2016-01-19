@@ -1,13 +1,16 @@
 PODS:
   - Alamofire (3.1.5)
   - HUIPatternLockView-Swift (1.0.1)
+  - TagListView (0.4.2)
 
 DEPENDENCIES:
   - Alamofire
   - HUIPatternLockView-Swift
+  - TagListView
 
 SPEC CHECKSUMS:
   Alamofire: 5f730ba29fd113b7ddd71c1e65d0c630acf5d7b0
   HUIPatternLockView-Swift: 96d9bf8341a33be39d35eef51c4c2215a678138e
+  TagListView: 38700330380d7c874f8f9c381ce651d822f11ebf
 
 COCOAPODS: 0.39.0
