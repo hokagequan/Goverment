@@ -23,6 +23,10 @@
 		10D0D5AA1C4DEBFD0093F687 /* SettingsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10D0D5A91C4DEBFD0093F687 /* SettingsManager.swift */; };
 		10D0D5AD1C4DF6030093F687 /* UIViewController+AlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10D0D5AC1C4DF6030093F687 /* UIViewController+AlertView.swift */; };
 		10D0D5B01C4E2C7D0093F687 /* HttpBaseReq.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10D0D5AF1C4E2C7D0093F687 /* HttpBaseReq.swift */; };
+		10D0D5B31C4E36600093F687 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10D0D5B21C4E36600093F687 /* CoreDataManager.swift */; };
+		10D0D5B61C4E37040093F687 /* UserEntity+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10D0D5B41C4E37040093F687 /* UserEntity+CoreDataProperties.swift */; };
+		10D0D5B71C4E37040093F687 /* UserEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10D0D5B51C4E37040093F687 /* UserEntity.swift */; };
+		10D0D5B91C4E37360093F687 /* AccountManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10D0D5B81C4E37360093F687 /* AccountManager.swift */; };
 		3E604AFB394FDCDDAD7A9BDE /* Pods_PeopleCongressSystem.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6BCFEC37E5EA0F7BF782CCBF /* Pods_PeopleCongressSystem.framework */; };
 /* End PBXBuildFile section */
 
@@ -57,6 +61,10 @@
 		10D0D5A91C4DEBFD0093F687 /* SettingsManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsManager.swift; sourceTree = "<group>"; };
 		10D0D5AC1C4DF6030093F687 /* UIViewController+AlertView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController+AlertView.swift"; sourceTree = "<group>"; };
 		10D0D5AF1C4E2C7D0093F687 /* HttpBaseReq.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HttpBaseReq.swift; sourceTree = "<group>"; };
+		10D0D5B21C4E36600093F687 /* CoreDataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
+		10D0D5B41C4E37040093F687 /* UserEntity+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UserEntity+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		10D0D5B51C4E37040093F687 /* UserEntity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserEntity.swift; sourceTree = "<group>"; };
+		10D0D5B81C4E37360093F687 /* AccountManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccountManager.swift; sourceTree = "<group>"; };
 		68AE91901E434A8BE22D3071 /* Pods-PeopleCongressSystem.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PeopleCongressSystem.debug.xcconfig"; path = "Pods/Target Support Files/Pods-PeopleCongressSystem/Pods-PeopleCongressSystem.debug.xcconfig"; sourceTree = "<group>"; };
 		6BCFEC37E5EA0F7BF782CCBF /* Pods_PeopleCongressSystem.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PeopleCongressSystem.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7FC8BFEC67A9706088C1E7DA /* Pods-PeopleCongressSystem.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PeopleCongressSystem.release.xcconfig"; path = "Pods/Target Support Files/Pods-PeopleCongressSystem/Pods-PeopleCongressSystem.release.xcconfig"; sourceTree = "<group>"; };
@@ -104,6 +112,7 @@
 		10D0D56E1C4CD1D00093F687 /* PeopleCongressSystem */ = {
 			isa = PBXGroup;
 			children = (
+				10D0D5B11C4E36350093F687 /* CoreData */,
 				10D0D5AE1C4E2C6A0093F687 /* HttpRequests */,
 				10D0D5AB1C4DF5DF0093F687 /* Customs */,
 				10D0D5A81C4DEBED0093F687 /* Managers */,
@@ -114,7 +123,6 @@
 				10D0D5791C4CD1D00093F687 /* Assets.xcassets */,
 				10D0D57B1C4CD1D00093F687 /* LaunchScreen.storyboard */,
 				10D0D57E1C4CD1D00093F687 /* Info.plist */,
-				10D0D5761C4CD1D00093F687 /* PeopleCongressSystem.xcdatamodeld */,
 			);
 			path = PeopleCongressSystem;
 			sourceTree = "<group>";
@@ -200,7 +208,9 @@
 		10D0D5A81C4DEBED0093F687 /* Managers */ = {
 			isa = PBXGroup;
 			children = (
+				10D0D5B21C4E36600093F687 /* CoreDataManager.swift */,
 				10D0D5A91C4DEBFD0093F687 /* SettingsManager.swift */,
+				10D0D5B81C4E37360093F687 /* AccountManager.swift */,
 			);
 			path = Managers;
 			sourceTree = "<group>";
@@ -219,6 +229,16 @@
 				10D0D5AF1C4E2C7D0093F687 /* HttpBaseReq.swift */,
 			);
 			path = HttpRequests;
+			sourceTree = "<group>";
+		};
+		10D0D5B11C4E36350093F687 /* CoreData */ = {
+			isa = PBXGroup;
+			children = (
+				10D0D5761C4CD1D00093F687 /* PeopleCongressSystem.xcdatamodeld */,
+				10D0D5B41C4E37040093F687 /* UserEntity+CoreDataProperties.swift */,
+				10D0D5B51C4E37040093F687 /* UserEntity.swift */,
+			);
+			path = CoreData;
 			sourceTree = "<group>";
 		};
 		788B022D8203C53FB6ACC595 /* Frameworks */ = {
@@ -394,14 +414,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				10D0D5B71C4E37040093F687 /* UserEntity.swift in Sources */,
 				10D0D5A41C4DCA5A0093F687 /* SignInViewController.swift in Sources */,
 				10D0D5951C4CD9810093F687 /* MainViewController.swift in Sources */,
 				10D0D5AA1C4DEBFD0093F687 /* SettingsManager.swift in Sources */,
+				10D0D5B61C4E37040093F687 /* UserEntity+CoreDataProperties.swift in Sources */,
 				10D0D5781C4CD1D00093F687 /* PeopleCongressSystem.xcdatamodeld in Sources */,
 				10D0D5AD1C4DF6030093F687 /* UIViewController+AlertView.swift in Sources */,
 				10D0D5A71C4DCB870093F687 /* CustomObjectUtil.swift in Sources */,
+				10D0D5B31C4E36600093F687 /* CoreDataManager.swift in Sources */,
 				10D0D5701C4CD1D00093F687 /* AppDelegate.swift in Sources */,
 				10D0D5B01C4E2C7D0093F687 /* HttpBaseReq.swift in Sources */,
+				10D0D5B91C4E37360093F687 /* AccountManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -614,7 +638,8 @@
 				10D0D5771C4CD1D00093F687 /* PeopleCongressSystem.xcdatamodel */,
 			);
 			currentVersion = 10D0D5771C4CD1D00093F687 /* PeopleCongressSystem.xcdatamodel */;
-			path = PeopleCongressSystem.xcdatamodeld;
+			name = PeopleCongressSystem.xcdatamodeld;
+			path = ../PeopleCongressSystem.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
 		};

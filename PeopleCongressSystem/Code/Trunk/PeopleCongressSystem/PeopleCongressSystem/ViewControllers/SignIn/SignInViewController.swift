@@ -8,7 +8,7 @@
 
 import UIKit
 
-class SignInViewController: UIViewController, UIActionSheetDelegate {
+class SignInViewController: UIViewController, UIActionSheetDelegate, UITextFieldDelegate {
 
     @IBOutlet weak var accountTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
@@ -23,6 +23,7 @@ class SignInViewController: UIViewController, UIActionSheetDelegate {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        
         CustomObjectUtil.customObjectsLayout([accountTextField, passwordTextField, serverSelectButton], backgroundColor: UIColor.whiteColor(), borderWidth: 0.0, borderColor: nil, corner: 3.0)
         CustomObjectUtil.customObjectsLayout([signInButton], backgroundColor: UIColor.clearColor(), borderWidth: 1.0, borderColor: UIColor.whiteColor(), corner: 3.0)
         
@@ -30,6 +31,7 @@ class SignInViewController: UIViewController, UIActionSheetDelegate {
         passwordTextField.leftViewMode = UITextFieldViewMode.Always
         
         if let isRemember = SettingsManager.getData(SettingKey.RememberPassword.rawValue) as? Bool {
+            // TODO: 设置默认用户
             rememberButton.selected = isRemember
         }
         
@@ -56,31 +58,52 @@ class SignInViewController: UIViewController, UIActionSheetDelegate {
     @IBAction func clickSignIn(sender: AnyObject) {
         if accountTextField.text == "" {
             self.showAlert("请输入手机号")
+            
+            return
         }
         
         if passwordTextField.text == "" {
             self.showAlert("请输入密码")
+            
+            return
         }
         
-        // TODO: 登录
+        // TODO: 登录; 登录成功设置状态; 登录成功存入数据库
+        SettingsManager.saveData(rememberButton.selected, key: SettingKey.RememberPassword.rawValue)
+        SettingsManager.saveData(autoButton.selected, key: SettingKey.AutoSignIn.rawValue)
+        self.performSegueWithIdentifier("MainSegue", sender: self)
     }
     
     @IBAction func clickRemember(sender: AnyObject) {
+        rememberButton.selected = !rememberButton.selected
     }
     
     @IBAction func clickAutoSignIn(sender: AnyObject) {
+        autoButton.selected = !autoButton.selected
     }
 
     @IBAction func hideKeyboard(sender: AnyObject) {
         self.view.endEditing(true)
     }
     
-    // MARK: UIActionSheet
+    // MARK: - UIActionSheet
     
     func actionSheet(actionSheet: UIActionSheet, clickedButtonAtIndex buttonIndex: Int) {
+        if buttonIndex == 0 {
+            return
+        }
+        
         if let serverString = actionSheet.buttonTitleAtIndex(buttonIndex) {
             SettingsManager.saveData(serverString, key: SettingKey.Server.rawValue)
         }
+    }
+    
+    // MARK: - UITextField
+    
+    func textFieldShouldReturn(textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        
+        return true
     }
     
     /*

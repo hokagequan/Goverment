@@ -25,7 +25,10 @@
                                     <constraint firstAttribute="height" constant="30" id="tw6-eJ-WGE"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" returnKeyType="done"/>
+                                <connections>
+                                    <outlet property="delegate" destination="o5A-KL-8xA" id="BmM-e5-Yvh"/>
+                                </connections>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="请输入密码" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Amo-jT-wTT" userLabel="Password">
                                 <rect key="frame" x="50" y="240" width="500" height="30"/>
@@ -34,12 +37,15 @@
                                     <constraint firstAttribute="height" constant="30" id="AfG-VD-oTP"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" returnKeyType="done" secureTextEntry="YES"/>
                                 <variation key="default">
                                     <mask key="constraints">
                                         <exclude reference="AfG-VD-oTP"/>
                                     </mask>
                                 </variation>
+                                <connections>
+                                    <outlet property="delegate" destination="o5A-KL-8xA" id="u8x-C4-j6i"/>
+                                </connections>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nce-Xe-EIF" userLabel="Server Select">
                                 <rect key="frame" x="50" y="280" width="500" height="30"/>
@@ -162,6 +168,7 @@
                         <outlet property="rememberButton" destination="bzO-dB-bh8" id="owe-pX-OA1"/>
                         <outlet property="serverSelectButton" destination="nce-Xe-EIF" id="tHZ-FD-UB5"/>
                         <outlet property="signInButton" destination="JCT-jS-5Y9" id="jT3-0C-np7"/>
+                        <segue destination="nuY-8n-wNE" kind="show" identifier="MainSegue" id="eEb-Ro-XCT"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="r40-53-mHS" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -171,7 +178,7 @@
         <!--Main View Controller-->
         <scene sceneID="TPK-VZ-AKN">
             <objects>
-                <tabBarController id="nuY-8n-wNE" customClass="MainViewController" customModule="PeopleCongressSystem" customModuleProvider="target" sceneMemberID="viewController">
+                <tabBarController storyboardIdentifier="MainViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="nuY-8n-wNE" customClass="MainViewController" customModule="PeopleCongressSystem" customModuleProvider="target" sceneMemberID="viewController">
                     <tabBar key="tabBar" contentMode="scaleToFill" id="Gnb-Ak-eO2">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
