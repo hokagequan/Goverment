@@ -237,19 +237,59 @@
             </objects>
             <point key="canvasLocation" x="-638" y="1115"/>
         </scene>
-        <!--View Controller-->
+        <!--Find Pwd View Controller-->
         <scene sceneID="v1l-do-Q7U">
             <objects>
-                <viewController id="yWI-OB-52O" sceneMemberID="viewController">
+                <viewController id="yWI-OB-52O" customClass="FindPwdViewController" customModule="PeopleCongressSystem" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="GSs-cO-lYq"/>
                         <viewControllerLayoutGuide type="bottom" id="0Fb-wN-e0M"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="6gj-iY-DSB">
+                    <view key="view" contentMode="scaleToFill" id="6gj-iY-DSB" customClass="UIControl">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <subviews>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="请输入手机号码" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="fHN-PB-heK" userLabel="Account">
+                                <rect key="frame" x="50" y="120" width="500" height="30"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="PSe-3e-LzV"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" returnKeyType="done"/>
+                                <connections>
+                                    <outlet property="delegate" destination="yWI-OB-52O" id="118-bT-Mxt"/>
+                                </connections>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="o0i-N4-IjW">
+                                <rect key="frame" x="50" y="180" width="500" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="uZg-b3-nJn"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                <state key="normal" title="提交"/>
+                                <connections>
+                                    <action selector="clickSubmit:" destination="yWI-OB-52O" eventType="touchUpInside" id="n0t-e0-FSl"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" red="0.96862745100000003" green="0.1647058824" blue="0.22352941179999999" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="fHN-PB-heK" firstAttribute="leading" secondItem="6gj-iY-DSB" secondAttribute="leading" constant="50" id="AWI-4f-CyZ"/>
+                            <constraint firstItem="fHN-PB-heK" firstAttribute="top" secondItem="GSs-cO-lYq" secondAttribute="bottom" constant="100" id="BSf-yC-gEr"/>
+                            <constraint firstItem="o0i-N4-IjW" firstAttribute="width" secondItem="fHN-PB-heK" secondAttribute="width" id="CK2-3H-vcA"/>
+                            <constraint firstAttribute="trailing" secondItem="fHN-PB-heK" secondAttribute="trailing" constant="50" id="Ntk-4H-49J"/>
+                            <constraint firstItem="o0i-N4-IjW" firstAttribute="centerX" secondItem="fHN-PB-heK" secondAttribute="centerX" id="b1Q-S0-8JL"/>
+                            <constraint firstItem="o0i-N4-IjW" firstAttribute="top" secondItem="fHN-PB-heK" secondAttribute="bottom" constant="30" id="mXu-UH-TRp"/>
+                        </constraints>
+                        <connections>
+                            <action selector="hideKeyboard:" destination="yWI-OB-52O" eventType="touchUpInside" id="qOb-qI-esv"/>
+                        </connections>
                     </view>
+                    <connections>
+                        <outlet property="mobileTextField" destination="fHN-PB-heK" id="tVR-qT-5uS"/>
+                        <outlet property="submitButton" destination="o0i-N4-IjW" id="xzD-DA-pdg"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Lz8-MR-oqd" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

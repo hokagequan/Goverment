@@ -29,6 +29,7 @@
 		10D0D5BE1C4E7AE90093F687 /* UserEntity+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10D0D5BC1C4E7AE90093F687 /* UserEntity+CoreDataProperties.swift */; };
 		10D0D5BF1C4E7AE90093F687 /* UserEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10D0D5BD1C4E7AE90093F687 /* UserEntity.swift */; };
 		10D0D5C11C4E7B160093F687 /* PCSDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10D0D5C01C4E7B160093F687 /* PCSDataManager.swift */; };
+		10D0D5C31C4E7D710093F687 /* FindPwdViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10D0D5C21C4E7D710093F687 /* FindPwdViewController.swift */; };
 		3E604AFB394FDCDDAD7A9BDE /* Pods_PeopleCongressSystem.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6BCFEC37E5EA0F7BF782CCBF /* Pods_PeopleCongressSystem.framework */; };
 /* End PBXBuildFile section */
 
@@ -69,6 +70,7 @@
 		10D0D5BC1C4E7AE90093F687 /* UserEntity+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UserEntity+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		10D0D5BD1C4E7AE90093F687 /* UserEntity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserEntity.swift; sourceTree = "<group>"; };
 		10D0D5C01C4E7B160093F687 /* PCSDataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PCSDataManager.swift; sourceTree = "<group>"; };
+		10D0D5C21C4E7D710093F687 /* FindPwdViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FindPwdViewController.swift; sourceTree = "<group>"; };
 		68AE91901E434A8BE22D3071 /* Pods-PeopleCongressSystem.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PeopleCongressSystem.debug.xcconfig"; path = "Pods/Target Support Files/Pods-PeopleCongressSystem/Pods-PeopleCongressSystem.debug.xcconfig"; sourceTree = "<group>"; };
 		6BCFEC37E5EA0F7BF782CCBF /* Pods_PeopleCongressSystem.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PeopleCongressSystem.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7FC8BFEC67A9706088C1E7DA /* Pods-PeopleCongressSystem.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PeopleCongressSystem.release.xcconfig"; path = "Pods/Target Support Files/Pods-PeopleCongressSystem/Pods-PeopleCongressSystem.release.xcconfig"; sourceTree = "<group>"; };
@@ -198,6 +200,7 @@
 			children = (
 				10D0D5A31C4DCA5A0093F687 /* SignInViewController.swift */,
 				10D0D5BA1C4E41230093F687 /* GestureLockViewController.swift */,
+				10D0D5C21C4E7D710093F687 /* FindPwdViewController.swift */,
 			);
 			path = SignIn;
 			sourceTree = "<group>";
@@ -423,6 +426,7 @@
 				10D0D5BB1C4E41230093F687 /* GestureLockViewController.swift in Sources */,
 				10D0D5BE1C4E7AE90093F687 /* UserEntity+CoreDataProperties.swift in Sources */,
 				10D0D5A41C4DCA5A0093F687 /* SignInViewController.swift in Sources */,
+				10D0D5C31C4E7D710093F687 /* FindPwdViewController.swift in Sources */,
 				10D0D5951C4CD9810093F687 /* MainViewController.swift in Sources */,
 				10D0D5C11C4E7B160093F687 /* PCSDataManager.swift in Sources */,
 				10D0D5AA1C4DEBFD0093F687 /* SettingsManager.swift in Sources */,
