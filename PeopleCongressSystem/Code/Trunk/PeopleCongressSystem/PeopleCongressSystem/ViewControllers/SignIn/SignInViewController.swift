@@ -41,6 +41,12 @@ class SignInViewController: UIViewController, UIActionSheetDelegate, UITextField
         
         gestureButton.hidden = SettingsManager.getData(SettingKey.GesturePassword.rawValue) == nil
     }
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        self.navigationController?.setNavigationBarHidden(true, animated: true)
+    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -81,6 +87,15 @@ class SignInViewController: UIViewController, UIActionSheetDelegate, UITextField
     @IBAction func clickAutoSignIn(sender: AnyObject) {
         autoButton.selected = !autoButton.selected
     }
+    
+    @IBAction func clickGesture(sender: AnyObject) {
+        self.performSegueWithIdentifier("GestureSegue", sender: self)
+    }
+    
+    @IBAction func clickFindPassword(sender: AnyObject) {
+        self.navigationController?.setNavigationBarHidden(false, animated: true)
+        self.performSegueWithIdentifier("FindPasswordSegue", sender: self)
+    }
 
     @IBAction func hideKeyboard(sender: AnyObject) {
         self.view.endEditing(true)
@@ -106,14 +121,16 @@ class SignInViewController: UIViewController, UIActionSheetDelegate, UITextField
         return true
     }
     
-    /*
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
+        if segue.identifier == "GestureSegue" {
+        }
+        else if segue.identifier == "FindPasswordSegue" {
+        }
     }
-    */
 
 }
