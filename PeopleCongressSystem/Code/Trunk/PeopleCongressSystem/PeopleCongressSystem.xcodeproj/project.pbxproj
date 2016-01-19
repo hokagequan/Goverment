@@ -18,6 +18,9 @@
 		10D0D5991C4CDB330093F687 /* BusinessCard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 10D0D5981C4CDB330093F687 /* BusinessCard.storyboard */; };
 		10D0D59B1C4CDB5A0093F687 /* CheckIn.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 10D0D59A1C4CDB5A0093F687 /* CheckIn.storyboard */; };
 		10D0D59D1C4CDB680093F687 /* Me.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 10D0D59C1C4CDB680093F687 /* Me.storyboard */; };
+		10D0D5A41C4DCA5A0093F687 /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10D0D5A31C4DCA5A0093F687 /* SignInViewController.swift */; };
+		10D0D5A71C4DCB870093F687 /* CustomObjectUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10D0D5A61C4DCB870093F687 /* CustomObjectUtil.swift */; };
+		10D0D5AA1C4DEBFD0093F687 /* SettingsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10D0D5A91C4DEBFD0093F687 /* SettingsManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -46,6 +49,9 @@
 		10D0D5981C4CDB330093F687 /* BusinessCard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = BusinessCard.storyboard; sourceTree = "<group>"; };
 		10D0D59A1C4CDB5A0093F687 /* CheckIn.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = CheckIn.storyboard; sourceTree = "<group>"; };
 		10D0D59C1C4CDB680093F687 /* Me.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Me.storyboard; sourceTree = "<group>"; };
+		10D0D5A31C4DCA5A0093F687 /* SignInViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
+		10D0D5A61C4DCB870093F687 /* CustomObjectUtil.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomObjectUtil.swift; sourceTree = "<group>"; };
+		10D0D5A91C4DEBFD0093F687 /* SettingsManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -87,6 +93,8 @@
 		10D0D56E1C4CD1D00093F687 /* PeopleCongressSystem */ = {
 			isa = PBXGroup;
 			children = (
+				10D0D5A81C4DEBED0093F687 /* Managers */,
+				10D0D5A51C4DCB5F0093F687 /* Utilities */,
 				10D0D5921C4CD8F80093F687 /* ViewControllers */,
 				10D0D5931C4CD8F80093F687 /* Views */,
 				10D0D56F1C4CD1D00093F687 /* AppDelegate.swift */,
@@ -116,6 +124,11 @@
 				10D0D59A1C4CDB5A0093F687 /* CheckIn.storyboard */,
 				10D0D59C1C4CDB680093F687 /* Me.storyboard */,
 				10D0D5941C4CD9810093F687 /* MainViewController.swift */,
+				10D0D59E1C4DCA3E0093F687 /* BusinessCard */,
+				10D0D59F1C4DCA3E0093F687 /* CheckIn */,
+				10D0D5A01C4DCA3E0093F687 /* Home */,
+				10D0D5A11C4DCA3E0093F687 /* Me */,
+				10D0D5A21C4DCA3E0093F687 /* SignIn */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -125,6 +138,58 @@
 			children = (
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		10D0D59E1C4DCA3E0093F687 /* BusinessCard */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = BusinessCard;
+			sourceTree = "<group>";
+		};
+		10D0D59F1C4DCA3E0093F687 /* CheckIn */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = CheckIn;
+			sourceTree = "<group>";
+		};
+		10D0D5A01C4DCA3E0093F687 /* Home */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
+		10D0D5A11C4DCA3E0093F687 /* Me */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Me;
+			sourceTree = "<group>";
+		};
+		10D0D5A21C4DCA3E0093F687 /* SignIn */ = {
+			isa = PBXGroup;
+			children = (
+				10D0D5A31C4DCA5A0093F687 /* SignInViewController.swift */,
+			);
+			path = SignIn;
+			sourceTree = "<group>";
+		};
+		10D0D5A51C4DCB5F0093F687 /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				10D0D5A61C4DCB870093F687 /* CustomObjectUtil.swift */,
+			);
+			path = Utilities;
+			sourceTree = "<group>";
+		};
+		10D0D5A81C4DEBED0093F687 /* Managers */ = {
+			isa = PBXGroup;
+			children = (
+				10D0D5A91C4DEBFD0093F687 /* SettingsManager.swift */,
+			);
+			path = Managers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -232,8 +297,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				10D0D5A41C4DCA5A0093F687 /* SignInViewController.swift in Sources */,
 				10D0D5951C4CD9810093F687 /* MainViewController.swift in Sources */,
+				10D0D5AA1C4DEBFD0093F687 /* SettingsManager.swift in Sources */,
 				10D0D5781C4CD1D00093F687 /* PeopleCongressSystem.xcdatamodeld in Sources */,
+				10D0D5A71C4DCB870093F687 /* CustomObjectUtil.swift in Sources */,
 				10D0D5701C4CD1D00093F687 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
