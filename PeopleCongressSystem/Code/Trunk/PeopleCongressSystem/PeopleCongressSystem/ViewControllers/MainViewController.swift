@@ -29,6 +29,7 @@ class MainViewController: UITabBarController {
         let homeTabItem = UITabBarItem(title: "首页", image: UIImage(named: "life_toolbar_nor")?.imageWithRenderingMode(UIImageRenderingMode.AlwaysOriginal), selectedImage: UIImage(named: "life_toolbar_sel")?.imageWithRenderingMode(UIImageRenderingMode.AlwaysOriginal))
         homeNavi.tabBarItem = homeTabItem
         
+        // TODO: 根据不同的账户设置不同的Tab
         // 名片
         storyboard = UIStoryboard(name: "BusinessCard", bundle: nil)
         var customNavi = storyboard.instantiateViewControllerWithIdentifier("BusinessCardNavi")
