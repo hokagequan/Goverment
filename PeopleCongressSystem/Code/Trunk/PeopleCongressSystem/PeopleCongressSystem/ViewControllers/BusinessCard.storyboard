@@ -37,7 +37,7 @@
         <!--Navigation Controller-->
         <scene sceneID="huC-Gc-ar7">
             <objects>
-                <navigationController storyboardIdentifier="BusinessCardNavi" useStoryboardIdentifierAsRestorationIdentifier="YES" id="D54-fb-sYK" sceneMemberID="viewController">
+                <navigationController id="D54-fb-sYK" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="cmd-F7-09Q">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
