@@ -23,7 +23,6 @@ class SignInViewController: UIViewController, UIActionSheetDelegate, UITextField
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        
         CustomObjectUtil.customObjectsLayout([accountTextField, passwordTextField, serverSelectButton], backgroundColor: UIColor.whiteColor(), borderWidth: 0.0, borderColor: nil, corner: 3.0)
         CustomObjectUtil.customObjectsLayout([signInButton], backgroundColor: UIColor.clearColor(), borderWidth: 1.0, borderColor: UIColor.whiteColor(), corner: 3.0)
         
@@ -39,7 +38,8 @@ class SignInViewController: UIViewController, UIActionSheetDelegate, UITextField
             autoButton.selected = isAuto
         }
         
-        gestureButton.hidden = SettingsManager.getData(SettingKey.GesturePassword.rawValue) == nil
+        // FIXME: 正式释放注释
+//        gestureButton.hidden = SettingsManager.getData(SettingKey.GesturePassword.rawValue) == nil
     }
     
     override func viewWillAppear(animated: Bool) {

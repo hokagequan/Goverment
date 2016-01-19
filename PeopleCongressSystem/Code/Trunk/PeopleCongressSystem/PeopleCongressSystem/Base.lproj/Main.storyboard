@@ -6,10 +6,10 @@
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Gesture Lock View Controller-->
         <scene sceneID="TeG-vG-XKM">
             <objects>
-                <viewController id="BqY-Wb-uXP" sceneMemberID="viewController">
+                <viewController id="BqY-Wb-uXP" customClass="GestureLockViewController" customModule="PeopleCongressSystem" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="aN8-hf-Mpg"/>
                         <viewControllerLayoutGuide type="bottom" id="UH7-ce-Xi3"/>
@@ -17,8 +17,27 @@
                     <view key="view" contentMode="scaleToFill" id="212-QV-b9F">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cPw-Co-jft" userLabel="Lock" customClass="HUIPatternLockView" customModule="HUIPatternLockView_Swift">
+                                <rect key="frame" x="0.0" y="20" width="600" height="580"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="image" keyPath="normalDotImage" value="lock_dot_nor"/>
+                                    <userDefinedRuntimeAttribute type="image" keyPath="highlightedDotImage" value="lock_dot_sel"/>
+                                </userDefinedRuntimeAttributes>
+                            </view>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="UH7-ce-Xi3" firstAttribute="top" secondItem="cPw-Co-jft" secondAttribute="bottom" id="DDS-QX-Z7q"/>
+                            <constraint firstAttribute="trailing" secondItem="cPw-Co-jft" secondAttribute="trailing" id="LKW-VD-fvV"/>
+                            <constraint firstItem="cPw-Co-jft" firstAttribute="top" secondItem="aN8-hf-Mpg" secondAttribute="bottom" id="rsh-Kt-yy0"/>
+                            <constraint firstItem="cPw-Co-jft" firstAttribute="leading" secondItem="212-QV-b9F" secondAttribute="leading" id="zQ9-jy-wY2"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="lockView" destination="cPw-Co-jft" id="3LA-PD-LoQ"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nqO-wS-X9U" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -251,4 +270,8 @@
             <point key="canvasLocation" x="245" y="1115"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="lock_dot_nor" width="59" height="59"/>
+        <image name="lock_dot_sel" width="59" height="59"/>
+    </resources>
 </document>

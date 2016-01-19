@@ -16,5 +16,6 @@ extension UserEntity {
 
     @NSManaged var account: String?
     @NSManaged var password: String?
+    @NSManaged var gesturePassword: String?
 
 }
