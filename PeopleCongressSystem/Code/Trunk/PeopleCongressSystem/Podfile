@@ -6,6 +6,7 @@ use_frameworks!
 target 'PeopleCongressSystem' do
 
 pod 'Alamofire'
+pod 'HUIPatternLockView-Swift'
 
 end
 

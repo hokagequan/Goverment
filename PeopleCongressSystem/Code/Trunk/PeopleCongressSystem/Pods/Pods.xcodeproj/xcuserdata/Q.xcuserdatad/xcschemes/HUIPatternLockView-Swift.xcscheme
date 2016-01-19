@@ -14,10 +14,10 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = 'primary'
-               BlueprintIdentifier = '71CC0930A094B5BF04BCC7C1'
-               BlueprintName = 'Pods-PeopleCongressSystem'
+               BlueprintIdentifier = '3D183D1D523ED7143569EE78'
+               BlueprintName = 'HUIPatternLockView-Swift'
                ReferencedContainer = 'container:Pods.xcodeproj'
-               BuildableName = 'Pods_PeopleCongressSystem.framework'>
+               BuildableName = 'HUIPatternLockView_Swift.framework'>
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>

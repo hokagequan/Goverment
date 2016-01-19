@@ -9,6 +9,11 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>HUIPatternLockView-Swift.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>Pods-PeopleCongressSystem.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -22,7 +27,12 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>E36E1A0B7DEED1B935AF15510E7116C6</key>
+		<key>6BB53F67644C2C1991EB7CED94EDA7DC</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>DC87E2772B396D222D3A9A8FFC70D9FE</key>
 		<dict>
 			<key>primary</key>
 			<true/>
