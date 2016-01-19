@@ -63,9 +63,6 @@
                                 <rect key="frame" x="50" y="396" width="500" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                 <state key="normal" title="手势登录"/>
-                                <connections>
-                                    <action selector="clickGesture:" destination="o5A-KL-8xA" eventType="touchUpInside" id="NHq-nZ-C8e"/>
-                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bzO-dB-bh8" userLabel="Remember Password">
                                 <rect key="frame" x="50" y="318" width="166.5" height="30"/>
@@ -110,9 +107,6 @@
                                 <rect key="frame" x="50" y="528" width="500" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <state key="normal" title="找回密码"/>
-                                <connections>
-                                    <action selector="clickFindPassword:" destination="o5A-KL-8xA" eventType="touchUpInside" id="DRH-Ow-tdn"/>
-                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" red="0.96862745100000003" green="0.1647058824" blue="0.22352941179999999" alpha="1" colorSpace="calibratedRGB"/>

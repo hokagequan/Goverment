@@ -21,6 +21,8 @@
 		10D0D5A41C4DCA5A0093F687 /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10D0D5A31C4DCA5A0093F687 /* SignInViewController.swift */; };
 		10D0D5A71C4DCB870093F687 /* CustomObjectUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10D0D5A61C4DCB870093F687 /* CustomObjectUtil.swift */; };
 		10D0D5AA1C4DEBFD0093F687 /* SettingsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10D0D5A91C4DEBFD0093F687 /* SettingsManager.swift */; };
+		10D0D5AD1C4DF6030093F687 /* UIViewController+AlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10D0D5AC1C4DF6030093F687 /* UIViewController+AlertView.swift */; };
+		10D0D5B01C4E2C7D0093F687 /* HttpBaseReq.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10D0D5AF1C4E2C7D0093F687 /* HttpBaseReq.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -52,6 +54,8 @@
 		10D0D5A31C4DCA5A0093F687 /* SignInViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
 		10D0D5A61C4DCB870093F687 /* CustomObjectUtil.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomObjectUtil.swift; sourceTree = "<group>"; };
 		10D0D5A91C4DEBFD0093F687 /* SettingsManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsManager.swift; sourceTree = "<group>"; };
+		10D0D5AC1C4DF6030093F687 /* UIViewController+AlertView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController+AlertView.swift"; sourceTree = "<group>"; };
+		10D0D5AF1C4E2C7D0093F687 /* HttpBaseReq.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HttpBaseReq.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -93,6 +97,8 @@
 		10D0D56E1C4CD1D00093F687 /* PeopleCongressSystem */ = {
 			isa = PBXGroup;
 			children = (
+				10D0D5AE1C4E2C6A0093F687 /* HttpRequests */,
+				10D0D5AB1C4DF5DF0093F687 /* Customs */,
 				10D0D5A81C4DEBED0093F687 /* Managers */,
 				10D0D5A51C4DCB5F0093F687 /* Utilities */,
 				10D0D5921C4CD8F80093F687 /* ViewControllers */,
@@ -190,6 +196,22 @@
 				10D0D5A91C4DEBFD0093F687 /* SettingsManager.swift */,
 			);
 			path = Managers;
+			sourceTree = "<group>";
+		};
+		10D0D5AB1C4DF5DF0093F687 /* Customs */ = {
+			isa = PBXGroup;
+			children = (
+				10D0D5AC1C4DF6030093F687 /* UIViewController+AlertView.swift */,
+			);
+			path = Customs;
+			sourceTree = "<group>";
+		};
+		10D0D5AE1C4E2C6A0093F687 /* HttpRequests */ = {
+			isa = PBXGroup;
+			children = (
+				10D0D5AF1C4E2C7D0093F687 /* HttpBaseReq.swift */,
+			);
+			path = HttpRequests;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -301,8 +323,10 @@
 				10D0D5951C4CD9810093F687 /* MainViewController.swift in Sources */,
 				10D0D5AA1C4DEBFD0093F687 /* SettingsManager.swift in Sources */,
 				10D0D5781C4CD1D00093F687 /* PeopleCongressSystem.xcdatamodeld in Sources */,
+				10D0D5AD1C4DF6030093F687 /* UIViewController+AlertView.swift in Sources */,
 				10D0D5A71C4DCB870093F687 /* CustomObjectUtil.swift in Sources */,
 				10D0D5701C4CD1D00093F687 /* AppDelegate.swift in Sources */,
+				10D0D5B01C4E2C7D0093F687 /* HttpBaseReq.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
