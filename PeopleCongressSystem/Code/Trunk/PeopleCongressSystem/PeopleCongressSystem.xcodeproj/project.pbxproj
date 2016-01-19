@@ -30,6 +30,9 @@
 		10D0D5BF1C4E7AE90093F687 /* UserEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10D0D5BD1C4E7AE90093F687 /* UserEntity.swift */; };
 		10D0D5C11C4E7B160093F687 /* PCSDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10D0D5C01C4E7B160093F687 /* PCSDataManager.swift */; };
 		10D0D5C31C4E7D710093F687 /* FindPwdViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10D0D5C21C4E7D710093F687 /* FindPwdViewController.swift */; };
+		10D0D5C51C4E7F960093F687 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10D0D5C41C4E7F960093F687 /* HomeViewController.swift */; };
+		10D0D5C71C4E81FA0093F687 /* NormalImageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10D0D5C61C4E81FA0093F687 /* NormalImageCell.swift */; };
+		10D0D5C91C4E8A190093F687 /* PerformanceRecordsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10D0D5C81C4E8A190093F687 /* PerformanceRecordsViewController.swift */; };
 		3E604AFB394FDCDDAD7A9BDE /* Pods_PeopleCongressSystem.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6BCFEC37E5EA0F7BF782CCBF /* Pods_PeopleCongressSystem.framework */; };
 /* End PBXBuildFile section */
 
@@ -71,6 +74,9 @@
 		10D0D5BD1C4E7AE90093F687 /* UserEntity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserEntity.swift; sourceTree = "<group>"; };
 		10D0D5C01C4E7B160093F687 /* PCSDataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PCSDataManager.swift; sourceTree = "<group>"; };
 		10D0D5C21C4E7D710093F687 /* FindPwdViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FindPwdViewController.swift; sourceTree = "<group>"; };
+		10D0D5C41C4E7F960093F687 /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		10D0D5C61C4E81FA0093F687 /* NormalImageCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NormalImageCell.swift; sourceTree = "<group>"; };
+		10D0D5C81C4E8A190093F687 /* PerformanceRecordsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PerformanceRecordsViewController.swift; sourceTree = "<group>"; };
 		68AE91901E434A8BE22D3071 /* Pods-PeopleCongressSystem.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PeopleCongressSystem.debug.xcconfig"; path = "Pods/Target Support Files/Pods-PeopleCongressSystem/Pods-PeopleCongressSystem.debug.xcconfig"; sourceTree = "<group>"; };
 		6BCFEC37E5EA0F7BF782CCBF /* Pods_PeopleCongressSystem.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PeopleCongressSystem.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7FC8BFEC67A9706088C1E7DA /* Pods-PeopleCongressSystem.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PeopleCongressSystem.release.xcconfig"; path = "Pods/Target Support Files/Pods-PeopleCongressSystem/Pods-PeopleCongressSystem.release.xcconfig"; sourceTree = "<group>"; };
@@ -163,6 +169,7 @@
 		10D0D5931C4CD8F80093F687 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				10D0D5C61C4E81FA0093F687 /* NormalImageCell.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -184,6 +191,8 @@
 		10D0D5A01C4DCA3E0093F687 /* Home */ = {
 			isa = PBXGroup;
 			children = (
+				10D0D5C41C4E7F960093F687 /* HomeViewController.swift */,
+				10D0D5C81C4E8A190093F687 /* PerformanceRecordsViewController.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -429,11 +438,14 @@
 				10D0D5C31C4E7D710093F687 /* FindPwdViewController.swift in Sources */,
 				10D0D5951C4CD9810093F687 /* MainViewController.swift in Sources */,
 				10D0D5C11C4E7B160093F687 /* PCSDataManager.swift in Sources */,
+				10D0D5C71C4E81FA0093F687 /* NormalImageCell.swift in Sources */,
 				10D0D5AA1C4DEBFD0093F687 /* SettingsManager.swift in Sources */,
 				10D0D5781C4CD1D00093F687 /* PeopleCongressSystem.xcdatamodeld in Sources */,
 				10D0D5AD1C4DF6030093F687 /* UIViewController+AlertView.swift in Sources */,
 				10D0D5A71C4DCB870093F687 /* CustomObjectUtil.swift in Sources */,
 				10D0D5BF1C4E7AE90093F687 /* UserEntity.swift in Sources */,
+				10D0D5C91C4E8A190093F687 /* PerformanceRecordsViewController.swift in Sources */,
+				10D0D5C51C4E7F960093F687 /* HomeViewController.swift in Sources */,
 				10D0D5B31C4E36600093F687 /* CoreDataManager.swift in Sources */,
 				10D0D5701C4CD1D00093F687 /* AppDelegate.swift in Sources */,
 				10D0D5B01C4E2C7D0093F687 /* HttpBaseReq.swift in Sources */,
