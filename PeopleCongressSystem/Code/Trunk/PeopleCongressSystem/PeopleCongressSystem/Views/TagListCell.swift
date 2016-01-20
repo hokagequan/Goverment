@@ -1,27 +1,19 @@
 //
-//  NormalImageTableCell.swift
+//  TagListCell.swift
 //  PeopleCongressSystem
 //
-//  Created by Matt Quan on 16/1/19.
+//  Created by Matt Quan on 16/1/20.
 //  Copyright © 2016年 CoolRabbit. All rights reserved.
 //
 
 import UIKit
+import TagListView
 
-class NormalImageTableCell: UITableViewCell {
+class TagListCell: UITableViewCell {
 
     @IBOutlet weak var iconImageView: UIImageView!
-    @IBOutlet weak var border: UIView!
-    @IBOutlet weak var titleTextField: UITextField!
-    
-    var editable: Bool {
-        get {
-            return titleTextField.enabled
-        }
-        set {
-            titleTextField.enabled = newValue
-        }
-    }
+    @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var tagList: TagListView!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -32,6 +24,13 @@ class NormalImageTableCell: UITableViewCell {
         super.setSelected(selected, animated: animated)
 
         // Configure the view for the selected state
+    }
+    
+    // MARK: - Class functions
+    
+    class func cellHeight(tags: Array<String>?) -> CGFloat {
+        // TODO: 计算cell高度
+        return 44.0
     }
 
 }

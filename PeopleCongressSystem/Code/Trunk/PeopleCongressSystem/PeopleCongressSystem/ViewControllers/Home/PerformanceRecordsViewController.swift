@@ -9,7 +9,7 @@
 import UIKit
 import TagListView
 
-class PerformanceRecordsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class PerformanceRecordsViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
