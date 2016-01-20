@@ -21,7 +21,7 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
         case Max
         
         func title() -> String {
-            let titles = ["活动管理", "履职管理", "履职统计", "共享空间", "代表信息", "通知通报", "知情知政"]
+            let titles = ["活动管理", "履职记录", "履职统计", "共享空间", "代表风采", "通知通报", "知情知政"]
             
             return titles[self.rawValue]
         }

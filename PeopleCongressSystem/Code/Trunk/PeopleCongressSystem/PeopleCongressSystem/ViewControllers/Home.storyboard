@@ -110,12 +110,30 @@
                     <navigationItem key="navigationItem" id="Uer-Uc-GWQ"/>
                     <connections>
                         <outlet property="collectionView" destination="ISn-ia-tyM" id="wOa-uz-Khw"/>
-                        <segue destination="Kpt-zv-23Y" kind="show" identifier="PerformanceRecordsSegue" id="B5q-Up-BSw"/>
+                        <segue destination="BkH-2E-4Ca" kind="show" identifier="PerformanceRecordsSegue" id="etR-L0-hEV"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Cc7-Qf-2qh" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="763" y="458"/>
+        </scene>
+        <!--Performance Records View Controller-->
+        <scene sceneID="TYC-7W-BqQ">
+            <objects>
+                <viewController id="BkH-2E-4Ca" customClass="PerformanceRecordsViewController" customModule="PeopleCongressSystem" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="M5D-nH-oLf"/>
+                        <viewControllerLayoutGuide type="bottom" id="ooC-f0-1xe"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="6uN-Jw-bVY">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="G02-C7-6jL" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1568" y="458"/>
         </scene>
         <!--Performance Edit View Controller-->
         <scene sceneID="gdi-XG-cqO">
@@ -353,7 +371,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ToJ-37-zrZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1579" y="458"/>
+            <point key="canvasLocation" x="2374" y="458"/>
         </scene>
     </scenes>
 </document>
