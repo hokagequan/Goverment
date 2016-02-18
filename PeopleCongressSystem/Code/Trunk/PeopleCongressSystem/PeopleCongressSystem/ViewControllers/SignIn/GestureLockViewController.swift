@@ -59,7 +59,15 @@ class GestureLockViewController: UIViewController {
                 lockView.normalDotImage = normalImage
                 lockView.highlightedDotImage = selectImage
                 
-                // TODO: 登录流程
+                let manager = PCSDataManager.defaultManager().accountManager
+                manager.signIn(manager.user!.account!, password: manager.user!.password!) { (success, errorMessage) -> Void in
+                    if success == true {
+                        self.performSegueWithIdentifier("MainSegue", sender: self)
+                    }
+                    else {
+                        self.showAlert(errorMessage)
+                    }
+                }
             })
         }
     }

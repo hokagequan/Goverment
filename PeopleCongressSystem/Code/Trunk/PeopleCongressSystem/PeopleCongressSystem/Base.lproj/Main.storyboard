@@ -37,6 +37,7 @@
                     </view>
                     <connections>
                         <outlet property="lockView" destination="cPw-Co-jft" id="3LA-PD-LoQ"/>
+                        <segue destination="nuY-8n-wNE" kind="show" identifier="MainSegue" id="rj9-mo-YbR"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nqO-wS-X9U" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -410,4 +411,7 @@
         <image name="server" width="14" height="12"/>
         <image name="title" width="242" height="43"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="rj9-mo-YbR"/>
+    </inferredMetricsTieBreakers>
 </document>

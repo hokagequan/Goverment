@@ -79,14 +79,15 @@ class SignInViewController: UIViewController, UIActionSheetDelegate, UITextField
             return
         }
         
-        // TODO: 登录; 登录成功设置状态; 登录成功存入数据库
-        let req = SignInReq()
-        req.account = "test1"
-        req.password = "1"
-        req.requestCompletion { (response) -> Void in
-            SettingsManager.saveData(self.rememberButton.selected, key: SettingKey.RememberPassword.rawValue)
-            SettingsManager.saveData(self.autoButton.selected, key: SettingKey.AutoSignIn.rawValue)
-//            self.performSegueWithIdentifier("MainSegue", sender: self)
+        PCSDataManager.defaultManager().accountManager.signIn("test1", password: "1") { (success, errorMessage) -> Void in
+            if success == true {
+                SettingsManager.saveData(self.rememberButton.selected, key: SettingKey.RememberPassword.rawValue)
+                SettingsManager.saveData(self.autoButton.selected, key: SettingKey.AutoSignIn.rawValue)
+                self.performSegueWithIdentifier("MainSegue", sender: self)
+            }
+            else {
+                self.showAlert(errorMessage)
+            }
         }
     }
     
