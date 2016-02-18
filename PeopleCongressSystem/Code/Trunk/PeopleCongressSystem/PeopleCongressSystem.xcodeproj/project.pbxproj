@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		10496F371C76012F0074CFC1 /* SignInReq.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10496F361C76012F0074CFC1 /* SignInReq.swift */; };
 		10D0D5701C4CD1D00093F687 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10D0D56F1C4CD1D00093F687 /* AppDelegate.swift */; };
 		10D0D5751C4CD1D00093F687 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 10D0D5731C4CD1D00093F687 /* Main.storyboard */; };
 		10D0D5781C4CD1D00093F687 /* PeopleCongressSystem.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 10D0D5761C4CD1D00093F687 /* PeopleCongressSystem.xcdatamodeld */; };
@@ -52,6 +53,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		10496F361C76012F0074CFC1 /* SignInReq.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignInReq.swift; sourceTree = "<group>"; };
 		10D0D56C1C4CD1D00093F687 /* PeopleCongressSystem.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PeopleCongressSystem.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		10D0D56F1C4CD1D00093F687 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		10D0D5741C4CD1D00093F687 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -260,6 +262,7 @@
 			isa = PBXGroup;
 			children = (
 				10D0D5AF1C4E2C7D0093F687 /* HttpBaseReq.swift */,
+				10496F361C76012F0074CFC1 /* SignInReq.swift */,
 			);
 			path = HttpRequests;
 			sourceTree = "<group>";
@@ -457,6 +460,7 @@
 				10D0D5C11C4E7B160093F687 /* PCSDataManager.swift in Sources */,
 				10D0D5C71C4E81FA0093F687 /* NormalImageCell.swift in Sources */,
 				10D0D5AA1C4DEBFD0093F687 /* SettingsManager.swift in Sources */,
+				10496F371C76012F0074CFC1 /* SignInReq.swift in Sources */,
 				10D0D5781C4CD1D00093F687 /* PeopleCongressSystem.xcdatamodeld in Sources */,
 				10D0D5D11C4FC4FF0093F687 /* PerformanceEditViewController.swift in Sources */,
 				10D0D5AD1C4DF6030093F687 /* UIViewController+AlertView.swift in Sources */,

@@ -62,7 +62,7 @@ class SignInViewController: UIViewController, UIActionSheetDelegate, UITextField
     
     @IBAction func clickServerSelect(sender: AnyObject) {
         // TODO: 服务器选择
-        let actionSheet = UIActionSheet(title: nil, delegate: self, cancelButtonTitle: "取消", destructiveButtonTitle: nil, otherButtonTitles: "", "")
+        let actionSheet = UIActionSheet(title: nil, delegate: self, cancelButtonTitle: "取消", destructiveButtonTitle: nil, otherButtonTitles: "http://175.170.128.160:8099", "")
         actionSheet.showInView(self.view)
     }
     
@@ -80,9 +80,14 @@ class SignInViewController: UIViewController, UIActionSheetDelegate, UITextField
         }
         
         // TODO: 登录; 登录成功设置状态; 登录成功存入数据库
-        SettingsManager.saveData(rememberButton.selected, key: SettingKey.RememberPassword.rawValue)
-        SettingsManager.saveData(autoButton.selected, key: SettingKey.AutoSignIn.rawValue)
-        self.performSegueWithIdentifier("MainSegue", sender: self)
+        let req = SignInReq()
+        req.account = "test1"
+        req.password = "1"
+        req.requestCompletion { (response) -> Void in
+            SettingsManager.saveData(self.rememberButton.selected, key: SettingKey.RememberPassword.rawValue)
+            SettingsManager.saveData(self.autoButton.selected, key: SettingKey.AutoSignIn.rawValue)
+//            self.performSegueWithIdentifier("MainSegue", sender: self)
+        }
     }
     
     @IBAction func clickRemember(sender: AnyObject) {

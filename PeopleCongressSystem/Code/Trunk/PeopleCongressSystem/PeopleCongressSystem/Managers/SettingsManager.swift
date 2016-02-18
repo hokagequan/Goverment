@@ -17,6 +17,8 @@ enum SettingKey: String {
 
 class SettingsManager {
     
+    // MARK: - Class Function
+    
     class func getData(key: String) -> AnyObject? {
         return NSUserDefaults.standardUserDefaults().objectForKey(key)
     }
