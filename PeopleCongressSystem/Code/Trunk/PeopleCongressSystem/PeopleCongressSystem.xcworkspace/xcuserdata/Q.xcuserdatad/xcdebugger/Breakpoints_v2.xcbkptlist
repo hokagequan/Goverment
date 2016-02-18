@@ -10,11 +10,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "PeopleCongressSystem/Managers/AccountManager.swift"
-            timestampString = "477498699.416293"
+            timestampString = "477499041.521315"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "59"
-            endingLineNumber = "59"
+            startingLineNumber = "60"
+            endingLineNumber = "60"
             landmarkName = "signIn(_:password:completion:)"
             landmarkType = "5">
          </BreakpointContent>

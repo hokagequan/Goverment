@@ -22,8 +22,8 @@
                                 <rect key="frame" x="0.0" y="20" width="600" height="580"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="image" keyPath="normalDotImage" value="lock_dot_nor"/>
-                                    <userDefinedRuntimeAttribute type="image" keyPath="highlightedDotImage" value="lock_dot_sel"/>
+                                    <userDefinedRuntimeAttribute type="image" keyPath="normalDotImage" value="gesture_dot_nor"/>
+                                    <userDefinedRuntimeAttribute type="image" keyPath="highlightedDotImage" value="gesture_dot_sel"/>
                                 </userDefinedRuntimeAttributes>
                             </view>
                         </subviews>
@@ -401,10 +401,10 @@
     </scenes>
     <resources>
         <image name="check" width="21" height="21"/>
+        <image name="gesture_dot_nor" width="45" height="45"/>
+        <image name="gesture_dot_sel" width="69" height="69"/>
         <image name="guo_hui" width="80" height="84"/>
         <image name="lock" width="13" height="19"/>
-        <image name="lock_dot_nor" width="59" height="59"/>
-        <image name="lock_dot_sel" width="59" height="59"/>
         <image name="more" width="12" height="11"/>
         <image name="phone" width="13" height="18"/>
         <image name="server" width="14" height="12"/>
