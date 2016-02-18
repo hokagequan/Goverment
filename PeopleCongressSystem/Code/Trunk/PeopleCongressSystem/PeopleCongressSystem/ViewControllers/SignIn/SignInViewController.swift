@@ -18,6 +18,9 @@ class SignInViewController: UIViewController, UIActionSheetDelegate, UITextField
     @IBOutlet weak var findPasswordButton: UIButton!
     @IBOutlet weak var rememberButton: UIButton!
     @IBOutlet weak var autoButton: UIButton!
+    @IBOutlet var phoneView: UIView!
+    @IBOutlet var passwordView: UIView!
+    @IBOutlet var serverView: UIView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,7 +30,9 @@ class SignInViewController: UIViewController, UIActionSheetDelegate, UITextField
         CustomObjectUtil.customObjectsLayout([signInButton], backgroundColor: UIColor.clearColor(), borderWidth: 1.0, borderColor: UIColor.whiteColor(), corner: 3.0)
         
         accountTextField.leftViewMode = UITextFieldViewMode.Always
+        accountTextField.leftView = phoneView
         passwordTextField.leftViewMode = UITextFieldViewMode.Always
+        passwordTextField.leftView = passwordView
         
         if let isRemember = SettingsManager.getData(SettingKey.RememberPassword.rawValue) as? Bool {
             // TODO: 设置默认用户

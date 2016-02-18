@@ -37,6 +37,7 @@
 		10D0D5CD1C4FBF550093F687 /* DoubleContentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10D0D5CC1C4FBF550093F687 /* DoubleContentCell.swift */; };
 		10D0D5CF1C4FC3420093F687 /* TagListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10D0D5CE1C4FC3420093F687 /* TagListCell.swift */; };
 		10D0D5D11C4FC4FF0093F687 /* PerformanceEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10D0D5D01C4FC4FF0093F687 /* PerformanceEditViewController.swift */; };
+		10D0D5D31C4FDB440093F687 /* CustomNavigationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10D0D5D21C4FDB440093F687 /* CustomNavigationView.swift */; };
 		3E604AFB394FDCDDAD7A9BDE /* Pods_PeopleCongressSystem.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6BCFEC37E5EA0F7BF782CCBF /* Pods_PeopleCongressSystem.framework */; };
 /* End PBXBuildFile section */
 
@@ -85,6 +86,7 @@
 		10D0D5CC1C4FBF550093F687 /* DoubleContentCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DoubleContentCell.swift; sourceTree = "<group>"; };
 		10D0D5CE1C4FC3420093F687 /* TagListCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TagListCell.swift; sourceTree = "<group>"; };
 		10D0D5D01C4FC4FF0093F687 /* PerformanceEditViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PerformanceEditViewController.swift; sourceTree = "<group>"; };
+		10D0D5D21C4FDB440093F687 /* CustomNavigationView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomNavigationView.swift; sourceTree = "<group>"; };
 		68AE91901E434A8BE22D3071 /* Pods-PeopleCongressSystem.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PeopleCongressSystem.debug.xcconfig"; path = "Pods/Target Support Files/Pods-PeopleCongressSystem/Pods-PeopleCongressSystem.debug.xcconfig"; sourceTree = "<group>"; };
 		6BCFEC37E5EA0F7BF782CCBF /* Pods_PeopleCongressSystem.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PeopleCongressSystem.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7FC8BFEC67A9706088C1E7DA /* Pods-PeopleCongressSystem.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PeopleCongressSystem.release.xcconfig"; path = "Pods/Target Support Files/Pods-PeopleCongressSystem/Pods-PeopleCongressSystem.release.xcconfig"; sourceTree = "<group>"; };
@@ -177,6 +179,7 @@
 		10D0D5931C4CD8F80093F687 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				10D0D5D21C4FDB440093F687 /* CustomNavigationView.swift */,
 				10D0D5C61C4E81FA0093F687 /* NormalImageCell.swift */,
 				10D0D5CA1C4E8E260093F687 /* NormalImageTableCell.swift */,
 				10D0D5CC1C4FBF550093F687 /* DoubleContentCell.swift */,
@@ -461,6 +464,7 @@
 				10D0D5BF1C4E7AE90093F687 /* UserEntity.swift in Sources */,
 				10D0D5C91C4E8A190093F687 /* PerformanceRecordsViewController.swift in Sources */,
 				10D0D5C51C4E7F960093F687 /* HomeViewController.swift in Sources */,
+				10D0D5D31C4FDB440093F687 /* CustomNavigationView.swift in Sources */,
 				10D0D5B31C4E36600093F687 /* CoreDataManager.swift in Sources */,
 				10D0D5701C4CD1D00093F687 /* AppDelegate.swift in Sources */,
 				10D0D5B01C4E2C7D0093F687 /* HttpBaseReq.swift in Sources */,
