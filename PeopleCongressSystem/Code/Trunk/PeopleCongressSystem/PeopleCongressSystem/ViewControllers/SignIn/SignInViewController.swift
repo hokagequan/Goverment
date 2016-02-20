@@ -8,6 +8,14 @@
 
 import UIKit
 
+let account = "ios"
+let password = "a"
+
+// Worker
+//let account = "admin"
+//let password = "85868000"
+
+
 class SignInViewController: UIViewController, UIActionSheetDelegate, UITextFieldDelegate {
 
     @IBOutlet weak var accountTextField: UITextField!
@@ -50,6 +58,7 @@ class SignInViewController: UIViewController, UIActionSheetDelegate, UITextField
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         
+        self.navigationItem.setHidesBackButton(true, animated: false)
         self.navigationController?.setNavigationBarHidden(true, animated: true)
     }
 
@@ -100,6 +109,7 @@ class SignInViewController: UIViewController, UIActionSheetDelegate, UITextField
     }
     
     @IBAction func clickGesture(sender: AnyObject) {
+        self.navigationController?.setNavigationBarHidden(false, animated: true)
         self.performSegueWithIdentifier("GestureSegue", sender: self)
     }
     

@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		10496F371C76012F0074CFC1 /* SignInReq.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10496F361C76012F0074CFC1 /* SignInReq.swift */; };
+		10496F391C76140C0074CFC1 /* PCSCustomUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10496F381C76140C0074CFC1 /* PCSCustomUtil.swift */; };
 		10D0D5701C4CD1D00093F687 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10D0D56F1C4CD1D00093F687 /* AppDelegate.swift */; };
 		10D0D5751C4CD1D00093F687 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 10D0D5731C4CD1D00093F687 /* Main.storyboard */; };
 		10D0D5781C4CD1D00093F687 /* PeopleCongressSystem.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 10D0D5761C4CD1D00093F687 /* PeopleCongressSystem.xcdatamodeld */; };
@@ -54,6 +55,7 @@
 
 /* Begin PBXFileReference section */
 		10496F361C76012F0074CFC1 /* SignInReq.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignInReq.swift; sourceTree = "<group>"; };
+		10496F381C76140C0074CFC1 /* PCSCustomUtil.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PCSCustomUtil.swift; sourceTree = "<group>"; };
 		10D0D56C1C4CD1D00093F687 /* PeopleCongressSystem.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PeopleCongressSystem.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		10D0D56F1C4CD1D00093F687 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		10D0D5741C4CD1D00093F687 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -235,6 +237,7 @@
 			isa = PBXGroup;
 			children = (
 				10D0D5A61C4DCB870093F687 /* CustomObjectUtil.swift */,
+				10496F381C76140C0074CFC1 /* PCSCustomUtil.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -459,6 +462,7 @@
 				10D0D5951C4CD9810093F687 /* MainViewController.swift in Sources */,
 				10D0D5C11C4E7B160093F687 /* PCSDataManager.swift in Sources */,
 				10D0D5C71C4E81FA0093F687 /* NormalImageCell.swift in Sources */,
+				10496F391C76140C0074CFC1 /* PCSCustomUtil.swift in Sources */,
 				10D0D5AA1C4DEBFD0093F687 /* SettingsManager.swift in Sources */,
 				10496F371C76012F0074CFC1 /* SignInReq.swift in Sources */,
 				10D0D5781C4CD1D00093F687 /* PeopleCongressSystem.xcdatamodeld in Sources */,

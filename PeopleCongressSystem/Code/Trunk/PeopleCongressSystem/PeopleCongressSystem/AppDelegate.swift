@@ -17,6 +17,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
+        PCSCustomUtil.customNavigationBar()
+        
         if let isAuto = SettingsManager.getData(SettingKey.AutoSignIn.rawValue) as? Bool {
             if isAuto == true {
                 let storyboard = UIStoryboard(name: "Main", bundle: nil)
