@@ -92,8 +92,10 @@ class CoreDataManager: NSObject {
 //        }
 //    }
     
-    func saveContext() {
+    func saveContext(completion: (() -> Void)?) {
         if managedObjectContext.hasChanges == false {
+            completion?()
+            
             return
         }
         
@@ -105,6 +107,8 @@ class CoreDataManager: NSObject {
                 backgroundSaveContext.performBlock({ () -> Void in
                     do {
                         try backgroundSaveContext.save()
+                        
+                        completion?()
                     }
                     catch {
                         let nserror = error as NSError

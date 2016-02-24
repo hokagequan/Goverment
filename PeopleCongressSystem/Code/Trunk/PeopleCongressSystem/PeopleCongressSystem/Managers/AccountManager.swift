@@ -20,6 +20,7 @@ class AccountManager {
     func getDefaultUser() {
         let context = CoreDataManager.defalutManager().managedObjectContext
         let fetchReq = NSFetchRequest(entityName: "UserEntity")
+        fetchReq.predicate = NSPredicate(format: "isDefault == %@", true)
         
         do {
             let fetchObjects = try context.executeFetchRequest(fetchReq)
@@ -30,7 +31,7 @@ class AccountManager {
         }
     }
     
-    func signIn(account: String, password: String, completion: ((Bool, String) -> Void)?) {
+    func signIn(account: String, password: String, completion: ((Bool, String?) -> Void)?) {
         let req = SignInReq()
         req.account = account
         req.password = password
@@ -42,22 +43,41 @@ class AccountManager {
                 return
             }
             
-            guard let value = result?.value else {
+            guard let _ = result?.value else {
                 completion?(false, "连接服务器错误")
                 
                 return
             }
             
             let context = CoreDataManager.defalutManager().managedObjectContext
-            if self.user == nil {
-                self.user = NSEntityDescription.insertNewObjectForEntityForName("UserEntity", inManagedObjectContext: context) as? UserEntity
+            let fetchReq = NSFetchRequest(entityName: "UserEntity")
+            
+            do {
+                self.user = nil
+                let users = try context.executeFetchRequest(fetchReq) as! Array<UserEntity>
+                
+                for storeUser in users {
+                    storeUser.isDefault = false
+                    
+                    if storeUser.account == req.account {
+                        self.user = storeUser
+                    }
+                }
+                
+                if self.user == nil {
+                    self.user = NSEntityDescription.insertNewObjectForEntityForName("UserEntity", inManagedObjectContext: context) as? UserEntity
+                }
+                
+                self.user?.account = account
+                self.user?.password = password
+                self.user?.isDefault = true
+                
+                CoreDataManager.defalutManager().saveContext(nil)
+                completion?(true, nil)
             }
-            
-            // TODO: 登录成功，存入相关信息
-            self.user?.account = account
-            self.user?.password = password
-            
-            CoreDataManager.defalutManager().saveContext()
+            catch {
+                completion?(false, "数据库错误")
+            }
         }
     }
     

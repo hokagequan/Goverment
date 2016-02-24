@@ -88,7 +88,7 @@ class SignInViewController: UIViewController, UIActionSheetDelegate, UITextField
             return
         }
         
-        PCSDataManager.defaultManager().accountManager.signIn("test1", password: "1") { (success, errorMessage) -> Void in
+        PCSDataManager.defaultManager().accountManager.signIn(account, password: password) { (success, errorMessage) -> Void in
             if success == true {
                 SettingsManager.saveData(self.rememberButton.selected, key: SettingKey.RememberPassword.rawValue)
                 SettingsManager.saveData(self.autoButton.selected, key: SettingKey.AutoSignIn.rawValue)

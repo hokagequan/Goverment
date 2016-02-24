@@ -42,6 +42,8 @@ class GestureLockViewController: UIViewController {
         let correctImage = UIImage(named: "gesture_dot_sel")
         let wrongImage = UIImage(named: "gesture_dot_sel")
         
+        CustomObjectUtil.customObjectsLayout([lockView], backgroundColor: UIColor.whiteColor(), borderWidth: 1.0, borderColor: GlobalUtil.colorRGBA(240.0, g: 240.0, b: 240.0, a: 1.0), corner: 2.0)
+        
         lockView.didDrawPatternWithPassword = {(lockView: HUIPatternLockView, count: Int, password: String?) -> Void in
             guard count > 0 else {
                 return
