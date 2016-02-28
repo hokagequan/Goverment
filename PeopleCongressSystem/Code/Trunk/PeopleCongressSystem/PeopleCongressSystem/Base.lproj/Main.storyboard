@@ -18,7 +18,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cPw-Co-jft" userLabel="Lock" customClass="HUIPatternLockView" customModule="HUIPatternLockView_Swift">
+                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="cPw-Co-jft" userLabel="Lock" customClass="HUIPatternLockView" customModule="HUIPatternLockView_Swift">
                                 <rect key="frame" x="0.0" y="113" width="600" height="487"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <userDefinedRuntimeAttributes>
@@ -390,7 +390,7 @@
                                 </connections>
                             </button>
                         </subviews>
-                        <color key="backgroundColor" red="0.96862745100000003" green="0.1647058824" blue="0.22352941179999999" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" red="0.94117647059999998" green="0.94117647059999998" blue="0.94117647059999998" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="fHN-PB-heK" firstAttribute="leading" secondItem="6gj-iY-DSB" secondAttribute="leading" constant="50" id="AWI-4f-CyZ"/>
                             <constraint firstItem="fHN-PB-heK" firstAttribute="top" secondItem="GSs-cO-lYq" secondAttribute="bottom" constant="100" id="BSf-yC-gEr"/>

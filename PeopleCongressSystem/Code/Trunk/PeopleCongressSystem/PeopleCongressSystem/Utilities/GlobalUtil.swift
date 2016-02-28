@@ -15,4 +15,16 @@ class GlobalUtil {
         return UIColor(red: r / 255.0, green: g / 255.0, blue: b / 255.0, alpha: a)
     }
     
+    class func rateForHeight() -> CGFloat {
+        let app = UIApplication.sharedApplication().delegate as! AppDelegate
+        
+        return app.window!.bounds.size.height / CGFloat(568.0)
+    }
+    
+    class func rateForWidth() -> CGFloat {
+        let app = UIApplication.sharedApplication().delegate as! AppDelegate
+        
+        return app.window!.bounds.size.height / CGFloat(320.0)
+    }
+    
 }

@@ -13,6 +13,7 @@ class PCSDataManager {
     static let _pcsDataManager = PCSDataManager()
     
     var accountManager = AccountManager()
+    var content: ContentInfo = ContentInfo()
     
     // MARK: - Class Functions
     

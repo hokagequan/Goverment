@@ -73,6 +73,9 @@ class AccountManager {
                 self.user?.isDefault = true
                 
                 CoreDataManager.defalutManager().saveContext(nil)
+                
+                // TODO: 设置登录人员类型
+                PCSDataManager.defaultManager().content = WorderContentInfo()
                 completion?(true, nil)
             }
             catch {

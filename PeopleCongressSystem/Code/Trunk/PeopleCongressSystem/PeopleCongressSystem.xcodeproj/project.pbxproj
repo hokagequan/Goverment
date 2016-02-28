@@ -9,9 +9,13 @@
 /* Begin PBXBuildFile section */
 		10496F371C76012F0074CFC1 /* SignInReq.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10496F361C76012F0074CFC1 /* SignInReq.swift */; };
 		10496F391C76140C0074CFC1 /* PCSCustomUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10496F381C76140C0074CFC1 /* PCSCustomUtil.swift */; };
+		106C64C91C83511400E6CD95 /* PCSProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 106C64C81C83511400E6CD95 /* PCSProtocols.swift */; };
+		106C64CB1C83522800E6CD95 /* WorkerHomeActionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 106C64CA1C83522800E6CD95 /* WorkerHomeActionDelegate.swift */; };
 		10A6866A1C7DEF7400D050F0 /* GlobalUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10A686691C7DEF7400D050F0 /* GlobalUtil.swift */; };
 		10A6866D1C7DF12600D050F0 /* UserEntity+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10A6866B1C7DF12600D050F0 /* UserEntity+CoreDataProperties.swift */; };
 		10A6866E1C7DF12600D050F0 /* UserEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10A6866C1C7DF12600D050F0 /* UserEntity.swift */; };
+		10A686711C7DF7A200D050F0 /* ContentInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10A686701C7DF7A200D050F0 /* ContentInfo.swift */; };
+		10A686731C7DF8D000D050F0 /* WorkerContentInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10A686721C7DF8D000D050F0 /* WorkerContentInfo.swift */; };
 		10D0D5701C4CD1D00093F687 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10D0D56F1C4CD1D00093F687 /* AppDelegate.swift */; };
 		10D0D5751C4CD1D00093F687 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 10D0D5731C4CD1D00093F687 /* Main.storyboard */; };
 		10D0D5781C4CD1D00093F687 /* PeopleCongressSystem.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 10D0D5761C4CD1D00093F687 /* PeopleCongressSystem.xcdatamodeld */; };
@@ -58,9 +62,13 @@
 /* Begin PBXFileReference section */
 		10496F361C76012F0074CFC1 /* SignInReq.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignInReq.swift; sourceTree = "<group>"; };
 		10496F381C76140C0074CFC1 /* PCSCustomUtil.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PCSCustomUtil.swift; sourceTree = "<group>"; };
+		106C64C81C83511400E6CD95 /* PCSProtocols.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PCSProtocols.swift; sourceTree = "<group>"; };
+		106C64CA1C83522800E6CD95 /* WorkerHomeActionDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WorkerHomeActionDelegate.swift; sourceTree = "<group>"; };
 		10A686691C7DEF7400D050F0 /* GlobalUtil.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GlobalUtil.swift; sourceTree = "<group>"; };
 		10A6866B1C7DF12600D050F0 /* UserEntity+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UserEntity+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		10A6866C1C7DF12600D050F0 /* UserEntity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserEntity.swift; sourceTree = "<group>"; };
+		10A686701C7DF7A200D050F0 /* ContentInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContentInfo.swift; sourceTree = "<group>"; };
+		10A686721C7DF8D000D050F0 /* WorkerContentInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WorkerContentInfo.swift; sourceTree = "<group>"; };
 		10D0D56C1C4CD1D00093F687 /* PeopleCongressSystem.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PeopleCongressSystem.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		10D0D56F1C4CD1D00093F687 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		10D0D5741C4CD1D00093F687 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -119,6 +127,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		10A6866F1C7DF72B00D050F0 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				10A686701C7DF7A200D050F0 /* ContentInfo.swift */,
+				10A686721C7DF8D000D050F0 /* WorkerContentInfo.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
 		10D0D5631C4CD1D00093F687 = {
 			isa = PBXGroup;
 			children = (
@@ -142,6 +159,7 @@
 		10D0D56E1C4CD1D00093F687 /* PeopleCongressSystem */ = {
 			isa = PBXGroup;
 			children = (
+				10A6866F1C7DF72B00D050F0 /* Models */,
 				10D0D5B11C4E36350093F687 /* CoreData */,
 				10D0D5AE1C4E2C6A0093F687 /* HttpRequests */,
 				10D0D5AB1C4DF5DF0093F687 /* Customs */,
@@ -263,6 +281,8 @@
 			isa = PBXGroup;
 			children = (
 				10D0D5AC1C4DF6030093F687 /* UIViewController+AlertView.swift */,
+				106C64C81C83511400E6CD95 /* PCSProtocols.swift */,
+				106C64CA1C83522800E6CD95 /* WorkerHomeActionDelegate.swift */,
 			);
 			path = Customs;
 			sourceTree = "<group>";
@@ -475,13 +495,17 @@
 				10D0D5781C4CD1D00093F687 /* PeopleCongressSystem.xcdatamodeld in Sources */,
 				10D0D5D11C4FC4FF0093F687 /* PerformanceEditViewController.swift in Sources */,
 				10D0D5AD1C4DF6030093F687 /* UIViewController+AlertView.swift in Sources */,
+				10A686731C7DF8D000D050F0 /* WorkerContentInfo.swift in Sources */,
+				106C64CB1C83522800E6CD95 /* WorkerHomeActionDelegate.swift in Sources */,
 				10A6866A1C7DEF7400D050F0 /* GlobalUtil.swift in Sources */,
 				10D0D5A71C4DCB870093F687 /* CustomObjectUtil.swift in Sources */,
 				10D0D5C91C4E8A190093F687 /* PerformanceRecordsViewController.swift in Sources */,
+				106C64C91C83511400E6CD95 /* PCSProtocols.swift in Sources */,
 				10D0D5C51C4E7F960093F687 /* HomeViewController.swift in Sources */,
 				10F7DE631C7863A3002A86CA /* PCSNavigationView.swift in Sources */,
 				10D0D5D31C4FDB440093F687 /* CustomNavigationView.swift in Sources */,
 				10D0D5B31C4E36600093F687 /* CoreDataManager.swift in Sources */,
+				10A686711C7DF7A200D050F0 /* ContentInfo.swift in Sources */,
 				10D0D5701C4CD1D00093F687 /* AppDelegate.swift in Sources */,
 				10D0D5B01C4E2C7D0093F687 /* HttpBaseReq.swift in Sources */,
 				10D0D5B91C4E37360093F687 /* AccountManager.swift in Sources */,

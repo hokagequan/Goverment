@@ -9,31 +9,10 @@
 import UIKit
 
 class HomeViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
-    
-    enum HomeCellRow: Int {
-        case ActivityManage = 0
-        case VariableManage
-        case Analyze
-        case ShareSpace
-        case CongressInfo
-        case Notify
-        case Situation
-        case Max
-        
-        func title() -> String {
-            let titles = ["活动管理", "履职记录", "履职统计", "共享空间", "代表风采", "通知通报", "知情知政"]
-            
-            return titles[self.rawValue]
-        }
-        
-        func icon() -> String {
-            let icons = ["lock_dot_nor", "lock_dot_nor", "lock_dot_nor", "lock_dot_nor", "lock_dot_nor", "lock_dot_nor", "lock_dot_nor"]
-            
-            return icons[self.rawValue]
-        }
-    }
 
     @IBOutlet weak var collectionView: UICollectionView!
+    
+    let content = PCSDataManager.defaultManager().content
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -59,52 +38,39 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
     // MARK: - UICollectionView
     
     func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAtIndex section: Int) -> CGFloat {
-        return (self.view.bounds.size.width - 3 * 80.0) / 3.0
+        return (self.view.bounds.size.width - 3 * 80.0 * GlobalUtil.rateForWidth()) / 3.0
     }
     
     func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAtIndex section: Int) -> UIEdgeInsets {
-        let distance = (self.view.bounds.size.width - 3 * 80.0) / 6.0
+        let distance = (self.view.bounds.size.width - 3 * 80.0 * GlobalUtil.rateForWidth()) / 6.0
         return UIEdgeInsetsMake(20, distance, 20, distance)
     }
     
+    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
+        return CGSizeMake(80.0 * GlobalUtil.rateForWidth(), 80 * GlobalUtil.rateForWidth() + 40)
+    }
+    
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return HomeCellRow.Max.rawValue
+        return content.homeElementCount()
     }
     
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier("NormalImageCell", forIndexPath: indexPath) as! NormalImageCell
         
-        let row = HomeCellRow(rawValue: indexPath.row)
-        cell.titleLabel.text = row!.title()
-        cell.iconImageView.image = UIImage(named: row!.icon())
+        cell.titleLabel.text = content.homeElementTitle(indexPath.row)
+        cell.iconImageView.image = UIImage(named: content.homeElementIcon(indexPath.row))
         
         return cell
     }
     
     func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
-        // TODO:
+        // TODO: 人民代表的点击处理
         self.navigationController?.setNavigationBarHidden(false, animated: true)
         
-        let row = HomeCellRow(rawValue: indexPath.row)!
-        
-        switch row {
-        case .ActivityManage:
-            break
-        case .VariableManage:
-            self.performSegueWithIdentifier("PerformanceRecordsSegue", sender: self)
-            break
-        case .Analyze:
-            break
-        case .ShareSpace:
-            break
-        case .CongressInfo:
-            break
-        case .Notify:
-            break
-        case .Situation:
-            break
-        default:
-            break
+        if content is WorderContentInfo {
+            let actionDelegate = WorkerHomeActionDelegate()
+            
+            actionDelegate.didClickIndexPath(self, indexPath: indexPath)
         }
     }
 

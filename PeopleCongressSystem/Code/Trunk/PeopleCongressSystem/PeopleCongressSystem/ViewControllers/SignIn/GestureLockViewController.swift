@@ -74,7 +74,7 @@ class GestureLockViewController: UIViewController {
                         self.performSegueWithIdentifier("MainSegue", sender: self)
                     }
                     else {
-                        self.showAlert(errorMessage)
+                        self.showAlert(errorMessage!)
                     }
                 }
             })
