@@ -47,7 +47,7 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
     }
     
     func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
-        return CGSizeMake(80.0 * GlobalUtil.rateForWidth(), 80 * GlobalUtil.rateForWidth() + 40)
+        return CGSizeMake(80.0 * GlobalUtil.rateForWidth(), 80 * GlobalUtil.rateForWidth() + 20)
     }
     
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {

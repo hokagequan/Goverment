@@ -33,6 +33,10 @@ enum HomeElementContentWorker: Int {
 
 class WorderContentInfo: ContentInfo {
     
+    override func homeElementCount() -> Int {
+        return HomeElementContentWorker.Max.rawValue
+    }
+    
     override func homeElementTitle(index: Int) -> String? {
         guard let row = HomeElementContentWorker(rawValue: index) else {
             return nil

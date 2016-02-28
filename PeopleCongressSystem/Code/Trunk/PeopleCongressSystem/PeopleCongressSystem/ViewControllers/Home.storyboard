@@ -35,7 +35,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="E18-kk-YL3">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="home_header" translatesAutoresizingMaskIntoConstraints="NO" id="E18-kk-YL3">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="130"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="130" id="jC7-R5-Dxr"/>
@@ -374,4 +374,7 @@
             <point key="canvasLocation" x="2374" y="458"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="home_header" width="375" height="205"/>
+    </resources>
 </document>
