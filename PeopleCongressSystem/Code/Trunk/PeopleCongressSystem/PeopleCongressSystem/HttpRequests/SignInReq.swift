@@ -16,7 +16,7 @@ class SignInReq: HttpBaseReq {
     override init() {
         super.init()
         
-        self.httpReqURL = self.httpReqURL + "/appjiekout/jiekou/gonggong.asmx?op=CheckLogin"
+//        self.httpReqURL = self.httpReqURL + "/appjiekout/jiekou/gonggong.asmx?op=CheckLogin"
     }
     
     override func requestCompletion(completion: HttpReqCompletion?) {
@@ -27,7 +27,8 @@ class SignInReq: HttpBaseReq {
         params["theAPPid"] = "dalianrenda0001"
         params["thecharset"] = "utf-8"
         
-        self.request(params, completion: completion)
+//        self.request(params, completion: completion)
+        self.request("CheckLogin", params: params, completion: completion)
      }
     
 }

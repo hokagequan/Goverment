@@ -49,6 +49,9 @@ class AccountManager {
                 return
             }
             
+            let info = HttpBaseReq.parseResponse(result?.value)
+            // TODO: 解析数据
+            
             let context = CoreDataManager.defalutManager().managedObjectContext
             let fetchReq = NSFetchRequest(entityName: "UserEntity")
             
