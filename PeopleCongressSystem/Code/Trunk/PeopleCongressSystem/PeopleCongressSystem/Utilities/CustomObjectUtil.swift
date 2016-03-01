@@ -21,4 +21,10 @@ class CustomObjectUtil {
         }
     }
     
+    class func customTabbarItem(items: Array<UITabBarItem>, titleColor: UIColor, font: UIFont, state: UIControlState) {
+        for item in items {
+            item.setTitleTextAttributes([NSForegroundColorAttributeName: titleColor, NSFontAttributeName: font], forState: state)
+        }
+    }
+    
 }

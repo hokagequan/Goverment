@@ -26,29 +26,37 @@ class MainViewController: UITabBarController {
         // 首页
         var storyboard = UIStoryboard(name: "Home", bundle: nil)
         let homeNavi = storyboard.instantiateViewControllerWithIdentifier("HomeNavi")
-        let homeTabItem = UITabBarItem(title: "首页", image: UIImage(named: "life_toolbar_nor")?.imageWithRenderingMode(UIImageRenderingMode.AlwaysOriginal), selectedImage: UIImage(named: "life_toolbar_sel")?.imageWithRenderingMode(UIImageRenderingMode.AlwaysOriginal))
+        let homeTabItem = UITabBarItem(title: "首页", image: UIImage(named: "home_nor")?.imageWithRenderingMode(UIImageRenderingMode.AlwaysOriginal), selectedImage: UIImage(named: "home_sel")?.imageWithRenderingMode(UIImageRenderingMode.AlwaysOriginal))
         homeNavi.tabBarItem = homeTabItem
         
         // TODO: 根据不同的账户设置不同的Tab
-        // 名片
-        storyboard = UIStoryboard(name: "BusinessCard", bundle: nil)
-        var customNavi = storyboard.instantiateViewControllerWithIdentifier("BusinessCardNavi")
-        var customTabItem = UITabBarItem(title: "名片", image: UIImage(named: "profile_toolbar_nor")?.imageWithRenderingMode(UIImageRenderingMode.AlwaysOriginal), selectedImage: UIImage(named: "profile_toolbar_sel")?.imageWithRenderingMode(UIImageRenderingMode.AlwaysOriginal))
-        customNavi.tabBarItem = customTabItem
-        
-        // 签到
-        storyboard = UIStoryboard(name: "CheckIn", bundle: nil)
-        customNavi = storyboard.instantiateViewControllerWithIdentifier("CheckInNavi")
-        customTabItem = UITabBarItem(title: "签到", image: UIImage(named: "profile_toolbar_nor")?.imageWithRenderingMode(UIImageRenderingMode.AlwaysOriginal), selectedImage: UIImage(named: "profile_toolbar_sel")?.imageWithRenderingMode(UIImageRenderingMode.AlwaysOriginal))
-        customNavi.tabBarItem = customTabItem
+        var customNavi: UIViewController?
+        var customTabItem: UITabBarItem?
+        if PCSDataManager.defaultManager().content is CongressContentInfo {
+            // 名片
+            storyboard = UIStoryboard(name: "BusinessCard", bundle: nil)
+            customNavi = storyboard.instantiateViewControllerWithIdentifier("BusinessCardNavi")
+            customTabItem = UITabBarItem(title: "名片", image: UIImage(named: "profile_toolbar_nor")?.imageWithRenderingMode(UIImageRenderingMode.AlwaysOriginal), selectedImage: UIImage(named: "profile_toolbar_sel")?.imageWithRenderingMode(UIImageRenderingMode.AlwaysOriginal))
+            customNavi!.tabBarItem = customTabItem
+        }
+        else {
+            // 签到
+            storyboard = UIStoryboard(name: "CheckIn", bundle: nil)
+            customNavi = storyboard.instantiateViewControllerWithIdentifier("CheckInNavi")
+            customTabItem = UITabBarItem(title: "签到", image: UIImage(named: "checkin_nor")?.imageWithRenderingMode(UIImageRenderingMode.AlwaysOriginal), selectedImage: UIImage(named: "checkin_sel")?.imageWithRenderingMode(UIImageRenderingMode.AlwaysOriginal))
+            customNavi!.tabBarItem = customTabItem
+        }
         
         // 我
         storyboard = UIStoryboard(name: "Me", bundle: nil)
         let meNavi = storyboard.instantiateViewControllerWithIdentifier("MeNavi")
-        let meTabItem = UITabBarItem(title: "我", image: UIImage(named: "me_toolbar_nor")?.imageWithRenderingMode(UIImageRenderingMode.AlwaysOriginal), selectedImage: UIImage(named: "me_toolbar_sel")?.imageWithRenderingMode(UIImageRenderingMode.AlwaysOriginal))
+        let meTabItem = UITabBarItem(title: "我", image: UIImage(named: "me_nor")?.imageWithRenderingMode(UIImageRenderingMode.AlwaysOriginal), selectedImage: UIImage(named: "me_sel")?.imageWithRenderingMode(UIImageRenderingMode.AlwaysOriginal))
         meNavi.tabBarItem = meTabItem
         
-        self.setViewControllers([homeNavi, customNavi, meNavi], animated: false)
+        CustomObjectUtil.customTabbarItem([homeTabItem, customTabItem!, meTabItem], titleColor: GlobalUtil.colorRGBA(132, g: 132, b: 132, a: 1.0), font: UIFont.systemFontOfSize(10.0), state: UIControlState.Normal)
+        CustomObjectUtil.customTabbarItem([homeTabItem, customTabItem!, meTabItem], titleColor: UIColor.redColor(), font: UIFont.systemFontOfSize(10.0), state: UIControlState.Selected)
+        
+        self.setViewControllers([homeNavi, customNavi!, meNavi], animated: false)
     }
 
     /*

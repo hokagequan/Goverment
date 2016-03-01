@@ -82,11 +82,6 @@ class SignInViewController: UIViewController, UIActionSheetDelegate, UITextField
     }
     
     @IBAction func clickSignIn(sender: AnyObject) {
-        // FIXME: 无需验证登录 Test
-//        self.performSegueWithIdentifier("MainSegue", sender: self)
-//        
-//        return
-        
         if accountTextField.text == "" {
             self.showAlert("请输入手机号")
             
