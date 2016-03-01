@@ -88,7 +88,12 @@ class AccountManager {
                 CoreDataManager.defalutManager().saveContext(nil)
                 
                 // TODO: 设置登录人员类型
-                PCSDataManager.defaultManager().content = WorderContentInfo()
+                if self.user?.memberType == "301" {
+                    PCSDataManager.defaultManager().content = CongressContentInfo()
+                }
+                else {
+                    PCSDataManager.defaultManager().content = WorderContentInfo()
+                }
                 completion?(true, nil)
             }
             catch {

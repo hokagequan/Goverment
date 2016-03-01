@@ -13,9 +13,7 @@ class PCSDataManager {
     static let _pcsDataManager = PCSDataManager()
     
     var accountManager = AccountManager()
-    // FIXME: Worker test
-    var content = WorderContentInfo()
-//    var content: ContentInfo = ContentInfo()
+    var content: ContentInfo = ContentInfo()
     
     // MARK: - Class Functions
     

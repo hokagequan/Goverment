@@ -7,13 +7,14 @@
 //
 
 import UIKit
+import EZLoadingActivity
 
-let account = "ios"
-let password = "a"
+//let account = "ios"
+//let password = "a"
 
 // Worker
-//let account = "admin"
-//let password = "85868000"
+let account = "admin"
+let password = "85868000"
 
 
 class SignInViewController: UIViewController, UIActionSheetDelegate, UITextFieldDelegate {
@@ -98,7 +99,10 @@ class SignInViewController: UIViewController, UIActionSheetDelegate, UITextField
             return
         }
         
+        EZLoadingActivity.show("", disableUI: true)
         PCSDataManager.defaultManager().accountManager.signIn(account, password: password) { (success, errorMessage) -> Void in
+            EZLoadingActivity.hide()
+            
             if success == true {
                 SettingsManager.saveData(self.rememberButton.selected, key: SettingKey.RememberPassword.rawValue)
                 SettingsManager.saveData(self.autoButton.selected, key: SettingKey.AutoSignIn.rawValue)
