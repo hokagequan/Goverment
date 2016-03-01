@@ -11,6 +11,13 @@ import CoreData
 
 
 class UserEntity: NSManagedObject {
+    
+    var identifier: String?
+    var congressID: String?
+    var name: String?
+    var token: String?
+    var memberType: String?
+    var field: String?
 
 // Insert code here to add functionality to your managed object subclass
 

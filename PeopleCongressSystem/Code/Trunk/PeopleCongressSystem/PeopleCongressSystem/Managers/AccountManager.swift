@@ -38,19 +38,22 @@ class AccountManager {
         req.requestCompletion { (response) -> Void in
             let result = response?.result
             if result?.isFailure == true {
-                completion?(false, "连接服务器错误")
+                completion?(false, "登录失败")
                 
                 return
             }
             
             guard let _ = result?.value else {
-                completion?(false, "连接服务器错误")
+                completion?(false, "登录失败")
                 
                 return
             }
             
-            let info = HttpBaseReq.parseResponse(result?.value)
-            // TODO: 解析数据
+            guard let info = HttpBaseReq.parseResponse(result?.value) else {
+                completion?(false, "登录失败")
+                
+                return
+            }
             
             let context = CoreDataManager.defalutManager().managedObjectContext
             let fetchReq = NSFetchRequest(entityName: "UserEntity")
@@ -74,6 +77,13 @@ class AccountManager {
                 self.user?.account = account
                 self.user?.password = password
                 self.user?.isDefault = true
+                
+                self.user?.identifier = info["user_ID"] as? String
+                self.user?.congressID = info["user_GUID"] as? String
+                self.user?.name = info["User_FirstName"] as? String
+                self.user?.token = info["CheckTicket"] as? String
+                self.user?.memberType = info["MemberType"] as? String
+                self.user?.field = info["STAFF_FieldID"] as? String
                 
                 CoreDataManager.defalutManager().saveContext(nil)
                 

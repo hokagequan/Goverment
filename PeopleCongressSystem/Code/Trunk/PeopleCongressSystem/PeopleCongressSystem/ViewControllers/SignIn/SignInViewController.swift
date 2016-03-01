@@ -29,6 +29,7 @@ class SignInViewController: UIViewController, UIActionSheetDelegate, UITextField
     @IBOutlet var phoneView: UIView!
     @IBOutlet var passwordView: UIView!
     @IBOutlet var serverView: UIView!
+    @IBOutlet var topSpaceLCs: [NSLayoutConstraint]!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -49,6 +50,10 @@ class SignInViewController: UIViewController, UIActionSheetDelegate, UITextField
         
         if let isAuto = SettingsManager.getData(SettingKey.AutoSignIn.rawValue) as? Bool {
             autoButton.selected = isAuto
+        }
+        
+        for topLC in topSpaceLCs {
+            topLC.constant = topLC.constant * GlobalUtil.rateForHeight()
         }
         
         // FIXME: 正式释放注释
