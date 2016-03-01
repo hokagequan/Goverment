@@ -9,6 +9,11 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>EZLoadingActivity.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>HUIPatternLockView-Swift.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -27,17 +32,22 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>432ECC54282C84882B482CCB4CF227FC</key>
+		<key>79C040AFDDCE1BCBF6D8B5EB0B85887F</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>C2B0246E8417D6EE739DDD4A9A23EE25</key>
+		<key>89790E9ABAC7CC39F8F00ED1BC00208E</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>DC3910D57286EE869A1A0641F87A5220</key>
+		<key>903A108934E1A089B76F443DC34C8E54</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>9269BB5EE06D126863919B1B4060FDBE</key>
 		<dict>
 			<key>primary</key>
 			<true/>
