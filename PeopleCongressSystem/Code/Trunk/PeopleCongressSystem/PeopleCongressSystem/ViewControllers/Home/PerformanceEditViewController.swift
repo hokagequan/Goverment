@@ -94,6 +94,8 @@ class PerformanceEditViewController: UIViewController, UITableViewDataSource, UI
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        self.navigationItem.hidesBackButton = true
+        PCSCustomUtil.customNavigationController(self)
     }
 
     override func didReceiveMemoryWarning() {
@@ -107,7 +109,7 @@ class PerformanceEditViewController: UIViewController, UITableViewDataSource, UI
         let row = MainRows(rawValue: indexPath.row)!
         
         cell.iconImageView.image = UIImage(named: row.icons())
-        cell.titleTextField.text = row.title()
+        cell.headerText = row.title()
         
         switch row {
         case .Title:
@@ -133,8 +135,8 @@ class PerformanceEditViewController: UIViewController, UITableViewDataSource, UI
         
         cell.iconUpImageView.image = UIImage(named: row.icons()[0])
         cell.iconDownImageView.image = UIImage(named: row.icons()[1])
-        cell.titleUpLabel.text = row.title()[0]
-        cell.titleDownLabel.text = row.title()[1]
+        cell.headerUpText = row.title()[0]
+        cell.headerDownText = row.title()[1]
         
         return cell
     }
@@ -146,8 +148,8 @@ class PerformanceEditViewController: UIViewController, UITableViewDataSource, UI
         
         cell.iconUpImageView.image = UIImage(named: row.icons()[0])
         cell.iconDownImageView.image = UIImage(named: row.icons()[1])
-        cell.titleUpLabel.text = row.title()[0]
-        cell.titleDownLabel.text = row.title()[1]
+        cell.headerUpText = row.title()[0]
+        cell.headerDownText = row.title()[1]
         
         return cell
     }
@@ -222,6 +224,10 @@ class PerformanceEditViewController: UIViewController, UITableViewDataSource, UI
         default:
             return UITableViewCell()
         }
+    }
+    
+    func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
+        cell.separatorInset = UIEdgeInsetsMake(0, 39, 0, 0)
     }
 
     /*
