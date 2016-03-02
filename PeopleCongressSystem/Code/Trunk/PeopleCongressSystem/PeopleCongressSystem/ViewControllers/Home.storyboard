@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="wA1-H8-5SO">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9532" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="wA1-H8-5SO">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
     </dependencies>
@@ -123,10 +123,10 @@
             </objects>
             <point key="canvasLocation" x="763" y="458"/>
         </scene>
-        <!--Performance Records View Controller-->
+        <!--View Controller-->
         <scene sceneID="TYC-7W-BqQ">
             <objects>
-                <viewController id="BkH-2E-4Ca" customClass="PerformanceRecordsViewController" customModule="PeopleCongressSystem" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController hidesBottomBarWhenPushed="YES" id="BkH-2E-4Ca" customClass="PerformanceRecordsViewController" customModule="PeopleCongressSystem" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="M5D-nH-oLf"/>
                         <viewControllerLayoutGuide type="bottom" id="ooC-f0-1xe"/>
@@ -134,8 +134,44 @@
                     <view key="view" contentMode="scaleToFill" id="6uN-Jw-bVY">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1ah-le-gNb" customClass="PCSNavigationView" customModule="PeopleCongressSystem" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="64" width="600" height="36"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SVr-vX-gKY">
+                                        <rect key="frame" x="550" y="0.0" width="50" height="36"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="50" id="8Ii-GK-8mP"/>
+                                        </constraints>
+                                        <state key="normal" image="add"/>
+                                        <connections>
+                                            <segue destination="Kpt-zv-23Y" kind="show" id="fbk-Jo-6OM"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="SVr-vX-gKY" secondAttribute="trailing" id="0gx-Cg-pAZ"/>
+                                    <constraint firstAttribute="bottom" secondItem="SVr-vX-gKY" secondAttribute="bottom" id="ZTB-aR-wSD"/>
+                                    <constraint firstAttribute="height" constant="36" id="brc-e3-Y7n"/>
+                                    <constraint firstItem="SVr-vX-gKY" firstAttribute="top" secondItem="1ah-le-gNb" secondAttribute="top" id="lWB-TC-Lal"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="title" value="活动管理"/>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <outlet property="viewController" destination="BkH-2E-4Ca" id="V3S-zb-1SB"/>
+                                </connections>
+                            </view>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="1ah-le-gNb" firstAttribute="top" secondItem="M5D-nH-oLf" secondAttribute="bottom" id="GRS-zr-SzI"/>
+                            <constraint firstItem="1ah-le-gNb" firstAttribute="leading" secondItem="6uN-Jw-bVY" secondAttribute="leading" id="JH6-cu-Sia"/>
+                            <constraint firstAttribute="trailing" secondItem="1ah-le-gNb" secondAttribute="trailing" id="U8r-WB-7sa"/>
+                        </constraints>
                     </view>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="G02-C7-6jL" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -153,8 +189,29 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="S2n-4Y-9bX" customClass="PCSNavigationView" customModule="PeopleCongressSystem" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="36"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Os3-SM-1WR">
+                                        <rect key="frame" x="542" y="0.0" width="46" height="36"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="46" id="Hia-YD-sbS"/>
+                                        </constraints>
+                                        <state key="normal" title="保存">
+                                            <color key="titleColor" red="0.92941176469999998" green="0.19215686269999999" blue="0.1843137255" alpha="1" colorSpace="calibratedRGB"/>
+                                        </state>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="Os3-SM-1WR" secondAttribute="bottom" id="MOF-Yv-cas"/>
+                                    <constraint firstAttribute="height" constant="36" id="Y0p-VF-0h6"/>
+                                    <constraint firstAttribute="trailing" secondItem="Os3-SM-1WR" secondAttribute="trailing" constant="12" id="aUr-u1-7iN"/>
+                                    <constraint firstItem="Os3-SM-1WR" firstAttribute="top" secondItem="S2n-4Y-9bX" secondAttribute="top" id="kDw-se-Zwk"/>
+                                </constraints>
+                            </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="none" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="94k-Ss-yKu">
-                                <rect key="frame" x="0.0" y="20" width="600" height="580"/>
+                                <rect key="frame" x="0.0" y="44" width="600" height="556"/>
                                 <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="NormalImageTableCell" id="5jX-P3-4SD" customClass="NormalImageTableCell" customModule="PeopleCongressSystem" customModuleProvider="target">
@@ -165,21 +222,21 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="sTt-gl-OJh" userLabel="Icon">
-                                                    <rect key="frame" x="10" y="14" width="16" height="16"/>
+                                                    <rect key="frame" x="10" y="14.5" width="15" height="15"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="width" constant="16" id="VE6-Wc-GNV"/>
+                                                        <constraint firstAttribute="width" constant="15" id="VE6-Wc-GNV"/>
                                                         <constraint firstAttribute="width" secondItem="sTt-gl-OJh" secondAttribute="height" multiplier="1:1" id="yIv-vq-9yJ"/>
                                                     </constraints>
                                                 </imageView>
-                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DDF-hz-Xfu" userLabel="Border">
-                                                    <rect key="frame" x="56" y="43" width="511" height="1"/>
+                                                <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="DDF-hz-Xfu" userLabel="Border">
+                                                    <rect key="frame" x="55" y="43" width="512" height="1"/>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="1" id="fDM-Aa-VSu"/>
                                                     </constraints>
                                                 </view>
-                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="5ML-1o-M9v" userLabel="Title">
-                                                    <rect key="frame" x="56" y="0.0" width="481" height="43"/>
+                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="5ML-1o-M9v" userLabel="Title">
+                                                    <rect key="frame" x="187" y="0.0" width="350" height="43"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <textInputTraits key="textInputTraits" returnKeyType="done"/>
                                                     <connections>
@@ -198,6 +255,11 @@
                                                 <constraint firstItem="5ML-1o-M9v" firstAttribute="leading" secondItem="sTt-gl-OJh" secondAttribute="trailing" constant="30" id="raw-LV-DCp"/>
                                                 <constraint firstAttribute="bottom" secondItem="DDF-hz-Xfu" secondAttribute="bottom" id="rh1-RT-4Lh"/>
                                             </constraints>
+                                            <variation key="default">
+                                                <mask key="constraints">
+                                                    <exclude reference="raw-LV-DCp"/>
+                                                </mask>
+                                            </variation>
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="border" destination="DDF-hz-Xfu" id="0L6-lM-i2R"/>
@@ -366,10 +428,19 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="94k-Ss-yKu" secondAttribute="trailing" id="9zh-jG-Niz"/>
+                            <constraint firstItem="S2n-4Y-9bX" firstAttribute="leading" secondItem="dKz-uL-gU7" secondAttribute="leading" id="I8a-rN-04g"/>
+                            <constraint firstItem="94k-Ss-yKu" firstAttribute="top" secondItem="S2n-4Y-9bX" secondAttribute="bottom" constant="8" id="Jaq-4v-l6p"/>
+                            <constraint firstAttribute="trailing" secondItem="S2n-4Y-9bX" secondAttribute="trailing" id="VPi-KK-Yzf"/>
                             <constraint firstItem="94k-Ss-yKu" firstAttribute="top" secondItem="KQy-NR-eJn" secondAttribute="bottom" id="dH6-jw-ovQ"/>
                             <constraint firstItem="ZmJ-Zf-DE6" firstAttribute="top" secondItem="94k-Ss-yKu" secondAttribute="bottom" id="o8b-Wg-bsa"/>
+                            <constraint firstItem="S2n-4Y-9bX" firstAttribute="top" secondItem="dKz-uL-gU7" secondAttribute="top" id="rgw-4Q-rgL"/>
                             <constraint firstItem="94k-Ss-yKu" firstAttribute="leading" secondItem="dKz-uL-gU7" secondAttribute="leading" id="tjB-ym-4Ai"/>
                         </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="dH6-jw-ovQ"/>
+                            </mask>
+                        </variation>
                     </view>
                     <connections>
                         <outlet property="tableView" destination="94k-Ss-yKu" id="u0e-Cz-E9v"/>
@@ -381,6 +452,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="add" width="20" height="20"/>
         <image name="home_header" width="375" height="205"/>
     </resources>
 </document>

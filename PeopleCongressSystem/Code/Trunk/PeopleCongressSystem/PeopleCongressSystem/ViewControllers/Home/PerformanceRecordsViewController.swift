@@ -15,6 +15,13 @@ class PerformanceRecordsViewController: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        self.navigationItem.hidesBackButton = true
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        PCSCustomUtil.customNavigationController(self)
     }
 
     override func didReceiveMemoryWarning() {

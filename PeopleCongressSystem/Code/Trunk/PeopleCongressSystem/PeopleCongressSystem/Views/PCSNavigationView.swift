@@ -12,8 +12,8 @@ import UIKit
     
     @IBOutlet weak var viewController: UIViewController?
     
-    @IBInspectable var title: String? = "Title"
-    
+    @IBInspectable var title: String?
+
     let backgroundView = UIView(frame: CGRectZero)
     let backButton = UIButton(type: UIButtonType.Custom)
     let titleLabel = UILabel(frame: CGRectZero)
@@ -22,6 +22,18 @@ import UIKit
         didSet {
             self.setNeedsDisplay()
         }
+    }
+    
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+    }
+    
+    override func prepareForInterfaceBuilder() {
+        backButton.sizeToFit()
     }
 
     // Only override drawRect: if you perform custom drawing.
@@ -33,6 +45,7 @@ import UIKit
         if self.subviews.contains(backgroundView) == false {
             CustomObjectUtil.customObjectsLayout([backgroundView], backgroundColor: UIColor.yellowColor(), borderWidth: 0.0, borderColor: UIColor.clearColor(), corner: 3.0)
             self.addSubview(backgroundView)
+            self.sendSubviewToBack(backgroundView)
         }
         
         var frame = backgroundView.frame
@@ -42,15 +55,15 @@ import UIKit
         
         if self.subviews.contains(backButton) == false {
             backButton.setImage(UIImage(named: "navi_back"), forState: UIControlState.Normal)
+            backButton.addTarget(self, action: Selector("clickBack"), forControlEvents: UIControlEvents.TouchUpInside)
             self.addSubview(backButton)
         }
         
         frame = backButton.frame
         frame.origin.x = 12.0
-        frame.size = backButton.imageForState(UIControlState.Normal)!.size
+        frame.size = CGSizeMake(44, 15)
         backButton.frame = frame
         backButton.center = CGPointMake(backButton.center.x, self.bounds.size.height / 2.0)
-        backButton.addTarget(self, action: Selector("clickBack"), forControlEvents: UIControlEvents.TouchUpInside)
         
         if self.subviews.contains(titleLabel) == false {
             titleLabel.backgroundColor = UIColor.clearColor()

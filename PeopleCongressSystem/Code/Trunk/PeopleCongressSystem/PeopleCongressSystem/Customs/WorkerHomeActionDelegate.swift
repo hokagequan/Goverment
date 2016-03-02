@@ -19,9 +19,10 @@ class WorkerHomeActionDelegate: ActionProtocol {
         // TODO:
         switch row {
         case .ActivityManage:
+            viewController.navigationController?.setNavigationBarHidden(false, animated: true)
+            viewController.performSegueWithIdentifier("PerformanceRecordsSegue", sender: self)
             break
         case .VariableManage:
-            viewController.performSegueWithIdentifier("PerformanceRecordsSegue", sender: self)
             break
         case .Analyze:
             break
