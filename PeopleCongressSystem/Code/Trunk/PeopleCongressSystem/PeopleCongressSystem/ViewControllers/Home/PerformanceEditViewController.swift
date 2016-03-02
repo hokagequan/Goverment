@@ -33,7 +33,7 @@ class PerformanceEditViewController: UIViewController, UITableViewDataSource, UI
         }
         
         func icons() -> String {
-            let icons = ["", "", ""]
+            let icons = ["title", "type", "organization"]
             
             return icons[self.rawValue]
         }
@@ -50,7 +50,7 @@ class PerformanceEditViewController: UIViewController, UITableViewDataSource, UI
         }
         
         func icons() -> Array<String> {
-            let icons = [["", ""]]
+            let icons = [["time", ""]]
             
             return icons[self.rawValue]
         }
@@ -67,7 +67,7 @@ class PerformanceEditViewController: UIViewController, UITableViewDataSource, UI
         }
         
         func icons() -> Array<String> {
-            let icons = [["", ""]]
+            let icons = [["location", "content"]]
             
             return icons[self.rawValue]
         }
@@ -84,7 +84,7 @@ class PerformanceEditViewController: UIViewController, UITableViewDataSource, UI
         }
         
         func icons() -> String {
-            let icons = [""]
+            let icons = ["person"]
             
             return icons[self.rawValue]
         }
@@ -159,6 +159,7 @@ class PerformanceEditViewController: UIViewController, UITableViewDataSource, UI
         
         let row = PersonsRows(rawValue: indexPath.row)!
         
+        cell.iconImageView.image = UIImage(named: row.icons())
         cell.titleLabel.text = row.title()
         
         return cell
