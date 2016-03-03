@@ -46,6 +46,10 @@
 		10D0D5CF1C4FC3420093F687 /* TagListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10D0D5CE1C4FC3420093F687 /* TagListCell.swift */; };
 		10D0D5D11C4FC4FF0093F687 /* PerformanceEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10D0D5D01C4FC4FF0093F687 /* PerformanceEditViewController.swift */; };
 		10D0D5D31C4FDB440093F687 /* CustomNavigationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10D0D5D21C4FDB440093F687 /* CustomNavigationView.swift */; };
+		10F1097F1C88156F0083D89D /* Activity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10F1097E1C88156F0083D89D /* Activity.swift */; };
+		10F109811C8816D10083D89D /* GetActivitiesReq.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10F109801C8816D10083D89D /* GetActivitiesReq.swift */; };
+		10F109831C881C960083D89D /* AddActivityReq.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10F109821C881C960083D89D /* AddActivityReq.swift */; };
+		10F109851C8822A30083D89D /* Person.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10F109841C8822A30083D89D /* Person.swift */; };
 		10F7DE631C7863A3002A86CA /* PCSNavigationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10F7DE621C7863A3002A86CA /* PCSNavigationView.swift */; };
 		10F9019E1C858B0100A4D767 /* CongressContentInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10F9019D1C858B0100A4D767 /* CongressContentInfo.swift */; };
 		3E604AFB394FDCDDAD7A9BDE /* Pods_PeopleCongressSystem.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6BCFEC37E5EA0F7BF782CCBF /* Pods_PeopleCongressSystem.framework */; };
@@ -105,6 +109,10 @@
 		10D0D5CE1C4FC3420093F687 /* TagListCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TagListCell.swift; sourceTree = "<group>"; };
 		10D0D5D01C4FC4FF0093F687 /* PerformanceEditViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PerformanceEditViewController.swift; sourceTree = "<group>"; };
 		10D0D5D21C4FDB440093F687 /* CustomNavigationView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomNavigationView.swift; sourceTree = "<group>"; };
+		10F1097E1C88156F0083D89D /* Activity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Activity.swift; sourceTree = "<group>"; };
+		10F109801C8816D10083D89D /* GetActivitiesReq.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetActivitiesReq.swift; sourceTree = "<group>"; };
+		10F109821C881C960083D89D /* AddActivityReq.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddActivityReq.swift; sourceTree = "<group>"; };
+		10F109841C8822A30083D89D /* Person.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Person.swift; sourceTree = "<group>"; };
 		10F7DE621C7863A3002A86CA /* PCSNavigationView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PCSNavigationView.swift; sourceTree = "<group>"; };
 		10F9019D1C858B0100A4D767 /* CongressContentInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CongressContentInfo.swift; sourceTree = "<group>"; };
 		68AE91901E434A8BE22D3071 /* Pods-PeopleCongressSystem.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PeopleCongressSystem.debug.xcconfig"; path = "Pods/Target Support Files/Pods-PeopleCongressSystem/Pods-PeopleCongressSystem.debug.xcconfig"; sourceTree = "<group>"; };
@@ -138,6 +146,8 @@
 				10A686701C7DF7A200D050F0 /* ContentInfo.swift */,
 				10A686721C7DF8D000D050F0 /* WorkerContentInfo.swift */,
 				10F9019D1C858B0100A4D767 /* CongressContentInfo.swift */,
+				10F1097E1C88156F0083D89D /* Activity.swift */,
+				10F109841C8822A30083D89D /* Person.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -298,6 +308,8 @@
 			children = (
 				10D0D5AF1C4E2C7D0093F687 /* HttpBaseReq.swift */,
 				10496F361C76012F0074CFC1 /* SignInReq.swift */,
+				10F109801C8816D10083D89D /* GetActivitiesReq.swift */,
+				10F109821C881C960083D89D /* AddActivityReq.swift */,
 			);
 			path = HttpRequests;
 			sourceTree = "<group>";
@@ -485,13 +497,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				10F1097F1C88156F0083D89D /* Activity.swift in Sources */,
 				10D0D5CD1C4FBF550093F687 /* DoubleContentCell.swift in Sources */,
 				10A6866D1C7DF12600D050F0 /* UserEntity+CoreDataProperties.swift in Sources */,
 				10F9019E1C858B0100A4D767 /* CongressContentInfo.swift in Sources */,
 				10D0D5BB1C4E41230093F687 /* GestureLockViewController.swift in Sources */,
+				10F109831C881C960083D89D /* AddActivityReq.swift in Sources */,
 				10D0D5CF1C4FC3420093F687 /* TagListCell.swift in Sources */,
 				10A6866E1C7DF12600D050F0 /* UserEntity.swift in Sources */,
 				10D0D5A41C4DCA5A0093F687 /* SignInViewController.swift in Sources */,
+				10F109851C8822A30083D89D /* Person.swift in Sources */,
 				10D0D5C31C4E7D710093F687 /* FindPwdViewController.swift in Sources */,
 				10D0D5951C4CD9810093F687 /* MainViewController.swift in Sources */,
 				10D0D5C11C4E7B160093F687 /* PCSDataManager.swift in Sources */,
@@ -512,6 +527,7 @@
 				10D0D5C51C4E7F960093F687 /* HomeViewController.swift in Sources */,
 				10F7DE631C7863A3002A86CA /* PCSNavigationView.swift in Sources */,
 				10D0D5D31C4FDB440093F687 /* CustomNavigationView.swift in Sources */,
+				10F109811C8816D10083D89D /* GetActivitiesReq.swift in Sources */,
 				10D0D5B31C4E36600093F687 /* CoreDataManager.swift in Sources */,
 				10A686711C7DF7A200D050F0 /* ContentInfo.swift in Sources */,
 				10D0D5701C4CD1D00093F687 /* AppDelegate.swift in Sources */,

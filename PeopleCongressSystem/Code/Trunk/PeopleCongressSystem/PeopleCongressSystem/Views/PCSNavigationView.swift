@@ -43,7 +43,7 @@ import UIKit
         self.clipsToBounds = true
         
         if self.subviews.contains(backgroundView) == false {
-            CustomObjectUtil.customObjectsLayout([backgroundView], backgroundColor: UIColor.yellowColor(), borderWidth: 0.0, borderColor: UIColor.clearColor(), corner: 3.0)
+            CustomObjectUtil.customObjectsLayout([backgroundView], backgroundColor: GlobalUtil.colorRGBA(242, g: 203, b: 94, a: 1.0), borderWidth: 0.0, borderColor: UIColor.clearColor(), corner: 3.0)
             self.addSubview(backgroundView)
             self.sendSubviewToBack(backgroundView)
         }
