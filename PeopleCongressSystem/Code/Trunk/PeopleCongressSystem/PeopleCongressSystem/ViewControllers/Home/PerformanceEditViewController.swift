@@ -301,20 +301,23 @@ class PerformanceEditViewController: UIViewController, UITableViewDataSource, UI
             
             break
         case "人员:":
+            self.performSegueWithIdentifier("GroupSegue", sender: self)
             break
         default:
             break
         }
     }
 
-    /*
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
+        if segue.identifier == "GroupSegue" {
+            let vc = segue.destinationViewController as! GroupViewController
+            vc.activity = activity
+        }
     }
-    */
 
 }

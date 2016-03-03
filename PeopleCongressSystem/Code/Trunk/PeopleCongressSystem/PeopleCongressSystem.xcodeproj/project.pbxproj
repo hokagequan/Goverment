@@ -12,6 +12,8 @@
 		100B20321C887C2600435EF0 /* TypeSelectView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 100B20311C887C2600435EF0 /* TypeSelectView.xib */; };
 		100B20341C8881EF00435EF0 /* GetActivityTypesReq.swift in Sources */ = {isa = PBXBuildFile; fileRef = 100B20331C8881EF00435EF0 /* GetActivityTypesReq.swift */; };
 		100B20361C8883A700435EF0 /* PCSTypeInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 100B20351C8883A700435EF0 /* PCSTypeInfo.swift */; };
+		100B20381C88923600435EF0 /* GroupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 100B20371C88923600435EF0 /* GroupViewController.swift */; };
+		100B203A1C8894CA00435EF0 /* Group.swift in Sources */ = {isa = PBXBuildFile; fileRef = 100B20391C8894CA00435EF0 /* Group.swift */; };
 		10496F371C76012F0074CFC1 /* SignInReq.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10496F361C76012F0074CFC1 /* SignInReq.swift */; };
 		10496F391C76140C0074CFC1 /* PCSCustomUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10496F381C76140C0074CFC1 /* PCSCustomUtil.swift */; };
 		106C64C91C83511400E6CD95 /* PCSProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 106C64C81C83511400E6CD95 /* PCSProtocols.swift */; };
@@ -75,6 +77,8 @@
 		100B20311C887C2600435EF0 /* TypeSelectView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TypeSelectView.xib; sourceTree = "<group>"; };
 		100B20331C8881EF00435EF0 /* GetActivityTypesReq.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetActivityTypesReq.swift; sourceTree = "<group>"; };
 		100B20351C8883A700435EF0 /* PCSTypeInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PCSTypeInfo.swift; sourceTree = "<group>"; };
+		100B20371C88923600435EF0 /* GroupViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupViewController.swift; sourceTree = "<group>"; };
+		100B20391C8894CA00435EF0 /* Group.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Group.swift; sourceTree = "<group>"; };
 		10496F361C76012F0074CFC1 /* SignInReq.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignInReq.swift; sourceTree = "<group>"; };
 		10496F381C76140C0074CFC1 /* PCSCustomUtil.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PCSCustomUtil.swift; sourceTree = "<group>"; };
 		106C64C81C83511400E6CD95 /* PCSProtocols.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PCSProtocols.swift; sourceTree = "<group>"; };
@@ -157,6 +161,7 @@
 				10F1097E1C88156F0083D89D /* Activity.swift */,
 				10F109841C8822A30083D89D /* Person.swift */,
 				100B20351C8883A700435EF0 /* PCSTypeInfo.swift */,
+				100B20391C8894CA00435EF0 /* Group.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -261,6 +266,7 @@
 				10D0D5C41C4E7F960093F687 /* HomeViewController.swift */,
 				10D0D5C81C4E8A190093F687 /* PerformanceRecordsViewController.swift */,
 				10D0D5D01C4FC4FF0093F687 /* PerformanceEditViewController.swift */,
+				100B20371C88923600435EF0 /* GroupViewController.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -516,6 +522,7 @@
 				10D0D5BB1C4E41230093F687 /* GestureLockViewController.swift in Sources */,
 				10F109831C881C960083D89D /* AddActivityReq.swift in Sources */,
 				10D0D5CF1C4FC3420093F687 /* TagListCell.swift in Sources */,
+				100B20381C88923600435EF0 /* GroupViewController.swift in Sources */,
 				10A6866E1C7DF12600D050F0 /* UserEntity.swift in Sources */,
 				10D0D5A41C4DCA5A0093F687 /* SignInViewController.swift in Sources */,
 				100B20361C8883A700435EF0 /* PCSTypeInfo.swift in Sources */,
@@ -530,6 +537,7 @@
 				10496F371C76012F0074CFC1 /* SignInReq.swift in Sources */,
 				10D0D5781C4CD1D00093F687 /* PeopleCongressSystem.xcdatamodeld in Sources */,
 				10D0D5D11C4FC4FF0093F687 /* PerformanceEditViewController.swift in Sources */,
+				100B203A1C8894CA00435EF0 /* Group.swift in Sources */,
 				100B202E1C88786700435EF0 /* UIViewController+Keyboard.swift in Sources */,
 				106C64CD1C84070A00E6CD95 /* PCSDefines.swift in Sources */,
 				10D0D5AD1C4DF6030093F687 /* UIViewController+AlertView.swift in Sources */,

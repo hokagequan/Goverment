@@ -379,11 +379,72 @@
                     </view>
                     <connections>
                         <outlet property="tableView" destination="94k-Ss-yKu" id="u0e-Cz-E9v"/>
+                        <segue destination="rjg-z4-4KX" kind="show" identifier="GroupSegue" id="UB7-ah-CAp"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ToJ-37-zrZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2374" y="458"/>
+        </scene>
+        <!--Group View Controller-->
+        <scene sceneID="P4R-cm-QJq">
+            <objects>
+                <viewController id="rjg-z4-4KX" customClass="GroupViewController" customModule="PeopleCongressSystem" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="ckP-5t-4xg"/>
+                        <viewControllerLayoutGuide type="bottom" id="erx-VY-VzO"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="ki3-t4-fgc">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Qoq-t4-TVY" customClass="PCSNavigationView" customModule="PeopleCongressSystem" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="64" width="600" height="36"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="36" id="rHu-1I-6a6"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="title" value="代表团选择"/>
+                                </userDefinedRuntimeAttributes>
+                            </view>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="xka-bY-6JO">
+                                <rect key="frame" x="0.0" y="108" width="600" height="492"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cell" id="ZmE-W8-uyR">
+                                        <rect key="frame" x="0.0" y="28" width="600" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ZmE-W8-uyR" id="OFH-Ne-oPF">
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="rjg-z4-4KX" id="l2Y-BI-RIF"/>
+                                    <outlet property="delegate" destination="rjg-z4-4KX" id="nMO-NB-ccL"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="xka-bY-6JO" firstAttribute="leading" secondItem="ki3-t4-fgc" secondAttribute="leading" id="MFO-wH-msj"/>
+                            <constraint firstItem="Qoq-t4-TVY" firstAttribute="leading" secondItem="ki3-t4-fgc" secondAttribute="leading" id="OfY-F1-d5r"/>
+                            <constraint firstAttribute="trailing" secondItem="Qoq-t4-TVY" secondAttribute="trailing" id="Ofa-x0-4FA"/>
+                            <constraint firstItem="erx-VY-VzO" firstAttribute="top" secondItem="xka-bY-6JO" secondAttribute="bottom" id="QLK-O0-TQI"/>
+                            <constraint firstAttribute="trailing" secondItem="xka-bY-6JO" secondAttribute="trailing" id="SXW-YG-hbS"/>
+                            <constraint firstItem="Qoq-t4-TVY" firstAttribute="top" secondItem="ckP-5t-4xg" secondAttribute="bottom" id="YL3-NJ-5y5"/>
+                            <constraint firstItem="xka-bY-6JO" firstAttribute="top" secondItem="Qoq-t4-TVY" secondAttribute="bottom" constant="8" id="dx2-ut-weh"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="groupTableView" destination="xka-bY-6JO" id="bxT-yP-ReX"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Agd-yu-06T" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3119" y="458"/>
         </scene>
     </scenes>
     <resources>
