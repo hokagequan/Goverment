@@ -80,7 +80,10 @@ class PCSDataManager {
                     return
                 }
                 
-                let info = HttpBaseReq.parseResponse(value) as! NSArray
+                guard let info = HttpBaseReq.parseResponse(value) as? NSArray else {
+                    return
+                }
+                
                 relArray = [PCSTypeInfo]()
                 for i in 0..<info.count {
                     let dict = info[i] as! Dictionary<String, AnyObject>
@@ -90,6 +93,43 @@ class PCSDataManager {
                     typeInfo.sort = dict["shuzi"] as? String
                     typeInfo.type = dict["DmlbID"] as? String
                     relArray?.append(typeInfo)
+                }
+            }
+        }
+    }
+    
+    func getGroup(completion: ((Array<Group>?) -> Void)?) {
+        let req = GetGroupReq()
+        
+        req.requestCompletion { (response) -> Void in
+            var relArray: Array<Group>? = nil
+            
+            defer {
+                completion?(relArray)
+            }
+            
+            let result = response?.result
+            
+            if result?.isSuccess == true {
+                guard let value = result?.value else {
+                    return
+                }
+                
+                guard let info = HttpBaseReq.parseResponse(value) as? NSArray else {
+                    return
+                }
+                
+                relArray = [Group]()
+                for i in 0..<info.count {
+                    let dict = info[i] as! Dictionary<String, AnyObject>
+                    let group = Group()
+                    group.identifier = dict["GUID"] as? String
+                    group.number = dict["DisBH"] as? String
+                    group.title = dict["DisName"] as? String
+                    group.parentID = dict["ParentID"] as? String
+                    group.sort = dict["Orderid"] as? String
+                    group.personCount = dict["Dbsl"] as? String
+                    relArray?.append(group)
                 }
             }
         }

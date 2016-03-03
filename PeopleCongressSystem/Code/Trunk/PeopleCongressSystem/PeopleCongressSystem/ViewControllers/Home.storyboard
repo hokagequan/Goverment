@@ -310,7 +310,7 @@
                                                     </variation>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Lgw-jT-78m" userLabel="Title">
-                                                    <rect key="frame" x="39" y="11" width="511" height="21"/>
+                                                    <rect key="frame" x="39" y="11" width="508" height="21"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="21" id="p5e-gX-Yog"/>
                                                     </constraints>
@@ -318,11 +318,11 @@
                                                     <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="9yx-Hg-PgF" userLabel="Indicator">
-                                                    <rect key="frame" x="580" y="14" width="10" height="16"/>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="indicator" translatesAutoresizingMaskIntoConstraints="NO" id="9yx-Hg-PgF" userLabel="Indicator">
+                                                    <rect key="frame" x="577" y="14" width="8" height="16"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="16" id="TJ8-ok-uZP"/>
-                                                        <constraint firstAttribute="width" constant="10" id="nkw-rL-aej"/>
+                                                        <constraint firstAttribute="width" constant="8" id="nkw-rL-aej"/>
                                                     </constraints>
                                                 </imageView>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="T6C-uh-BuQ" userLabel="Tag List" customClass="TagListView" customModule="TagListView">
@@ -334,7 +334,7 @@
                                                 <constraint firstAttribute="bottom" secondItem="T6C-uh-BuQ" secondAttribute="bottom" id="0Ef-RI-MsZ"/>
                                                 <constraint firstItem="T6C-uh-BuQ" firstAttribute="leading" secondItem="lEW-nZ-InS" secondAttribute="leading" id="2Rb-WE-UqQ"/>
                                                 <constraint firstItem="9yx-Hg-PgF" firstAttribute="leading" secondItem="Lgw-jT-78m" secondAttribute="trailing" constant="30" id="LMb-g8-e9t"/>
-                                                <constraint firstAttribute="trailing" secondItem="9yx-Hg-PgF" secondAttribute="trailing" constant="10" id="OV2-Hj-5OZ"/>
+                                                <constraint firstAttribute="trailing" secondItem="9yx-Hg-PgF" secondAttribute="trailing" constant="15" id="OV2-Hj-5OZ"/>
                                                 <constraint firstAttribute="trailing" secondItem="T6C-uh-BuQ" secondAttribute="trailing" id="Oxg-Au-JhJ"/>
                                                 <constraint firstItem="NNE-Pg-RlF" firstAttribute="leading" secondItem="lEW-nZ-InS" secondAttribute="leading" constant="10" id="Vck-bB-cQI"/>
                                                 <constraint firstItem="9yx-Hg-PgF" firstAttribute="centerY" secondItem="NNE-Pg-RlF" secondAttribute="centerY" id="YMe-SN-o3E"/>
@@ -408,7 +408,7 @@
                                     <userDefinedRuntimeAttribute type="string" keyPath="title" value="代表团选择"/>
                                 </userDefinedRuntimeAttributes>
                             </view>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="xka-bY-6JO">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="1" translatesAutoresizingMaskIntoConstraints="NO" id="xka-bY-6JO">
                                 <rect key="frame" x="0.0" y="108" width="600" height="492"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
@@ -450,5 +450,6 @@
     <resources>
         <image name="add" width="20" height="20"/>
         <image name="home_header" width="375" height="205"/>
+        <image name="indicator" width="9" height="15"/>
     </resources>
 </document>

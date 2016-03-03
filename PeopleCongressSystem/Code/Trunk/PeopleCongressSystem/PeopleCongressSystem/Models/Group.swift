@@ -10,6 +10,11 @@ import UIKit
 
 class Group: NSObject {
 
-    
+    var identifier: String?
+    var number: String?
+    var title: String?
+    var parentID: String?
+    var sort: String?
+    var personCount: String?
     
 }

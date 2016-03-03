@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import EZLoadingActivity
 
 class GroupViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
 
@@ -22,6 +23,20 @@ class GroupViewController: UIViewController, UITableViewDataSource, UITableViewD
         self.navigationItem.hidesBackButton = true
         PCSCustomUtil.customNavigationController(self)
     }
+    
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        EZLoadingActivity.show("", disableUI: true)
+        PCSDataManager.defaultManager().getGroup { (info) -> Void in
+            EZLoadingActivity.hide()
+            if info != nil {
+                self.groups = info!
+                
+                self.groupTableView.reloadData()
+            }
+        }
+    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -29,6 +44,13 @@ class GroupViewController: UIViewController, UITableViewDataSource, UITableViewD
     }
     
     // MARK: - UITableView
+    
+    func tableView(tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
+        let view = UIView()
+        view.backgroundColor = UIColor.clearColor()
+        
+        return view
+    }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return groups.count
@@ -39,8 +61,17 @@ class GroupViewController: UIViewController, UITableViewDataSource, UITableViewD
         
         cell.imageView?.image = UIImage(named: "star")
         cell.accessoryType = UITableViewCellAccessoryType.DisclosureIndicator
+        cell.textLabel?.textColor = GlobalUtil.colorRGBA(38, g: 38, b: 38, a: 1)
+        cell.textLabel?.font = UIFont.systemFontOfSize(15.0)
+        
+        let group = groups[indexPath.row]
+        cell.textLabel?.text = group.title! + "（\(group.personCount!)）"
         
         return cell
+    }
+    
+    func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
+        cell.separatorInset = UIEdgeInsetsMake(0, 0, 0, 0)
     }
 
     /*

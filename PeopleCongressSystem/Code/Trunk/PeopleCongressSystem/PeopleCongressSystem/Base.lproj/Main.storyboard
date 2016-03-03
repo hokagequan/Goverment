@@ -231,7 +231,7 @@
                                     </mask>
                                 </variation>
                             </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="title" translatesAutoresizingMaskIntoConstraints="NO" id="dI8-gx-vKe">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="sign_title" translatesAutoresizingMaskIntoConstraints="NO" id="dI8-gx-vKe">
                                 <rect key="frame" x="162" y="150" width="276" height="53"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="53" id="Omi-Vf-S7v"/>
@@ -239,7 +239,7 @@
                                 </constraints>
                             </imageView>
                         </subviews>
-                        <color key="backgroundColor" red="0.92941176470588238" green="0.19215686274509802" blue="0.18431372549019609" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" red="0.90196078431372551" green="0.10588235294117647" blue="0.15294117647058825" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="7WL-q1-6Js" firstAttribute="leading" secondItem="ZMa-lJ-nGv" secondAttribute="leading" constant="40" id="3Jj-hH-0h4"/>
                             <constraint firstItem="bzO-dB-bh8" firstAttribute="width" secondItem="nce-Xe-EIF" secondAttribute="width" multiplier="2:5" id="7vq-9d-1Tz"/>
@@ -475,7 +475,7 @@
         <image name="more" width="12" height="11"/>
         <image name="phone" width="13" height="18"/>
         <image name="server" width="14" height="12"/>
-        <image name="title" width="15" height="15"/>
+        <image name="sign_title" width="242" height="43"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="eEb-Ro-XCT"/>
