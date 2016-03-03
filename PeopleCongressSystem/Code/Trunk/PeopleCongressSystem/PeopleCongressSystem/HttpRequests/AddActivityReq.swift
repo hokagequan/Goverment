@@ -23,8 +23,7 @@ class AddActivityReq: HttpBaseReq {
         params["hddd"] = activity.location
         params["hdsj"] = activity.beginTime
         params["hdsjover"] = activity.endTime
-        // TODO: 暂时没用
-        params["hdsm"] = ""
+        params["hdsm"] = activity.content
         params["zzdw"] = activity.organization
         params["user_list"] = activity.serilizePersons()
         params["UserId"] = PCSDataManager.defaultManager().accountManager.user!.identifier

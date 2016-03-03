@@ -12,3 +12,6 @@ import Foundation
 let serverURL1 = "http://175.170.128.160:8099"
 let serverURL2 = ""
 let serverSoapAction = "http://tempuri.org/"
+
+
+typealias SimpleCompletion = (Bool, String?) -> Void

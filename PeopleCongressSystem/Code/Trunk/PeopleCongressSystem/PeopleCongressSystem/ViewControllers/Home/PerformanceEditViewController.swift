@@ -7,10 +7,13 @@
 //
 
 import UIKit
+import EZLoadingActivity
 
 class PerformanceEditViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
     @IBOutlet weak var tableView: UITableView!
+    
+    var activity: Activity = Activity()
     
     enum EditSections: Int {
         case MainContent = 0
@@ -18,76 +21,50 @@ class PerformanceEditViewController: UIViewController, UITableViewDataSource, UI
         case Detail
         case Persons
         case Max
-    }
-    
-    enum MainRows: Int {
-        case Title = 0
-        case Type
-        case Organization
-        case Max
         
-        func title() -> String {
-            let titles = ["标题:", "类型:", "组织:"]
+        func rows() -> Array<Row> {
+            let titles = [["标题:", "类型:", "组织:"],
+                ["开始时间:", "结束时间:"],
+                ["地址:", "内容:"],
+                ["人员:"]
+            ]
             
-            return titles[self.rawValue]
-        }
-        
-        func icons() -> String {
-            let icons = ["title", "type", "organization"]
+            let icons = [["title", "type", "organization"],
+                ["time", ""],
+                ["location", "content"],
+                ["person"]
+            ]
             
-            return icons[self.rawValue]
-        }
-    }
-    
-    enum TimeRows: Int {
-        case Time = 0
-        case Max
-        
-        func title() -> Array<String> {
-            let titles = [["开始时间:", "结束时间:"]]
+            let keys = [["title", "type", "organization"],
+                ["beginTime", "endTime"],
+                ["location", "content"],
+                ["persons"]
+            ]
             
-            return titles[self.rawValue]
-        }
-        
-        func icons() -> Array<String> {
-            let icons = [["time", ""]]
+            if self.rawValue >= titles.count {
+                return [Row]()
+            }
             
-            return icons[self.rawValue]
-        }
-    }
-    
-    enum DetailRows: Int {
-        case Detail = 0
-        case Max
-        
-        func title() -> Array<String> {
-            let titles = [["地址:", "内容:"]]
+            var rows = [Row]()
+            let rowTitles = titles[self.rawValue]
+            for i in 0..<rowTitles.count {
+                var row = Row()
+                row.title = rowTitles[i]
+                row.icon = icons[self.rawValue][i]
+                row.key = keys[self.rawValue][i]
+                rows.append(row)
+            }
             
-            return titles[self.rawValue]
-        }
-        
-        func icons() -> Array<String> {
-            let icons = [["location", "content"]]
-            
-            return icons[self.rawValue]
+            return rows
         }
     }
     
-    enum PersonsRows: Int {
-        case Person = 0
-        case Max
+    struct Row {
         
-        func title() -> String {
-            let titles = ["人员:"]
-            
-            return titles[self.rawValue]
-        }
+        var title: String? = nil
+        var icon: String? = nil
+        var key: String? = nil
         
-        func icons() -> String {
-            let icons = ["person"]
-            
-            return icons[self.rawValue]
-        }
     }
 
     override func viewDidLoad() {
@@ -103,53 +80,40 @@ class PerformanceEditViewController: UIViewController, UITableViewDataSource, UI
         // Dispose of any resources that can be recreated.
     }
     
+    func createActivity() -> Activity {
+        for section in 0..<EditSections.Max.rawValue {
+            let sec = EditSections(rawValue: section)
+            let rowCount = sec?.rows().count
+            
+            for row in 0..<rowCount! {
+                let cell = tableView.cellForRowAtIndexPath(NSIndexPath(forRow: row, inSection: section))
+                if cell is NormalImageTableCell {
+                    let row = sec!.rows()[row]
+                    activity.setValue((cell as! NormalImageTableCell).titleTextField.text, forKey: row.key!)
+                }
+            }
+        }
+        
+        return activity
+    }
+    
     func cellForMainRow(indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("NormalImageTableCell", forIndexPath: indexPath) as! NormalImageTableCell
         
-        let row = MainRows(rawValue: indexPath.row)!
+        let sec = EditSections(rawValue: indexPath.section)!
+        let row = sec.rows()[indexPath.row]
+        cell.iconImageView.image = UIImage(named: row.icon!)
+        cell.headerText = row.title
         
-        cell.iconImageView.image = UIImage(named: row.icons())
-        cell.headerText = row.title()
-        
-        switch row {
-        case .Title:
-            cell.accessoryType = UITableViewCellAccessoryType.None
-            break
-        case .Organization:
-            cell.accessoryType = UITableViewCellAccessoryType.None
-            break
-        case .Type:
+        switch row.title! {
+        case "类型:":
             cell.editable = false
+            cell.accessoryType = UITableViewCellAccessoryType.DisclosureIndicator
             break
         default:
+            cell.accessoryType = UITableViewCellAccessoryType.None
             break
         }
-        
-        return cell
-    }
-    
-    func cellForTimeRow(indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("DoubleContentCell", forIndexPath: indexPath) as! DoubleContentCell
-        
-        let row = TimeRows(rawValue: indexPath.row)!
-        
-        cell.iconUpImageView.image = UIImage(named: row.icons()[0])
-        cell.iconDownImageView.image = UIImage(named: row.icons()[1])
-        cell.headerUpText = row.title()[0]
-        cell.headerDownText = row.title()[1]
-        
-        return cell
-    }
-    
-    func cellForDetailRow(indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("DoubleContentCell", forIndexPath: indexPath) as! DoubleContentCell
-        
-        let row = DetailRows(rawValue: indexPath.row)!
-        
-        cell.iconUpImageView.image = UIImage(named: row.icons()[0])
-        cell.iconDownImageView.image = UIImage(named: row.icons()[1])
-        cell.headerUpText = row.title()[0]
-        cell.headerDownText = row.title()[1]
         
         return cell
     }
@@ -157,12 +121,30 @@ class PerformanceEditViewController: UIViewController, UITableViewDataSource, UI
     func cellForPersonRow(indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("TagListCell", forIndexPath: indexPath) as! TagListCell
         
-        let row = PersonsRows(rawValue: indexPath.row)!
+        let sec = EditSections(rawValue: indexPath.section)!
+        let row = sec.rows()[indexPath.row]
         
-        cell.iconImageView.image = UIImage(named: row.icons())
-        cell.titleLabel.text = row.title()
+        cell.iconImageView.image = UIImage(named: row.icon!)
+        cell.titleLabel.text = row.title
         
         return cell
+    }
+    
+    // MARK: - Actions
+    
+    @IBAction func clickSave(sender: AnyObject) {
+        EZLoadingActivity.show("", disableUI: true)
+        self.createActivity()
+        PCSDataManager.defaultManager().addActivity(activity) { (success, message) -> Void in
+            EZLoadingActivity.hide()
+            
+            if success {
+                self.showAlert("添加成功")
+            }
+            else {
+                self.showAlert(message!)
+            }
+        }
     }
     
     // MARK: - UITableView
@@ -174,18 +156,7 @@ class PerformanceEditViewController: UIViewController, UITableViewDataSource, UI
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         let sec = EditSections(rawValue: section)!
         
-        switch sec {
-        case EditSections.MainContent:
-            return MainRows.Max.rawValue
-        case EditSections.Time:
-            return TimeRows.Max.rawValue
-        case EditSections.Detail:
-            return DetailRows.Max.rawValue
-        case EditSections.Persons:
-            return PersonsRows.Max.rawValue
-        default:
-            return 0
-        }
+        return sec.rows().count
     }
     
     func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
@@ -195,35 +166,25 @@ class PerformanceEditViewController: UIViewController, UITableViewDataSource, UI
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
         // TODO: 计算Cell高度
         let section = EditSections(rawValue: indexPath.section)!
+        let row = section.rows()[indexPath.row]
         
-        switch section {
-        case .Time:
-            return 88.0
-        case .Detail:
-            return 88.0
-        case .Persons:
+        switch row.title! {
+        case "人员:":
             return TagListCell.cellHeight(nil)
         default:
-            break
+            return 50.0
         }
-        
-        return 44.0
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let sec = EditSections(rawValue: indexPath.section)!
+        let section = EditSections(rawValue: indexPath.section)!
+        let row = section.rows()[indexPath.row]
         
-        switch sec {
-        case EditSections.MainContent:
-            return self.cellForMainRow(indexPath)
-        case EditSections.Time:
-            return self.cellForTimeRow(indexPath)
-        case EditSections.Detail:
-            return self.cellForDetailRow(indexPath)
-        case EditSections.Persons:
+        switch row.title! {
+        case "人员:":
             return self.cellForPersonRow(indexPath)
         default:
-            return UITableViewCell()
+            return self.cellForMainRow(indexPath)
         }
     }
     

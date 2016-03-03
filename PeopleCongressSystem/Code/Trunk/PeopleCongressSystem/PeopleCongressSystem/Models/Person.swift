@@ -8,7 +8,7 @@
 
 import Foundation
 
-class Person {
+class Person: NSObject {
     
     var name: String? = nil
     var congressID: String? = nil

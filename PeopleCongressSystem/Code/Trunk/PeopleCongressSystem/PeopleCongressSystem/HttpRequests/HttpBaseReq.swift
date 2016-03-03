@@ -13,7 +13,8 @@ typealias HttpReqCompletion = (response: Response<String, NSError>?) -> Void
 
 class HttpBaseReq {
     
-    var httpReqURL = SettingsManager.getData(SettingKey.Server.rawValue) as! String
+//    var httpReqURL = SettingsManager.getData(SettingKey.Server.rawValue) as! String
+    var httpReqURL = serverURL1
     
     /// @brief JSON
 //    func request(params: Dictionary<String, AnyObject>, completion: HttpReqCompletion?) {

@@ -135,7 +135,10 @@
                                 </connections>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nce-Xe-EIF" userLabel="Server Select">
-                                <rect key="frame" x="40" y="318.5" width="520" height="38"/>
+                                <rect key="frame" x="40" y="318.5" width="520" height="0.0"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" id="Rac-4t-Ozb"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <inset key="titleEdgeInsets" minX="27" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 <inset key="imageEdgeInsets" minX="13" minY="0.0" maxX="0.0" maxY="0.0"/>
@@ -147,7 +150,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JCT-jS-5Y9" userLabel="Sign In">
-                                <rect key="frame" x="40" y="406.5" width="520" height="37.5"/>
+                                <rect key="frame" x="40" y="368.5" width="520" height="37.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                 <state key="normal" title="登录"/>
                                 <connections>
@@ -155,7 +158,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1lk-N4-8Ob" userLabel="Gesture Sign In">
-                                <rect key="frame" x="40" y="460" width="520" height="16.5"/>
+                                <rect key="frame" x="40" y="422" width="520" height="16.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                 <inset key="titleEdgeInsets" minX="-10" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 <inset key="imageEdgeInsets" minX="140" minY="0.0" maxX="0.0" maxY="0.0"/>
@@ -165,7 +168,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bzO-dB-bh8" userLabel="Remember Password">
-                                <rect key="frame" x="40" y="366.5" width="208" height="30"/>
+                                <rect key="frame" x="40" y="328.5" width="208" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="Hxx-ay-YcW"/>
                                 </constraints>
@@ -177,8 +180,8 @@
                                     <action selector="clickRemember:" destination="o5A-KL-8xA" eventType="touchUpInside" id="elA-JY-kLs"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CPV-eB-aO4" userLabel="Auto Sign In">
-                                <rect key="frame" x="248" y="403.5" width="208.5" height="30"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CPV-eB-aO4" userLabel="Auto Sign In">
+                                <rect key="frame" x="249" y="328.5" width="208.5" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="iMN-AP-9YX"/>
                                 </constraints>
@@ -249,6 +252,7 @@
                             <constraint firstItem="7WL-q1-6Js" firstAttribute="top" secondItem="dI8-gx-vKe" secondAttribute="bottom" constant="20" id="EHG-Tj-OoG"/>
                             <constraint firstItem="JCT-jS-5Y9" firstAttribute="top" secondItem="CPV-eB-aO4" secondAttribute="bottom" constant="10" id="HZ0-ED-a4u"/>
                             <constraint firstItem="dI8-gx-vKe" firstAttribute="top" secondItem="gtw-Ji-US5" secondAttribute="bottom" constant="12" id="Kh9-8i-LSL"/>
+                            <constraint firstItem="JCT-jS-5Y9" firstAttribute="height" secondItem="Amo-jT-wTT" secondAttribute="height" id="Ky3-VI-GDH"/>
                             <constraint firstAttribute="trailing" secondItem="7WL-q1-6Js" secondAttribute="trailing" constant="40" id="MHo-Nc-yPY"/>
                             <constraint firstItem="nce-Xe-EIF" firstAttribute="width" secondItem="7WL-q1-6Js" secondAttribute="width" id="Mbo-mA-myL"/>
                             <constraint firstItem="JCT-jS-5Y9" firstAttribute="height" secondItem="nce-Xe-EIF" secondAttribute="height" id="Omx-1D-UbZ"/>
@@ -293,7 +297,9 @@
                                 <exclude reference="8tl-tT-Njg"/>
                                 <exclude reference="eA8-3m-3vk"/>
                                 <exclude reference="x9g-eS-t17"/>
+                                <exclude reference="fWA-Bp-THQ"/>
                                 <exclude reference="9cn-Xe-IzA"/>
+                                <exclude reference="Omx-1D-UbZ"/>
                                 <exclude reference="XGW-v0-eSX"/>
                             </mask>
                         </variation>
@@ -469,9 +475,9 @@
         <image name="more" width="12" height="11"/>
         <image name="phone" width="13" height="18"/>
         <image name="server" width="14" height="12"/>
-        <image name="title" width="242" height="43"/>
+        <image name="title" width="15" height="15"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="rj9-mo-YbR"/>
+        <segue reference="eEb-Ro-XCT"/>
     </inferredMetricsTieBreakers>
 </document>

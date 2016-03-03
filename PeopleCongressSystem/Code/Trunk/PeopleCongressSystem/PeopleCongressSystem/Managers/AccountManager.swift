@@ -31,7 +31,7 @@ class AccountManager {
         }
     }
     
-    func signIn(account: String, password: String, completion: ((Bool, String?) -> Void)?) {
+    func signIn(account: String, password: String, completion: SimpleCompletion?) {
         let req = SignInReq()
         req.account = account
         req.password = password

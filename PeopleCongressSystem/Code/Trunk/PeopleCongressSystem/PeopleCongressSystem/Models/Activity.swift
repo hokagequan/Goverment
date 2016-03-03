@@ -8,12 +8,13 @@
 
 import Foundation
 
-class Activity {
+class Activity: NSObject {
     
     var identifier: String? = nil
     var title: String? = nil
     var type: String? = nil
     var location: String? = nil
+    var content: String? = nil
     var beginTime: String? = nil
     var endTime: String? = nil
     var organization: String? = nil
