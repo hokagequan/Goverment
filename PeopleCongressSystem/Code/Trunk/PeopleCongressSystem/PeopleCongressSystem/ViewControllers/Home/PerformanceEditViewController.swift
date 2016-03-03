@@ -9,11 +9,12 @@
 import UIKit
 import EZLoadingActivity
 
-class PerformanceEditViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+class PerformanceEditViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, NormalImageTableCellDelegate, TypeSelectViewDelegate {
     
     @IBOutlet weak var tableView: UITableView!
     
     var activity: Activity = Activity()
+    var selectedType: PCSTypeInfo? = nil
     
     enum EditSections: Int {
         case MainContent = 0
@@ -74,6 +75,18 @@ class PerformanceEditViewController: UIViewController, UITableViewDataSource, UI
         self.navigationItem.hidesBackButton = true
         PCSCustomUtil.customNavigationController(self)
     }
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        self.registerKeyboardListener(Selector("handleKeyboardChange:"))
+    }
+    
+    override func viewWillDisappear(animated: Bool) {
+        self.unregisterKeyboardListener()
+        
+        super.viewWillDisappear(animated)
+    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -104,10 +117,12 @@ class PerformanceEditViewController: UIViewController, UITableViewDataSource, UI
         let row = sec.rows()[indexPath.row]
         cell.iconImageView.image = UIImage(named: row.icon!)
         cell.headerText = row.title
+        cell.delegate = self
         
         switch row.title! {
         case "类型:":
             cell.editable = false
+            cell.titleTextField.text = selectedType?.title
             cell.accessoryType = UITableViewCellAccessoryType.DisclosureIndicator
             break
         default:
@@ -130,9 +145,65 @@ class PerformanceEditViewController: UIViewController, UITableViewDataSource, UI
         return cell
     }
     
+    func verify() -> Bool {
+        if activity.title == nil {
+            self.showAlert("请填写标题")
+            
+            return false
+        }
+        
+        if activity.type == nil {
+            self.showAlert("请选择类型")
+            
+            return false
+        }
+        
+        if activity.organization == nil {
+            self.showAlert("请填写组织")
+            
+            return false
+        }
+        
+        if activity.beginTime == nil {
+            self.showAlert("请填写开始时间")
+            
+            return false
+        }
+        
+        if activity.endTime == nil {
+            self.showAlert("请填写结束时间")
+            
+            return false
+        }
+        
+        if activity.location == nil {
+            self.showAlert("请填写地点")
+            
+            return false
+        }
+        
+        if activity.content == nil {
+            self.showAlert("请填写内容")
+            
+            return false
+        }
+        
+        if activity.persons?.count == 0 {
+            self.showAlert("请选择人员")
+            
+            return false
+        }
+        
+        return true
+    }
+    
     // MARK: - Actions
     
     @IBAction func clickSave(sender: AnyObject) {
+        if self.verify() == false {
+            return
+        }
+        
         EZLoadingActivity.show("", disableUI: true)
         self.createActivity()
         PCSDataManager.defaultManager().addActivity(activity) { (success, message) -> Void in
@@ -145,6 +216,32 @@ class PerformanceEditViewController: UIViewController, UITableViewDataSource, UI
                 self.showAlert(message!)
             }
         }
+    }
+    
+    // MARK: - Observer
+    
+    func handleKeyboardChange(notification: NSNotification) {
+        guard let info = notification.object as? KeyboardInfo else {
+            return
+        }
+        
+        UIView.animateWithDuration(info.duration) { () -> Void in
+            self.view.layoutIfNeeded()
+        }
+    }
+    
+    // MARK: - TypeSelectViewDelegate
+    
+    func didSelectType(view: TypeSelectView, type: PCSTypeInfo) {
+        selectedType = type
+        tableView.reloadData()
+    }
+    
+    // MARK: - NormalImageTableCellDelegate
+    
+    func didEditing(cell: NormalImageTableCell) {
+        let indexPath = tableView.indexPathForCell(cell)!
+        tableView.scrollToRowAtIndexPath(indexPath, atScrollPosition: UITableViewScrollPosition.Top, animated: true)
     }
     
     // MARK: - UITableView
@@ -190,6 +287,24 @@ class PerformanceEditViewController: UIViewController, UITableViewDataSource, UI
     
     func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
         cell.separatorInset = UIEdgeInsetsMake(0, 39, 0, 0)
+    }
+    
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        let section = EditSections(rawValue: indexPath.section)!
+        let row = section.rows()[indexPath.row]
+        
+        switch row.title! {
+        case "类型:":
+            let typeView = TypeSelectView.view()
+            typeView.delegate = self
+            typeView.show(PCSType.Congress)
+            
+            break
+        case "人员:":
+            break
+        default:
+            break
+        }
     }
 
     /*

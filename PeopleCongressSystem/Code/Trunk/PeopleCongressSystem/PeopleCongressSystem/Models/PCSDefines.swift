@@ -15,3 +15,9 @@ let serverSoapAction = "http://tempuri.org/"
 
 
 typealias SimpleCompletion = (Bool, String?) -> Void
+
+enum PCSType: String {
+    case Personal = "0102"
+    case Congress = "0101"
+    case Party = "0006"
+}

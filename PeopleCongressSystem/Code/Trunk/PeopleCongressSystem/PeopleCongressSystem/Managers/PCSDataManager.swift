@@ -62,4 +62,37 @@ class PCSDataManager {
         }
     }
     
+    func getTypeInfo(type: PCSType, completion: ((Array<PCSTypeInfo>?) -> Void)?) {
+        let req = GetActivityTypesReq()
+        req.type = type
+        
+        req.requestCompletion { (response) -> Void in
+            var relArray: Array<PCSTypeInfo>? = nil
+            
+            defer {
+                completion?(relArray)
+            }
+            
+            let result = response?.result
+            
+            if result?.isSuccess == true {
+                guard let value = result?.value else {
+                    return
+                }
+                
+                let info = HttpBaseReq.parseResponse(value) as! NSArray
+                relArray = [PCSTypeInfo]()
+                for i in 0..<info.count {
+                    let dict = info[i] as! Dictionary<String, AnyObject>
+                    let typeInfo = PCSTypeInfo()
+                    typeInfo.title = dict["Name"] as? String
+                    typeInfo.code = dict["GUID"] as? String
+                    typeInfo.sort = dict["shuzi"] as? String
+                    typeInfo.type = dict["DmlbID"] as? String
+                    relArray?.append(typeInfo)
+                }
+            }
+        }
+    }
+    
 }

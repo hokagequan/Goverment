@@ -67,12 +67,12 @@ class HttpBaseReq {
     
     // MARK: - Class Function
     
-    class func parseResponse(response: String?) -> Dictionary<String, AnyObject>? {
+    class func parseResponse(response: String?) -> AnyObject? {
         if response == nil {
             return nil
         }
         
-        guard let index = response!.rangeOfString("}")?.endIndex else {
+        guard let index = response!.rangeOfString("<?xml version=")?.startIndex else {
             return nil
         }
         
@@ -82,7 +82,7 @@ class HttpBaseReq {
             return nil
         }
         do {
-            return try NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.MutableContainers) as? Dictionary<String, AnyObject>
+            return try NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.MutableContainers)
         }
         catch {
             return nil

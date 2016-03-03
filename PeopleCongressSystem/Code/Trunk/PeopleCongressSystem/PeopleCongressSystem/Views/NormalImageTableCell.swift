@@ -8,13 +8,22 @@
 
 import UIKit
 
-class NormalImageTableCell: UITableViewCell {
+@objc protocol NormalImageTableCellDelegate {
+
+    optional
+    func didEditing(cell: NormalImageTableCell)
+    
+}
+
+class NormalImageTableCell: UITableViewCell, UITextFieldDelegate {
 
     @IBOutlet weak var iconImageView: UIImageView!
     @IBOutlet weak var border: UIView!
     @IBOutlet weak var titleTextField: UITextField!
     @IBOutlet weak var headerLabel: UILabel!
     @IBOutlet weak var headerWidthLC: NSLayoutConstraint!
+    
+    weak var delegate: NormalImageTableCellDelegate?
     
     var headerText: NSString? {
         didSet {
@@ -51,6 +60,18 @@ class NormalImageTableCell: UITableViewCell {
         super.setSelected(selected, animated: animated)
 
         // Configure the view for the selected state
+    }
+    
+    // MARK: - UITextField
+    
+    func textFieldDidBeginEditing(textField: UITextField) {
+        delegate?.didEditing?(self)
+    }
+    
+    func textFieldShouldReturn(textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        
+        return true
     }
 
 }
