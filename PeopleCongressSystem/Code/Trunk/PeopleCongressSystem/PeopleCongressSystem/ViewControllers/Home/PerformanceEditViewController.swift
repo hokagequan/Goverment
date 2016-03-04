@@ -80,6 +80,7 @@ class PerformanceEditViewController: UIViewController, UITableViewDataSource, UI
         super.viewWillAppear(animated)
         
         self.registerKeyboardListener(Selector("handleKeyboardChange:"))
+        tableView.reloadData()
     }
     
     override func viewWillDisappear(animated: Bool) {

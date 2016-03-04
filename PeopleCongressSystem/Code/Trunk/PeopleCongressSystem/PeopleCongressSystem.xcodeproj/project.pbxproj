@@ -15,6 +15,8 @@
 		100B20381C88923600435EF0 /* GroupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 100B20371C88923600435EF0 /* GroupViewController.swift */; };
 		100B203A1C8894CA00435EF0 /* Group.swift in Sources */ = {isa = PBXBuildFile; fileRef = 100B20391C8894CA00435EF0 /* Group.swift */; };
 		100B203C1C88968900435EF0 /* GetGroupReq.swift in Sources */ = {isa = PBXBuildFile; fileRef = 100B203B1C88968900435EF0 /* GetGroupReq.swift */; };
+		100B203E1C89222F00435EF0 /* PersonListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 100B203D1C89222F00435EF0 /* PersonListViewController.swift */; };
+		100B20401C895FC600435EF0 /* GetPersonListReq.swift in Sources */ = {isa = PBXBuildFile; fileRef = 100B203F1C895FC600435EF0 /* GetPersonListReq.swift */; };
 		10496F371C76012F0074CFC1 /* SignInReq.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10496F361C76012F0074CFC1 /* SignInReq.swift */; };
 		10496F391C76140C0074CFC1 /* PCSCustomUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10496F381C76140C0074CFC1 /* PCSCustomUtil.swift */; };
 		106C64C91C83511400E6CD95 /* PCSProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 106C64C81C83511400E6CD95 /* PCSProtocols.swift */; };
@@ -53,6 +55,7 @@
 		10D0D5CF1C4FC3420093F687 /* TagListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10D0D5CE1C4FC3420093F687 /* TagListCell.swift */; };
 		10D0D5D11C4FC4FF0093F687 /* PerformanceEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10D0D5D01C4FC4FF0093F687 /* PerformanceEditViewController.swift */; };
 		10D0D5D31C4FDB440093F687 /* CustomNavigationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10D0D5D21C4FDB440093F687 /* CustomNavigationView.swift */; };
+		10DBF2081C896ED4007620BA /* GetCongressListReq.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10DBF2071C896ED4007620BA /* GetCongressListReq.swift */; };
 		10F1097F1C88156F0083D89D /* Activity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10F1097E1C88156F0083D89D /* Activity.swift */; };
 		10F109811C8816D10083D89D /* GetActivitiesReq.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10F109801C8816D10083D89D /* GetActivitiesReq.swift */; };
 		10F109831C881C960083D89D /* AddActivityReq.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10F109821C881C960083D89D /* AddActivityReq.swift */; };
@@ -81,6 +84,8 @@
 		100B20371C88923600435EF0 /* GroupViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupViewController.swift; sourceTree = "<group>"; };
 		100B20391C8894CA00435EF0 /* Group.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Group.swift; sourceTree = "<group>"; };
 		100B203B1C88968900435EF0 /* GetGroupReq.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetGroupReq.swift; sourceTree = "<group>"; };
+		100B203D1C89222F00435EF0 /* PersonListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PersonListViewController.swift; sourceTree = "<group>"; };
+		100B203F1C895FC600435EF0 /* GetPersonListReq.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetPersonListReq.swift; sourceTree = "<group>"; };
 		10496F361C76012F0074CFC1 /* SignInReq.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignInReq.swift; sourceTree = "<group>"; };
 		10496F381C76140C0074CFC1 /* PCSCustomUtil.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PCSCustomUtil.swift; sourceTree = "<group>"; };
 		106C64C81C83511400E6CD95 /* PCSProtocols.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PCSProtocols.swift; sourceTree = "<group>"; };
@@ -123,6 +128,7 @@
 		10D0D5CE1C4FC3420093F687 /* TagListCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TagListCell.swift; sourceTree = "<group>"; };
 		10D0D5D01C4FC4FF0093F687 /* PerformanceEditViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PerformanceEditViewController.swift; sourceTree = "<group>"; };
 		10D0D5D21C4FDB440093F687 /* CustomNavigationView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomNavigationView.swift; sourceTree = "<group>"; };
+		10DBF2071C896ED4007620BA /* GetCongressListReq.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetCongressListReq.swift; sourceTree = "<group>"; };
 		10F1097E1C88156F0083D89D /* Activity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Activity.swift; sourceTree = "<group>"; };
 		10F109801C8816D10083D89D /* GetActivitiesReq.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetActivitiesReq.swift; sourceTree = "<group>"; };
 		10F109821C881C960083D89D /* AddActivityReq.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddActivityReq.swift; sourceTree = "<group>"; };
@@ -269,6 +275,7 @@
 				10D0D5C81C4E8A190093F687 /* PerformanceRecordsViewController.swift */,
 				10D0D5D01C4FC4FF0093F687 /* PerformanceEditViewController.swift */,
 				100B20371C88923600435EF0 /* GroupViewController.swift */,
+				100B203D1C89222F00435EF0 /* PersonListViewController.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -331,6 +338,8 @@
 				10F109821C881C960083D89D /* AddActivityReq.swift */,
 				100B20331C8881EF00435EF0 /* GetActivityTypesReq.swift */,
 				100B203B1C88968900435EF0 /* GetGroupReq.swift */,
+				100B203F1C895FC600435EF0 /* GetPersonListReq.swift */,
+				10DBF2071C896ED4007620BA /* GetCongressListReq.swift */,
 			);
 			path = HttpRequests;
 			sourceTree = "<group>";
@@ -526,6 +535,7 @@
 				10F109831C881C960083D89D /* AddActivityReq.swift in Sources */,
 				10D0D5CF1C4FC3420093F687 /* TagListCell.swift in Sources */,
 				100B20381C88923600435EF0 /* GroupViewController.swift in Sources */,
+				100B20401C895FC600435EF0 /* GetPersonListReq.swift in Sources */,
 				10A6866E1C7DF12600D050F0 /* UserEntity.swift in Sources */,
 				10D0D5A41C4DCA5A0093F687 /* SignInViewController.swift in Sources */,
 				100B20361C8883A700435EF0 /* PCSTypeInfo.swift in Sources */,
@@ -550,6 +560,7 @@
 				10A6866A1C7DEF7400D050F0 /* GlobalUtil.swift in Sources */,
 				10D0D5A71C4DCB870093F687 /* CustomObjectUtil.swift in Sources */,
 				10D0D5C91C4E8A190093F687 /* PerformanceRecordsViewController.swift in Sources */,
+				100B203E1C89222F00435EF0 /* PersonListViewController.swift in Sources */,
 				106C64C91C83511400E6CD95 /* PCSProtocols.swift in Sources */,
 				100B203C1C88968900435EF0 /* GetGroupReq.swift in Sources */,
 				10D0D5C51C4E7F960093F687 /* HomeViewController.swift in Sources */,
@@ -562,6 +573,7 @@
 				10D0D5B01C4E2C7D0093F687 /* HttpBaseReq.swift in Sources */,
 				10D0D5B91C4E37360093F687 /* AccountManager.swift in Sources */,
 				10D0D5CB1C4E8E260093F687 /* NormalImageTableCell.swift in Sources */,
+				10DBF2081C896ED4007620BA /* GetCongressListReq.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

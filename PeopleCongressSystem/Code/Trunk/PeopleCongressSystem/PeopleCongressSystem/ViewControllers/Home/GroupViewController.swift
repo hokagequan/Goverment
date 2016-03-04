@@ -36,6 +36,9 @@ class GroupViewController: UIViewController, UITableViewDataSource, UITableViewD
                 self.groupTableView.reloadData()
             }
         }
+        
+        // FIXME: Test
+        self.performSegueWithIdentifier("PersonListSegue", sender: self)
     }
 
     override func didReceiveMemoryWarning() {
@@ -73,15 +76,23 @@ class GroupViewController: UIViewController, UITableViewDataSource, UITableViewD
     func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
         cell.separatorInset = UIEdgeInsetsMake(0, 0, 0, 0)
     }
+    
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        let group = groups[indexPath.row]
+        self.performSegueWithIdentifier("PersonListSegue", sender: group)
+    }
 
-    /*
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
+        if segue.identifier == "PersonListSegue" {
+            let vc = segue.destinationViewController as! PersonListViewController
+            vc.activity = activity
+            vc.group = sender as? Group
+        }
     }
-    */
 
 }

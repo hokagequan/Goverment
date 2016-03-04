@@ -135,4 +135,76 @@ class PCSDataManager {
         }
     }
     
+    func getPersonList(activityID: String, completion: ((Array<Person>?) -> Void)?) {
+        let req = GetPersonListReq()
+        req.activityID = activityID
+        
+        req.requestCompletion { (response) -> Void in
+            var relArray: Array<Person>? = nil
+            
+            defer {
+                completion?(relArray)
+            }
+            
+            let result = response?.result
+            
+            if result?.isSuccess == true {
+                guard let value = result?.value else {
+                    return
+                }
+                
+                guard let info = HttpBaseReq.parseResponse(value) as? NSArray else {
+                    return
+                }
+                
+                relArray = [Person]()
+                for i in 0..<info.count {
+                    let dict = info[i] as! Dictionary<String, AnyObject>
+                    let person = Person()
+                    person.identifier = dict["RDDB_ID"] as? String
+                    person.congressID = dict["RDDB_GUID"] as? String
+                    person.name = dict["RDDB_NAME"] as? String
+                    person.organizationID = dict["RDDB_NAME"] as? String
+                    relArray?.append(person)
+                }
+            }
+        }
+    }
+    
+    func GetCongressList(organizationID: String, completion: ((Array<Person>?) -> Void)?) {
+        let req = GetCongressListReq()
+        req.organizationID = organizationID
+        
+        req.requestCompletion { (response) -> Void in
+            var relArray: Array<Person>? = nil
+            
+            defer {
+                completion?(relArray)
+            }
+            
+            let result = response?.result
+            
+            if result?.isSuccess == true {
+                guard let value = result?.value else {
+                    return
+                }
+                
+                guard let info = HttpBaseReq.parseResponse(value) as? NSArray else {
+                    return
+                }
+                
+                relArray = [Person]()
+                for i in 0..<info.count {
+                    let dict = info[i] as! Dictionary<String, AnyObject>
+                    let person = Person()
+                    person.identifier = dict["RDDB_ID"] as? String
+                    person.congressID = dict["RDDB_GUID"] as? String
+                    person.name = dict["RDDB_NAME"] as? String
+                    person.organizationID = dict["RDDB_NAME"] as? String
+                    relArray?.append(person)
+                }
+            }
+        }
+    }
+    
 }

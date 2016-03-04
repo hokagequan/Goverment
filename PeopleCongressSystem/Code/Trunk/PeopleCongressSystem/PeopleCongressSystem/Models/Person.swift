@@ -10,7 +10,9 @@ import Foundation
 
 class Person: NSObject {
     
+    var identifier: String? = nil
     var name: String? = nil
     var congressID: String? = nil
+    var organizationID: String? = nil
     
 }
