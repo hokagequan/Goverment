@@ -15,13 +15,15 @@ import UIKit
     
 }
 
-class NormalImageTableCell: UITableViewCell, UITextFieldDelegate {
+class NormalImageTableCell: UITableViewCell, UITextFieldDelegate, DatePickerViewDelegate {
 
     @IBOutlet weak var iconImageView: UIImageView!
     @IBOutlet weak var border: UIView!
     @IBOutlet weak var titleTextField: UITextField!
     @IBOutlet weak var headerLabel: UILabel!
     @IBOutlet weak var headerWidthLC: NSLayoutConstraint!
+    
+    var timeEditable: Bool = false
     
     weak var delegate: NormalImageTableCellDelegate?
     
@@ -62,7 +64,23 @@ class NormalImageTableCell: UITableViewCell, UITextFieldDelegate {
         // Configure the view for the selected state
     }
     
+    // MARK: - DatePicker
+    
+    func didPickDateCompletion(view: DatePickerView, date: NSDate, dateString: String) {
+        titleTextField.text = dateString
+    }
+    
     // MARK: - UITextField
+    
+    func textFieldShouldBeginEditing(textField: UITextField) -> Bool {
+        if timeEditable {
+            let datePickerView = DatePickerView.view()
+            datePickerView.delegate = self
+            datePickerView.show()
+        }
+        
+        return !timeEditable
+    }
     
     func textFieldDidBeginEditing(textField: UITextField) {
         delegate?.didEditing?(self)

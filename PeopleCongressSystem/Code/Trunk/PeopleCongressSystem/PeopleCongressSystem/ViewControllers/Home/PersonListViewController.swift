@@ -26,6 +26,8 @@ class PersonListViewController: UIViewController, UITableViewDelegate, UITableVi
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
         
+        self.navigationItem.hidesBackButton = true
+        
         if group == nil {
             return
         }

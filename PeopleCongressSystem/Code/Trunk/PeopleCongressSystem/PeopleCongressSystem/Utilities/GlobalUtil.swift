@@ -27,4 +27,9 @@ class GlobalUtil {
         return app.window!.bounds.size.height / CGFloat(667.0)
     }
     
+    class func showAlert(message: String) {
+        let alert = UIAlertView(title: nil, message: message, delegate: nil, cancelButtonTitle: "确定")
+        alert.show()
+    }
+    
 }

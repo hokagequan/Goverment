@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9532" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="DatePickerView" customModule="PeopleCongressSystem" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3BB-EG-vac">
+                    <rect key="frame" x="0.0" y="340" width="600" height="260"/>
+                    <subviews>
+                        <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="aKw-v7-1ht">
+                            <rect key="frame" x="0.0" y="44" width="600" height="216"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="216" id="ane-7B-lzj"/>
+                            </constraints>
+                            <date key="date" timeIntervalSinceReferenceDate="478828607.95222402">
+                                <!--2016-03-04 23:56:47 +0000-->
+                            </date>
+                        </datePicker>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mL3-rl-Ime">
+                            <rect key="frame" x="540" y="0.0" width="60" height="44"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="60" id="4Z8-I6-b3V"/>
+                            </constraints>
+                            <state key="normal" title="完成"/>
+                            <connections>
+                                <action selector="clickCompletion:" destination="iN0-l3-epB" eventType="touchUpInside" id="ohj-1l-7L3"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstItem="aKw-v7-1ht" firstAttribute="top" secondItem="mL3-rl-Ime" secondAttribute="bottom" id="34y-bt-2Fp"/>
+                        <constraint firstItem="mL3-rl-Ime" firstAttribute="top" secondItem="3BB-EG-vac" secondAttribute="top" id="3sq-zj-5gX"/>
+                        <constraint firstItem="aKw-v7-1ht" firstAttribute="leading" secondItem="3BB-EG-vac" secondAttribute="leading" id="4Yf-B4-fgD"/>
+                        <constraint firstAttribute="bottom" secondItem="aKw-v7-1ht" secondAttribute="bottom" id="8n2-N0-Qqi"/>
+                        <constraint firstAttribute="trailing" secondItem="mL3-rl-Ime" secondAttribute="trailing" id="VTw-5h-uQv"/>
+                        <constraint firstAttribute="height" constant="260" id="neB-qi-RI8"/>
+                        <constraint firstAttribute="trailing" secondItem="aKw-v7-1ht" secondAttribute="trailing" id="rOr-0I-VBl"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.5" colorSpace="calibratedRGB"/>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="3BB-EG-vac" secondAttribute="trailing" id="1W7-TV-yQO"/>
+                <constraint firstAttribute="bottom" secondItem="3BB-EG-vac" secondAttribute="bottom" id="c8L-0S-uKG"/>
+                <constraint firstItem="3BB-EG-vac" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="meF-RS-Nlv"/>
+            </constraints>
+            <connections>
+                <outlet property="datePicker" destination="aKw-v7-1ht" id="9yF-D1-u9f"/>
+            </connections>
+        </view>
+    </objects>
+</document>

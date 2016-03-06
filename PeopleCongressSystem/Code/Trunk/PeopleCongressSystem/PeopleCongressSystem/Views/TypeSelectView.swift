@@ -12,7 +12,7 @@ import EZLoadingActivity
 @objc protocol TypeSelectViewDelegate {
 
     optional
-    func didSelectType(view: TypeSelectView, type: PCSTypeInfo)
+    func didSelectIndex(view: TypeSelectView, indexPath: NSIndexPath)
     
 }
 
@@ -21,8 +21,7 @@ class TypeSelectView: UIControl, UITableViewDataSource, UITableViewDelegate {
     @IBOutlet weak var containerView: UIView!
     @IBOutlet weak var typeTableView: UITableView!
     
-    var type: PCSType = PCSType.Congress
-    var types = [PCSTypeInfo]()
+    var dataSource = [String]()
     
     weak var delegate: TypeSelectViewDelegate?
 
@@ -32,27 +31,20 @@ class TypeSelectView: UIControl, UITableViewDataSource, UITableViewDelegate {
         typeTableView.registerClass(UITableViewCell.self, forCellReuseIdentifier: "Cell")
         
         CustomObjectUtil.customObjectsLayout([containerView], backgroundColor: UIColor.whiteColor(), borderWidth: 0.0, borderColor: nil, corner: 8.0)
-        
-        EZLoadingActivity.show("", disableUI: true)
-        PCSDataManager.defaultManager().getTypeInfo(type) { (infos) -> Void in
-            if infos != nil {
-                self.types = infos!
-                self.typeTableView.reloadData()
-            }
-        }
     }
     
     func dismiss() {
         self.removeFromSuperview()
     }
     
-    func show(pcsType: PCSType) {
-        let app = UIApplication.sharedApplication().delegate as! AppDelegate
-        self.frame = app.window!.bounds
+    func show() {
+        guard let window = UIApplication.sharedApplication().keyWindow else {
+            return
+        }
         
-        type = pcsType
+        self.frame = window.bounds
         
-        app.window?.addSubview(self)
+        window.addSubview(self)
     }
     
     // MARK: - Class Functions
@@ -71,7 +63,7 @@ class TypeSelectView: UIControl, UITableViewDataSource, UITableViewDelegate {
     // MARK: - UITableView
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return types.count
+        return dataSource.count
     }
     
     func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
@@ -91,9 +83,9 @@ class TypeSelectView: UIControl, UITableViewDataSource, UITableViewDelegate {
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath)
         
-        let typeInfo = types[indexPath.row]
+        let string = dataSource[indexPath.row]
         
-        cell.textLabel?.text = typeInfo.title
+        cell.textLabel?.text = string
         cell.textLabel?.textColor = GlobalUtil.colorRGBA(38, g: 38, b: 38, a: 1)
         cell.textLabel?.font = UIFont.systemFontOfSize(17.0)
         cell.textLabel?.textAlignment = NSTextAlignment.Center
@@ -106,7 +98,8 @@ class TypeSelectView: UIControl, UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        delegate?.didSelectType?(self, type: types[indexPath.row])
+        delegate?.didSelectIndex?(self, indexPath: indexPath)
+        self.dismiss()
     }
     
 }

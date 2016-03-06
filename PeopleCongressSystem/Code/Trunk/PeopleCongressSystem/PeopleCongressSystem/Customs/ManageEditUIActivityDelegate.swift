@@ -1,0 +1,169 @@
+//
+//  ManageEditUIActivityDelegate.swift
+//  PeopleCongressSystem
+//
+//  Created by Matt Quan on 16/3/5.
+//  Copyright © 2016年 CoolRabbit. All rights reserved.
+//
+
+import Foundation
+import UIKit
+import EZLoadingActivity
+
+class ManageEditUIActivityDelegate: ManageEditUIDelegate {
+    
+    var types = [PCSTypeInfo]()
+    var selectedInfo: PCSTypeInfo? = nil
+    
+    func createActivity() -> Activity {
+        let activity = Activity()
+        
+        for section in 0..<EditSections.Max.rawValue {
+            let sec = EditSections(rawValue: section)
+            let rowCount = sec?.rows().count
+            
+            for row in 0..<rowCount! {
+                let cell = tableView!.cellForRowAtIndexPath(NSIndexPath(forRow: row, inSection: section))
+                if cell is NormalImageTableCell {
+                    let row = sec!.rows()[row]
+                    activity.setValue((cell as! NormalImageTableCell).titleTextField.text, forKey: row.key!)
+                }
+            }
+        }
+        
+        return activity
+    }
+    
+    func verify() -> Bool {
+        let activity = self.editObject as! Activity
+        if activity.title == nil {
+            GlobalUtil.showAlert("请填写标题")
+            
+            return false
+        }
+        
+        if activity.type == nil {
+            GlobalUtil.showAlert("请选择类型")
+            
+            return false
+        }
+        
+        if activity.organization == nil {
+            GlobalUtil.showAlert("请填写组织")
+            
+            return false
+        }
+        
+        if activity.beginTime == nil {
+            GlobalUtil.showAlert("请填写开始时间")
+            
+            return false
+        }
+        
+        if activity.endTime == nil {
+            GlobalUtil.showAlert("请填写结束时间")
+            
+            return false
+        }
+        
+        if activity.location == nil {
+            GlobalUtil.showAlert("请填写地点")
+            
+            return false
+        }
+        
+        if activity.content == nil {
+            GlobalUtil.showAlert("请填写内容")
+            
+            return false
+        }
+        
+        if activity.persons?.count == 0 {
+            GlobalUtil.showAlert("请选择人员")
+            
+            return false
+        }
+        
+        return true
+    }
+    
+    // MARK: - Override
+    
+    override func save() {
+        self.editObject = self.createActivity()
+        
+        if self.verify() == false {
+            return
+        }
+        
+        EZLoadingActivity.show("", disableUI: true)
+        PCSDataManager.defaultManager().addActivity(self.editObject as! Activity) { (success, message) -> Void in
+            EZLoadingActivity.hide()
+            
+            if success {
+                GlobalUtil.showAlert("添加成功")
+            }
+            else {
+                GlobalUtil.showAlert(message!)
+            }
+        }
+    }
+    
+    // MARK: - TypeSelectViewDelegate
+    
+    func didSelectIndex(view: TypeSelectView, indexPath: NSIndexPath) {
+        selectedInfo = types[indexPath.row]
+        tableView?.reloadData()
+    }
+    
+    // MARK: - UITableView
+    
+    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        let cell = super.tableView(tableView, cellForRowAtIndexPath: indexPath)
+        
+        let section = EditSections(rawValue: indexPath.section)!
+        let row = section.rows()[indexPath.row]
+        
+        if cell is NormalImageTableCell {
+            switch row.title! {
+            case "类型:":
+                (cell as! NormalImageTableCell).titleTextField.text = selectedInfo?.title
+                break
+            default:
+                break
+            }
+        }
+        
+        return cell
+    }
+
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        tableView.deselectRowAtIndexPath(indexPath, animated: true)
+        
+        let section = EditSections(rawValue: indexPath.section)!
+        let row = section.rows()[indexPath.row]
+        
+        switch row.title! {
+        case "类型:":
+            EZLoadingActivity.show("", disableUI: true)
+            PCSDataManager.defaultManager().getTypeInfo(PCSType.Congress) { (infos) -> Void in
+                EZLoadingActivity.hide()
+                if infos != nil {
+                    self.types = infos!
+                    let typeView = TypeSelectView.view()
+                    typeView.dataSource = self.types.flatMap({return $0.title})
+                    typeView.delegate = self
+                    typeView.show()
+                }
+            }
+            
+            break
+        case "人员:":
+            self.masterViewController?.performSegueWithIdentifier("GroupSegue", sender: self)
+            break
+        default:
+            break
+        }
+    }
+    
+}

@@ -56,6 +56,11 @@
 		10D0D5D11C4FC4FF0093F687 /* PerformanceEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10D0D5D01C4FC4FF0093F687 /* PerformanceEditViewController.swift */; };
 		10D0D5D31C4FDB440093F687 /* CustomNavigationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10D0D5D21C4FDB440093F687 /* CustomNavigationView.swift */; };
 		10DBF2081C896ED4007620BA /* GetCongressListReq.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10DBF2071C896ED4007620BA /* GetCongressListReq.swift */; };
+		10DBF20A1C8A5808007620BA /* DatePickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10DBF2091C8A5808007620BA /* DatePickerView.swift */; };
+		10DBF20C1C8A5817007620BA /* DatePickerView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 10DBF20B1C8A5817007620BA /* DatePickerView.xib */; };
+		10DBF20E1C8A6CBD007620BA /* VariableManageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10DBF20D1C8A6CBD007620BA /* VariableManageViewController.swift */; };
+		10DBF2101C8A8075007620BA /* ManageEditUIDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10DBF20F1C8A8075007620BA /* ManageEditUIDelegate.swift */; };
+		10DBF2121C8A823C007620BA /* ManageEditUIActivityDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10DBF2111C8A823C007620BA /* ManageEditUIActivityDelegate.swift */; };
 		10F1097F1C88156F0083D89D /* Activity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10F1097E1C88156F0083D89D /* Activity.swift */; };
 		10F109811C8816D10083D89D /* GetActivitiesReq.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10F109801C8816D10083D89D /* GetActivitiesReq.swift */; };
 		10F109831C881C960083D89D /* AddActivityReq.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10F109821C881C960083D89D /* AddActivityReq.swift */; };
@@ -129,6 +134,11 @@
 		10D0D5D01C4FC4FF0093F687 /* PerformanceEditViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PerformanceEditViewController.swift; sourceTree = "<group>"; };
 		10D0D5D21C4FDB440093F687 /* CustomNavigationView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomNavigationView.swift; sourceTree = "<group>"; };
 		10DBF2071C896ED4007620BA /* GetCongressListReq.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetCongressListReq.swift; sourceTree = "<group>"; };
+		10DBF2091C8A5808007620BA /* DatePickerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DatePickerView.swift; sourceTree = "<group>"; };
+		10DBF20B1C8A5817007620BA /* DatePickerView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DatePickerView.xib; sourceTree = "<group>"; };
+		10DBF20D1C8A6CBD007620BA /* VariableManageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VariableManageViewController.swift; sourceTree = "<group>"; };
+		10DBF20F1C8A8075007620BA /* ManageEditUIDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ManageEditUIDelegate.swift; sourceTree = "<group>"; };
+		10DBF2111C8A823C007620BA /* ManageEditUIActivityDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ManageEditUIActivityDelegate.swift; sourceTree = "<group>"; };
 		10F1097E1C88156F0083D89D /* Activity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Activity.swift; sourceTree = "<group>"; };
 		10F109801C8816D10083D89D /* GetActivitiesReq.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetActivitiesReq.swift; sourceTree = "<group>"; };
 		10F109821C881C960083D89D /* AddActivityReq.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddActivityReq.swift; sourceTree = "<group>"; };
@@ -250,6 +260,8 @@
 				10F7DE621C7863A3002A86CA /* PCSNavigationView.swift */,
 				100B202F1C887C1000435EF0 /* TypeSelectView.swift */,
 				100B20311C887C2600435EF0 /* TypeSelectView.xib */,
+				10DBF2091C8A5808007620BA /* DatePickerView.swift */,
+				10DBF20B1C8A5817007620BA /* DatePickerView.xib */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -276,6 +288,7 @@
 				10D0D5D01C4FC4FF0093F687 /* PerformanceEditViewController.swift */,
 				100B20371C88923600435EF0 /* GroupViewController.swift */,
 				100B203D1C89222F00435EF0 /* PersonListViewController.swift */,
+				10DBF20D1C8A6CBD007620BA /* VariableManageViewController.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -325,6 +338,8 @@
 				10D0D5AC1C4DF6030093F687 /* UIViewController+AlertView.swift */,
 				106C64C81C83511400E6CD95 /* PCSProtocols.swift */,
 				106C64CA1C83522800E6CD95 /* WorkerHomeActionDelegate.swift */,
+				10DBF20F1C8A8075007620BA /* ManageEditUIDelegate.swift */,
+				10DBF2111C8A823C007620BA /* ManageEditUIActivityDelegate.swift */,
 			);
 			path = Customs;
 			sourceTree = "<group>";
@@ -458,6 +473,7 @@
 				100B20321C887C2600435EF0 /* TypeSelectView.xib in Resources */,
 				10D0D59B1C4CDB5A0093F687 /* CheckIn.storyboard in Resources */,
 				10D0D57D1C4CD1D00093F687 /* LaunchScreen.storyboard in Resources */,
+				10DBF20C1C8A5817007620BA /* DatePickerView.xib in Resources */,
 				10D0D5991C4CDB330093F687 /* BusinessCard.storyboard in Resources */,
 				10D0D57A1C4CD1D00093F687 /* Assets.xcassets in Resources */,
 				10D0D5751C4CD1D00093F687 /* Main.storyboard in Resources */,
@@ -537,8 +553,10 @@
 				100B20381C88923600435EF0 /* GroupViewController.swift in Sources */,
 				100B20401C895FC600435EF0 /* GetPersonListReq.swift in Sources */,
 				10A6866E1C7DF12600D050F0 /* UserEntity.swift in Sources */,
+				10DBF2101C8A8075007620BA /* ManageEditUIDelegate.swift in Sources */,
 				10D0D5A41C4DCA5A0093F687 /* SignInViewController.swift in Sources */,
 				100B20361C8883A700435EF0 /* PCSTypeInfo.swift in Sources */,
+				10DBF2121C8A823C007620BA /* ManageEditUIActivityDelegate.swift in Sources */,
 				10F109851C8822A30083D89D /* Person.swift in Sources */,
 				10D0D5C31C4E7D710093F687 /* FindPwdViewController.swift in Sources */,
 				10D0D5951C4CD9810093F687 /* MainViewController.swift in Sources */,
@@ -551,12 +569,14 @@
 				10D0D5781C4CD1D00093F687 /* PeopleCongressSystem.xcdatamodeld in Sources */,
 				10D0D5D11C4FC4FF0093F687 /* PerformanceEditViewController.swift in Sources */,
 				100B203A1C8894CA00435EF0 /* Group.swift in Sources */,
+				10DBF20E1C8A6CBD007620BA /* VariableManageViewController.swift in Sources */,
 				100B202E1C88786700435EF0 /* UIViewController+Keyboard.swift in Sources */,
 				106C64CD1C84070A00E6CD95 /* PCSDefines.swift in Sources */,
 				10D0D5AD1C4DF6030093F687 /* UIViewController+AlertView.swift in Sources */,
 				100B20341C8881EF00435EF0 /* GetActivityTypesReq.swift in Sources */,
 				10A686731C7DF8D000D050F0 /* WorkerContentInfo.swift in Sources */,
 				106C64CB1C83522800E6CD95 /* WorkerHomeActionDelegate.swift in Sources */,
+				10DBF20A1C8A5808007620BA /* DatePickerView.swift in Sources */,
 				10A6866A1C7DEF7400D050F0 /* GlobalUtil.swift in Sources */,
 				10D0D5A71C4DCB870093F687 /* CustomObjectUtil.swift in Sources */,
 				10D0D5C91C4E8A190093F687 /* PerformanceRecordsViewController.swift in Sources */,
