@@ -61,6 +61,7 @@ class QRCodeScanViewController: UIViewController, AVCaptureMetadataOutputObjects
         // TODO: 处理二维码
         let req = CheckInReq()
         req.activityID = activity?.identifier
+        req.qrCodes = [code]
         EZLoadingActivity.show("", disableUI: true)
         req.requestCompletion { (response) -> Void in
             EZLoadingActivity.hide()

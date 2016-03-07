@@ -11,6 +11,7 @@ import Foundation
 class CheckInReq: HttpBaseReq {
     
     var activityID: String? = nil
+    var qrCodes = [String]()
     
     override init() {
         super.init()
@@ -19,6 +20,7 @@ class CheckInReq: HttpBaseReq {
     override func requestCompletion(completion: HttpReqCompletion?) {
         var params = [String: AnyObject]()
         params["huodongId"] = activityID
+        params["userList"] = qrCodes.joinWithSeparator(",")
         params["CheckTicket"] = PCSDataManager.defaultManager().accountManager.user!.token
         params["FieldID"] = PCSDataManager.defaultManager().accountManager.user!.field
         params["thecharset"] = "utf-8"
