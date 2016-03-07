@@ -8,19 +8,20 @@
         <!--Root View Controller-->
         <scene sceneID="8YG-ob-Ula">
             <objects>
-                <tableViewController id="t4j-6S-mLD" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="mtG-Gr-sgD">
+                <tableViewController id="t4j-6S-mLD" customClass="MeViewController" customModule="PeopleCongressSystem" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="50" sectionHeaderHeight="8" sectionFooterHeight="80" id="mtG-Gr-sgD">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="0.94901960780000005" green="0.94901960780000005" blue="0.94901960780000005" alpha="1" colorSpace="calibratedRGB"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="fS9-fa-93i">
-                                <rect key="frame" x="0.0" y="92" width="600" height="44"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cell" id="fS9-fa-93i">
+                                <rect key="frame" x="0.0" y="72" width="600" height="50"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="fS9-fa-93i" id="dXj-rB-LSt">
-                                    <rect key="frame" x="0.0" y="0.0" width="600" height="43.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="49.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
+                                <inset key="separatorInset" minX="20" minY="0.0" maxX="0.0" maxY="0.0"/>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -29,8 +30,36 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Root View Controller" id="lKb-TI-Cas"/>
+                    <connections>
+                        <outlet property="footerView" destination="deu-lM-U28" id="G40-Cu-Egc"/>
+                        <outlet property="quitButton" destination="JaN-Lf-2K1" id="v13-wr-ayU"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bAU-Vd-wTp" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <view contentMode="scaleToFill" id="deu-lM-U28" userLabel="Footer">
+                    <rect key="frame" x="0.0" y="0.0" width="240" height="80"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <subviews>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JaN-Lf-2K1">
+                            <rect key="frame" x="7" y="13" width="226" height="46"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="46" id="qRK-Hy-qM0"/>
+                            </constraints>
+                            <state key="normal" title="退出登录"/>
+                            <connections>
+                                <action selector="clickQuit:" destination="t4j-6S-mLD" eventType="touchUpInside" id="rwU-hz-eq1"/>
+                                <segue destination="cCe-Bq-3Ph" kind="unwind" unwindAction="unwindToSignIn:" id="agC-sh-tSm"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstItem="JaN-Lf-2K1" firstAttribute="leading" secondItem="deu-lM-U28" secondAttribute="leading" constant="7" id="VON-bX-LTR"/>
+                        <constraint firstItem="JaN-Lf-2K1" firstAttribute="top" secondItem="deu-lM-U28" secondAttribute="top" constant="13" id="luY-st-9Z7"/>
+                        <constraint firstAttribute="trailing" secondItem="JaN-Lf-2K1" secondAttribute="trailing" constant="7" id="zpA-vf-bXp"/>
+                    </constraints>
+                </view>
+                <exit id="cCe-Bq-3Ph" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="794" y="404"/>
         </scene>

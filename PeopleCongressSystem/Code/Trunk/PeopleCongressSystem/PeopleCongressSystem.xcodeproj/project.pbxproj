@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		100160311C8D69290095D023 /* CheckInReq.swift in Sources */ = {isa = PBXBuildFile; fileRef = 100160301C8D69290095D023 /* CheckInReq.swift */; };
+		100160331C8D884D0095D023 /* MeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 100160321C8D884D0095D023 /* MeViewController.swift */; };
 		100B202E1C88786700435EF0 /* UIViewController+Keyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 100B202D1C88786700435EF0 /* UIViewController+Keyboard.swift */; };
 		100B20301C887C1000435EF0 /* TypeSelectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 100B202F1C887C1000435EF0 /* TypeSelectView.swift */; };
 		100B20321C887C2600435EF0 /* TypeSelectView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 100B20311C887C2600435EF0 /* TypeSelectView.xib */; };
@@ -89,6 +90,7 @@
 
 /* Begin PBXFileReference section */
 		100160301C8D69290095D023 /* CheckInReq.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CheckInReq.swift; sourceTree = "<group>"; };
+		100160321C8D884D0095D023 /* MeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MeViewController.swift; sourceTree = "<group>"; };
 		100B202D1C88786700435EF0 /* UIViewController+Keyboard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController+Keyboard.swift"; sourceTree = "<group>"; };
 		100B202F1C887C1000435EF0 /* TypeSelectView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TypeSelectView.swift; sourceTree = "<group>"; };
 		100B20311C887C2600435EF0 /* TypeSelectView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TypeSelectView.xib; sourceTree = "<group>"; };
@@ -314,6 +316,7 @@
 		10D0D5A11C4DCA3E0093F687 /* Me */ = {
 			isa = PBXGroup;
 			children = (
+				100160321C8D884D0095D023 /* MeViewController.swift */,
 			);
 			path = Me;
 			sourceTree = "<group>";
@@ -587,6 +590,7 @@
 				10D0D5951C4CD9810093F687 /* MainViewController.swift in Sources */,
 				10D0D5C11C4E7B160093F687 /* PCSDataManager.swift in Sources */,
 				100B20301C887C1000435EF0 /* TypeSelectView.swift in Sources */,
+				100160331C8D884D0095D023 /* MeViewController.swift in Sources */,
 				10D0D5C71C4E81FA0093F687 /* NormalImageCell.swift in Sources */,
 				10496F391C76140C0074CFC1 /* PCSCustomUtil.swift in Sources */,
 				10D0D5AA1C4DEBFD0093F687 /* SettingsManager.swift in Sources */,

@@ -152,6 +152,10 @@ class SignInViewController: UIViewController, UIActionSheetDelegate, UITextField
     }
     
     // MARK: - Navigation
+    
+    @IBAction func unwindToSignIn(segue: UIStoryboardSegue) {
+        
+    }
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
