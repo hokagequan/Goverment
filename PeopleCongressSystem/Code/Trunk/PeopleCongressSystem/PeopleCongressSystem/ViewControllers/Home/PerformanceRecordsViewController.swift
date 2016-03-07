@@ -18,6 +18,8 @@ class PerformanceRecordsViewController: UIViewController {
 
     @IBOutlet weak var listTableView: UITableView!
     
+    var selectedObject: AnyObject? = nil
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -54,6 +56,7 @@ class PerformanceRecordsViewController: UIViewController {
         if segue.identifier == "EditSegue" {
             let vc = segue.destinationViewController as! PerformanceEditViewController
             vc.pageType = EditPageType.Activity
+            vc.editObject = selectedObject
         }
     }
 

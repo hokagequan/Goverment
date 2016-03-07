@@ -8,7 +8,7 @@
 
 import Foundation
 
-class Activity: NSObject {
+class Activity: NSObject, NSCopying {
     
     var identifier: String? = nil
     var title: String? = nil
@@ -39,6 +39,27 @@ class Activity: NSObject {
         }
         
         return personsIDs.joinWithSeparator(",")
+    }
+    
+    // MARK: - NSCopying
+    
+    func copyWithZone(zone: NSZone) -> AnyObject {
+        let activity = Activity()
+        activity.identifier = self.identifier
+        activity.title = self.title
+        activity.type = self.type
+        activity.location = self.location
+        activity.content = self.content
+        activity.beginTime = self.beginTime
+        activity.endTime = self.endTime
+        activity.organization = self.organization
+        activity.createTime = self.createTime
+        activity.manager = self.manager
+        activity.available = self.available
+        activity.finished = self.finished
+        activity.persons = self.persons
+        
+        return activity
     }
     
 }

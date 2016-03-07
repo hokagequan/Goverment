@@ -445,6 +445,8 @@
                         </variation>
                     </view>
                     <connections>
+                        <outlet property="naviView" destination="S2n-4Y-9bX" id="bcg-9X-Fg6"/>
+                        <outlet property="rightNaviButton" destination="Os3-SM-1WR" id="xPL-cR-q1W"/>
                         <outlet property="tableView" destination="94k-Ss-yKu" id="u0e-Cz-E9v"/>
                         <segue destination="rjg-z4-4KX" kind="show" identifier="GroupSegue" id="UB7-ah-CAp"/>
                     </connections>

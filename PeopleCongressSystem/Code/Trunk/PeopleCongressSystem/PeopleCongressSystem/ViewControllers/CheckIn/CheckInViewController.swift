@@ -73,6 +73,10 @@ class CheckInViewController: UIViewController, UITableViewDataSource, UITableVie
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
         
         let storyboard = UIStoryboard(name: "Home", bundle: nil)
+        let vc = storyboard.instantiateViewControllerWithIdentifier("") as! PerformanceEditViewController
+        vc.pageType = EditPageType.CheckIn
+        // TODO: copy一个Activity赋值给editObject
+        self.navigationController?.pushViewController(vc, animated: true)
     }
 
     // MARK: - Navigation

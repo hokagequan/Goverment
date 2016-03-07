@@ -12,6 +12,19 @@ import EZLoadingActivity
 enum EditPageType {
     case Activity
     case Variable
+    case CheckIn
+    
+    func customNavi(naviView: PCSNavigationView, rightNaviButton: UIButton) {
+        switch self {
+        case .CheckIn:
+            naviView.title = "签到"
+            rightNaviButton.setTitle("", forState: UIControlState.Normal)
+            rightNaviButton.setImage(UIImage(named: "qr_scan"), forState: UIControlState.Normal)
+            break
+        default:
+            break
+        }
+    }
     
     func loadDelegate(viewController: PerformanceEditViewController, tableView: UITableView) -> ManageEditUIDelegate {
         func loadTableView(viewController: PerformanceEditViewController, delegate: ManageEditUIDelegate, tableView: UITableView) {
@@ -27,6 +40,11 @@ enum EditPageType {
             loadTableView(viewController, delegate: delegate, tableView: tableView)
             
             return delegate
+        case .CheckIn:
+            let delegate = ManageEditUICheckInDelegate()
+            loadTableView(viewController, delegate: delegate, tableView: tableView)
+            
+            return delegate
         default:
             return ManageEditUIDelegate()
         }
@@ -36,6 +54,8 @@ enum EditPageType {
 class PerformanceEditViewController: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var naviView: PCSNavigationView!
+    @IBOutlet weak var rightNaviButton: UIButton!
     
     var editObject: AnyObject? = nil
     var myUIDelegate: ManageEditUIDelegate? = nil
@@ -48,6 +68,7 @@ class PerformanceEditViewController: UIViewController {
         self.navigationItem.hidesBackButton = true
         PCSCustomUtil.customNavigationController(self)
         
+        pageType?.customNavi(naviView, rightNaviButton: rightNaviButton)
         myUIDelegate = pageType?.loadDelegate(self, tableView: tableView)
         myUIDelegate?.editObject = editObject
     }
@@ -61,10 +82,6 @@ class PerformanceEditViewController: UIViewController {
     
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
-        
-//        let typeView = TypeSelectView.view()
-//        typeView.delegate = self
-//        typeView.showInView(self.view)
     }
     
     override func viewWillDisappear(animated: Bool) {
