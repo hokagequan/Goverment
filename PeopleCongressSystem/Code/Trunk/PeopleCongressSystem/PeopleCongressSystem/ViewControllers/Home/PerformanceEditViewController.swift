@@ -9,7 +9,7 @@
 import UIKit
 import EZLoadingActivity
 
-enum PageType {
+enum EditPageType {
     case Activity
     case Variable
     
@@ -39,7 +39,7 @@ class PerformanceEditViewController: UIViewController {
     
     var editObject: AnyObject? = nil
     var myUIDelegate: ManageEditUIDelegate? = nil
-    var pageType: PageType? = nil
+    var pageType: EditPageType? = nil
     
     override func viewDidLoad() {
         super.viewDidLoad()

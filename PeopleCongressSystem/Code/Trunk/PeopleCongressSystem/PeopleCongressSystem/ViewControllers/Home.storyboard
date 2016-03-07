@@ -164,16 +164,29 @@
                                     <outlet property="viewController" destination="BkH-2E-4Ca" id="V3S-zb-1SB"/>
                                 </connections>
                             </view>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="CFG-Qn-5qO">
+                                <rect key="frame" x="0.0" y="108" width="600" height="492"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="BkH-2E-4Ca" id="ZEI-iX-Tfx"/>
+                                    <outlet property="delegate" destination="BkH-2E-4Ca" id="hkd-vg-X8e"/>
+                                </connections>
+                            </tableView>
                         </subviews>
                         <color key="backgroundColor" red="0.94901960780000005" green="0.94901960780000005" blue="0.94901960780000005" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="1ah-le-gNb" firstAttribute="top" secondItem="M5D-nH-oLf" secondAttribute="bottom" id="GRS-zr-SzI"/>
                             <constraint firstItem="1ah-le-gNb" firstAttribute="leading" secondItem="6uN-Jw-bVY" secondAttribute="leading" id="JH6-cu-Sia"/>
+                            <constraint firstItem="CFG-Qn-5qO" firstAttribute="leading" secondItem="6uN-Jw-bVY" secondAttribute="leading" id="NYN-5y-rJq"/>
                             <constraint firstAttribute="trailing" secondItem="1ah-le-gNb" secondAttribute="trailing" id="U8r-WB-7sa"/>
+                            <constraint firstItem="CFG-Qn-5qO" firstAttribute="top" secondItem="1ah-le-gNb" secondAttribute="bottom" constant="8" id="ba7-1a-V6j"/>
+                            <constraint firstItem="ooC-f0-1xe" firstAttribute="top" secondItem="CFG-Qn-5qO" secondAttribute="bottom" id="izz-FY-UpA"/>
+                            <constraint firstAttribute="trailing" secondItem="CFG-Qn-5qO" secondAttribute="trailing" id="k3u-HL-wsz"/>
                         </constraints>
                     </view>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <connections>
+                        <outlet property="listTableView" destination="CFG-Qn-5qO" id="UXV-36-eyv"/>
                         <segue destination="Kpt-zv-23Y" kind="show" identifier="EditSegue" id="DoP-OT-W3Y"/>
                     </connections>
                 </viewController>
@@ -238,7 +251,7 @@
         <!--View Controller-->
         <scene sceneID="gdi-XG-cqO">
             <objects>
-                <viewController id="Kpt-zv-23Y" customClass="PerformanceEditViewController" customModule="PeopleCongressSystem" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="PerformanceEditViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Kpt-zv-23Y" customClass="PerformanceEditViewController" customModule="PeopleCongressSystem" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="KQy-NR-eJn"/>
                         <viewControllerLayoutGuide type="bottom" id="ZmJ-Zf-DE6"/>

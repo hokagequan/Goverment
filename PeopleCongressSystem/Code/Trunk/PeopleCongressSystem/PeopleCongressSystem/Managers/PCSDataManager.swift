@@ -171,7 +171,7 @@ class PCSDataManager {
         }
     }
     
-    func GetCongressList(organizationID: String, completion: ((Array<Person>?) -> Void)?) {
+    func getCongressList(organizationID: String, completion: ((Array<Person>?) -> Void)?) {
         let req = GetCongressListReq()
         req.organizationID = organizationID
         
@@ -202,6 +202,49 @@ class PCSDataManager {
                     person.name = dict["RDDB_NAME"] as? String
                     person.organizationID = dict["RDDB_NAME"] as? String
                     relArray?.append(person)
+                }
+            }
+        }
+    }
+    
+    func getActivityList(type: String, completion: ((Array<Activity>?) -> Void)?) {
+        let req = GetActivitiesReq()
+        req.type = type
+        
+        req.requestCompletion { (response) -> Void in
+            var relArray: Array<Activity>? = nil
+            
+            defer {
+                completion?(relArray)
+            }
+            
+            let result = response?.result
+            
+            if result?.isSuccess == true {
+                guard let value = result?.value else {
+                    return
+                }
+                
+                guard let info = HttpBaseReq.parseResponse(value) as? NSArray else {
+                    return
+                }
+                
+                relArray = [Activity]()
+                for i in 0..<info.count {
+                    let dict = info[i] as! Dictionary<String, AnyObject>
+                    let activity = Activity()
+                    activity.identifier = dict["huodong_ID"] as? String
+                    activity.title = dict["huodong_name"] as? String
+                    activity.type = dict["huodong_leixing"] as? String
+                    activity.location = dict["huodong_didian"] as? String
+                    activity.beginTime = dict["huodong_shijian_ks"] as? String
+                    activity.endTime = dict["huodong_shijian_js"] as? String
+                    activity.organization = dict["huodong_zzdw"] as? String
+                    activity.available = dict["huidong_IsDel"] as! Bool
+                    activity.createTime = dict["huodong_createtime"] as? String
+                    activity.manager = dict["huodong_sbdw"] as? String
+                    activity.finished = dict["huodong_zt"] as! Bool
+                    relArray?.append(activity)
                 }
             }
         }

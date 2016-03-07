@@ -9,8 +9,15 @@
 import UIKit
 import TagListView
 
+enum ManagePageType {
+    case Activity
+    case Variable
+}
+
 class PerformanceRecordsViewController: UIViewController {
 
+    @IBOutlet weak var listTableView: UITableView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -46,7 +53,7 @@ class PerformanceRecordsViewController: UIViewController {
         // Pass the selected object to the new view controller.
         if segue.identifier == "EditSegue" {
             let vc = segue.destinationViewController as! PerformanceEditViewController
-            vc.pageType = PageType.Activity
+            vc.pageType = EditPageType.Activity
         }
     }
 

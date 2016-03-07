@@ -133,6 +133,7 @@ class PersonListViewController: UIViewController, UITableViewDelegate, UITableVi
         
         let frame = CGRectMake(5, 4, cell.bounds.size.width - 10, cell.bounds.size.height - 8)
         let view = UIView(frame: frame)
+        view.tag = 1000
         CustomObjectUtil.customObjectsLayout([view], backgroundColor: UIColor.whiteColor(), borderWidth: 1, borderColor: GlobalUtil.colorRGBA(240, g: 240, b: 240, a: 1.0), corner: 2)
         cell.contentView.addSubview(view)
     }

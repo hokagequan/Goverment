@@ -121,13 +121,31 @@ class ManageEditUIActivityDelegate: ManageEditUIDelegate {
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = super.tableView(tableView, cellForRowAtIndexPath: indexPath)
         
+        let activity = self.editObject as? Activity
         let section = EditSections(rawValue: indexPath.section)!
         let row = section.rows()[indexPath.row]
-        
         if cell is NormalImageTableCell {
             switch row.title! {
+            case "标题:":
+                (cell as! NormalImageTableCell).titleTextField.text = activity?.title
+                break
             case "类型:":
-                (cell as! NormalImageTableCell).titleTextField.text = selectedInfo?.title
+                (cell as! NormalImageTableCell).titleTextField.text = selectedInfo != nil ? selectedInfo?.title : activity?.type
+                break
+            case "组织:":
+                (cell as! NormalImageTableCell).titleTextField.text = activity?.organization
+                break
+            case "开始时间:":
+                (cell as! NormalImageTableCell).titleTextField.text = activity?.beginTime
+                break
+            case "结束时间:":
+                (cell as! NormalImageTableCell).titleTextField.text = activity?.endTime
+                break
+            case "地址:":
+                (cell as! NormalImageTableCell).titleTextField.text = activity?.location
+                break
+            case "内容:":
+                (cell as! NormalImageTableCell).titleTextField.text = activity?.content
                 break
             default:
                 break
@@ -142,7 +160,6 @@ class ManageEditUIActivityDelegate: ManageEditUIDelegate {
         
         let section = EditSections(rawValue: indexPath.section)!
         let row = section.rows()[indexPath.row]
-        
         switch row.title! {
         case "类型:":
             EZLoadingActivity.show("", disableUI: true)
