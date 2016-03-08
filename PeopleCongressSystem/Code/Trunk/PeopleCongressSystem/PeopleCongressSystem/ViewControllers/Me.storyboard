@@ -414,7 +414,7 @@
                                     <outlet property="viewController" destination="wyi-b5-NcW" id="qtg-1r-dsZ"/>
                                 </connections>
                             </view>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="zdT-HJ-LcF">
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="zdT-HJ-LcF" customClass="GrowingTextView" customModule="GrowingTextView">
                                 <rect key="frame" x="8" y="108" width="584" height="140"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
@@ -450,6 +450,7 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="feedbackTextView" destination="zdT-HJ-LcF" id="6Mw-vU-aXp"/>
                         <outlet property="submitButton" destination="b79-cx-66u" id="zAx-zg-sQZ"/>
                     </connections>
                 </viewController>
