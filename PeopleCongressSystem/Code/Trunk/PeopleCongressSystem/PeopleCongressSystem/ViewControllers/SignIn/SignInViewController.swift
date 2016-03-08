@@ -57,8 +57,8 @@ class SignInViewController: UIViewController, UIActionSheetDelegate, UITextField
             topLC.constant = topLC.constant * GlobalUtil.rateForHeight()
         }
         
-        // FIXME: 正式释放注释
 //        gestureButton.hidden = SettingsManager.getData(SettingKey.GesturePassword.rawValue) == nil
+        gestureButton.hidden = PCSDataManager.defaultManager().accountManager.user?.gesturePassword == nil
     }
     
     override func viewWillAppear(animated: Bool) {

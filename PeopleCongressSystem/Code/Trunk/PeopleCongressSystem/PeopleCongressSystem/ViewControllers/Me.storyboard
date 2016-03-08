@@ -36,7 +36,8 @@
                         <outlet property="footerView" destination="deu-lM-U28" id="G40-Cu-Egc"/>
                         <outlet property="quitButton" destination="JaN-Lf-2K1" id="v13-wr-ayU"/>
                         <segue destination="H7n-jz-d8G" kind="show" identifier="QRDownloadSegue" id="uYd-rZ-znO"/>
-                        <segue destination="fdX-MZ-Yyh" kind="show" id="dpA-J8-EDG"/>
+                        <segue destination="fdX-MZ-Yyh" kind="show" identifier="ChangePwdSegue" id="dpA-J8-EDG"/>
+                        <segue destination="5c4-Nr-5L0" kind="show" identifier="ChangeGestureSegue" id="muM-wS-VZJ"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bAU-Vd-wTp" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -191,7 +192,7 @@
         <!--View Controller-->
         <scene sceneID="gZG-Hu-gC3">
             <objects>
-                <viewController id="fdX-MZ-Yyh" customClass="ChangePasswordViewController" customModule="PeopleCongressSystem" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController hidesBottomBarWhenPushed="YES" id="fdX-MZ-Yyh" customClass="ChangePasswordViewController" customModule="PeopleCongressSystem" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="NBy-CK-aj3"/>
                         <viewControllerLayoutGuide type="bottom" id="Gzi-tJ-nRQ"/>
@@ -333,5 +334,63 @@
             </objects>
             <point key="canvasLocation" x="1607" y="1180"/>
         </scene>
+        <!--View Controller-->
+        <scene sceneID="vEJ-pw-9qn">
+            <objects>
+                <viewController hidesBottomBarWhenPushed="YES" id="5c4-Nr-5L0" customClass="ChangeGestureViewController" customModule="PeopleCongressSystem" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="B9o-Yq-TLY"/>
+                        <viewControllerLayoutGuide type="bottom" id="JzC-ss-nQg"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="sUq-Uz-esq">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7vI-P2-l5G" customClass="PCSNavigationView" customModule="PeopleCongressSystem" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="64" width="600" height="36"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="36" id="nXI-Jo-gNQ"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="title" value="修改手势密码"/>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <outlet property="viewController" destination="5c4-Nr-5L0" id="SX6-qQ-B1q"/>
+                                </connections>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Hs4-Kh-LcU" customClass="HUIPatternLockView" customModule="HUIPatternLockView_Swift">
+                                <rect key="frame" x="8" y="108" width="584" height="462"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="image" keyPath="normalDotImage" value="gesture_dot_nor"/>
+                                    <userDefinedRuntimeAttribute type="image" keyPath="highlightedDotImage" value="gesture_dot_sel"/>
+                                </userDefinedRuntimeAttributes>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" red="0.94901960780000005" green="0.94901960780000005" blue="0.94901960780000005" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="7vI-P2-l5G" firstAttribute="top" secondItem="B9o-Yq-TLY" secondAttribute="bottom" id="9Rb-0Z-jrJ"/>
+                            <constraint firstAttribute="trailing" secondItem="7vI-P2-l5G" secondAttribute="trailing" id="UXH-JV-ekJ"/>
+                            <constraint firstItem="7vI-P2-l5G" firstAttribute="leading" secondItem="sUq-Uz-esq" secondAttribute="leading" id="VlI-WL-cNn"/>
+                            <constraint firstAttribute="trailing" secondItem="Hs4-Kh-LcU" secondAttribute="trailing" constant="8" id="o0b-dd-9L5"/>
+                            <constraint firstItem="JzC-ss-nQg" firstAttribute="top" secondItem="Hs4-Kh-LcU" secondAttribute="bottom" constant="30" id="pIG-gH-HAn"/>
+                            <constraint firstItem="Hs4-Kh-LcU" firstAttribute="top" secondItem="7vI-P2-l5G" secondAttribute="bottom" constant="8" id="rOm-bh-Lsk"/>
+                            <constraint firstItem="Hs4-Kh-LcU" firstAttribute="leading" secondItem="sUq-Uz-esq" secondAttribute="leading" constant="8" id="zC7-yv-kbR"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="lockView" destination="Hs4-Kh-LcU" id="6F5-y1-XJk"/>
+                        <outlet property="naviView" destination="7vI-P2-l5G" id="x8d-BR-tCn"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="zAP-iB-xhS" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1607" y="1949"/>
+        </scene>
     </scenes>
+    <resources>
+        <image name="gesture_dot_nor" width="45" height="45"/>
+        <image name="gesture_dot_sel" width="69" height="69"/>
+    </resources>
 </document>

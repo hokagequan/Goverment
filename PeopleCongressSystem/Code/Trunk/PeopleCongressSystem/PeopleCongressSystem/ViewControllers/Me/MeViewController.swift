@@ -106,6 +106,12 @@ class MeViewController: UITableViewController {
         case .QRCodeDownload:
             self.performSegueWithIdentifier("QRDownloadSegue", sender: nil)
             break
+        case .ChangePassword:
+            self.performSegueWithIdentifier("ChangePwdSegue", sender: self)
+            break
+        case .ChangeGesture:
+            self.performSegueWithIdentifier("ChangeGestureSegue", sender: self)
+            break
         default:
             break
         }

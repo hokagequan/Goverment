@@ -31,7 +31,7 @@ class AccountManager {
         }
     }
     
-    func changePassword(theOld: String, theNew: String, completion: SimpleCompletion) {
+    func changePassword(theOld: String, theNew: String, completion: SimpleCompletion?) {
         let req = ChangePasswordReq()
         req.theNew = theNew
         req.theOld = theOld
@@ -61,7 +61,7 @@ class AccountManager {
                     
                     let context = CoreDataManager.defalutManager().managedObjectContext
                     let fetchReq = NSFetchRequest(entityName: "UserEntity")
-                    fetchReq.predicate = NSPredicate(format: "account == %@", self.user!.account)
+                    fetchReq.predicate = NSPredicate(format: "account == %@", self.user!.account!)
                     
                     do {
                         let users = try context.executeFetchRequest(fetchReq) as! Array<UserEntity>

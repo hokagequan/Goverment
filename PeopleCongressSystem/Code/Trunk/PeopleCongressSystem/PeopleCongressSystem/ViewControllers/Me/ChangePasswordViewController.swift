@@ -57,7 +57,7 @@ class ChangePasswordViewController: UIViewController, UITextFieldDelegate {
             return
         }
         
-        PCSDataManager.defaultManager().accountManager.changePassword(theOldPwdTextField.text!, theNew: theNewPwdTextField!.text) { (success, message) -> Void in
+        PCSDataManager.defaultManager().accountManager.changePassword(theOldPwdTextField.text!, theNew: theNewPwdTextField!.text!) { (success, message) -> Void in
             if success == true {
                 self.showAlert("保存成功")
             }
