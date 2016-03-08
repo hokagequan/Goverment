@@ -21,11 +21,13 @@
 		100B203C1C88968900435EF0 /* GetGroupReq.swift in Sources */ = {isa = PBXBuildFile; fileRef = 100B203B1C88968900435EF0 /* GetGroupReq.swift */; };
 		100B203E1C89222F00435EF0 /* PersonListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 100B203D1C89222F00435EF0 /* PersonListViewController.swift */; };
 		100B20401C895FC600435EF0 /* GetPersonListReq.swift in Sources */ = {isa = PBXBuildFile; fileRef = 100B203F1C895FC600435EF0 /* GetPersonListReq.swift */; };
+		1042329B1C8E61F400809859 /* ChangePasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1042329A1C8E61F400809859 /* ChangePasswordViewController.swift */; };
 		10496F371C76012F0074CFC1 /* SignInReq.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10496F361C76012F0074CFC1 /* SignInReq.swift */; };
 		10496F391C76140C0074CFC1 /* PCSCustomUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10496F381C76140C0074CFC1 /* PCSCustomUtil.swift */; };
 		106C64C91C83511400E6CD95 /* PCSProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 106C64C81C83511400E6CD95 /* PCSProtocols.swift */; };
 		106C64CB1C83522800E6CD95 /* WorkerHomeActionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 106C64CA1C83522800E6CD95 /* WorkerHomeActionDelegate.swift */; };
 		106C64CD1C84070A00E6CD95 /* PCSDefines.swift in Sources */ = {isa = PBXBuildFile; fileRef = 106C64CC1C84070A00E6CD95 /* PCSDefines.swift */; };
+		108965971C8F183700CA98D0 /* ChangePasswordReq.swift in Sources */ = {isa = PBXBuildFile; fileRef = 108965961C8F183700CA98D0 /* ChangePasswordReq.swift */; };
 		10A6866A1C7DEF7400D050F0 /* GlobalUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10A686691C7DEF7400D050F0 /* GlobalUtil.swift */; };
 		10A6866D1C7DF12600D050F0 /* UserEntity+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10A6866B1C7DF12600D050F0 /* UserEntity+CoreDataProperties.swift */; };
 		10A6866E1C7DF12600D050F0 /* UserEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10A6866C1C7DF12600D050F0 /* UserEntity.swift */; };
@@ -105,11 +107,13 @@
 		100B203B1C88968900435EF0 /* GetGroupReq.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetGroupReq.swift; sourceTree = "<group>"; };
 		100B203D1C89222F00435EF0 /* PersonListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PersonListViewController.swift; sourceTree = "<group>"; };
 		100B203F1C895FC600435EF0 /* GetPersonListReq.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetPersonListReq.swift; sourceTree = "<group>"; };
+		1042329A1C8E61F400809859 /* ChangePasswordViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChangePasswordViewController.swift; sourceTree = "<group>"; };
 		10496F361C76012F0074CFC1 /* SignInReq.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignInReq.swift; sourceTree = "<group>"; };
 		10496F381C76140C0074CFC1 /* PCSCustomUtil.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PCSCustomUtil.swift; sourceTree = "<group>"; };
 		106C64C81C83511400E6CD95 /* PCSProtocols.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PCSProtocols.swift; sourceTree = "<group>"; };
 		106C64CA1C83522800E6CD95 /* WorkerHomeActionDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WorkerHomeActionDelegate.swift; sourceTree = "<group>"; };
 		106C64CC1C84070A00E6CD95 /* PCSDefines.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PCSDefines.swift; sourceTree = "<group>"; };
+		108965961C8F183700CA98D0 /* ChangePasswordReq.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChangePasswordReq.swift; sourceTree = "<group>"; };
 		10A686691C7DEF7400D050F0 /* GlobalUtil.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GlobalUtil.swift; sourceTree = "<group>"; };
 		10A6866B1C7DF12600D050F0 /* UserEntity+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UserEntity+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		10A6866C1C7DF12600D050F0 /* UserEntity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserEntity.swift; sourceTree = "<group>"; };
@@ -323,6 +327,7 @@
 			children = (
 				100160321C8D884D0095D023 /* MeViewController.swift */,
 				100160341C8DB93E0095D023 /* QRCodeDownloadViewController.swift */,
+				1042329A1C8E61F400809859 /* ChangePasswordViewController.swift */,
 			);
 			path = Me;
 			sourceTree = "<group>";
@@ -385,6 +390,7 @@
 				100B203F1C895FC600435EF0 /* GetPersonListReq.swift */,
 				10DBF2071C896ED4007620BA /* GetCongressListReq.swift */,
 				100160301C8D69290095D023 /* CheckInReq.swift */,
+				108965961C8F183700CA98D0 /* ChangePasswordReq.swift */,
 			);
 			path = HttpRequests;
 			sourceTree = "<group>";
@@ -592,6 +598,7 @@
 				10DBF2121C8A823C007620BA /* ManageEditUIActivityDelegate.swift in Sources */,
 				10F109851C8822A30083D89D /* Person.swift in Sources */,
 				100160311C8D69290095D023 /* CheckInReq.swift in Sources */,
+				108965971C8F183700CA98D0 /* ChangePasswordReq.swift in Sources */,
 				10D0D5C31C4E7D710093F687 /* FindPwdViewController.swift in Sources */,
 				10D0D5951C4CD9810093F687 /* MainViewController.swift in Sources */,
 				10D0D5C11C4E7B160093F687 /* PCSDataManager.swift in Sources */,
@@ -608,6 +615,7 @@
 				100B202E1C88786700435EF0 /* UIViewController+Keyboard.swift in Sources */,
 				106C64CD1C84070A00E6CD95 /* PCSDefines.swift in Sources */,
 				10D0D5AD1C4DF6030093F687 /* UIViewController+AlertView.swift in Sources */,
+				1042329B1C8E61F400809859 /* ChangePasswordViewController.swift in Sources */,
 				100B20341C8881EF00435EF0 /* GetActivityTypesReq.swift in Sources */,
 				10A686731C7DF8D000D050F0 /* WorkerContentInfo.swift in Sources */,
 				106C64CB1C83522800E6CD95 /* WorkerHomeActionDelegate.swift in Sources */,

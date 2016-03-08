@@ -31,6 +31,64 @@ class AccountManager {
         }
     }
     
+    func changePassword(theOld: String, theNew: String, completion: SimpleCompletion) {
+        let req = ChangePasswordReq()
+        req.theNew = theNew
+        req.theOld = theOld
+        
+        req.requestCompletion { (response) -> Void in
+            let result = response?.result
+            var success: Bool = false
+            
+            defer {
+                if success == true {
+                    completion?(true, nil)
+                }
+                else {
+                    completion?(false, "保存失败")
+                }
+            }
+            
+            if result?.isSuccess == true {
+                guard let value = result?.value else {
+                    success = false
+                    
+                    return
+                }
+                
+                if ((value as NSString).intValue >= 1) {
+                    success = true
+                    
+                    let context = CoreDataManager.defalutManager().managedObjectContext
+                    let fetchReq = NSFetchRequest(entityName: "UserEntity")
+                    fetchReq.predicate = NSPredicate(format: "account == %@", self.user!.account)
+                    
+                    do {
+                        let users = try context.executeFetchRequest(fetchReq) as! Array<UserEntity>
+                        let storeUser = users.first
+                        
+                        if storeUser == nil {
+                            return
+                        }
+                        
+                        storeUser?.password = theNew
+                        
+                        CoreDataManager.defalutManager().saveContext(nil)
+                    }
+                    catch {
+                        success = true
+                    }
+                }
+                else {
+                    success = false
+                }
+            }
+            else {
+                success = false
+            }
+        }
+    }
+    
     func signIn(account: String, password: String, completion: SimpleCompletion?) {
         let req = SignInReq()
         req.account = account
