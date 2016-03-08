@@ -38,6 +38,7 @@
                         <segue destination="H7n-jz-d8G" kind="show" identifier="QRDownloadSegue" id="uYd-rZ-znO"/>
                         <segue destination="fdX-MZ-Yyh" kind="show" identifier="ChangePwdSegue" id="dpA-J8-EDG"/>
                         <segue destination="5c4-Nr-5L0" kind="show" identifier="ChangeGestureSegue" id="muM-wS-VZJ"/>
+                        <segue destination="wyi-b5-NcW" kind="show" identifier="FeedbackSegue" id="GEB-N4-IvT"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bAU-Vd-wTp" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -387,6 +388,74 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zAP-iB-xhS" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1607" y="1949"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="mRa-Tv-R9d">
+            <objects>
+                <viewController id="wyi-b5-NcW" customClass="FeedbackViewController" customModule="PeopleCongressSystem" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="95I-O4-1W8"/>
+                        <viewControllerLayoutGuide type="bottom" id="LpQ-CT-gn7"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="T0D-YY-8v8">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="shK-VT-A8f" customClass="PCSNavigationView" customModule="PeopleCongressSystem" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="64" width="600" height="36"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="36" id="gzD-M2-GYJ"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="title" value="意见反馈"/>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <outlet property="viewController" destination="wyi-b5-NcW" id="qtg-1r-dsZ"/>
+                                </connections>
+                            </view>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="zdT-HJ-LcF">
+                                <rect key="frame" x="8" y="108" width="584" height="140"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="140" id="n8h-Br-fXF"/>
+                                </constraints>
+                                <color key="textColor" red="0.1137254902" green="0.1137254902" blue="0.1137254902" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="b79-cx-66u">
+                                <rect key="frame" x="8" y="288" width="584" height="46"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="46" id="bqk-73-b6h"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <state key="normal" title="提交"/>
+                                <connections>
+                                    <action selector="clickSubmit:" destination="wyi-b5-NcW" eventType="touchUpInside" id="vqr-4Q-e0E"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" red="0.94901960780000005" green="0.94901960780000005" blue="0.94901960780000005" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="zdT-HJ-LcF" firstAttribute="leading" secondItem="T0D-YY-8v8" secondAttribute="leading" constant="8" id="Dsx-qP-hJC"/>
+                            <constraint firstAttribute="trailing" secondItem="shK-VT-A8f" secondAttribute="trailing" id="JQR-J2-hTh"/>
+                            <constraint firstAttribute="trailing" secondItem="zdT-HJ-LcF" secondAttribute="trailing" constant="8" id="SMm-Ha-CyM"/>
+                            <constraint firstItem="zdT-HJ-LcF" firstAttribute="top" secondItem="shK-VT-A8f" secondAttribute="bottom" constant="8" id="T2p-eH-FuU"/>
+                            <constraint firstItem="shK-VT-A8f" firstAttribute="leading" secondItem="T0D-YY-8v8" secondAttribute="leading" id="Xob-Yj-auc"/>
+                            <constraint firstItem="shK-VT-A8f" firstAttribute="top" secondItem="95I-O4-1W8" secondAttribute="bottom" id="lFv-2g-YP6"/>
+                            <constraint firstItem="b79-cx-66u" firstAttribute="top" secondItem="zdT-HJ-LcF" secondAttribute="bottom" constant="40" id="lsw-J6-aJD"/>
+                            <constraint firstItem="b79-cx-66u" firstAttribute="trailing" secondItem="zdT-HJ-LcF" secondAttribute="trailing" id="td7-nv-bie"/>
+                            <constraint firstItem="b79-cx-66u" firstAttribute="leading" secondItem="zdT-HJ-LcF" secondAttribute="leading" id="vFv-I1-SKH"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="submitButton" destination="b79-cx-66u" id="zAx-zg-sQZ"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="3Tv-Pe-LCS" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1607" y="2718"/>
         </scene>
     </scenes>
     <resources>

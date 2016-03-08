@@ -112,6 +112,9 @@ class MeViewController: UITableViewController {
         case .ChangeGesture:
             self.performSegueWithIdentifier("ChangeGestureSegue", sender: self)
             break
+        case .Feedback:
+            self.performSegueWithIdentifier("FeedbackSegue", sender: self)
+            break
         default:
             break
         }

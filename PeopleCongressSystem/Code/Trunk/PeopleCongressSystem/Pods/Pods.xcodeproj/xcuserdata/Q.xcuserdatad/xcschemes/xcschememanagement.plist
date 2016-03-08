@@ -14,6 +14,16 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>GrowingTextView-GrowingTextView.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>GrowingTextView.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>HUIPatternLockView-Swift.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -32,12 +42,22 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>79C040AFDDCE1BCBF6D8B5EB0B85887F</key>
+		<key>43757B396214C7D144418A9C475936BE</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>89790E9ABAC7CC39F8F00ED1BC00208E</key>
+		<key>62CB4A53E53AA477BFD9B082EF16EF5F</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>63FB3FBF765C1F3013D3F2C22A8D231E</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>79C040AFDDCE1BCBF6D8B5EB0B85887F</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -47,12 +67,12 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>9269BB5EE06D126863919B1B4060FDBE</key>
+		<key>DC87E2772B396D222D3A9A8FFC70D9FE</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>DC87E2772B396D222D3A9A8FFC70D9FE</key>
+		<key>FDE0055571C14659668425A5653B3DD0</key>
 		<dict>
 			<key>primary</key>
 			<true/>
