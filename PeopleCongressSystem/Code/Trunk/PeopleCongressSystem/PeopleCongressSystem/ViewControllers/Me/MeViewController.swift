@@ -41,7 +41,7 @@ class MeViewController: UITableViewController {
         super.viewDidLoad()
 
         // Uncomment the following line to preserve selection between presentations
-        self.clearsSelectionOnViewWillAppear = false
+        self.clearsSelectionOnViewWillAppear = true
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
@@ -98,6 +98,17 @@ class MeViewController: UITableViewController {
         cell.textLabel?.font = UIFont.systemFontOfSize(15)
 
         return cell
+    }
+    
+    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        let row = Rows(rawValue: indexPath.row)!
+        switch row {
+        case .QRCodeDownload:
+            self.performSegueWithIdentifier("QRDownloadSegue", sender: nil)
+            break
+        default:
+            break
+        }
     }
 
     /*

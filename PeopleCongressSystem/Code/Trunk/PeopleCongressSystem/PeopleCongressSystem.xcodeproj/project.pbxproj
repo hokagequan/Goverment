@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		100160311C8D69290095D023 /* CheckInReq.swift in Sources */ = {isa = PBXBuildFile; fileRef = 100160301C8D69290095D023 /* CheckInReq.swift */; };
 		100160331C8D884D0095D023 /* MeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 100160321C8D884D0095D023 /* MeViewController.swift */; };
+		100160351C8DB93E0095D023 /* QRCodeDownloadViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 100160341C8DB93E0095D023 /* QRCodeDownloadViewController.swift */; };
+		100160371C8E5B7B0095D023 /* QRDownloadCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 100160361C8E5B7B0095D023 /* QRDownloadCell.swift */; };
 		100B202E1C88786700435EF0 /* UIViewController+Keyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 100B202D1C88786700435EF0 /* UIViewController+Keyboard.swift */; };
 		100B20301C887C1000435EF0 /* TypeSelectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 100B202F1C887C1000435EF0 /* TypeSelectView.swift */; };
 		100B20321C887C2600435EF0 /* TypeSelectView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 100B20311C887C2600435EF0 /* TypeSelectView.xib */; };
@@ -91,6 +93,8 @@
 /* Begin PBXFileReference section */
 		100160301C8D69290095D023 /* CheckInReq.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CheckInReq.swift; sourceTree = "<group>"; };
 		100160321C8D884D0095D023 /* MeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MeViewController.swift; sourceTree = "<group>"; };
+		100160341C8DB93E0095D023 /* QRCodeDownloadViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QRCodeDownloadViewController.swift; sourceTree = "<group>"; };
+		100160361C8E5B7B0095D023 /* QRDownloadCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QRDownloadCell.swift; sourceTree = "<group>"; };
 		100B202D1C88786700435EF0 /* UIViewController+Keyboard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController+Keyboard.swift"; sourceTree = "<group>"; };
 		100B202F1C887C1000435EF0 /* TypeSelectView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TypeSelectView.swift; sourceTree = "<group>"; };
 		100B20311C887C2600435EF0 /* TypeSelectView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TypeSelectView.xib; sourceTree = "<group>"; };
@@ -280,6 +284,7 @@
 				10DBF20B1C8A5817007620BA /* DatePickerView.xib */,
 				10DBF2171C8C0CF7007620BA /* NormalInfoCell.swift */,
 				10DBF2181C8C0CF7007620BA /* NormalInfoCell.xib */,
+				100160361C8E5B7B0095D023 /* QRDownloadCell.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -317,6 +322,7 @@
 			isa = PBXGroup;
 			children = (
 				100160321C8D884D0095D023 /* MeViewController.swift */,
+				100160341C8DB93E0095D023 /* QRCodeDownloadViewController.swift */,
 			);
 			path = Me;
 			sourceTree = "<group>";
@@ -605,6 +611,7 @@
 				100B20341C8881EF00435EF0 /* GetActivityTypesReq.swift in Sources */,
 				10A686731C7DF8D000D050F0 /* WorkerContentInfo.swift in Sources */,
 				106C64CB1C83522800E6CD95 /* WorkerHomeActionDelegate.swift in Sources */,
+				100160351C8DB93E0095D023 /* QRCodeDownloadViewController.swift in Sources */,
 				10DBF20A1C8A5808007620BA /* DatePickerView.swift in Sources */,
 				10A6866A1C7DEF7400D050F0 /* GlobalUtil.swift in Sources */,
 				10D0D5A71C4DCB870093F687 /* CustomObjectUtil.swift in Sources */,
@@ -617,6 +624,7 @@
 				10F7DE631C7863A3002A86CA /* PCSNavigationView.swift in Sources */,
 				10D0D5D31C4FDB440093F687 /* CustomNavigationView.swift in Sources */,
 				10F109811C8816D10083D89D /* GetActivitiesReq.swift in Sources */,
+				100160371C8E5B7B0095D023 /* QRDownloadCell.swift in Sources */,
 				10D0D5B31C4E36600093F687 /* CoreDataManager.swift in Sources */,
 				10A686711C7DF7A200D050F0 /* ContentInfo.swift in Sources */,
 				10DBF21E1C8D510E007620BA /* QRCodeScanViewController.swift in Sources */,
