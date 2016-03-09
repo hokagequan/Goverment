@@ -115,6 +115,9 @@ class MeViewController: UITableViewController {
         case .Feedback:
             self.performSegueWithIdentifier("FeedbackSegue", sender: self)
             break
+        case .About:
+            self.performSegueWithIdentifier("AboutSegue", sender: self)
+            break
         default:
             break
         }
