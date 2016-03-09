@@ -42,6 +42,10 @@ class WorkerHomeActionDelegate: ActionProtocol {
             viewController.navigationController?.pushViewController(vc, animated: true)
             break
         case .CongressInfo:
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            let vc = storyboard.instantiateViewControllerWithIdentifier("CommonHTMLViewController") as! CommonHTMLViewController
+            vc.URL = PCSDataManager.defaultManager().htmlURL(pageHTMLCongressInfo)
+            viewController.navigationController?.pushViewController(vc, animated: true)
             break
         case .Notify:
             break
