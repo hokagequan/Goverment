@@ -18,6 +18,7 @@ let pageHTMLVariableManager = "/apph5/GZRY_lvzhiguanli.aspx?"
 let pageHTMLVariableAnalyze = "/apph5/GZRY_lvzhitongji.aspx?"
 let pageHTMLShareSpace = "/apph5/GZRY_gongxiangkongjianM.aspx?"
 let pageHTMLCongressInfo = "/apph5/GZRY_daibaoxinxi.aspx?"
+let pageHTMLNotify = "/apph5/GZRY_tongzhitongbao.aspx?"
 
 let colorRed = GlobalUtil.colorRGBA(230, g: 27, b: 39, a: 1.0)
 
