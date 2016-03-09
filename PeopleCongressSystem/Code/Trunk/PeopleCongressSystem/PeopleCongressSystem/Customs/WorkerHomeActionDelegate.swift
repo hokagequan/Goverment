@@ -30,6 +30,10 @@ class WorkerHomeActionDelegate: ActionProtocol {
             viewController.navigationController?.pushViewController(vc, animated: true)
             break
         case .Analyze:
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            let vc = storyboard.instantiateViewControllerWithIdentifier("CommonHTMLViewController") as! CommonHTMLViewController
+            vc.URL = PCSDataManager.defaultManager().htmlURL(pageHTMLVariableAnalyze)
+            viewController.navigationController?.pushViewController(vc, animated: true)
             break
         case .ShareSpace:
             break

@@ -15,6 +15,7 @@ let serverSoapAction = "http://tempuri.org/"
 
 /// @brief HTML Page
 let pageHTMLVariableManager = "/apph5/GZRY_lvzhiguanli.aspx?"
+let pageHTMLVariableAnalyze = "fuwuqidizh/apph5/GZRY_lvzhitongji.aspx?"
 
 let colorRed = GlobalUtil.colorRGBA(230, g: 27, b: 39, a: 1.0)
 
