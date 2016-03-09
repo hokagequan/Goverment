@@ -9,12 +9,12 @@
 import UIKit
 import EZLoadingActivity
 
-let account = "ios"
-let password = "a"
+//let account = "ios"
+//let password = "a"
 
 // Worker
-//let account = "admin"
-//let password = "85868000"
+let account = "admin"
+let password = "85868000"
 
 
 class SignInViewController: UIViewController, UIActionSheetDelegate, UITextFieldDelegate {
@@ -58,7 +58,6 @@ class SignInViewController: UIViewController, UIActionSheetDelegate, UITextField
         }
         
 //        gestureButton.hidden = SettingsManager.getData(SettingKey.GesturePassword.rawValue) == nil
-        gestureButton.hidden = PCSDataManager.defaultManager().accountManager.user?.gesturePassword == nil
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -66,6 +65,8 @@ class SignInViewController: UIViewController, UIActionSheetDelegate, UITextField
         
         self.navigationItem.setHidesBackButton(true, animated: false)
         self.navigationController?.setNavigationBarHidden(true, animated: true)
+        
+        gestureButton.hidden = PCSDataManager.defaultManager().accountManager.user?.gesturePassword == nil
     }
 
     override func didReceiveMemoryWarning() {
