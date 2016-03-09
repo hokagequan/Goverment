@@ -36,7 +36,7 @@ class MainViewController: UITabBarController {
             // 名片
             storyboard = UIStoryboard(name: "BusinessCard", bundle: nil)
             customNavi = storyboard.instantiateViewControllerWithIdentifier("BusinessCardNavi")
-            customTabItem = UITabBarItem(title: "名片", image: UIImage(named: "profile_toolbar_nor")?.imageWithRenderingMode(UIImageRenderingMode.AlwaysOriginal), selectedImage: UIImage(named: "profile_toolbar_sel")?.imageWithRenderingMode(UIImageRenderingMode.AlwaysOriginal))
+            customTabItem = UITabBarItem(title: "名片", image: UIImage(named: "business_card_nor")?.imageWithRenderingMode(UIImageRenderingMode.AlwaysOriginal), selectedImage: UIImage(named: "business_card_sel")?.imageWithRenderingMode(UIImageRenderingMode.AlwaysOriginal))
             customNavi!.tabBarItem = customTabItem
         }
         else {

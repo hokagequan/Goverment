@@ -81,6 +81,7 @@
 		10F5875B1C8F27BF00F2279B /* FeedbackViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10F5875A1C8F27BF00F2279B /* FeedbackViewController.swift */; };
 		10F5875D1C8F928A00F2279B /* FeedbackReq.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10F5875C1C8F928A00F2279B /* FeedbackReq.swift */; };
 		10F5875F1C8FB1A600F2279B /* AboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10F5875E1C8FB1A600F2279B /* AboutViewController.swift */; };
+		10F587661C90063800F2279B /* BusinessCardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10F587651C90063800F2279B /* BusinessCardViewController.swift */; };
 		10F7DE631C7863A3002A86CA /* PCSNavigationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10F7DE621C7863A3002A86CA /* PCSNavigationView.swift */; };
 		10F9019E1C858B0100A4D767 /* CongressContentInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10F9019D1C858B0100A4D767 /* CongressContentInfo.swift */; };
 		3E604AFB394FDCDDAD7A9BDE /* Pods_PeopleCongressSystem.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6BCFEC37E5EA0F7BF782CCBF /* Pods_PeopleCongressSystem.framework */; };
@@ -175,6 +176,7 @@
 		10F5875A1C8F27BF00F2279B /* FeedbackViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedbackViewController.swift; sourceTree = "<group>"; };
 		10F5875C1C8F928A00F2279B /* FeedbackReq.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedbackReq.swift; sourceTree = "<group>"; };
 		10F5875E1C8FB1A600F2279B /* AboutViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AboutViewController.swift; sourceTree = "<group>"; };
+		10F587651C90063800F2279B /* BusinessCardViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BusinessCardViewController.swift; sourceTree = "<group>"; };
 		10F7DE621C7863A3002A86CA /* PCSNavigationView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PCSNavigationView.swift; sourceTree = "<group>"; };
 		10F9019D1C858B0100A4D767 /* CongressContentInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CongressContentInfo.swift; sourceTree = "<group>"; };
 		68AE91901E434A8BE22D3071 /* Pods-PeopleCongressSystem.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PeopleCongressSystem.debug.xcconfig"; path = "Pods/Target Support Files/Pods-PeopleCongressSystem/Pods-PeopleCongressSystem.debug.xcconfig"; sourceTree = "<group>"; };
@@ -304,6 +306,7 @@
 		10D0D59E1C4DCA3E0093F687 /* BusinessCard */ = {
 			isa = PBXGroup;
 			children = (
+				10F587651C90063800F2279B /* BusinessCardViewController.swift */,
 			);
 			path = BusinessCard;
 			sourceTree = "<group>";
@@ -623,6 +626,7 @@
 				1072E08C1C8F1BF1004DBA4D /* ChangeGestureViewController.swift in Sources */,
 				10496F371C76012F0074CFC1 /* SignInReq.swift in Sources */,
 				10D0D5781C4CD1D00093F687 /* PeopleCongressSystem.xcdatamodeld in Sources */,
+				10F587661C90063800F2279B /* BusinessCardViewController.swift in Sources */,
 				10D0D5D11C4FC4FF0093F687 /* PerformanceEditViewController.swift in Sources */,
 				100B203A1C8894CA00435EF0 /* Group.swift in Sources */,
 				10DBF20E1C8A6CBD007620BA /* VariableManageViewController.swift in Sources */,
