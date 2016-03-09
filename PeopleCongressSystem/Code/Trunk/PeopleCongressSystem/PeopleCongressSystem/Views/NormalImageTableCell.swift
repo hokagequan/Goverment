@@ -22,6 +22,7 @@ class NormalImageTableCell: UITableViewCell, UITextFieldDelegate, DatePickerView
     @IBOutlet weak var titleTextField: UITextField!
     @IBOutlet weak var headerLabel: UILabel!
     @IBOutlet weak var headerWidthLC: NSLayoutConstraint!
+    @IBOutlet weak var iconWidthLC: NSLayoutConstraint!
     
     var timeEditable: Bool = false
     

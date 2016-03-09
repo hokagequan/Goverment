@@ -393,7 +393,7 @@
             </objects>
             <point key="canvasLocation" x="-638" y="1115"/>
         </scene>
-        <!--Find Pwd View Controller-->
+        <!--View Controller-->
         <scene sceneID="v1l-do-Q7U">
             <objects>
                 <viewController id="yWI-OB-52O" customClass="FindPwdViewController" customModule="PeopleCongressSystem" customModuleProvider="target" sceneMemberID="viewController">
@@ -405,51 +405,75 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="请输入手机号码" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="fHN-PB-heK" userLabel="Account">
-                                <rect key="frame" x="50" y="120" width="500" height="30"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iJy-yc-pFW" customClass="PCSNavigationView" customModule="PeopleCongressSystem" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="64" width="600" height="36"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="30" id="PSe-3e-LzV"/>
+                                    <constraint firstAttribute="height" constant="36" id="XFY-Z1-4Oz"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" returnKeyType="done"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="title" value="找回密码"/>
+                                </userDefinedRuntimeAttributes>
                                 <connections>
-                                    <outlet property="delegate" destination="yWI-OB-52O" id="118-bT-Mxt"/>
+                                    <outlet property="viewController" destination="yWI-OB-52O" id="V6I-69-2fe"/>
                                 </connections>
-                            </textField>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="o0i-N4-IjW">
-                                <rect key="frame" x="50" y="180" width="500" height="30"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="30" id="uZg-b3-nJn"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                <state key="normal" title="提交"/>
+                            </view>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" scrollEnabled="NO" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="50" sectionHeaderHeight="28" sectionFooterHeight="100" translatesAutoresizingMaskIntoConstraints="NO" id="mfD-wA-Ezw">
+                                <rect key="frame" x="0.0" y="108" width="600" height="492"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <connections>
-                                    <action selector="clickSubmit:" destination="yWI-OB-52O" eventType="touchUpInside" id="n0t-e0-FSl"/>
+                                    <outlet property="dataSource" destination="yWI-OB-52O" id="heI-MH-90U"/>
+                                    <outlet property="delegate" destination="yWI-OB-52O" id="cmh-eY-Ze7"/>
                                 </connections>
-                            </button>
+                            </tableView>
                         </subviews>
                         <color key="backgroundColor" red="0.94117647059999998" green="0.94117647059999998" blue="0.94117647059999998" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstItem="fHN-PB-heK" firstAttribute="leading" secondItem="6gj-iY-DSB" secondAttribute="leading" constant="50" id="AWI-4f-CyZ"/>
-                            <constraint firstItem="fHN-PB-heK" firstAttribute="top" secondItem="GSs-cO-lYq" secondAttribute="bottom" constant="100" id="BSf-yC-gEr"/>
-                            <constraint firstItem="o0i-N4-IjW" firstAttribute="width" secondItem="fHN-PB-heK" secondAttribute="width" id="CK2-3H-vcA"/>
-                            <constraint firstAttribute="trailing" secondItem="fHN-PB-heK" secondAttribute="trailing" constant="50" id="Ntk-4H-49J"/>
-                            <constraint firstItem="o0i-N4-IjW" firstAttribute="centerX" secondItem="fHN-PB-heK" secondAttribute="centerX" id="b1Q-S0-8JL"/>
-                            <constraint firstItem="o0i-N4-IjW" firstAttribute="top" secondItem="fHN-PB-heK" secondAttribute="bottom" constant="30" id="mXu-UH-TRp"/>
+                            <constraint firstItem="mfD-wA-Ezw" firstAttribute="top" secondItem="iJy-yc-pFW" secondAttribute="bottom" constant="8" id="2qP-W4-pc0"/>
+                            <constraint firstItem="iJy-yc-pFW" firstAttribute="leading" secondItem="6gj-iY-DSB" secondAttribute="leading" id="6sB-4b-79M"/>
+                            <constraint firstItem="0Fb-wN-e0M" firstAttribute="top" secondItem="mfD-wA-Ezw" secondAttribute="bottom" id="IKz-rD-0Aa"/>
+                            <constraint firstAttribute="trailing" secondItem="iJy-yc-pFW" secondAttribute="trailing" id="KOS-lR-hT6"/>
+                            <constraint firstItem="mfD-wA-Ezw" firstAttribute="leading" secondItem="6gj-iY-DSB" secondAttribute="leading" id="LcA-CT-mYX"/>
+                            <constraint firstAttribute="trailing" secondItem="mfD-wA-Ezw" secondAttribute="trailing" id="YnS-4H-eEE"/>
+                            <constraint firstItem="iJy-yc-pFW" firstAttribute="top" secondItem="GSs-cO-lYq" secondAttribute="bottom" id="qYs-Zc-JJC"/>
                         </constraints>
                         <connections>
                             <action selector="hideKeyboard:" destination="yWI-OB-52O" eventType="touchUpInside" id="qOb-qI-esv"/>
                         </connections>
                     </view>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <connections>
-                        <outlet property="mobileTextField" destination="fHN-PB-heK" id="tVR-qT-5uS"/>
-                        <outlet property="submitButton" destination="o0i-N4-IjW" id="xzD-DA-pdg"/>
+                        <outlet property="footerView" destination="YIF-w1-NXa" id="MEs-vz-a2e"/>
+                        <outlet property="inputTableView" destination="mfD-wA-Ezw" id="pYV-VB-JGX"/>
+                        <outlet property="submitButton" destination="o0i-N4-IjW" id="m65-Kr-KRP"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Lz8-MR-oqd" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <view contentMode="scaleToFill" id="YIF-w1-NXa" userLabel="Footer">
+                    <rect key="frame" x="0.0" y="0.0" width="240" height="100"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <subviews>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="o0i-N4-IjW">
+                            <rect key="frame" x="10" y="30" width="220" height="46"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="46" id="uZg-b3-nJn"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                            <state key="normal" title="提交"/>
+                            <connections>
+                                <action selector="clickSubmit:" destination="yWI-OB-52O" eventType="touchUpInside" id="n0t-e0-FSl"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="trailing" secondItem="o0i-N4-IjW" secondAttribute="trailing" constant="10" id="697-6H-TPu"/>
+                        <constraint firstItem="o0i-N4-IjW" firstAttribute="top" secondItem="YIF-w1-NXa" secondAttribute="top" constant="30" id="xO8-OJ-TIf"/>
+                        <constraint firstItem="o0i-N4-IjW" firstAttribute="leading" secondItem="YIF-w1-NXa" secondAttribute="leading" constant="10" id="xvC-dy-O5Y"/>
+                    </constraints>
+                </view>
             </objects>
-            <point key="canvasLocation" x="-638" y="1911"/>
+            <point key="canvasLocation" x="-638" y="1985"/>
         </scene>
         <!--Main View Controller-->
         <scene sceneID="TPK-VZ-AKN">

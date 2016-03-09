@@ -18,13 +18,13 @@ class GestureLockViewController: UIViewController {
 
         // Do any additional setup after loading the view.
         self.navigationItem.setHidesBackButton(true, animated: false)
+        PCSCustomUtil.customNavigationController(self)
+        
         self.customLockView()
     }
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
-        
-        PCSCustomUtil.customNavigationController(self)
     }
 
     override func didReceiveMemoryWarning() {
