@@ -16,13 +16,18 @@ class WorkerHomeActionDelegate: ActionProtocol {
             return
         }
         
+        viewController.navigationController?.setNavigationBarHidden(false, animated: true)
+        
         // TODO:
         switch row {
         case .ActivityManage:
-            viewController.navigationController?.setNavigationBarHidden(false, animated: true)
             viewController.performSegueWithIdentifier("PerformanceRecordsSegue", sender: self)
             break
         case .VariableManage:
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            let vc = storyboard.instantiateViewControllerWithIdentifier("CommonHTMLViewController") as! CommonHTMLViewController
+            vc.URL = PCSDataManager.defaultManager().htmlURL(pageHTMLVariableManager)
+            viewController.navigationController?.pushViewController(vc, animated: true)
             break
         case .Analyze:
             break

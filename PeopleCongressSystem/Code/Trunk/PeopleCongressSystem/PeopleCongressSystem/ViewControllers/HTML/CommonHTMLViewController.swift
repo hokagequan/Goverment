@@ -23,6 +23,7 @@ class CommonHTMLViewController: UIViewController, WebViewHTMLProtocol {
         PCSCustomUtil.customNavigationController(self)
         
         self.loadWebView(webViewContainer)
+        self.loadMainPage()
     }
 
     override func didReceiveMemoryWarning() {

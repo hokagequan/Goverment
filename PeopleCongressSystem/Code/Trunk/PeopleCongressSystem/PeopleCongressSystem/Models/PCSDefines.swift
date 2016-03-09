@@ -13,6 +13,9 @@ let serverURL1 = "http://175.170.128.160:8099"
 let serverURL2 = ""
 let serverSoapAction = "http://tempuri.org/"
 
+/// @brief HTML Page
+let pageHTMLVariableManager = "/apph5/GZRY_lvzhiguanli.aspx?"
+
 let colorRed = GlobalUtil.colorRGBA(230, g: 27, b: 39, a: 1.0)
 
 typealias SimpleCompletion = (Bool, String?) -> Void

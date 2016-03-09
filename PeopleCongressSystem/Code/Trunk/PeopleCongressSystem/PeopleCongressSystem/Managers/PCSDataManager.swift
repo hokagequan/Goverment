@@ -250,4 +250,8 @@ class PCSDataManager {
         }
     }
     
+    func htmlURL(page: String) -> String {
+        return "\(serverURL1)\(page)UserID=\(self.accountManager.user!.identifier!)&MobileLoginId=\(self.accountManager.user!.token!)"
+    }
+    
 }
