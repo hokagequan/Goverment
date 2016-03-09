@@ -88,6 +88,54 @@
             </objects>
             <point key="canvasLocation" x="-1381" y="1115"/>
         </scene>
+        <!--View Controller-->
+        <scene sceneID="4jQ-zr-HJ1">
+            <objects>
+                <viewController storyboardIdentifier="CommonHTMLViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Ex3-YQ-gIp" customClass="CommonHTMLViewController" customModule="PeopleCongressSystem" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Hvv-W5-iNc"/>
+                        <viewControllerLayoutGuide type="bottom" id="vvs-RE-69s"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="bCx-1i-Ihu">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="a4J-2G-SmD" customClass="PCSNavigationView" customModule="PeopleCongressSystem" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="64" width="600" height="36"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="36" id="ZCm-Gt-GqM"/>
+                                </constraints>
+                                <connections>
+                                    <outlet property="viewController" destination="Ex3-YQ-gIp" id="EOo-qy-eIc"/>
+                                </connections>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ob8-hc-ixx">
+                                <rect key="frame" x="0.0" y="108" width="600" height="492"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" red="0.96078431369999995" green="0.96078431369999995" blue="0.96078431369999995" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="vvs-RE-69s" firstAttribute="top" secondItem="ob8-hc-ixx" secondAttribute="bottom" id="Cqr-iP-nfk"/>
+                            <constraint firstAttribute="trailing" secondItem="a4J-2G-SmD" secondAttribute="trailing" id="ElQ-Ic-GjK"/>
+                            <constraint firstItem="a4J-2G-SmD" firstAttribute="leading" secondItem="bCx-1i-Ihu" secondAttribute="leading" id="GNy-X3-oln"/>
+                            <constraint firstItem="a4J-2G-SmD" firstAttribute="top" secondItem="Hvv-W5-iNc" secondAttribute="bottom" id="HBD-XJ-gaD"/>
+                            <constraint firstAttribute="trailing" secondItem="ob8-hc-ixx" secondAttribute="trailing" id="cCa-rO-sIy"/>
+                            <constraint firstItem="ob8-hc-ixx" firstAttribute="top" secondItem="a4J-2G-SmD" secondAttribute="bottom" constant="8" id="dFS-0o-FRb"/>
+                            <constraint firstItem="ob8-hc-ixx" firstAttribute="leading" secondItem="bCx-1i-Ihu" secondAttribute="leading" id="g5U-KL-Obp"/>
+                        </constraints>
+                    </view>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
+                    <connections>
+                        <outlet property="naviView" destination="a4J-2G-SmD" id="Zbx-OG-ONo"/>
+                        <outlet property="webViewContainer" destination="ob8-hc-ixx" id="R1D-DI-zuu"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="CWh-c6-DpI" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1381" y="1985"/>
+        </scene>
         <!--Sign In View Controller-->
         <scene sceneID="kSz-Nh-td6">
             <objects>
