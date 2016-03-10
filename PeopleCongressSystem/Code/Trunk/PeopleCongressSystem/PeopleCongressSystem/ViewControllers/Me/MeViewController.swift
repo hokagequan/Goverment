@@ -118,6 +118,12 @@ class MeViewController: UITableViewController {
         case .About:
             self.performSegueWithIdentifier("AboutSegue", sender: self)
             break
+        case .Help:
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            let vc = storyboard.instantiateViewControllerWithIdentifier("CommonHTMLViewController") as! CommonHTMLViewController
+            vc.URL = PCSDataManager.defaultManager().htmlURL(pageHTMLHelp)
+            vc.naviView.title = row.title()
+            self.navigationController?.pushViewController(vc, animated: true)
         default:
             break
         }
