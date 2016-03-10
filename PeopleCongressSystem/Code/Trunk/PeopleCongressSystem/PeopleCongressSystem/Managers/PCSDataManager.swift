@@ -14,6 +14,7 @@ class PCSDataManager {
     
     var accountManager = AccountManager()
     var content: ContentInfo = ContentInfo()
+    var isLaunch: Bool = true
     
     // MARK: - Class Functions
     

@@ -44,15 +44,6 @@ class SignInViewController: UIViewController, UIActionSheetDelegate, UITextField
         passwordTextField.leftViewMode = UITextFieldViewMode.Always
         passwordTextField.leftView = passwordView
         
-        if let isRemember = SettingsManager.getData(SettingKey.RememberPassword.rawValue) as? Bool {
-            // TODO: 设置默认用户
-            rememberButton.selected = isRemember
-        }
-        
-        if let isAuto = SettingsManager.getData(SettingKey.AutoSignIn.rawValue) as? Bool {
-            autoButton.selected = isAuto
-        }
-        
         for topLC in topSpaceLCs {
             topLC.constant = topLC.constant * GlobalUtil.rateForHeight()
         }
@@ -67,6 +58,39 @@ class SignInViewController: UIViewController, UIActionSheetDelegate, UITextField
         self.navigationController?.setNavigationBarHidden(true, animated: true)
         
         gestureButton.hidden = PCSDataManager.defaultManager().accountManager.user?.gesturePassword == nil
+        
+        if let isRemember = SettingsManager.getData(SettingKey.RememberPassword.rawValue) as? Bool {
+            // TODO: 设置默认用户
+            rememberButton.selected = isRemember
+            
+            if rememberButton.selected == true {
+                accountTextField.text = PCSDataManager.defaultManager().accountManager.user?.account
+                passwordTextField.text = PCSDataManager.defaultManager().accountManager.user?.password
+            }
+        }
+        
+        if let isAuto = SettingsManager.getData(SettingKey.AutoSignIn.rawValue) as? Bool {
+            autoButton.selected = isAuto
+        }
+    }
+    
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        if let isAuto = SettingsManager.getData(SettingKey.AutoSignIn.rawValue) as? Bool {
+            if (isAuto == true && PCSDataManager.defaultManager().isLaunch == true) {
+                accountTextField.text = PCSDataManager.defaultManager().accountManager.user?.account
+                passwordTextField.text = PCSDataManager.defaultManager().accountManager.user?.password
+                self.clickSignIn(signInButton)
+            }
+        }
+    }
+    
+    override func viewWillDisappear(animated: Bool) {
+        accountTextField.text = nil
+        passwordTextField.text = nil
+        
+        super.viewWillDisappear(animated)
     }
 
     override func didReceiveMemoryWarning() {
