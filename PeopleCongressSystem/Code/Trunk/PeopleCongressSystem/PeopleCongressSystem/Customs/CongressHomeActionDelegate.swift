@@ -1,32 +1,32 @@
 //
-//  WorkerHomeActionDelegate.swift
+//  CongressHomeActionDelegate.swift
 //  PeopleCongressSystem
 //
-//  Created by Matt Quan on 16/2/29.
+//  Created by Matt Quan on 16/3/10.
 //  Copyright © 2016年 CoolRabbit. All rights reserved.
 //
 
 import Foundation
 import UIKit
 
-class WorkerHomeActionDelegate: ActionProtocol {
+class CongressHomeActionDelegate: ActionProtocol {
     
     func didClickIndexPath(viewController: UIViewController, indexPath: NSIndexPath) {
-        guard let row = HomeElementContentWorker(rawValue: indexPath.row) else {
+        guard let row = HomeElementContentCongress(rawValue: indexPath.row) else {
             return
         }
         
         viewController.navigationController?.setNavigationBarHidden(false, animated: true)
         
         switch row {
-        case .ActivityManage:
-            viewController.performSegueWithIdentifier("PerformanceRecordsSegue", sender: self)
-            break
-        case .VariableManage:
+        case .ActivityNotify:
             let storyboard = UIStoryboard(name: "Main", bundle: nil)
             let vc = storyboard.instantiateViewControllerWithIdentifier("CommonHTMLViewController") as! CommonHTMLViewController
-            vc.URL = PCSDataManager.defaultManager().htmlURL(pageHTMLVariableManager)
+            vc.URL = PCSDataManager.defaultManager().htmlURL(pageHTMLCongressNotify)
             viewController.navigationController?.pushViewController(vc, animated: true)
+            break
+        case .VariableRecords:
+            viewController.performSegueWithIdentifier("VariableRecordsSegue", sender: nil)
             break
         case .Analyze:
             let storyboard = UIStoryboard(name: "Main", bundle: nil)
@@ -59,5 +59,6 @@ class WorkerHomeActionDelegate: ActionProtocol {
             break
         }
     }
+
     
 }

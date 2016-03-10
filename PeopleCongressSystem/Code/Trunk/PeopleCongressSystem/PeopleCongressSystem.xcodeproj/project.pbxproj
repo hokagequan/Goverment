@@ -35,6 +35,10 @@
 		107505611C905FB700C9589E /* CommonHTMLViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 107505601C905FB700C9589E /* CommonHTMLViewController.swift */; };
 		107505631C906D0200C9589E /* SituationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 107505621C906D0200C9589E /* SituationViewController.swift */; };
 		1075056D1C9115C700C9589E /* NormalImageCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1075056C1C9115C700C9589E /* NormalImageCell.xib */; };
+		1075056F1C91445700C9589E /* CongressHomeActionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1075056E1C91445700C9589E /* CongressHomeActionDelegate.swift */; };
+		107505711C914E8A00C9589E /* RecordCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 107505701C914E8A00C9589E /* RecordCell.swift */; };
+		107505731C91570F00C9589E /* GetVariablesReq.swift in Sources */ = {isa = PBXBuildFile; fileRef = 107505721C91570F00C9589E /* GetVariablesReq.swift */; };
+		107505751C915C9E00C9589E /* Variable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 107505741C915C9E00C9589E /* Variable.swift */; };
 		108965971C8F183700CA98D0 /* ChangePasswordReq.swift in Sources */ = {isa = PBXBuildFile; fileRef = 108965961C8F183700CA98D0 /* ChangePasswordReq.swift */; };
 		10A6866A1C7DEF7400D050F0 /* GlobalUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10A686691C7DEF7400D050F0 /* GlobalUtil.swift */; };
 		10A6866D1C7DF12600D050F0 /* UserEntity+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10A6866B1C7DF12600D050F0 /* UserEntity+CoreDataProperties.swift */; };
@@ -72,7 +76,7 @@
 		10DBF2081C896ED4007620BA /* GetCongressListReq.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10DBF2071C896ED4007620BA /* GetCongressListReq.swift */; };
 		10DBF20A1C8A5808007620BA /* DatePickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10DBF2091C8A5808007620BA /* DatePickerView.swift */; };
 		10DBF20C1C8A5817007620BA /* DatePickerView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 10DBF20B1C8A5817007620BA /* DatePickerView.xib */; };
-		10DBF20E1C8A6CBD007620BA /* VariableManageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10DBF20D1C8A6CBD007620BA /* VariableManageViewController.swift */; };
+		10DBF20E1C8A6CBD007620BA /* VariableRecordsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10DBF20D1C8A6CBD007620BA /* VariableRecordsViewController.swift */; };
 		10DBF2101C8A8075007620BA /* ManageEditUIDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10DBF20F1C8A8075007620BA /* ManageEditUIDelegate.swift */; };
 		10DBF2121C8A823C007620BA /* ManageEditUIActivityDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10DBF2111C8A823C007620BA /* ManageEditUIActivityDelegate.swift */; };
 		10DBF2141C8BBDBB007620BA /* ManageUIDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10DBF2131C8BBDBB007620BA /* ManageUIDelegate.swift */; };
@@ -133,6 +137,10 @@
 		107505601C905FB700C9589E /* CommonHTMLViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommonHTMLViewController.swift; sourceTree = "<group>"; };
 		107505621C906D0200C9589E /* SituationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SituationViewController.swift; sourceTree = "<group>"; };
 		1075056C1C9115C700C9589E /* NormalImageCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NormalImageCell.xib; sourceTree = "<group>"; };
+		1075056E1C91445700C9589E /* CongressHomeActionDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CongressHomeActionDelegate.swift; sourceTree = "<group>"; };
+		107505701C914E8A00C9589E /* RecordCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecordCell.swift; sourceTree = "<group>"; };
+		107505721C91570F00C9589E /* GetVariablesReq.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetVariablesReq.swift; sourceTree = "<group>"; };
+		107505741C915C9E00C9589E /* Variable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Variable.swift; sourceTree = "<group>"; };
 		108965961C8F183700CA98D0 /* ChangePasswordReq.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChangePasswordReq.swift; sourceTree = "<group>"; };
 		10A686691C7DEF7400D050F0 /* GlobalUtil.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GlobalUtil.swift; sourceTree = "<group>"; };
 		10A6866B1C7DF12600D050F0 /* UserEntity+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UserEntity+CoreDataProperties.swift"; sourceTree = "<group>"; };
@@ -174,7 +182,7 @@
 		10DBF2071C896ED4007620BA /* GetCongressListReq.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetCongressListReq.swift; sourceTree = "<group>"; };
 		10DBF2091C8A5808007620BA /* DatePickerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DatePickerView.swift; sourceTree = "<group>"; };
 		10DBF20B1C8A5817007620BA /* DatePickerView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DatePickerView.xib; sourceTree = "<group>"; };
-		10DBF20D1C8A6CBD007620BA /* VariableManageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VariableManageViewController.swift; sourceTree = "<group>"; };
+		10DBF20D1C8A6CBD007620BA /* VariableRecordsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VariableRecordsViewController.swift; sourceTree = "<group>"; };
 		10DBF20F1C8A8075007620BA /* ManageEditUIDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ManageEditUIDelegate.swift; sourceTree = "<group>"; };
 		10DBF2111C8A823C007620BA /* ManageEditUIActivityDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ManageEditUIActivityDelegate.swift; sourceTree = "<group>"; };
 		10DBF2131C8BBDBB007620BA /* ManageUIDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ManageUIDelegate.swift; sourceTree = "<group>"; };
@@ -236,6 +244,7 @@
 				10F109841C8822A30083D89D /* Person.swift */,
 				100B20351C8883A700435EF0 /* PCSTypeInfo.swift */,
 				100B20391C8894CA00435EF0 /* Group.swift */,
+				107505741C915C9E00C9589E /* Variable.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -324,6 +333,7 @@
 				10DBF2171C8C0CF7007620BA /* NormalInfoCell.swift */,
 				10DBF2181C8C0CF7007620BA /* NormalInfoCell.xib */,
 				100160361C8E5B7B0095D023 /* QRDownloadCell.swift */,
+				107505701C914E8A00C9589E /* RecordCell.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -353,7 +363,7 @@
 				10D0D5D01C4FC4FF0093F687 /* PerformanceEditViewController.swift */,
 				100B20371C88923600435EF0 /* GroupViewController.swift */,
 				100B203D1C89222F00435EF0 /* PersonListViewController.swift */,
-				10DBF20D1C8A6CBD007620BA /* VariableManageViewController.swift */,
+				10DBF20D1C8A6CBD007620BA /* VariableRecordsViewController.swift */,
 				107505621C906D0200C9589E /* SituationViewController.swift */,
 			);
 			path = Home;
@@ -411,6 +421,7 @@
 				10D0D5AC1C4DF6030093F687 /* UIViewController+AlertView.swift */,
 				106C64C81C83511400E6CD95 /* PCSProtocols.swift */,
 				106C64CA1C83522800E6CD95 /* WorkerHomeActionDelegate.swift */,
+				1075056E1C91445700C9589E /* CongressHomeActionDelegate.swift */,
 				10DBF20F1C8A8075007620BA /* ManageEditUIDelegate.swift */,
 				10DBF2111C8A823C007620BA /* ManageEditUIActivityDelegate.swift */,
 				10DBF2131C8BBDBB007620BA /* ManageUIDelegate.swift */,
@@ -435,6 +446,7 @@
 				108965961C8F183700CA98D0 /* ChangePasswordReq.swift */,
 				10F5875C1C8F928A00F2279B /* FeedbackReq.swift */,
 				107505571C9021A300C9589E /* ResetPasswordReq.swift */,
+				107505721C91570F00C9589E /* GetVariablesReq.swift */,
 			);
 			path = HttpRequests;
 			sourceTree = "<group>";
@@ -634,9 +646,11 @@
 				10D0D5BB1C4E41230093F687 /* GestureLockViewController.swift in Sources */,
 				10F109831C881C960083D89D /* AddActivityReq.swift in Sources */,
 				10D0D5CF1C4FC3420093F687 /* TagListCell.swift in Sources */,
+				107505711C914E8A00C9589E /* RecordCell.swift in Sources */,
 				100B20381C88923600435EF0 /* GroupViewController.swift in Sources */,
 				100B20401C895FC600435EF0 /* GetPersonListReq.swift in Sources */,
 				10A6866E1C7DF12600D050F0 /* UserEntity.swift in Sources */,
+				107505731C91570F00C9589E /* GetVariablesReq.swift in Sources */,
 				10DBF2101C8A8075007620BA /* ManageEditUIDelegate.swift in Sources */,
 				10D0D5A41C4DCA5A0093F687 /* SignInViewController.swift in Sources */,
 				100B20361C8883A700435EF0 /* PCSTypeInfo.swift in Sources */,
@@ -661,9 +675,10 @@
 				10496F371C76012F0074CFC1 /* SignInReq.swift in Sources */,
 				10D0D5781C4CD1D00093F687 /* PeopleCongressSystem.xcdatamodeld in Sources */,
 				10F587661C90063800F2279B /* BusinessCardViewController.swift in Sources */,
+				1075056F1C91445700C9589E /* CongressHomeActionDelegate.swift in Sources */,
 				10D0D5D11C4FC4FF0093F687 /* PerformanceEditViewController.swift in Sources */,
 				100B203A1C8894CA00435EF0 /* Group.swift in Sources */,
-				10DBF20E1C8A6CBD007620BA /* VariableManageViewController.swift in Sources */,
+				10DBF20E1C8A6CBD007620BA /* VariableRecordsViewController.swift in Sources */,
 				100B202E1C88786700435EF0 /* UIViewController+Keyboard.swift in Sources */,
 				106C64CD1C84070A00E6CD95 /* PCSDefines.swift in Sources */,
 				10D0D5AD1C4DF6030093F687 /* UIViewController+AlertView.swift in Sources */,
@@ -673,6 +688,7 @@
 				106C64CB1C83522800E6CD95 /* WorkerHomeActionDelegate.swift in Sources */,
 				100160351C8DB93E0095D023 /* QRCodeDownloadViewController.swift in Sources */,
 				10DBF20A1C8A5808007620BA /* DatePickerView.swift in Sources */,
+				107505751C915C9E00C9589E /* Variable.swift in Sources */,
 				10A6866A1C7DEF7400D050F0 /* GlobalUtil.swift in Sources */,
 				10D0D5A71C4DCB870093F687 /* CustomObjectUtil.swift in Sources */,
 				10D0D5C91C4E8A190093F687 /* PerformanceRecordsViewController.swift in Sources */,

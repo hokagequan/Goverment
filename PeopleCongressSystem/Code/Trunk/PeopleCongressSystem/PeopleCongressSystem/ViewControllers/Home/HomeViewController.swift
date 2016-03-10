@@ -72,6 +72,11 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
             
             actionDelegate.didClickIndexPath(self, indexPath: indexPath)
         }
+        else if content is CongressContentInfo {
+            let actionDelegate = CongressHomeActionDelegate()
+            
+            actionDelegate.didClickIndexPath(self, indexPath: indexPath)
+        }
     }
 
     /*

@@ -26,7 +26,7 @@ class ChangePasswordReq: HttpBaseReq {
         params["FieldID"] = PCSDataManager.defaultManager().accountManager.user!.field
         params["thecharset"] = "utf-8"
         
-        self.request("UpdatePassword", params: params, completion: completion)
+        self.request("UpdatePassword", nameSpace: "gonggong", params: params, completion: completion)
     }
     
 }

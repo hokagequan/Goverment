@@ -25,9 +25,9 @@ class HttpBaseReq {
 //    }
     
     /// @brief SOAP
-    func request(method: String, params: Dictionary<String, AnyObject>, completion: HttpReqCompletion?) {
+    func request(method: String, nameSpace: String, params: Dictionary<String, AnyObject>, completion: HttpReqCompletion?) {
         let soapMessage = self.soapMessage(method, params: params)
-        let mutableURLRequest = NSMutableURLRequest(URL: NSURL(string: self.httpReqURL + "/appjiekout/jiekou/gonggong.asmx")!)
+        let mutableURLRequest = NSMutableURLRequest(URL: NSURL(string: self.httpReqURL + "/appjiekout/jiekou/\(nameSpace).asmx")!)
         mutableURLRequest.setValue("text/xml; charset=utf-8", forHTTPHeaderField: "Content-Type")
         mutableURLRequest.setValue(self.soapAction(method), forHTTPHeaderField: "SOAPAction")
         mutableURLRequest.setValue(String(soapMessage.characters.count), forHTTPHeaderField: "Content-Length")

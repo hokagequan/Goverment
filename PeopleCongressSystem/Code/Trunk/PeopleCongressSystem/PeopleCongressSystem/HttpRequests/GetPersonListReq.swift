@@ -23,7 +23,7 @@ class GetPersonListReq: HttpBaseReq {
         params["FieldID"] = PCSDataManager.defaultManager().accountManager.user!.field
         params["thecharset"] = "utf-8"
         
-        self.request("GethuodongUserlist", params: params, completion: completion)
+        self.request("GethuodongUserlist", nameSpace: "gongzuorenyuan", params: params, completion: completion)
     }
     
 }

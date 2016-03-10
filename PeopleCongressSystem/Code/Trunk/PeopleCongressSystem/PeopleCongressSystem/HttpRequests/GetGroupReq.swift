@@ -21,7 +21,7 @@ class GetGroupReq: HttpBaseReq {
         params["FieldID"] = PCSDataManager.defaultManager().accountManager.user!.field
         params["thecharset"] = "utf-8"
         
-        self.request("GetOrg", params: params, completion: completion)
+        self.request("GetOrg", nameSpace: "gongzuorenyuan", params: params, completion: completion)
     }
     
 }

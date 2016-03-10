@@ -24,7 +24,7 @@ class ResetPasswordReq: HttpBaseReq {
         params["theAPPid"] = "dalianrenda0001"
         params["thecharset"] = "utf-8"
         
-        self.request("resetpassword", params: params, completion: completion)
+        self.request("resetpassword", nameSpace: "gonggong", params: params, completion: completion)
     }
 
 }

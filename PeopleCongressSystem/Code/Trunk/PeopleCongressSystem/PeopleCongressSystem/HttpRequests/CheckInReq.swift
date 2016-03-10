@@ -25,7 +25,7 @@ class CheckInReq: HttpBaseReq {
         params["FieldID"] = PCSDataManager.defaultManager().accountManager.user!.field
         params["thecharset"] = "utf-8"
         
-        self.request("HuoDongAddCheckIn", params: params, completion: completion)
+        self.request("HuoDongAddCheckIn", nameSpace: "GetRDDBlist", params: params, completion: completion)
     }
     
 }

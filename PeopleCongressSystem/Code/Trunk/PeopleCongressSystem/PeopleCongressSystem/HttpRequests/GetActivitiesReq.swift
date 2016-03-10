@@ -24,7 +24,7 @@ class GetActivitiesReq: HttpBaseReq {
         params["FieldID"] = PCSDataManager.defaultManager().accountManager.user!.field
         params["thecharset"] = "utf-8"
         
-        self.request("Gethuodonglist", params: params, completion: completion)
+        self.request("Gethuodonglist", nameSpace: "gongzuorenyuan", params: params, completion: completion)
     }
     
 }

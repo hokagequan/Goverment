@@ -28,7 +28,7 @@ class SignInReq: HttpBaseReq {
         params["thecharset"] = "utf-8"
         
 //        self.request(params, completion: completion)
-        self.request("CheckLogin", params: params, completion: completion)
+        self.request("CheckLogin", nameSpace: "gonggong", params: params, completion: completion)
      }
     
 }

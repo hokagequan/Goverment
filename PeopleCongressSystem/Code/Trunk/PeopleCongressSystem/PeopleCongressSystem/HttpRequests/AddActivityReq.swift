@@ -31,7 +31,7 @@ class AddActivityReq: HttpBaseReq {
         params["FieldID"] = PCSDataManager.defaultManager().accountManager.user!.field
         params["thecharset"] = "utf-8"
         
-        self.request("HuoDongAdd", params: params, completion: completion)
+        self.request("HuoDongAdd", nameSpace: "gongzuorenyuan", params: params, completion: completion)
     }
     
 }

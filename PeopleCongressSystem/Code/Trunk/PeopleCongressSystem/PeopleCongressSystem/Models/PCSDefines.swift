@@ -21,6 +21,7 @@ let pageHTMLCongressInfo = "/apph5/GZRY_daibaoxinxi.aspx?"
 let pageHTMLNotify = "/apph5/GZRY_tongzhitongbao.aspx?"
 let pageHTMLSituation = "/apph5/GZRY_zhiqingzhizhenglist.aspx?"
 let pageHTMLHelp = "/apph5/GZRY_helper.aspx?"
+let pageHTMLCongressNotify = "/apph5/RDDB_huodongtixing.aspx?"
 
 let colorRed = GlobalUtil.colorRGBA(230, g: 27, b: 39, a: 1.0)
 

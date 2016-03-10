@@ -22,7 +22,7 @@ class GetActivityTypesReq: HttpBaseReq {
         params["FieldID"] = PCSDataManager.defaultManager().accountManager.user!.field
         params["thecharset"] = "utf-8"
         
-        self.request("GetDic", params: params, completion: completion)
+        self.request("GetDic", nameSpace: "gonggong", params: params, completion: completion)
     }
     
 }

@@ -250,6 +250,52 @@ class PCSDataManager {
         }
     }
     
+    func getVariableList(completion: ((Array<Variable>?) -> Void)?) {
+        let req = GetVariablesReq()
+        
+        req.requestCompletion { (response) -> Void in
+            var relArray: Array<Variable>? = nil
+            
+            defer {
+                completion?(relArray)
+            }
+            
+            let result = response?.result
+            
+            if result?.isSuccess == true {
+                guard let value = result?.value else {
+                    return
+                }
+                
+                guard let info = HttpBaseReq.parseResponse(value) as? NSArray else {
+                    return
+                }
+                
+                relArray = [Variable]()
+                for i in 0..<info.count {
+                    let dict = info[i] as! Dictionary<String, AnyObject>
+                    let variable = Variable()
+                    variable.identifier = dict["lvzhi_id"] as? String
+                    variable.title = dict["lvzhi_title"] as? String
+                    variable.type = dict["lvzhi_type"] as? String
+                    variable.content = dict["lvzhi_content"] as? String
+                    variable.remark = dict["lvzhi_remark"] as? String
+                    variable.time = dict["lvzhi_Time"] as? String
+                    variable.createTime = dict["lvzhi_addTime"] as? String
+                    variable.createPerson = dict["lvzhi_addUser"] as? String
+                    variable.checked = dict["lvzhi_zt"] as! Bool
+                    variable.checkTime = dict["lvzhi_AuditTime"] as? String
+                    variable.token = dict["lvzhi_guid"] as? String
+                    variable.submitted = dict["lvzhi_IsPost"] as! Bool
+                    
+                    // TODO: 参与人未处理
+//                    let persons = dict["lvzhi_cyr"] as? String
+                    relArray?.append(variable)
+                }
+            }
+        }
+    }
+    
     func htmlURL(page: String) -> String {
         return "\(serverURL1)\(page)UserID=\(self.accountManager.user!.identifier!)&MobileLoginId=\(self.accountManager.user!.token!)"
     }
