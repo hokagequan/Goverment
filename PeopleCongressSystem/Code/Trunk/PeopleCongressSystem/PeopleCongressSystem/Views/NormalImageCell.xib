@@ -8,7 +8,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="NormalImageCell" id="XCc-2v-Tax" customClass="NormalImageCell" customModule="PeopleCongressSystem" customModuleProvider="target">
+        <collectionViewCell opaque="NO" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="NormalImageCell" id="XCc-2v-Tax" customClass="NormalImageCell" customModule="PeopleCongressSystem" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="70" height="100"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
@@ -22,7 +22,7 @@
                         </constraints>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aHj-gL-Zfq" userLabel="Title">
-                        <rect key="frame" x="0.0" y="85" width="70" height="15"/>
+                        <rect key="frame" x="-10" y="85" width="90" height="15"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="15" id="Iob-xr-Yxb"/>
                         </constraints>
@@ -36,10 +36,10 @@
             <constraints>
                 <constraint firstItem="GuW-4f-fne" firstAttribute="leading" secondItem="XCc-2v-Tax" secondAttribute="leading" id="IEC-ZX-19b"/>
                 <constraint firstAttribute="bottom" secondItem="aHj-gL-Zfq" secondAttribute="bottom" id="NwE-Z4-AZs"/>
-                <constraint firstItem="aHj-gL-Zfq" firstAttribute="leading" secondItem="XCc-2v-Tax" secondAttribute="leading" id="TOR-lu-RMM"/>
+                <constraint firstItem="aHj-gL-Zfq" firstAttribute="leading" secondItem="XCc-2v-Tax" secondAttribute="leading" constant="-10" id="TOR-lu-RMM"/>
                 <constraint firstItem="GuW-4f-fne" firstAttribute="top" secondItem="XCc-2v-Tax" secondAttribute="top" id="WVM-Tz-wop"/>
                 <constraint firstAttribute="trailing" secondItem="GuW-4f-fne" secondAttribute="trailing" id="ZWW-LQ-9q1"/>
-                <constraint firstAttribute="trailing" secondItem="aHj-gL-Zfq" secondAttribute="trailing" id="eZg-nr-Aq0"/>
+                <constraint firstAttribute="trailing" secondItem="aHj-gL-Zfq" secondAttribute="trailing" constant="-10" id="eZg-nr-Aq0"/>
             </constraints>
             <connections>
                 <outlet property="iconImageView" destination="GuW-4f-fne" id="Ues-ff-Qs3"/>
