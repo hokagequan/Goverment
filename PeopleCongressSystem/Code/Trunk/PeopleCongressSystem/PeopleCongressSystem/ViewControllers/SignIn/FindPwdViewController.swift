@@ -12,13 +12,17 @@ class FindPwdViewController: UIViewController, UITableViewDataSource, UITableVie
     
     enum Rows: Int {
         case Name = 0
-        case Organization
+//        case Organization
         case Tel
-        case Remark
+//        case Remark
         case Max
         
         func title() -> String {
-            let titles = ["代表姓名:", "代表团:", "电话号码:", "完整输入:", ""]
+            let titles = ["代表姓名:",
+//                "代表团:",
+                "电话号码:",
+//                "完整输入:",
+                ""]
             
             return titles[self.rawValue]
         }

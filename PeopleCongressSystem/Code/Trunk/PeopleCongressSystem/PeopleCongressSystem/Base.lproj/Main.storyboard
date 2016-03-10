@@ -507,7 +507,7 @@
                                 <constraint firstAttribute="height" constant="46" id="uZg-b3-nJn"/>
                             </constraints>
                             <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                            <state key="normal" title="提交"/>
+                            <state key="normal" title="申请找回"/>
                             <connections>
                                 <action selector="clickSubmit:" destination="yWI-OB-52O" eventType="touchUpInside" id="n0t-e0-FSl"/>
                             </connections>
