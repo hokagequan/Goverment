@@ -83,10 +83,10 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VvY-Bw-DhU" customClass="PCSNavigationView" customModule="PeopleCongressSystem" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="64" width="600" height="36"/>
+                                <rect key="frame" x="0.0" y="64" width="600" height="44"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="36" id="6Er-rc-opE"/>
+                                    <constraint firstAttribute="height" constant="44" id="6Er-rc-opE"/>
                                 </constraints>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="string" keyPath="title" value="下载二维码"/>
@@ -96,7 +96,7 @@
                                 </connections>
                             </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="200" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="jvI-CG-sYu">
-                                <rect key="frame" x="0.0" y="100" width="600" height="500"/>
+                                <rect key="frame" x="0.0" y="108" width="600" height="492"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="QRDownloadCell" id="xyq-ZT-bYG" customClass="QRDownloadCell" customModule="PeopleCongressSystem" customModuleProvider="target">
@@ -204,10 +204,10 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fvG-CJ-mH9" customClass="PCSNavigationView" customModule="PeopleCongressSystem" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="64" width="600" height="36"/>
+                                <rect key="frame" x="0.0" y="64" width="600" height="44"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="36" id="We6-O8-Ud5"/>
+                                    <constraint firstAttribute="height" constant="44" id="We6-O8-Ud5"/>
                                 </constraints>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="string" keyPath="title" value="修改密码"/>
@@ -217,7 +217,7 @@
                                 </connections>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="X9y-4B-1Ui" userLabel="Container">
-                                <rect key="frame" x="0.0" y="108" width="600" height="128"/>
+                                <rect key="frame" x="0.0" y="116" width="600" height="128"/>
                                 <subviews>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="请输入旧密码" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="RAB-zg-2l0" userLabel="Old Password">
                                         <rect key="frame" x="93" y="0.0" width="507" height="44"/>
@@ -301,7 +301,7 @@
                                 </constraints>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NLR-YO-mOr">
-                                <rect key="frame" x="70" y="276" width="460" height="46"/>
+                                <rect key="frame" x="70" y="284" width="460" height="46"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="46" id="0XG-Wu-6iv"/>
                                 </constraints>
@@ -349,10 +349,10 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7vI-P2-l5G" customClass="PCSNavigationView" customModule="PeopleCongressSystem" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="64" width="600" height="36"/>
+                                <rect key="frame" x="0.0" y="64" width="600" height="44"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="36" id="nXI-Jo-gNQ"/>
+                                    <constraint firstAttribute="height" constant="44" id="nXI-Jo-gNQ"/>
                                 </constraints>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="string" keyPath="title" value="修改手势密码"/>
@@ -362,7 +362,7 @@
                                 </connections>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Hs4-Kh-LcU" customClass="HUIPatternLockView" customModule="HUIPatternLockView_Swift">
-                                <rect key="frame" x="8" y="108" width="584" height="462"/>
+                                <rect key="frame" x="8" y="116" width="584" height="454"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="image" keyPath="normalDotImage" value="gesture_dot_nor"/>
@@ -403,10 +403,10 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="shK-VT-A8f" customClass="PCSNavigationView" customModule="PeopleCongressSystem" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="64" width="600" height="36"/>
+                                <rect key="frame" x="0.0" y="64" width="600" height="44"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="36" id="gzD-M2-GYJ"/>
+                                    <constraint firstAttribute="height" constant="44" id="gzD-M2-GYJ"/>
                                 </constraints>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="string" keyPath="title" value="意见反馈"/>
@@ -416,7 +416,7 @@
                                 </connections>
                             </view>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="zdT-HJ-LcF" customClass="GrowingTextView" customModule="GrowingTextView">
-                                <rect key="frame" x="8" y="108" width="584" height="140"/>
+                                <rect key="frame" x="8" y="116" width="584" height="140"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="140" id="n8h-Br-fXF"/>
@@ -426,7 +426,7 @@
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="b79-cx-66u">
-                                <rect key="frame" x="8" y="288" width="584" height="46"/>
+                                <rect key="frame" x="8" y="296" width="584" height="46"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="46" id="bqk-73-b6h"/>
                                 </constraints>
@@ -472,10 +472,10 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JfI-MH-FrN" customClass="PCSNavigationView" customModule="PeopleCongressSystem" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="64" width="600" height="36"/>
+                                <rect key="frame" x="0.0" y="64" width="600" height="44"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="36" id="mxn-xR-73h"/>
+                                    <constraint firstAttribute="height" constant="44" id="mxn-xR-73h"/>
                                 </constraints>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="string" keyPath="title" value="关于"/>
@@ -485,14 +485,14 @@
                                 </connections>
                             </view>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="guo_hui_small" translatesAutoresizingMaskIntoConstraints="NO" id="0Pl-S0-rBl">
-                                <rect key="frame" x="273" y="130" width="54" height="56"/>
+                                <rect key="frame" x="273" y="138" width="54" height="56"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="56" id="8yf-sW-6DD"/>
                                     <constraint firstAttribute="width" constant="54" id="uW5-9p-scL"/>
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="大连市人大代表履职信息管理系统" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aVj-Bz-L4A">
-                                <rect key="frame" x="20" y="213" width="560" height="17"/>
+                                <rect key="frame" x="20" y="221" width="560" height="17"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="17" id="2uK-px-HQv"/>
                                 </constraints>
@@ -501,7 +501,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="大连市人大常委会 版权所有" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EPU-Zg-bEy">
-                                <rect key="frame" x="20" y="267" width="560" height="15"/>
+                                <rect key="frame" x="20" y="275" width="560" height="15"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="15" id="8jk-iL-jZ5"/>
                                 </constraints>
@@ -510,7 +510,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="技术支持 大连公众信息产业有限公司" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="suu-S7-f0C">
-                                <rect key="frame" x="20" y="289" width="560" height="15"/>
+                                <rect key="frame" x="20" y="297" width="560" height="15"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="15" id="yT2-NE-aeL"/>
                                 </constraints>
@@ -519,7 +519,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="http://www.dlpii.com/" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OKk-bC-NhV">
-                                <rect key="frame" x="20" y="312" width="560" height="15"/>
+                                <rect key="frame" x="20" y="320" width="560" height="15"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="15" id="04k-6R-qW9"/>
                                     <constraint firstAttribute="height" constant="15" id="ZDw-Zd-dNJ"/>
@@ -534,7 +534,7 @@
                                 </variation>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="业务支持电话 : 0411-83722229" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="908-vk-h6s">
-                                <rect key="frame" x="20" y="364" width="560" height="13"/>
+                                <rect key="frame" x="20" y="372" width="560" height="13"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="15" id="KSa-4t-xFk"/>
                                     <constraint firstAttribute="height" constant="13" id="vLc-os-f7C"/>
@@ -549,7 +549,7 @@
                                 </variation>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="技术支持电话 : 0411-83644972" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Zdb-M4-Bc6">
-                                <rect key="frame" x="20" y="387" width="560" height="13"/>
+                                <rect key="frame" x="20" y="395" width="560" height="13"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="15" id="CWW-zl-heA"/>
                                     <constraint firstAttribute="height" constant="13" id="URn-iF-sIW"/>
@@ -564,7 +564,7 @@
                                 </variation>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="技术支持QQ : 511838033    " textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kDR-pV-HQa">
-                                <rect key="frame" x="20" y="410" width="560" height="13"/>
+                                <rect key="frame" x="20" y="418" width="560" height="13"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="15" id="4Yx-M9-eci"/>
                                     <constraint firstAttribute="height" constant="13" id="wJk-pP-J0z"/>

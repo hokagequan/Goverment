@@ -33,6 +33,8 @@
 		1075055C1C90576C00C9589E /* UIViewController+PreloadHtml.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1075055B1C90576C00C9589E /* UIViewController+PreloadHtml.swift */; };
 		1075055E1C9057B700C9589E /* UIWebView+HtmlInteract.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1075055D1C9057B700C9589E /* UIWebView+HtmlInteract.swift */; };
 		107505611C905FB700C9589E /* CommonHTMLViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 107505601C905FB700C9589E /* CommonHTMLViewController.swift */; };
+		107505631C906D0200C9589E /* SituationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 107505621C906D0200C9589E /* SituationViewController.swift */; };
+		1075056D1C9115C700C9589E /* NormalImageCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1075056C1C9115C700C9589E /* NormalImageCell.xib */; };
 		108965971C8F183700CA98D0 /* ChangePasswordReq.swift in Sources */ = {isa = PBXBuildFile; fileRef = 108965961C8F183700CA98D0 /* ChangePasswordReq.swift */; };
 		10A6866A1C7DEF7400D050F0 /* GlobalUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10A686691C7DEF7400D050F0 /* GlobalUtil.swift */; };
 		10A6866D1C7DF12600D050F0 /* UserEntity+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10A6866B1C7DF12600D050F0 /* UserEntity+CoreDataProperties.swift */; };
@@ -129,6 +131,8 @@
 		1075055B1C90576C00C9589E /* UIViewController+PreloadHtml.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController+PreloadHtml.swift"; sourceTree = "<group>"; };
 		1075055D1C9057B700C9589E /* UIWebView+HtmlInteract.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIWebView+HtmlInteract.swift"; sourceTree = "<group>"; };
 		107505601C905FB700C9589E /* CommonHTMLViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommonHTMLViewController.swift; sourceTree = "<group>"; };
+		107505621C906D0200C9589E /* SituationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SituationViewController.swift; sourceTree = "<group>"; };
+		1075056C1C9115C700C9589E /* NormalImageCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NormalImageCell.xib; sourceTree = "<group>"; };
 		108965961C8F183700CA98D0 /* ChangePasswordReq.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChangePasswordReq.swift; sourceTree = "<group>"; };
 		10A686691C7DEF7400D050F0 /* GlobalUtil.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GlobalUtil.swift; sourceTree = "<group>"; };
 		10A6866B1C7DF12600D050F0 /* UserEntity+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UserEntity+CoreDataProperties.swift"; sourceTree = "<group>"; };
@@ -308,6 +312,7 @@
 			children = (
 				10D0D5D21C4FDB440093F687 /* CustomNavigationView.swift */,
 				10D0D5C61C4E81FA0093F687 /* NormalImageCell.swift */,
+				1075056C1C9115C700C9589E /* NormalImageCell.xib */,
 				10D0D5CA1C4E8E260093F687 /* NormalImageTableCell.swift */,
 				107505591C90255F00C9589E /* NormalImageTableCell.xib */,
 				10D0D5CE1C4FC3420093F687 /* TagListCell.swift */,
@@ -349,6 +354,7 @@
 				100B20371C88923600435EF0 /* GroupViewController.swift */,
 				100B203D1C89222F00435EF0 /* PersonListViewController.swift */,
 				10DBF20D1C8A6CBD007620BA /* VariableManageViewController.swift */,
+				107505621C906D0200C9589E /* SituationViewController.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -552,6 +558,7 @@
 				10D0D5991C4CDB330093F687 /* BusinessCard.storyboard in Resources */,
 				1075055A1C90255F00C9589E /* NormalImageTableCell.xib in Resources */,
 				10D0D57A1C4CD1D00093F687 /* Assets.xcassets in Resources */,
+				1075056D1C9115C700C9589E /* NormalImageCell.xib in Resources */,
 				10D0D5751C4CD1D00093F687 /* Main.storyboard in Resources */,
 				10D0D59D1C4CDB680093F687 /* Me.storyboard in Resources */,
 				10D0D5971C4CDAEA0093F687 /* Home.storyboard in Resources */,
@@ -671,6 +678,7 @@
 				10D0D5C91C4E8A190093F687 /* PerformanceRecordsViewController.swift in Sources */,
 				100B203E1C89222F00435EF0 /* PersonListViewController.swift in Sources */,
 				1075055E1C9057B700C9589E /* UIWebView+HtmlInteract.swift in Sources */,
+				107505631C906D0200C9589E /* SituationViewController.swift in Sources */,
 				106C64C91C83511400E6CD95 /* PCSProtocols.swift in Sources */,
 				10DBF2161C8C075F007620BA /* CheckInViewController.swift in Sources */,
 				100B203C1C88968900435EF0 /* GetGroupReq.swift in Sources */,

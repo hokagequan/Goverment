@@ -28,10 +28,10 @@
                                 </userDefinedRuntimeAttributes>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="49w-gv-Nfw" customClass="PCSNavigationView" customModule="PeopleCongressSystem" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="64" width="600" height="36"/>
+                                <rect key="frame" x="0.0" y="64" width="600" height="44"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="36" id="rEG-k9-NVH"/>
+                                    <constraint firstAttribute="height" constant="44" id="rEG-k9-NVH"/>
                                 </constraints>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="string" keyPath="title" value="手势密码"/>
@@ -101,17 +101,17 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="a4J-2G-SmD" customClass="PCSNavigationView" customModule="PeopleCongressSystem" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="64" width="600" height="36"/>
+                                <rect key="frame" x="0.0" y="64" width="600" height="44"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="36" id="ZCm-Gt-GqM"/>
+                                    <constraint firstAttribute="height" constant="44" id="ZCm-Gt-GqM"/>
                                 </constraints>
                                 <connections>
                                     <outlet property="viewController" destination="Ex3-YQ-gIp" id="EOo-qy-eIc"/>
                                 </connections>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ob8-hc-ixx">
-                                <rect key="frame" x="0.0" y="108" width="600" height="492"/>
+                                <rect key="frame" x="0.0" y="116" width="600" height="484"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             </view>
                         </subviews>
@@ -454,10 +454,10 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iJy-yc-pFW" customClass="PCSNavigationView" customModule="PeopleCongressSystem" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="64" width="600" height="36"/>
+                                <rect key="frame" x="0.0" y="64" width="600" height="44"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="36" id="XFY-Z1-4Oz"/>
+                                    <constraint firstAttribute="height" constant="44" id="XFY-Z1-4Oz"/>
                                 </constraints>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="string" keyPath="title" value="找回密码"/>
@@ -467,7 +467,7 @@
                                 </connections>
                             </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" scrollEnabled="NO" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="50" sectionHeaderHeight="28" sectionFooterHeight="100" translatesAutoresizingMaskIntoConstraints="NO" id="mfD-wA-Ezw">
-                                <rect key="frame" x="0.0" y="108" width="600" height="492"/>
+                                <rect key="frame" x="0.0" y="116" width="600" height="484"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <connections>
                                     <outlet property="dataSource" destination="yWI-OB-52O" id="heI-MH-90U"/>

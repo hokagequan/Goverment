@@ -118,6 +118,7 @@
                         <outlet property="collectionView" destination="ISn-ia-tyM" id="wOa-uz-Khw"/>
                         <segue destination="BkH-2E-4Ca" kind="show" identifier="PerformanceRecordsSegue" id="etR-L0-hEV"/>
                         <segue destination="U5H-xC-1Bc" kind="show" identifier="VariableManageSegue" id="zE1-Qf-0eo"/>
+                        <segue destination="6Oz-BJ-aFz" kind="show" identifier="SituationSegue" id="vwU-yL-8Y3"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Cc7-Qf-2qh" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -137,10 +138,10 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1ah-le-gNb" customClass="PCSNavigationView" customModule="PeopleCongressSystem" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="64" width="600" height="36"/>
+                                <rect key="frame" x="0.0" y="64" width="600" height="44"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SVr-vX-gKY">
-                                        <rect key="frame" x="550" y="0.0" width="50" height="36"/>
+                                        <rect key="frame" x="550" y="0.0" width="50" height="44"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="50" id="8Ii-GK-8mP"/>
                                         </constraints>
@@ -154,7 +155,7 @@
                                 <constraints>
                                     <constraint firstAttribute="trailing" secondItem="SVr-vX-gKY" secondAttribute="trailing" id="0gx-Cg-pAZ"/>
                                     <constraint firstAttribute="bottom" secondItem="SVr-vX-gKY" secondAttribute="bottom" id="ZTB-aR-wSD"/>
-                                    <constraint firstAttribute="height" constant="36" id="brc-e3-Y7n"/>
+                                    <constraint firstAttribute="height" constant="44" id="brc-e3-Y7n"/>
                                     <constraint firstItem="SVr-vX-gKY" firstAttribute="top" secondItem="1ah-le-gNb" secondAttribute="top" id="lWB-TC-Lal"/>
                                 </constraints>
                                 <userDefinedRuntimeAttributes>
@@ -165,7 +166,7 @@
                                 </connections>
                             </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="CFG-Qn-5qO">
-                                <rect key="frame" x="0.0" y="108" width="600" height="492"/>
+                                <rect key="frame" x="0.0" y="116" width="600" height="484"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <connections>
                                     <outlet property="dataSource" destination="BkH-2E-4Ca" id="ZEI-iX-Tfx"/>
@@ -207,17 +208,17 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SnL-7g-SMJ" customClass="PCSNavigationView" customModule="PeopleCongressSystem" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="64" width="600" height="36"/>
+                                <rect key="frame" x="0.0" y="64" width="600" height="44"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="36" id="Msx-Re-UzR"/>
+                                    <constraint firstAttribute="height" constant="44" id="Msx-Re-UzR"/>
                                 </constraints>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="string" keyPath="title" value="履职管理"/>
                                 </userDefinedRuntimeAttributes>
                             </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="g7M-sX-Mof">
-                                <rect key="frame" x="0.0" y="108" width="600" height="492"/>
+                                <rect key="frame" x="0.0" y="116" width="600" height="484"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cell" id="Pqv-nm-Ufe">
@@ -249,6 +250,77 @@
             <point key="canvasLocation" x="1568" y="1238"/>
         </scene>
         <!--View Controller-->
+        <scene sceneID="i2d-6s-yuK">
+            <objects>
+                <viewController id="6Oz-BJ-aFz" customClass="SituationViewController" customModule="PeopleCongressSystem" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="w3z-bS-0my"/>
+                        <viewControllerLayoutGuide type="bottom" id="6X9-qr-YZq"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="gLl-xS-PTM">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YWr-ZC-LrS" customClass="PCSNavigationView" customModule="PeopleCongressSystem" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="64" width="600" height="44"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="eVv-KS-NL8"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="title" value="知情知政"/>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <outlet property="viewController" destination="6Oz-BJ-aFz" id="jb1-qx-fsC"/>
+                                </connections>
+                            </view>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="vNb-Tm-Wnn">
+                                <rect key="frame" x="0.0" y="116" width="600" height="484"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="6vV-up-cz6">
+                                    <size key="itemSize" width="50" height="50"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="jvp-fJ-wcy">
+                                        <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                            <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        </view>
+                                    </collectionViewCell>
+                                </cells>
+                                <connections>
+                                    <outlet property="dataSource" destination="6Oz-BJ-aFz" id="Szx-7a-2Ac"/>
+                                    <outlet property="delegate" destination="6Oz-BJ-aFz" id="56a-0F-RaM"/>
+                                </connections>
+                            </collectionView>
+                        </subviews>
+                        <color key="backgroundColor" red="0.96078431369999995" green="0.96078431369999995" blue="0.96078431369999995" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="6X9-qr-YZq" firstAttribute="top" secondItem="vNb-Tm-Wnn" secondAttribute="bottom" id="6en-cz-7P7"/>
+                            <constraint firstAttribute="trailing" secondItem="vNb-Tm-Wnn" secondAttribute="trailing" id="I0d-q0-K92"/>
+                            <constraint firstAttribute="trailing" secondItem="YWr-ZC-LrS" secondAttribute="trailing" id="KaJ-Dy-c3P"/>
+                            <constraint firstItem="vNb-Tm-Wnn" firstAttribute="top" secondItem="YWr-ZC-LrS" secondAttribute="bottom" constant="8" id="RwN-Jw-5By"/>
+                            <constraint firstItem="YWr-ZC-LrS" firstAttribute="leading" secondItem="gLl-xS-PTM" secondAttribute="leading" id="SP4-9t-Cfs"/>
+                            <constraint firstItem="vNb-Tm-Wnn" firstAttribute="leading" secondItem="gLl-xS-PTM" secondAttribute="leading" id="ZYx-Eg-YTO"/>
+                            <constraint firstItem="YWr-ZC-LrS" firstAttribute="top" secondItem="w3z-bS-0my" secondAttribute="bottom" id="snS-rR-xUG"/>
+                        </constraints>
+                    </view>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
+                    <connections>
+                        <outlet property="collectionView" destination="vNb-Tm-Wnn" id="PFx-7o-jW5"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="tQK-70-o0X" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1568" y="2015"/>
+        </scene>
+        <!--View Controller-->
         <scene sceneID="gdi-XG-cqO">
             <objects>
                 <viewController storyboardIdentifier="PerformanceEditViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Kpt-zv-23Y" customClass="PerformanceEditViewController" customModule="PeopleCongressSystem" customModuleProvider="target" sceneMemberID="viewController">
@@ -261,10 +333,10 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="S2n-4Y-9bX" customClass="PCSNavigationView" customModule="PeopleCongressSystem" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="64" width="600" height="36"/>
+                                <rect key="frame" x="0.0" y="64" width="600" height="44"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Os3-SM-1WR">
-                                        <rect key="frame" x="542" y="0.0" width="46" height="36"/>
+                                        <rect key="frame" x="542" y="0.0" width="46" height="44"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="46" id="Hia-YD-sbS"/>
                                         </constraints>
@@ -279,7 +351,7 @@
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="bottom" secondItem="Os3-SM-1WR" secondAttribute="bottom" id="MOF-Yv-cas"/>
-                                    <constraint firstAttribute="height" constant="36" id="Y0p-VF-0h6"/>
+                                    <constraint firstAttribute="height" constant="44" id="Y0p-VF-0h6"/>
                                     <constraint firstAttribute="trailing" secondItem="Os3-SM-1WR" secondAttribute="trailing" constant="12" id="aUr-u1-7iN"/>
                                     <constraint firstItem="Os3-SM-1WR" firstAttribute="top" secondItem="S2n-4Y-9bX" secondAttribute="top" id="kDw-se-Zwk"/>
                                 </constraints>
@@ -288,7 +360,7 @@
                                 </connections>
                             </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="94k-Ss-yKu">
-                                <rect key="frame" x="0.0" y="108" width="600" height="492"/>
+                                <rect key="frame" x="0.0" y="116" width="600" height="484"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <color key="sectionIndexBackgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <prototypes>
@@ -468,10 +540,10 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Qoq-t4-TVY" customClass="PCSNavigationView" customModule="PeopleCongressSystem" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="64" width="600" height="36"/>
+                                <rect key="frame" x="0.0" y="64" width="600" height="44"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="36" id="rHu-1I-6a6"/>
+                                    <constraint firstAttribute="height" constant="44" id="rHu-1I-6a6"/>
                                 </constraints>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="string" keyPath="title" value="代表团选择"/>
@@ -481,7 +553,7 @@
                                 </connections>
                             </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="1" translatesAutoresizingMaskIntoConstraints="NO" id="xka-bY-6JO">
-                                <rect key="frame" x="0.0" y="108" width="600" height="492"/>
+                                <rect key="frame" x="0.0" y="116" width="600" height="484"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cell" id="ZmE-W8-uyR">
@@ -532,10 +604,10 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="U1Q-E4-AyP" customClass="PCSNavigationView" customModule="PeopleCongressSystem" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="64" width="600" height="36"/>
+                                <rect key="frame" x="0.0" y="64" width="600" height="44"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Sxm-eH-KHl" userLabel="Selection">
-                                        <rect key="frame" x="564" y="7" width="22" height="22"/>
+                                        <rect key="frame" x="564" y="11" width="22" height="22"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="22" id="Jg4-eh-ZXM"/>
                                             <constraint firstAttribute="height" constant="22" id="muG-QV-17b"/>
@@ -551,7 +623,7 @@
                                 <constraints>
                                     <constraint firstItem="Sxm-eH-KHl" firstAttribute="centerY" secondItem="U1Q-E4-AyP" secondAttribute="centerY" id="29R-iI-Sqh"/>
                                     <constraint firstAttribute="trailing" secondItem="Sxm-eH-KHl" secondAttribute="trailing" constant="14" id="KvP-hY-fRx"/>
-                                    <constraint firstAttribute="height" constant="36" id="XLv-g6-zGm"/>
+                                    <constraint firstAttribute="height" constant="44" id="XLv-g6-zGm"/>
                                 </constraints>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="string" keyPath="title" value="代表选择"/>
@@ -561,7 +633,7 @@
                                 </connections>
                             </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" allowsMultipleSelection="YES" rowHeight="83" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="4fu-NL-cOp">
-                                <rect key="frame" x="0.0" y="108" width="600" height="492"/>
+                                <rect key="frame" x="0.0" y="116" width="600" height="484"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="Cell" textLabel="Vku-Dm-Aj3" detailTextLabel="VQy-gL-JoD" style="IBUITableViewCellStyleSubtitle" id="8Io-Sc-bb5">

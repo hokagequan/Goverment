@@ -35,17 +35,17 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qAU-WF-5ap" customClass="PCSNavigationView" customModule="PeopleCongressSystem" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="64" width="600" height="36"/>
+                                <rect key="frame" x="0.0" y="64" width="600" height="44"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="36" id="cNL-aI-Ifx"/>
+                                    <constraint firstAttribute="height" constant="44" id="cNL-aI-Ifx"/>
                                 </constraints>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="string" keyPath="title" value="签到"/>
                                 </userDefinedRuntimeAttributes>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="feY-8v-lBL" userLabel="Container">
-                                <rect key="frame" x="210" y="160" width="180" height="180"/>
+                                <rect key="frame" x="210" y="168" width="180" height="180"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="180" id="5KB-T7-2i8"/>

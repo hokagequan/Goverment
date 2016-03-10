@@ -14,7 +14,7 @@ import EZLoadingActivity
 
 // Worker
 let account = "admin"
-let password = "85868000"
+let password = "a"
 
 
 class SignInViewController: UIViewController, UIActionSheetDelegate, UITextFieldDelegate {

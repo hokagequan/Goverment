@@ -54,6 +54,7 @@ class WorkerHomeActionDelegate: ActionProtocol {
             viewController.navigationController?.pushViewController(vc, animated: true)
             break
         case .Situation:
+            viewController.performSegueWithIdentifier("SituationSegue", sender: self)
             break
         default:
             break
