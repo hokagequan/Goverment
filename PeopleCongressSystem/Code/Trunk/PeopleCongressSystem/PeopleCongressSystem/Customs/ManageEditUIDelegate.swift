@@ -138,7 +138,7 @@ class ManageEditUIDelegate: NSObject, UITableViewDataSource, UITableViewDelegate
         
         switch row.title! {
         case "人员:":
-            return TagListCell.cellHeight(nil)
+            return 44.0
         default:
             return 50.0
         }

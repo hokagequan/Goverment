@@ -24,7 +24,7 @@ class GlobalUtil {
     class func rateForWidth() -> CGFloat {
         let app = UIApplication.sharedApplication().delegate as! AppDelegate
         
-        return app.window!.bounds.size.height / CGFloat(667.0)
+        return app.window!.bounds.size.width / CGFloat(320.0)
     }
     
     class func showAlert(message: String) {

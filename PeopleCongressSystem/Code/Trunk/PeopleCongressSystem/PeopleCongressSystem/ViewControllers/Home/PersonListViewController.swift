@@ -33,6 +33,14 @@ class PersonListViewController: UIViewController, UITableViewDelegate, UITableVi
             return
         }
         
+        var selectedNames = [String]()
+        
+        if (activity?.persons != nil) {
+            selectedNames = activity!.persons!.map { (person) -> String in
+                return person.name!
+            }
+        }
+        
         EZLoadingActivity.show("", disableUI: true)
         PCSDataManager.defaultManager().getCongressList(group!.identifier!) { (info) -> Void in
             EZLoadingActivity.hide()
@@ -41,9 +49,28 @@ class PersonListViewController: UIViewController, UITableViewDelegate, UITableVi
                 return
             }
             
-            self.persons = info!
+            let personsTemp = info!
+            var selectedIndexPaths = [NSIndexPath]()
+            var index = 0
+            self.persons = personsTemp.map({ (person) -> Person in
+                person.organization = self.group?.title
+                
+                if selectedNames.contains(person.name!) {
+                    selectedIndexPaths.append(NSIndexPath(forRow: index, inSection: 0))
+                }
+                
+                index++
+                
+                return person
+            })
             
             self.personsTableView.reloadData()
+            
+            if selectedIndexPaths.count > 0 {
+                for indexPath in selectedIndexPaths {
+                    self.personsTableView.selectRowAtIndexPath(indexPath, animated: false, scrollPosition: UITableViewScrollPosition.None)
+                }
+            }
         }
     }
 
@@ -122,9 +149,9 @@ class PersonListViewController: UIViewController, UITableViewDelegate, UITableVi
         cell.textLabel?.text = person.name
         cell.detailTextLabel?.text = group?.title
         cell.textLabel?.font = UIFont.systemFontOfSize(16.0)
-        cell.detailTextLabel?.font = UIFont.systemFontOfSize(16.0)
-        cell.textLabel?.textColor = GlobalUtil.colorRGBA(59, g: 59, b: 59, a: 1)
-        cell.textLabel?.textColor = UIColor.grayColor()
+        cell.detailTextLabel?.font = UIFont.systemFontOfSize(15.0)
+        cell.textLabel?.textColor = GlobalUtil.colorRGBA(51, g: 51, b: 51, a: 1)
+        cell.detailTextLabel?.textColor = GlobalUtil.colorRGBA(60, g: 60, b: 60, a: 1)
         
         return cell
     }
@@ -139,6 +166,7 @@ class PersonListViewController: UIViewController, UITableViewDelegate, UITableVi
         view.tag = 1000
         CustomObjectUtil.customObjectsLayout([view], backgroundColor: UIColor.whiteColor(), borderWidth: 1, borderColor: GlobalUtil.colorRGBA(240, g: 240, b: 240, a: 1.0), corner: 2)
         cell.contentView.addSubview(view)
+        cell.contentView.sendSubviewToBack(view)
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {

@@ -22,10 +22,6 @@ class GroupViewController: UIViewController, UITableViewDataSource, UITableViewD
         // Do any additional setup after loading the view.
         self.navigationItem.hidesBackButton = true
         PCSCustomUtil.customNavigationController(self)
-    }
-    
-    override func viewDidAppear(animated: Bool) {
-        super.viewDidAppear(animated)
         
         EZLoadingActivity.show("", disableUI: true)
         PCSDataManager.defaultManager().getGroup { (info) -> Void in
@@ -36,6 +32,10 @@ class GroupViewController: UIViewController, UITableViewDataSource, UITableViewD
                 self.groupTableView.reloadData()
             }
         }
+    }
+    
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
     }
 
     override func didReceiveMemoryWarning() {

@@ -199,9 +199,9 @@ class PCSDataManager {
                     let dict = info[i] as! Dictionary<String, AnyObject>
                     let person = Person()
                     person.identifier = dict["RDDB_ID"] as? String
-                    person.congressID = dict["RDDB_GUID"] as? String
-                    person.name = dict["RDDB_NAME"] as? String
-                    person.organizationID = dict["RDDB_NAME"] as? String
+                    person.congressID = dict["RDDB_Guid"] as? String
+                    person.name = dict["RDDB_Name"] as? String
+                    person.organizationID = dict["RDDB_Org"] as? String
                     relArray?.append(person)
                 }
             }

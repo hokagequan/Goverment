@@ -81,6 +81,8 @@ class PerformanceEditViewController: UIViewController {
     
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
+        
+        tableView.reloadRowsAtIndexPaths([NSIndexPath(forRow: 0, inSection: 3)], withRowAnimation: UITableViewRowAnimation.None)
     }
     
     override func viewWillDisappear(animated: Bool) {
@@ -120,7 +122,7 @@ class PerformanceEditViewController: UIViewController {
         // Pass the selected object to the new view controller.
         if segue.identifier == "GroupSegue" {
             let vc = segue.destinationViewController as! GroupViewController
-            vc.activity = editObject as? Activity
+            vc.activity = myUIDelegate?.editObject as? Activity
         }
     }
 

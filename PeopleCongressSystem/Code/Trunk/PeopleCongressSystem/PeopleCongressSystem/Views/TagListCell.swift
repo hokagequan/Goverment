@@ -26,10 +26,36 @@ class TagListCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
-    // MARK: - Class functions
+    func loadPersons(persons: Array<Person>?) {
+        if persons == nil {
+            tagList.removeAllTags()
+            
+            return
+        }
+        
+        for i in 0..<persons!.count {
+            let person = persons![i]
+            
+            self.tagList.addTag("\(person.organization!):\n\(person.name!)")
+        }
+    }
     
-    class func cellHeight(tags: Array<String>?) -> CGFloat {
-        // TODO: 计算cell高度
+    class func cellHeight(persons: Array<Person>?) -> CGFloat {
+        if persons != nil {
+            let tempTagList = TagListView()
+            tempTagList.paddingY = 5.0
+            tempTagList.marginY = 5.0
+            tempTagList.frame = CGRectMake(0, 0, GlobalUtil.rateForWidth() * 320.0, 0)
+            
+            for i in 0..<persons!.count {
+                let person = persons![i]
+                
+                tempTagList.addTag("\(person.organization!):\n\(person.name!)")
+            }
+            
+            return tempTagList.intrinsicContentSize().height + 44.0 + 5.0
+        }
+        
         return 44.0
     }
 

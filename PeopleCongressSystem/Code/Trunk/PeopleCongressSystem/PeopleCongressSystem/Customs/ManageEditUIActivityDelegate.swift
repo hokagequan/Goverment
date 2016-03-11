@@ -118,6 +118,19 @@ class ManageEditUIActivityDelegate: ManageEditUIDelegate {
     
     // MARK: - UITableView
     
+    override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+        let section = EditSections(rawValue: indexPath.section)!
+        let row = section.rows()[indexPath.row]
+        
+        switch row.title! {
+        case "人员:":
+            let activity = self.editObject as? Activity
+            return TagListCell.cellHeight(activity?.persons)
+        default:
+            return super.tableView(tableView, heightForRowAtIndexPath: indexPath)
+        }
+    }
+    
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = super.tableView(tableView, cellForRowAtIndexPath: indexPath)
         
@@ -151,6 +164,9 @@ class ManageEditUIActivityDelegate: ManageEditUIDelegate {
                 break
             }
         }
+        else if cell is TagListCell {
+            (cell as! TagListCell).loadPersons(activity?.persons)
+        }
         
         return cell
     }
@@ -176,7 +192,9 @@ class ManageEditUIActivityDelegate: ManageEditUIDelegate {
             
             break
         case "人员:":
-            self.editObject = self.createActivity()
+            if self.editObject == nil {
+                self.editObject = self.createActivity()
+            }
             self.masterViewController?.performSegueWithIdentifier("GroupSegue", sender: self)
             break
         default:

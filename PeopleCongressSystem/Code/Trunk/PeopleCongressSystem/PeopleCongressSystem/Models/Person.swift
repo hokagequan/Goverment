@@ -14,5 +14,6 @@ class Person: NSObject {
     var name: String? = nil
     var congressID: String? = nil
     var organizationID: String? = nil
+    var organization: String? = nil
     
 }

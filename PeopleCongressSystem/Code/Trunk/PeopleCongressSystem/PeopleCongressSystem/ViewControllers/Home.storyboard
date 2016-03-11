@@ -571,16 +571,39 @@
                                                     </constraints>
                                                 </imageView>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="T6C-uh-BuQ" userLabel="Tag List" customClass="TagListView" customModule="TagListView">
-                                                    <rect key="frame" x="0.0" y="44" width="600" height="56"/>
+                                                    <rect key="frame" x="5" y="44" width="590" height="56"/>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <userDefinedRuntimeAttributes>
+                                                        <userDefinedRuntimeAttribute type="color" keyPath="textColor">
+                                                            <color key="value" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                                            <real key="value" value="1"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                        <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                                            <color key="value" red="1" green="0.80000000000000004" blue="0.72156862745098038" alpha="1" colorSpace="calibratedRGB"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                        <userDefinedRuntimeAttribute type="color" keyPath="tagBackgroundColor">
+                                                            <color key="value" red="0.99215686274509807" green="0.94117647058823528" blue="0.77647058823529413" alpha="1" colorSpace="calibratedRGB"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="paddingY">
+                                                            <real key="value" value="5"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="marginY">
+                                                            <real key="value" value="5"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                            <real key="value" value="5"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                    </userDefinedRuntimeAttributes>
                                                 </view>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstAttribute="bottom" secondItem="T6C-uh-BuQ" secondAttribute="bottom" id="0Ef-RI-MsZ"/>
-                                                <constraint firstItem="T6C-uh-BuQ" firstAttribute="leading" secondItem="lEW-nZ-InS" secondAttribute="leading" id="2Rb-WE-UqQ"/>
+                                                <constraint firstItem="T6C-uh-BuQ" firstAttribute="leading" secondItem="lEW-nZ-InS" secondAttribute="leading" constant="5" id="2Rb-WE-UqQ"/>
                                                 <constraint firstItem="9yx-Hg-PgF" firstAttribute="leading" secondItem="Lgw-jT-78m" secondAttribute="trailing" constant="30" id="LMb-g8-e9t"/>
                                                 <constraint firstAttribute="trailing" secondItem="9yx-Hg-PgF" secondAttribute="trailing" constant="15" id="OV2-Hj-5OZ"/>
-                                                <constraint firstAttribute="trailing" secondItem="T6C-uh-BuQ" secondAttribute="trailing" id="Oxg-Au-JhJ"/>
+                                                <constraint firstAttribute="trailing" secondItem="T6C-uh-BuQ" secondAttribute="trailing" constant="5" id="Oxg-Au-JhJ"/>
                                                 <constraint firstItem="NNE-Pg-RlF" firstAttribute="leading" secondItem="lEW-nZ-InS" secondAttribute="leading" constant="10" id="Vck-bB-cQI"/>
                                                 <constraint firstItem="9yx-Hg-PgF" firstAttribute="centerY" secondItem="NNE-Pg-RlF" secondAttribute="centerY" id="YMe-SN-o3E"/>
                                                 <constraint firstItem="NNE-Pg-RlF" firstAttribute="top" secondItem="lEW-nZ-InS" secondAttribute="top" constant="14" id="btb-A8-DjL"/>

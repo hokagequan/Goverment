@@ -95,6 +95,7 @@ public class TagView: UIButton {
     init(title: String) {
         super.init(frame: CGRectZero)
         setTitle(title, forState: .Normal)
+        titleLabel?.numberOfLines = 3
         
         setupView()
     }
@@ -108,7 +109,8 @@ public class TagView: UIButton {
     override public func intrinsicContentSize() -> CGSize {
         var size = titleLabel?.text?.sizeWithAttributes([NSFontAttributeName: textFont]) ?? CGSizeZero
         
-        size.height = textFont.pointSize + paddingY * 2
+//        size.height = textFont.pointSize + paddingY * 2
+        size.height += paddingY * 2
         size.width += paddingX * 2
         
         return size
