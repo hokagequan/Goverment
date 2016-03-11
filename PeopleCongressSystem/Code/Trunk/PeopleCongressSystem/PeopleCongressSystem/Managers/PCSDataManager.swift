@@ -125,11 +125,11 @@ class PCSDataManager {
                     let dict = info[i] as! Dictionary<String, AnyObject>
                     let group = Group()
                     group.identifier = dict["GUID"] as? String
-                    group.number = dict["DisBH"] as? String
-                    group.title = dict["DisName"] as? String
+                    group.number = dict["disBH"] as? String
+                    group.title = dict["disName"] as? String
                     group.parentID = dict["ParentID"] as? String
-                    group.sort = dict["Orderid"] as? String
-                    group.personCount = dict["Dbsl"] as? String
+                    group.sort = dict["orderid"] as? String
+                    group.personCount = dict["dbsl"] as! Int
                     relArray?.append(group)
                 }
             }

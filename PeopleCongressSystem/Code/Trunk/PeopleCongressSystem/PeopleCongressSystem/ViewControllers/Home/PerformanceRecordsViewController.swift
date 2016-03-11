@@ -114,7 +114,7 @@ class PerformanceRecordsViewController: UIViewController, UITableViewDataSource,
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         if indexPath.row == 0 {
             let cell = tableView.dequeueReusableCellWithIdentifier("HeaderCell", forIndexPath: indexPath)
-            cell.imageView?.image = UIImage(named: "")
+            cell.imageView?.image = UIImage(named: "categroy")
             cell.textLabel?.text = "活动分类"
             
             if selectedType == nil {

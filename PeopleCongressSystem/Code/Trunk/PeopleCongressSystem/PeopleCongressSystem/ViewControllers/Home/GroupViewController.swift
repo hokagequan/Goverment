@@ -36,9 +36,6 @@ class GroupViewController: UIViewController, UITableViewDataSource, UITableViewD
                 self.groupTableView.reloadData()
             }
         }
-        
-        // FIXME: Test
-        self.performSegueWithIdentifier("PersonListSegue", sender: self)
     }
 
     override func didReceiveMemoryWarning() {
@@ -68,7 +65,7 @@ class GroupViewController: UIViewController, UITableViewDataSource, UITableViewD
         cell.textLabel?.font = UIFont.systemFontOfSize(15.0)
         
         let group = groups[indexPath.row]
-        cell.textLabel?.text = group.title! + "（\(group.personCount!)）"
+        cell.textLabel?.text = group.title! + "（\(group.personCount)）"
         
         return cell
     }

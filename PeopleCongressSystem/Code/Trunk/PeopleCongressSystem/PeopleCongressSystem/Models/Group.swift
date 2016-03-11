@@ -15,6 +15,6 @@ class Group: NSObject {
     var title: String?
     var parentID: String?
     var sort: String?
-    var personCount: String?
+    var personCount: Int = 0
     
 }

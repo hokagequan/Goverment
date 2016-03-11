@@ -27,6 +27,7 @@ class PersonListViewController: UIViewController, UITableViewDelegate, UITableVi
         super.viewDidAppear(animated)
         
         self.navigationItem.hidesBackButton = true
+        PCSCustomUtil.customNavigationController(self)
         
         if group == nil {
             return
@@ -34,6 +35,8 @@ class PersonListViewController: UIViewController, UITableViewDelegate, UITableVi
         
         EZLoadingActivity.show("", disableUI: true)
         PCSDataManager.defaultManager().getCongressList(group!.identifier!) { (info) -> Void in
+            EZLoadingActivity.hide()
+            
             if info == nil {
                 return
             }

@@ -113,7 +113,7 @@ class ManageEditUIActivityDelegate: ManageEditUIDelegate {
     
     func didSelectIndex(view: TypeSelectView, indexPath: NSIndexPath) {
         selectedInfo = types[indexPath.row]
-        tableView?.reloadData()
+        tableView?.reloadRowsAtIndexPaths([NSIndexPath(forRow: 1, inSection: 0)], withRowAnimation: UITableViewRowAnimation.None)
     }
     
     // MARK: - UITableView
@@ -176,6 +176,7 @@ class ManageEditUIActivityDelegate: ManageEditUIDelegate {
             
             break
         case "人员:":
+            self.editObject = self.createActivity()
             self.masterViewController?.performSegueWithIdentifier("GroupSegue", sender: self)
             break
         default:

@@ -223,7 +223,8 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <inset key="titleEdgeInsets" minX="10" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 <inset key="imageEdgeInsets" minX="5" minY="0.0" maxX="0.0" maxY="0.0"/>
-                                <state key="normal" title="记住密码" image="check"/>
+                                <state key="normal" title="记住密码" image="uncheck"/>
+                                <state key="selected" image="check"/>
                                 <connections>
                                     <action selector="clickRemember:" destination="o5A-KL-8xA" eventType="touchUpInside" id="elA-JY-kLs"/>
                                 </connections>
@@ -236,7 +237,8 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <inset key="titleEdgeInsets" minX="10" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 <inset key="imageEdgeInsets" minX="5" minY="0.0" maxX="0.0" maxY="0.0"/>
-                                <state key="normal" title="自动登录" image="check"/>
+                                <state key="normal" title="自动登录" image="uncheck"/>
+                                <state key="selected" image="check"/>
                                 <variation key="default">
                                     <mask key="constraints">
                                         <exclude reference="iMN-AP-9YX"/>
@@ -548,6 +550,7 @@
         <image name="phone" width="13" height="18"/>
         <image name="server" width="14" height="12"/>
         <image name="sign_title" width="242" height="43"/>
+        <image name="uncheck" width="21" height="21"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="eEb-Ro-XCT"/>
