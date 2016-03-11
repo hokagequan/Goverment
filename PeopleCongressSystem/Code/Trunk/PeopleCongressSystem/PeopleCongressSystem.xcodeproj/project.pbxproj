@@ -424,8 +424,8 @@
 				1075056E1C91445700C9589E /* CongressHomeActionDelegate.swift */,
 				10DBF20F1C8A8075007620BA /* ManageEditUIDelegate.swift */,
 				10DBF2111C8A823C007620BA /* ManageEditUIActivityDelegate.swift */,
-				10DBF2131C8BBDBB007620BA /* ManageUIDelegate.swift */,
 				10DBF21B1C8D3927007620BA /* ManageEditUICheckInDelegate.swift */,
+				10DBF2131C8BBDBB007620BA /* ManageUIDelegate.swift */,
 				1075055D1C9057B700C9589E /* UIWebView+HtmlInteract.swift */,
 			);
 			path = Customs;
