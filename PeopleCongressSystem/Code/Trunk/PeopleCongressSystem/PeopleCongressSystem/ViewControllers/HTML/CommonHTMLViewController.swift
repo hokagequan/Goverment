@@ -14,6 +14,7 @@ class CommonHTMLViewController: UIViewController, WebViewHTMLProtocol {
     @IBOutlet weak var webViewContainer: UIView!
     
     var URL: String?
+    var naviTitle: String?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,6 +23,7 @@ class CommonHTMLViewController: UIViewController, WebViewHTMLProtocol {
         self.navigationItem.hidesBackButton = true
         PCSCustomUtil.customNavigationController(self)
         
+        self.naviView.title = naviTitle
         self.loadWebView(webViewContainer)
         self.loadMainPage()
     }

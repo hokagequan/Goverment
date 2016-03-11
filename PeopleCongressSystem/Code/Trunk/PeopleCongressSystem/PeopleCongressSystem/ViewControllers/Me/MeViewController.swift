@@ -122,7 +122,7 @@ class MeViewController: UITableViewController {
             let storyboard = UIStoryboard(name: "Main", bundle: nil)
             let vc = storyboard.instantiateViewControllerWithIdentifier("CommonHTMLViewController") as! CommonHTMLViewController
             vc.URL = PCSDataManager.defaultManager().htmlURL(pageHTMLHelp)
-            vc.naviView.title = row.title()
+            vc.naviTitle = row.title()
             self.navigationController?.pushViewController(vc, animated: true)
         default:
             break

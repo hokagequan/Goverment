@@ -26,30 +26,35 @@ class WorkerHomeActionDelegate: ActionProtocol {
             let storyboard = UIStoryboard(name: "Main", bundle: nil)
             let vc = storyboard.instantiateViewControllerWithIdentifier("CommonHTMLViewController") as! CommonHTMLViewController
             vc.URL = PCSDataManager.defaultManager().htmlURL(pageHTMLVariableManager)
+            vc.naviTitle = "履职管理"
             viewController.navigationController?.pushViewController(vc, animated: true)
             break
         case .Analyze:
             let storyboard = UIStoryboard(name: "Main", bundle: nil)
             let vc = storyboard.instantiateViewControllerWithIdentifier("CommonHTMLViewController") as! CommonHTMLViewController
             vc.URL = PCSDataManager.defaultManager().htmlURL(pageHTMLVariableAnalyze)
+            vc.naviTitle = "履职统计"
             viewController.navigationController?.pushViewController(vc, animated: true)
             break
         case .ShareSpace:
             let storyboard = UIStoryboard(name: "Main", bundle: nil)
             let vc = storyboard.instantiateViewControllerWithIdentifier("CommonHTMLViewController") as! CommonHTMLViewController
             vc.URL = PCSDataManager.defaultManager().htmlURL(pageHTMLShareSpace)
+            vc.naviTitle = "共享空间"
             viewController.navigationController?.pushViewController(vc, animated: true)
             break
         case .CongressInfo:
             let storyboard = UIStoryboard(name: "Main", bundle: nil)
             let vc = storyboard.instantiateViewControllerWithIdentifier("CommonHTMLViewController") as! CommonHTMLViewController
             vc.URL = PCSDataManager.defaultManager().htmlURL(pageHTMLCongressInfo)
+            vc.naviTitle = "代表信息"
             viewController.navigationController?.pushViewController(vc, animated: true)
             break
         case .Notify:
             let storyboard = UIStoryboard(name: "Main", bundle: nil)
             let vc = storyboard.instantiateViewControllerWithIdentifier("CommonHTMLViewController") as! CommonHTMLViewController
             vc.URL = PCSDataManager.defaultManager().htmlURL(pageHTMLNotify)
+            vc.naviTitle = "通知通报"
             viewController.navigationController?.pushViewController(vc, animated: true)
             break
         case .Situation:
