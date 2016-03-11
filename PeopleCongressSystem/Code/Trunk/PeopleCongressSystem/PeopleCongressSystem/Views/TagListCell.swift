@@ -35,6 +35,11 @@ class TagListCell: UITableViewCell {
         
         for i in 0..<persons!.count {
             let person = persons![i]
+            if person.organization == nil {
+                self.tagList.addTag("\(person.name!)")
+                
+                continue
+            }
             
             self.tagList.addTag("\(person.organization!):\n\(person.name!)")
         }
@@ -50,6 +55,11 @@ class TagListCell: UITableViewCell {
             for i in 0..<persons!.count {
                 let person = persons![i]
                 
+                if person.organization == nil {
+                    tempTagList.addTag("\(person.name!)")
+                    
+                    continue
+                }
                 tempTagList.addTag("\(person.organization!):\n\(person.name!)")
             }
             

@@ -23,6 +23,7 @@ class PerformanceRecordsViewController: UIViewController, UITableViewDataSource,
     var types = [PCSTypeInfo]()
     var selectedObject: AnyObject? = nil
     var selectedType: PCSTypeInfo?
+    var gotoPageType: EditPageType = EditPageType.Activity
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -73,6 +74,7 @@ class PerformanceRecordsViewController: UIViewController, UITableViewDataSource,
     // MARK: - Actions
     
     @IBAction func clickAdd(sender: AnyObject) {
+        gotoPageType = EditPageType.Activity
         self.performSegueWithIdentifier("EditSegue", sender: self)
     }
     
@@ -160,7 +162,8 @@ class PerformanceRecordsViewController: UIViewController, UITableViewDataSource,
         
         let activity = activitys[indexPath.row - 1]
         selectedObject = activity
-        self.performSegueWithIdentifier("EditSegue", sender: activity)
+        gotoPageType = EditPageType.ActivityEdit
+        self.performSegueWithIdentifier("EditSegue", sender: nil)
     }
 
     // MARK: - Navigation
@@ -171,7 +174,7 @@ class PerformanceRecordsViewController: UIViewController, UITableViewDataSource,
         // Pass the selected object to the new view controller.
         if segue.identifier == "EditSegue" {
             let vc = segue.destinationViewController as! PerformanceEditViewController
-            vc.pageType = EditPageType.Activity
+            vc.pageType = gotoPageType
             vc.editObject = selectedObject
         }
     }

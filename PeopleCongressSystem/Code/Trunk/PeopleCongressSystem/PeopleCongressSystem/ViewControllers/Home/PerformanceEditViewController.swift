@@ -11,6 +11,7 @@ import EZLoadingActivity
 
 enum EditPageType {
     case Activity
+    case ActivityEdit
     case Variable
     case CheckIn
     
@@ -37,6 +38,11 @@ enum EditPageType {
         switch self {
         case .Activity:
             let delegate = ManageEditUIActivityDelegate()
+            loadTableView(viewController, delegate: delegate, tableView: tableView)
+            
+            return delegate
+        case .ActivityEdit:
+            let delegate = ManageEditActivityEditDelegate()
             loadTableView(viewController, delegate: delegate, tableView: tableView)
             
             return delegate
@@ -71,6 +77,7 @@ class PerformanceEditViewController: UIViewController {
         pageType?.customNavi(naviView, rightNaviButton: rightNaviButton)
         myUIDelegate = pageType?.loadDelegate(self, tableView: tableView)
         myUIDelegate?.editObject = editObject
+        myUIDelegate?.prepare()
     }
     
     override func viewWillAppear(animated: Bool) {

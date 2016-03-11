@@ -10,9 +10,10 @@ import Foundation
 
 class Activity: NSObject, NSCopying {
     
-    var identifier: String? = nil
+    var identifier: Int = 0
     var title: String? = nil
     var type: String? = nil
+    var typeTitle: String? = nil
     var location: String? = nil
     var content: String? = nil
     var beginTime: String? = nil
@@ -48,6 +49,7 @@ class Activity: NSObject, NSCopying {
         activity.identifier = self.identifier
         activity.title = self.title
         activity.type = self.type
+        activity.typeTitle = self.typeTitle
         activity.location = self.location
         activity.content = self.content
         activity.beginTime = self.beginTime

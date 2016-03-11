@@ -11,6 +11,8 @@
 		100160331C8D884D0095D023 /* MeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 100160321C8D884D0095D023 /* MeViewController.swift */; };
 		100160351C8DB93E0095D023 /* QRCodeDownloadViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 100160341C8DB93E0095D023 /* QRCodeDownloadViewController.swift */; };
 		100160371C8E5B7B0095D023 /* QRDownloadCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 100160361C8E5B7B0095D023 /* QRDownloadCell.swift */; };
+		100691AE1C929CA7000AEFEA /* ManageEditActivityEditDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 100691AD1C929CA7000AEFEA /* ManageEditActivityEditDelegate.swift */; };
+		100691B01C929DA6000AEFEA /* EditActivityReq.swift in Sources */ = {isa = PBXBuildFile; fileRef = 100691AF1C929DA6000AEFEA /* EditActivityReq.swift */; };
 		100B202E1C88786700435EF0 /* UIViewController+Keyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 100B202D1C88786700435EF0 /* UIViewController+Keyboard.swift */; };
 		100B20301C887C1000435EF0 /* TypeSelectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 100B202F1C887C1000435EF0 /* TypeSelectView.swift */; };
 		100B20321C887C2600435EF0 /* TypeSelectView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 100B20311C887C2600435EF0 /* TypeSelectView.xib */; };
@@ -113,6 +115,8 @@
 		100160321C8D884D0095D023 /* MeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MeViewController.swift; sourceTree = "<group>"; };
 		100160341C8DB93E0095D023 /* QRCodeDownloadViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QRCodeDownloadViewController.swift; sourceTree = "<group>"; };
 		100160361C8E5B7B0095D023 /* QRDownloadCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QRDownloadCell.swift; sourceTree = "<group>"; };
+		100691AD1C929CA7000AEFEA /* ManageEditActivityEditDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ManageEditActivityEditDelegate.swift; sourceTree = "<group>"; };
+		100691AF1C929DA6000AEFEA /* EditActivityReq.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditActivityReq.swift; sourceTree = "<group>"; };
 		100B202D1C88786700435EF0 /* UIViewController+Keyboard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController+Keyboard.swift"; sourceTree = "<group>"; };
 		100B202F1C887C1000435EF0 /* TypeSelectView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TypeSelectView.swift; sourceTree = "<group>"; };
 		100B20311C887C2600435EF0 /* TypeSelectView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TypeSelectView.xib; sourceTree = "<group>"; };
@@ -424,6 +428,7 @@
 				1075056E1C91445700C9589E /* CongressHomeActionDelegate.swift */,
 				10DBF20F1C8A8075007620BA /* ManageEditUIDelegate.swift */,
 				10DBF2111C8A823C007620BA /* ManageEditUIActivityDelegate.swift */,
+				100691AD1C929CA7000AEFEA /* ManageEditActivityEditDelegate.swift */,
 				10DBF21B1C8D3927007620BA /* ManageEditUICheckInDelegate.swift */,
 				10DBF2131C8BBDBB007620BA /* ManageUIDelegate.swift */,
 				1075055D1C9057B700C9589E /* UIWebView+HtmlInteract.swift */,
@@ -438,6 +443,7 @@
 				10496F361C76012F0074CFC1 /* SignInReq.swift */,
 				10F109801C8816D10083D89D /* GetActivitiesReq.swift */,
 				10F109821C881C960083D89D /* AddActivityReq.swift */,
+				100691AF1C929DA6000AEFEA /* EditActivityReq.swift */,
 				100B20331C8881EF00435EF0 /* GetActivityTypesReq.swift */,
 				100B203B1C88968900435EF0 /* GetGroupReq.swift */,
 				100B203F1C895FC600435EF0 /* GetPersonListReq.swift */,
@@ -655,6 +661,7 @@
 				10D0D5A41C4DCA5A0093F687 /* SignInViewController.swift in Sources */,
 				100B20361C8883A700435EF0 /* PCSTypeInfo.swift in Sources */,
 				1075055C1C90576C00C9589E /* UIViewController+PreloadHtml.swift in Sources */,
+				100691AE1C929CA7000AEFEA /* ManageEditActivityEditDelegate.swift in Sources */,
 				107505611C905FB700C9589E /* CommonHTMLViewController.swift in Sources */,
 				107505581C9021A300C9589E /* ResetPasswordReq.swift in Sources */,
 				10DBF21C1C8D3927007620BA /* ManageEditUICheckInDelegate.swift in Sources */,
@@ -662,6 +669,7 @@
 				10F109851C8822A30083D89D /* Person.swift in Sources */,
 				100160311C8D69290095D023 /* CheckInReq.swift in Sources */,
 				108965971C8F183700CA98D0 /* ChangePasswordReq.swift in Sources */,
+				100691B01C929DA6000AEFEA /* EditActivityReq.swift in Sources */,
 				10D0D5C31C4E7D710093F687 /* FindPwdViewController.swift in Sources */,
 				10D0D5951C4CD9810093F687 /* MainViewController.swift in Sources */,
 				10D0D5C11C4E7B160093F687 /* PCSDataManager.swift in Sources */,

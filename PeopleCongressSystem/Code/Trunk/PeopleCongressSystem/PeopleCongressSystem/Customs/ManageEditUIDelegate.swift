@@ -35,7 +35,7 @@ class ManageEditUIDelegate: NSObject, UITableViewDataSource, UITableViewDelegate
                 ["person"]
             ]
             
-            let keys = [["title", "type", "organization"],
+            let keys = [["title", "typeTitle", "organization"],
                 ["beginTime", "endTime"],
                 ["location", "content"],
                 ["persons"]
@@ -105,6 +105,8 @@ class ManageEditUIDelegate: NSObject, UITableViewDataSource, UITableViewDelegate
         
         return cell
     }
+    
+    func prepare() {}
     
     func save() {}
     

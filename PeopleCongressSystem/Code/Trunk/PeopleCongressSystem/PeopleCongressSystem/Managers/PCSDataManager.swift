@@ -234,7 +234,7 @@ class PCSDataManager {
                 for i in 0..<info.count {
                     let dict = info[i] as! Dictionary<String, AnyObject>
                     let activity = Activity()
-                    activity.identifier = dict["huodong_ID"] as? String
+                    activity.identifier = dict["huodong_ID"] as! Int
                     activity.title = dict["huodong_name"] as? String
                     activity.type = dict["huodong_leixing"] as? String
                     activity.location = dict["huodong_didian"] as? String
@@ -245,6 +245,7 @@ class PCSDataManager {
                     activity.createTime = dict["huodong_createtime"] as? String
                     activity.manager = dict["huodong_sbdw"] as? String
                     activity.finished = dict["huodong_zt"] as! Bool
+                    activity.typeTitle = dict["hdlxm"] as? String
                     relArray?.append(activity)
                 }
             }

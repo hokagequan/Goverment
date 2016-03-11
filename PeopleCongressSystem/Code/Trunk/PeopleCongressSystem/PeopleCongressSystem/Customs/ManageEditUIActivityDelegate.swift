@@ -16,7 +16,11 @@ class ManageEditUIActivityDelegate: ManageEditUIDelegate {
     var selectedInfo: PCSTypeInfo? = nil
     
     func createActivity() -> Activity {
-        let activity = Activity()
+        var activity = Activity()
+        
+        if self.editObject != nil {
+            activity = (self.editObject as! Activity).copy() as! Activity
+        }
         
         for section in 0..<EditSections.Max.rawValue {
             let sec = EditSections(rawValue: section)
@@ -29,6 +33,10 @@ class ManageEditUIActivityDelegate: ManageEditUIDelegate {
                     activity.setValue((cell as! NormalImageTableCell).titleTextField.text, forKey: row.key!)
                 }
             }
+        }
+        
+        if selectedInfo != nil {
+            activity.type = selectedInfo?.code
         }
         
         return activity
@@ -143,7 +151,7 @@ class ManageEditUIActivityDelegate: ManageEditUIDelegate {
                 (cell as! NormalImageTableCell).titleTextField.text = activity?.title
                 break
             case "类型:":
-                (cell as! NormalImageTableCell).titleTextField.text = selectedInfo != nil ? selectedInfo?.title : activity?.type
+                (cell as! NormalImageTableCell).titleTextField.text = selectedInfo != nil ? selectedInfo?.title : activity?.typeTitle
                 break
             case "组织:":
                 (cell as! NormalImageTableCell).titleTextField.text = activity?.organization
