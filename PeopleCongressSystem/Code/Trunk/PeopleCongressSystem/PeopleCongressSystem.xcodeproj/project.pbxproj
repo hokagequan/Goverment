@@ -13,6 +13,9 @@
 		100160371C8E5B7B0095D023 /* QRDownloadCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 100160361C8E5B7B0095D023 /* QRDownloadCell.swift */; };
 		100691AE1C929CA7000AEFEA /* ManageEditActivityEditDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 100691AD1C929CA7000AEFEA /* ManageEditActivityEditDelegate.swift */; };
 		100691B01C929DA6000AEFEA /* EditActivityReq.swift in Sources */ = {isa = PBXBuildFile; fileRef = 100691AF1C929DA6000AEFEA /* EditActivityReq.swift */; };
+		100691B31C930308000AEFEA /* VariableDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 100691B21C930308000AEFEA /* VariableDetailViewController.swift */; };
+		100691B51C93B978000AEFEA /* SimpleImageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 100691B41C93B978000AEFEA /* SimpleImageCell.swift */; };
+		100691B71C93B9F0000AEFEA /* CollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 100691B61C93B9F0000AEFEA /* CollectionViewCell.swift */; };
 		100B202E1C88786700435EF0 /* UIViewController+Keyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 100B202D1C88786700435EF0 /* UIViewController+Keyboard.swift */; };
 		100B20301C887C1000435EF0 /* TypeSelectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 100B202F1C887C1000435EF0 /* TypeSelectView.swift */; };
 		100B20321C887C2600435EF0 /* TypeSelectView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 100B20311C887C2600435EF0 /* TypeSelectView.xib */; };
@@ -117,6 +120,10 @@
 		100160361C8E5B7B0095D023 /* QRDownloadCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QRDownloadCell.swift; sourceTree = "<group>"; };
 		100691AD1C929CA7000AEFEA /* ManageEditActivityEditDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ManageEditActivityEditDelegate.swift; sourceTree = "<group>"; };
 		100691AF1C929DA6000AEFEA /* EditActivityReq.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditActivityReq.swift; sourceTree = "<group>"; };
+		100691B21C930308000AEFEA /* VariableDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VariableDetailViewController.swift; sourceTree = "<group>"; };
+		100691B41C93B978000AEFEA /* SimpleImageCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SimpleImageCell.swift; sourceTree = "<group>"; };
+		100691B61C93B9F0000AEFEA /* CollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CollectionViewCell.swift; sourceTree = "<group>"; };
+		100691B81C93BEA6000AEFEA /* PeopleCongressSystem-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "PeopleCongressSystem-Bridging-Header.h"; sourceTree = "<group>"; };
 		100B202D1C88786700435EF0 /* UIViewController+Keyboard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController+Keyboard.swift"; sourceTree = "<group>"; };
 		100B202F1C887C1000435EF0 /* TypeSelectView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TypeSelectView.swift; sourceTree = "<group>"; };
 		100B20311C887C2600435EF0 /* TypeSelectView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TypeSelectView.xib; sourceTree = "<group>"; };
@@ -288,6 +295,7 @@
 				10D0D5791C4CD1D00093F687 /* Assets.xcassets */,
 				10D0D57B1C4CD1D00093F687 /* LaunchScreen.storyboard */,
 				10D0D57E1C4CD1D00093F687 /* Info.plist */,
+				100691B81C93BEA6000AEFEA /* PeopleCongressSystem-Bridging-Header.h */,
 			);
 			path = PeopleCongressSystem;
 			sourceTree = "<group>";
@@ -338,6 +346,8 @@
 				10DBF2181C8C0CF7007620BA /* NormalInfoCell.xib */,
 				100160361C8E5B7B0095D023 /* QRDownloadCell.swift */,
 				107505701C914E8A00C9589E /* RecordCell.swift */,
+				100691B41C93B978000AEFEA /* SimpleImageCell.swift */,
+				100691B61C93B9F0000AEFEA /* CollectionViewCell.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -368,6 +378,7 @@
 				100B20371C88923600435EF0 /* GroupViewController.swift */,
 				100B203D1C89222F00435EF0 /* PersonListViewController.swift */,
 				10DBF20D1C8A6CBD007620BA /* VariableRecordsViewController.swift */,
+				100691B21C930308000AEFEA /* VariableDetailViewController.swift */,
 				107505621C906D0200C9589E /* SituationViewController.swift */,
 			);
 			path = Home;
@@ -655,6 +666,7 @@
 				107505711C914E8A00C9589E /* RecordCell.swift in Sources */,
 				100B20381C88923600435EF0 /* GroupViewController.swift in Sources */,
 				100B20401C895FC600435EF0 /* GetPersonListReq.swift in Sources */,
+				100691B71C93B9F0000AEFEA /* CollectionViewCell.swift in Sources */,
 				10A6866E1C7DF12600D050F0 /* UserEntity.swift in Sources */,
 				107505731C91570F00C9589E /* GetVariablesReq.swift in Sources */,
 				10DBF2101C8A8075007620BA /* ManageEditUIDelegate.swift in Sources */,
@@ -680,6 +692,7 @@
 				10F5875D1C8F928A00F2279B /* FeedbackReq.swift in Sources */,
 				10D0D5AA1C4DEBFD0093F687 /* SettingsManager.swift in Sources */,
 				1072E08C1C8F1BF1004DBA4D /* ChangeGestureViewController.swift in Sources */,
+				100691B31C930308000AEFEA /* VariableDetailViewController.swift in Sources */,
 				10496F371C76012F0074CFC1 /* SignInReq.swift in Sources */,
 				10D0D5781C4CD1D00093F687 /* PeopleCongressSystem.xcdatamodeld in Sources */,
 				10F587661C90063800F2279B /* BusinessCardViewController.swift in Sources */,
@@ -720,6 +733,7 @@
 				10DBF2141C8BBDBB007620BA /* ManageUIDelegate.swift in Sources */,
 				10D0D5B91C4E37360093F687 /* AccountManager.swift in Sources */,
 				10D0D5CB1C4E8E260093F687 /* NormalImageTableCell.swift in Sources */,
+				100691B51C93B978000AEFEA /* SimpleImageCell.swift in Sources */,
 				10F5875F1C8FB1A600F2279B /* AboutViewController.swift in Sources */,
 				10DBF2081C896ED4007620BA /* GetCongressListReq.swift in Sources */,
 			);
@@ -850,11 +864,14 @@
 			baseConfigurationReference = 68AE91901E434A8BE22D3071 /* Pods-PeopleCongressSystem.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				INFOPLIST_FILE = PeopleCongressSystem/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.coolrabbit.PeopleCongressSystem;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "PeopleCongressSystem/PeopleCongressSystem-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
 		};
@@ -863,11 +880,13 @@
 			baseConfigurationReference = 7FC8BFEC67A9706088C1E7DA /* Pods-PeopleCongressSystem.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				INFOPLIST_FILE = PeopleCongressSystem/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.coolrabbit.PeopleCongressSystem;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "PeopleCongressSystem/PeopleCongressSystem-Bridging-Header.h";
 			};
 			name = Release;
 		};

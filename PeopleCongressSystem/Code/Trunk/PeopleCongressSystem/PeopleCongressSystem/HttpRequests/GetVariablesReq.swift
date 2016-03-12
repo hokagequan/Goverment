@@ -27,7 +27,7 @@ class GetVariablesReq: HttpBaseReq {
         params["pageIndex"] = from
         params["pageSize"] = to
         params["Name"] = ""
-        params["IsPost"] = ""
+        params["IsPost"] = "1"
         params["ZT"] = ""
         params["UserGuid"] = PCSDataManager.defaultManager().accountManager.user!.identifier
         params["Type"] = type

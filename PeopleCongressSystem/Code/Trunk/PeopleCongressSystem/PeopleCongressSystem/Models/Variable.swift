@@ -14,6 +14,7 @@ class Variable: NSObject, NSCopying {
     var token: String? = nil
     var title: String? = nil
     var type: String? = nil
+    var typeTitle: String? = nil
     var location: String? = nil
     var content: String? = nil
     var remark: String? = nil
@@ -23,24 +24,8 @@ class Variable: NSObject, NSCopying {
     var createPerson: String? = nil
     var checked: Bool = false
     var submitted: Bool = false
-    var persons: Array<Person>? = nil
-    
-    func serilizePersons() -> String? {
-        if persons == nil {
-            return nil
-        }
-        
-        var personsIDs = [String]()
-        
-        for person in persons! {
-            if person.congressID == nil {
-                continue
-            }
-            personsIDs.append(person.congressID!)
-        }
-        
-        return personsIDs.joinWithSeparator(",")
-    }
+    var persons: String? = nil
+    var photos = [String]()
     
     // MARK: - NSCopying
     
@@ -49,6 +34,7 @@ class Variable: NSObject, NSCopying {
         variable.identifier = self.identifier
         variable.token = self.token
         variable.title = self.title
+        variable.typeTitle = self.typeTitle
         variable.type = self.type
         variable.location = self.location
         variable.content = self.content
@@ -60,6 +46,7 @@ class Variable: NSObject, NSCopying {
         variable.checked = self.checked
         variable.submitted = self.submitted
         variable.persons = self.persons
+        variable.photos = self.photos
         
         return variable
     }

@@ -344,12 +344,139 @@
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <connections>
                         <outlet property="listTableView" destination="g7M-sX-Mof" id="Kin-2I-gt0"/>
-                        <segue destination="Kpt-zv-23Y" kind="show" identifier="EditSegue" id="qJv-3E-B2X"/>
+                        <segue destination="ZAL-RZ-HiG" kind="show" identifier="VariableDetailSegue" id="ETA-Vd-Dzw"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fg3-5i-eC8" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1568" y="1238"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="tcj-Eu-cN2">
+            <objects>
+                <viewController id="ZAL-RZ-HiG" customClass="VariableDetailViewController" customModule="PeopleCongressSystem" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="84D-cd-IyD"/>
+                        <viewControllerLayoutGuide type="bottom" id="FRD-UW-H3c"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="ICf-sm-8Lh">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fwe-CB-AdQ" customClass="PCSNavigationView" customModule="PeopleCongressSystem" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="64" width="600" height="44"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="Y1w-lM-l5h"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="title" value="履职详情"/>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <outlet property="viewController" destination="ZAL-RZ-HiG" id="u7I-8x-oL5"/>
+                                </connections>
+                            </view>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="100" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="dQ4-ee-wDs">
+                                <rect key="frame" x="0.0" y="116" width="600" height="484"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="CollectionViewCell" id="T10-oy-POb" customClass="CollectionViewCell" customModule="PeopleCongressSystem" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="600" height="100"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="T10-oy-POb" id="Eje-mo-vM5">
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="100"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lyv-zQ-OOx" userLabel="Title">
+                                                    <rect key="frame" x="35" y="8" width="545" height="15"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="15" id="lmK-dh-ydp"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                    <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="QxU-Ch-fgY">
+                                                    <rect key="frame" x="0.0" y="30" width="600" height="70"/>
+                                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                    <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="A6e-kg-EWW">
+                                                        <size key="itemSize" width="40" height="40"/>
+                                                        <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                                        <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                                        <inset key="sectionInset" minX="15" minY="15" maxX="15" maxY="15"/>
+                                                    </collectionViewFlowLayout>
+                                                    <cells>
+                                                        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="SimpleImageCell" id="5b9-5g-e3c" customClass="SimpleImageCell" customModule="PeopleCongressSystem" customModuleProvider="target">
+                                                            <rect key="frame" x="15" y="15" width="40" height="40"/>
+                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                                                <rect key="frame" x="0.0" y="0.0" width="40" height="40"/>
+                                                                <autoresizingMask key="autoresizingMask"/>
+                                                                <subviews>
+                                                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Smv-33-cIR" userLabel="Icon">
+                                                                        <rect key="frame" x="0.0" y="0.0" width="40" height="40"/>
+                                                                    </imageView>
+                                                                </subviews>
+                                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                            </view>
+                                                            <constraints>
+                                                                <constraint firstItem="Smv-33-cIR" firstAttribute="top" secondItem="5b9-5g-e3c" secondAttribute="top" id="Aas-55-dip"/>
+                                                                <constraint firstAttribute="trailing" secondItem="Smv-33-cIR" secondAttribute="trailing" id="Zyh-Q7-ib3"/>
+                                                                <constraint firstAttribute="bottom" secondItem="Smv-33-cIR" secondAttribute="bottom" id="aks-ms-7cX"/>
+                                                                <constraint firstItem="Smv-33-cIR" firstAttribute="leading" secondItem="5b9-5g-e3c" secondAttribute="leading" id="iAh-Gw-Jwm"/>
+                                                            </constraints>
+                                                            <connections>
+                                                                <outlet property="iconImageView" destination="Smv-33-cIR" id="uv4-rU-jpL"/>
+                                                            </connections>
+                                                        </collectionViewCell>
+                                                    </cells>
+                                                    <connections>
+                                                        <outlet property="dataSource" destination="T10-oy-POb" id="csV-Ik-Fjm"/>
+                                                        <outlet property="delegate" destination="T10-oy-POb" id="fTA-at-M2g"/>
+                                                    </connections>
+                                                </collectionView>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="QxU-Ch-fgY" firstAttribute="leading" secondItem="Eje-mo-vM5" secondAttribute="leading" id="358-vK-l6J"/>
+                                                <constraint firstAttribute="trailing" secondItem="QxU-Ch-fgY" secondAttribute="trailing" id="dou-M6-lxB"/>
+                                                <constraint firstAttribute="bottom" secondItem="QxU-Ch-fgY" secondAttribute="bottom" id="j14-x1-8Lg"/>
+                                                <constraint firstAttribute="trailing" secondItem="lyv-zQ-OOx" secondAttribute="trailing" constant="20" id="jx6-l3-QR4"/>
+                                                <constraint firstItem="lyv-zQ-OOx" firstAttribute="top" secondItem="Eje-mo-vM5" secondAttribute="top" constant="8" id="wwy-7E-mji"/>
+                                                <constraint firstItem="QxU-Ch-fgY" firstAttribute="top" secondItem="lyv-zQ-OOx" secondAttribute="bottom" constant="7" id="xC7-Np-HQH"/>
+                                                <constraint firstItem="lyv-zQ-OOx" firstAttribute="leading" secondItem="Eje-mo-vM5" secondAttribute="leading" constant="35" id="z49-OX-3n9"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="collectionView" destination="QxU-Ch-fgY" id="HVv-It-xpw"/>
+                                            <outlet property="titleLabel" destination="lyv-zQ-OOx" id="myu-FN-7aX"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="ZAL-RZ-HiG" id="YL8-GB-dQG"/>
+                                    <outlet property="delegate" destination="ZAL-RZ-HiG" id="SDv-Jx-iTA"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" red="0.96078431369999995" green="0.96078431369999995" blue="0.96078431369999995" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="fwe-CB-AdQ" firstAttribute="top" secondItem="84D-cd-IyD" secondAttribute="bottom" id="APF-6b-ZaF"/>
+                            <constraint firstItem="dQ4-ee-wDs" firstAttribute="leading" secondItem="ICf-sm-8Lh" secondAttribute="leading" id="I3r-c4-kuo"/>
+                            <constraint firstItem="fwe-CB-AdQ" firstAttribute="leading" secondItem="ICf-sm-8Lh" secondAttribute="leading" id="Lc1-KQ-t2h"/>
+                            <constraint firstAttribute="trailing" secondItem="dQ4-ee-wDs" secondAttribute="trailing" id="RQr-LM-bve"/>
+                            <constraint firstItem="FRD-UW-H3c" firstAttribute="top" secondItem="dQ4-ee-wDs" secondAttribute="bottom" id="ZXD-L8-O6r"/>
+                            <constraint firstItem="dQ4-ee-wDs" firstAttribute="top" secondItem="fwe-CB-AdQ" secondAttribute="bottom" constant="8" id="nNO-6T-VEG"/>
+                            <constraint firstAttribute="trailing" secondItem="fwe-CB-AdQ" secondAttribute="trailing" id="u2R-gc-xtw"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="naviView" destination="fwe-CB-AdQ" id="ktS-xi-gXF"/>
+                        <outlet property="tableView" destination="dQ4-ee-wDs" id="tGy-40-YsE"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ocJ-Jq-6zt" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2374" y="1238"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="i2d-6s-yuK">
@@ -822,7 +949,4 @@
         <image name="mark_sel" width="22" height="22"/>
         <image name="yellow_star" width="16" height="16"/>
     </resources>
-    <inferredMetricsTieBreakers>
-        <segue reference="DoP-OT-W3Y"/>
-    </inferredMetricsTieBreakers>
 </document>
