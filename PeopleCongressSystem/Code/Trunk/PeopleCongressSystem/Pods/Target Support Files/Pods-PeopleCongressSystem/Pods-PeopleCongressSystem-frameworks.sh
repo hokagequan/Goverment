@@ -88,7 +88,6 @@ if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_framework "Pods-PeopleCongressSystem/EZLoadingActivity.framework"
   install_framework "Pods-PeopleCongressSystem/GrowingTextView.framework"
   install_framework "Pods-PeopleCongressSystem/HUIPatternLockView_Swift.framework"
-  install_framework "Pods-PeopleCongressSystem/SDWebImage.framework"
   install_framework "Pods-PeopleCongressSystem/TagListView.framework"
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
@@ -96,6 +95,5 @@ if [[ "$CONFIGURATION" == "Release" ]]; then
   install_framework "Pods-PeopleCongressSystem/EZLoadingActivity.framework"
   install_framework "Pods-PeopleCongressSystem/GrowingTextView.framework"
   install_framework "Pods-PeopleCongressSystem/HUIPatternLockView_Swift.framework"
-  install_framework "Pods-PeopleCongressSystem/SDWebImage.framework"
   install_framework "Pods-PeopleCongressSystem/TagListView.framework"
 fi

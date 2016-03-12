@@ -34,11 +34,6 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
-		<key>SDWebImage.xcscheme</key>
-		<dict>
-			<key>isShown</key>
-			<false/>
-		</dict>
 		<key>TagListView.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -47,6 +42,11 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
+		<key>43757B396214C7D144418A9C475936BE</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>62CB4A53E53AA477BFD9B082EF16EF5F</key>
 		<dict>
 			<key>primary</key>
@@ -67,22 +67,12 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>B86A0C4F4504975B2357C82AE1E35AB4</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
 		<key>DC87E2772B396D222D3A9A8FFC70D9FE</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>DE1321EC897C09A7CFF13DD662550360</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>EBA93F46914FB183FFC7838E5B227AFE</key>
+		<key>FDE0055571C14659668425A5653B3DD0</key>
 		<dict>
 			<key>primary</key>
 			<true/>

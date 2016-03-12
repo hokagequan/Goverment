@@ -9,8 +9,8 @@
 import Foundation
 
 /// @brief Server
-let serverURL1 = "http://175.170.128.160:8099"
-let serverURL2 = ""
+let serverURL1 = "http://175.170.128.160:8099/"
+let imageDownloadURL = "http://218.25.160.202:8099/lvzhiImage/"
 let serverSoapAction = "http://tempuri.org/"
 
 /// @brief HTML Page

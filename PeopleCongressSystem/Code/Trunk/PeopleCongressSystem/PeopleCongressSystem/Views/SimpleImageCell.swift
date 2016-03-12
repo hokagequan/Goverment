@@ -12,4 +12,8 @@ class SimpleImageCell: UICollectionViewCell {
     
     @IBOutlet weak var iconImageView: UIImageView!
     
+    override func awakeFromNib() {
+        CustomObjectUtil.customObjectsLayout([iconImageView], backgroundColor: UIColor.clearColor(), borderWidth: 1.0, borderColor: UIColor.lightGrayColor(), corner: 5.0)
+    }
+    
 }
