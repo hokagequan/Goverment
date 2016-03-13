@@ -14,6 +14,7 @@ class VariableRecordsViewController: UIViewController, UITableViewDataSource, UI
     @IBOutlet weak var listTableView: UITableView!
     
     var variables = [Variable]()
+    var gotoPageType = VariablePageType.Detail
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -45,7 +46,8 @@ class VariableRecordsViewController: UIViewController, UITableViewDataSource, UI
     // MARK: - Actions
     
     @IBAction func clickAdd(sender: AnyObject) {
-        self.performSegueWithIdentifier("EditSegue", sender: nil)
+        gotoPageType = VariablePageType.Add
+        self.performSegueWithIdentifier("VariableDetailSegue", sender: nil)
     }
     
     // MARK: - UITableView
@@ -83,7 +85,8 @@ class VariableRecordsViewController: UIViewController, UITableViewDataSource, UI
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
         
         let variable = variables[indexPath.row]
-        self.performSegueWithIdentifier("EditSegue", sender: variable)
+        gotoPageType = VariablePageType.Detail
+        self.performSegueWithIdentifier("VariableDetailSegue", sender: variable)
     }
 
     // MARK: - Navigation
@@ -92,10 +95,10 @@ class VariableRecordsViewController: UIViewController, UITableViewDataSource, UI
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
-        if segue.identifier == "EditSegue" {
-            let vc = segue.destinationViewController as! PerformanceEditViewController
-            vc.pageType = EditPageType.Variable
-            vc.editObject = sender
+        if segue.identifier == "VariableDetailSegue" {
+            let vc = segue.destinationViewController as! VariableDetailViewController
+            vc.variable = sender as? Variable
+            vc.pageType = gotoPageType
         }
     }
 

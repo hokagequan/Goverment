@@ -8,6 +8,13 @@
 
 import UIKit
 
+enum VariablePageType {
+    
+    case Detail
+    case Add
+    
+}
+
 class VariableDetailViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
     enum Sections: Int {
@@ -64,6 +71,7 @@ class VariableDetailViewController: UIViewController, UITableViewDataSource, UIT
     @IBOutlet weak var tableView: UITableView!
     
     var variable: Variable? = nil
+    var pageType = VariablePageType.Detail
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -86,10 +94,27 @@ class VariableDetailViewController: UIViewController, UITableViewDataSource, UIT
         return Sections.Max.rawValue
     }
     
+    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+        let section = Sections(rawValue: indexPath.section)!
+        
+        if section == Sections.Photos {
+            return 100.0
+        }
+        
+        return 50.0
+    }
+    
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         let sec = Sections(rawValue: section)!
         
         return sec.rows().count
+    }
+    
+    func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let view = UIView()
+        view.backgroundColor = UIColor.clearColor()
+        
+        return view
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
