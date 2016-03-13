@@ -16,6 +16,7 @@
 		100691B31C930308000AEFEA /* VariableDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 100691B21C930308000AEFEA /* VariableDetailViewController.swift */; };
 		100691B51C93B978000AEFEA /* SimpleImageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 100691B41C93B978000AEFEA /* SimpleImageCell.swift */; };
 		100691B71C93B9F0000AEFEA /* CollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 100691B61C93B9F0000AEFEA /* CollectionViewCell.swift */; };
+		100691C01C93C92F000AEFEA /* UIImageView+webImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 100691BF1C93C92F000AEFEA /* UIImageView+webImage.swift */; };
 		100B202E1C88786700435EF0 /* UIViewController+Keyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 100B202D1C88786700435EF0 /* UIViewController+Keyboard.swift */; };
 		100B20301C887C1000435EF0 /* TypeSelectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 100B202F1C887C1000435EF0 /* TypeSelectView.swift */; };
 		100B20321C887C2600435EF0 /* TypeSelectView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 100B20311C887C2600435EF0 /* TypeSelectView.xib */; };
@@ -124,6 +125,7 @@
 		100691B41C93B978000AEFEA /* SimpleImageCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SimpleImageCell.swift; sourceTree = "<group>"; };
 		100691B61C93B9F0000AEFEA /* CollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CollectionViewCell.swift; sourceTree = "<group>"; };
 		100691B81C93BEA6000AEFEA /* PeopleCongressSystem-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "PeopleCongressSystem-Bridging-Header.h"; sourceTree = "<group>"; };
+		100691BF1C93C92F000AEFEA /* UIImageView+webImage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImageView+webImage.swift"; sourceTree = "<group>"; };
 		100B202D1C88786700435EF0 /* UIViewController+Keyboard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController+Keyboard.swift"; sourceTree = "<group>"; };
 		100B202F1C887C1000435EF0 /* TypeSelectView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TypeSelectView.swift; sourceTree = "<group>"; };
 		100B20311C887C2600435EF0 /* TypeSelectView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TypeSelectView.xib; sourceTree = "<group>"; };
@@ -443,6 +445,7 @@
 				10DBF21B1C8D3927007620BA /* ManageEditUICheckInDelegate.swift */,
 				10DBF2131C8BBDBB007620BA /* ManageUIDelegate.swift */,
 				1075055D1C9057B700C9589E /* UIWebView+HtmlInteract.swift */,
+				100691BF1C93C92F000AEFEA /* UIImageView+webImage.swift */,
 			);
 			path = Customs;
 			sourceTree = "<group>";
@@ -681,6 +684,7 @@
 				10F109851C8822A30083D89D /* Person.swift in Sources */,
 				100160311C8D69290095D023 /* CheckInReq.swift in Sources */,
 				108965971C8F183700CA98D0 /* ChangePasswordReq.swift in Sources */,
+				100691C01C93C92F000AEFEA /* UIImageView+webImage.swift in Sources */,
 				100691B01C929DA6000AEFEA /* EditActivityReq.swift in Sources */,
 				10D0D5C31C4E7D710093F687 /* FindPwdViewController.swift in Sources */,
 				10D0D5951C4CD9810093F687 /* MainViewController.swift in Sources */,
