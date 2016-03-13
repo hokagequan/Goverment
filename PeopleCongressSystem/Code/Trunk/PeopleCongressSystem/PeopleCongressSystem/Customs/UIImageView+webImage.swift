@@ -9,17 +9,18 @@
 import Foundation
 import UIKit
 import Alamofire
+import AlamofireImage
 
 extension UIImageView {
     
-    func loadImageURL(url: NSURL?, placeholder: String) {
+    func loadImageURL(url: String?, name: String, placeholder: String) {
         self.image = UIImage(named: placeholder)
         
         if url == nil {
             return
         }
         
-        let imageName = url!.lastPathComponent
+        let imageName = name
         let localPath = UIImageView.pathForTempImage().stringByAppendingString("/\(imageName)")
         
         if NSFileManager.defaultManager().fileExistsAtPath(localPath, isDirectory: nil) == true {
@@ -28,7 +29,15 @@ extension UIImageView {
             return
         }
         
-        // TODO: 下载到本地显示
+        Alamofire.request(.GET, url!)
+            .responseImage { response in
+                if let image = response.result.value {
+                    self.image = image
+                    
+                    let imageData = UIImageJPEGRepresentation(image, 1.0)
+                    imageData?.writeToFile(localPath, atomically: true)
+                }
+        }
     }
     
     class func pathForTempImage() -> String {

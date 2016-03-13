@@ -100,7 +100,9 @@ class VariableDetailViewController: UIViewController, UITableViewDataSource, UIT
             cell.selectionStyle = UITableViewCellSelectionStyle.None
             let row = section.rows()[indexPath.row]
             cell.titleLabel.text = row.title
-            // TODO: 加载照片
+            if variable != nil {
+                cell.loadImages(variable!.photos)
+            }
             
             return cell
         }
@@ -112,7 +114,7 @@ class VariableDetailViewController: UIViewController, UITableViewDataSource, UIT
         let row = rows[indexPath.row]
         cell.headerText = row.title
         cell.iconImageView.image = UIImage(named: row.icon!)
-        cell.titleTextField.text = variable?.valueForKey(row.key!)
+        cell.titleTextField.text = variable?.valueForKey(row.key!) as? String
         
         switch row.title! {
         case "类型:":

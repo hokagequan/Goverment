@@ -26,6 +26,11 @@ class CollectionViewCell: UITableViewCell, UICollectionViewDataSource, UICollect
         // Configure the view for the selected state
     }
     
+    func loadImages(sourceImages: Array<String>) {
+        images = sourceImages
+        collectionView.reloadData()
+    }
+    
     // MARK: - UICollectionView
     
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -42,7 +47,7 @@ class CollectionViewCell: UITableViewCell, UICollectionViewDataSource, UICollect
         else {
             let photoName = images[indexPath.row]
             let stringURL = "\(imageDownloadURL)\(photoName)"
-            
+            cell.iconImageView.loadImageURL(stringURL, name: photoName, placeholder: "")
         }
         
         return cell
