@@ -85,6 +85,7 @@ strip_invalid_archs() {
 
 if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_framework "Pods-PeopleCongressSystem/Alamofire.framework"
+  install_framework "Pods-PeopleCongressSystem/AlamofireImage.framework"
   install_framework "Pods-PeopleCongressSystem/EZLoadingActivity.framework"
   install_framework "Pods-PeopleCongressSystem/GrowingTextView.framework"
   install_framework "Pods-PeopleCongressSystem/HUIPatternLockView_Swift.framework"
@@ -92,6 +93,7 @@ if [[ "$CONFIGURATION" == "Debug" ]]; then
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
   install_framework "Pods-PeopleCongressSystem/Alamofire.framework"
+  install_framework "Pods-PeopleCongressSystem/AlamofireImage.framework"
   install_framework "Pods-PeopleCongressSystem/EZLoadingActivity.framework"
   install_framework "Pods-PeopleCongressSystem/GrowingTextView.framework"
   install_framework "Pods-PeopleCongressSystem/HUIPatternLockView_Swift.framework"

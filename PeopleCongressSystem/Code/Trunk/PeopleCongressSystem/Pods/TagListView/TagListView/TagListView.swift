@@ -10,6 +10,7 @@ import UIKit
 
 @objc public protocol TagListViewDelegate {
     optional func tagPressed(title: String, tagView: TagView, sender: TagListView) -> Void
+    optional func tagRemoveButtonPressed(title: String, tagView: TagView, sender: TagListView) -> Void
 }
 
 @IBDesignable
@@ -35,6 +36,14 @@ public class TagListView: UIView {
         didSet {
             for tagView in tagViews {
                 tagView.tagBackgroundColor = tagBackgroundColor
+            }
+        }
+    }
+    
+    @IBInspectable public var tagHighlightedBackgroundColor: UIColor? {
+        didSet {
+            for tagView in tagViews {
+                tagView.tagHighlightedBackgroundColor = tagHighlightedBackgroundColor
             }
         }
     }
@@ -126,6 +135,41 @@ public class TagListView: UIView {
         }
     }
     
+    @IBInspectable var enableRemoveButton: Bool = false {
+        didSet {
+            for tagView in tagViews {
+                tagView.enableRemoveButton = enableRemoveButton
+            }
+            rearrangeViews()
+        }
+    }
+    
+    @IBInspectable var removeButtonIconSize: CGFloat = 12 {
+        didSet {
+            for tagView in tagViews {
+                tagView.removeButtonIconSize = removeButtonIconSize
+            }
+            rearrangeViews()
+        }
+    }
+    @IBInspectable var removeIconLineWidth: CGFloat = 1 {
+        didSet {
+            for tagView in tagViews {
+                tagView.removeIconLineWidth = removeIconLineWidth
+            }
+            rearrangeViews()
+        }
+    }
+    
+    @IBInspectable var removeIconLineColor: UIColor = UIColor.whiteColor().colorWithAlphaComponent(0.54) {
+        didSet {
+            for tagView in tagViews {
+                tagView.removeIconLineColor = removeIconLineColor
+            }
+            rearrangeViews()
+        }
+    }
+    
     public var textFont: UIFont = UIFont.systemFontOfSize(12) {
         didSet {
             for tagView in tagViews {
@@ -137,7 +181,7 @@ public class TagListView: UIView {
     
     @IBOutlet public weak var delegate: TagListViewDelegate?
     
-    private(set) var tagViews: [TagView] = []
+    public private(set) var tagViews: [TagView] = []
     private(set) var tagBackgroundViews: [UIView] = []
     private(set) var rowViews: [UIView] = []
     private(set) var tagViewHeight: CGFloat = 0
@@ -178,7 +222,7 @@ public class TagListView: UIView {
             tagView.frame.size = tagView.intrinsicContentSize()
             tagViewHeight = tagView.frame.height
             
-            if currentRowTagCount == 0 || currentRowWidth + tagView.frame.width + marginX > frame.width {
+            if currentRowTagCount == 0 || currentRowWidth + tagView.frame.width > frame.width {
                 currentRow += 1
                 currentRowWidth = 0
                 currentRowTagCount = 0
@@ -233,15 +277,20 @@ public class TagListView: UIView {
         tagView.textColor = textColor
         tagView.selectedTextColor = selectedTextColor
         tagView.tagBackgroundColor = tagBackgroundColor
+        tagView.tagHighlightedBackgroundColor = tagHighlightedBackgroundColor
         tagView.tagSelectedBackgroundColor = tagSelectedBackgroundColor
         tagView.cornerRadius = cornerRadius
         tagView.borderWidth = borderWidth
         tagView.borderColor = borderColor
-        tagView.paddingY = paddingY
         tagView.paddingX = paddingX
+        tagView.paddingY = paddingY
         tagView.textFont = textFont
-        
+        tagView.removeIconLineWidth = removeIconLineWidth
+        tagView.removeButtonIconSize = removeButtonIconSize
+        tagView.enableRemoveButton = enableRemoveButton
+        tagView.removeIconLineColor = removeIconLineColor
         tagView.addTarget(self, action: "tagPressed:", forControlEvents: .TouchUpInside)
+        tagView.removeButton.addTarget(self, action: "removeButtonPressed:", forControlEvents: .TouchUpInside)
         
         return addTagView(tagView)
     }
@@ -293,5 +342,11 @@ public class TagListView: UIView {
     func tagPressed(sender: TagView!) {
         sender.onTap?(sender)
         delegate?.tagPressed?(sender.currentTitle ?? "", tagView: sender, sender: self)
+    }
+    
+    func removeButtonPressed(closeButton: CloseButton!) {
+        if let tagView = closeButton.tagView {
+            delegate?.tagRemoveButtonPressed?(tagView.currentTitle ?? "", tagView: tagView, sender: self)
+        }
     }
 }

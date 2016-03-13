@@ -9,6 +9,11 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>AlamofireImage.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>EZLoadingActivity.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -42,7 +47,7 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>43757B396214C7D144418A9C475936BE</key>
+		<key>05094CC4A047119F7ADC14EE74C4881C</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -67,12 +72,17 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>DC87E2772B396D222D3A9A8FFC70D9FE</key>
+		<key>B5C5D6EBAEEDC744D11A73136B284644</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>FDE0055571C14659668425A5653B3DD0</key>
+		<key>C759BA2D3517D976AA9C95BD1F856CA0</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>DC87E2772B396D222D3A9A8FFC70D9FE</key>
 		<dict>
 			<key>primary</key>
 			<true/>

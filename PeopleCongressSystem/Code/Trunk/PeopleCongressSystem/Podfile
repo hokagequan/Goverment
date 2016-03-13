@@ -10,6 +10,7 @@ pod 'HUIPatternLockView-Swift'
 pod 'TagListView'
 pod 'EZLoadingActivity', '~> 0.8'
 pod 'GrowingTextView'
+pod 'AlamofireImage'
 
 end
 
