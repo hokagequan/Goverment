@@ -14,6 +14,11 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>DKImagePickerController.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>EZLoadingActivity.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -52,12 +57,22 @@
 			<key>primary</key>
 			<true/>
 		</dict>
+		<key>2419EB2E283D5E12618D87970B70F3A5</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>62CB4A53E53AA477BFD9B082EF16EF5F</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
 		<key>63FB3FBF765C1F3013D3F2C22A8D231E</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>76A93ED02D0B037A1B7BC5DBB0479118</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -72,12 +87,7 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>B5C5D6EBAEEDC744D11A73136B284644</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>C759BA2D3517D976AA9C95BD1F856CA0</key>
+		<key>A9153B3406D53D83AE46E199C71D6E7C</key>
 		<dict>
 			<key>primary</key>
 			<true/>

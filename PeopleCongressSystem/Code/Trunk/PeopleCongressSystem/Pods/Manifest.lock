@@ -2,6 +2,11 @@ PODS:
   - Alamofire (3.2.1)
   - AlamofireImage (2.3.1):
     - Alamofire (~> 3.2)
+  - DKImagePickerController (3.0.11):
+    - DKImagePickerController/Camera (= 3.0.11)
+    - DKImagePickerController/ImageManager (= 3.0.11)
+  - DKImagePickerController/Camera (3.0.11)
+  - DKImagePickerController/ImageManager (3.0.11)
   - EZLoadingActivity (0.8)
   - GrowingTextView (0.1.6)
   - HUIPatternLockView-Swift (1.0.1)
@@ -10,6 +15,7 @@ PODS:
 DEPENDENCIES:
   - Alamofire
   - AlamofireImage
+  - DKImagePickerController
   - EZLoadingActivity (~> 0.8)
   - GrowingTextView
   - HUIPatternLockView-Swift
@@ -18,6 +24,7 @@ DEPENDENCIES:
 SPEC CHECKSUMS:
   Alamofire: f11d8624a05f5d39e0c99309b3e600a3ba64298a
   AlamofireImage: e52336282757bbe1644f075d6cb85f19c891f939
+  DKImagePickerController: 72a10532150138588c8f593fdf0fb5a6ff7f9471
   EZLoadingActivity: 6fd75a05765a4085f4b6fef6f62edf9f144b3139
   GrowingTextView: 5b431583ba0a401797d3edc8e4af1e2854aaa4e9
   HUIPatternLockView-Swift: 96d9bf8341a33be39d35eef51c4c2215a678138e

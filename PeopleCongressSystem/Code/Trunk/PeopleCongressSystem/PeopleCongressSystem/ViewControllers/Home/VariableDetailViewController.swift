@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import MobileCoreServices
 
 enum VariablePageType {
     
@@ -15,7 +16,7 @@ enum VariablePageType {
     
 }
 
-class VariableDetailViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+class VariableDetailViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, CollectionViewCellDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
     enum Sections: Int {
         
@@ -88,6 +89,65 @@ class VariableDetailViewController: UIViewController, UITableViewDataSource, UIT
         // Dispose of any resources that can be recreated.
     }
     
+    // MARK: - CollectionViewCellDelegate
+    
+    func didClickAdd(cell: CollectionViewCell) {
+        // TODO: 点击添加
+        let alert = UIAlertController(title: "", message: "", preferredStyle: UIAlertControllerStyle.ActionSheet)
+        
+        let albumAction = UIAlertAction(title: "相册", style: UIAlertActionStyle.Default) { (action) -> Void in
+            if UIImagePickerController.isSourceTypeAvailable(UIImagePickerControllerSourceType.PhotoLibrary) {
+                let pickerViewController = UIImagePickerController()
+                pickerViewController.sourceType = UIImagePickerControllerSourceType.PhotoLibrary
+                pickerViewController.mediaTypes = [kUTTypeImage as String]
+                pickerViewController.delegate = self
+                pickerViewController.allowsEditing = false
+                
+                self.presentViewController(pickerViewController, animated: true, completion: nil)
+            }
+        }
+        
+        let cameraAction = UIAlertAction(title: "拍照", style: UIAlertActionStyle.Default) { (action) -> Void in
+            if UIImagePickerController.isSourceTypeAvailable(UIImagePickerControllerSourceType.Camera) {
+                let pickerViewController = UIImagePickerController()
+                pickerViewController.sourceType = UIImagePickerControllerSourceType.Camera
+                pickerViewController.mediaTypes = [kUTTypeMovie as String]
+                pickerViewController.delegate = self
+                pickerViewController.allowsEditing = false
+                
+                self.presentViewController(pickerViewController, animated: true, completion: nil)
+            }
+        }
+        
+        let cancelAction = UIAlertAction(title: "取消", style: UIAlertActionStyle.Default) { (action) -> Void in
+            alert.dismissViewControllerAnimated(true, completion: nil)
+        }
+        
+        alert.addAction(albumAction)
+        alert.addAction(cameraAction)
+        alert.addAction(cancelAction)
+        
+        self.presentViewController(alert, animated: true, completion: nil)
+    }
+    
+    func didSelectIndex(cell: CollectionViewCell, index: Int) {
+        // TODO: 点击照片
+    }
+    
+    // MARK: - UIImagePicker
+    
+    func imagePickerController(picker: UIImagePickerController, didFinishPickingImage image: UIImage, editingInfo: [String : AnyObject]?) {
+        print("")
+    }
+    
+    func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]) {
+        print("")
+    }
+    
+    func imagePickerControllerDidCancel(picker: UIImagePickerController) {
+        picker.dismissViewControllerAnimated(true, completion: nil)
+    }
+    
     // MARK: - UITableView
     
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
@@ -123,6 +183,7 @@ class VariableDetailViewController: UIViewController, UITableViewDataSource, UIT
         if section == Sections.Photos {
             let cell = tableView.dequeueReusableCellWithIdentifier("CollectionViewCell", forIndexPath: indexPath) as! CollectionViewCell
             cell.selectionStyle = UITableViewCellSelectionStyle.None
+            cell.delegate = self
             let row = section.rows()[indexPath.row]
             cell.titleLabel.text = row.title
             if variable != nil {

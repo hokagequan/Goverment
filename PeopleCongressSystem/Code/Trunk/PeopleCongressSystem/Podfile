@@ -11,6 +11,7 @@ pod 'TagListView'
 pod 'EZLoadingActivity', '~> 0.8'
 pod 'GrowingTextView'
 pod 'AlamofireImage'
+pod 'DKImagePickerController'
 
 end
 

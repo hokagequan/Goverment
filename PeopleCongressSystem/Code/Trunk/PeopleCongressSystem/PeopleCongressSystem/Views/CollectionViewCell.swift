@@ -8,12 +8,22 @@
 
 import UIKit
 
+@objc protocol CollectionViewCellDelegate {
+    
+    optional
+    func didClickAdd(cell: CollectionViewCell)
+    func didSelectIndex(cell: CollectionViewCell, index: Int)
+    
+}
+
 class CollectionViewCell: UITableViewCell, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
 
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var collectionView: UICollectionView!
     
     var images = [String]()
+    
+    weak var delegate: CollectionViewCellDelegate? = nil
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -51,6 +61,16 @@ class CollectionViewCell: UITableViewCell, UICollectionViewDataSource, UICollect
         }
         
         return cell
+    }
+    
+    func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
+        if indexPath.row == 0 {
+            delegate?.didClickAdd?(self)
+            
+            return
+        }
+        
+        delegate?.didSelectIndex(self, index: indexPath.row - 1)
     }
 
 }
