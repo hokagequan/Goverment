@@ -23,6 +23,8 @@ class GroupViewController: UIViewController, UITableViewDataSource, UITableViewD
         self.navigationItem.hidesBackButton = true
         PCSCustomUtil.customNavigationController(self)
         
+        groupTableView.layoutMargins = UIEdgeInsetsZero
+        
         EZLoadingActivity.show("", disableUI: true)
         PCSDataManager.defaultManager().getGroup { (info) -> Void in
             EZLoadingActivity.hide()
@@ -71,7 +73,8 @@ class GroupViewController: UIViewController, UITableViewDataSource, UITableViewD
     }
     
     func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
-        cell.separatorInset = UIEdgeInsetsMake(0, 0, 0, 0)
+        cell.separatorInset = UIEdgeInsetsZero
+        cell.layoutMargins = UIEdgeInsetsZero
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
