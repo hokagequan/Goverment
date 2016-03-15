@@ -30,13 +30,15 @@ class PerformanceRecordsViewController: UIViewController, UITableViewDataSource,
 
         // Do any additional setup after loading the view.
         self.navigationItem.hidesBackButton = true
+        PCSCustomUtil.customNavigationController(self)
+        
         listTableView.registerNib(UINib(nibName: "NormalInfoCell", bundle: nil), forCellReuseIdentifier: "NormalInfoCell")
     }
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         
-        PCSCustomUtil.customNavigationController(self)
+        selectedObject = nil
     }
     
     override func viewDidAppear(animated: Bool) {
