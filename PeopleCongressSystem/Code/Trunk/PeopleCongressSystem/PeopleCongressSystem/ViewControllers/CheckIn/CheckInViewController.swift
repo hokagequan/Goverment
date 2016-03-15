@@ -32,7 +32,13 @@ class CheckInViewController: UIViewController, UITableViewDataSource, UITableVie
         super.viewDidAppear(animated)
         
         EZLoadingActivity.show("", disableUI: true)
-        // TODO: 获取活动列表
+        PCSDataManager.defaultManager().getActivityList("") { (info) -> Void in
+            EZLoadingActivity.hide()
+            if info != nil {
+                self.activitys = info!
+                self.listTableView.reloadData()
+            }
+        }
     }
 
     override func didReceiveMemoryWarning() {
@@ -56,15 +62,18 @@ class CheckInViewController: UIViewController, UITableViewDataSource, UITableVie
         view.tag = 1000
         CustomObjectUtil.customObjectsLayout([view], backgroundColor: UIColor.whiteColor(), borderWidth: 1, borderColor: GlobalUtil.colorRGBA(240, g: 240, b: 240, a: 1.0), corner: 2)
         cell.contentView.addSubview(view)
+        cell.contentView.sendSubviewToBack(view)
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("NormalInfoCell", forIndexPath: indexPath) as! NormalInfoCell
+        cell.selectionStyle = UITableViewCellSelectionStyle.None
         
         let activity = activitys[indexPath.row]
         cell.titleLabel.text = activity.title
         cell.locationLabel.text = activity.organization
         cell.dateLabel.text = activity.beginTime
+        cell.backgroundColor = UIColor.clearColor()
         
         return cell
     }
@@ -73,9 +82,10 @@ class CheckInViewController: UIViewController, UITableViewDataSource, UITableVie
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
         
         let storyboard = UIStoryboard(name: "Home", bundle: nil)
-        let vc = storyboard.instantiateViewControllerWithIdentifier("") as! PerformanceEditViewController
+        let vc = storyboard.instantiateViewControllerWithIdentifier("PerformanceEditViewController") as! PerformanceEditViewController
         vc.pageType = EditPageType.CheckIn
-        // TODO: copy一个Activity赋值给editObject
+        let activity = activitys[indexPath.row]
+        vc.editObject = activity.copy()
         self.navigationController?.pushViewController(vc, animated: true)
     }
 

@@ -29,6 +29,7 @@ class TypeSelectView: UIControl, UITableViewDataSource, UITableViewDelegate {
         self.addTarget(self, action: Selector("dismiss"), forControlEvents: UIControlEvents.TouchUpInside)
         
         typeTableView.registerClass(UITableViewCell.self, forCellReuseIdentifier: "Cell")
+        typeTableView.layoutMargins = UIEdgeInsetsZero
         
         CustomObjectUtil.customObjectsLayout([containerView], backgroundColor: UIColor.whiteColor(), borderWidth: 0.0, borderColor: nil, corner: 8.0)
     }
@@ -94,7 +95,8 @@ class TypeSelectView: UIControl, UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
-        cell.separatorInset = UIEdgeInsetsMake(0, 0, 0, 0)
+        cell.separatorInset = UIEdgeInsetsZero
+        cell.layoutMargins = UIEdgeInsetsZero
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {

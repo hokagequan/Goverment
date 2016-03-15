@@ -17,6 +17,12 @@ enum EditPageType {
     
     func customNavi(naviView: PCSNavigationView, rightNaviButton: UIButton) {
         switch self {
+        case .Activity:
+            naviView.title = "添加活动"
+            break
+        case .ActivityEdit:
+            naviView.title = "活动详情"
+            break
         case .CheckIn:
             naviView.title = "签到"
             rightNaviButton.setTitle("", forState: UIControlState.Normal)

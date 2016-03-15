@@ -29,6 +29,7 @@ extension UIViewController: UIWebViewDelegate {
             
             if webView == nil {
                 webView = UIWebView()
+                webView?.backgroundColor = UIColor.clearColor()
                 objc_setAssociatedObject(self, &AssociatedKeys.htmlWebView, webView, objc_AssociationPolicy.OBJC_ASSOCIATION_RETAIN_NONATOMIC)
             }
             

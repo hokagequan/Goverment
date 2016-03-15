@@ -22,7 +22,7 @@
             </objects>
             <point key="canvasLocation" x="-265" y="382"/>
         </scene>
-        <!--Code Scan View Controller-->
+        <!--View Controller-->
         <scene sceneID="Qr3-QO-l4Z">
             <objects>
                 <viewController storyboardIdentifier="QRCodeScanViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="bHo-X1-jgW" customClass="QRCodeScanViewController" customModule="PeopleCongressSystem" customModuleProvider="target" sceneMemberID="viewController">
@@ -43,6 +43,9 @@
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="string" keyPath="title" value="签到"/>
                                 </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <outlet property="viewController" destination="bHo-X1-jgW" id="KkM-vK-C3q"/>
+                                </connections>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="feY-8v-lBL" userLabel="Container">
                                 <rect key="frame" x="210" y="168" width="180" height="180"/>
@@ -93,7 +96,7 @@
                                     <userDefinedRuntimeAttribute type="string" keyPath="title" value="活动列表"/>
                                 </userDefinedRuntimeAttributes>
                             </view>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="SEU-2y-pAn">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="83" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="SEU-2y-pAn">
                                 <rect key="frame" x="0.0" y="108" width="600" height="492"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <connections>

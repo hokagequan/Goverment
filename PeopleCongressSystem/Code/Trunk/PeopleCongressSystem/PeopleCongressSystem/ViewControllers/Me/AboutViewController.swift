@@ -15,6 +15,7 @@ class AboutViewController: UIViewController {
 
         // Do any additional setup after loading the view.
         self.navigationItem.hidesBackButton = true
+        PCSCustomUtil.customNavigationController(self)
     }
 
     override func didReceiveMemoryWarning() {
