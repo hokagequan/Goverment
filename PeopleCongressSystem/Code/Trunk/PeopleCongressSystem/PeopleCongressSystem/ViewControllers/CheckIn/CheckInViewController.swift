@@ -72,7 +72,7 @@ class CheckInViewController: UIViewController, UITableViewDataSource, UITableVie
         let activity = activitys[indexPath.row]
         cell.titleLabel.text = activity.title
         cell.locationLabel.text = activity.organization
-        cell.dateLabel.text = activity.beginTime
+        cell.dateLabel.text = activity.beginTime?.substringToIndex(activity.beginTime!.startIndex.advancedBy(10))
         cell.backgroundColor = UIColor.clearColor()
         
         return cell

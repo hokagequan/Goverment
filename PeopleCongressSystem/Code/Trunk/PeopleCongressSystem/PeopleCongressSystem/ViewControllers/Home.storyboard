@@ -588,11 +588,12 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="S2n-4Y-9bX" customClass="PCSNavigationView" customModule="PeopleCongressSystem" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="64" width="600" height="44"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Os3-SM-1WR">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Os3-SM-1WR">
                                         <rect key="frame" x="542" y="0.0" width="46" height="44"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="46" id="Hia-YD-sbS"/>
                                         </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                         <state key="normal" title="保存">
                                             <color key="titleColor" red="0.92941176469999998" green="0.19215686269999999" blue="0.1843137255" alpha="1" colorSpace="calibratedRGB"/>
                                         </state>
