@@ -17,7 +17,8 @@
 		100691B51C93B978000AEFEA /* SimpleImageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 100691B41C93B978000AEFEA /* SimpleImageCell.swift */; };
 		100691B71C93B9F0000AEFEA /* CollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 100691B61C93B9F0000AEFEA /* CollectionViewCell.swift */; };
 		100691C01C93C92F000AEFEA /* UIImageView+webImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 100691BF1C93C92F000AEFEA /* UIImageView+webImage.swift */; };
-		100691C21C9658CD000AEFEA /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 100691C11C9658CD000AEFEA /* MobileCoreServices.framework */; };
+		100691C91C969C32000AEFEA /* UploadPhotoReq.swift in Sources */ = {isa = PBXBuildFile; fileRef = 100691C81C969C32000AEFEA /* UploadPhotoReq.swift */; };
+		100691CB1C96AB35000AEFEA /* AddVariableReq.swift in Sources */ = {isa = PBXBuildFile; fileRef = 100691CA1C96AB35000AEFEA /* AddVariableReq.swift */; };
 		100B202E1C88786700435EF0 /* UIViewController+Keyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 100B202D1C88786700435EF0 /* UIViewController+Keyboard.swift */; };
 		100B20301C887C1000435EF0 /* TypeSelectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 100B202F1C887C1000435EF0 /* TypeSelectView.swift */; };
 		100B20321C887C2600435EF0 /* TypeSelectView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 100B20311C887C2600435EF0 /* TypeSelectView.xib */; };
@@ -128,6 +129,9 @@
 		100691B81C93BEA6000AEFEA /* PeopleCongressSystem-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "PeopleCongressSystem-Bridging-Header.h"; sourceTree = "<group>"; };
 		100691BF1C93C92F000AEFEA /* UIImageView+webImage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImageView+webImage.swift"; sourceTree = "<group>"; };
 		100691C11C9658CD000AEFEA /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
+		100691C31C969395000AEFEA /* libcommonCrypto.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libcommonCrypto.tbd; path = usr/lib/system/libcommonCrypto.tbd; sourceTree = SDKROOT; };
+		100691C81C969C32000AEFEA /* UploadPhotoReq.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UploadPhotoReq.swift; sourceTree = "<group>"; };
+		100691CA1C96AB35000AEFEA /* AddVariableReq.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddVariableReq.swift; sourceTree = "<group>"; };
 		100B202D1C88786700435EF0 /* UIViewController+Keyboard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController+Keyboard.swift"; sourceTree = "<group>"; };
 		100B202F1C887C1000435EF0 /* TypeSelectView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TypeSelectView.swift; sourceTree = "<group>"; };
 		100B20311C887C2600435EF0 /* TypeSelectView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TypeSelectView.xib; sourceTree = "<group>"; };
@@ -226,7 +230,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				100691C21C9658CD000AEFEA /* MobileCoreServices.framework in Frameworks */,
 				3E604AFB394FDCDDAD7A9BDE /* Pods_PeopleCongressSystem.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -470,6 +473,8 @@
 				10F5875C1C8F928A00F2279B /* FeedbackReq.swift */,
 				107505571C9021A300C9589E /* ResetPasswordReq.swift */,
 				107505721C91570F00C9589E /* GetVariablesReq.swift */,
+				100691C81C969C32000AEFEA /* UploadPhotoReq.swift */,
+				100691CA1C96AB35000AEFEA /* AddVariableReq.swift */,
 			);
 			path = HttpRequests;
 			sourceTree = "<group>";
@@ -487,6 +492,7 @@
 		788B022D8203C53FB6ACC595 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				100691C31C969395000AEFEA /* libcommonCrypto.tbd */,
 				100691C11C9658CD000AEFEA /* MobileCoreServices.framework */,
 				6BCFEC37E5EA0F7BF782CCBF /* Pods_PeopleCongressSystem.framework */,
 			);
@@ -687,6 +693,7 @@
 				10DBF2121C8A823C007620BA /* ManageEditUIActivityDelegate.swift in Sources */,
 				10F109851C8822A30083D89D /* Person.swift in Sources */,
 				100160311C8D69290095D023 /* CheckInReq.swift in Sources */,
+				100691CB1C96AB35000AEFEA /* AddVariableReq.swift in Sources */,
 				108965971C8F183700CA98D0 /* ChangePasswordReq.swift in Sources */,
 				100691C01C93C92F000AEFEA /* UIImageView+webImage.swift in Sources */,
 				100691B01C929DA6000AEFEA /* EditActivityReq.swift in Sources */,
@@ -729,6 +736,7 @@
 				100B203C1C88968900435EF0 /* GetGroupReq.swift in Sources */,
 				10D0D5C51C4E7F960093F687 /* HomeViewController.swift in Sources */,
 				10F7DE631C7863A3002A86CA /* PCSNavigationView.swift in Sources */,
+				100691C91C969C32000AEFEA /* UploadPhotoReq.swift in Sources */,
 				10D0D5D31C4FDB440093F687 /* CustomNavigationView.swift in Sources */,
 				10F109811C8816D10083D89D /* GetActivitiesReq.swift in Sources */,
 				10F5875B1C8F27BF00F2279B /* FeedbackViewController.swift in Sources */,
@@ -876,6 +884,10 @@
 				INFOPLIST_FILE = PeopleCongressSystem/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(SDKROOT)/usr/lib/system",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.coolrabbit.PeopleCongressSystem;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "PeopleCongressSystem/PeopleCongressSystem-Bridging-Header.h";
@@ -892,6 +904,10 @@
 				INFOPLIST_FILE = PeopleCongressSystem/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(SDKROOT)/usr/lib/system",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.coolrabbit.PeopleCongressSystem;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "PeopleCongressSystem/PeopleCongressSystem-Bridging-Header.h";

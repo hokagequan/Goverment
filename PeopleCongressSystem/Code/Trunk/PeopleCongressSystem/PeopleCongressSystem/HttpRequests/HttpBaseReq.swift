@@ -40,6 +40,22 @@ class HttpBaseReq {
         }
     }
     
+    func requestUpload(params: Dictionary<String, AnyObject>, completion: HttpReqCompletion?) {
+        let soapMessage = self.soapMessage("BatchUploaderImg2", params: params)
+        let mutableURLRequest = NSMutableURLRequest(URL: NSURL(string: self.httpReqURL + "BatchUploaderImg2.ashx")!)
+//        mutableURLRequest.setValue("text/xml; charset=utf-8", forHTTPHeaderField: "Content-Type")
+//        mutableURLRequest.setValue(self.soapAction("BatchUploaderImg2"), forHTTPHeaderField: "SOAPAction")
+//        mutableURLRequest.setValue(String(soapMessage.characters.count), forHTTPHeaderField: "Content-Length")
+        mutableURLRequest.HTTPMethod = "POST"
+//        mutableURLRequest.HTTPBody = soapMessage.dataUsingEncoding(NSUTF8StringEncoding)
+        mutableURLRequest.HTTPBody = params["Files"]![0] as? NSData
+        
+        let request = Alamofire.request(mutableURLRequest)
+        request.responseString { (rsp) -> Void in
+            completion?(response: rsp)
+        }
+    }
+    
     func requestCompletion(completion: HttpReqCompletion?) {}
     
     func soapMessage(method: String, params: Dictionary<String, AnyObject>) -> String {

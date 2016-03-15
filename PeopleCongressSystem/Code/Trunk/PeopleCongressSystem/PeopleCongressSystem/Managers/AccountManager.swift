@@ -145,7 +145,6 @@ class AccountManager {
                 
                 CoreDataManager.defalutManager().saveContext(nil)
                 
-                // TODO: 设置登录人员类型
                 if self.user?.memberType == "301" {
                     PCSDataManager.defaultManager().content = CongressContentInfo()
                 }

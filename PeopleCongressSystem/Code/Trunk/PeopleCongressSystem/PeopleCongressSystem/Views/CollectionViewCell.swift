@@ -55,7 +55,7 @@ class CollectionViewCell: UITableViewCell, UICollectionViewDataSource, UICollect
             cell.iconImageView.image = UIImage(named: "")
         }
         else {
-            let photoName = images[indexPath.row]
+            let photoName = images[indexPath.row - 1]
             let stringURL = "\(imageDownloadURL)\(photoName)"
             cell.iconImageView.loadImageURL(stringURL, name: photoName, placeholder: "")
         }

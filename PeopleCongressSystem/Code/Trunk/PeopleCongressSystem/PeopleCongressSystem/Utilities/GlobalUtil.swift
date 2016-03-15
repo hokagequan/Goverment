@@ -27,6 +27,12 @@ class GlobalUtil {
         return app.window!.bounds.size.width / CGFloat(320.0)
     }
     
+    class func randomImageName() -> String {
+        let uuid = NSUUID().UUIDString
+        
+        return uuid.stringByReplacingOccurrencesOfString("-", withString: "")
+    }
+    
     class func showAlert(message: String) {
         let alert = UIAlertView(title: nil, message: message, delegate: nil, cancelButtonTitle: "确定")
         alert.show()

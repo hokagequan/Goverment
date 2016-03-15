@@ -63,6 +63,43 @@ class PCSDataManager {
         }
     }
     
+    func addVariable(variable: Variable, completion: SimpleCompletion?) {
+        let req = AddVariableReq()
+        req.variable = variable
+        
+        req.requestCompletion { (response) -> Void in
+            let result = response?.result
+            var success: Bool = false
+            
+            defer {
+                if success == true {
+                    completion?(true, nil)
+                }
+                else {
+                    completion?(false, "添加失败")
+                }
+            }
+            
+            if result?.isSuccess == true {
+                guard let value = result?.value else {
+                    success = false
+                    
+                    return
+                }
+                
+                if ((value as NSString).intValue >= 1) {
+                    success = true
+                }
+                else {
+                    success = false
+                }
+            }
+            else {
+                success = false
+            }
+        }
+    }
+    
     func getTypeInfo(type: PCSType, completion: ((Array<PCSTypeInfo>?) -> Void)?) {
         let req = GetActivityTypesReq()
         req.type = type

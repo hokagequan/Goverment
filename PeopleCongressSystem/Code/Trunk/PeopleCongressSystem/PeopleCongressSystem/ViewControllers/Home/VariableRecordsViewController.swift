@@ -97,7 +97,12 @@ class VariableRecordsViewController: UIViewController, UITableViewDataSource, UI
         // Pass the selected object to the new view controller.
         if segue.identifier == "VariableDetailSegue" {
             let vc = segue.destinationViewController as! VariableDetailViewController
-            vc.variable = sender as? Variable
+            var object = sender as? Variable
+            if object == nil {
+                object = Variable()
+            }
+            
+            vc.variable = object!
             vc.pageType = gotoPageType
         }
     }
