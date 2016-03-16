@@ -22,7 +22,7 @@ class ResetPasswordReq: HttpBaseReq {
         params["rddb_name"] = name
         params["rddb_phone"] = tel
         params["theAPPid"] = "dalianrenda0001"
-        params["thecharset"] = "utf-8"
+        params["thecharset"] = "gb2312"
         
         self.request("resetpassword", nameSpace: "gonggong", params: params, completion: completion)
     }

@@ -22,7 +22,7 @@ class GetActivitiesReq: HttpBaseReq {
         params["huodonglx"] = type
         params["CheckTicket"] = PCSDataManager.defaultManager().accountManager.user!.token
         params["FieldID"] = PCSDataManager.defaultManager().accountManager.user!.field
-        params["thecharset"] = "utf-8"
+        params["thecharset"] = "gb2312"
         
         self.request("Gethuodonglist", nameSpace: "gongzuorenyuan", params: params, completion: completion)
     }

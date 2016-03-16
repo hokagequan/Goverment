@@ -35,7 +35,11 @@ class HttpBaseReq {
         mutableURLRequest.HTTPBody = soapMessage.dataUsingEncoding(NSUTF8StringEncoding)
         
         let request = Alamofire.request(mutableURLRequest)
-        request.responseString { (rsp) -> Void in
+//        request.responseString { (rsp) -> Void in
+//            completion?(response: rsp)
+//        }
+        let gbkEncoding = CFStringConvertEncodingToNSStringEncoding(UInt32(CFStringEncodings.GB_18030_2000.rawValue))
+        request.responseString(encoding: gbkEncoding) { (rsp) -> Void in
             completion?(response: rsp)
         }
     }

@@ -22,7 +22,7 @@ class FeedbackReq: HttpBaseReq {
         params["Userid"] = PCSDataManager.defaultManager().accountManager.user!.identifier
         params["CheckTicket"] = PCSDataManager.defaultManager().accountManager.user!.token
         params["FieldID"] = PCSDataManager.defaultManager().accountManager.user!.field
-        params["thecharset"] = "utf-8"
+        params["thecharset"] = "gb2312"
         
         self.request("UpdatePassword", nameSpace: "gonggong", params: params, completion: completion)
     }

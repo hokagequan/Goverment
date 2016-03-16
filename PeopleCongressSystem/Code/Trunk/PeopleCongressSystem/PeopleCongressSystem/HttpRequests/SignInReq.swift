@@ -25,7 +25,7 @@ class SignInReq: HttpBaseReq {
         params["password"] = password
         params["phonetype"] = "iPhone"
         params["theAPPid"] = "dalianrenda0001"
-        params["thecharset"] = "utf-8"
+        params["thecharset"] = "gb2312"
         
 //        self.request(params, completion: completion)
         self.request("CheckLogin", nameSpace: "gonggong", params: params, completion: completion)

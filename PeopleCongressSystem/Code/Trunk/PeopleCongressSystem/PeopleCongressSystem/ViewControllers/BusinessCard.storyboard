@@ -49,6 +49,7 @@
                     <navigationItem key="navigationItem" title="Root View Controller" id="tAa-pn-jBj"/>
                     <connections>
                         <outlet property="headerView" destination="C9k-bj-9vs" id="fsV-ht-Peb"/>
+                        <outlet property="infoTableView" destination="puA-d6-gaA" id="6yv-kr-mnS"/>
                         <outlet property="nameLabel" destination="E94-s4-sCC" id="wnv-dl-WLA"/>
                         <outlet property="photoImageView" destination="jLV-lm-0e7" id="wIL-X5-YFW"/>
                         <outlet property="qrCodeImageView" destination="FPd-EF-Z0L" id="aVl-V4-cfd"/>

@@ -29,7 +29,7 @@ class AddVariableReq: HttpBaseReq {
         params["AddUser"] = PCSDataManager.defaultManager().accountManager.user!.identifier
         params["CheckTicket"] = PCSDataManager.defaultManager().accountManager.user!.token
         params["FieldID"] = PCSDataManager.defaultManager().accountManager.user!.field
-        params["thecharset"] = "utf-8"
+        params["thecharset"] = "gb2312"
         
         self.request("LvZhiAdd", nameSpace: "rendadaibiao", params: params, completion: completion)
     }

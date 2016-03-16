@@ -21,7 +21,7 @@ class GetCongressListReq: HttpBaseReq {
         params["Org"] = organizationID
         params["CheckTicket"] = PCSDataManager.defaultManager().accountManager.user!.token
         params["FieldID"] = PCSDataManager.defaultManager().accountManager.user!.field
-        params["thecharset"] = "utf-8"
+        params["thecharset"] = "gb2312"
         
         self.request("GetRDDBlist", nameSpace: "gongzuorenyuan", params: params, completion: completion)
     }

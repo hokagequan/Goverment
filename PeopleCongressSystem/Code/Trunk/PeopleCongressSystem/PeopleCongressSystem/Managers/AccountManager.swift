@@ -89,6 +89,62 @@ class AccountManager {
         }
     }
     
+    func getInfo(completion: SimpleCompletion?) {
+        let req = GetCongressInfoReq()
+        req.requestCompletion { (response) -> Void in
+            let result = response?.result
+            
+            var success = false
+            var message = ""
+            
+            defer {
+                completion?(success, message)
+            }
+            
+            if result?.isFailure == true {
+                message = "获取失败"
+                
+                return
+            }
+            
+            guard let infos = HttpBaseReq.parseResponse(result?.value) else {
+                message = "获取失败"
+                
+                return
+            }
+            
+            success = true
+            let info = (infos as! Array<AnyObject>).first as! Dictionary<String, AnyObject>
+            
+//            self.user?.identifier = info["RDDB_ID"] as? String
+//            self.user?.congressID = info["RDDB_Guid"] as? String
+            self.user?.photoName = info["RDDB_HeadPic"] as? String
+            self.user?.qrCode = info["RDDB_QRCode"] as? String
+            self.user?.organizationID = info["RDDB_Org"] as? String
+            self.user?.congressCode = info["RDDB_Code"] as? String
+            self.user?.name = info["RDDB_Name"] as? String
+            self.user?.gender = info["RDDB_Sex"] as? String
+            self.user?.birthday = info["RDDB_Birthday"] as? String
+            self.user?.nation = info["RDDB_Nation"] as? String
+            self.user?.job = info["RDDB_Job"] as? String
+            self.user?.address = info["RDDB_Address"] as? String
+            self.user?.zip = info["RDDB_Zip"] as? String
+            self.user?.party = info["RDDB_Party"] as? String
+            self.user?.education = info["RDDB_Education_QRZ"] as? String
+            self.user?.educationWork = info["RDDB_Education_ZZ"] as? String
+            self.user?.workTime = info["RDDB_Work_Time"] as? String
+            self.user?.tel = info["RDDB_Tel"] as? String
+            self.user?.place = info["RDDB_Place"] as? String
+            self.user?.state = info["RDDB_State"] as? Int
+            self.user?.remark = info["RDDB_Remark"] as? String
+            self.user?.sort = info["RDDB_Sort"] as? Int
+            self.user?.addTime = info["RDDB_AddTime"] as? String
+            self.user?.addUser = info["RDDB_AddUser"] as? String
+            self.user?.hasDeleted = info["RDDB_IsDel"] as? Bool
+            self.user?.organization = info["DBT_NAME"] as? String
+        }
+    }
+    
     func signIn(account: String, password: String, completion: SimpleCompletion?) {
         let req = SignInReq()
         req.account = account

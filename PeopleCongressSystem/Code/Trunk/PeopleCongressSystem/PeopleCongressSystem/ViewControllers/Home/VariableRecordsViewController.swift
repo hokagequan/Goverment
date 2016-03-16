@@ -22,10 +22,6 @@ class VariableRecordsViewController: UIViewController, UITableViewDataSource, UI
         // Do any additional setup after loading the view.
         self.navigationItem.hidesBackButton = true
         PCSCustomUtil.customNavigationController(self)
-    }
-    
-    override func viewDidAppear(animated: Bool) {
-        super.viewDidAppear(animated)
         
         EZLoadingActivity.show("", disableUI: true)
         PCSDataManager.defaultManager().getVariableList { (info) -> Void in
@@ -36,6 +32,10 @@ class VariableRecordsViewController: UIViewController, UITableViewDataSource, UI
                 self.listTableView.reloadData()
             }
         }
+    }
+    
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
     }
 
     override func didReceiveMemoryWarning() {
@@ -66,10 +66,12 @@ class VariableRecordsViewController: UIViewController, UITableViewDataSource, UI
         view.tag = 1000
         CustomObjectUtil.customObjectsLayout([view], backgroundColor: UIColor.whiteColor(), borderWidth: 1, borderColor: GlobalUtil.colorRGBA(240, g: 240, b: 240, a: 1.0), corner: 2)
         cell.contentView.addSubview(view)
+        cell.contentView.sendSubviewToBack(view)
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("RecordCell", forIndexPath: indexPath) as! RecordCell
+        cell.selectionStyle = UITableViewCellSelectionStyle.None
         
         let variable = variables[indexPath.row]
         cell.titleLabel.text = variable.title

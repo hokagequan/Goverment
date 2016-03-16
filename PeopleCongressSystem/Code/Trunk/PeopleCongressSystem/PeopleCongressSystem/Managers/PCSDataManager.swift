@@ -319,7 +319,7 @@ class PCSDataManager {
                     variable.type = dict["lvzhi_type"] as? String
                     variable.content = dict["lvzhi_content"] as? String
                     variable.remark = dict["lvzhi_remark"] as? String
-                    variable.time = dict["lvzhi_Time"] as? String
+                    variable.time = dict["lvzhiTime"] as? String
                     variable.createTime = dict["lvzhi_addTime"] as? String
                     variable.createPerson = dict["lvzhi_addUser"] as? String
                     variable.checked = dict["lvzhi_zt"] as! Bool

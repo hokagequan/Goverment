@@ -21,7 +21,7 @@ class GetPersonListReq: HttpBaseReq {
         params["huodongId"] = activityID
         params["CheckTicket"] = PCSDataManager.defaultManager().accountManager.user!.token
         params["FieldID"] = PCSDataManager.defaultManager().accountManager.user!.field
-        params["thecharset"] = "utf-8"
+        params["thecharset"] = "gb2312"
         
         self.request("GethuodongUserlist", nameSpace: "gongzuorenyuan", params: params, completion: completion)
     }

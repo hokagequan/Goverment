@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import EZLoadingActivity
 
 class BusinessCardViewController: UITableViewController {
     
@@ -36,6 +37,7 @@ class BusinessCardViewController: UITableViewController {
     @IBOutlet weak var qrCodeImageView: UIImageView!
     @IBOutlet weak var photoImageView: UIImageView!
     @IBOutlet weak var nameLabel: UILabel!
+    @IBOutlet var infoTableView: UITableView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -47,17 +49,46 @@ class BusinessCardViewController: UITableViewController {
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
         self.navigationItem.hidesBackButton = true
         PCSCustomUtil.customNavigationController(self)
+        infoTableView.layoutMargins = UIEdgeInsetsZero
     }
     
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
         
-        // TODO: 获取个人信息
+        if PCSDataManager.defaultManager().accountManager.user?.photoName == nil {
+            EZLoadingActivity.show("", disableUI: true)
+            PCSDataManager.defaultManager().accountManager.getInfo { (success, message) -> Void in
+                EZLoadingActivity.hide()
+                
+                if success == true {
+                    self.refreshInfo()
+                }
+                else {
+                    self.showAlert(message!)
+                }
+            }
+        }
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    func refreshInfo() {
+        if let photoName = PCSDataManager.defaultManager().accountManager.user!.photoName {
+            let photoURL = "\(imageDownloadURL)\(photoName)"
+            photoImageView.loadImageURL(photoURL, name: photoName, placeholder: "")
+        }
+        
+        if let qrCode = PCSDataManager.defaultManager().accountManager.user!.qrCode {
+            let qrCodeURL = "\(imageDownloadURL)\(qrCode)"
+            qrCodeImageView.loadImageURL(qrCodeURL, name: qrCode, placeholder: "")
+        }
+        
+        nameLabel.text = PCSDataManager.defaultManager().accountManager.user?.name
+        
+        infoTableView.reloadData()
     }
 
     // MARK: - Table view data source
@@ -74,6 +105,7 @@ class BusinessCardViewController: UITableViewController {
         let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath)
         cell.selectionStyle = UITableViewCellSelectionStyle.None
         cell.separatorInset = UIEdgeInsetsMake(0, 0, 0, 0)
+        cell.layoutMargins = UIEdgeInsetsZero
         
         let row = Rows(rawValue: indexPath.row)!
         cell.textLabel?.text = row.title()

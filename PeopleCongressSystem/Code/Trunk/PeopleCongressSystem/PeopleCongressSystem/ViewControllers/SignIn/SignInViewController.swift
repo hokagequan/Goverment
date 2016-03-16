@@ -9,10 +9,7 @@
 import UIKit
 import EZLoadingActivity
 
-//let account = "ios"
-//let password = "a"
-
-let account = "安万新"
+let account = "ios"
 let password = "a"
 
 // Worker

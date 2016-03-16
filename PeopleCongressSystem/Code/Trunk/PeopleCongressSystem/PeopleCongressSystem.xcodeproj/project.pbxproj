@@ -32,6 +32,7 @@
 		1042329B1C8E61F400809859 /* ChangePasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1042329A1C8E61F400809859 /* ChangePasswordViewController.swift */; };
 		10496F371C76012F0074CFC1 /* SignInReq.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10496F361C76012F0074CFC1 /* SignInReq.swift */; };
 		10496F391C76140C0074CFC1 /* PCSCustomUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10496F381C76140C0074CFC1 /* PCSCustomUtil.swift */; };
+		105C198F1C994DC700103B38 /* GetCongressInfoReq.swift in Sources */ = {isa = PBXBuildFile; fileRef = 105C198E1C994DC700103B38 /* GetCongressInfoReq.swift */; };
 		106C64C91C83511400E6CD95 /* PCSProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 106C64C81C83511400E6CD95 /* PCSProtocols.swift */; };
 		106C64CB1C83522800E6CD95 /* WorkerHomeActionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 106C64CA1C83522800E6CD95 /* WorkerHomeActionDelegate.swift */; };
 		106C64CD1C84070A00E6CD95 /* PCSDefines.swift in Sources */ = {isa = PBXBuildFile; fileRef = 106C64CC1C84070A00E6CD95 /* PCSDefines.swift */; };
@@ -145,6 +146,7 @@
 		1042329A1C8E61F400809859 /* ChangePasswordViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChangePasswordViewController.swift; sourceTree = "<group>"; };
 		10496F361C76012F0074CFC1 /* SignInReq.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignInReq.swift; sourceTree = "<group>"; };
 		10496F381C76140C0074CFC1 /* PCSCustomUtil.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PCSCustomUtil.swift; sourceTree = "<group>"; };
+		105C198E1C994DC700103B38 /* GetCongressInfoReq.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetCongressInfoReq.swift; sourceTree = "<group>"; };
 		106C64C81C83511400E6CD95 /* PCSProtocols.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PCSProtocols.swift; sourceTree = "<group>"; };
 		106C64CA1C83522800E6CD95 /* WorkerHomeActionDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WorkerHomeActionDelegate.swift; sourceTree = "<group>"; };
 		106C64CC1C84070A00E6CD95 /* PCSDefines.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PCSDefines.swift; sourceTree = "<group>"; };
@@ -475,6 +477,7 @@
 				107505721C91570F00C9589E /* GetVariablesReq.swift */,
 				100691C81C969C32000AEFEA /* UploadPhotoReq.swift */,
 				100691CA1C96AB35000AEFEA /* AddVariableReq.swift */,
+				105C198E1C994DC700103B38 /* GetCongressInfoReq.swift */,
 			);
 			path = HttpRequests;
 			sourceTree = "<group>";
@@ -724,6 +727,7 @@
 				106C64CB1C83522800E6CD95 /* WorkerHomeActionDelegate.swift in Sources */,
 				100160351C8DB93E0095D023 /* QRCodeDownloadViewController.swift in Sources */,
 				10DBF20A1C8A5808007620BA /* DatePickerView.swift in Sources */,
+				105C198F1C994DC700103B38 /* GetCongressInfoReq.swift in Sources */,
 				107505751C915C9E00C9589E /* Variable.swift in Sources */,
 				10A6866A1C7DEF7400D050F0 /* GlobalUtil.swift in Sources */,
 				10D0D5A71C4DCB870093F687 /* CustomObjectUtil.swift in Sources */,

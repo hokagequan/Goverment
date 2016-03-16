@@ -22,7 +22,7 @@ class UploadPhotoReq: HttpBaseReq {
         params["lvzhiguid"] = variableID
         params["Files"] = files
         params["CheckTicket"] = PCSDataManager.defaultManager().accountManager.user!.token
-        params["thecharset"] = "utf-8"
+        params["thecharset"] = "gb2312"
         
         self.requestUpload(params, completion: completion)
     }

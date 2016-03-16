@@ -20,7 +20,7 @@ class GetActivityTypesReq: HttpBaseReq {
         var params = [String: AnyObject]()
         params["Code"] = type.rawValue
         params["FieldID"] = PCSDataManager.defaultManager().accountManager.user!.field
-        params["thecharset"] = "utf-8"
+        params["thecharset"] = "gb2312"
         
         self.request("GetDic", nameSpace: "gonggong", params: params, completion: completion)
     }
