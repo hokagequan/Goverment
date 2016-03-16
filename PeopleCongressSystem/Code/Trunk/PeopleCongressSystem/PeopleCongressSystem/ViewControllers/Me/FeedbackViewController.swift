@@ -25,6 +25,7 @@ class FeedbackViewController: UIViewController {
         
         feedbackTextView.placeHolder = "请简要描述你的问题和建议"
         feedbackTextView.placeHolderColor = UIColor.lightGrayColor()
+        feedbackTextView.maxHeight = 160.0
     }
 
     override func didReceiveMemoryWarning() {

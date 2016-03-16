@@ -68,19 +68,21 @@ import UIKit
         if maxHeight > 0 {
             height = min(size.height, maxHeight)
         }
-    
-        if (heightConstraint == nil) {
-            heightConstraint = NSLayoutConstraint(item: self, attribute: .Height, relatedBy: .Equal, toItem: nil, attribute: .NotAnAttribute, multiplier: 1.0, constant: height)
-            addConstraint(heightConstraint!)
-        }
         
-        if height != heightConstraint?.constant {
-            self.heightConstraint!.constant = height;
-            scrollRangeToVisible(NSMakeRange(0, 0))
-            if let delegate = delegate as? GrowingTextViewDelegate {
-                delegate.textViewDidChangeHeight?(height)
-            }
-        }
+        heightConstraint?.constant = self.maxHeight
+    
+//        if (heightConstraint == nil) {
+//            heightConstraint = NSLayoutConstraint(item: self, attribute: .Height, relatedBy: .Equal, toItem: nil, attribute: .NotAnAttribute, multiplier: 1.0, constant: height)
+//            addConstraint(heightConstraint!)
+//        }
+//        
+//        if height != heightConstraint?.constant {
+//            self.heightConstraint!.constant = height;
+//            scrollRangeToVisible(NSMakeRange(0, 0))
+//            if let delegate = delegate as? GrowingTextViewDelegate {
+//                delegate.textViewDidChangeHeight?(height)
+//            }
+//        }
     }
     
     // Show placeholder

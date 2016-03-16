@@ -12,9 +12,12 @@ import EZLoadingActivity
 //let account = "ios"
 //let password = "a"
 
-// Worker
-let account = "admin"
+let account = "安万新"
 let password = "a"
+
+// Worker
+//let account = "admin"
+//let password = "a"
 
 
 class SignInViewController: UIViewController, UIActionSheetDelegate, UITextFieldDelegate {
