@@ -73,12 +73,15 @@ class VariableDetailViewController: UIViewController, UITableViewDataSource, UIT
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet var footerView: UIView!
     @IBOutlet weak var saveButton: UIButton!
+    @IBOutlet weak var submitButton: UIButton!
+    @IBOutlet weak var deleteButton: UIButton!
     
     var variable: Variable = Variable()
     var pageType = VariablePageType.Detail
     var selectedInfo: PCSTypeInfo? = nil
     var types = [PCSTypeInfo]()
     var addPhotoCount = 0
+    var addPhotos = [String]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -88,11 +91,28 @@ class VariableDetailViewController: UIViewController, UITableViewDataSource, UIT
         PCSCustomUtil.customNavigationController(self)
         
         tableView.registerNib(UINib(nibName: "NormalImageTableCell", bundle: nil), forCellReuseIdentifier: "NormalImageTableCell")
+        CustomObjectUtil.customObjectsLayout([saveButton, submitButton], backgroundColor: colorRed, borderWidth: 0.0, borderColor: nil, corner: 3.0)
+        
+        self.customUI()
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    func customUI() {
+        if pageType == VariablePageType.Add {
+            deleteButton.hidden = true
+            submitButton.hidden = true
+        }
+        else {
+            if variable.submitted == true {
+                deleteButton.hidden = true
+                submitButton.hidden = true
+                saveButton.hidden = true
+            }
+        }
     }
     
     func createVariable() -> Variable {
@@ -118,29 +138,74 @@ class VariableDetailViewController: UIViewController, UITableViewDataSource, UIT
         return tempVariable
     }
     
-    func finishAddPhotos() {
+    func finishAddPhotos(cell: CollectionViewCell) {
         addPhotoCount--
         
         if addPhotoCount == 0 {
             EZLoadingActivity.hide()
-            tableView.reloadRowsAtIndexPaths([NSIndexPath(forRow: 0, inSection: 2)], withRowAnimation: UITableViewRowAnimation.None)
+            cell.addImages(self.addPhotos)
         }
     }
     
     // MARK: - Actions
     
     @IBAction func clickSave(sender: AnyObject) {
-        variable.identifier = GlobalUtil.randomImageName()
+        if pageType == VariablePageType.Add {
+            variable.identifier = GlobalUtil.randomImageName()
+            EZLoadingActivity.show("", disableUI: true)
+            
+            PCSDataManager.defaultManager().addVariable(self.createVariable()) { (success, message) -> Void in
+                if success {
+                    // TODO: 上传照片
+                    EZLoadingActivity.hide()
+                }
+                else {
+                    EZLoadingActivity.hide()
+                    self.showAlert(message!)
+                }
+            }
+        }
+        else {
+            let toVariable = self.createVariable()
+            
+            let req = EditVariableReq()
+            req.variable = toVariable
+            
+            EZLoadingActivity.show("", disableUI: true)
+            req.requestSimpleCompletion { (success, message) -> Void in
+                EZLoadingActivity.hide()
+                
+                self.showAlert(message ?? "修改成功")
+            }
+        }
+    }
+    
+    @IBAction func clickSubmit(sender: AnyObject) {
+        let toVariable = self.createVariable()
+        toVariable.submitted = true
+        
+        let req = EditVariableReq()
+        req.variable = toVariable
+        
+        EZLoadingActivity.show("", disableUI: true)
+        req.requestSimpleCompletion { (success, message) -> Void in
+            EZLoadingActivity.hide()
+            
+            self.showAlert(message ?? "修改成功")
+        }
+    }
+    
+    @IBAction func clickDelete(sender: AnyObject) {
         EZLoadingActivity.show("", disableUI: true)
         
-        PCSDataManager.defaultManager().addVariable(self.createVariable()) { (success, message) -> Void in
-            if success {
-                // TODO: 上传照片
-                EZLoadingActivity.hide()
-            }
-            else {
-                EZLoadingActivity.hide()
-                self.showAlert(message!)
+        let req = DeleteVariableReq()
+        req.variable = variable
+        req.requestSimpleCompletion { (success, message) -> Void in
+            EZLoadingActivity.hide()
+            
+            self.showAlert(message ?? "删除成功")
+            if success == true {
+                self.navigationController?.popViewControllerAnimated(true)
             }
         }
     }
@@ -148,14 +213,23 @@ class VariableDetailViewController: UIViewController, UITableViewDataSource, UIT
     // MARK: - CollectionViewCellDelegate
     
     func didClickAdd(cell: CollectionViewCell) {
+        if variable.submitted == true {
+            return
+        }
+        
         let picker = DKImagePickerController()
         picker.maxSelectableCount = 6
         picker.assetType = DKImagePickerControllerAssetType.AllPhotos
         picker.didSelectAssets = {(assets: [DKAsset]) in
             self.addPhotoCount = assets.count
+            self.addPhotos.removeAll()
             EZLoadingActivity.show("", disableUI: true)
             for asset in assets {
                 asset.fetchFullScreenImageWithCompleteBlock({ (image, info) -> Void in
+                    defer {
+                        self.finishAddPhotos(cell)
+                    }
+                    
                     if image == nil {
                         return
                     }
@@ -163,16 +237,15 @@ class VariableDetailViewController: UIViewController, UITableViewDataSource, UIT
                     let imageData = UIImageJPEGRepresentation(image!, 1.0)
                     let imageName = GlobalUtil.randomImageName()
                     imageData?.writeToFile(UIImageView.pathForTempImage().stringByAppendingString("/\(imageName)"), atomically: true)
-                    self.variable.photos.append(imageName)
-                    self.finishAddPhotos()
+                    self.addPhotos.append(imageName)
                     
-                    let req = UploadPhotoReq()
-                    req.variableID = "111"
-                    req.files = [imageData!]
-                    req.requestCompletion({ (response) -> Void in
-                        let result = response?.result
-                        print("\(result)")
-                    })
+//                    let req = UploadPhotoReq()
+//                    req.variableID = "111"
+//                    req.files = [imageData!]
+//                    req.requestCompletion({ (response) -> Void in
+//                        let result = response?.result
+//                        print("\(result)")
+//                    })
                 })
             }
             
@@ -223,6 +296,46 @@ class VariableDetailViewController: UIViewController, UITableViewDataSource, UIT
     
     func didSelectIndex(cell: CollectionViewCell, index: Int) {
         // TODO: 点击照片
+        if variable.submitted == true {
+            return
+        }
+    }
+    
+    func didLongPressIndex(cell: CollectionViewCell, index: Int) {
+        let alert = UIAlertController(title: nil, message: "确定要删除照片吗？", preferredStyle: UIAlertControllerStyle.ActionSheet)
+        
+        let sureAction = UIAlertAction(title: "确定", style: UIAlertActionStyle.Default) { (action) -> Void in
+            alert.dismissViewControllerAnimated(true, completion: nil)
+            
+            let photoName = cell.images[index]
+            if self.variable.photos.contains(photoName) {
+                EZLoadingActivity.show("", disableUI: true)
+                let req = DeletePhotoReq()
+                req.photoID = cell.images[index]
+                req.requestSimpleCompletion({ (success, message) -> Void in
+                    EZLoadingActivity.hide()
+                    
+                    if success == true {
+                        cell.deleteCollectionCell(index)
+                    }
+                    else {
+                        self.showAlert(message!)
+                    }
+                })
+            }
+            else {
+                cell.deleteCollectionCell(index)
+            }
+        }
+        
+        let cancelAction = UIAlertAction(title: "取消", style: UIAlertActionStyle.Default) { (action) -> Void in
+            alert.dismissViewControllerAnimated(true, completion: nil)
+        }
+        
+        alert.addAction(sureAction)
+        alert.addAction(cancelAction)
+        
+        self.presentViewController(alert, animated: true, completion: nil)
     }
     
     // MARK: - TypeSelectView
@@ -334,10 +447,16 @@ class VariableDetailViewController: UIViewController, UITableViewDataSource, UIT
             break
         }
         
+        cell.editable = !variable.submitted
+        
         return cell
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        if variable.submitted == true {
+            return
+        }
+        
         let section = Sections(rawValue: indexPath.section)!
         let rows = section.rows()
         let row = rows[indexPath.row]

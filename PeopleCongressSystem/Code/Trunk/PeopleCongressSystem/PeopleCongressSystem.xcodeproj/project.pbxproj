@@ -33,6 +33,7 @@
 		10496F371C76012F0074CFC1 /* SignInReq.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10496F361C76012F0074CFC1 /* SignInReq.swift */; };
 		10496F391C76140C0074CFC1 /* PCSCustomUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10496F381C76140C0074CFC1 /* PCSCustomUtil.swift */; };
 		105C198F1C994DC700103B38 /* GetCongressInfoReq.swift in Sources */ = {isa = PBXBuildFile; fileRef = 105C198E1C994DC700103B38 /* GetCongressInfoReq.swift */; };
+		105C19911C9A3E4A00103B38 /* EditVariableReq.swift in Sources */ = {isa = PBXBuildFile; fileRef = 105C19901C9A3E4A00103B38 /* EditVariableReq.swift */; };
 		106C64C91C83511400E6CD95 /* PCSProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 106C64C81C83511400E6CD95 /* PCSProtocols.swift */; };
 		106C64CB1C83522800E6CD95 /* WorkerHomeActionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 106C64CA1C83522800E6CD95 /* WorkerHomeActionDelegate.swift */; };
 		106C64CD1C84070A00E6CD95 /* PCSDefines.swift in Sources */ = {isa = PBXBuildFile; fileRef = 106C64CC1C84070A00E6CD95 /* PCSDefines.swift */; };
@@ -54,6 +55,8 @@
 		10A6866E1C7DF12600D050F0 /* UserEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10A6866C1C7DF12600D050F0 /* UserEntity.swift */; };
 		10A686711C7DF7A200D050F0 /* ContentInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10A686701C7DF7A200D050F0 /* ContentInfo.swift */; };
 		10A686731C7DF8D000D050F0 /* WorkerContentInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10A686721C7DF8D000D050F0 /* WorkerContentInfo.swift */; };
+		10BD4DE61C9A4A14006179AB /* DeleteVariableReq.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10BD4DE51C9A4A14006179AB /* DeleteVariableReq.swift */; };
+		10BD4DE81C9A50A2006179AB /* DeletePhotoReq.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10BD4DE71C9A50A2006179AB /* DeletePhotoReq.swift */; };
 		10D0D5701C4CD1D00093F687 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10D0D56F1C4CD1D00093F687 /* AppDelegate.swift */; };
 		10D0D5751C4CD1D00093F687 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 10D0D5731C4CD1D00093F687 /* Main.storyboard */; };
 		10D0D5781C4CD1D00093F687 /* PeopleCongressSystem.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 10D0D5761C4CD1D00093F687 /* PeopleCongressSystem.xcdatamodeld */; };
@@ -147,6 +150,7 @@
 		10496F361C76012F0074CFC1 /* SignInReq.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignInReq.swift; sourceTree = "<group>"; };
 		10496F381C76140C0074CFC1 /* PCSCustomUtil.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PCSCustomUtil.swift; sourceTree = "<group>"; };
 		105C198E1C994DC700103B38 /* GetCongressInfoReq.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetCongressInfoReq.swift; sourceTree = "<group>"; };
+		105C19901C9A3E4A00103B38 /* EditVariableReq.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditVariableReq.swift; sourceTree = "<group>"; };
 		106C64C81C83511400E6CD95 /* PCSProtocols.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PCSProtocols.swift; sourceTree = "<group>"; };
 		106C64CA1C83522800E6CD95 /* WorkerHomeActionDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WorkerHomeActionDelegate.swift; sourceTree = "<group>"; };
 		106C64CC1C84070A00E6CD95 /* PCSDefines.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PCSDefines.swift; sourceTree = "<group>"; };
@@ -168,6 +172,8 @@
 		10A6866C1C7DF12600D050F0 /* UserEntity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserEntity.swift; sourceTree = "<group>"; };
 		10A686701C7DF7A200D050F0 /* ContentInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContentInfo.swift; sourceTree = "<group>"; };
 		10A686721C7DF8D000D050F0 /* WorkerContentInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WorkerContentInfo.swift; sourceTree = "<group>"; };
+		10BD4DE51C9A4A14006179AB /* DeleteVariableReq.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeleteVariableReq.swift; sourceTree = "<group>"; };
+		10BD4DE71C9A50A2006179AB /* DeletePhotoReq.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeletePhotoReq.swift; sourceTree = "<group>"; };
 		10D0D56C1C4CD1D00093F687 /* PeopleCongressSystem.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PeopleCongressSystem.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		10D0D56F1C4CD1D00093F687 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		10D0D5741C4CD1D00093F687 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -478,6 +484,9 @@
 				100691C81C969C32000AEFEA /* UploadPhotoReq.swift */,
 				100691CA1C96AB35000AEFEA /* AddVariableReq.swift */,
 				105C198E1C994DC700103B38 /* GetCongressInfoReq.swift */,
+				105C19901C9A3E4A00103B38 /* EditVariableReq.swift */,
+				10BD4DE51C9A4A14006179AB /* DeleteVariableReq.swift */,
+				10BD4DE71C9A50A2006179AB /* DeletePhotoReq.swift */,
 			);
 			path = HttpRequests;
 			sourceTree = "<group>";
@@ -673,6 +682,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				10F1097F1C88156F0083D89D /* Activity.swift in Sources */,
+				10BD4DE61C9A4A14006179AB /* DeleteVariableReq.swift in Sources */,
 				10A6866D1C7DF12600D050F0 /* UserEntity+CoreDataProperties.swift in Sources */,
 				10DBF2191C8C0CF7007620BA /* NormalInfoCell.swift in Sources */,
 				10F9019E1C858B0100A4D767 /* CongressContentInfo.swift in Sources */,
@@ -727,11 +737,13 @@
 				106C64CB1C83522800E6CD95 /* WorkerHomeActionDelegate.swift in Sources */,
 				100160351C8DB93E0095D023 /* QRCodeDownloadViewController.swift in Sources */,
 				10DBF20A1C8A5808007620BA /* DatePickerView.swift in Sources */,
+				105C19911C9A3E4A00103B38 /* EditVariableReq.swift in Sources */,
 				105C198F1C994DC700103B38 /* GetCongressInfoReq.swift in Sources */,
 				107505751C915C9E00C9589E /* Variable.swift in Sources */,
 				10A6866A1C7DEF7400D050F0 /* GlobalUtil.swift in Sources */,
 				10D0D5A71C4DCB870093F687 /* CustomObjectUtil.swift in Sources */,
 				10D0D5C91C4E8A190093F687 /* PerformanceRecordsViewController.swift in Sources */,
+				10BD4DE81C9A50A2006179AB /* DeletePhotoReq.swift in Sources */,
 				100B203E1C89222F00435EF0 /* PersonListViewController.swift in Sources */,
 				1075055E1C9057B700C9589E /* UIWebView+HtmlInteract.swift in Sources */,
 				107505631C906D0200C9589E /* SituationViewController.swift in Sources */,

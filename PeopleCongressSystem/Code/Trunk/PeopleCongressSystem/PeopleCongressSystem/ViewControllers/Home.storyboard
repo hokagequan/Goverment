@@ -365,9 +365,24 @@
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fwe-CB-AdQ" customClass="PCSNavigationView" customModule="PeopleCongressSystem" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="64" width="600" height="44"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="j0i-55-GWH">
+                                        <rect key="frame" x="520" y="0.0" width="60" height="44"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="60" id="FZZ-2X-SlG"/>
+                                        </constraints>
+                                        <state key="normal" title="Del"/>
+                                        <connections>
+                                            <action selector="clickDelete:" destination="ZAL-RZ-HiG" eventType="touchUpInside" id="xEN-ae-MiF"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="j0i-55-GWH" secondAttribute="bottom" id="2ob-xx-RGo"/>
                                     <constraint firstAttribute="height" constant="44" id="Y1w-lM-l5h"/>
+                                    <constraint firstAttribute="trailing" secondItem="j0i-55-GWH" secondAttribute="trailing" constant="20" id="Z0v-1u-X6W"/>
+                                    <constraint firstItem="j0i-55-GWH" firstAttribute="top" secondItem="fwe-CB-AdQ" secondAttribute="top" id="lO5-Nj-eiw"/>
                                 </constraints>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="string" keyPath="title" value="履职详情"/>
@@ -399,7 +414,7 @@
                                                 <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="QxU-Ch-fgY">
                                                     <rect key="frame" x="0.0" y="30" width="600" height="70"/>
                                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                                    <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="A6e-kg-EWW">
+                                                    <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="A6e-kg-EWW">
                                                         <size key="itemSize" width="40" height="40"/>
                                                         <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                                         <size key="footerReferenceSize" width="0.0" height="0.0"/>
@@ -470,9 +485,11 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="deleteButton" destination="j0i-55-GWH" id="WLH-yb-NR6"/>
                         <outlet property="footerView" destination="wvH-nC-ffZ" id="Hax-Tl-8QW"/>
                         <outlet property="naviView" destination="fwe-CB-AdQ" id="ktS-xi-gXF"/>
                         <outlet property="saveButton" destination="miL-hP-LZJ" id="t3a-NS-rYh"/>
+                        <outlet property="submitButton" destination="mzD-PQ-tkZ" id="rhu-Lj-ldF"/>
                         <outlet property="tableView" destination="dQ4-ee-wDs" id="tGy-40-YsE"/>
                     </connections>
                 </viewController>
@@ -482,22 +499,69 @@
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <subviews>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="miL-hP-LZJ">
-                            <rect key="frame" x="20" y="8" width="280" height="30"/>
+                            <rect key="frame" x="20" y="8" width="130" height="46"/>
                             <constraints>
-                                <constraint firstAttribute="height" constant="30" id="zyC-p4-GVZ"/>
+                                <constraint firstAttribute="height" constant="46" id="FZ8-Ir-uLj"/>
+                                <constraint firstAttribute="height" constant="46" id="zyC-p4-GVZ"/>
                             </constraints>
                             <state key="normal" title="保存"/>
+                            <variation key="default">
+                                <mask key="constraints">
+                                    <exclude reference="zyC-p4-GVZ"/>
+                                </mask>
+                            </variation>
                             <connections>
                                 <action selector="clickSave:" destination="ZAL-RZ-HiG" eventType="touchUpInside" id="Obf-nx-gcy"/>
+                            </connections>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mzD-PQ-tkZ">
+                            <rect key="frame" x="170" y="8" width="130" height="46"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="46" id="kNV-WS-4jz"/>
+                            </constraints>
+                            <state key="normal" title="提交"/>
+                            <variation key="default">
+                                <mask key="constraints">
+                                    <exclude reference="kNV-WS-4jz"/>
+                                </mask>
+                            </variation>
+                            <connections>
+                                <action selector="clickSubmit:" destination="ZAL-RZ-HiG" eventType="touchUpInside" id="hRf-BR-Hib"/>
                             </connections>
                         </button>
                     </subviews>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     <constraints>
                         <constraint firstItem="miL-hP-LZJ" firstAttribute="top" secondItem="wvH-nC-ffZ" secondAttribute="top" constant="8" id="58t-fe-miD"/>
+                        <constraint firstItem="miL-hP-LZJ" firstAttribute="leading" secondItem="wvH-nC-ffZ" secondAttribute="leading" constant="20" id="5MC-9x-LaC"/>
+                        <constraint firstItem="mzD-PQ-tkZ" firstAttribute="height" secondItem="miL-hP-LZJ" secondAttribute="height" id="7Lx-bY-wrK"/>
+                        <constraint firstAttribute="trailing" secondItem="mzD-PQ-tkZ" secondAttribute="trailing" constant="20" id="8iQ-Hs-bET"/>
+                        <constraint firstItem="mzD-PQ-tkZ" firstAttribute="width" secondItem="miL-hP-LZJ" secondAttribute="width" id="AKG-be-OJd"/>
+                        <constraint firstItem="mzD-PQ-tkZ" firstAttribute="centerY" secondItem="miL-hP-LZJ" secondAttribute="centerY" id="JHv-wA-MfB"/>
                         <constraint firstItem="miL-hP-LZJ" firstAttribute="leading" secondItem="wvH-nC-ffZ" secondAttribute="leading" constant="20" id="ML6-BZ-Hki"/>
+                        <constraint firstItem="miL-hP-LZJ" firstAttribute="top" secondItem="wvH-nC-ffZ" secondAttribute="top" constant="8" id="P8x-ua-Nkn"/>
+                        <constraint firstItem="mzD-PQ-tkZ" firstAttribute="leading" secondItem="miL-hP-LZJ" secondAttribute="trailing" constant="20" id="Xzc-uf-WoC"/>
+                        <constraint firstItem="mzD-PQ-tkZ" firstAttribute="leading" secondItem="miL-hP-LZJ" secondAttribute="trailing" constant="20" id="Yvf-6g-PFj"/>
                         <constraint firstAttribute="trailing" secondItem="miL-hP-LZJ" secondAttribute="trailing" constant="20" id="abK-XG-yrm"/>
+                        <constraint firstAttribute="trailing" secondItem="mzD-PQ-tkZ" secondAttribute="trailing" constant="20" id="d3R-YF-FiP"/>
+                        <constraint firstItem="mzD-PQ-tkZ" firstAttribute="height" secondItem="miL-hP-LZJ" secondAttribute="height" id="dQz-PH-2DW"/>
+                        <constraint firstItem="mzD-PQ-tkZ" firstAttribute="centerY" secondItem="miL-hP-LZJ" secondAttribute="centerY" id="evR-UR-tR5"/>
+                        <constraint firstItem="mzD-PQ-tkZ" firstAttribute="leading" secondItem="miL-hP-LZJ" secondAttribute="trailing" constant="20" id="f2i-Kz-JDJ"/>
+                        <constraint firstItem="mzD-PQ-tkZ" firstAttribute="width" secondItem="miL-hP-LZJ" secondAttribute="width" id="oUO-SM-dhl"/>
                     </constraints>
+                    <variation key="default">
+                        <mask key="constraints">
+                            <exclude reference="58t-fe-miD"/>
+                            <exclude reference="ML6-BZ-Hki"/>
+                            <exclude reference="abK-XG-yrm"/>
+                            <exclude reference="AKG-be-OJd"/>
+                            <exclude reference="JHv-wA-MfB"/>
+                            <exclude reference="Xzc-uf-WoC"/>
+                            <exclude reference="Yvf-6g-PFj"/>
+                            <exclude reference="d3R-YF-FiP"/>
+                            <exclude reference="dQz-PH-2DW"/>
+                        </mask>
+                    </variation>
                 </view>
             </objects>
             <point key="canvasLocation" x="2374" y="1338"/>
