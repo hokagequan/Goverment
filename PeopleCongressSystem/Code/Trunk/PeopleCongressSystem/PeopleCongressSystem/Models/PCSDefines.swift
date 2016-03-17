@@ -14,14 +14,14 @@ let imageDownloadURL = "http://218.25.160.202:8099/lvzhiImage/"
 let serverSoapAction = "http://tempuri.org/"
 
 /// @brief HTML Page
-let pageHTMLVariableManager = "/apph5/GZRY_lvzhiguanli.aspx?"
-let pageHTMLVariableAnalyze = "/apph5/GZRY_lvzhitongji.aspx?"
-let pageHTMLShareSpace = "/apph5/GZRY_gongxiangkongjianM.aspx?"
-let pageHTMLCongressInfo = "/apph5/GZRY_daibaoxinxi.aspx?"
-let pageHTMLNotify = "/apph5/GZRY_tongzhitongbao.aspx?"
-let pageHTMLSituation = "/apph5/GZRY_zhiqingzhizhenglist.aspx?"
-let pageHTMLHelp = "/apph5/GZRY_helper.aspx?"
-let pageHTMLCongressNotify = "/apph5/RDDB_huodongtixing.aspx?"
+let pageHTMLVariableManager = "/apph5/iphone/GZRY_lvzhiguanli.aspx?"
+let pageHTMLVariableAnalyze = "/apph5/iphone/GZRY_lvzhitongji.aspx?"
+let pageHTMLShareSpace = "/apph5/iphone/GZRY_gongxiangkongjianM.aspx?"
+let pageHTMLCongressInfo = "/apph5/iphone/GZRY_daibaoxinxi.aspx?"
+let pageHTMLNotify = "/apph5/iphone/GZRY_tongzhitongbao.aspx?"
+let pageHTMLSituation = "/apph5/iphone/GZRY_zhiqingzhizhenglist.aspx?"
+let pageHTMLHelp = "/apph5/iphone/GZRY_helper.aspx?"
+let pageHTMLCongressNotify = "/apph5/iphone/RDDB_huodongtixing.aspx?"
 
 let colorRed = GlobalUtil.colorRGBA(230, g: 27, b: 39, a: 1.0)
 

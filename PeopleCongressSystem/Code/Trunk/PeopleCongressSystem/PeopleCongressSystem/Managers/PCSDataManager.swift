@@ -314,7 +314,13 @@ class PCSDataManager {
                 for i in 0..<info.count {
                     let dict = info[i] as! Dictionary<String, AnyObject>
                     let variable = Variable()
-                    variable.identifier = dict["lvzhi_id"] as? String
+                    
+                    if dict["lvzhi_id"] is String {
+                        variable.identifier = dict["lvzhi_id"] as? String
+                    }
+                    else {
+                        variable.identifier = "\(dict["lvzhi_id"]!)"
+                    }
                     variable.title = dict["lvzhi_title"] as? String
                     variable.type = dict["lvzhi_type"] as? String
                     variable.content = dict["lvzhi_content"] as? String

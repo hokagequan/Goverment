@@ -54,7 +54,7 @@ class CollectionViewCell: UITableViewCell, UICollectionViewDataSource, UICollect
         var indexPaths = [NSIndexPath]()
         
         index.enumerateIndexesUsingBlock { (index, stop) -> Void in
-            let indexPath = NSIndexPath(forRow: index, inSection: 0)
+            let indexPath = NSIndexPath(forRow: index + 1, inSection: 0)
             indexPaths.append(indexPath)
         }
         

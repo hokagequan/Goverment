@@ -147,17 +147,63 @@ class VariableDetailViewController: UIViewController, UITableViewDataSource, UIT
         }
     }
     
+    func uploadAddedPhotos(completion: (() -> Void)?) {
+        func filter(element: String) -> String? {
+            if variable.photos.contains(element) == false {
+                return element
+            }
+            
+            return nil
+        }
+        
+        let cell = tableView.cellForRowAtIndexPath(NSIndexPath(forRow: 0, inSection: 2)) as! CollectionViewCell
+        let images = cell.images
+        let toAddImages = images.flatMap{filter($0)}
+        
+        let semaphore = dispatch_semaphore_create(1)
+        let queue = dispatch_queue_create("UploadPhotos", nil)
+        let dispatchTimeout = dispatch_time(DISPATCH_TIME_NOW, Int64(5 * 60 * NSEC_PER_SEC))
+        
+        dispatch_async(queue, { () -> Void in
+            for image in toAddImages {
+                dispatch_semaphore_wait(semaphore, dispatchTimeout)
+                autoreleasepool({ () -> () in
+                    let imageData = NSData(contentsOfFile: UIImageView.pathForTempImage() + "/\(image)")
+                    let req = UploadPhotoReq()
+                    req.variableID = self.variable.identifier!
+                    req.fileName = image
+                    req.file = imageData
+                    req.requestCompletion({ (response) -> Void in
+                        dispatch_semaphore_signal(semaphore)
+                    })
+                })
+            }
+            
+            dispatch_semaphore_wait(semaphore, dispatchTimeout)
+            dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                completion?()
+            })
+            dispatch_semaphore_signal(semaphore)
+        })
+    }
+    
     // MARK: - Actions
     
     @IBAction func clickSave(sender: AnyObject) {
+        self.uploadAddedPhotos { () -> Void in
+            print("completion")
+        }
+        
         if pageType == VariablePageType.Add {
             variable.identifier = GlobalUtil.randomImageName()
             EZLoadingActivity.show("", disableUI: true)
             
             PCSDataManager.defaultManager().addVariable(self.createVariable()) { (success, message) -> Void in
                 if success {
-                    // TODO: 上传照片
-                    EZLoadingActivity.hide()
+                    self.uploadAddedPhotos({ () -> Void in
+                        EZLoadingActivity.hide()
+                        self.showAlert(message ?? "添加成功")
+                    })
                 }
                 else {
                     EZLoadingActivity.hide()
@@ -173,9 +219,16 @@ class VariableDetailViewController: UIViewController, UITableViewDataSource, UIT
             
             EZLoadingActivity.show("", disableUI: true)
             req.requestSimpleCompletion { (success, message) -> Void in
-                EZLoadingActivity.hide()
-                
-                self.showAlert(message ?? "修改成功")
+                if success {
+                    self.uploadAddedPhotos({ () -> Void in
+                        EZLoadingActivity.hide()
+                        self.showAlert(message ?? "修改成功")
+                    })
+                }
+                else {
+                    EZLoadingActivity.hide()
+                    self.showAlert(message!)
+                }
             }
         }
     }
@@ -235,17 +288,9 @@ class VariableDetailViewController: UIViewController, UITableViewDataSource, UIT
                     }
                     
                     let imageData = UIImageJPEGRepresentation(image!, 1.0)
-                    let imageName = GlobalUtil.randomImageName()
+                    let imageName = GlobalUtil.randomImageName() + ".jpg"
                     imageData?.writeToFile(UIImageView.pathForTempImage().stringByAppendingString("/\(imageName)"), atomically: true)
                     self.addPhotos.append(imageName)
-                    
-//                    let req = UploadPhotoReq()
-//                    req.variableID = "111"
-//                    req.files = [imageData!]
-//                    req.requestCompletion({ (response) -> Void in
-//                        let result = response?.result
-//                        print("\(result)")
-//                    })
                 })
             }
             
@@ -317,6 +362,10 @@ class VariableDetailViewController: UIViewController, UITableViewDataSource, UIT
                     
                     if success == true {
                         cell.deleteCollectionCell(index)
+                        
+                        if self.variable.photos.contains(req.photoID!) {
+                            self.variable.photos.removeAtIndex(self.variable.photos.indexOf(req.photoID!)!)
+                        }
                     }
                     else {
                         self.showAlert(message!)

@@ -11,7 +11,8 @@ import UIKit
 class UploadPhotoReq: HttpBaseReq {
     
     var variableID: String = ""
-    var files = [AnyObject]()
+    var file: NSData? = nil
+    var fileName = ""
 
     override init() {
         super.init()
@@ -20,11 +21,9 @@ class UploadPhotoReq: HttpBaseReq {
     override func requestCompletion(completion: HttpReqCompletion?) {
         var params = [String: AnyObject]()
         params["lvzhiguid"] = variableID
-        params["Files"] = files
         params["CheckTicket"] = PCSDataManager.defaultManager().accountManager.user!.token
-        params["thecharset"] = "gb2312"
         
-        self.requestUpload(params, completion: completion)
+        self.requestUpload(params, data: file!, key: "Files", name: fileName, completion: completion)
     }
     
 }

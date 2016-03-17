@@ -10,6 +10,7 @@ import Foundation
 import Alamofire
 
 typealias HttpReqCompletion = (response: Response<String, NSError>?) -> Void
+typealias HttpReqJSONCompletion = (response: Response<AnyObject, NSError>?) -> Void
 
 class HttpBaseReq {
     
@@ -17,12 +18,12 @@ class HttpBaseReq {
     var httpReqURL = serverURL1
     
     /// @brief JSON
-//    func request(params: Dictionary<String, AnyObject>, completion: HttpReqCompletion?) {
-//        Alamofire.request(.POST, httpReqURL, parameters: params, encoding: .JSON, headers: nil)
-//                 .responseJSON { (rsp) -> Void in
-//                    completion?(response: rsp)
-//                 }
-//    }
+    func request(method: String, params: Dictionary<String, AnyObject>, completion: HttpReqJSONCompletion?) {
+        Alamofire.request(.POST, httpReqURL + method, parameters: params, encoding: .JSON, headers: nil)
+                 .responseJSON { (rsp) -> Void in
+                    completion?(response: rsp)
+                 }
+    }
     
     /// @brief SOAP
     func request(method: String, nameSpace: String, params: Dictionary<String, AnyObject>, completion: HttpReqCompletion?) {
@@ -44,19 +45,33 @@ class HttpBaseReq {
         }
     }
     
-    func requestUpload(params: Dictionary<String, AnyObject>, completion: HttpReqCompletion?) {
-        let soapMessage = self.soapMessage("BatchUploaderImg2", params: params)
-        let mutableURLRequest = NSMutableURLRequest(URL: NSURL(string: self.httpReqURL + "BatchUploaderImg2.ashx")!)
-//        mutableURLRequest.setValue("text/xml; charset=utf-8", forHTTPHeaderField: "Content-Type")
-//        mutableURLRequest.setValue(self.soapAction("BatchUploaderImg2"), forHTTPHeaderField: "SOAPAction")
-//        mutableURLRequest.setValue(String(soapMessage.characters.count), forHTTPHeaderField: "Content-Length")
-        mutableURLRequest.HTTPMethod = "POST"
-//        mutableURLRequest.HTTPBody = soapMessage.dataUsingEncoding(NSUTF8StringEncoding)
-        mutableURLRequest.HTTPBody = params["Files"]![0] as? NSData
-        
-        let request = Alamofire.request(mutableURLRequest)
-        request.responseString { (rsp) -> Void in
-            completion?(response: rsp)
+    func requestUpload(params: Dictionary<String, AnyObject>, data: NSData, key: String, name: String, completion: HttpReqCompletion?) {
+        Alamofire.upload(.POST, NSURL(string: self.httpReqURL + "BatchUploaderImg2.ashx")!, multipartFormData: { (formData) -> Void in
+            for key in params.keys {
+                let object = params[key]
+                
+                if object is NSData {
+                    formData.appendBodyPart(data: object as! NSData, name: key)
+                }
+                else {
+                    let value = (object as! NSObject).description
+                    let valueData = value.dataUsingEncoding(NSUTF8StringEncoding)
+                    formData.appendBodyPart(data: valueData!, name: key)
+                }
+            }
+            
+            formData.appendBodyPart(data: data, name: key, fileName: name, mimeType: "application/octet-stream")
+            }) { (result) -> Void in
+                switch result {
+                case .Success(let upload, _, _):
+                    upload.responseString(completionHandler: { (response) -> Void in
+                        completion?(response: response)
+                    })
+                    break
+                default:
+                    completion?(response: nil)
+                    break
+                }
         }
     }
     
