@@ -367,11 +367,11 @@
                                 <rect key="frame" x="0.0" y="64" width="600" height="44"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="j0i-55-GWH">
-                                        <rect key="frame" x="520" y="0.0" width="60" height="44"/>
+                                        <rect key="frame" x="540" y="0.0" width="60" height="44"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="60" id="FZZ-2X-SlG"/>
                                         </constraints>
-                                        <state key="normal" title="Del"/>
+                                        <state key="normal" image="delete"/>
                                         <connections>
                                             <action selector="clickDelete:" destination="ZAL-RZ-HiG" eventType="touchUpInside" id="xEN-ae-MiF"/>
                                         </connections>
@@ -381,7 +381,7 @@
                                 <constraints>
                                     <constraint firstAttribute="bottom" secondItem="j0i-55-GWH" secondAttribute="bottom" id="2ob-xx-RGo"/>
                                     <constraint firstAttribute="height" constant="44" id="Y1w-lM-l5h"/>
-                                    <constraint firstAttribute="trailing" secondItem="j0i-55-GWH" secondAttribute="trailing" constant="20" id="Z0v-1u-X6W"/>
+                                    <constraint firstAttribute="trailing" secondItem="j0i-55-GWH" secondAttribute="trailing" id="Z0v-1u-X6W"/>
                                     <constraint firstItem="j0i-55-GWH" firstAttribute="top" secondItem="fwe-CB-AdQ" secondAttribute="top" id="lO5-Nj-eiw"/>
                                 </constraints>
                                 <userDefinedRuntimeAttributes>
@@ -1032,6 +1032,7 @@
     </scenes>
     <resources>
         <image name="add" width="20" height="20"/>
+        <image name="delete" width="14" height="17"/>
         <image name="home_header" width="375" height="205"/>
         <image name="indicator" width="9" height="15"/>
         <image name="mark_nor" width="22" height="22"/>

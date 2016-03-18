@@ -104,8 +104,7 @@ class CollectionViewCell: UITableViewCell, UICollectionViewDataSource, UICollect
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier("SimpleImageCell", forIndexPath: indexPath) as! SimpleImageCell
         
         if indexPath.row == 0 {
-            // TODO: 加号
-            cell.iconImageView.image = UIImage(named: "")
+            cell.iconImageView.image = UIImage(named: "add_white")
         }
         else {
             let photoName = images[indexPath.row - 1]

@@ -77,12 +77,12 @@ class BusinessCardViewController: UITableViewController {
     
     func refreshInfo() {
         if let photoName = PCSDataManager.defaultManager().accountManager.user!.photoName {
-            let photoURL = "\(imageDownloadURL)\(photoName)"
+            let photoURL = "\(photoDownloadURL)\(photoName)"
             photoImageView.loadImageURL(photoURL, name: photoName, placeholder: "")
         }
         
         if let qrCode = PCSDataManager.defaultManager().accountManager.user!.qrCode {
-            let qrCodeURL = "\(imageDownloadURL)\(qrCode)"
+            let qrCodeURL = "\(qrCodeDownloadURL)\(qrCode)"
             qrCodeImageView.loadImageURL(qrCodeURL, name: qrCode, placeholder: "")
         }
         
