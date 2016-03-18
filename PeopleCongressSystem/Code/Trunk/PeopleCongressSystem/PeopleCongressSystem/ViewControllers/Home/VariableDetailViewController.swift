@@ -418,7 +418,7 @@ class VariableDetailViewController: UIViewController, UITableViewDataSource, UIT
         let section = Sections(rawValue: indexPath.section)!
         
         if section == Sections.Photos {
-            return 100.0
+            return 130.0
         }
         
         return 50.0

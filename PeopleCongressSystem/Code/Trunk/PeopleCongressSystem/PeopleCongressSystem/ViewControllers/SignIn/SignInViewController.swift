@@ -119,8 +119,10 @@ class SignInViewController: UIViewController, UIActionSheetDelegate, UITextField
             return
         }
         
+//        accountTextField.text = account
+//        passwordTextField.text = password
         EZLoadingActivity.show("", disableUI: true)
-        PCSDataManager.defaultManager().accountManager.signIn(account, password: password) { (success, errorMessage) -> Void in
+        PCSDataManager.defaultManager().accountManager.signIn(accountTextField.text!, password: passwordTextField.text!) { (success, errorMessage) -> Void in
             EZLoadingActivity.hide()
             
             if success == true {
