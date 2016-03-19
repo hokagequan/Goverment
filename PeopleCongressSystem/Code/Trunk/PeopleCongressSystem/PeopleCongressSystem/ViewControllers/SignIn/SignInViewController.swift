@@ -9,14 +9,6 @@
 import UIKit
 import EZLoadingActivity
 
-let account = "ios"
-let password = "a"
-
-// Worker
-//let account = "admin"
-//let password = "a"
-
-
 class SignInViewController: UIViewController, UIActionSheetDelegate, UITextFieldDelegate {
 
     @IBOutlet weak var accountTextField: UITextField!
@@ -118,8 +110,6 @@ class SignInViewController: UIViewController, UIActionSheetDelegate, UITextField
             return
         }
         
-//        accountTextField.text = account
-//        passwordTextField.text = password
         EZLoadingActivity.show("", disableUI: true)
         PCSDataManager.defaultManager().accountManager.signIn(accountTextField.text!, password: passwordTextField.text!) { (success, errorMessage) -> Void in
             EZLoadingActivity.hide()
@@ -180,7 +170,7 @@ class SignInViewController: UIViewController, UIActionSheetDelegate, UITextField
     // MARK: - Navigation
     
     @IBAction func unwindToSignIn(segue: UIStoryboardSegue) {
-        
+        SettingsManager.saveData(false, key: SettingKey.AutoSignIn.rawValue)
     }
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
