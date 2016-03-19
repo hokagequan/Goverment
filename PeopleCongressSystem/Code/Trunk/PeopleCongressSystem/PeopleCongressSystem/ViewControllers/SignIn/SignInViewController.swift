@@ -60,7 +60,6 @@ class SignInViewController: UIViewController, UIActionSheetDelegate, UITextField
         gestureButton.hidden = PCSDataManager.defaultManager().accountManager.user?.gesturePassword == nil
         
         if let isRemember = SettingsManager.getData(SettingKey.RememberPassword.rawValue) as? Bool {
-            // TODO: 设置默认用户
             rememberButton.selected = isRemember
             
             if rememberButton.selected == true {
