@@ -270,6 +270,8 @@ class VariableDetailViewController: UIViewController, UITableViewDataSource, UIT
             return
         }
         
+        UINavigationBar.appearance().tintColor = UIColor.whiteColor()
+        UINavigationBar.appearance().titleTextAttributes = [NSForegroundColorAttributeName: UIColor.whiteColor()]
         let picker = DKImagePickerController()
         picker.maxSelectableCount = 6
         picker.assetType = DKImagePickerControllerAssetType.AllPhotos
