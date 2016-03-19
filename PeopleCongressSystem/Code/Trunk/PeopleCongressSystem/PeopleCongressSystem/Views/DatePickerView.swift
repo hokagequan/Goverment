@@ -65,4 +65,8 @@ class DatePickerView: UIControl {
         self.dismiss()
     }
     
+    @IBAction func clickCancel(sender: AnyObject) {
+        self.dismiss()
+    }
+    
 }

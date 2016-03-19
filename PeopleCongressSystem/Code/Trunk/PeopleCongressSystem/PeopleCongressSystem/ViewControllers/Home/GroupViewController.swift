@@ -78,6 +78,8 @@ class GroupViewController: UIViewController, UITableViewDataSource, UITableViewD
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        tableView.deselectRowAtIndexPath(indexPath, animated: true)
+        
         let group = groups[indexPath.row]
         self.performSegueWithIdentifier("PersonListSegue", sender: group)
     }

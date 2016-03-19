@@ -17,13 +17,44 @@ class ManageEditActivityEditDelegate: ManageEditUIActivityDelegate {
             return
         }
         
+        let group = dispatch_group_create()
+        let semaphore = dispatch_semaphore_create(1)
+        let queue = dispatch_queue_create("GetActivityDetail", nil)
+        
         EZLoadingActivity.show("", disableUI: true)
-        PCSDataManager.defaultManager().getPersonList("\((self.editObject as! Activity).identifier)") { (info) -> Void in
-            EZLoadingActivity.hide()
+        
+        dispatch_async(queue) { () -> Void in
+            dispatch_group_enter(group)
+            dispatch_semaphore_wait(semaphore, DISPATCH_TIME_FOREVER)
+            PCSDataManager.defaultManager().getPersonList("\((self.editObject as! Activity).identifier)") { (info) -> Void in
+                (self.editObject as! Activity).persons = info
+                dispatch_semaphore_signal(semaphore)
+                //            self.tableView?.reloadRowsAtIndexPaths([NSIndexPath(forRow: 0, inSection: 3)], withRowAnimation: UITableViewRowAnimation.None)
+            }
             
-            (self.editObject as! Activity).persons = info
+            dispatch_semaphore_wait(semaphore, DISPATCH_TIME_FOREVER)
+            let gapReq = GetActivityPersonsReq()
+            gapReq.activity = self.editObject as? Activity
+            gapReq.requestSimpleCompletion { (info) -> Void in
+                for person in (self.editObject as! Activity).persons! {
+                    person.organization = info[person.organizationID!]
+                }
+                
+                dispatch_semaphore_signal(semaphore)
+                dispatch_group_leave(group)
+            }
             
-            self.tableView?.reloadRowsAtIndexPaths([NSIndexPath(forRow: 0, inSection: 3)], withRowAnimation: UITableViewRowAnimation.None)
+            dispatch_group_enter(group)
+            let req = GetActivityDetaildReq()
+            req.activity = self.editObject as? Activity
+            req.requestSimpleCompletion { (success) -> Void in
+                dispatch_group_leave(group)
+            }
+            
+            dispatch_group_notify(group, dispatch_get_main_queue()) { () -> Void in
+                EZLoadingActivity.hide()
+                self.tableView?.reloadData()
+            }
         }
     }
     

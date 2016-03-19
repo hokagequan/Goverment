@@ -110,6 +110,7 @@ class ManageEditUIActivityDelegate: ManageEditUIDelegate {
             
             if success {
                 GlobalUtil.showAlert("添加成功")
+                self.masterViewController?.navigationController?.popViewControllerAnimated(true)
             }
             else {
                 GlobalUtil.showAlert(message!)

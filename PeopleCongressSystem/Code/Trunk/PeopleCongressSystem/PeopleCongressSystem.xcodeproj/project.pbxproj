@@ -32,6 +32,8 @@
 		1042329B1C8E61F400809859 /* ChangePasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1042329A1C8E61F400809859 /* ChangePasswordViewController.swift */; };
 		10496F371C76012F0074CFC1 /* SignInReq.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10496F361C76012F0074CFC1 /* SignInReq.swift */; };
 		10496F391C76140C0074CFC1 /* PCSCustomUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10496F381C76140C0074CFC1 /* PCSCustomUtil.swift */; };
+		105242901C9CF909005A55DC /* GetActivityDetaildReq.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1052428F1C9CF909005A55DC /* GetActivityDetaildReq.swift */; };
+		105242921C9CFEF2005A55DC /* GetActivityPersonsReq.swift in Sources */ = {isa = PBXBuildFile; fileRef = 105242911C9CFEF2005A55DC /* GetActivityPersonsReq.swift */; };
 		105C198F1C994DC700103B38 /* GetCongressInfoReq.swift in Sources */ = {isa = PBXBuildFile; fileRef = 105C198E1C994DC700103B38 /* GetCongressInfoReq.swift */; };
 		105C19911C9A3E4A00103B38 /* EditVariableReq.swift in Sources */ = {isa = PBXBuildFile; fileRef = 105C19901C9A3E4A00103B38 /* EditVariableReq.swift */; };
 		106C64C91C83511400E6CD95 /* PCSProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 106C64C81C83511400E6CD95 /* PCSProtocols.swift */; };
@@ -149,6 +151,8 @@
 		1042329A1C8E61F400809859 /* ChangePasswordViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChangePasswordViewController.swift; sourceTree = "<group>"; };
 		10496F361C76012F0074CFC1 /* SignInReq.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignInReq.swift; sourceTree = "<group>"; };
 		10496F381C76140C0074CFC1 /* PCSCustomUtil.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PCSCustomUtil.swift; sourceTree = "<group>"; };
+		1052428F1C9CF909005A55DC /* GetActivityDetaildReq.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetActivityDetaildReq.swift; sourceTree = "<group>"; };
+		105242911C9CFEF2005A55DC /* GetActivityPersonsReq.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetActivityPersonsReq.swift; sourceTree = "<group>"; };
 		105C198E1C994DC700103B38 /* GetCongressInfoReq.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetCongressInfoReq.swift; sourceTree = "<group>"; };
 		105C19901C9A3E4A00103B38 /* EditVariableReq.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditVariableReq.swift; sourceTree = "<group>"; };
 		106C64C81C83511400E6CD95 /* PCSProtocols.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PCSProtocols.swift; sourceTree = "<group>"; };
@@ -470,6 +474,8 @@
 				10D0D5AF1C4E2C7D0093F687 /* HttpBaseReq.swift */,
 				10496F361C76012F0074CFC1 /* SignInReq.swift */,
 				10F109801C8816D10083D89D /* GetActivitiesReq.swift */,
+				1052428F1C9CF909005A55DC /* GetActivityDetaildReq.swift */,
+				105242911C9CFEF2005A55DC /* GetActivityPersonsReq.swift */,
 				10F109821C881C960083D89D /* AddActivityReq.swift */,
 				100691AF1C929DA6000AEFEA /* EditActivityReq.swift */,
 				100B20331C8881EF00435EF0 /* GetActivityTypesReq.swift */,
@@ -746,8 +752,10 @@
 				10D0D5C91C4E8A190093F687 /* PerformanceRecordsViewController.swift in Sources */,
 				10BD4DE81C9A50A2006179AB /* DeletePhotoReq.swift in Sources */,
 				100B203E1C89222F00435EF0 /* PersonListViewController.swift in Sources */,
+				105242921C9CFEF2005A55DC /* GetActivityPersonsReq.swift in Sources */,
 				1075055E1C9057B700C9589E /* UIWebView+HtmlInteract.swift in Sources */,
 				107505631C906D0200C9589E /* SituationViewController.swift in Sources */,
+				105242901C9CF909005A55DC /* GetActivityDetaildReq.swift in Sources */,
 				106C64C91C83511400E6CD95 /* PCSProtocols.swift in Sources */,
 				10DBF2161C8C075F007620BA /* CheckInViewController.swift in Sources */,
 				100B203C1C88968900435EF0 /* GetGroupReq.swift in Sources */,

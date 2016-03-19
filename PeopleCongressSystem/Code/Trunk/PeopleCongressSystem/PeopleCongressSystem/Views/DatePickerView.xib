@@ -23,14 +23,30 @@
                                 <!--2016-03-04 23:56:47 +0000-->
                             </date>
                         </datePicker>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mL3-rl-Ime">
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mL3-rl-Ime">
                             <rect key="frame" x="540" y="0.0" width="60" height="44"/>
                             <constraints>
                                 <constraint firstAttribute="width" constant="60" id="4Z8-I6-b3V"/>
                             </constraints>
-                            <state key="normal" title="完成"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                            <state key="normal" title="完成">
+                                <color key="titleColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
+                            </state>
                             <connections>
                                 <action selector="clickCompletion:" destination="iN0-l3-epB" eventType="touchUpInside" id="ohj-1l-7L3"/>
+                            </connections>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="g5C-aa-c4E">
+                            <rect key="frame" x="0.0" y="0.0" width="60" height="44"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="60" id="oTG-nh-XPt"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                            <state key="normal" title="取消">
+                                <color key="titleColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
+                            </state>
+                            <connections>
+                                <action selector="clickCancel:" destination="iN0-l3-epB" eventType="touchUpInside" id="bBU-xw-0BK"/>
                             </connections>
                         </button>
                     </subviews>
@@ -40,7 +56,11 @@
                         <constraint firstItem="mL3-rl-Ime" firstAttribute="top" secondItem="3BB-EG-vac" secondAttribute="top" id="3sq-zj-5gX"/>
                         <constraint firstItem="aKw-v7-1ht" firstAttribute="leading" secondItem="3BB-EG-vac" secondAttribute="leading" id="4Yf-B4-fgD"/>
                         <constraint firstAttribute="bottom" secondItem="aKw-v7-1ht" secondAttribute="bottom" id="8n2-N0-Qqi"/>
+                        <constraint firstItem="mL3-rl-Ime" firstAttribute="width" secondItem="g5C-aa-c4E" secondAttribute="width" id="HBp-iK-p1e"/>
+                        <constraint firstItem="g5C-aa-c4E" firstAttribute="leading" secondItem="3BB-EG-vac" secondAttribute="leading" id="Rqj-0M-NGA"/>
+                        <constraint firstItem="mL3-rl-Ime" firstAttribute="centerY" secondItem="g5C-aa-c4E" secondAttribute="centerY" id="S6q-8m-6tZ"/>
                         <constraint firstAttribute="trailing" secondItem="mL3-rl-Ime" secondAttribute="trailing" id="VTw-5h-uQv"/>
+                        <constraint firstItem="mL3-rl-Ime" firstAttribute="height" secondItem="g5C-aa-c4E" secondAttribute="height" id="fDA-hd-ITm"/>
                         <constraint firstAttribute="height" constant="260" id="neB-qi-RI8"/>
                         <constraint firstAttribute="trailing" secondItem="aKw-v7-1ht" secondAttribute="trailing" id="rOr-0I-VBl"/>
                     </constraints>
