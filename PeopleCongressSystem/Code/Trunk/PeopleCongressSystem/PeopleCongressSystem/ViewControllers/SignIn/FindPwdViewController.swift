@@ -41,6 +41,7 @@ class FindPwdViewController: UIViewController, UITableViewDataSource, UITableVie
         
         CustomObjectUtil.customObjectsLayout([submitButton], backgroundColor: colorRed, borderWidth: 0, borderColor: nil, corner: 5.0)
         inputTableView.registerNib(UINib(nibName: "NormalImageTableCell", bundle: nil), forCellReuseIdentifier: "NormalImageTableCell")
+        inputTableView.layoutMargins = UIEdgeInsetsZero
     }
 
     override func didReceiveMemoryWarning() {
@@ -122,11 +123,11 @@ class FindPwdViewController: UIViewController, UITableViewDataSource, UITableVie
         let cell = tableView.dequeueReusableCellWithIdentifier("NormalImageTableCell", forIndexPath: indexPath) as! NormalImageTableCell
         cell.selectionStyle = UITableViewCellSelectionStyle.None
         cell.separatorInset = UIEdgeInsetsMake(0, 0, 0, 0)
+        cell.layoutMargins = UIEdgeInsetsZero
         cell.accessoryType = UITableViewCellAccessoryType.None
         
         let row = Rows(rawValue: indexPath.row)!
         cell.headerText = row.title()
-        cell.border.hidden = true
         cell.iconWidthLC.constant = 0
         
         return cell

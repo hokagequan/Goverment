@@ -18,7 +18,6 @@ import UIKit
 class NormalImageTableCell: UITableViewCell, UITextFieldDelegate, DatePickerViewDelegate {
 
     @IBOutlet weak var iconImageView: UIImageView!
-    @IBOutlet weak var border: UIView!
     @IBOutlet weak var titleTextField: UITextField!
     @IBOutlet weak var headerLabel: UILabel!
     @IBOutlet weak var headerWidthLC: NSLayoutConstraint!
