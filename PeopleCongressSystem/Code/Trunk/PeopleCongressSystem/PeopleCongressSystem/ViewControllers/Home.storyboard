@@ -696,15 +696,9 @@
                                                         <constraint firstAttribute="width" secondItem="sTt-gl-OJh" secondAttribute="height" multiplier="1:1" id="yIv-vq-9yJ"/>
                                                     </constraints>
                                                 </imageView>
-                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DDF-hz-Xfu" userLabel="Border">
-                                                    <rect key="frame" x="101" y="43" width="466" height="1"/>
-                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="height" constant="1" id="fDM-Aa-VSu"/>
-                                                    </constraints>
-                                                </view>
                                                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="5ML-1o-M9v" userLabel="Title">
                                                     <rect key="frame" x="101" y="0.0" width="436" height="43"/>
+                                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                     <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <textInputTraits key="textInputTraits" returnKeyType="done"/>
@@ -713,7 +707,7 @@
                                                     </connections>
                                                 </textField>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mw4-Pn-xAJ" userLabel="Header">
-                                                    <rect key="frame" x="38" y="0.0" width="50" height="43"/>
+                                                    <rect key="frame" x="38" y="0.0" width="50" height="43.5"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="50" id="Puj-DZ-mAh"/>
                                                     </constraints>
@@ -723,28 +717,26 @@
                                                 </label>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="DDF-hz-Xfu" firstAttribute="top" secondItem="5ML-1o-M9v" secondAttribute="bottom" id="5ZD-rp-FQL"/>
-                                                <constraint firstAttribute="trailing" secondItem="DDF-hz-Xfu" secondAttribute="trailing" id="60e-GK-h52"/>
-                                                <constraint firstItem="DDF-hz-Xfu" firstAttribute="top" secondItem="mw4-Pn-xAJ" secondAttribute="bottom" id="7Yp-LB-GaD"/>
                                                 <constraint firstItem="mw4-Pn-xAJ" firstAttribute="top" secondItem="2Qx-Y6-5wh" secondAttribute="top" id="Fbh-Rv-CoJ"/>
                                                 <constraint firstAttribute="trailing" secondItem="5ML-1o-M9v" secondAttribute="trailing" constant="30" id="Hhn-OZ-HoI"/>
                                                 <constraint firstItem="5ML-1o-M9v" firstAttribute="leading" secondItem="mw4-Pn-xAJ" secondAttribute="trailing" constant="13" id="Kqa-hZ-Okm"/>
+                                                <constraint firstAttribute="bottom" secondItem="mw4-Pn-xAJ" secondAttribute="bottom" id="RhC-ga-rL0"/>
+                                                <constraint firstAttribute="bottom" secondItem="5ML-1o-M9v" secondAttribute="bottom" id="ULj-9u-Yxo"/>
+                                                <constraint firstAttribute="bottom" secondItem="5ML-1o-M9v" secondAttribute="bottom" id="dCH-n2-cSu"/>
                                                 <constraint firstItem="mw4-Pn-xAJ" firstAttribute="leading" secondItem="sTt-gl-OJh" secondAttribute="trailing" constant="13" id="dMT-in-qci"/>
                                                 <constraint firstItem="sTt-gl-OJh" firstAttribute="centerY" secondItem="2Qx-Y6-5wh" secondAttribute="centerY" id="dfj-g2-Ypi"/>
                                                 <constraint firstItem="5ML-1o-M9v" firstAttribute="top" secondItem="2Qx-Y6-5wh" secondAttribute="top" id="fvI-ka-mwd"/>
-                                                <constraint firstItem="DDF-hz-Xfu" firstAttribute="leading" secondItem="5ML-1o-M9v" secondAttribute="leading" id="g01-d8-rnh"/>
                                                 <constraint firstItem="sTt-gl-OJh" firstAttribute="leading" secondItem="2Qx-Y6-5wh" secondAttribute="leading" constant="10" id="nl4-X3-huR"/>
                                                 <constraint firstItem="5ML-1o-M9v" firstAttribute="leading" secondItem="sTt-gl-OJh" secondAttribute="trailing" constant="30" id="raw-LV-DCp"/>
-                                                <constraint firstAttribute="bottom" secondItem="DDF-hz-Xfu" secondAttribute="bottom" id="rh1-RT-4Lh"/>
                                             </constraints>
                                             <variation key="default">
                                                 <mask key="constraints">
+                                                    <exclude reference="ULj-9u-Yxo"/>
                                                     <exclude reference="raw-LV-DCp"/>
                                                 </mask>
                                             </variation>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <outlet property="border" destination="DDF-hz-Xfu" id="0L6-lM-i2R"/>
                                             <outlet property="headerLabel" destination="mw4-Pn-xAJ" id="4Ns-R3-gP8"/>
                                             <outlet property="headerWidthLC" destination="Puj-DZ-mAh" id="eDm-VU-uqb"/>
                                             <outlet property="iconImageView" destination="sTt-gl-OJh" id="RYm-T7-Kr9"/>
