@@ -26,7 +26,7 @@ class AddVariableReq: HttpBaseReq {
         params["IsPost"] = variable.submitted ? "1" : "0"
         params["Lvzhi_cyr"] = variable.persons
         params["Lvzhi_time"] = variable.createTime
-        params["AddUser"] = PCSDataManager.defaultManager().accountManager.user!.identifier
+        params["AddUser"] = PCSDataManager.defaultManager().accountManager.user!.congressID
         params["CheckTicket"] = PCSDataManager.defaultManager().accountManager.user!.token
         params["FieldID"] = PCSDataManager.defaultManager().accountManager.user!.field
         params["thecharset"] = "gb2312"

@@ -117,6 +117,13 @@ class BusinessCardViewController: UITableViewController {
     override func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         return headerView
     }
+    
+    override func tableView(tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
+        let view = UIView()
+        view.backgroundColor = UIColor.clearColor()
+        
+        return view
+    }
 
     /*
     // Override to support conditional editing of the table view.

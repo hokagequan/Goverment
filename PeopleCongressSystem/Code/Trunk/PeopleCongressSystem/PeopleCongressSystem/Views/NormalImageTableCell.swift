@@ -46,10 +46,10 @@ class NormalImageTableCell: UITableViewCell, UITextFieldDelegate, DatePickerView
     
     var editable: Bool {
         get {
-            return titleTextField.enabled
+            return titleTextField.userInteractionEnabled
         }
         set {
-            titleTextField.enabled = newValue
+            titleTextField.userInteractionEnabled = newValue
         }
     }
     
