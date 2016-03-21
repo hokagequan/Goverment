@@ -34,6 +34,8 @@ class SituationViewController: UIViewController, UICollectionViewDataSource, UIC
 
     @IBOutlet weak var collectionView: UICollectionView!
     
+    var header: String = ""
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -51,16 +53,16 @@ class SituationViewController: UIViewController, UICollectionViewDataSource, UIC
     // MARK: - UICollectionView
     
     func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAtIndex section: Int) -> CGFloat {
-        return (self.view.bounds.size.width - 3 * 70.0) / 3.0
+        return (self.view.bounds.size.width - 3 * 70.0 * GlobalUtil.rateForWidth()) / 3.0
     }
     
     func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAtIndex section: Int) -> UIEdgeInsets {
-        let distance = (self.view.bounds.size.width - 3 * 70.0) / 6.0
+        let distance = (self.view.bounds.size.width - 3 * 70.0 * GlobalUtil.rateForWidth()) / 6.0
         return UIEdgeInsetsMake(20, distance, 20, distance)
     }
     
     func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
-        return CGSizeMake(70.0, 70 + 30)
+        return CGSizeMake(70.0 * GlobalUtil.rateForWidth(), 70 * GlobalUtil.rateForWidth() + 30)
     }
     
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -104,7 +106,7 @@ class SituationViewController: UIViewController, UICollectionViewDataSource, UIC
             break
         }
         
-        let headerPage = PCSDataManager.defaultManager().htmlURL(pageHTMLSituation)
+        let headerPage = PCSDataManager.defaultManager().htmlURL(header)
         let totalPage = "\(headerPage)\(page)"
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let vc = storyboard.instantiateViewControllerWithIdentifier("CommonHTMLViewController") as! CommonHTMLViewController

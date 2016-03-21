@@ -32,33 +32,41 @@ class CongressHomeActionDelegate: ActionProtocol {
         case .Analyze:
             let storyboard = UIStoryboard(name: "Main", bundle: nil)
             let vc = storyboard.instantiateViewControllerWithIdentifier("CommonHTMLViewController") as! CommonHTMLViewController
-            vc.URL = PCSDataManager.defaultManager().htmlURL(pageHTMLVariableAnalyze)
+            vc.URL = PCSDataManager.defaultManager().htmlURL(pageHTMLVariableAnalyzeCongress)
             vc.naviTitle = "履职统计"
+            vc.rightItemTitle = "详情"
+            vc.rightItemBlock = {() -> Void in
+                let storyboard = UIStoryboard(name: "Main", bundle: nil)
+                let childVC = storyboard.instantiateViewControllerWithIdentifier("CommonHTMLViewController") as! CommonHTMLViewController
+                childVC.URL = PCSDataManager.defaultManager().htmlURL(pageHTMLAnalyzeDetailCongress)
+                childVC.naviTitle = "履职统计详情"
+                vc.navigationController?.pushViewController(childVC, animated: true)
+            }
             viewController.navigationController?.pushViewController(vc, animated: true)
             break
         case .ShareSpace:
             let storyboard = UIStoryboard(name: "Main", bundle: nil)
             let vc = storyboard.instantiateViewControllerWithIdentifier("CommonHTMLViewController") as! CommonHTMLViewController
-            vc.URL = PCSDataManager.defaultManager().htmlURL(pageHTMLShareSpace)
+            vc.URL = PCSDataManager.defaultManager().htmlURL(pageHTMLShareSpaceCongress)
             vc.naviTitle = "共享空间"
             viewController.navigationController?.pushViewController(vc, animated: true)
             break
         case .CongressInfo:
             let storyboard = UIStoryboard(name: "Main", bundle: nil)
             let vc = storyboard.instantiateViewControllerWithIdentifier("CommonHTMLViewController") as! CommonHTMLViewController
-            vc.URL = PCSDataManager.defaultManager().htmlURL(pageHTMLCongressInfo)
+            vc.URL = PCSDataManager.defaultManager().htmlURL(pageHTMLCongressInfoCongress)
             vc.naviTitle = "代表风采"
             viewController.navigationController?.pushViewController(vc, animated: true)
             break
         case .Notify:
             let storyboard = UIStoryboard(name: "Main", bundle: nil)
             let vc = storyboard.instantiateViewControllerWithIdentifier("CommonHTMLViewController") as! CommonHTMLViewController
-            vc.URL = PCSDataManager.defaultManager().htmlURL(pageHTMLNotify)
+            vc.URL = PCSDataManager.defaultManager().htmlURL(pageHTMLNotifyCongress)
             vc.naviTitle = "通知通报"
             viewController.navigationController?.pushViewController(vc, animated: true)
             break
         case .Situation:
-            viewController.performSegueWithIdentifier("SituationSegue", sender: self)
+            viewController.performSegueWithIdentifier("SituationSegue", sender: pageHtMLSituationCongress)
             break
         default:
             break

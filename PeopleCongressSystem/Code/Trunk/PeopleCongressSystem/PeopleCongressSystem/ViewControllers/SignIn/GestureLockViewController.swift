@@ -34,8 +34,8 @@ class GestureLockViewController: UIViewController {
     
     func customLockView() {
         let defaultLineColor = HUIPatternLockView.defaultLineColor
-        let correctLineColor = UIColor.greenColor()
-        let wrongLineColor = UIColor.redColor()
+//        let correctLineColor = colorRed
+//        let wrongLineColor = colorRed
         
         let normalImage = UIImage(named: "gesture_dot_nor")
         let selectImage = UIImage(named: "gesture_dot_sel")
@@ -52,12 +52,12 @@ class GestureLockViewController: UIViewController {
             let correctPassword = PCSDataManager.defaultManager().accountManager.user?.gesturePassword
             
             if password == correctPassword {
-                lockView.lineColor = correctLineColor
+//                lockView.lineColor = correctLineColor
                 lockView.normalDotImage = correctImage
                 lockView.highlightedDotImage = correctImage
             }
             else {
-                lockView.lineColor = wrongLineColor
+//                lockView.lineColor = wrongLineColor
                 lockView.normalDotImage = wrongImage
                 lockView.highlightedDotImage = wrongImage
             }

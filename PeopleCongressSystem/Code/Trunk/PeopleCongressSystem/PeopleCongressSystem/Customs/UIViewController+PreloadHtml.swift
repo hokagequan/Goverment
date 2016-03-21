@@ -85,6 +85,7 @@ extension UIViewController: UIWebViewDelegate {
     
     func loadWebView(container: UIView) {
         self.htmlWebView.translatesAutoresizingMaskIntoConstraints = false
+        self.htmlWebView.delegate = self
         container.addSubview(self.htmlWebView)
         
         let HLC = NSLayoutConstraint.constraintsWithVisualFormat("H:|-0-[view]-0-|", options: NSLayoutFormatOptions(rawValue: 0), metrics: nil, views: ["view": self.htmlWebView])
@@ -97,7 +98,7 @@ extension UIViewController: UIWebViewDelegate {
     
     public func webViewDidFinishLoad(webView: UIWebView) {
         self.parentViewController?.view.userInteractionEnabled = true
-        webView.stringByEvaluatingJavaScriptFromString("document.documentElement.style.webkitUserSelect='none';")
+    webView.stringByEvaluatingJavaScriptFromString("document.documentElement.style.webkitUserSelect='none';")
         
         loadCompletion?(true)
         loadCompletion = nil

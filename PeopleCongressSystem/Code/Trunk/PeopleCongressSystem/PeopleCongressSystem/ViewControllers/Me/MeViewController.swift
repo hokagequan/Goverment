@@ -121,7 +121,7 @@ class MeViewController: UITableViewController {
         case .Help:
             let storyboard = UIStoryboard(name: "Main", bundle: nil)
             let vc = storyboard.instantiateViewControllerWithIdentifier("CommonHTMLViewController") as! CommonHTMLViewController
-            vc.URL = PCSDataManager.defaultManager().htmlURL(pageHTMLHelp)
+            vc.URL = PCSDataManager.defaultManager().htmlURL(PCSDataManager.defaultManager().content.helpURL)
             vc.naviTitle = row.title()
             self.navigationController?.pushViewController(vc, animated: true)
         default:

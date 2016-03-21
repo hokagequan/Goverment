@@ -16,14 +16,21 @@ let photoDownloadURL = "http://175.170.128.160:8099/File/headimage/"
 let qrCodeDownloadURL = "http://175.170.128.160:8099/File/QRCode/"
 
 /// @brief HTML Page
-let pageHTMLVariableManager = "/apph5/iphone/GZRY_lvzhiguanli.aspx?"
-let pageHTMLVariableAnalyze = "/apph5/iphone/GZRY_lvzhitongji.aspx?"
-let pageHTMLShareSpace = "/apph5/iphone/GZRY_gongxiangkongjianM.aspx?"
-let pageHTMLCongressInfo = "/apph5/iphone/GZRY_daibaoxinxi.aspx?"
-let pageHTMLNotify = "/apph5/iphone/GZRY_tongzhitongbao.aspx?"
-let pageHTMLSituation = "/apph5/iphone/GZRY_zhiqingzhizhenglist.aspx?"
-let pageHTMLHelp = "/apph5/iphone/GZRY_helper.aspx?"
+let pageHTMLVariableManagerWorker = "/apph5/iphone/GZRY_lvzhiguanli.aspx?"
+let pageHTMLVariableAnalyzeWorker = "/apph5/iphone/GZRY_lvzhitongji.aspx?"
+let pageHTMLShareSpaceWorker = "/apph5/iphone/GZRY_gongxiangkongjianM.aspx?"
+let pageHTMLCongressInfoWorker = "/apph5/iphone/GZRY_daibaoxinxi.aspx?"
+let pageHTMLNotifyWorker = "/apph5/iphone/GZRY_tongzhitongbao.aspx?"
+let pageHTMLSituationWorker = "/apph5/iphone/GZRY_zhiqingzhizhenglist.aspx?"
+let pageHTMLHelpWorker = "/apph5/iphone/GZRY_helper.aspx?"
 let pageHTMLCongressNotify = "/apph5/iphone/RDDB_huodongtixing.aspx?"
+let pageHTMLAnalyzeDetailCongress = "/apph5/iphone/RDDB_lvzhitongjitouxi.aspx?"
+let pageHTMLShareSpaceCongress = "/apph5/iphone/RDDB_gongxiangkongjianM.aspx?"
+let pageHTMLVariableAnalyzeCongress = "/apph5/iphone/RDDB_lvzhitongjixq.aspx?"
+let pageHTMLCongressInfoCongress = "/apph5/iphone/RDDB_daibiaofengcai.aspx?"
+let pageHTMLNotifyCongress = "/apph5/iphone/RDDB_tongzhitongbao.aspx?"
+let pageHtMLSituationCongress = "/apph5/iphone/RDDB_zhiqingzhizhenglist.aspx?"
+let pageHTMLHelpCongress = "/apph5/iphone/RDDB_helper.aspx?"
 
 let colorRed = GlobalUtil.colorRGBA(230, g: 27, b: 39, a: 1.0)
 

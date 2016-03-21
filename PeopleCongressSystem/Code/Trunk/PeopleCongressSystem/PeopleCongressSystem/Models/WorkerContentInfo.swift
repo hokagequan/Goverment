@@ -33,6 +33,10 @@ enum HomeElementContentWorker: Int {
 
 class WorderContentInfo: ContentInfo {
     
+    override var helpURL: String {
+        return pageHTMLHelpWorker
+    }
+    
     override func homeElementCount() -> Int {
         return HomeElementContentWorker.Max.rawValue
     }

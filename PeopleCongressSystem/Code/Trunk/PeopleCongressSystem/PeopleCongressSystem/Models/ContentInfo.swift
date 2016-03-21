@@ -10,6 +10,11 @@ import Foundation
 
 class ContentInfo {
     
+    /// @brief 帮助页面地址
+    var helpURL: String {
+        return ""
+    }
+    
     /// @brief 主页元素个数
     func homeElementCount() -> Int {
         return 0

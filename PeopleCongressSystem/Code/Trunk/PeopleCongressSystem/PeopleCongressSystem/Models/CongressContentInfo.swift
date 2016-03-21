@@ -33,6 +33,10 @@ enum HomeElementContentCongress: Int {
 
 class CongressContentInfo: ContentInfo {
     
+    override var helpURL: String {
+        return pageHTMLHelpCongress
+    }
+    
     override func homeElementCount() -> Int {
         return HomeElementContentCongress.Max.rawValue
     }
