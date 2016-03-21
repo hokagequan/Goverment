@@ -21,6 +21,7 @@ class CheckInViewController: UIViewController, UITableViewDataSource, UITableVie
         // Do any additional setup after loading the view.
         PCSCustomUtil.customNavigationController(self)
         
+        
         listTableView.registerNib(UINib(nibName: "NormalInfoCell", bundle: nil), forCellReuseIdentifier: "NormalInfoCell")
     }
     

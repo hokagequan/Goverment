@@ -13,6 +13,11 @@ import UIKit
     @IBOutlet weak var viewController: UIViewController?
     
     @IBInspectable var title: String?
+    @IBInspectable var backHidden: Bool = false {
+        didSet {
+            backButton.hidden = backHidden
+        }
+    }
 
     let backgroundView = UIView(frame: CGRectZero)
     let backButton = UIButton(type: UIButtonType.Custom)
