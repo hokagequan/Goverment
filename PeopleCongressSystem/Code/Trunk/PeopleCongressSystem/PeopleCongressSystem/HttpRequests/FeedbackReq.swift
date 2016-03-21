@@ -18,13 +18,13 @@ class FeedbackReq: HttpBaseReq {
     
     override func requestCompletion(completion: HttpReqCompletion?) {
         var params = [String: AnyObject]()
-        params["oldPassword"] = message
+        params["yijianneirong"] = message
         params["Userid"] = PCSDataManager.defaultManager().accountManager.user!.identifier
         params["CheckTicket"] = PCSDataManager.defaultManager().accountManager.user!.token
         params["FieldID"] = PCSDataManager.defaultManager().accountManager.user!.field
         params["thecharset"] = "gb2312"
         
-        self.request("UpdatePassword", nameSpace: "gonggong", params: params, completion: completion)
+        self.request("yijianfankui", nameSpace: "gonggong", params: params, completion: completion)
     }
     
 }
