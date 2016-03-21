@@ -39,8 +39,6 @@ class SignInViewController: UIViewController, UIActionSheetDelegate, UITextField
         for topLC in topSpaceLCs {
             topLC.constant = topLC.constant * GlobalUtil.rateForHeight()
         }
-        
-//        gestureButton.hidden = SettingsManager.getData(SettingKey.GesturePassword.rawValue) == nil
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -48,8 +46,6 @@ class SignInViewController: UIViewController, UIActionSheetDelegate, UITextField
         
         self.navigationItem.setHidesBackButton(true, animated: false)
         self.navigationController?.setNavigationBarHidden(true, animated: true)
-        
-        gestureButton.hidden = PCSDataManager.defaultManager().accountManager.user?.gesturePassword == nil
         
         if let isRemember = SettingsManager.getData(SettingKey.RememberPassword.rawValue) as? Bool {
             rememberButton.selected = isRemember
@@ -134,6 +130,11 @@ class SignInViewController: UIViewController, UIActionSheetDelegate, UITextField
     }
     
     @IBAction func clickGesture(sender: AnyObject) {
+        if PCSDataManager.defaultManager().accountManager.user?.gesturePassword == nil {
+            self.showAlert("请设置后进行手势密码登录")
+            
+            return
+        }
         self.navigationController?.setNavigationBarHidden(false, animated: true)
         self.performSegueWithIdentifier("GestureSegue", sender: self)
     }
