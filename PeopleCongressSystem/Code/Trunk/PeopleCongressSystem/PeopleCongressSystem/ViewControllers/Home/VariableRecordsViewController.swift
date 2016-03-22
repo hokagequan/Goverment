@@ -22,6 +22,10 @@ class VariableRecordsViewController: UIViewController, UITableViewDataSource, UI
         // Do any additional setup after loading the view.
         self.navigationItem.hidesBackButton = true
         PCSCustomUtil.customNavigationController(self)
+    }
+    
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
         
         EZLoadingActivity.show("", disableUI: true)
         PCSDataManager.defaultManager().getVariableList { (info) -> Void in
@@ -32,10 +36,6 @@ class VariableRecordsViewController: UIViewController, UITableViewDataSource, UI
                 self.listTableView.reloadData()
             }
         }
-    }
-    
-    override func viewDidAppear(animated: Bool) {
-        super.viewDidAppear(animated)
     }
 
     override func didReceiveMemoryWarning() {

@@ -85,32 +85,35 @@ class SituationViewController: UIViewController, UICollectionViewDataSource, UIC
         var page = ""
         switch item {
         case .News:
-            page = "&newstype=010401"
+            page = "newstype=010401"
             break
         case .CongressMeeting:
-            page = "&newstype=010402"
+            page = "newstype=010402"
             break
         case .Notice:
-            page = "&newstype=010404"
+            page = "newstype=010404"
             break
         case .StandingMeeting:
-            page = "&newstype=010403"
+            page = "newstype=010403"
             break
         case .CongressInfo:
-            page = "&newstype=010405"
+            page = "newstype=010405"
             break
         case .Others:
-            page = "&newstype=010406"
+            page = "newstype=010406"
             break
         default:
             break
         }
         
         let headerPage = PCSDataManager.defaultManager().htmlURL(header)
-        let totalPage = "\(headerPage)\(page)"
+        let range = headerPage.rangeOfString("?")
+        let partOne = headerPage.substringToIndex(range!.endIndex)
+        let partTwo = headerPage.substringFromIndex(range!.endIndex)
+        let totalPage = "\(partOne)\(page)&\(partTwo)"
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let vc = storyboard.instantiateViewControllerWithIdentifier("CommonHTMLViewController") as! CommonHTMLViewController
-        vc.URL = PCSDataManager.defaultManager().htmlURL(totalPage)
+        vc.URL = totalPage
         vc.naviTitle = item.title()
         self.navigationController?.pushViewController(vc, animated: true)
     }

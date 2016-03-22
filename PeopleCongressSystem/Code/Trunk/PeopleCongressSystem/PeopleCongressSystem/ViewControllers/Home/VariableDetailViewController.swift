@@ -95,6 +95,20 @@ class VariableDetailViewController: UIViewController, UITableViewDataSource, UIT
         
         self.customUI()
     }
+    
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        EZLoadingActivity.show("", disableUI: true)
+        let req = GetVariableDetailReq()
+        req.variable = variable
+        req.requestSimpleCompletion { (success) -> Void in
+            EZLoadingActivity.hide()
+            if success {
+                self.tableView.reloadData()
+            }
+        }
+    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -135,6 +149,10 @@ class VariableDetailViewController: UIViewController, UITableViewDataSource, UIT
             tempVariable.type = selectedInfo?.code
         }
         
+        let formatter = NSDateFormatter()
+        formatter.dateFormat = "yyyy-MM-dd HH:mm"
+        tempVariable.createTime = formatter.stringFromDate(NSDate())
+        
         return tempVariable
     }
     
@@ -170,7 +188,7 @@ class VariableDetailViewController: UIViewController, UITableViewDataSource, UIT
                 autoreleasepool({ () -> () in
                     let imageData = NSData(contentsOfFile: UIImageView.pathForTempImage() + "/\(image)")
                     let req = UploadPhotoReq()
-                    req.variableID = self.variable.identifier!
+                    req.variableID = self.variable.token!
                     req.fileName = image
                     req.file = imageData
                     req.requestCompletion({ (response) -> Void in
@@ -195,7 +213,7 @@ class VariableDetailViewController: UIViewController, UITableViewDataSource, UIT
         }
         
         if pageType == VariablePageType.Add {
-            variable.identifier = GlobalUtil.randomImageName()
+            variable.token = GlobalUtil.randomImageName()
             EZLoadingActivity.show("", disableUI: true)
             
             PCSDataManager.defaultManager().addVariable(self.createVariable()) { (success, message) -> Void in

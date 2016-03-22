@@ -74,14 +74,14 @@
                             </constraints>
                         </imageView>
                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="jLV-lm-0e7" userLabel="Photo">
-                            <rect key="frame" x="23" y="6" width="108" height="145"/>
+                            <rect key="frame" x="23" y="56" width="73" height="98"/>
                             <constraints>
                                 <constraint firstAttribute="width" secondItem="jLV-lm-0e7" secondAttribute="height" multiplier="108:145" id="C8j-04-EJu"/>
-                                <constraint firstAttribute="height" constant="145" id="E8U-Ko-qLk"/>
+                                <constraint firstAttribute="height" constant="98" id="E8U-Ko-qLk"/>
                             </constraints>
                         </imageView>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="E94-s4-sCC" userLabel="Name">
-                            <rect key="frame" x="143" y="127" width="165" height="15"/>
+                            <rect key="frame" x="108" y="127" width="200" height="15"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="15" id="ZRD-6S-aYw"/>
                             </constraints>
@@ -120,11 +120,17 @@
                         <constraint firstItem="E94-s4-sCC" firstAttribute="leading" secondItem="jLV-lm-0e7" secondAttribute="trailing" constant="12" id="ZAK-IG-CVk"/>
                         <constraint firstItem="jLV-lm-0e7" firstAttribute="top" secondItem="C9k-bj-9vs" secondAttribute="top" constant="6" id="ZUd-6S-aox"/>
                         <constraint firstAttribute="trailing" secondItem="E94-s4-sCC" secondAttribute="trailing" constant="12" id="cO9-yK-LEA"/>
+                        <constraint firstItem="4RR-Ps-xlt" firstAttribute="top" secondItem="jLV-lm-0e7" secondAttribute="bottom" constant="6" id="gpY-3J-zxU"/>
                         <constraint firstAttribute="trailing" secondItem="WYM-uD-ju7" secondAttribute="trailing" id="gqc-1l-TCz"/>
                         <constraint firstAttribute="trailing" secondItem="FPd-EF-Z0L" secondAttribute="trailing" constant="6" id="gur-JI-e4e"/>
                         <constraint firstAttribute="trailing" secondItem="4RR-Ps-xlt" secondAttribute="trailing" id="tfx-h4-9e3"/>
                         <constraint firstAttribute="bottom" secondItem="4RR-Ps-xlt" secondAttribute="bottom" id="zuU-vp-09O"/>
                     </constraints>
+                    <variation key="default">
+                        <mask key="constraints">
+                            <exclude reference="ZUd-6S-aox"/>
+                        </mask>
+                    </variation>
                 </view>
             </objects>
             <point key="canvasLocation" x="761" y="432"/>
