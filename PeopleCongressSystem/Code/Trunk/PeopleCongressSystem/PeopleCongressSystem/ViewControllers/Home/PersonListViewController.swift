@@ -93,7 +93,16 @@ class PersonListViewController: UIViewController, UITableViewDelegate, UITableVi
             return
         }
         
-        activity?.persons = selection.map({return persons[$0.row]})
+        for indexPath in selection {
+            let person = persons[indexPath.row]
+            let memPerson = activity?.persons?.filter({ (objc) -> Bool in
+                return objc.name == person.name
+            })
+            
+            if memPerson?.count == 0 {
+                activity?.persons?.append(person)
+            }
+        }
     }
     
     func updateSelectionState(cell: UITableViewCell, selected: Bool) {

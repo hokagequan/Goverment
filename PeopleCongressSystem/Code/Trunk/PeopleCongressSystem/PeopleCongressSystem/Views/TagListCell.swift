@@ -27,9 +27,9 @@ class TagListCell: UITableViewCell {
     }
     
     func loadPersons(persons: Array<Person>?) {
+        tagList.removeAllTags()
+        
         if persons == nil {
-            tagList.removeAllTags()
-            
             return
         }
         
