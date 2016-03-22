@@ -14,7 +14,7 @@ class ManageEditUICheckInDelegate: ManageEditUIActivityDelegate {
     override func save() {
         let storyboard = UIStoryboard(name: "CheckIn", bundle: nil)
         let vc = storyboard.instantiateViewControllerWithIdentifier("QRCodeScanViewController") as! QRCodeScanViewController
-        
+        vc.activity = (self.masterViewController as! PerformanceEditViewController).editObject as? Activity
         self.masterViewController?.navigationController?.pushViewController(vc, animated: true)
     }
     

@@ -58,25 +58,25 @@ class QRCodeScanViewController: UIViewController, AVCaptureMetadataOutputObjects
     }
     
     func handleCode(code: String) {
-        // TODO: 处理二维码
         let req = CheckInReq()
         req.activityID = "\(activity!.identifier)"
         req.qrCodes = [code]
         EZLoadingActivity.show("", disableUI: true)
+        EZLoadingActivity.Settings.SuccessText = "签到成功"
+        EZLoadingActivity.Settings.FailText = "签到失败"
         req.requestCompletion { (response) -> Void in
-            EZLoadingActivity.hide()
             let result = response?.result
             var success: Bool = false
             
             defer {
                 if success == true {
-                    EZLoadingActivity.showWithDelay("签到成功", disableUI: true, seconds: 1)
+                    EZLoadingActivity.hide(success: true, animated: false)
                 }
                 else {
-                    EZLoadingActivity.showWithDelay("签到失败", disableUI: true, seconds: 1)
+                    EZLoadingActivity.hide(success: false, animated: false)
                 }
                 
-                self.startScan()
+                self.performSelector(Selector("startScan"), withObject: nil, afterDelay: 1.0)
             }
             
             if result?.isSuccess == true {
@@ -120,10 +120,18 @@ class QRCodeScanViewController: UIViewController, AVCaptureMetadataOutputObjects
                 AVMetadataObjectTypePDF417Code,
                 AVMetadataObjectTypeAztecCode]
             
+            let size = containerView.bounds.size
+            captureMetadataOutput?.rectOfInterest = CGRectMake(64.0 / size.height, ((size.width - 220) / 2.0) / size.width, 220.0 / size.height, 220.0 / size.width);
+            
             videoPreviewLayer = AVCaptureVideoPreviewLayer(session: captureSession)
             videoPreviewLayer!.videoGravity = AVLayerVideoGravityResizeAspectFill
             videoPreviewLayer!.frame = containerView.bounds
             containerView.layer.addSublayer(videoPreviewLayer!)
+            
+            let boxView = UIView(frame: CGRectMake((size.width - 220) / 2.0, 64.0, 220.0, 220.0))
+            boxView.layer.borderColor = UIColor.grayColor().CGColor
+            boxView.layer.borderWidth = 2.0
+            containerView.addSubview(boxView)
         }
         catch {
             return

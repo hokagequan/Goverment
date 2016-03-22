@@ -202,6 +202,12 @@ public struct EZLoadingActivity {
                     icon.text = Settings.FailIcon
                     textLabel.text = Settings.FailText
                 }
+                
+                var frame = self.frame
+                frame.size.width = Settings.ActivityWidth
+                self.frame = frame
+                
+                self.center = CGPoint(x: UIScreen.mainScreen().bounds.midX, y: UIScreen.mainScreen().bounds.midY)
             }
             
             addSubview(icon)
