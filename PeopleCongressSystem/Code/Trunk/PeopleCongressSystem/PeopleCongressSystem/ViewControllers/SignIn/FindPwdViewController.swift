@@ -101,7 +101,7 @@ class FindPwdViewController: UIViewController, UITableViewDataSource, UITableVie
                 return
             }
             
-            self.showAlert(result.value!)
+            self.showAlert("客服会尽快与您联系，请保持手机畅通")
         }
     }
     
