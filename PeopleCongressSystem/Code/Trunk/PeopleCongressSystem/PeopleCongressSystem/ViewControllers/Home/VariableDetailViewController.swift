@@ -28,17 +28,17 @@ class VariableDetailViewController: UIViewController, UITableViewDataSource, UIT
         
         func rows() -> Array<Row> {
             let titles = [["标题:", "类型:", "人员:"],
-                ["内容:", "备注:"],
+                ["时间:", "内容:", "备注:"],
                 ["履职现场:"]
             ]
             
             let icons = [["title", "type", "organization"],
-                ["content", "content"],
+                ["time2", "content", "content"],
                 [""]
             ]
             
             let keys = [["title", "typeTitle", "persons"],
-                ["content", "remark"],
+                ["time", "content", "remark"],
                 ["photos"]
             ]
             
@@ -450,6 +450,14 @@ class VariableDetailViewController: UIViewController, UITableViewDataSource, UIT
         return sec.rows().count
     }
     
+    func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        if section == 0 {
+            return 1
+        }
+        
+        return 18.0
+    }
+    
     func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let view = UIView()
         view.backgroundColor = UIColor.clearColor()
@@ -511,6 +519,10 @@ class VariableDetailViewController: UIViewController, UITableViewDataSource, UIT
             if selectedInfo != nil {
                 cell.titleTextField.text = selectedInfo?.title
             }
+            break
+        case "时间:":
+            cell.accessoryType = UITableViewCellAccessoryType.None
+            cell.timeEditable = true
             break
         default:
             cell.accessoryType = UITableViewCellAccessoryType.None
