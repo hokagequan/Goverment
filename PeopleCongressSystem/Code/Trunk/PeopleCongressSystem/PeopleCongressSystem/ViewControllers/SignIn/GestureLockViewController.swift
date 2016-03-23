@@ -33,7 +33,7 @@ class GestureLockViewController: UIViewController {
     }
     
     func customLockView() {
-        let defaultLineColor = HUIPatternLockView.defaultLineColor
+//        let defaultLineColor = HUIPatternLockView.defaultLineColor
 //        let correctLineColor = colorRed
 //        let wrongLineColor = colorRed
         
@@ -41,8 +41,6 @@ class GestureLockViewController: UIViewController {
         let selectImage = UIImage(named: "gesture_dot_sel")
         let correctImage = UIImage(named: "gesture_dot_sel")
         let wrongImage = UIImage(named: "gesture_dot_sel")
-        
-        CustomObjectUtil.customObjectsLayout([lockView], backgroundColor: UIColor.whiteColor(), borderWidth: 1.0, borderColor: GlobalUtil.colorRGBA(240.0, g: 240.0, b: 240.0, a: 1.0), corner: 2.0)
         
         lockView.didDrawPatternWithPassword = {(lockView: HUIPatternLockView, count: Int, password: String?) -> Void in
             guard count > 0 else {
@@ -55,30 +53,34 @@ class GestureLockViewController: UIViewController {
 //                lockView.lineColor = correctLineColor
                 lockView.normalDotImage = correctImage
                 lockView.highlightedDotImage = correctImage
+                
+                dispatch_after(dispatch_time(DISPATCH_TIME_NOW, Int64(1 * Double(NSEC_PER_SEC))), dispatch_get_main_queue(), { () -> Void in
+                    lockView.resetDotsState()
+                    lockView.normalDotImage = normalImage
+                    lockView.highlightedDotImage = selectImage
+                    
+                    let manager = PCSDataManager.defaultManager().accountManager
+                    manager.signIn(manager.user!.account!, password: manager.user!.password!) { (success, errorMessage) -> Void in
+                        if success == true {
+                            self.navigationController?.setNavigationBarHidden(true, animated: true)
+                            self.performSegueWithIdentifier("MainSegue", sender: self)
+                        }
+                        else {
+                            self.showAlert(errorMessage!)
+                        }
+                    }
+                })
             }
             else {
-//                lockView.lineColor = wrongLineColor
                 lockView.normalDotImage = wrongImage
                 lockView.highlightedDotImage = wrongImage
-            }
-            
-            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, Int64(1 * Double(NSEC_PER_SEC))), dispatch_get_main_queue(), { () -> Void in
-                lockView.resetDotsState()
-                lockView.lineColor = defaultLineColor
-                lockView.normalDotImage = normalImage
-                lockView.highlightedDotImage = selectImage
                 
-                let manager = PCSDataManager.defaultManager().accountManager
-                manager.signIn(manager.user!.account!, password: manager.user!.password!) { (success, errorMessage) -> Void in
-                    if success == true {
-                        self.navigationController?.setNavigationBarHidden(true, animated: true)
-                        self.performSegueWithIdentifier("MainSegue", sender: self)
-                    }
-                    else {
-                        self.showAlert(errorMessage!)
-                    }
-                }
-            })
+                dispatch_after(dispatch_time(DISPATCH_TIME_NOW, Int64(1 * Double(NSEC_PER_SEC))), dispatch_get_main_queue(), { () -> Void in
+                    lockView.resetDotsState()
+                    lockView.normalDotImage = normalImage
+                    lockView.highlightedDotImage = wrongImage
+                })
+            }
         }
     }
     

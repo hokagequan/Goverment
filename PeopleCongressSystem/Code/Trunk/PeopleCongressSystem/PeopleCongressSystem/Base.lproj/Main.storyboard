@@ -19,12 +19,18 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="cPw-Co-jft" userLabel="Lock" customClass="HUIPatternLockView" customModule="HUIPatternLockView_Swift">
-                                <rect key="frame" x="0.0" y="113" width="600" height="487"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cPw-Co-jft" userLabel="Lock" customClass="HUIPatternLockView" customModule="HUIPatternLockView_Swift">
+                                <rect key="frame" x="6" y="170" width="588" height="424"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="image" keyPath="normalDotImage" value="gesture_dot_nor"/>
                                     <userDefinedRuntimeAttribute type="image" keyPath="highlightedDotImage" value="gesture_dot_sel"/>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="lineColor">
+                                        <color key="value" red="0.93333333330000001" green="0.76078431369999999" blue="0.29803921570000003" alpha="1" colorSpace="calibratedRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="lineWidth">
+                                        <real key="value" value="3"/>
+                                    </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="49w-gv-Nfw" customClass="PCSNavigationView" customModule="PeopleCongressSystem" customModuleProvider="target">
@@ -34,20 +40,33 @@
                                     <constraint firstAttribute="height" constant="44" id="rEG-k9-NVH"/>
                                 </constraints>
                                 <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="string" keyPath="title" value="手势密码"/>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="title" value="手势密码登录"/>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
                                     <outlet property="viewController" destination="BqY-Wb-uXP" id="QCF-xa-ipO"/>
                                 </connections>
                             </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="绘制解锁图案" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BL8-y1-Ohk">
+                                <rect key="frame" x="10" y="144" width="580" height="16"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="16" id="Gne-GY-vzd"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="19"/>
+                                <color key="textColor" red="0.93333333333333335" green="0.76078431372549016" blue="0.29803921568627451" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
-                        <color key="backgroundColor" red="0.94117647058823528" green="0.94117647058823528" blue="0.94117647058823528" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" red="0.90196078430000004" green="0.1058823529" blue="0.1529411765" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
+                            <constraint firstItem="cPw-Co-jft" firstAttribute="top" secondItem="BL8-y1-Ohk" secondAttribute="bottom" constant="10" id="BFV-1I-53C"/>
                             <constraint firstItem="UH7-ce-Xi3" firstAttribute="top" secondItem="cPw-Co-jft" secondAttribute="bottom" constant="6" id="DDS-QX-Z7q"/>
                             <constraint firstAttribute="trailing" secondItem="cPw-Co-jft" secondAttribute="trailing" constant="6" id="ErB-w9-2Ff"/>
                             <constraint firstAttribute="trailing" secondItem="cPw-Co-jft" secondAttribute="trailing" id="LKW-VD-fvV"/>
+                            <constraint firstItem="BL8-y1-Ohk" firstAttribute="leading" secondItem="212-QV-b9F" secondAttribute="leading" constant="10" id="M5D-n9-x3m"/>
                             <constraint firstItem="49w-gv-Nfw" firstAttribute="leading" secondItem="212-QV-b9F" secondAttribute="leading" id="QGM-QO-51a"/>
                             <constraint firstAttribute="trailing" secondItem="49w-gv-Nfw" secondAttribute="trailing" id="Sa6-b4-bQy"/>
+                            <constraint firstAttribute="trailing" secondItem="BL8-y1-Ohk" secondAttribute="trailing" constant="10" id="Wsg-5H-qwj"/>
+                            <constraint firstItem="BL8-y1-Ohk" firstAttribute="top" secondItem="49w-gv-Nfw" secondAttribute="bottom" constant="36" id="qgl-Mn-WYi"/>
                             <constraint firstItem="cPw-Co-jft" firstAttribute="top" secondItem="aN8-hf-Mpg" secondAttribute="bottom" id="rsh-Kt-yy0"/>
                             <constraint firstItem="cPw-Co-jft" firstAttribute="top" secondItem="49w-gv-Nfw" secondAttribute="bottom" constant="6" id="s3R-dj-kGg"/>
                             <constraint firstItem="cPw-Co-jft" firstAttribute="leading" secondItem="212-QV-b9F" secondAttribute="leading" constant="6" id="s4j-Fc-nu4"/>
@@ -58,6 +77,7 @@
                             <mask key="constraints">
                                 <exclude reference="LKW-VD-fvV"/>
                                 <exclude reference="rsh-Kt-yy0"/>
+                                <exclude reference="s3R-dj-kGg"/>
                                 <exclude reference="zQ9-jy-wY2"/>
                             </mask>
                         </variation>
@@ -676,6 +696,6 @@
         <image name="uncheck" width="21" height="21"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="eEb-Ro-XCT"/>
+        <segue reference="rj9-mo-YbR"/>
     </inferredMetricsTieBreakers>
 </document>
