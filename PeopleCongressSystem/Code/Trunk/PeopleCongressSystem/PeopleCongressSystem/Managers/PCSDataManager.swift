@@ -7,11 +7,13 @@
 //
 
 import Foundation
+import ReachabilitySwift
 
 class PCSDataManager {
     
     static let _pcsDataManager = PCSDataManager()
     
+    var reachability: Reachability?
     var accountManager = AccountManager()
     var content: ContentInfo = ContentInfo()
     var isLaunch: Bool = true
@@ -23,6 +25,28 @@ class PCSDataManager {
     }
     
     init() {
+        do {
+            reachability = try Reachability.reachabilityForInternetConnection()
+        }
+        catch {
+            return
+        }
+        
+        reachability?.whenUnreachable = { reach in
+            dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                let alert = UIAlertView(title: nil, message: "", delegate: nil, cancelButtonTitle: "确定")
+                alert.show()
+            })
+        }
+        
+        do {
+            try reachability?.startNotifier()
+        }
+        catch {}
+    }
+    
+    deinit {
+        reachability?.stopNotifier()
     }
     
     /// @brief 添加活动
