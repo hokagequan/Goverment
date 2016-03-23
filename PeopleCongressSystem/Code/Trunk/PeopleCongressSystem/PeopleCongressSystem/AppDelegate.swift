@@ -20,8 +20,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         PCSCustomUtil.customNavigationBar()
         PCSDataManager.defaultManager().isLaunch = true
         
-        if SettingKey.Launched.value() != nil {
-            
+        if SettingKey.Launched.value() == nil {
+            SettingKey.Launched.setValue(true)
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            let vc = storyboard.instantiateViewControllerWithIdentifier("GuideViewController")
+            window?.rootViewController = vc
         }
         
         return true

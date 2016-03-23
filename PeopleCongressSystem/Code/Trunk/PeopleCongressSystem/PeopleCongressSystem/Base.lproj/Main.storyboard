@@ -585,12 +585,12 @@
                                                 <rect key="frame" x="600" y="0.0" width="600" height="600"/>
                                             </imageView>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lJp-YU-MiR">
-                                                <rect key="frame" x="820" y="490" width="160" height="50"/>
+                                                <rect key="frame" x="750" y="340" width="300" height="260"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="width" constant="160" id="NCl-oY-ZAT"/>
-                                                    <constraint firstAttribute="height" constant="50" id="p83-O5-wNO"/>
+                                                    <constraint firstAttribute="width" constant="300" id="NCl-oY-ZAT"/>
+                                                    <constraint firstAttribute="height" constant="260" id="p83-O5-wNO"/>
                                                 </constraints>
-                                                <state key="normal" title="开启美好生活">
+                                                <state key="normal">
                                                     <color key="titleColor" red="0.30980392159999998" green="0.1137254902" blue="0.43137254899999999" alpha="1" colorSpace="calibratedRGB"/>
                                                 </state>
                                                 <connections>
@@ -609,7 +609,7 @@
                                             <constraint firstItem="cpT-bs-Cyo" firstAttribute="height" secondItem="BS7-Ov-RlK" secondAttribute="height" id="dAG-ag-Z9Q"/>
                                             <constraint firstItem="cpT-bs-Cyo" firstAttribute="leading" secondItem="BS7-Ov-RlK" secondAttribute="trailing" id="fNy-w3-lHf"/>
                                             <constraint firstItem="cpT-bs-Cyo" firstAttribute="centerX" secondItem="SRM-Sv-kOS" secondAttribute="centerX" id="gRX-92-V2G"/>
-                                            <constraint firstAttribute="bottom" secondItem="lJp-YU-MiR" secondAttribute="bottom" constant="60" id="oF9-wC-1n3"/>
+                                            <constraint firstAttribute="bottom" secondItem="lJp-YU-MiR" secondAttribute="bottom" id="oF9-wC-1n3"/>
                                             <constraint firstItem="lJp-YU-MiR" firstAttribute="centerX" secondItem="SRM-Sv-kOS" secondAttribute="centerX" id="rAI-9s-X1P"/>
                                         </constraints>
                                         <variation key="default">

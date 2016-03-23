@@ -23,7 +23,8 @@ class GuideViewController: UIViewController, UIScrollViewDelegate {
 
         // Do any additional setup after loading the view.
         
-        guideOne.image = UIImage(named: "")
+        guideOne.image = UIImage(named: "guide_one")
+        guideTwo.image = UIImage(named: "guide_two")
 //        [CustomObjectUtil .customObject([startButton], backgroundColor: UIColor(white: 1.0, alpha: 0.5), borderWith: 1.0, borderColor: UIColor.whiteColor(), corner: 25.0)]
 //        
 //        let screenSizeHeight = UIScreen.mainScreen().bounds.size.height
