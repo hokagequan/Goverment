@@ -75,6 +75,7 @@ class CheckInViewController: UIViewController, UITableViewDataSource, UITableVie
         cell.locationLabel.text = activity.organization
         cell.dateLabel.text = activity.beginTime?.substringToIndex(activity.beginTime!.startIndex.advancedBy(10))
         cell.backgroundColor = UIColor.clearColor()
+        cell.iconImageView.hidden = true
         
         return cell
     }
