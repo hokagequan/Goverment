@@ -14,7 +14,7 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = 'primary'
-               BlueprintIdentifier = 'DCA2B9511651FC23FEB1D215'
+               BlueprintIdentifier = '84329DAF106CD6781B063519'
                BlueprintName = 'HUIPatternLockView-Swift'
                ReferencedContainer = 'container:Pods.xcodeproj'
                BuildableName = 'HUIPatternLockView_Swift.framework'>

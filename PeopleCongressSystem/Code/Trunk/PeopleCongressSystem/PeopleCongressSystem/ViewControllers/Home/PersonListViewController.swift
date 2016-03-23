@@ -9,7 +9,7 @@
 import UIKit
 import EZLoadingActivity
 
-class PersonListViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class PersonListViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, PCSNavigationViewDelegate {
 
     @IBOutlet weak var personsTableView: UITableView!
     @IBOutlet weak var naviView: PCSNavigationView!
@@ -26,6 +26,8 @@ class PersonListViewController: UIViewController, UITableViewDelegate, UITableVi
         if backTitle.characters.count > 0 {
             naviView.backTitle = backTitle
         }
+        
+        naviView.delegate = self
     }
     
     override func viewDidAppear(animated: Bool) {
@@ -91,6 +93,10 @@ class PersonListViewController: UIViewController, UITableViewDelegate, UITableVi
         return mark
     }
     
+    func mergePersons() {
+        
+    }
+    
     func updateSelection() {
         guard let selection = personsTableView.indexPathsForSelectedRows else {
             activity?.persons = nil
@@ -126,7 +132,7 @@ class PersonListViewController: UIViewController, UITableViewDelegate, UITableVi
         
         activity?.persons = button.selected ? persons : nil
         
-        for i in 0..<50 {
+        for i in 0..<persons.count {
             let indexPath = NSIndexPath(forRow: i, inSection: 0)
             
             if button.selected {
@@ -186,13 +192,17 @@ class PersonListViewController: UIViewController, UITableViewDelegate, UITableVi
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         let cell = tableView.cellForRowAtIndexPath(indexPath)!
         self.updateSelectionState(cell, selected: true)
-        self.updateSelection()
     }
     
     func tableView(tableView: UITableView, didDeselectRowAtIndexPath indexPath: NSIndexPath) {
         let cell = tableView.cellForRowAtIndexPath(indexPath)!
         self.updateSelectionState(cell, selected: false)
-        self.updateSelection()
+    }
+    
+    // MARK: - PCSNavigationViewDelegate
+    
+    func willDismiss() {
+        self.mergePersons()
     }
 
     /*

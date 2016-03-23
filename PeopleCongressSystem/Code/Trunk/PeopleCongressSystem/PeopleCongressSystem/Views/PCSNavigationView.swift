@@ -8,9 +8,14 @@
 
 import UIKit
 
+@objc protocol PCSNavigationViewDelegate {
+    optional func willDismiss()
+}
+
 @IBDesignable class PCSNavigationView: UIView {
     
     @IBOutlet weak var viewController: UIViewController?
+    @IBOutlet weak var delegate: PCSNavigationViewDelegate?
     
     @IBInspectable var title: String?
     @IBInspectable var backHidden: Bool = false {
@@ -96,6 +101,7 @@ import UIKit
     // MARK: - Actions
     
     func clickBack() {
+        delegate?.willDismiss?()
         self.viewController?.navigationController?.popViewControllerAnimated(true)
     }
 

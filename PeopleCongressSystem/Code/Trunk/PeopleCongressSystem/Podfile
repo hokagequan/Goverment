@@ -12,6 +12,7 @@ pod 'EZLoadingActivity', '~> 0.8'
 pod 'GrowingTextView'
 pod 'AlamofireImage'
 pod 'DKImagePickerController'
+pod 'ReachabilitySwift', :git => 'https://github.com/ashleymills/Reachability.swift'
 
 end
 
