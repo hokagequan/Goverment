@@ -502,6 +502,7 @@ class VariableDetailViewController: UIViewController, UITableViewDataSource, UIT
         cell.headerText = row.title
         cell.iconImageView.image = UIImage(named: row.icon!)
         cell.titleTextField.text = variable.valueForKey(row.key!) as? String
+        cell.editable = !variable.submitted
         
         switch row.title! {
         case "类型:":
@@ -515,8 +516,6 @@ class VariableDetailViewController: UIViewController, UITableViewDataSource, UIT
             cell.accessoryType = UITableViewCellAccessoryType.None
             break
         }
-        
-        cell.editable = !variable.submitted
         
         return cell
     }

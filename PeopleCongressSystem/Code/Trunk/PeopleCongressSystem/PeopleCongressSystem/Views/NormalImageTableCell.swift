@@ -12,6 +12,7 @@ import UIKit
 
     optional
     func didEditing(cell: NormalImageTableCell)
+    func didEndEditing(cell: NormalImageTableCell)
     
 }
 
@@ -84,6 +85,10 @@ class NormalImageTableCell: UITableViewCell, UITextFieldDelegate, DatePickerView
     
     func textFieldDidBeginEditing(textField: UITextField) {
         delegate?.didEditing?(self)
+    }
+    
+    func textFieldDidEndEditing(textField: UITextField) {
+        delegate?.didEndEditing(self)
     }
     
     func textFieldShouldReturn(textField: UITextField) -> Bool {

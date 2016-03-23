@@ -113,8 +113,18 @@ class ManageEditUIDelegate: NSObject, UITableViewDataSource, UITableViewDelegate
     // MARK: - NormalImageTableCellDelegate
     
     func didEditing(cell: NormalImageTableCell) {
-        let indexPath = tableView!.indexPathForCell(cell)!
-        tableView!.scrollToRowAtIndexPath(indexPath, atScrollPosition: UITableViewScrollPosition.Top, animated: true)
+        tableView?.scrollEnabled = false
+        let keyboardHeight: CGFloat = 246.0
+        let deltaY = cell.frame.origin.y + 50.0 - (tableView!.bounds.size.height - keyboardHeight) + tableView!.frame.origin.y
+        
+        if deltaY > 0 {
+            tableView?.setContentOffset(CGPointMake(0, deltaY), animated: true)
+        }
+    }
+    
+    func didEndEditing(cell: NormalImageTableCell) {
+        tableView?.setContentOffset(CGPointZero, animated: true)
+        tableView?.scrollEnabled = true
     }
     
     // MARK: - UITableView

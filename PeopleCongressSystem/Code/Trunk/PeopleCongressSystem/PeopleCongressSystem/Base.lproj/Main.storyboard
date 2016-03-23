@@ -560,6 +560,108 @@
             </objects>
             <point key="canvasLocation" x="245" y="1115"/>
         </scene>
+        <!--Guide View Controller-->
+        <scene sceneID="nDD-Yc-PAr">
+            <objects>
+                <viewController storyboardIdentifier="GuideViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="391-Ry-MR7" customClass="GuideViewController" customModule="PeopleCongressSystem" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="zUd-UI-vAB"/>
+                        <viewControllerLayoutGuide type="bottom" id="IPA-HI-2CR"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Cdf-eU-HrL">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JsQ-xD-Wre">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SRM-Sv-kOS" userLabel="Content View">
+                                        <rect key="frame" x="0.0" y="0.0" width="1200" height="600"/>
+                                        <subviews>
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="BS7-Ov-RlK" userLabel="Guide One">
+                                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                            </imageView>
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="cpT-bs-Cyo" userLabel="Guide Two">
+                                                <rect key="frame" x="600" y="0.0" width="600" height="600"/>
+                                            </imageView>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lJp-YU-MiR">
+                                                <rect key="frame" x="820" y="490" width="160" height="50"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="160" id="NCl-oY-ZAT"/>
+                                                    <constraint firstAttribute="height" constant="50" id="p83-O5-wNO"/>
+                                                </constraints>
+                                                <state key="normal" title="开启美好生活">
+                                                    <color key="titleColor" red="0.30980392159999998" green="0.1137254902" blue="0.43137254899999999" alpha="1" colorSpace="calibratedRGB"/>
+                                                </state>
+                                                <connections>
+                                                    <segue destination="zuy-gf-mdm" kind="show" id="Tkh-PY-0t4"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstItem="BS7-Ov-RlK" firstAttribute="leading" secondItem="SRM-Sv-kOS" secondAttribute="leading" id="4hO-Iw-CNh"/>
+                                            <constraint firstItem="BS7-Ov-RlK" firstAttribute="centerY" secondItem="SRM-Sv-kOS" secondAttribute="centerY" id="FfF-u0-LRE"/>
+                                            <constraint firstItem="cpT-bs-Cyo" firstAttribute="width" secondItem="BS7-Ov-RlK" secondAttribute="width" id="GwH-UG-6g0"/>
+                                            <constraint firstItem="BS7-Ov-RlK" firstAttribute="top" secondItem="SRM-Sv-kOS" secondAttribute="top" id="TC1-6J-Hm5"/>
+                                            <constraint firstItem="cpT-bs-Cyo" firstAttribute="centerY" secondItem="SRM-Sv-kOS" secondAttribute="centerY" id="XDB-rg-xQt"/>
+                                            <constraint firstItem="lJp-YU-MiR" firstAttribute="centerX" secondItem="cpT-bs-Cyo" secondAttribute="centerX" id="bUG-C9-qXq"/>
+                                            <constraint firstItem="cpT-bs-Cyo" firstAttribute="height" secondItem="BS7-Ov-RlK" secondAttribute="height" id="dAG-ag-Z9Q"/>
+                                            <constraint firstItem="cpT-bs-Cyo" firstAttribute="leading" secondItem="BS7-Ov-RlK" secondAttribute="trailing" id="fNy-w3-lHf"/>
+                                            <constraint firstItem="cpT-bs-Cyo" firstAttribute="centerX" secondItem="SRM-Sv-kOS" secondAttribute="centerX" id="gRX-92-V2G"/>
+                                            <constraint firstAttribute="bottom" secondItem="lJp-YU-MiR" secondAttribute="bottom" constant="60" id="oF9-wC-1n3"/>
+                                            <constraint firstItem="lJp-YU-MiR" firstAttribute="centerX" secondItem="SRM-Sv-kOS" secondAttribute="centerX" id="rAI-9s-X1P"/>
+                                        </constraints>
+                                        <variation key="default">
+                                            <mask key="constraints">
+                                                <exclude reference="gRX-92-V2G"/>
+                                                <exclude reference="rAI-9s-X1P"/>
+                                            </mask>
+                                        </variation>
+                                    </view>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstItem="BS7-Ov-RlK" firstAttribute="width" secondItem="JsQ-xD-Wre" secondAttribute="width" id="3Cy-xe-PXU"/>
+                                    <constraint firstItem="SRM-Sv-kOS" firstAttribute="width" secondItem="JsQ-xD-Wre" secondAttribute="width" multiplier="2:1" id="8UA-g4-rZ2"/>
+                                    <constraint firstItem="SRM-Sv-kOS" firstAttribute="leading" secondItem="JsQ-xD-Wre" secondAttribute="leading" id="Ybz-sM-zaN"/>
+                                    <constraint firstItem="SRM-Sv-kOS" firstAttribute="top" secondItem="JsQ-xD-Wre" secondAttribute="top" id="bR0-Tj-zCz"/>
+                                    <constraint firstAttribute="trailing" secondItem="SRM-Sv-kOS" secondAttribute="trailing" id="bbL-K6-HDu"/>
+                                    <constraint firstItem="SRM-Sv-kOS" firstAttribute="height" secondItem="JsQ-xD-Wre" secondAttribute="height" id="cDX-KE-WUG"/>
+                                    <constraint firstItem="BS7-Ov-RlK" firstAttribute="height" secondItem="JsQ-xD-Wre" secondAttribute="height" id="kOk-6G-yAy"/>
+                                    <constraint firstAttribute="bottom" secondItem="SRM-Sv-kOS" secondAttribute="bottom" id="l9e-9G-3a4"/>
+                                </constraints>
+                                <connections>
+                                    <outlet property="delegate" destination="391-Ry-MR7" id="oUb-So-RaP"/>
+                                </connections>
+                            </scrollView>
+                            <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="2" translatesAutoresizingMaskIntoConstraints="NO" id="9m8-P4-87b">
+                                <rect key="frame" x="288" y="555" width="23" height="37"/>
+                            </pageControl>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="IPA-HI-2CR" firstAttribute="top" secondItem="JsQ-xD-Wre" secondAttribute="bottom" id="KTK-VK-Rmg"/>
+                            <constraint firstItem="JsQ-xD-Wre" firstAttribute="leading" secondItem="Cdf-eU-HrL" secondAttribute="leading" id="VEI-yv-DLR"/>
+                            <constraint firstItem="JsQ-xD-Wre" firstAttribute="centerY" secondItem="Cdf-eU-HrL" secondAttribute="centerY" id="dwk-zX-1eJ"/>
+                            <constraint firstItem="JsQ-xD-Wre" firstAttribute="top" secondItem="Cdf-eU-HrL" secondAttribute="top" id="k1F-Ff-M0A"/>
+                            <constraint firstItem="IPA-HI-2CR" firstAttribute="top" secondItem="9m8-P4-87b" secondAttribute="bottom" constant="8" id="kAv-6H-jiP"/>
+                            <constraint firstItem="9m8-P4-87b" firstAttribute="centerX" secondItem="Cdf-eU-HrL" secondAttribute="centerX" id="pwn-DV-c1X"/>
+                            <constraint firstAttribute="trailing" secondItem="JsQ-xD-Wre" secondAttribute="trailing" id="y39-vp-gir"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="guideOne" destination="BS7-Ov-RlK" id="2wH-bb-hV6"/>
+                        <outlet property="guideTwo" destination="cpT-bs-Cyo" id="QxM-6b-R4V"/>
+                        <outlet property="pageControl" destination="9m8-P4-87b" id="Rgq-qa-PNy"/>
+                        <outlet property="scrollView" destination="JsQ-xD-Wre" id="i8k-LI-Ocd"/>
+                        <outlet property="startButton" destination="lJp-YU-MiR" id="ZWY-6Y-wN0"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="G07-2A-1Hs" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1381" y="294"/>
+        </scene>
     </scenes>
     <resources>
         <image name="check" width="21" height="21"/>

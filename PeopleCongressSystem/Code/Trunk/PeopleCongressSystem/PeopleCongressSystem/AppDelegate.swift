@@ -20,13 +20,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         PCSCustomUtil.customNavigationBar()
         PCSDataManager.defaultManager().isLaunch = true
         
-//        if let isAuto = SettingsManager.getData(SettingKey.AutoSignIn.rawValue) as? Bool {
-//            if isAuto == true {
-//                let storyboard = UIStoryboard(name: "Main", bundle: nil)
-//                let viewController = storyboard.instantiateViewControllerWithIdentifier("MainViewController")
-//                window?.rootViewController = viewController
-//            }
-//        }
+        if SettingKey.Launched.value() != nil {
+            
+        }
         
         return true
     }

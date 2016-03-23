@@ -13,6 +13,15 @@ enum SettingKey: String {
     case AutoSignIn = "kAutoSignIn"
     case GesturePassword = "kGesturePassword"
     case Server = "kServer"
+    case Launched = "kLaunched"
+    
+    func value() -> AnyObject? {
+        return SettingsManager.getData(self.rawValue)
+    }
+    
+    func setValue(value: AnyObject) {
+        SettingsManager.saveData(value, key: self.rawValue)
+    }
 }
 
 class SettingsManager {
