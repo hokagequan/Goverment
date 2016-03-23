@@ -13,6 +13,8 @@ import UIKit
     optional
     func didEditing(cell: NormalImageTableCell)
     func didEndEditing(cell: NormalImageTableCell)
+    func didEditingTime(cell: NormalImageTableCell, datePicker: DatePickerView)
+    func didEndEditingTime(cell: NormalImageTableCell)
     
 }
 
@@ -69,6 +71,8 @@ class NormalImageTableCell: UITableViewCell, UITextFieldDelegate, DatePickerView
     
     func didPickDateCompletion(view: DatePickerView, date: NSDate, dateString: String) {
         titleTextField.text = dateString
+        
+        delegate?.didEndEditingTime(self)
     }
     
     // MARK: - UITextField
@@ -78,6 +82,8 @@ class NormalImageTableCell: UITableViewCell, UITextFieldDelegate, DatePickerView
             let datePickerView = DatePickerView.view()
             datePickerView.delegate = self
             datePickerView.show()
+            
+            delegate?.didEditingTime(self, datePicker: datePickerView)
         }
         
         return !timeEditable

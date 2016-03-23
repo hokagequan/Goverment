@@ -127,6 +127,20 @@ class ManageEditUIDelegate: NSObject, UITableViewDataSource, UITableViewDelegate
         tableView?.scrollEnabled = true
     }
     
+    func didEditingTime(cell: NormalImageTableCell, datePicker: DatePickerView) {
+        masterViewController?.view.endEditing(true)
+        let keyboardHeight: CGFloat = datePicker.datePickerContainer.bounds.size.height
+        let deltaY = cell.frame.origin.y + 50.0 - (tableView!.bounds.size.height - keyboardHeight) + tableView!.frame.origin.y
+        
+        if deltaY > 0 {
+            tableView?.setContentOffset(CGPointMake(0, deltaY), animated: true)
+        }
+    }
+    
+    func didEndEditingTime(cell: NormalImageTableCell) {
+        tableView?.setContentOffset(CGPointZero, animated: true)
+    }
+    
     // MARK: - UITableView
     
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {

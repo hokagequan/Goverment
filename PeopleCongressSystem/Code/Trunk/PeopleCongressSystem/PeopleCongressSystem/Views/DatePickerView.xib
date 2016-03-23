@@ -74,6 +74,7 @@
             </constraints>
             <connections>
                 <outlet property="datePicker" destination="aKw-v7-1ht" id="9yF-D1-u9f"/>
+                <outlet property="datePickerContainer" destination="3BB-EG-vac" id="wjx-bd-wZ1"/>
             </connections>
         </view>
     </objects>

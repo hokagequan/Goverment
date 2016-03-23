@@ -18,6 +18,7 @@ import UIKit
 class DatePickerView: UIControl {
     
     @IBOutlet weak var datePicker: UIDatePicker!
+    @IBOutlet weak var datePickerContainer: UIView!
     
     weak var delegate: DatePickerViewDelegate?
 
