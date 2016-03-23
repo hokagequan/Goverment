@@ -94,6 +94,7 @@ class GroupViewController: UIViewController, UITableViewDataSource, UITableViewD
             let vc = segue.destinationViewController as! PersonListViewController
             vc.activity = activity
             vc.group = sender as? Group
+            vc.backTitle = "完成"
         }
     }
 

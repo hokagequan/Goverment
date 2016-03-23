@@ -1014,6 +1014,7 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="naviView" destination="U1Q-E4-AyP" id="j7B-Oc-nHn"/>
                         <outlet property="personsTableView" destination="4fu-NL-cOp" id="7hf-so-5xj"/>
                     </connections>
                 </viewController>

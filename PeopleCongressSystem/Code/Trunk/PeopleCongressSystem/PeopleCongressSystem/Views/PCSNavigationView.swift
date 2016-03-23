@@ -23,6 +23,8 @@ import UIKit
     let backButton = UIButton(type: UIButtonType.Custom)
     let titleLabel = UILabel(frame: CGRectZero)
     
+    var backTitle: String = ""
+    
     override var bounds: CGRect {
         didSet {
             self.setNeedsDisplay()
@@ -59,7 +61,14 @@ import UIKit
         backgroundView.frame = frame
         
         if self.subviews.contains(backButton) == false {
-            backButton.setImage(UIImage(named: "navi_back"), forState: UIControlState.Normal)
+            if backTitle.characters.count > 0 {
+                backButton.setTitle(backTitle, forState: UIControlState.Normal)
+                backButton.titleLabel?.font = UIFont.systemFontOfSize(15.0)
+            }
+            else {
+                backButton.setImage(UIImage(named: "navi_back"), forState: UIControlState.Normal)
+            }
+            backButton.setTitleColor(colorRed, forState: UIControlState.Normal)
             backButton.addTarget(self, action: Selector("clickBack"), forControlEvents: UIControlEvents.TouchUpInside)
             self.addSubview(backButton)
         }

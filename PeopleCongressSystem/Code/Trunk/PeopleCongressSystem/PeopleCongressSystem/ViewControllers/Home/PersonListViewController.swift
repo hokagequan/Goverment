@@ -12,15 +12,20 @@ import EZLoadingActivity
 class PersonListViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
     @IBOutlet weak var personsTableView: UITableView!
+    @IBOutlet weak var naviView: PCSNavigationView!
     
     var activity: Activity? = nil
     var group: Group? = nil
     var persons = [Person]()
+    var backTitle = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        if backTitle.characters.count > 0 {
+            naviView.backTitle = backTitle
+        }
     }
     
     override func viewDidAppear(animated: Bool) {
