@@ -94,7 +94,22 @@ class PersonListViewController: UIViewController, UITableViewDelegate, UITableVi
     }
     
     func mergePersons() {
+        var memPersons = activity?.persons?.flatMap{return $0.organizationID != group?.identifier ? $0 : nil}
+        let selection = personsTableView.indexPathsForSelectedRows
         
+        if selection?.count == 0 {
+            activity?.persons = memPersons
+            
+            return
+        }
+        
+        if memPersons == nil {
+            memPersons = [Person]()
+        }
+        let selectedPersons = selection?.map{return persons[$0.row]}
+        memPersons! += selectedPersons!
+        
+        activity?.persons = memPersons
     }
     
     func updateSelection() {
@@ -203,6 +218,8 @@ class PersonListViewController: UIViewController, UITableViewDelegate, UITableVi
     
     func willDismiss() {
         self.mergePersons()
+        
+        self.performSegueWithIdentifier("ActivityDetailSegue", sender: nil)
     }
 
     /*

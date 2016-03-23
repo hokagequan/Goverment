@@ -1016,9 +1016,11 @@
                     <connections>
                         <outlet property="naviView" destination="U1Q-E4-AyP" id="j7B-Oc-nHn"/>
                         <outlet property="personsTableView" destination="4fu-NL-cOp" id="7hf-so-5xj"/>
+                        <segue destination="puE-mH-Ymh" kind="unwind" identifier="ActivityDetailSegue" unwindAction="unwindToActivityDetail:" id="u2R-uF-tXF"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Pcw-YX-gyZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="puE-mH-Ymh" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="3878" y="458"/>
         </scene>
