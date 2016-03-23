@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-class ManageEditUICheckInDelegate: ManageEditUIActivityDelegate {
+class ManageEditUICheckInDelegate: ManageEditActivityEditDelegate {
     
     override func save() {
         let storyboard = UIStoryboard(name: "CheckIn", bundle: nil)

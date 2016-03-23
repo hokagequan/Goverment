@@ -418,7 +418,7 @@
         <!--View Controller-->
         <scene sceneID="mRa-Tv-R9d">
             <objects>
-                <viewController id="wyi-b5-NcW" customClass="FeedbackViewController" customModule="PeopleCongressSystem" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController hidesBottomBarWhenPushed="YES" id="wyi-b5-NcW" customClass="FeedbackViewController" customModule="PeopleCongressSystem" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="95I-O4-1W8"/>
                         <viewControllerLayoutGuide type="bottom" id="LpQ-CT-gn7"/>

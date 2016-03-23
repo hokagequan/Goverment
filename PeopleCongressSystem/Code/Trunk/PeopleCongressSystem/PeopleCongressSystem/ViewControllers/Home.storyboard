@@ -225,7 +225,7 @@
         <!--View Controller-->
         <scene sceneID="skc-jp-X1p">
             <objects>
-                <viewController id="U5H-xC-1Bc" customClass="VariableRecordsViewController" customModule="PeopleCongressSystem" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController hidesBottomBarWhenPushed="YES" id="U5H-xC-1Bc" customClass="VariableRecordsViewController" customModule="PeopleCongressSystem" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="tLu-yJ-2sK"/>
                         <viewControllerLayoutGuide type="bottom" id="9ds-h1-BFQ"/>
@@ -354,7 +354,7 @@
         <!--View Controller-->
         <scene sceneID="tcj-Eu-cN2">
             <objects>
-                <viewController id="ZAL-RZ-HiG" customClass="VariableDetailViewController" customModule="PeopleCongressSystem" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController hidesBottomBarWhenPushed="YES" id="ZAL-RZ-HiG" customClass="VariableDetailViewController" customModule="PeopleCongressSystem" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="84D-cd-IyD"/>
                         <viewControllerLayoutGuide type="bottom" id="FRD-UW-H3c"/>
@@ -569,7 +569,7 @@
         <!--View Controller-->
         <scene sceneID="i2d-6s-yuK">
             <objects>
-                <viewController id="6Oz-BJ-aFz" customClass="SituationViewController" customModule="PeopleCongressSystem" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController hidesBottomBarWhenPushed="YES" id="6Oz-BJ-aFz" customClass="SituationViewController" customModule="PeopleCongressSystem" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="w3z-bS-0my"/>
                         <viewControllerLayoutGuide type="bottom" id="6X9-qr-YZq"/>
@@ -640,7 +640,7 @@
         <!--View Controller-->
         <scene sceneID="gdi-XG-cqO">
             <objects>
-                <viewController storyboardIdentifier="PerformanceEditViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Kpt-zv-23Y" customClass="PerformanceEditViewController" customModule="PeopleCongressSystem" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="PerformanceEditViewController" hidesBottomBarWhenPushed="YES" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Kpt-zv-23Y" customClass="PerformanceEditViewController" customModule="PeopleCongressSystem" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="KQy-NR-eJn"/>
                         <viewControllerLayoutGuide type="bottom" id="ZmJ-Zf-DE6"/>

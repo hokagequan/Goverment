@@ -25,7 +25,7 @@
         <!--View Controller-->
         <scene sceneID="Qr3-QO-l4Z">
             <objects>
-                <viewController storyboardIdentifier="QRCodeScanViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="bHo-X1-jgW" customClass="QRCodeScanViewController" customModule="PeopleCongressSystem" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="QRCodeScanViewController" hidesBottomBarWhenPushed="YES" useStoryboardIdentifierAsRestorationIdentifier="YES" id="bHo-X1-jgW" customClass="QRCodeScanViewController" customModule="PeopleCongressSystem" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="mQY-CD-tS5"/>
                         <viewControllerLayoutGuide type="bottom" id="5dR-Xd-Y8d"/>

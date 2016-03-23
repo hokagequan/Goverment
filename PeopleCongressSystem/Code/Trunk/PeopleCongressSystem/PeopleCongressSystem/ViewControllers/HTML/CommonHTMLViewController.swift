@@ -31,8 +31,6 @@ class CommonHTMLViewController: UIViewController, WebViewHTMLProtocol {
         rightItem.setTitle(rightItemTitle, forState: UIControlState.Normal)
         self.loadWebView(webViewContainer)
         self.loadMainPage()
-        self.htmlWebView.backgroundColor = UIColor.clearColor()
-        webViewContainer.backgroundColor = UIColor.clearColor()
     }
 
     override func didReceiveMemoryWarning() {
