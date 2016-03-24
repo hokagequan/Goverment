@@ -631,15 +631,18 @@
                             <constraint firstItem="JfI-MH-FrN" firstAttribute="top" secondItem="TQn-p7-X1u" secondAttribute="bottom" id="ptn-Uq-SvL"/>
                             <constraint firstItem="908-vk-h6s" firstAttribute="leading" secondItem="AdK-Jg-hgq" secondAttribute="leading" constant="20" id="q68-9f-XBd"/>
                             <constraint firstItem="suu-S7-f0C" firstAttribute="top" secondItem="EPU-Zg-bEy" secondAttribute="bottom" constant="7" id="sQm-zf-bHk"/>
+                            <constraint firstAttribute="bottom" secondItem="kDR-pV-HQa" secondAttribute="bottom" constant="20" id="vbM-wJ-WI4"/>
                             <constraint firstItem="jcv-bg-grE" firstAttribute="top" secondItem="kDR-pV-HQa" secondAttribute="bottom" constant="20" id="xXL-lV-kQp"/>
                             <constraint firstItem="0Pl-S0-rBl" firstAttribute="centerX" secondItem="AdK-Jg-hgq" secondAttribute="centerX" id="zuB-d1-wSb"/>
                         </constraints>
                         <variation key="default">
                             <mask key="constraints">
                                 <exclude reference="2kO-Zc-8Zc"/>
+                                <exclude reference="xXL-lV-kQp"/>
                             </mask>
                         </variation>
                     </view>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="OSh-gp-kzc" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
