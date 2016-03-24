@@ -14,7 +14,7 @@ class MeViewController: UITableViewController {
         case QRCodeDownload = 0
         case ChangePassword
         case ChangeGesture
-        case Update
+//        case Update
         case Help
         case Feedback
         case About
@@ -24,7 +24,7 @@ class MeViewController: UITableViewController {
             let titles = ["下载二维码",
                 "修改登陆密码",
                 "修改手势密码",
-                "版本升级",
+//                "版本升级",
                 "在线帮助",
                 "意见反馈",
                 "关于",
