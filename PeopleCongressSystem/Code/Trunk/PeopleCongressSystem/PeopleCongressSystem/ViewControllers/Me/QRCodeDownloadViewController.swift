@@ -31,7 +31,7 @@ class QRCodeDownloadViewController: UIViewController, UITableViewDataSource, UIT
 
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 2
+        return 1
     }
     
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
@@ -45,7 +45,8 @@ class QRCodeDownloadViewController: UIViewController, UITableViewDataSource, UIT
         // TODO: 二维码图片
         if indexPath.row == 0 {
             cell.imageView?.image = UIImage()
-            cell.titleLabel.text = "安卓下载二维码"
+            cell.titleLabel.text = "App下载二维码"
+            cell.qrImageView?.image = UIImage(named: "qr_code")
         }
         else if indexPath.row == 1 {
             cell.imageView?.image = UIImage()
