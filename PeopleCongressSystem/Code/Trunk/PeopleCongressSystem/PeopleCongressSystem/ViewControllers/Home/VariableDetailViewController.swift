@@ -263,6 +263,8 @@ class VariableDetailViewController: UIViewController, UITableViewDataSource, UIT
             EZLoadingActivity.hide()
             
             self.showAlert(message ?? "修改成功")
+            
+            self.navigationController?.popToRootViewControllerAnimated(true)
         }
     }
     

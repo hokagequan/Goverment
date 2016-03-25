@@ -97,7 +97,7 @@ class PersonListViewController: UIViewController, UITableViewDelegate, UITableVi
         var memPersons = activity?.persons?.flatMap{return $0.organizationID != group?.identifier ? $0 : nil}
         let selection = personsTableView.indexPathsForSelectedRows
         
-        if selection?.count == 0 {
+        if  selection == nil || selection?.count == 0 {
             activity?.persons = memPersons
             
             return

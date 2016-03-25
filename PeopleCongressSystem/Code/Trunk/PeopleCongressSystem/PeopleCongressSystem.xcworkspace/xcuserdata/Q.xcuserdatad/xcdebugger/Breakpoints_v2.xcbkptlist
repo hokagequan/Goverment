@@ -41,12 +41,12 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "PeopleCongressSystem/HttpRequests/GetVariableDetailReq.swift"
-            timestampString = "480327927.346464"
+            filePath = "PeopleCongressSystem/HttpRequests/EditVariableReq.swift"
+            timestampString = "480599063.926824"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "47"
-            endingLineNumber = "47"
+            startingLineNumber = "53"
+            endingLineNumber = "53"
             landmarkName = "requestSimpleCompletion(_:)"
             landmarkType = "5">
          </BreakpointContent>
@@ -57,29 +57,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "PeopleCongressSystem/Customs/ManageEditActivityEditDelegate.swift"
-            timestampString = "480441310.863905"
+            filePath = "PeopleCongressSystem/HttpRequests/EditVariableReq.swift"
+            timestampString = "480599063.926824"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "55"
-            endingLineNumber = "55"
-            landmarkName = "prepare()"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "PeopleCongressSystem/Customs/ManageEditActivityEditDelegate.swift"
-            timestampString = "480441315.255218"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "51"
-            endingLineNumber = "51"
-            landmarkName = "prepare()"
+            startingLineNumber = "56"
+            endingLineNumber = "56"
+            landmarkName = "requestSimpleCompletion(_:)"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

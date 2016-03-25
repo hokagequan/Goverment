@@ -26,7 +26,7 @@ class EditVariableReq: HttpBaseReq {
         params["IsPost"] = variable.submitted ? "1" : "0"
         params["Lvzhi_cyr"] = variable.persons
         params["Lvzhi_time"] = variable.createTime
-        params["AddUser"] = PCSDataManager.defaultManager().accountManager.user!.identifier
+        params["AddUser"] = PCSDataManager.defaultManager().accountManager.user!.congressID
         params["CheckTicket"] = PCSDataManager.defaultManager().accountManager.user!.token
         params["FieldID"] = PCSDataManager.defaultManager().accountManager.user!.field
         params["thecharset"] = "gb2312"
@@ -36,18 +36,19 @@ class EditVariableReq: HttpBaseReq {
     
     func requestSimpleCompletion(completion: SimpleCompletion?) {
         var params = [String: AnyObject]()
-        params["Lvzhi_guid"] = variable.identifier
+        params["lvzhi_guid"] = variable.token
         params["Title"] = variable.title
-        params["type"] = variable.type
+        params["Type"] = variable.type
         params["content"] = variable.content
         params["remark"] = variable.remark
         params["IsPost"] = variable.submitted ? "1" : "0"
-        params["Lvzhi_cyr"] = variable.persons
-        params["Lvzhi_time"] = variable.createTime
-        params["AddUser"] = PCSDataManager.defaultManager().accountManager.user!.identifier
+        params["lvzhi_cyr"] = variable.persons
+        params["lvzhi_Time"] = variable.createTime
+        params["AddUser"] = PCSDataManager.defaultManager().accountManager.user!.congressID
         params["CheckTicket"] = PCSDataManager.defaultManager().accountManager.user!.token
         params["FieldID"] = PCSDataManager.defaultManager().accountManager.user!.field
         params["thecharset"] = "gb2312"
+        params["shouming"] = ""
         
         self.request("LvZhiMod", nameSpace: "rendadaibiao", params: params) { (response) -> Void in
             let result = response?.result
