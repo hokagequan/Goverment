@@ -12,5 +12,10 @@ class NormalImageCell: UICollectionViewCell {
     
     @IBOutlet weak var iconImageView: UIImageView!
     @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var markLabel: UILabel!
+    
+    override func awakeFromNib() {
+        CustomObjectUtil.customObjectsLayout([markLabel], backgroundColor: colorRed, borderWidth: 0, borderColor: nil, corner: 10)
+    }
     
 }

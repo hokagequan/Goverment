@@ -30,6 +30,17 @@
                         <color key="textColor" red="0.3803921569" green="0.36470588240000001" blue="0.3411764706" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="100" textAlignment="center" lineBreakMode="characterWrap" baselineAdjustment="alignBaselines" minimumFontSize="6" translatesAutoresizingMaskIntoConstraints="NO" id="asF-TI-4nN" userLabel="Mark">
+                        <rect key="frame" x="44" y="6" width="20" height="20"/>
+                        <color key="backgroundColor" red="0.98039215690000003" green="0.16862745100000001" blue="0.20392156859999999" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="width" secondItem="asF-TI-4nN" secondAttribute="height" multiplier="1:1" id="JSJ-KM-qQM"/>
+                            <constraint firstAttribute="width" constant="20" id="gK5-mf-sCf"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <nil key="highlightedColor"/>
+                    </label>
                 </subviews>
                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             </view>
@@ -37,12 +48,15 @@
                 <constraint firstItem="GuW-4f-fne" firstAttribute="leading" secondItem="XCc-2v-Tax" secondAttribute="leading" id="IEC-ZX-19b"/>
                 <constraint firstAttribute="bottom" secondItem="aHj-gL-Zfq" secondAttribute="bottom" id="NwE-Z4-AZs"/>
                 <constraint firstItem="aHj-gL-Zfq" firstAttribute="leading" secondItem="XCc-2v-Tax" secondAttribute="leading" constant="-10" id="TOR-lu-RMM"/>
+                <constraint firstAttribute="trailing" secondItem="asF-TI-4nN" secondAttribute="trailing" constant="6" id="WHa-em-khy"/>
                 <constraint firstItem="GuW-4f-fne" firstAttribute="top" secondItem="XCc-2v-Tax" secondAttribute="top" id="WVM-Tz-wop"/>
                 <constraint firstAttribute="trailing" secondItem="GuW-4f-fne" secondAttribute="trailing" id="ZWW-LQ-9q1"/>
                 <constraint firstAttribute="trailing" secondItem="aHj-gL-Zfq" secondAttribute="trailing" constant="-10" id="eZg-nr-Aq0"/>
+                <constraint firstItem="asF-TI-4nN" firstAttribute="top" secondItem="XCc-2v-Tax" secondAttribute="top" constant="6" id="maT-Z5-eIh"/>
             </constraints>
             <connections>
                 <outlet property="iconImageView" destination="GuW-4f-fne" id="Ues-ff-Qs3"/>
+                <outlet property="markLabel" destination="asF-TI-4nN" id="c7c-8J-xdM"/>
                 <outlet property="titleLabel" destination="aHj-gL-Zfq" id="HbI-RP-mue"/>
             </connections>
         </collectionViewCell>

@@ -78,19 +78,33 @@
                                                     <color key="textColor" red="0.38039215686274508" green="0.36470588235294116" blue="0.3411764705882353" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="100" textAlignment="center" lineBreakMode="characterWrap" baselineAdjustment="alignBaselines" minimumFontSize="6" translatesAutoresizingMaskIntoConstraints="NO" id="7fY-B8-40e" userLabel="Mark">
+                                                    <rect key="frame" x="44" y="6" width="20" height="20"/>
+                                                    <color key="backgroundColor" red="0.98039215690000003" green="0.16862745100000001" blue="0.20392156859999999" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="20" id="6Rp-7R-nhV"/>
+                                                        <constraint firstAttribute="width" secondItem="7fY-B8-40e" secondAttribute="height" multiplier="1:1" id="B6C-If-9Da"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
                                             </subviews>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </view>
                                         <constraints>
+                                            <constraint firstItem="7fY-B8-40e" firstAttribute="top" secondItem="iHO-nB-3Ub" secondAttribute="top" constant="6" id="6qn-cP-clU"/>
                                             <constraint firstItem="pSy-6g-bXp" firstAttribute="top" secondItem="iHO-nB-3Ub" secondAttribute="top" id="7Sa-fE-I4l"/>
                                             <constraint firstItem="p1M-Z5-5rg" firstAttribute="leading" secondItem="iHO-nB-3Ub" secondAttribute="leading" id="MB6-TS-dQk"/>
                                             <constraint firstItem="pSy-6g-bXp" firstAttribute="leading" secondItem="iHO-nB-3Ub" secondAttribute="leading" id="OKc-zi-htY"/>
+                                            <constraint firstAttribute="trailing" secondItem="7fY-B8-40e" secondAttribute="trailing" constant="6" id="bnJ-hJ-eWb"/>
                                             <constraint firstAttribute="bottom" secondItem="p1M-Z5-5rg" secondAttribute="bottom" id="l31-Zw-cNT"/>
                                             <constraint firstAttribute="trailing" secondItem="p1M-Z5-5rg" secondAttribute="trailing" id="q8r-qO-01r"/>
                                             <constraint firstAttribute="trailing" secondItem="pSy-6g-bXp" secondAttribute="trailing" id="wUE-0W-1jV"/>
                                         </constraints>
                                         <connections>
                                             <outlet property="iconImageView" destination="pSy-6g-bXp" id="ggk-2l-n3g"/>
+                                            <outlet property="markLabel" destination="7fY-B8-40e" id="Klw-xX-Lyh"/>
                                             <outlet property="titleLabel" destination="p1M-Z5-5rg" id="gAt-SW-EZX"/>
                                         </connections>
                                     </collectionViewCell>

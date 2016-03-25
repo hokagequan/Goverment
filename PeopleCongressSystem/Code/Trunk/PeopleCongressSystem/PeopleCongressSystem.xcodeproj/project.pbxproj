@@ -41,6 +41,7 @@
 		106C64C91C83511400E6CD95 /* PCSProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 106C64C81C83511400E6CD95 /* PCSProtocols.swift */; };
 		106C64CB1C83522800E6CD95 /* WorkerHomeActionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 106C64CA1C83522800E6CD95 /* WorkerHomeActionDelegate.swift */; };
 		106C64CD1C84070A00E6CD95 /* PCSDefines.swift in Sources */ = {isa = PBXBuildFile; fileRef = 106C64CC1C84070A00E6CD95 /* PCSDefines.swift */; };
+		106E0E211CA55F7F004C48C0 /* GetActivityNotifyCountReq.swift in Sources */ = {isa = PBXBuildFile; fileRef = 106E0E201CA55F7F004C48C0 /* GetActivityNotifyCountReq.swift */; };
 		1072E08C1C8F1BF1004DBA4D /* ChangeGestureViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1072E08B1C8F1BF1004DBA4D /* ChangeGestureViewController.swift */; };
 		107505581C9021A300C9589E /* ResetPasswordReq.swift in Sources */ = {isa = PBXBuildFile; fileRef = 107505571C9021A300C9589E /* ResetPasswordReq.swift */; };
 		1075055A1C90255F00C9589E /* NormalImageTableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 107505591C90255F00C9589E /* NormalImageTableCell.xib */; };
@@ -162,6 +163,7 @@
 		106C64C81C83511400E6CD95 /* PCSProtocols.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PCSProtocols.swift; sourceTree = "<group>"; };
 		106C64CA1C83522800E6CD95 /* WorkerHomeActionDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WorkerHomeActionDelegate.swift; sourceTree = "<group>"; };
 		106C64CC1C84070A00E6CD95 /* PCSDefines.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PCSDefines.swift; sourceTree = "<group>"; };
+		106E0E201CA55F7F004C48C0 /* GetActivityNotifyCountReq.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetActivityNotifyCountReq.swift; sourceTree = "<group>"; };
 		1072E08B1C8F1BF1004DBA4D /* ChangeGestureViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChangeGestureViewController.swift; sourceTree = "<group>"; };
 		107505571C9021A300C9589E /* ResetPasswordReq.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResetPasswordReq.swift; sourceTree = "<group>"; };
 		107505591C90255F00C9589E /* NormalImageTableCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NormalImageTableCell.xib; sourceTree = "<group>"; };
@@ -499,6 +501,7 @@
 				105C19901C9A3E4A00103B38 /* EditVariableReq.swift */,
 				10BD4DE51C9A4A14006179AB /* DeleteVariableReq.swift */,
 				10BD4DE71C9A50A2006179AB /* DeletePhotoReq.swift */,
+				106E0E201CA55F7F004C48C0 /* GetActivityNotifyCountReq.swift */,
 			);
 			path = HttpRequests;
 			sourceTree = "<group>";
@@ -771,6 +774,7 @@
 				10F7DE631C7863A3002A86CA /* PCSNavigationView.swift in Sources */,
 				100691C91C969C32000AEFEA /* UploadPhotoReq.swift in Sources */,
 				10D0D5D31C4FDB440093F687 /* CustomNavigationView.swift in Sources */,
+				106E0E211CA55F7F004C48C0 /* GetActivityNotifyCountReq.swift in Sources */,
 				10F109811C8816D10083D89D /* GetActivitiesReq.swift in Sources */,
 				10F5875B1C8F27BF00F2279B /* FeedbackViewController.swift in Sources */,
 				100160371C8E5B7B0095D023 /* QRDownloadCell.swift in Sources */,

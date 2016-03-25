@@ -14,6 +14,8 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
     
     let content = PCSDataManager.defaultManager().content
     
+    var message: String? = nil
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -28,6 +30,16 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
     
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
+        
+        if content is CongressContentInfo {
+            let req = GetActivityNotifyCountReq()
+            req.requestSimpleCompletion({ (success, count) -> Void in
+                if success {
+                    self.message = count
+                    self.collectionView.reloadItemsAtIndexPaths([NSIndexPath(forRow: 0, inSection: 0)])
+                }
+            })
+        }
     }
 
     override func didReceiveMemoryWarning() {
@@ -59,12 +71,17 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
         
         cell.titleLabel.text = content.homeElementTitle(indexPath.row)
         cell.iconImageView.image = UIImage(named: content.homeElementIcon(indexPath.row))
+        cell.markLabel.hidden = true
+        
+        if content is CongressContentInfo && indexPath.row == 0 && message != "0" {
+            cell.markLabel.text = message
+            cell.markLabel.hidden = false
+        }
         
         return cell
     }
     
     func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
-        // TODO: 人民代表的点击处理
         self.navigationController?.setNavigationBarHidden(false, animated: true)
         
         if content is WorderContentInfo {

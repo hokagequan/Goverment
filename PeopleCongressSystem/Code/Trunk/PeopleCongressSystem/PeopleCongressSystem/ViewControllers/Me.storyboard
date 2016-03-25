@@ -650,8 +650,8 @@
         </scene>
     </scenes>
     <resources>
-        <image name="gesture_dot_nor" width="45" height="45"/>
-        <image name="gesture_dot_sel" width="69" height="69"/>
+        <image name="gesture_dot_nor" width="64" height="64"/>
+        <image name="gesture_dot_sel" width="64" height="64"/>
         <image name="guo_hui_small" width="54" height="56"/>
     </resources>
 </document>
