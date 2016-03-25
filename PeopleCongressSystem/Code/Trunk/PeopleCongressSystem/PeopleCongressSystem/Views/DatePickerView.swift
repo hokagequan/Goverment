@@ -10,9 +10,8 @@ import UIKit
 
 @objc protocol DatePickerViewDelegate {
     
-    optional
-    func didPickDateCompletion(view: DatePickerView, date: NSDate, dateString: String)
-    
+    optional func didPickDateCompletion(view: DatePickerView, date: NSDate, dateString: String)
+    optional func willDismiss()
 }
 
 class DatePickerView: UIControl {
@@ -27,6 +26,8 @@ class DatePickerView: UIControl {
     }
     
     func dismiss() {
+        delegate?.willDismiss?()
+        
         self.removeFromSuperview()
     }
     

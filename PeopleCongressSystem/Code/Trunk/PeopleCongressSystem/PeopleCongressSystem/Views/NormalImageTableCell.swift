@@ -71,7 +71,9 @@ class NormalImageTableCell: UITableViewCell, UITextFieldDelegate, DatePickerView
     
     func didPickDateCompletion(view: DatePickerView, date: NSDate, dateString: String) {
         titleTextField.text = dateString
-        
+    }
+    
+    func willDismiss() {
         delegate?.didEndEditingTime(self)
     }
     
