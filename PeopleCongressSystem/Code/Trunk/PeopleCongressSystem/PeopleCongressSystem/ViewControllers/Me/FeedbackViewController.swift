@@ -44,6 +44,8 @@ class FeedbackViewController: UIViewController {
             
             defer {
                 if success == true {
+                    self.feedbackTextView.text = nil
+                    self.feedbackTextView.placeHolder = "请简要描述你的问题和建议"
                     self.showAlert("提交成功")
                 }
                 else {
