@@ -7,8 +7,9 @@
 //
 
 import UIKit
+import EZLoadingActivity
 
-class CommonHTMLViewController: UIViewController, WebViewHTMLProtocol {
+class CommonHTMLViewController: UIViewController, WebViewHTMLProtocol, PCSNavigationViewDelegate {
 
     @IBOutlet weak var naviView: PCSNavigationView!
     @IBOutlet weak var rightItem: UIButton!
@@ -28,6 +29,7 @@ class CommonHTMLViewController: UIViewController, WebViewHTMLProtocol {
         PCSCustomUtil.customNavigationController(self)
         
         naviView.title = naviTitle
+        naviView.delegate = self
         rightItem.setTitle(rightItemTitle, forState: UIControlState.Normal)
         self.loadWebView(webViewContainer)
         self.loadMainPage()
@@ -53,15 +55,35 @@ class CommonHTMLViewController: UIViewController, WebViewHTMLProtocol {
         rightItemBlock?()
     }
     
+    // MARK: - PCSNaviViewDelegate
+    
+    func willDismiss() -> Bool {
+        EZLoadingActivity.show("", disableUI: true)
+        let req = GetUrlReq()
+        req.requestSimpleCompletion { (success, url) -> Void in
+            EZLoadingActivity.hide()
+            
+            if url == nil {
+                self.navigationController?.popViewControllerAnimated(true)
+                return
+            }
+            
+            self.URL = url
+            self.loadMainPage()
+        }
+        
+        return true
+    }
+    
     // MARK: - UIWebView
     
     override func webView(webView: UIWebView, shouldStartLoadWithRequest request: NSURLRequest, navigationType: UIWebViewNavigationType) -> Bool {
-        let rel = super.webView(webView, shouldStartLoadWithRequest: request, navigationType: navigationType)
+        super.webView(webView, shouldStartLoadWithRequest: request, navigationType: navigationType)
         
-        if firstLoad == true {
-            firstLoad = false
-            return rel
-        }
+//        if firstLoad == true {
+//            firstLoad = false
+//            return rel
+//        }
         
         if request.URL != nil && request.URL!.absoluteString.containsString("login.aspx") {
             self.performSegueWithIdentifier("LogoutSegue", sender: nil)
@@ -69,13 +91,13 @@ class CommonHTMLViewController: UIViewController, WebViewHTMLProtocol {
             return false
         }
         
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let vc = storyboard.instantiateViewControllerWithIdentifier("CommonHTMLViewController") as! CommonHTMLViewController
-        vc.URL = request.URL?.absoluteString
-        vc.naviTitle = self.naviTitle
-        self.navigationController?.pushViewController(vc, animated: true)
+//        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+//        let vc = storyboard.instantiateViewControllerWithIdentifier("CommonHTMLViewController") as! CommonHTMLViewController
+//        vc.URL = request.URL?.absoluteString
+//        vc.naviTitle = self.naviTitle
+//        self.navigationController?.pushViewController(vc, animated: true)
         
-        return false
+        return true
     }
 
     /*

@@ -216,10 +216,12 @@ class PersonListViewController: UIViewController, UITableViewDelegate, UITableVi
     
     // MARK: - PCSNavigationViewDelegate
     
-    func willDismiss() {
+    func willDismiss() -> Bool {
         self.mergePersons()
         
-        self.performSegueWithIdentifier("ActivityDetailSegue", sender: nil)
+        return false
+        
+//        self.performSegueWithIdentifier("ActivityDetailSegue", sender: nil)
     }
 
     /*

@@ -9,7 +9,7 @@
 import UIKit
 
 @objc protocol PCSNavigationViewDelegate {
-    optional func willDismiss()
+    optional func willDismiss() -> Bool
 }
 
 @IBDesignable class PCSNavigationView: UIView {
@@ -101,7 +101,10 @@ import UIKit
     // MARK: - Actions
     
     func clickBack() {
-        delegate?.willDismiss?()
+        if delegate?.willDismiss?() == true {
+            return
+        }
+        
         self.viewController?.navigationController?.popViewControllerAnimated(true)
     }
 

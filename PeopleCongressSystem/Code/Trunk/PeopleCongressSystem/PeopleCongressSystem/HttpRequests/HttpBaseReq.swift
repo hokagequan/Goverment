@@ -46,7 +46,9 @@ class HttpBaseReq {
     }
     
     func requestUpload(params: Dictionary<String, AnyObject>, data: NSData, key: String, name: String, completion: HttpReqCompletion?) {
-        Alamofire.upload(.POST, NSURL(string: self.httpReqURL + "BatchUploaderImg2.ashx")!, multipartFormData: { (formData) -> Void in
+//        let spaceName = "BatchUploaderImg2.ashx" // 正式
+        let spaceName = "BatchUploaderImg3.ashx" // 测试
+        Alamofire.upload(.POST, NSURL(string: self.httpReqURL + spaceName)!, multipartFormData: { (formData) -> Void in
             for key in params.keys {
                 let object = params[key]
                 

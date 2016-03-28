@@ -200,6 +200,10 @@ class ManageEditUIActivityDelegate: ManageEditUIDelegate {
             }
             
             break
+        case "开始时间:", "结束时间:":
+            let cell = tableView.cellForRowAtIndexPath(indexPath) as! NormalImageTableCell
+            cell.titleTextField.becomeFirstResponder()
+            break
         case "人员:":
             if self.editObject == nil {
                 self.editObject = self.createActivity()

@@ -14,7 +14,7 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
     
     let content = PCSDataManager.defaultManager().content
     
-    var message: String? = nil
+    var message: String? = "0"
     
     override func viewDidLoad() {
         super.viewDidLoad()

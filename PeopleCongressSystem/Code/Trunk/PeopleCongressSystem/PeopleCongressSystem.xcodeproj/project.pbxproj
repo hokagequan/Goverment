@@ -29,6 +29,7 @@
 		100B203C1C88968900435EF0 /* GetGroupReq.swift in Sources */ = {isa = PBXBuildFile; fileRef = 100B203B1C88968900435EF0 /* GetGroupReq.swift */; };
 		100B203E1C89222F00435EF0 /* PersonListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 100B203D1C89222F00435EF0 /* PersonListViewController.swift */; };
 		100B20401C895FC600435EF0 /* GetPersonListReq.swift in Sources */ = {isa = PBXBuildFile; fileRef = 100B203F1C895FC600435EF0 /* GetPersonListReq.swift */; };
+		100EA8841CA819CE00C5FA59 /* GetUrlReq.swift in Sources */ = {isa = PBXBuildFile; fileRef = 100EA8831CA819CE00C5FA59 /* GetUrlReq.swift */; };
 		103A9D2C1CA0F09C003576C3 /* GetVariableDetailReq.swift in Sources */ = {isa = PBXBuildFile; fileRef = 103A9D2B1CA0F09C003576C3 /* GetVariableDetailReq.swift */; };
 		1042329B1C8E61F400809859 /* ChangePasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1042329A1C8E61F400809859 /* ChangePasswordViewController.swift */; };
 		104564C81CA22C530031FFCA /* GuideViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 104564C71CA22C530031FFCA /* GuideViewController.swift */; };
@@ -151,6 +152,7 @@
 		100B203B1C88968900435EF0 /* GetGroupReq.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetGroupReq.swift; sourceTree = "<group>"; };
 		100B203D1C89222F00435EF0 /* PersonListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PersonListViewController.swift; sourceTree = "<group>"; };
 		100B203F1C895FC600435EF0 /* GetPersonListReq.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetPersonListReq.swift; sourceTree = "<group>"; };
+		100EA8831CA819CE00C5FA59 /* GetUrlReq.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetUrlReq.swift; sourceTree = "<group>"; };
 		103A9D2B1CA0F09C003576C3 /* GetVariableDetailReq.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetVariableDetailReq.swift; sourceTree = "<group>"; };
 		1042329A1C8E61F400809859 /* ChangePasswordViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChangePasswordViewController.swift; sourceTree = "<group>"; };
 		104564C71CA22C530031FFCA /* GuideViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GuideViewController.swift; sourceTree = "<group>"; };
@@ -502,6 +504,7 @@
 				10BD4DE51C9A4A14006179AB /* DeleteVariableReq.swift */,
 				10BD4DE71C9A50A2006179AB /* DeletePhotoReq.swift */,
 				106E0E201CA55F7F004C48C0 /* GetActivityNotifyCountReq.swift */,
+				100EA8831CA819CE00C5FA59 /* GetUrlReq.swift */,
 			);
 			path = HttpRequests;
 			sourceTree = "<group>";
@@ -710,6 +713,7 @@
 				100B20401C895FC600435EF0 /* GetPersonListReq.swift in Sources */,
 				100691B71C93B9F0000AEFEA /* CollectionViewCell.swift in Sources */,
 				10A6866E1C7DF12600D050F0 /* UserEntity.swift in Sources */,
+				100EA8841CA819CE00C5FA59 /* GetUrlReq.swift in Sources */,
 				107505731C91570F00C9589E /* GetVariablesReq.swift in Sources */,
 				10DBF2101C8A8075007620BA /* ManageEditUIDelegate.swift in Sources */,
 				10D0D5A41C4DCA5A0093F687 /* SignInViewController.swift in Sources */,
