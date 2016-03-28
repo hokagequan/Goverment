@@ -63,6 +63,7 @@
 		10A686731C7DF8D000D050F0 /* WorkerContentInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10A686721C7DF8D000D050F0 /* WorkerContentInfo.swift */; };
 		10BD4DE61C9A4A14006179AB /* DeleteVariableReq.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10BD4DE51C9A4A14006179AB /* DeleteVariableReq.swift */; };
 		10BD4DE81C9A50A2006179AB /* DeletePhotoReq.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10BD4DE71C9A50A2006179AB /* DeletePhotoReq.swift */; };
+		10C0F1301CA93D9C000BA06E /* jpush-ios-2.1.0.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 10C0F12E1CA93D9C000BA06E /* jpush-ios-2.1.0.a */; };
 		10D0D5701C4CD1D00093F687 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10D0D56F1C4CD1D00093F687 /* AppDelegate.swift */; };
 		10D0D5751C4CD1D00093F687 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 10D0D5731C4CD1D00093F687 /* Main.storyboard */; };
 		10D0D5781C4CD1D00093F687 /* PeopleCongressSystem.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 10D0D5761C4CD1D00093F687 /* PeopleCongressSystem.xcdatamodeld */; };
@@ -186,6 +187,8 @@
 		10A686721C7DF8D000D050F0 /* WorkerContentInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WorkerContentInfo.swift; sourceTree = "<group>"; };
 		10BD4DE51C9A4A14006179AB /* DeleteVariableReq.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeleteVariableReq.swift; sourceTree = "<group>"; };
 		10BD4DE71C9A50A2006179AB /* DeletePhotoReq.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeletePhotoReq.swift; sourceTree = "<group>"; };
+		10C0F12E1CA93D9C000BA06E /* jpush-ios-2.1.0.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = "jpush-ios-2.1.0.a"; sourceTree = "<group>"; };
+		10C0F12F1CA93D9C000BA06E /* JPUSHService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JPUSHService.h; sourceTree = "<group>"; };
 		10D0D56C1C4CD1D00093F687 /* PeopleCongressSystem.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PeopleCongressSystem.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		10D0D56F1C4CD1D00093F687 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		10D0D5741C4CD1D00093F687 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -250,6 +253,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				10C0F1301CA93D9C000BA06E /* jpush-ios-2.1.0.a in Frameworks */,
 				3E604AFB394FDCDDAD7A9BDE /* Pods_PeopleCongressSystem.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -288,6 +292,23 @@
 			path = Models;
 			sourceTree = "<group>";
 		};
+		10C0F12C1CA93D5F000BA06E /* ThirdPartys */ = {
+			isa = PBXGroup;
+			children = (
+				10C0F12D1CA93D9C000BA06E /* JPush */,
+			);
+			path = ThirdPartys;
+			sourceTree = "<group>";
+		};
+		10C0F12D1CA93D9C000BA06E /* JPush */ = {
+			isa = PBXGroup;
+			children = (
+				10C0F12E1CA93D9C000BA06E /* jpush-ios-2.1.0.a */,
+				10C0F12F1CA93D9C000BA06E /* JPUSHService.h */,
+			);
+			path = JPush;
+			sourceTree = "<group>";
+		};
 		10D0D5631C4CD1D00093F687 = {
 			isa = PBXGroup;
 			children = (
@@ -311,6 +332,7 @@
 		10D0D56E1C4CD1D00093F687 /* PeopleCongressSystem */ = {
 			isa = PBXGroup;
 			children = (
+				10C0F12C1CA93D5F000BA06E /* ThirdPartys */,
 				10A6866F1C7DF72B00D050F0 /* Models */,
 				10D0D5B11C4E36350093F687 /* CoreData */,
 				10D0D5AE1C4E2C6A0093F687 /* HttpRequests */,
@@ -929,6 +951,7 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SDKROOT)/usr/lib/system",
+					"$(PROJECT_DIR)/PeopleCongressSystem/ThirdPartys/JPush",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.npc.pcsystem;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -950,6 +973,7 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SDKROOT)/usr/lib/system",
+					"$(PROJECT_DIR)/PeopleCongressSystem/ThirdPartys/JPush",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.npc.pcsystem;
 				PRODUCT_NAME = "$(TARGET_NAME)";
