@@ -25,7 +25,7 @@ class CheckInReq: HttpBaseReq {
         params["FieldID"] = PCSDataManager.defaultManager().accountManager.user!.field
         params["thecharset"] = "gb2312"
         
-        self.request("HuoDongAddCheckIn", nameSpace: "GetRDDBlist", params: params, completion: completion)
+        self.request("HuoDongAddCheckIn", nameSpace: "gongzuorenyuan", params: params, completion: completion)
     }
     
 }

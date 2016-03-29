@@ -30,6 +30,13 @@
 		100B203E1C89222F00435EF0 /* PersonListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 100B203D1C89222F00435EF0 /* PersonListViewController.swift */; };
 		100B20401C895FC600435EF0 /* GetPersonListReq.swift in Sources */ = {isa = PBXBuildFile; fileRef = 100B203F1C895FC600435EF0 /* GetPersonListReq.swift */; };
 		100EA8841CA819CE00C5FA59 /* GetUrlReq.swift in Sources */ = {isa = PBXBuildFile; fileRef = 100EA8831CA819CE00C5FA59 /* GetUrlReq.swift */; };
+		103261161CAA80C50075BBA8 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 103261151CAA80C50075BBA8 /* CFNetwork.framework */; };
+		103261181CAA80E50075BBA8 /* CoreFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 103261171CAA80E50075BBA8 /* CoreFoundation.framework */; };
+		1032611A1CAA80EF0075BBA8 /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 103261191CAA80EF0075BBA8 /* CoreTelephony.framework */; };
+		1032611C1CAA80F80075BBA8 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1032611B1CAA80F80075BBA8 /* SystemConfiguration.framework */; };
+		1032611E1CAA81010075BBA8 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1032611D1CAA81010075BBA8 /* CoreGraphics.framework */; };
+		103261201CAA810A0075BBA8 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1032611F1CAA810A0075BBA8 /* Security.framework */; };
+		103261221CAA81100075BBA8 /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 103261211CAA81100075BBA8 /* libz.tbd */; };
 		103A9D2C1CA0F09C003576C3 /* GetVariableDetailReq.swift in Sources */ = {isa = PBXBuildFile; fileRef = 103A9D2B1CA0F09C003576C3 /* GetVariableDetailReq.swift */; };
 		1042329B1C8E61F400809859 /* ChangePasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1042329A1C8E61F400809859 /* ChangePasswordViewController.swift */; };
 		104564C81CA22C530031FFCA /* GuideViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 104564C71CA22C530031FFCA /* GuideViewController.swift */; };
@@ -154,6 +161,13 @@
 		100B203D1C89222F00435EF0 /* PersonListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PersonListViewController.swift; sourceTree = "<group>"; };
 		100B203F1C895FC600435EF0 /* GetPersonListReq.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetPersonListReq.swift; sourceTree = "<group>"; };
 		100EA8831CA819CE00C5FA59 /* GetUrlReq.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetUrlReq.swift; sourceTree = "<group>"; };
+		103261151CAA80C50075BBA8 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
+		103261171CAA80E50075BBA8 /* CoreFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreFoundation.framework; path = System/Library/Frameworks/CoreFoundation.framework; sourceTree = SDKROOT; };
+		103261191CAA80EF0075BBA8 /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
+		1032611B1CAA80F80075BBA8 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		1032611D1CAA81010075BBA8 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		1032611F1CAA810A0075BBA8 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		103261211CAA81100075BBA8 /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
 		103A9D2B1CA0F09C003576C3 /* GetVariableDetailReq.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetVariableDetailReq.swift; sourceTree = "<group>"; };
 		1042329A1C8E61F400809859 /* ChangePasswordViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChangePasswordViewController.swift; sourceTree = "<group>"; };
 		104564C71CA22C530031FFCA /* GuideViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GuideViewController.swift; sourceTree = "<group>"; };
@@ -253,6 +267,13 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				103261221CAA81100075BBA8 /* libz.tbd in Frameworks */,
+				103261201CAA810A0075BBA8 /* Security.framework in Frameworks */,
+				1032611E1CAA81010075BBA8 /* CoreGraphics.framework in Frameworks */,
+				1032611C1CAA80F80075BBA8 /* SystemConfiguration.framework in Frameworks */,
+				1032611A1CAA80EF0075BBA8 /* CoreTelephony.framework in Frameworks */,
+				103261181CAA80E50075BBA8 /* CoreFoundation.framework in Frameworks */,
+				103261161CAA80C50075BBA8 /* CFNetwork.framework in Frameworks */,
 				10C0F1301CA93D9C000BA06E /* jpush-ios-2.1.0.a in Frameworks */,
 				3E604AFB394FDCDDAD7A9BDE /* Pods_PeopleCongressSystem.framework in Frameworks */,
 			);
@@ -544,6 +565,13 @@
 		788B022D8203C53FB6ACC595 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				103261211CAA81100075BBA8 /* libz.tbd */,
+				1032611F1CAA810A0075BBA8 /* Security.framework */,
+				1032611D1CAA81010075BBA8 /* CoreGraphics.framework */,
+				1032611B1CAA80F80075BBA8 /* SystemConfiguration.framework */,
+				103261191CAA80EF0075BBA8 /* CoreTelephony.framework */,
+				103261171CAA80E50075BBA8 /* CoreFoundation.framework */,
+				103261151CAA80C50075BBA8 /* CFNetwork.framework */,
 				100691C31C969395000AEFEA /* libcommonCrypto.tbd */,
 				100691C11C9658CD000AEFEA /* MobileCoreServices.framework */,
 				6BCFEC37E5EA0F7BF782CCBF /* Pods_PeopleCongressSystem.framework */,
@@ -944,7 +972,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = PeopleCongressSystem/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -966,7 +994,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = PeopleCongressSystem/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";

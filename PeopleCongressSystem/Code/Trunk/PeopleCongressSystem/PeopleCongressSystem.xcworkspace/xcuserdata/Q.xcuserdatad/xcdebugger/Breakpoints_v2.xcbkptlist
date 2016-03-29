@@ -33,6 +33,38 @@
             endingLineNumber = "53"
             landmarkName = "requestSimpleCompletion(_:)"
             landmarkType = "5">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "PeopleCongressSystem.EditVariableReq.requestSimpleCompletion (Swift.Optional&lt;(Swift.Bool, Swift.Optional&lt;Swift.String&gt;) -&gt; ()&gt;) -&gt; ()"
+                  moduleName = "PeopleCongressSystem"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/Q/GitHub/Goverment/PeopleCongressSystem/Code/Trunk/PeopleCongressSystem/PeopleCongressSystem/HttpRequests/EditVariableReq.swift"
+                  timestampString = "480936243.566969"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "53"
+                  endingLineNumber = "53"
+                  offsetFromSymbolStart = "4000">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "PeopleCongressSystem.EditVariableReq.(requestSimpleCompletion (Swift.Optional&lt;(Swift.Bool, Swift.Optional&lt;Swift.String&gt;) -&gt; ()&gt;) -&gt; ()).(closure #1)"
+                  moduleName = "PeopleCongressSystem"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/Q/GitHub/Goverment/PeopleCongressSystem/Code/Trunk/PeopleCongressSystem/PeopleCongressSystem/HttpRequests/EditVariableReq.swift"
+                  timestampString = "480936243.567334"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "54"
+                  endingLineNumber = "54"
+                  offsetFromSymbolStart = "144">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
