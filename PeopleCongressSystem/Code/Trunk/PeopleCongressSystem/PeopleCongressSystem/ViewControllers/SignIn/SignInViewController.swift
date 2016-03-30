@@ -28,6 +28,8 @@ class SignInViewController: UIViewController, UIActionSheetDelegate, UITextField
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        self.navigationController?.navigationBar.translucent = false
+        
         CustomObjectUtil.customObjectsLayout([accountTextField, passwordTextField, serverSelectButton], backgroundColor: UIColor.whiteColor(), borderWidth: 0.0, borderColor: nil, corner: 3.0)
         CustomObjectUtil.customObjectsLayout([signInButton], backgroundColor: UIColor.clearColor(), borderWidth: 1.0, borderColor: UIColor.whiteColor(), corner: 3.0)
         
@@ -74,6 +76,7 @@ class SignInViewController: UIViewController, UIActionSheetDelegate, UITextField
     }
     
     override func viewWillDisappear(animated: Bool) {
+        self.view.endEditing(true)
         accountTextField.text = nil
         passwordTextField.text = nil
         
