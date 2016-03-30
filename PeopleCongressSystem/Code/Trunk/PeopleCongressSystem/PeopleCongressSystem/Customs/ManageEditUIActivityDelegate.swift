@@ -125,6 +125,17 @@ class ManageEditUIActivityDelegate: ManageEditUIDelegate {
         tableView?.reloadRowsAtIndexPaths([NSIndexPath(forRow: 1, inSection: 0)], withRowAnimation: UITableViewRowAnimation.None)
     }
     
+    // MARK: - CellDelegate
+    
+    override func didEndEditing(cell: NormalImageTableCell) {
+        super.didEndEditing(cell)
+        let indexPath = tableView?.indexPathForCell(cell)
+        let activity = self.editObject as? Activity
+        let section = EditSections(rawValue: indexPath!.section)!
+        let row = section.rows()[indexPath!.row]
+        activity?.setValue(cell.titleTextField.text, forKey: row.key!)
+    }
+    
     // MARK: - UITableView
     
     override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {

@@ -77,9 +77,8 @@ extension UIViewController: UIWebViewDelegate {
         htmlWebView.delegate = self
         htmlWebView.frame = self.view.bounds
         htmlWebView.scrollView.scrollEnabled = false
-        
-        if self.respondsToSelector("loadMainPage") {
-            self.performSelector("loadMainPage")
+        if self.respondsToSelector(Selector("loadMainPage")) {
+            self.performSelector(Selector("loadMainPage"))
         }
     }
     

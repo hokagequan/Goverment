@@ -29,8 +29,7 @@ class CollectionViewCell: UITableViewCell, UICollectionViewDataSource, UICollect
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
-        
-        let longPress = UILongPressGestureRecognizer(target: self, action: Selector("handleLongPress:"))
+        let longPress = UILongPressGestureRecognizer(target: self, action: #selector(self.handleLongPress(_:)))
         longPress.delaysTouchesBegan = true
         longPress.delegate = self
         collectionView.addGestureRecognizer(longPress)

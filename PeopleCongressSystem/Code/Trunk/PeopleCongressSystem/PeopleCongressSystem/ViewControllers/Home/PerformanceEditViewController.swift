@@ -89,7 +89,7 @@ class PerformanceEditViewController: UIViewController {
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         
-        self.registerKeyboardListener(Selector("handleKeyboardChange:"))
+        self.registerKeyboardListener(#selector(self.handleKeyboardChange(_:)))
     }
     
     override func viewDidAppear(animated: Bool) {

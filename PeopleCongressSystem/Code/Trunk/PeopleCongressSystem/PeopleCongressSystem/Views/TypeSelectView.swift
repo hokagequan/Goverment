@@ -26,7 +26,7 @@ class TypeSelectView: UIControl, UITableViewDataSource, UITableViewDelegate {
     weak var delegate: TypeSelectViewDelegate?
 
     override func awakeFromNib() {
-        self.addTarget(self, action: Selector("dismiss"), forControlEvents: UIControlEvents.TouchUpInside)
+        self.addTarget(self, action: #selector(self.dismiss), forControlEvents: UIControlEvents.TouchUpInside)
         
         typeTableView.registerClass(UITableViewCell.self, forCellReuseIdentifier: "Cell")
         typeTableView.layoutMargins = UIEdgeInsetsZero

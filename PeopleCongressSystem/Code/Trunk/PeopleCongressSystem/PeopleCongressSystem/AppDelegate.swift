@@ -29,8 +29,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         JPUSHService.registerForRemoteNotificationTypes(UIUserNotificationType.Alert.rawValue | UIUserNotificationType.Badge.rawValue | UIUserNotificationType.Sound.rawValue, categories: nil)
         
-        // FIXME: 注册
-        JPUSHService.setupWithOption(launchOptions, appKey: "", channel: "", apsForProduction: false)
+        JPUSHService.setupWithOption(launchOptions, appKey: "98ef8ff0ef607654540fc5ce", channel: "AppStore", apsForProduction: false)
         
         return true
     }

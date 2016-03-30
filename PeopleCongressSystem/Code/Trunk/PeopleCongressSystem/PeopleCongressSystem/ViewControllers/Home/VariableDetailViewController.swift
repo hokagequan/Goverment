@@ -157,7 +157,7 @@ class VariableDetailViewController: UIViewController, UITableViewDataSource, UIT
     }
     
     func finishAddPhotos(cell: CollectionViewCell) {
-        addPhotoCount--
+        addPhotoCount -= 1
         
         if addPhotoCount == 0 {
             EZLoadingActivity.hide()

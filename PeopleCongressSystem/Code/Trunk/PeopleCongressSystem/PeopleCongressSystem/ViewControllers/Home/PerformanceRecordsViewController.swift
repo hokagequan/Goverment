@@ -139,6 +139,7 @@ class PerformanceRecordsViewController: UIViewController, UITableViewDataSource,
         cell.titleLabel.text = activity.title
         cell.locationLabel.text = activity.organization
         cell.dateLabel.text = activity.beginTime?.substringToIndex(activity.beginTime!.startIndex.advancedBy(10))
+        cell.iconImageView.hidden = true
         
         return cell
     }
@@ -177,7 +178,7 @@ class PerformanceRecordsViewController: UIViewController, UITableViewDataSource,
         if segue.identifier == "EditSegue" {
             let vc = segue.destinationViewController as! PerformanceEditViewController
             vc.pageType = gotoPageType
-            vc.editObject = selectedObject
+            vc.editObject = selectedObject ?? Activity()
         }
     }
 

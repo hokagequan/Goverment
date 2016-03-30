@@ -58,9 +58,11 @@ class QRCodeScanViewController: UIViewController, AVCaptureMetadataOutputObjects
     }
     
     func handleCode(code: String) {
+        let range = code.rangeOfString(":")!
+        let personID = code.substringToIndex(range.startIndex)
         let req = CheckInReq()
         req.activityID = "\(activity!.identifier)"
-        req.qrCodes = [code]
+        req.qrCodes = [personID]
         EZLoadingActivity.show("", disableUI: true)
         EZLoadingActivity.Settings.SuccessText = "签到成功"
         EZLoadingActivity.Settings.FailText = "签到失败"

@@ -18,7 +18,7 @@ class GetActivityNotifyCountReq: HttpBaseReq {
     
     func requestSimpleCompletion(completion: SimpleCompletion?) {
         var params = [String: AnyObject]()
-        params["rddb_guid"] = PCSDataManager.defaultManager().accountManager.user!.token
+        params["rddb_guid"] = PCSDataManager.defaultManager().accountManager.user!.congressID
         params["CheckTicket"] = PCSDataManager.defaultManager().accountManager.user!.token
         params["FieldID"] = PCSDataManager.defaultManager().accountManager.user!.field
         params["thecharset"] = "gb2312"
