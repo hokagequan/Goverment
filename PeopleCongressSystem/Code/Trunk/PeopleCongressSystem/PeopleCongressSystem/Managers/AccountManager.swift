@@ -169,6 +169,12 @@ class AccountManager {
                 return
             }
             
+            guard let _ = info["user_ID"] as? String else {
+                completion?(false, "登录失败")
+                
+                return
+            }
+            
             let context = CoreDataManager.defalutManager().managedObjectContext
             let fetchReq = NSFetchRequest(entityName: "UserEntity")
             
