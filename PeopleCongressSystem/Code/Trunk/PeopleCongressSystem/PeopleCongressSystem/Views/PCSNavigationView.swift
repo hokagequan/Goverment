@@ -74,7 +74,7 @@ import UIKit
                 backButton.setImage(UIImage(named: "navi_back"), forState: UIControlState.Normal)
             }
             backButton.setTitleColor(colorRed, forState: UIControlState.Normal)
-            backButton.addTarget(self, action: Selector("clickBack"), forControlEvents: UIControlEvents.TouchUpInside)
+            backButton.addTarget(self, action: #selector(PCSNavigationView.clickBack), forControlEvents: UIControlEvents.TouchUpInside)
             self.addSubview(backButton)
         }
         

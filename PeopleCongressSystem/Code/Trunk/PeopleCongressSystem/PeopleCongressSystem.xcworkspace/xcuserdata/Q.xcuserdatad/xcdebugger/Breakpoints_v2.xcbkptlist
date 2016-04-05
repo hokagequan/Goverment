@@ -10,11 +10,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "PeopleCongressSystem/Managers/PCSDataManager.swift"
-            timestampString = "480434323.531023"
+            timestampString = "481540528.853837"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "298"
-            endingLineNumber = "298"
+            startingLineNumber = "395"
+            endingLineNumber = "395"
             landmarkName = "getActivityList(_:completion:)"
             landmarkType = "5">
          </BreakpointContent>
@@ -105,13 +105,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "PeopleCongressSystem/ViewControllers/Home/VariableDetailViewController.swift"
-            timestampString = "481518239.05022"
+            filePath = "PeopleCongressSystem/Managers/PCSDataManager.swift"
+            timestampString = "481542271.511311"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "179"
-            endingLineNumber = "179"
-            landmarkName = "uploadAddedPhotos(_:)"
+            startingLineNumber = "113"
+            endingLineNumber = "113"
+            landmarkName = "saveVariableToLocal(_:completion:)"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

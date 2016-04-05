@@ -96,10 +96,25 @@ class VariableDetailViewController: UIViewController, UITableViewDataSource, UIT
         CustomObjectUtil.customObjectsLayout([saveButton, submitButton], backgroundColor: colorRed, borderWidth: 0.0, borderColor: nil, corner: 3.0)
         
         self.customUI()
+        
+        if pageType == VariablePageType.Add {
+            guard let localVariable = PCSDataManager.defaultManager().getLocalVariable() else {
+                return
+            }
+            
+            variable = localVariable
+            tableView.reloadData()
+            
+            return
+        }
     }
     
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
+        
+        if pageType == VariablePageType.Add {
+            return
+        }
         
         EZLoadingActivity.show("", disableUI: true)
         let req = GetVariableDetailReq()
@@ -164,7 +179,18 @@ class VariableDetailViewController: UIViewController, UITableViewDataSource, UIT
         if addPhotoCount == 0 {
             EZLoadingActivity.hide()
             cell.addImages(self.addPhotos)
+            variable.photos += self.addPhotos
         }
+    }
+    
+    func saveToLocal(completion: () -> Void) {
+        let variable = self.createVariable()
+        variable.token = GlobalUtil.randomImageName()
+        PCSDataManager.defaultManager().saveVariableToLocal(variable, completion: completion)
+    }
+    
+    func cancelSaveToLocal(completion: () -> Void) {
+        PCSDataManager.defaultManager().deleteLocalVariable(completion)
     }
     
     func uploadAddedPhotos(completion: (() -> Void)?) {
@@ -599,21 +625,29 @@ class VariableDetailViewController: UIViewController, UITableViewDataSource, UIT
     // MARK: - Navigation
     
     func willDismiss() -> Bool {
-        let alert = UIAlertController(title: nil, message: "是否保存？", preferredStyle: UIAlertControllerStyle.Alert)
-        
-        let cancelAction = UIAlertAction(title: "取消", style: UIAlertActionStyle.Cancel) { (action) in
-            self.navigationController?.popViewControllerAnimated(true)
+        if pageType == VariablePageType.Add {
+            let alert = UIAlertController(title: nil, message: "是否保存？", preferredStyle: UIAlertControllerStyle.Alert)
+            
+            let cancelAction = UIAlertAction(title: "取消", style: UIAlertActionStyle.Cancel) { (action) in
+                self.cancelSaveToLocal({ 
+                    self.navigationController?.popViewControllerAnimated(true)
+                })
+            }
+            let saveAction = UIAlertAction(title: "保存", style: UIAlertActionStyle.Default) { (action) in
+                self.saveToLocal({ 
+                    self.navigationController?.popViewControllerAnimated(true)
+                })
+            }
+            
+            alert.addAction(cancelAction)
+            alert.addAction(saveAction)
+            
+            self.presentViewController(alert, animated: true, completion: nil)
+            
+            return true
         }
-        let saveAction = UIAlertAction(title: "保存", style: UIAlertActionStyle.Default) { (action) in
-            self.clickSave("");
-        }
         
-        alert.addAction(cancelAction)
-        alert.addAction(saveAction)
-        
-        self.presentViewController(alert, animated: true, completion: nil)
-        
-        return true
+        return false
     }
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation

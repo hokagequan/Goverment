@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import CoreData
 import ReachabilitySwift
 
 class PCSDataManager {
@@ -48,6 +49,102 @@ class PCSDataManager {
     deinit {
         reachability?.stopNotifier()
     }
+    
+    func deleteLocalVariable(completion: () -> Void) {
+        let fetchReq = NSFetchRequest(entityName: "VariableEntity")
+        let context = CoreDataManager.defalutManager().managedObjectContext
+        
+        do {
+            let fetchObjects = try context.executeFetchRequest(fetchReq)
+            guard let localVariable = fetchObjects.first else {
+                completion()
+                
+                return
+            }
+            
+            context.deleteObject(localVariable as! NSManagedObject)
+            
+            CoreDataManager.defalutManager().saveContext({
+                dispatch_async(dispatch_get_main_queue(), {
+                    completion()
+                })
+            })
+        }
+        catch {
+            completion()
+        }
+    }
+    
+    func getLocalVariable() -> Variable? {
+        let fetchReq = NSFetchRequest(entityName: "VariableEntity")
+        let context = CoreDataManager.defalutManager().managedObjectContext
+        
+        do {
+            let fetchObjects = try context.executeFetchRequest(fetchReq)
+            guard let localVariable = fetchObjects.first as? VariableEntity else {
+                return nil
+            }
+            
+            let variable = Variable()
+            variable.token = localVariable.identifier
+            variable.title = localVariable.title
+            variable.type = localVariable.typeID
+            variable.typeTitle = localVariable.typeTitle
+            variable.content = localVariable.content
+            variable.time = localVariable.time
+            variable.remark = localVariable.remark
+            
+            if localVariable.photos != nil {
+                variable.photos = NSKeyedUnarchiver.unarchiveObjectWithData(localVariable.photos!) as! Array<String>
+            }
+            
+            return variable
+        }
+        catch {
+            return nil
+        }
+    }
+    
+    func saveVariableToLocal(variable: Variable, completion: () -> Void) {
+        let fetchReq = NSFetchRequest(entityName: "VariableEntity")
+        let context = CoreDataManager.defalutManager().managedObjectContext
+        
+        do {
+            let fetchObjects = try context.executeFetchRequest(fetchReq)
+            var localVariable: VariableEntity? = nil
+            
+            if fetchObjects.count > 0 {
+                localVariable = fetchObjects.first as? VariableEntity
+            }
+            else {
+                localVariable = NSEntityDescription.insertNewObjectForEntityForName("VariableEntity", inManagedObjectContext: context) as? VariableEntity
+            }
+            
+            localVariable?.identifier = variable.token
+            localVariable?.title = variable.title
+            localVariable?.content = variable.content
+            localVariable?.typeID = variable.type
+            localVariable?.typeTitle = variable.typeTitle
+            localVariable?.persons = variable.persons
+            localVariable?.time = variable.time
+            localVariable?.remark = variable.remark
+            
+            if variable.photos.count > 0 {
+                localVariable?.photos = NSKeyedArchiver.archivedDataWithRootObject(variable.photos)
+            }
+            
+            CoreDataManager.defalutManager().saveContext({
+                dispatch_async(dispatch_get_main_queue(), { 
+                    completion()
+                })
+            })
+        }
+        catch {
+            completion()
+        }
+    }
+    
+    // MARK: - Server Interface
     
     /// @brief 添加活动
     func addActivity(activity: Activity, completion: SimpleCompletion?) {

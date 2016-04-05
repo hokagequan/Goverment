@@ -66,7 +66,7 @@ class PersonListViewController: UIViewController, UITableViewDelegate, UITableVi
                     selectedIndexPaths.append(NSIndexPath(forRow: index, inSection: 0))
                 }
                 
-                index++
+                index += 1
                 
                 return person
             })

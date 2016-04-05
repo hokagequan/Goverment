@@ -109,7 +109,7 @@ class CollectionViewCell: UITableViewCell, UICollectionViewDataSource, UICollect
         else {
             let photoName = images[indexPath.row - 1]
             let stringURL = "\(imageDownloadURL)\(photoName)"
-            cell.iconImageView.loadImageURL(stringURL, name: photoName, placeholder: "")
+            cell.iconImageView.loadImageURL(stringURL, name: photoName, placeholder: UIImageView.pathForTempImage().stringByAppendingString("/\(photoName)"))
         }
         
         return cell

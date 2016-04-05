@@ -22,7 +22,7 @@ class DatePickerView: UIControl {
     weak var delegate: DatePickerViewDelegate?
 
     override func awakeFromNib() {
-        self.addTarget(self, action: Selector("dismiss"), forControlEvents: UIControlEvents.TouchUpInside)
+        self.addTarget(self, action: #selector(DatePickerView.dismiss), forControlEvents: UIControlEvents.TouchUpInside)
     }
     
     func dismiss() {

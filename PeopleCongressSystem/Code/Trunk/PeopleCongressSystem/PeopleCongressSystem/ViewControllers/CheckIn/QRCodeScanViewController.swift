@@ -78,7 +78,7 @@ class QRCodeScanViewController: UIViewController, AVCaptureMetadataOutputObjects
                     EZLoadingActivity.hide(success: false, animated: false)
                 }
                 
-                self.performSelector(Selector("startScan"), withObject: nil, afterDelay: 1.0)
+                self.performSelector(#selector(QRCodeScanViewController.startScan), withObject: nil, afterDelay: 1.0)
             }
             
             if result?.isSuccess == true {
