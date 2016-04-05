@@ -208,10 +208,6 @@ class VariableDetailViewController: UIViewController, UITableViewDataSource, UIT
     // MARK: - Actions
     
     @IBAction func clickSave(sender: AnyObject) {
-        self.uploadAddedPhotos { () -> Void in
-            print("completion")
-        }
-        
         if pageType == VariablePageType.Add {
             variable.token = GlobalUtil.randomImageName()
             EZLoadingActivity.show("", disableUI: true)

@@ -10,7 +10,7 @@ import Foundation
 
 /// @brief Server
 let serverURL1 = "http://218.61.34.40:8099/"
-let imageDownloadURL = "http://218.25.160.202:8099/lvzhiImage/"
+let imageDownloadURL = "http://218.61.34.40:8099/lvzhiImage/"
 let serverSoapAction = "http://tempuri.org/"
 let photoDownloadURL = "http://218.61.34.40:8099/File/headimage/"
 let qrCodeDownloadURL = "http://218.61.34.40:8099/File/QRCode/"
