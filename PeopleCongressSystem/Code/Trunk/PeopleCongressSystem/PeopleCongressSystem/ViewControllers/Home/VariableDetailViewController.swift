@@ -17,7 +17,7 @@ enum VariablePageType {
     
 }
 
-class VariableDetailViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, CollectionViewCellDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate, TypeSelectViewDelegate {
+class VariableDetailViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, CollectionViewCellDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate, TypeSelectViewDelegate, NormalImageTableCellDelegate {
     
     enum Sections: Int {
         
@@ -412,6 +412,37 @@ class VariableDetailViewController: UIViewController, UITableViewDataSource, UIT
         tableView.reloadRowsAtIndexPaths([NSIndexPath(forRow: 1, inSection: 0)], withRowAnimation: UITableViewRowAnimation.None)
     }
     
+    // MARK: - NormalImageTableCellDelegate
+    
+    func didEditing(cell: NormalImageTableCell) {
+        tableView?.scrollEnabled = false
+        let keyboardHeight: CGFloat = 246.0
+        let deltaY = cell.frame.origin.y + 50.0 - (tableView!.bounds.size.height - keyboardHeight) + tableView!.frame.origin.y
+        
+        if deltaY > 0 {
+            tableView?.setContentOffset(CGPointMake(0, deltaY), animated: true)
+        }
+    }
+    
+    func didEndEditing(cell: NormalImageTableCell) {
+        tableView?.setContentOffset(CGPointZero, animated: true)
+        tableView?.scrollEnabled = true
+    }
+    
+    func didEditingTime(cell: NormalImageTableCell, datePicker: DatePickerView) {
+        self.view.endEditing(true)
+        let keyboardHeight: CGFloat = datePicker.datePickerContainer.bounds.size.height
+        let deltaY = cell.frame.origin.y + 50.0 - (tableView!.bounds.size.height - keyboardHeight) + tableView!.frame.origin.y
+        
+        if deltaY > 0 {
+            tableView?.setContentOffset(CGPointMake(0, deltaY), animated: true)
+        }
+    }
+    
+    func didEndEditingTime(cell: NormalImageTableCell) {
+        tableView?.setContentOffset(CGPointZero, animated: true)
+    }
+    
     // MARK: - UIImagePicker
     
     func imagePickerController(picker: UIImagePickerController, didFinishPickingImage image: UIImage, editingInfo: [String : AnyObject]?) {
@@ -509,6 +540,7 @@ class VariableDetailViewController: UIViewController, UITableViewDataSource, UIT
         cell.iconImageView.image = UIImage(named: row.icon!)
         cell.titleTextField.text = variable.valueForKey(row.key!) as? String
         cell.editable = !variable.submitted
+        cell.delegate = self
         
         switch row.title! {
         case "类型:":
