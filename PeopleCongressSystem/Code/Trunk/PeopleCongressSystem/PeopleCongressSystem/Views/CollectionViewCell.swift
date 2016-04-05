@@ -12,6 +12,7 @@ import UIKit
     
     optional
     func didClickAdd(cell: CollectionViewCell)
+    func didClickImage(cell: CollectionViewCell, image: UIImage)
     func didSelectIndex(cell: CollectionViewCell, index: Int)
     func didLongPressIndex(cell: CollectionViewCell, index: Int)
     
@@ -122,6 +123,9 @@ class CollectionViewCell: UITableViewCell, UICollectionViewDataSource, UICollect
         }
         
         delegate?.didSelectIndex(self, index: indexPath.row - 1)
+        
+        let cell = collectionView.cellForItemAtIndexPath(indexPath) as! SimpleImageCell
+        delegate?.didClickImage(self, image: cell.iconImageView.image!)
     }
 
 }

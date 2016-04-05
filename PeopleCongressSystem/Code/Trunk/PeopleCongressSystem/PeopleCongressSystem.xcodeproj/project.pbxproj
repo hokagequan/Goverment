@@ -63,6 +63,8 @@
 		107505731C91570F00C9589E /* GetVariablesReq.swift in Sources */ = {isa = PBXBuildFile; fileRef = 107505721C91570F00C9589E /* GetVariablesReq.swift */; };
 		107505751C915C9E00C9589E /* Variable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 107505741C915C9E00C9589E /* Variable.swift */; };
 		108965971C8F183700CA98D0 /* ChangePasswordReq.swift in Sources */ = {isa = PBXBuildFile; fileRef = 108965961C8F183700CA98D0 /* ChangePasswordReq.swift */; };
+		1091C2031CB36475005140D5 /* PhotoBrowserView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1091C2021CB36475005140D5 /* PhotoBrowserView.swift */; };
+		1091C2051CB36489005140D5 /* PhotoBrowserView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1091C2041CB36489005140D5 /* PhotoBrowserView.xib */; };
 		10A6866A1C7DEF7400D050F0 /* GlobalUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10A686691C7DEF7400D050F0 /* GlobalUtil.swift */; };
 		10A6866D1C7DF12600D050F0 /* UserEntity+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10A6866B1C7DF12600D050F0 /* UserEntity+CoreDataProperties.swift */; };
 		10A6866E1C7DF12600D050F0 /* UserEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10A6866C1C7DF12600D050F0 /* UserEntity.swift */; };
@@ -194,6 +196,8 @@
 		107505721C91570F00C9589E /* GetVariablesReq.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetVariablesReq.swift; sourceTree = "<group>"; };
 		107505741C915C9E00C9589E /* Variable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Variable.swift; sourceTree = "<group>"; };
 		108965961C8F183700CA98D0 /* ChangePasswordReq.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChangePasswordReq.swift; sourceTree = "<group>"; };
+		1091C2021CB36475005140D5 /* PhotoBrowserView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoBrowserView.swift; sourceTree = "<group>"; };
+		1091C2041CB36489005140D5 /* PhotoBrowserView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PhotoBrowserView.xib; sourceTree = "<group>"; };
 		10A686691C7DEF7400D050F0 /* GlobalUtil.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GlobalUtil.swift; sourceTree = "<group>"; };
 		10A6866B1C7DF12600D050F0 /* UserEntity+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UserEntity+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		10A6866C1C7DF12600D050F0 /* UserEntity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserEntity.swift; sourceTree = "<group>"; };
@@ -420,6 +424,8 @@
 				107505701C914E8A00C9589E /* RecordCell.swift */,
 				100691B41C93B978000AEFEA /* SimpleImageCell.swift */,
 				100691B61C93B9F0000AEFEA /* CollectionViewCell.swift */,
+				1091C2021CB36475005140D5 /* PhotoBrowserView.swift */,
+				1091C2041CB36489005140D5 /* PhotoBrowserView.xib */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -679,6 +685,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				10DBF21A1C8C0CF7007620BA /* NormalInfoCell.xib in Resources */,
+				1091C2051CB36489005140D5 /* PhotoBrowserView.xib in Resources */,
 				100B20321C887C2600435EF0 /* TypeSelectView.xib in Resources */,
 				10D0D59B1C4CDB5A0093F687 /* CheckIn.storyboard in Resources */,
 				10D0D57D1C4CD1D00093F687 /* LaunchScreen.storyboard in Resources */,
@@ -789,6 +796,7 @@
 				10D0D5C31C4E7D710093F687 /* FindPwdViewController.swift in Sources */,
 				10D0D5951C4CD9810093F687 /* MainViewController.swift in Sources */,
 				10D0D5C11C4E7B160093F687 /* PCSDataManager.swift in Sources */,
+				1091C2031CB36475005140D5 /* PhotoBrowserView.swift in Sources */,
 				100B20301C887C1000435EF0 /* TypeSelectView.swift in Sources */,
 				100160331C8D884D0095D023 /* MeViewController.swift in Sources */,
 				10D0D5C71C4E81FA0093F687 /* NormalImageCell.swift in Sources */,

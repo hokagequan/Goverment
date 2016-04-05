@@ -360,10 +360,14 @@ class VariableDetailViewController: UIViewController, UITableViewDataSource, UIT
     }
     
     func didSelectIndex(cell: CollectionViewCell, index: Int) {
-        // TODO: 点击照片
         if variable.submitted == true {
             return
         }
+    }
+    
+    func didClickImage(cell: CollectionViewCell, image: UIImage) {
+        let photoBrowser = PhotoBrowserView.view()
+        photoBrowser.show(image)
     }
     
     func didLongPressIndex(cell: CollectionViewCell, index: Int) {
