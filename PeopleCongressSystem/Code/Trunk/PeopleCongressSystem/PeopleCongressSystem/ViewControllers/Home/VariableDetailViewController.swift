@@ -17,7 +17,7 @@ enum VariablePageType {
     
 }
 
-class VariableDetailViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, CollectionViewCellDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate, TypeSelectViewDelegate, NormalImageTableCellDelegate {
+class VariableDetailViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, CollectionViewCellDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate, TypeSelectViewDelegate, NormalImageTableCellDelegate, PCSNavigationViewDelegate {
     
     enum Sections: Int {
         
@@ -89,6 +89,8 @@ class VariableDetailViewController: UIViewController, UITableViewDataSource, UIT
         // Do any additional setup after loading the view.
         self.navigationItem.hidesBackButton = true
         PCSCustomUtil.customNavigationController(self)
+        
+        naviView.delegate = self
         
         tableView.registerNib(UINib(nibName: "NormalImageTableCell", bundle: nil), forCellReuseIdentifier: "NormalImageTableCell")
         CustomObjectUtil.customObjectsLayout([saveButton, submitButton], backgroundColor: colorRed, borderWidth: 0.0, borderColor: nil, corner: 3.0)
@@ -590,14 +592,30 @@ class VariableDetailViewController: UIViewController, UITableViewDataSource, UIT
         }
     }
 
-    /*
     // MARK: - Navigation
+    
+    func willDismiss() -> Bool {
+        let alert = UIAlertController(title: nil, message: "是否保存？", preferredStyle: UIAlertControllerStyle.Alert)
+        
+        let cancelAction = UIAlertAction(title: "取消", style: UIAlertActionStyle.Cancel) { (action) in
+            self.navigationController?.popViewControllerAnimated(true)
+        }
+        let saveAction = UIAlertAction(title: "保存", style: UIAlertActionStyle.Default) { (action) in
+            self.clickSave("");
+        }
+        
+        alert.addAction(cancelAction)
+        alert.addAction(saveAction)
+        
+        self.presentViewController(alert, animated: true, completion: nil)
+        
+        return true
+    }
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
     }
-    */
 
 }
