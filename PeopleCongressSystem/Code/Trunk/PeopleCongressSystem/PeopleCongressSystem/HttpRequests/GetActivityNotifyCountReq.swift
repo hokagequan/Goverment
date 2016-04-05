@@ -48,6 +48,10 @@ class GetActivityNotifyCountReq: HttpBaseReq {
                 let countRsp = HttpBaseReq.parseResponse(value)
                 success = true
                 count = "\(countRsp!)"
+                
+                if Int(count) < 0 {
+                    count = "0"
+                }
             }
             else {
                 success = false
