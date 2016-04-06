@@ -67,6 +67,7 @@
 		108965971C8F183700CA98D0 /* ChangePasswordReq.swift in Sources */ = {isa = PBXBuildFile; fileRef = 108965961C8F183700CA98D0 /* ChangePasswordReq.swift */; };
 		1091C2031CB36475005140D5 /* PhotoBrowserView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1091C2021CB36475005140D5 /* PhotoBrowserView.swift */; };
 		1091C2051CB36489005140D5 /* PhotoBrowserView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1091C2041CB36489005140D5 /* PhotoBrowserView.xib */; };
+		10A6176E1CB54D2600D8EEF8 /* SubmitDeviceTokenReq.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10A6176D1CB54D2600D8EEF8 /* SubmitDeviceTokenReq.swift */; };
 		10A6866A1C7DEF7400D050F0 /* GlobalUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10A686691C7DEF7400D050F0 /* GlobalUtil.swift */; };
 		10A6866D1C7DF12600D050F0 /* UserEntity+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10A6866B1C7DF12600D050F0 /* UserEntity+CoreDataProperties.swift */; };
 		10A6866E1C7DF12600D050F0 /* UserEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10A6866C1C7DF12600D050F0 /* UserEntity.swift */; };
@@ -202,6 +203,7 @@
 		108965961C8F183700CA98D0 /* ChangePasswordReq.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChangePasswordReq.swift; sourceTree = "<group>"; };
 		1091C2021CB36475005140D5 /* PhotoBrowserView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoBrowserView.swift; sourceTree = "<group>"; };
 		1091C2041CB36489005140D5 /* PhotoBrowserView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PhotoBrowserView.xib; sourceTree = "<group>"; };
+		10A6176D1CB54D2600D8EEF8 /* SubmitDeviceTokenReq.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SubmitDeviceTokenReq.swift; sourceTree = "<group>"; };
 		10A686691C7DEF7400D050F0 /* GlobalUtil.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GlobalUtil.swift; sourceTree = "<group>"; };
 		10A6866B1C7DF12600D050F0 /* UserEntity+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UserEntity+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		10A6866C1C7DF12600D050F0 /* UserEntity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserEntity.swift; sourceTree = "<group>"; };
@@ -558,6 +560,7 @@
 				10BD4DE71C9A50A2006179AB /* DeletePhotoReq.swift */,
 				106E0E201CA55F7F004C48C0 /* GetActivityNotifyCountReq.swift */,
 				100EA8831CA819CE00C5FA59 /* GetUrlReq.swift */,
+				10A6176D1CB54D2600D8EEF8 /* SubmitDeviceTokenReq.swift */,
 			);
 			path = HttpRequests;
 			sourceTree = "<group>";
@@ -830,6 +833,7 @@
 				10DBF20A1C8A5808007620BA /* DatePickerView.swift in Sources */,
 				105C19911C9A3E4A00103B38 /* EditVariableReq.swift in Sources */,
 				105C198F1C994DC700103B38 /* GetCongressInfoReq.swift in Sources */,
+				10A6176E1CB54D2600D8EEF8 /* SubmitDeviceTokenReq.swift in Sources */,
 				107505751C915C9E00C9589E /* Variable.swift in Sources */,
 				10A6866A1C7DEF7400D050F0 /* GlobalUtil.swift in Sources */,
 				103A9D2C1CA0F09C003576C3 /* GetVariableDetailReq.swift in Sources */,
@@ -993,7 +997,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = PeopleCongressSystem/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -1015,7 +1019,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = PeopleCongressSystem/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";

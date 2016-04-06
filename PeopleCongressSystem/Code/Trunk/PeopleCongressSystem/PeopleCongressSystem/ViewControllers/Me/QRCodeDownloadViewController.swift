@@ -42,7 +42,6 @@ class QRCodeDownloadViewController: UIViewController, UITableViewDataSource, UIT
         let cell = tableView.dequeueReusableCellWithIdentifier("QRDownloadCell", forIndexPath: indexPath) as! QRDownloadCell
         cell.selectionStyle = UITableViewCellSelectionStyle.None
         
-        // TODO: 二维码图片
         if indexPath.row == 0 {
             cell.imageView?.image = UIImage()
             cell.titleLabel.text = "App下载二维码"

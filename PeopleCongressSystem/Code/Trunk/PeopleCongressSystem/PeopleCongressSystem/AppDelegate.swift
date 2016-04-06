@@ -60,6 +60,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func application(application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: NSData) {
         JPUSHService.registerDeviceToken(deviceToken)
+        
+        var token = "\(deviceToken)"
+        token = token.stringByReplacingOccurrencesOfString("<", withString: "")
+        token = token.stringByReplacingOccurrencesOfString(">", withString: "")
+        token = token.stringByReplacingOccurrencesOfString(" ", withString: "")
+        PCSDataManager.defaultManager().deviceToken = token
+        
+        if PCSDataManager.defaultManager().accountManager.user?.congressID != nil {
+            let req = SubmitDeviceTokenReq()
+            req.deviceToken = token
+            req.requestSimpleCompletion()
+        }
     }
     
     func application(application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: NSError) {

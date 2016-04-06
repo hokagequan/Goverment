@@ -91,7 +91,6 @@ class SignInViewController: UIViewController, UIActionSheetDelegate, UITextField
     // MARK: - Actions
     
     @IBAction func clickServerSelect(sender: AnyObject) {
-        // TODO: 服务器选择
         let actionSheet = UIActionSheet(title: nil, delegate: self, cancelButtonTitle: "取消", destructiveButtonTitle: nil, otherButtonTitles: "http://175.170.128.160:8099", "")
         actionSheet.showInView(self.view)
     }

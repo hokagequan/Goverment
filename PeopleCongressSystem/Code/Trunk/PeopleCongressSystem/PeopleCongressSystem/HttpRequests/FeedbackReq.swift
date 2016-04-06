@@ -9,7 +9,6 @@
 import UIKit
 
 class FeedbackReq: HttpBaseReq {
-    // TODO: 接口实现
     var message: String? = nil
     
     override init() {

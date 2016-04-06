@@ -158,7 +158,6 @@ class ManageEditUIDelegate: NSObject, UITableViewDataSource, UITableViewDelegate
     }
     
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-        // TODO: 计算Cell高度
         let section = EditSections(rawValue: indexPath.section)!
         let row = section.rows()[indexPath.row]
         

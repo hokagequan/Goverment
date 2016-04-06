@@ -18,6 +18,7 @@ class PCSDataManager {
     var accountManager = AccountManager()
     var content: ContentInfo = ContentInfo()
     var isLaunch: Bool = true
+    var deviceToken: String? = nil
     
     // MARK: - Class Functions
     

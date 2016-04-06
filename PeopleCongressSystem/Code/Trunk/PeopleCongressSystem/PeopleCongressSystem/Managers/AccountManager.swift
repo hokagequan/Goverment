@@ -213,6 +213,13 @@ class AccountManager {
                 else {
                     PCSDataManager.defaultManager().content = WorderContentInfo()
                 }
+                
+                if PCSDataManager.defaultManager().deviceToken != nil {
+                    let req = SubmitDeviceTokenReq()
+                    req.deviceToken = PCSDataManager.defaultManager().deviceToken!
+                    req.requestSimpleCompletion()
+                }
+                
                 completion?(true, nil)
             }
             catch {

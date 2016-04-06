@@ -29,7 +29,6 @@ class MainViewController: UITabBarController {
         let homeTabItem = UITabBarItem(title: "首页", image: UIImage(named: "home_nor")?.imageWithRenderingMode(UIImageRenderingMode.AlwaysOriginal), selectedImage: UIImage(named: "home_sel")?.imageWithRenderingMode(UIImageRenderingMode.AlwaysOriginal))
         homeNavi.tabBarItem = homeTabItem
         
-        // TODO: 根据不同的账户设置不同的Tab
         var customNavi: UIViewController?
         var customTabItem: UITabBarItem?
         if PCSDataManager.defaultManager().content is CongressContentInfo {
