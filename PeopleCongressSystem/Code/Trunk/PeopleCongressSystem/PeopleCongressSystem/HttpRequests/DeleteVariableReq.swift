@@ -18,7 +18,7 @@ class DeleteVariableReq: HttpBaseReq {
     
     func requestSimpleCompletion(completion: SimpleCompletion?) {
         var params = [String: AnyObject]()
-        params["Lvzhi_guid"] = variable.identifier
+        params["lvzhi_guid"] = variable.token
 //        params["AddUser"] = PCSDataManager.defaultManager().accountManager.user!.identifier
         params["CheckTicket"] = PCSDataManager.defaultManager().accountManager.user!.token
         params["FieldID"] = PCSDataManager.defaultManager().accountManager.user!.field

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<changelog xmlns="http://www.omnigroup.com/namespace/OmniPlan/v2">
+  <version>2.1</version>
+  <task-change-set user="Matt Quan" date="2016-04-06T13:09:16.058Z" timestamp="2016-04-06T13:09:16.058Z">
+    <change idref="t2" to="t-1" to-position="1" resolved="yes">
+      <change idref="t2" attribute="title" type="string" to="短信"/>
+    </change>
+    <change idref="t9" to="t-1" to-position="2" resolved="yes">
+      <change idref="t9" attribute="effort" type="real" from="28800" to="57600"/>
+      <change idref="t9" attribute="title" type="string" to="环信数据处理移植"/>
+    </change>
+    <change idref="t3" to="t-1" to-position="3" resolved="yes">
+      <change idref="t3" attribute="effort" type="real" from="28800" to="43200"/>
+      <change idref="t3" attribute="title" type="string" to="环信聊天移植"/>
+    </change>
+    <change idref="t4" to="t-1" to-position="4" resolved="yes">
+      <change idref="t4" attribute="effort" type="real" from="28800" to="43200"/>
+      <change idref="t4" attribute="title" type="string" to="环信通信录移植"/>
+    </change>
+    <change idref="t5" to="t-1" to-position="5" resolved="yes">
+      <change idref="t5" attribute="title" type="string" to="扫码签到"/>
+    </change>
+    <change idref="t6" to="t-1" to-position="6" resolved="yes">
+      <change idref="t6" attribute="effort" type="real" from="28800" to="43200"/>
+      <change idref="t6" attribute="title" type="string" to="提醒签到"/>
+    </change>
+    <change idref="t7" to="t-1" to-position="7" resolved="yes">
+      <change idref="t7" attribute="effort" type="real" from="28800" to="14400"/>
+      <change idref="t7" attribute="title" type="string" to="主页修改"/>
+    </change>
+    <change idref="t1" attribute="title" type="string" from="任务 1" to="CA签名" resolved="yes"/>
+  </task-change-set>
+  <metadata-change-set user="Matt Quan" date="2016-04-06T13:09:16.057Z" timestamp="2016-04-06T13:09:16.057Z">
+    <change idref="m1" attribute="fixedDate" type="date" from="2007-01-01T20:00:00.000Z" to="2016-04-06T00:00:00.000Z" resolved="yes"/>
+  </metadata-change-set>
+</changelog>

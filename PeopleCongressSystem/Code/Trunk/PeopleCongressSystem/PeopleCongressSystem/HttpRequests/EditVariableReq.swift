@@ -57,7 +57,7 @@ class EditVariableReq: HttpBaseReq {
             
             defer {
                 if success == true {
-                    completion?(true, "修改成功")
+                    completion?(true, nil)
                 }
                 else {
                     completion?(false, "修改失败")

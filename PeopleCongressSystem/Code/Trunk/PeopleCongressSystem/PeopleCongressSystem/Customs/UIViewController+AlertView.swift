@@ -16,4 +16,9 @@ extension UIViewController {
         alert.show()
     }
     
+    func showAlertWithDelegate(message: String) {
+        let alert = UIAlertView(title: nil, message: message, delegate: self, cancelButtonTitle: "确定")
+        alert.show()
+    }
+    
 }

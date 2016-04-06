@@ -44,7 +44,7 @@ class GetVariableDetailReq: HttpBaseReq {
                 self.variable?.typeTitle = variableInfo?["name"] as? String
                 let photos = variableInfo?["urls"] as? String
                 
-                if photos != nil {
+                if photos != nil && photos != "" {
                     self.variable?.photos = (photos?.componentsSeparatedByString(","))!
                 }
             }

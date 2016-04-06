@@ -17,7 +17,7 @@ enum VariablePageType {
     
 }
 
-class VariableDetailViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, CollectionViewCellDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate, TypeSelectViewDelegate, NormalImageTableCellDelegate, PCSNavigationViewDelegate {
+class VariableDetailViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, CollectionViewCellDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate, TypeSelectViewDelegate, NormalImageTableCellDelegate, PCSNavigationViewDelegate, UIAlertViewDelegate {
     
     enum Sections: Int {
         
@@ -59,6 +59,10 @@ class VariableDetailViewController: UIViewController, UITableViewDataSource, UIT
             return rows
         }
         
+        static func allKeys() -> [String] {
+            return ["title", "typeTitle", "persons", "time", "content", "remark", "photos"]
+        }
+        
     }
     
     struct Row {
@@ -82,15 +86,15 @@ class VariableDetailViewController: UIViewController, UITableViewDataSource, UIT
     var types = [PCSTypeInfo]()
     var addPhotoCount = 0
     var addPhotos = [String]()
+    var oldPhotos = [String]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        self.navigationItem.hidesBackButton = true
-        PCSCustomUtil.customNavigationController(self)
         
         naviView.delegate = self
+        oldPhotos = variable.photos
         
         tableView.registerNib(UINib(nibName: "NormalImageTableCell", bundle: nil), forCellReuseIdentifier: "NormalImageTableCell")
         CustomObjectUtil.customObjectsLayout([saveButton, submitButton], backgroundColor: colorRed, borderWidth: 0.0, borderColor: nil, corner: 3.0)
@@ -107,14 +111,6 @@ class VariableDetailViewController: UIViewController, UITableViewDataSource, UIT
             
             return
         }
-    }
-    
-    override func viewDidAppear(animated: Bool) {
-        super.viewDidAppear(animated)
-        
-        if pageType == VariablePageType.Add {
-            return
-        }
         
         EZLoadingActivity.show("", disableUI: true)
         let req = GetVariableDetailReq()
@@ -125,6 +121,17 @@ class VariableDetailViewController: UIViewController, UITableViewDataSource, UIT
                 self.tableView.reloadData()
             }
         }
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        self.navigationItem.hidesBackButton = true
+        PCSCustomUtil.customNavigationController(self)
+    }
+    
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
     }
 
     override func didReceiveMemoryWarning() {
@@ -195,7 +202,7 @@ class VariableDetailViewController: UIViewController, UITableViewDataSource, UIT
     
     func uploadAddedPhotos(completion: (() -> Void)?) {
         func filter(element: String) -> String? {
-            if variable.photos.contains(element) == false {
+            if oldPhotos.contains(element) == false {
                 return element
             }
             
@@ -244,7 +251,7 @@ class VariableDetailViewController: UIViewController, UITableViewDataSource, UIT
                 if success {
                     self.uploadAddedPhotos({ () -> Void in
                         EZLoadingActivity.hide()
-                        self.showAlert(message ?? "添加成功")
+                        self.showAlertWithDelegate(message ?? "添加成功")
                     })
                 }
                 else {
@@ -264,7 +271,7 @@ class VariableDetailViewController: UIViewController, UITableViewDataSource, UIT
                 if success {
                     self.uploadAddedPhotos({ () -> Void in
                         EZLoadingActivity.hide()
-                        self.showAlert(message ?? "修改成功")
+                        self.showAlertWithDelegate(message ?? "修改成功")
                     })
                 }
                 else {
@@ -286,9 +293,14 @@ class VariableDetailViewController: UIViewController, UITableViewDataSource, UIT
         req.requestSimpleCompletion { (success, message) -> Void in
             EZLoadingActivity.hide()
             
-            self.showAlert(message ?? "修改成功")
+            let alertMessage = success ? "提交成功" : "提交失败"
             
-            self.navigationController?.popToRootViewControllerAnimated(true)
+            if success {
+                self.showAlertWithDelegate(alertMessage)
+            }
+            else {
+                self.showAlert(alertMessage)
+            }
         }
     }
     
@@ -300,11 +312,19 @@ class VariableDetailViewController: UIViewController, UITableViewDataSource, UIT
         req.requestSimpleCompletion { (success, message) -> Void in
             EZLoadingActivity.hide()
             
-            self.showAlert(message ?? "删除成功")
             if success == true {
-                self.navigationController?.popViewControllerAnimated(true)
+                self.showAlertWithDelegate("删除成功")
+            }
+            else {
+                self.showAlert("删除失败")
             }
         }
+    }
+    
+    // MARK: - AlertView
+    
+    func alertView(alertView: UIAlertView, clickedButtonAtIndex buttonIndex: Int) {
+        self.navigationController?.popViewControllerAnimated(true)
     }
     
     // MARK: - CollectionViewCellDelegate
@@ -314,6 +334,7 @@ class VariableDetailViewController: UIViewController, UITableViewDataSource, UIT
             return
         }
         
+        self.view.endEditing(true)
         UINavigationBar.appearance().tintColor = UIColor.whiteColor()
         UINavigationBar.appearance().titleTextAttributes = [NSForegroundColorAttributeName: UIColor.whiteColor()]
         let picker = DKImagePickerController()
@@ -333,7 +354,7 @@ class VariableDetailViewController: UIViewController, UITableViewDataSource, UIT
                         return
                     }
                     
-                    let imageData = UIImageJPEGRepresentation(image!, 1.0)
+                    let imageData = UIImageJPEGRepresentation(image!, 0.5)
                     let imageName = GlobalUtil.randomImageName() + ".jpg"
                     imageData?.writeToFile(UIImageView.pathForTempImage().stringByAppendingString("/\(imageName)"), atomically: true)
                     self.addPhotos.append(imageName)
@@ -348,41 +369,6 @@ class VariableDetailViewController: UIViewController, UITableViewDataSource, UIT
         }
         
         self.presentViewController(picker, animated: true, completion: nil)
-//        let alert = UIAlertController(title: "", message: "", preferredStyle: UIAlertControllerStyle.ActionSheet)
-//        
-//        let albumAction = UIAlertAction(title: "相册", style: UIAlertActionStyle.Default) { (action) -> Void in
-//            if UIImagePickerController.isSourceTypeAvailable(UIImagePickerControllerSourceType.PhotoLibrary) {
-//                let pickerViewController = UIImagePickerController()
-//                pickerViewController.sourceType = UIImagePickerControllerSourceType.PhotoLibrary
-//                pickerViewController.mediaTypes = [kUTTypeImage as String]
-//                pickerViewController.delegate = self
-//                pickerViewController.allowsEditing = false
-//                
-//                self.presentViewController(pickerViewController, animated: true, completion: nil)
-//            }
-//        }
-//        
-//        let cameraAction = UIAlertAction(title: "拍照", style: UIAlertActionStyle.Default) { (action) -> Void in
-//            if UIImagePickerController.isSourceTypeAvailable(UIImagePickerControllerSourceType.Camera) {
-//                let pickerViewController = UIImagePickerController()
-//                pickerViewController.sourceType = UIImagePickerControllerSourceType.Camera
-//                pickerViewController.mediaTypes = [kUTTypeMovie as String]
-//                pickerViewController.delegate = self
-//                pickerViewController.allowsEditing = false
-//                
-//                self.presentViewController(pickerViewController, animated: true, completion: nil)
-//            }
-//        }
-//        
-//        let cancelAction = UIAlertAction(title: "取消", style: UIAlertActionStyle.Default) { (action) -> Void in
-//            alert.dismissViewControllerAnimated(true, completion: nil)
-//        }
-//        
-//        alert.addAction(albumAction)
-//        alert.addAction(cameraAction)
-//        alert.addAction(cancelAction)
-//        
-//        self.presentViewController(alert, animated: true, completion: nil)
     }
     
     func didSelectIndex(cell: CollectionViewCell, index: Int) {
@@ -459,6 +445,11 @@ class VariableDetailViewController: UIViewController, UITableViewDataSource, UIT
     func didEndEditing(cell: NormalImageTableCell) {
         tableView?.setContentOffset(CGPointZero, animated: true)
         tableView?.scrollEnabled = true
+        
+        let indexPath = tableView.indexPathForCell(cell)
+        let section = Sections(rawValue: indexPath!.section)!
+        let row = section.rows()[indexPath!.row]
+        variable.setValue(cell.titleTextField.text, forKey: row.key!)
     }
     
     func didEditingTime(cell: NormalImageTableCell, datePicker: DatePickerView) {
@@ -473,6 +464,11 @@ class VariableDetailViewController: UIViewController, UITableViewDataSource, UIT
     
     func didEndEditingTime(cell: NormalImageTableCell) {
         tableView?.setContentOffset(CGPointZero, animated: true)
+        
+        let indexPath = tableView.indexPathForCell(cell)
+        let section = Sections(rawValue: indexPath!.section)!
+        let row = section.rows()[indexPath!.row]
+        variable.setValue(cell.titleTextField.text, forKey: row.key!)
     }
     
     // MARK: - UIImagePicker
@@ -625,7 +621,28 @@ class VariableDetailViewController: UIViewController, UITableViewDataSource, UIT
     // MARK: - Navigation
     
     func willDismiss() -> Bool {
+        self.view.endEditing(true)
+        
         if pageType == VariablePageType.Add {
+            var hasValue = false
+            let tempVariable = self.createVariable()
+            
+            for key in Sections.allKeys() {
+                hasValue = (tempVariable.valueForKey(key) as? String != "" && tempVariable.valueForKey(key) as? String != nil)
+                
+                if key == "photos" {
+                    hasValue = tempVariable.photos.count > 0
+                }
+                
+                if hasValue == true {
+                    break
+                }
+            }
+            
+            if hasValue == false {
+                return false
+            }
+            
             let alert = UIAlertController(title: nil, message: "是否保存？", preferredStyle: UIAlertControllerStyle.Alert)
             
             let cancelAction = UIAlertAction(title: "取消", style: UIAlertActionStyle.Cancel) { (action) in

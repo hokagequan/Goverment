@@ -93,6 +93,7 @@ class PCSDataManager {
             variable.content = localVariable.content
             variable.time = localVariable.time
             variable.remark = localVariable.remark
+            variable.persons = localVariable.persons
             
             if localVariable.photos != nil {
                 variable.photos = NSKeyedUnarchiver.unarchiveObjectWithData(localVariable.photos!) as! Array<String>
