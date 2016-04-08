@@ -25,7 +25,6 @@ class SubmitDeviceTokenReq: HttpBaseReq {
         params["thecharset"] = "gb2312"
         
         self.request("setappENS", nameSpace: "gonggong", params: params) { (response) -> Void in
-            print("")
         }
     }
     

@@ -8,6 +8,7 @@
 
 import Foundation
 import CoreData
+import UIKit
 
 class AccountManager {
     
@@ -214,11 +215,9 @@ class AccountManager {
                     PCSDataManager.defaultManager().content = WorderContentInfo()
                 }
                 
-                if PCSDataManager.defaultManager().deviceToken != nil {
-                    let req = SubmitDeviceTokenReq()
-                    req.deviceToken = PCSDataManager.defaultManager().deviceToken!
-                    req.requestSimpleCompletion()
-                }
+                let req = SubmitDeviceTokenReq()
+                req.deviceToken = PCSDataManager.defaultManager().deviceToken
+                req.requestSimpleCompletion()
                 
                 completion?(true, nil)
             }

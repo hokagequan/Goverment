@@ -50,6 +50,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func applicationDidBecomeActive(application: UIApplication) {
         // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
+        UIApplication.sharedApplication().applicationIconBadgeNumber = 0
     }
 
     func applicationWillTerminate(application: UIApplication) {
@@ -61,15 +62,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: NSData) {
         JPUSHService.registerDeviceToken(deviceToken)
         
-        var token = "\(deviceToken)"
-        token = token.stringByReplacingOccurrencesOfString("<", withString: "")
-        token = token.stringByReplacingOccurrencesOfString(">", withString: "")
-        token = token.stringByReplacingOccurrencesOfString(" ", withString: "")
-        PCSDataManager.defaultManager().deviceToken = token
-        
         if PCSDataManager.defaultManager().accountManager.user?.congressID != nil {
             let req = SubmitDeviceTokenReq()
-            req.deviceToken = token
+            req.deviceToken = PCSDataManager.defaultManager().deviceToken
             req.requestSimpleCompletion()
         }
     }

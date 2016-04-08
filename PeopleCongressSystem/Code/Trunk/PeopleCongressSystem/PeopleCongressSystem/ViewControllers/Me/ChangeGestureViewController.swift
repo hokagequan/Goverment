@@ -111,7 +111,7 @@ class ChangeGestureViewController: UIViewController {
     }
     
     func verfyNewGesture(lastPassword: String, completion:(Bool, String) -> Void) {
-        promptLabel.text = "请绘制再一次解锁图案"
+        promptLabel.text = "请再一次绘制解锁图案"
         lockView.didDrawPatternWithPassword = {(lockView: HUIPatternLockView, count: Int, password: String?) -> Void in
             guard count > 0 else {
                 return

@@ -18,7 +18,10 @@ class PCSDataManager {
     var accountManager = AccountManager()
     var content: ContentInfo = ContentInfo()
     var isLaunch: Bool = true
-    var deviceToken: String? = nil
+    
+    var deviceToken: String {
+        return JPUSHService.registrationID()
+    }
     
     // MARK: - Class Functions
     
