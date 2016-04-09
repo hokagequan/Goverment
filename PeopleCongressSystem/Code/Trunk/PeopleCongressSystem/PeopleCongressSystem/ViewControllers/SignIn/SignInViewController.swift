@@ -96,20 +96,14 @@ class SignInViewController: UIViewController, UIActionSheetDelegate, UITextField
     }
     
     @IBAction func clickSignIn(sender: AnyObject) {
-        if accountTextField.text == "" {
-            self.showAlert("请输入手机号")
-            
-            return
-        }
-        
-        if passwordTextField.text == "" {
-            self.showAlert("请输入密码")
+        if accountTextField.text == "" || passwordTextField.text == "" {
+            self.showAlert("请输入用户名或手机号")
             
             return
         }
         
         EZLoadingActivity.show("", disableUI: true)
-        PCSDataManager.defaultManager().accountManager.signIn(accountTextField.text!, password: passwordTextField.text!) { (success, errorMessage) -> Void in
+        PCSDataManager.defaultManager().accountManager.signIn(accountTextField.text!, password: passwordTextField.text!) { (success, errorMessage, errorCode) -> Void in
             EZLoadingActivity.hide()
             
             if success == true {

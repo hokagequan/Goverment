@@ -26,12 +26,15 @@ class GroupViewController: UIViewController, UITableViewDataSource, UITableViewD
         groupTableView.layoutMargins = UIEdgeInsetsZero
         
         EZLoadingActivity.show("", disableUI: true)
-        PCSDataManager.defaultManager().getGroup { (info) -> Void in
+        PCSDataManager.defaultManager().getGroup { (info, errorCode) -> Void in
             EZLoadingActivity.hide()
             if info != nil {
                 self.groups = info!
                 
                 self.groupTableView.reloadData()
+            }
+            else {
+                ResponseErrorManger.defaultManager().handleError(errorCode, message: nil)
             }
         }
     }

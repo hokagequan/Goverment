@@ -41,6 +41,7 @@ class FeedbackViewController: UIViewController {
         req.requestCompletion { (response) -> Void in
             let result = response?.result
             var success: Bool = false
+            var errorCode: String? = nil
             
             defer {
                 if success == true {
@@ -50,6 +51,7 @@ class FeedbackViewController: UIViewController {
                 }
                 else {
                     self.showAlert("提交失败")
+                    ResponseErrorManger.defaultManager().handleError(errorCode, message: "提交失败，请检查您的网络状况")
                 }
             }
             
@@ -60,10 +62,15 @@ class FeedbackViewController: UIViewController {
                     return
                 }
                 
-                if ((value as NSString).intValue >= 1) {
+                guard let responseString = HttpBaseReq.parseResponse(value) as? String else {
+                    return
+                }
+                
+                if ((responseString as NSString).intValue >= 1) {
                     success = true
                 }
                 else {
+                    errorCode = responseString
                     success = false
                 }
             }

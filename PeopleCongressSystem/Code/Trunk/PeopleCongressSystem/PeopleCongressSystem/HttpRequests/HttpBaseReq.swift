@@ -119,10 +119,12 @@ class HttpBaseReq {
             return nil
         }
         do {
-            return try NSJSONSerialization.JSONObjectWithData(data, options: [NSJSONReadingOptions.MutableContainers, NSJSONReadingOptions.AllowFragments])
+            let object = try NSJSONSerialization.JSONObjectWithData(data, options: [NSJSONReadingOptions.MutableContainers])
+            
+            return object ?? jsonString
         }
         catch {
-            return nil
+            return jsonString
         }
     }
     

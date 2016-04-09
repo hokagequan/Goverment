@@ -60,10 +60,11 @@ class CommonHTMLViewController: UIViewController, WebViewHTMLProtocol, PCSNaviga
     func willDismiss() -> Bool {
         EZLoadingActivity.show("", disableUI: true)
         let req = GetUrlReq()
-        req.requestSimpleCompletion { (success, url) -> Void in
+        req.requestSimpleCompletion { (success, url, errorCode) -> Void in
             EZLoadingActivity.hide()
             
             if url == nil {
+                ResponseErrorManger.defaultManager().handleError(errorCode, message: nil)
                 self.navigationController?.popViewControllerAnimated(true)
                 return
             }

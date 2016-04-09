@@ -26,13 +26,14 @@ class GetUrlReq: HttpBaseReq {
             
             var success: Bool = false
             var url: String? = nil
+            var errorCode: String? = nil
             
             defer {
                 if success == true {
-                    completion?(true, url)
+                    completion?(true, url, errorCode)
                 }
                 else {
-                    completion?(false, nil)
+                    completion?(false, nil, errorCode)
                 }
             }
             
@@ -45,13 +46,14 @@ class GetUrlReq: HttpBaseReq {
                 
                 success = true
                 
-                guard let countRsp = HttpBaseReq.parseResponse(value) else {
+                guard let countRsp = HttpBaseReq.parseResponse(value) as? String else {
                     return
                 }
                 
                 url = "\(countRsp)"
                 guard let headerRange = url?.rangeOfString("?") else {
                     url = nil
+                    errorCode = countRsp
                     
                     return
                 }

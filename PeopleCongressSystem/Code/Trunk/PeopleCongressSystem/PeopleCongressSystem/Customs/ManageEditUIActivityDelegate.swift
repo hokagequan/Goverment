@@ -57,7 +57,7 @@ class ManageEditUIActivityDelegate: ManageEditUIDelegate {
         }
         
         if activity.organization == nil {
-            GlobalUtil.showAlert("请填写组织")
+            GlobalUtil.showAlert("请填写组织名称")
             
             return false
         }
@@ -105,7 +105,7 @@ class ManageEditUIActivityDelegate: ManageEditUIDelegate {
         }
         
         EZLoadingActivity.show("", disableUI: true)
-        PCSDataManager.defaultManager().addActivity(self.editObject as! Activity) { (success, message) -> Void in
+        PCSDataManager.defaultManager().addActivity(self.editObject as! Activity) { (success, message, errorCode) -> Void in
             EZLoadingActivity.hide()
             
             if success {
@@ -113,7 +113,7 @@ class ManageEditUIActivityDelegate: ManageEditUIDelegate {
                 self.masterViewController?.navigationController?.popViewControllerAnimated(true)
             }
             else {
-                GlobalUtil.showAlert(message!)
+                ResponseErrorManger.defaultManager().handleError(errorCode, message: message)
             }
         }
     }
@@ -199,7 +199,7 @@ class ManageEditUIActivityDelegate: ManageEditUIDelegate {
         switch row.title! {
         case "类型:":
             EZLoadingActivity.show("", disableUI: true)
-            PCSDataManager.defaultManager().getTypeInfo(PCSType.Congress) { (infos) -> Void in
+            PCSDataManager.defaultManager().getTypeInfo(PCSType.Congress) { (infos, errorCode) -> Void in
                 EZLoadingActivity.hide()
                 if infos != nil {
                     self.types = infos!

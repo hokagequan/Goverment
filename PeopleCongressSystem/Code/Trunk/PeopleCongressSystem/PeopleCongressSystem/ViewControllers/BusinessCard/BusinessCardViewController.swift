@@ -57,14 +57,14 @@ class BusinessCardViewController: UITableViewController {
         
         if PCSDataManager.defaultManager().accountManager.user?.photoName == nil {
             EZLoadingActivity.show("", disableUI: true)
-            PCSDataManager.defaultManager().accountManager.getInfo { (success, message) -> Void in
+            PCSDataManager.defaultManager().accountManager.getInfo { (success, message, errorCode) -> Void in
                 EZLoadingActivity.hide()
                 
                 if success == true {
                     self.refreshInfo()
                 }
                 else {
-                    self.showAlert(message!)
+                    ResponseErrorManger.defaultManager().handleError(errorCode, message: message)
                 }
             }
         }

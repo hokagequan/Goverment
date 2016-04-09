@@ -53,15 +53,15 @@ class EditActivityReq: HttpBaseReq {
         
         self.request("HuoDongMod", nameSpace: "gongzuorenyuan", params: params) { (response) -> Void in
             let result = response?.result
-            
             var success: Bool = false
+            var errorCode: String? = nil
             
             defer {
                 if success == true {
-                    completion?(true, "修改成功")
+                    completion?(true, "修改成功", errorCode)
                 }
                 else {
-                    completion?(false, "修改失败")
+                    completion?(false, "修改失败，请检查您的网络状况", errorCode)
                 }
             }
             
@@ -72,10 +72,15 @@ class EditActivityReq: HttpBaseReq {
                     return
                 }
                 
-                if ((value as NSString).intValue >= 1) {
+                guard let responseString = HttpBaseReq.parseResponse(value) as? String else {
+                    return
+                }
+                
+                if ((responseString as NSString).intValue >= 1) {
                     success = true
                 }
                 else {
+                    errorCode = responseString
                     success = false
                 }
             }

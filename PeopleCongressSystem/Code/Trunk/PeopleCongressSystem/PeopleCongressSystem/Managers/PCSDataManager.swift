@@ -159,13 +159,14 @@ class PCSDataManager {
         req.requestCompletion { (response) -> Void in
             let result = response?.result
             var success: Bool = false
+            var errorCode: String? = nil
             
             defer {
                 if success == true {
-                    completion?(true, nil)
+                    completion?(true, nil, errorCode)
                 }
                 else {
-                    completion?(false, "添加失败")
+                    completion?(false, "添加失败，请检查您的网络状况", errorCode)
                 }
             }
             
@@ -176,10 +177,15 @@ class PCSDataManager {
                     return
                 }
                 
-                if ((value as NSString).intValue >= 1) {
+                guard let responseString = HttpBaseReq.parseResponse(value) else {
+                    return
+                }
+                
+                if ((responseString as! NSString).intValue >= 1) {
                     success = true
                 }
                 else {
+                    errorCode = responseString as? String
                     success = false
                 }
             }
@@ -196,13 +202,14 @@ class PCSDataManager {
         req.requestCompletion { (response) -> Void in
             let result = response?.result
             var success: Bool = false
+            var errorCode: String? = nil
             
             defer {
                 if success == true {
-                    completion?(true, nil)
+                    completion?(true, nil, errorCode)
                 }
                 else {
-                    completion?(false, "添加失败")
+                    completion?(false, "添加失败，请检查您的网络状况", errorCode)
                 }
             }
             
@@ -213,10 +220,15 @@ class PCSDataManager {
                     return
                 }
                 
-                if ((value as NSString).intValue >= 1) {
+                guard let responseString = HttpBaseReq.parseResponse(value) as? String else {
+                    return
+                }
+                
+                if ((responseString as NSString).intValue >= 1) {
                     success = true
                 }
                 else {
+                    errorCode = responseString
                     success = false
                 }
             }
@@ -226,15 +238,16 @@ class PCSDataManager {
         }
     }
     
-    func getTypeInfo(type: PCSType, completion: ((Array<PCSTypeInfo>?) -> Void)?) {
+    func getTypeInfo(type: PCSType, completion: ((Array<PCSTypeInfo>?, String?) -> Void)?) {
         let req = GetActivityTypesReq()
         req.type = type
         
         req.requestCompletion { (response) -> Void in
             var relArray: Array<PCSTypeInfo>? = nil
+            var errorCode: String? = nil
             
             defer {
-                completion?(relArray)
+                completion?(relArray, errorCode)
             }
             
             let result = response?.result
@@ -244,13 +257,18 @@ class PCSDataManager {
                     return
                 }
                 
-                guard let info = HttpBaseReq.parseResponse(value) as? NSArray else {
+                guard let info = HttpBaseReq.parseResponse(value) else {
+                    return
+                }
+                
+                if info is String {
+                    errorCode = info as? String
                     return
                 }
                 
                 relArray = [PCSTypeInfo]()
                 for i in 0..<info.count {
-                    let dict = info[i] as! Dictionary<String, AnyObject>
+                    let dict = (info as! NSArray)[i] as! Dictionary<String, AnyObject>
                     let typeInfo = PCSTypeInfo()
                     typeInfo.title = dict["Name"] as? String
                     typeInfo.code = dict["GUID"] as? String
@@ -262,14 +280,15 @@ class PCSDataManager {
         }
     }
     
-    func getGroup(completion: ((Array<Group>?) -> Void)?) {
+    func getGroup(completion: ((Array<Group>?, String?) -> Void)?) {
         let req = GetGroupReq()
         
         req.requestCompletion { (response) -> Void in
             var relArray: Array<Group>? = nil
+            var errorCode: String? = nil
             
             defer {
-                completion?(relArray)
+                completion?(relArray, errorCode)
             }
             
             let result = response?.result
@@ -279,13 +298,18 @@ class PCSDataManager {
                     return
                 }
                 
-                guard let info = HttpBaseReq.parseResponse(value) as? NSArray else {
+                guard let info = HttpBaseReq.parseResponse(value) else {
+                    return
+                }
+                
+                if info is String {
+                    errorCode = info as? String
                     return
                 }
                 
                 relArray = [Group]()
                 for i in 0..<info.count {
-                    let dict = info[i] as! Dictionary<String, AnyObject>
+                    let dict = (info as! NSArray)[i] as! Dictionary<String, AnyObject>
                     let group = Group()
                     group.identifier = dict["GUID"] as? String
                     group.number = dict["disBH"] as? String
@@ -299,15 +323,16 @@ class PCSDataManager {
         }
     }
     
-    func getPersonList(activityID: String, completion: ((Array<Person>?) -> Void)?) {
+    func getPersonList(activityID: String, completion: ((Array<Person>?, String?) -> Void)?) {
         let req = GetPersonListReq()
         req.activityID = activityID
         
         req.requestCompletion { (response) -> Void in
             var relArray: Array<Person>? = nil
+            var errorCode: String? = nil
             
             defer {
-                completion?(relArray)
+                completion?(relArray, errorCode)
             }
             
             let result = response?.result
@@ -317,13 +342,18 @@ class PCSDataManager {
                     return
                 }
                 
-                guard let info = HttpBaseReq.parseResponse(value) as? NSArray else {
+                guard let info = HttpBaseReq.parseResponse(value) else {
+                    return
+                }
+                
+                if info is String {
+                    errorCode = info as? String
                     return
                 }
                 
                 relArray = [Person]()
                 for i in 0..<info.count {
-                    let dict = info[i] as! Dictionary<String, AnyObject>
+                    let dict = (info as! NSArray)[i] as! Dictionary<String, AnyObject>
                     let person = Person()
                     person.identifier = dict["RDDB_ID"] as? String
                     person.congressID = dict["RDDB_GUID"] as? String
@@ -335,15 +365,16 @@ class PCSDataManager {
         }
     }
     
-    func getCongressList(organizationID: String, completion: ((Array<Person>?) -> Void)?) {
+    func getCongressList(organizationID: String, completion: ((Array<Person>?, String?) -> Void)?) {
         let req = GetCongressListReq()
         req.organizationID = organizationID
         
         req.requestCompletion { (response) -> Void in
             var relArray: Array<Person>? = nil
+            var errorCode: String? = nil
             
             defer {
-                completion?(relArray)
+                completion?(relArray, errorCode)
             }
             
             let result = response?.result
@@ -353,13 +384,18 @@ class PCSDataManager {
                     return
                 }
                 
-                guard let info = HttpBaseReq.parseResponse(value) as? NSArray else {
+                guard let info = HttpBaseReq.parseResponse(value) else {
+                    return
+                }
+                
+                if info is String {
+                    errorCode = info as? String
                     return
                 }
                 
                 relArray = [Person]()
                 for i in 0..<info.count {
-                    let dict = info[i] as! Dictionary<String, AnyObject>
+                    let dict = (info as! NSArray)[i] as! Dictionary<String, AnyObject>
                     let person = Person()
                     person.identifier = dict["RDDB_ID"] as? String
                     person.congressID = dict["RDDB_Guid"] as? String
@@ -371,15 +407,16 @@ class PCSDataManager {
         }
     }
     
-    func getActivityList(type: String, completion: ((Array<Activity>?) -> Void)?) {
+    func getActivityList(type: String, completion: ((Array<Activity>?, String?) -> Void)?) {
         let req = GetActivitiesReq()
         req.type = type
         
         req.requestCompletion { (response) -> Void in
             var relArray: Array<Activity>? = nil
+            var errorCode: String? = nil
             
             defer {
-                completion?(relArray)
+                completion?(relArray, errorCode)
             }
             
             let result = response?.result
@@ -389,13 +426,19 @@ class PCSDataManager {
                     return
                 }
                 
-                guard let info = HttpBaseReq.parseResponse(value) as? NSArray else {
+                guard let info = HttpBaseReq.parseResponse(value) else {
+                    return
+                }
+                
+                if info is String {
+                    errorCode = info as? String
+                    
                     return
                 }
                 
                 relArray = [Activity]()
                 for i in 0..<info.count {
-                    let dict = info[i] as! Dictionary<String, AnyObject>
+                    let dict = (info as! NSArray)[i] as! Dictionary<String, AnyObject>
                     let activity = Activity()
                     activity.identifier = dict["huodong_ID"] as! Int
                     activity.title = dict["huodong_name"] as? String
@@ -415,14 +458,15 @@ class PCSDataManager {
         }
     }
     
-    func getVariableList(completion: ((Array<Variable>?) -> Void)?) {
+    func getVariableList(completion: ((Array<Variable>?, String?) -> Void)?) {
         let req = GetVariablesReq()
         
         req.requestCompletion { (response) -> Void in
             var relArray: Array<Variable>? = nil
+            var errorCode: String? = nil
             
             defer {
-                completion?(relArray)
+                completion?(relArray, errorCode)
             }
             
             let result = response?.result
@@ -432,13 +476,18 @@ class PCSDataManager {
                     return
                 }
                 
-                guard let info = HttpBaseReq.parseResponse(value) as? NSArray else {
+                guard let info = HttpBaseReq.parseResponse(value) else {
+                    return
+                }
+                
+                if info is String {
+                    errorCode = info as? String
                     return
                 }
                 
                 relArray = [Variable]()
                 for i in 0..<info.count {
-                    let dict = info[i] as! Dictionary<String, AnyObject>
+                    let dict = (info as! NSArray)[i] as! Dictionary<String, AnyObject>
                     let variable = Variable()
                     
                     if dict["lvzhi_id"] is String {

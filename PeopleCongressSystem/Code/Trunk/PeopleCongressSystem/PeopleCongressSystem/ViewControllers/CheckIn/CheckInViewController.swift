@@ -33,11 +33,14 @@ class CheckInViewController: UIViewController, UITableViewDataSource, UITableVie
         super.viewDidAppear(animated)
         
         EZLoadingActivity.show("", disableUI: true)
-        PCSDataManager.defaultManager().getActivityList("") { (info) -> Void in
+        PCSDataManager.defaultManager().getActivityList("") { (info, errorCode) -> Void in
             EZLoadingActivity.hide()
             if info != nil {
                 self.activitys = info!
                 self.listTableView.reloadData()
+            }
+            else {
+                ResponseErrorManger.defaultManager().handleError(errorCode, message: nil)
             }
         }
     }

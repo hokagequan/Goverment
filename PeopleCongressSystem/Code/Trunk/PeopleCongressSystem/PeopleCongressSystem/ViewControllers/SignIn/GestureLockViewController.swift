@@ -60,7 +60,7 @@ class GestureLockViewController: UIViewController {
                     lockView.highlightedDotImage = selectImage
                     
                     let manager = PCSDataManager.defaultManager().accountManager
-                    manager.signIn(manager.user!.account!, password: manager.user!.password!) { (success, errorMessage) -> Void in
+                    manager.signIn(manager.user!.account!, password: manager.user!.password!) { (success, errorMessage, errorCode) -> Void in
                         if success == true {
                             self.navigationController?.setNavigationBarHidden(true, animated: true)
                             self.performSegueWithIdentifier("MainSegue", sender: self)

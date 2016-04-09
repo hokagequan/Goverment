@@ -40,7 +40,7 @@ let pageHTMLHelpCongress = "apph5/iphone/RDDB_helper.aspx?"
 
 let colorRed = GlobalUtil.colorRGBA(230, g: 27, b: 39, a: 1.0)
 
-typealias SimpleCompletion = (Bool, String?) -> Void
+typealias SimpleCompletion = (Bool, String?, String?) -> Void
 
 enum PCSType: String {
     case Personal = "0102"

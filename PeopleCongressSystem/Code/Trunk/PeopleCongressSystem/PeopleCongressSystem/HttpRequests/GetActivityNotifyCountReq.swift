@@ -28,13 +28,14 @@ class GetActivityNotifyCountReq: HttpBaseReq {
             
             var success: Bool = false
             var count: String = "0"
+            var errorCode: String? = nil
             
             defer {
                 if success == true {
-                    completion?(true, count)
+                    completion?(true, count, errorCode)
                 }
                 else {
-                    completion?(false, "")
+                    completion?(false, "", errorCode)
                 }
             }
             
@@ -46,11 +47,13 @@ class GetActivityNotifyCountReq: HttpBaseReq {
                 }
                 
                 let countRsp = HttpBaseReq.parseResponse(value)
-                success = true
-                count = "\(countRsp!)"
                 
                 if Int(count) < 0 {
-                    count = "0"
+                    errorCode = countRsp as? String
+                }
+                else {
+                    count = "\(countRsp!)"
+                    success = true
                 }
             }
             else {

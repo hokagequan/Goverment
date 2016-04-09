@@ -16,7 +16,7 @@ class GetActivityPersonsReq: HttpBaseReq {
         super.init()
     }
     
-    func requestSimpleCompletion(completion: ((Dictionary<String, String>) -> Void)?) {
+    func requestSimpleCompletion(completion: ((Dictionary<String, String>, String?) -> Void)?) {
         var params = [String: AnyObject]()
         params["huodongId"] = activity?.identifier
         params["CheckTicket"] = PCSDataManager.defaultManager().accountManager.user!.token
@@ -25,12 +25,19 @@ class GetActivityPersonsReq: HttpBaseReq {
         
         self.request("GethuodongUsersum", nameSpace: "gongzuorenyuan", params: params) { (response) -> Void in
             var relArray = [String: String]()
+            var errorCode: String? = nil
             
             defer {
-                completion?(relArray)
+                completion?(relArray, errorCode)
             }
             
             guard let info = HttpBaseReq.parseResponse(response?.result.value) else {
+                return
+            }
+            
+            if info is String {
+                errorCode = info as? String
+                
                 return
             }
             

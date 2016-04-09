@@ -33,12 +33,15 @@ class VariableRecordsViewController: UIViewController, UITableViewDataSource, UI
         super.viewDidAppear(animated)
         
         EZLoadingActivity.show("", disableUI: true)
-        PCSDataManager.defaultManager().getVariableList { (info) -> Void in
+        PCSDataManager.defaultManager().getVariableList { (info, errorCode) -> Void in
             EZLoadingActivity.hide()
             
             if info != nil {
                 self.variables = info!
                 self.listTableView.reloadData()
+            }
+            else {
+                ResponseErrorManger.defaultManager().handleError(errorCode, message: nil)
             }
         }
     }

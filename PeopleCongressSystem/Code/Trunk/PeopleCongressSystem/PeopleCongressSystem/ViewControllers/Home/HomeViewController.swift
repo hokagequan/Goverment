@@ -33,10 +33,13 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
         
         if content is CongressContentInfo {
             let req = GetActivityNotifyCountReq()
-            req.requestSimpleCompletion({ (success, count) -> Void in
+            req.requestSimpleCompletion({ (success, count, errorCode) -> Void in
                 if success {
                     self.message = count
                     self.collectionView.reloadItemsAtIndexPaths([NSIndexPath(forRow: 0, inSection: 0)])
+                }
+                else {
+                    ResponseErrorManger.defaultManager().handleError(errorCode, message: nil)
                 }
             })
         }

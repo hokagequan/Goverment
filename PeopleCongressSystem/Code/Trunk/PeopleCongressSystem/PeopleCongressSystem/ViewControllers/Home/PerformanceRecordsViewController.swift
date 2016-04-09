@@ -45,12 +45,15 @@ class PerformanceRecordsViewController: UIViewController, UITableViewDataSource,
         super.viewDidAppear(animated)
         
         EZLoadingActivity.show("", disableUI: true)
-        PCSDataManager.defaultManager().getActivityList("") { (info) -> Void in
+        PCSDataManager.defaultManager().getActivityList("") { (info, errorCode) -> Void in
             EZLoadingActivity.hide()
             
             if info != nil {
                 self.allActivitys = info!
                 self.refreshTableView()
+            }
+            else {
+                ResponseErrorManger.defaultManager().handleError(errorCode, message: nil)
             }
         }
     }
@@ -149,7 +152,7 @@ class PerformanceRecordsViewController: UIViewController, UITableViewDataSource,
         
         if indexPath.row == 0 {
             EZLoadingActivity.show("", disableUI: true)
-            PCSDataManager.defaultManager().getTypeInfo(PCSType.Congress) { (infos) -> Void in
+            PCSDataManager.defaultManager().getTypeInfo(PCSType.Congress) { (infos, errorCode) -> Void in
                 EZLoadingActivity.hide()
                 if infos != nil {
                     self.types = infos!

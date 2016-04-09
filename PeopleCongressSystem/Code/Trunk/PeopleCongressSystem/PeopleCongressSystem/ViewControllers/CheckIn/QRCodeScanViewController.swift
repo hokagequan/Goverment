@@ -69,13 +69,19 @@ class QRCodeScanViewController: UIViewController, AVCaptureMetadataOutputObjects
         req.requestCompletion { (response) -> Void in
             let result = response?.result
             var success: Bool = false
+            var errorCode: String? = nil
             
             defer {
                 if success == true {
                     EZLoadingActivity.hide(success: true, animated: false)
                 }
                 else {
-                    EZLoadingActivity.hide(success: false, animated: false)
+                    if errorCode != "-1" {
+                        EZLoadingActivity.hide(success: false, animated: false)
+                    }
+                    else {
+                        ResponseErrorManger.defaultManager().handleError(errorCode, message: nil)
+                    }
                 }
                 
                 self.performSelector(#selector(QRCodeScanViewController.startScan), withObject: nil, afterDelay: 1.0)
@@ -88,10 +94,15 @@ class QRCodeScanViewController: UIViewController, AVCaptureMetadataOutputObjects
                     return
                 }
                 
-                if ((value as NSString).intValue >= 1) {
+                guard let responseString = HttpBaseReq.parseResponse(value) as? String else {
+                    return
+                }
+                
+                if ((responseString as NSString).intValue >= 1) {
                     success = true
                 }
                 else {
+                    errorCode = responseString
                     success = false
                 }
             }

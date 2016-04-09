@@ -40,13 +40,14 @@ class AccountManager {
         req.requestCompletion { (response) -> Void in
             let result = response?.result
             var success: Bool = false
+            var errorCode: String? = nil
             
             defer {
                 if success == true {
-                    completion?(true, nil)
+                    completion?(true, nil, errorCode)
                 }
                 else {
-                    completion?(false, "保存失败")
+                    completion?(false, "保存失败", errorCode)
                 }
             }
             
@@ -57,7 +58,11 @@ class AccountManager {
                     return
                 }
                 
-                if ((value as NSString).intValue >= 1) {
+                guard let responseString = HttpBaseReq.parseResponse(value) as? String else {
+                    return
+                }
+                
+                if ((responseString as NSString).intValue >= 1) {
                     success = true
                     
                     let context = CoreDataManager.defalutManager().managedObjectContext
@@ -81,6 +86,7 @@ class AccountManager {
                     }
                 }
                 else {
+                    errorCode = responseString
                     success = false
                 }
             }
@@ -97,20 +103,26 @@ class AccountManager {
             
             var success = false
             var message = ""
+            var errorCode: String? = nil
             
             defer {
-                completion?(success, message)
+                completion?(success, message, errorCode)
             }
             
             if result?.isFailure == true {
-                message = "获取失败"
+                message = "获取失败，请检查您的网络状况"
                 
                 return
             }
             
             guard let infos = HttpBaseReq.parseResponse(result?.value) else {
-                message = "获取失败"
+                message = "获取失败，请检查您的网络状况"
                 
+                return
+            }
+            
+            if infos is String {
+                errorCode = infos as? String
                 return
             }
             
@@ -152,26 +164,27 @@ class AccountManager {
         req.password = password
         req.requestCompletion { (response) -> Void in
             let result = response?.result
+            let errorCode: String? = nil
             if result?.isFailure == true {
-                completion?(false, "登录失败")
+                completion?(false, "用户名或密码错误", errorCode)
                 
                 return
             }
             
             guard let _ = result?.value else {
-                completion?(false, "登录失败")
+                completion?(false, "用户名或密码错误", errorCode)
                 
                 return
             }
             
             guard let info = HttpBaseReq.parseResponse(result?.value) else {
-                completion?(false, "登录失败")
+                completion?(false, "用户名或密码错误", errorCode)
                 
                 return
             }
             
             guard let _ = info["user_ID"] as? String else {
-                completion?(false, "登录失败")
+                completion?(false, "用户名或密码错误", errorCode)
                 
                 return
             }
@@ -219,10 +232,10 @@ class AccountManager {
                 req.deviceToken = PCSDataManager.defaultManager().deviceToken
                 req.requestSimpleCompletion()
                 
-                completion?(true, nil)
+                completion?(true, nil, errorCode)
             }
             catch {
-                completion?(false, "数据库错误")
+                completion?(false, "用户名或密码错误", errorCode)
             }
         }
     }

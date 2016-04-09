@@ -49,10 +49,11 @@ class PersonListViewController: UIViewController, UITableViewDelegate, UITableVi
         }
         
         EZLoadingActivity.show("", disableUI: true)
-        PCSDataManager.defaultManager().getCongressList(group!.identifier!) { (info) -> Void in
+        PCSDataManager.defaultManager().getCongressList(group!.identifier!) { (info, errorCode) -> Void in
             EZLoadingActivity.hide()
             
             if info == nil {
+                ResponseErrorManger.defaultManager().handleError(errorCode, message: nil)
                 return
             }
             

@@ -26,7 +26,7 @@ class ManageEditActivityEditDelegate: ManageEditUIActivityDelegate {
         dispatch_async(queue) { () -> Void in
             dispatch_group_enter(group)
             dispatch_semaphore_wait(semaphore, DISPATCH_TIME_FOREVER)
-            PCSDataManager.defaultManager().getPersonList("\((self.editObject as! Activity).identifier)") { (info) -> Void in
+            PCSDataManager.defaultManager().getPersonList("\((self.editObject as! Activity).identifier)") { (info, errorCode) -> Void in
                 (self.editObject as! Activity).persons = info
                 dispatch_semaphore_signal(semaphore)
                 //            self.tableView?.reloadRowsAtIndexPaths([NSIndexPath(forRow: 0, inSection: 3)], withRowAnimation: UITableViewRowAnimation.None)
@@ -35,7 +35,7 @@ class ManageEditActivityEditDelegate: ManageEditUIActivityDelegate {
             dispatch_semaphore_wait(semaphore, DISPATCH_TIME_FOREVER)
             let gapReq = GetActivityPersonsReq()
             gapReq.activity = self.editObject as? Activity
-            gapReq.requestSimpleCompletion { (info) -> Void in
+            gapReq.requestSimpleCompletion { (info, errorCode) -> Void in
                 for person in (self.editObject as! Activity).persons! {
                     person.organization = info[person.organizationID!]
                 }
@@ -47,7 +47,7 @@ class ManageEditActivityEditDelegate: ManageEditUIActivityDelegate {
             dispatch_group_enter(group)
             let req = GetActivityDetaildReq()
             req.activity = self.editObject as? Activity
-            req.requestSimpleCompletion { (success) -> Void in
+            req.requestSimpleCompletion { (success, errorCode) -> Void in
                 dispatch_group_leave(group)
             }
             
@@ -68,9 +68,14 @@ class ManageEditActivityEditDelegate: ManageEditUIActivityDelegate {
         EZLoadingActivity.show("", disableUI: true)
         let req = EditActivityReq()
         req.activity = self.editObject as! Activity
-        req.requestSimpleCompletion { (success, message) -> Void in
+        req.requestSimpleCompletion { (success, message, errorCode) -> Void in
             EZLoadingActivity.hide()
-            GlobalUtil.showAlert(message!)
+            if success == true {
+                GlobalUtil.showAlert(message!)
+            }
+            else {
+                ResponseErrorManger.defaultManager().handleError(errorCode, message: message)
+            }
         }
     }
     

@@ -115,10 +115,14 @@ class VariableDetailViewController: UIViewController, UITableViewDataSource, UIT
         EZLoadingActivity.show("", disableUI: true)
         let req = GetVariableDetailReq()
         req.variable = variable
-        req.requestSimpleCompletion { (success) -> Void in
+        req.requestSimpleCompletion { (success, errorCode) -> Void in
             EZLoadingActivity.hide()
             if success {
+                self.oldPhotos = self.variable.photos
                 self.tableView.reloadData()
+            }
+            else {
+                ResponseErrorManger.defaultManager().handleError(errorCode, message: nil)
             }
         }
     }
@@ -247,7 +251,7 @@ class VariableDetailViewController: UIViewController, UITableViewDataSource, UIT
             variable.token = GlobalUtil.randomImageName()
             EZLoadingActivity.show("", disableUI: true)
             
-            PCSDataManager.defaultManager().addVariable(self.createVariable()) { (success, message) -> Void in
+            PCSDataManager.defaultManager().addVariable(self.createVariable()) { (success, message, errorCode) -> Void in
                 if success {
                     self.uploadAddedPhotos({ () -> Void in
                         EZLoadingActivity.hide()
@@ -256,7 +260,7 @@ class VariableDetailViewController: UIViewController, UITableViewDataSource, UIT
                 }
                 else {
                     EZLoadingActivity.hide()
-                    self.showAlert(message!)
+                    ResponseErrorManger.defaultManager().handleError(errorCode, message: message)
                 }
             }
         }
@@ -267,7 +271,7 @@ class VariableDetailViewController: UIViewController, UITableViewDataSource, UIT
             req.variable = toVariable
             
             EZLoadingActivity.show("", disableUI: true)
-            req.requestSimpleCompletion { (success, message) -> Void in
+            req.requestSimpleCompletion { (success, message, errorCode) -> Void in
                 if success {
                     self.uploadAddedPhotos({ () -> Void in
                         EZLoadingActivity.hide()
@@ -276,7 +280,7 @@ class VariableDetailViewController: UIViewController, UITableViewDataSource, UIT
                 }
                 else {
                     EZLoadingActivity.hide()
-                    self.showAlert(message!)
+                    ResponseErrorManger.defaultManager().handleError(errorCode, message: message)
                 }
             }
         }
@@ -290,16 +294,16 @@ class VariableDetailViewController: UIViewController, UITableViewDataSource, UIT
         req.variable = toVariable
         
         EZLoadingActivity.show("", disableUI: true)
-        req.requestSimpleCompletion { (success, message) -> Void in
+        req.requestSimpleCompletion { (success, message, errorCode) -> Void in
             EZLoadingActivity.hide()
             
-            let alertMessage = success ? "提交成功" : "提交失败"
+            let alertMessage = success ? "提交成功" : "提交失败，请检查您的网络状况"
             
             if success {
                 self.showAlertWithDelegate(alertMessage)
             }
             else {
-                self.showAlert(alertMessage)
+                ResponseErrorManger.defaultManager().handleError(errorCode, message: alertMessage)
             }
         }
     }
@@ -309,14 +313,14 @@ class VariableDetailViewController: UIViewController, UITableViewDataSource, UIT
         
         let req = DeleteVariableReq()
         req.variable = variable
-        req.requestSimpleCompletion { (success, message) -> Void in
+        req.requestSimpleCompletion { (success, message, errorCode) -> Void in
             EZLoadingActivity.hide()
             
             if success == true {
                 self.showAlertWithDelegate("删除成功")
             }
             else {
-                self.showAlert("删除失败")
+                ResponseErrorManger.defaultManager().handleError(errorCode, message: "删除失败，请检查您的网络状况")
             }
         }
     }
@@ -393,7 +397,7 @@ class VariableDetailViewController: UIViewController, UITableViewDataSource, UIT
                 EZLoadingActivity.show("", disableUI: true)
                 let req = DeletePhotoReq()
                 req.photoID = cell.images[index]
-                req.requestSimpleCompletion({ (success, message) -> Void in
+                req.requestSimpleCompletion({ (success, message, errorCode) -> Void in
                     EZLoadingActivity.hide()
                     
                     if success == true {
@@ -404,7 +408,7 @@ class VariableDetailViewController: UIViewController, UITableViewDataSource, UIT
                         }
                     }
                     else {
-                        self.showAlert(message!)
+                        ResponseErrorManger.defaultManager().handleError(errorCode, message: message)
                     }
                 })
             }
@@ -602,7 +606,7 @@ class VariableDetailViewController: UIViewController, UITableViewDataSource, UIT
         switch row.title! {
         case "类型:":
             EZLoadingActivity.show("", disableUI: true)
-            PCSDataManager.defaultManager().getTypeInfo(PCSType.Congress) { (infos) -> Void in
+            PCSDataManager.defaultManager().getTypeInfo(PCSType.Congress) { (infos, errorCode) -> Void in
                 EZLoadingActivity.hide()
                 if infos != nil {
                     self.types = infos!
