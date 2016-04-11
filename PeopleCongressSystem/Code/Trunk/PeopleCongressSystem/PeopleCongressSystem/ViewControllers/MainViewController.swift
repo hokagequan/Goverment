@@ -14,7 +14,13 @@ class MainViewController: UITabBarController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(MainViewController.handleLogin(_:)), name: kNotificationPresentLogin, object: nil)
+        
         self.loadViewControllers()
+    }
+    
+    deinit {
+        NSNotificationCenter.defaultCenter().removeObserver(self)
     }
 
     override func didReceiveMemoryWarning() {
@@ -56,6 +62,12 @@ class MainViewController: UITabBarController {
         CustomObjectUtil.customTabbarItem([homeTabItem, customTabItem!, meTabItem], titleColor: UIColor.redColor(), font: UIFont.systemFontOfSize(10.0), state: UIControlState.Selected)
         
         self.setViewControllers([homeNavi, customNavi!, meNavi], animated: false)
+    }
+    
+    // MARK: - Observer
+    
+    func handleLogin(notification: NSNotification) {
+        self.performSegueWithIdentifier("BackToSignIn", sender: nil)
     }
 
     /*

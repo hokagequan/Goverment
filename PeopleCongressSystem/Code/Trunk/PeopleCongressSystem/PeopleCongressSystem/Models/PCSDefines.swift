@@ -38,6 +38,9 @@ let pageHTMLNotifyCongress = "apph5/iphone/RDDB_tongzhitongbao.aspx?"
 let pageHtMLSituationCongress = "apph5/iphone/RDDB_zhiqingzhizhenglist.aspx?"
 let pageHTMLHelpCongress = "apph5/iphone/RDDB_helper.aspx?"
 
+/// @brief Notification Keys
+let kNotificationPresentLogin = "kNotificationPresentLogin"
+
 let colorRed = GlobalUtil.colorRGBA(230, g: 27, b: 39, a: 1.0)
 
 typealias SimpleCompletion = (Bool, String?, String?) -> Void

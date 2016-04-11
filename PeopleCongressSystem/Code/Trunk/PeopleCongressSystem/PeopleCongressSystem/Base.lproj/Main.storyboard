@@ -180,7 +180,7 @@
         <!--Sign In View Controller-->
         <scene sceneID="kSz-Nh-td6">
             <objects>
-                <viewController automaticallyAdjustsScrollViewInsets="NO" id="o5A-KL-8xA" customClass="SignInViewController" customModule="PeopleCongressSystem" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="SignInViewController" automaticallyAdjustsScrollViewInsets="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" id="o5A-KL-8xA" customClass="SignInViewController" customModule="PeopleCongressSystem" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="qyp-06-suj"/>
                         <viewControllerLayoutGuide type="bottom" id="uZt-Sk-p5Q"/>
@@ -774,8 +774,12 @@
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     </tabBar>
+                    <connections>
+                        <segue destination="j10-c3-g5c" kind="unwind" identifier="BackToSignIn" unwindAction="unwindToSignIn:" id="kUp-Eb-imn"/>
+                    </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="21w-DT-wag" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="j10-c3-g5c" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="245" y="1115"/>
         </scene>

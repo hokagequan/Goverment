@@ -44,7 +44,7 @@ class ResponseErrorManger: NSObject, UIAlertViewDelegate {
     
     func alertView(alertView: UIAlertView, clickedButtonAtIndex buttonIndex: Int) {
         if buttonIndex == 1 {
-            // TODO: 点击登录
+            NSNotificationCenter.defaultCenter().postNotificationName(kNotificationPresentLogin, object: nil)
         }
     }
     
