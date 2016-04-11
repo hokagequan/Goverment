@@ -8,20 +8,18 @@
 
 import UIKit
 
-class FindPwdViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+class FindPwdViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, VerifyCodeDelegate {
     
     enum Rows: Int {
-        case Name = 0
-//        case Organization
-        case Tel
-//        case Remark
+        case Mobile = 0
+        case VerifyCode
+        case SMSCode
         case Max
         
         func title() -> String {
-            let titles = ["代表姓名:",
-//                "代表团:",
-                "电话号码:",
-//                "完整输入:",
+            let titles = ["请输入手机号码",
+                "请输入图形码",
+                "请输入短信验证码",
                 ""]
             
             return titles[self.rawValue]
@@ -40,7 +38,7 @@ class FindPwdViewController: UIViewController, UITableViewDataSource, UITableVie
         PCSCustomUtil.customNavigationController(self)
         
         CustomObjectUtil.customObjectsLayout([submitButton], backgroundColor: colorRed, borderWidth: 0, borderColor: nil, corner: 5.0)
-        inputTableView.registerNib(UINib(nibName: "NormalImageTableCell", bundle: nil), forCellReuseIdentifier: "NormalImageTableCell")
+//        inputTableView.registerNib(UINib(nibName: "VerifyCodeCell", bundle: nil), forCellReuseIdentifier: "VerifyCodeCell")
         inputTableView.layoutMargins = UIEdgeInsetsZero
     }
 
@@ -55,26 +53,42 @@ class FindPwdViewController: UIViewController, UITableViewDataSource, UITableVie
         let req = ResetPasswordReq()
         
         for i in 0..<Rows.Max.rawValue {
-            let cell = inputTableView.cellForRowAtIndexPath(NSIndexPath(forRow: i, inSection: 0)) as! NormalImageTableCell
             let row = Rows(rawValue: i)!
             
             switch row {
-            case .Name:
+            case .Mobile:
+                let cell = inputTableView.cellForRowAtIndexPath(NSIndexPath(forRow: i, inSection: 0)) as! VerifyCodeCell
                 if cell.titleTextField.text == nil {
-                    self.showAlert("请输入名字")
+                    self.showAlert("请输入手机号码")
                     
                     return
                 }
                 req.name = cell.titleTextField.text
                 
                 break
-            case .Tel:
+            case .VerifyCode:
+                let cell = inputTableView.cellForRowAtIndexPath(NSIndexPath(forRow: i, inSection: 0)) as! LocalVerifyCell
                 if cell.titleTextField.text == nil {
-                    self.showAlert("请输入电话号码")
+                    self.showAlert("请输入图形码")
                     
                     return
                 }
+                else if cell.titleTextField.text != cell.code {
+                    self.showAlert("请输入正确的图形码")
+                    
+                    return
+                }
+                
                 req.tel = cell.titleTextField.text
+                
+                break
+            case .SMSCode:
+                let cell = inputTableView.cellForRowAtIndexPath(NSIndexPath(forRow: i, inSection: 0)) as! VerifyCodeCell
+                if cell.titleTextField.text == nil {
+                    self.showAlert("请输入短信验证码")
+                    
+                    return
+                }
                 
                 break
             default:
@@ -109,6 +123,12 @@ class FindPwdViewController: UIViewController, UITableViewDataSource, UITableVie
         self.view.endEditing(true)
     }
     
+    // MARK: - VerifyCodeDelegate
+    
+    func didClickDetail(cell: VerifyCodeCell) {
+        // TODO: 获取短信验证码
+    }
+    
     // MARK: - UITableView
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -120,15 +140,32 @@ class FindPwdViewController: UIViewController, UITableViewDataSource, UITableVie
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("NormalImageTableCell", forIndexPath: indexPath) as! NormalImageTableCell
+        let row = Rows(rawValue: indexPath.row)!
+        
+        if row == Rows.VerifyCode {
+            let cell = tableView.dequeueReusableCellWithIdentifier("LocalVerifyCell", forIndexPath: indexPath) as! LocalVerifyCell
+            cell.selectionStyle = UITableViewCellSelectionStyle.None
+            cell.separatorInset = UIEdgeInsetsMake(0, 0, 0, 0)
+            cell.layoutMargins = UIEdgeInsetsZero
+            
+            cell.titleTextField.placeholder = row.title()
+            
+            return cell
+        }
+        
+        let cell = tableView.dequeueReusableCellWithIdentifier("VerifyCodeCell", forIndexPath: indexPath) as! VerifyCodeCell
         cell.selectionStyle = UITableViewCellSelectionStyle.None
         cell.separatorInset = UIEdgeInsetsMake(0, 0, 0, 0)
         cell.layoutMargins = UIEdgeInsetsZero
         cell.accessoryType = UITableViewCellAccessoryType.None
+        cell.delegate = self
         
-        let row = Rows(rawValue: indexPath.row)!
-        cell.headerText = row.title()
-        cell.iconWidthLC.constant = 0
+        cell.titleTextField.placeholder = row.title()
+        
+        if row == Rows.SMSCode {
+            cell.borderView.hidden = true
+            cell.detailButton.hidden = true
+        }
         
         return cell
     }

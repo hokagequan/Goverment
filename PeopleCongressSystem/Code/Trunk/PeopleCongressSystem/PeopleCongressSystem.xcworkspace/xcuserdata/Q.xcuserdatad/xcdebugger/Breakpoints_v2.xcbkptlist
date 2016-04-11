@@ -25,13 +25,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "PeopleCongressSystem/Customs/UIViewController+AlertView.swift"
-            timestampString = "481599668.974785"
+            filePath = "PeopleCongressSystem/ThirdPartys/RandomView/RandomCodeView.m"
+            timestampString = "482060703.837975"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "15"
-            endingLineNumber = "15"
-            landmarkName = "showAlert(_:)"
+            startingLineNumber = "59"
+            endingLineNumber = "59"
+            landmarkName = "-generateCode:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

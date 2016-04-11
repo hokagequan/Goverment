@@ -31,6 +31,9 @@
 		100B20401C895FC600435EF0 /* GetPersonListReq.swift in Sources */ = {isa = PBXBuildFile; fileRef = 100B203F1C895FC600435EF0 /* GetPersonListReq.swift */; };
 		100EA8841CA819CE00C5FA59 /* GetUrlReq.swift in Sources */ = {isa = PBXBuildFile; fileRef = 100EA8831CA819CE00C5FA59 /* GetUrlReq.swift */; };
 		103023001CB7B8A900832DE1 /* ResponseErrorManger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 103022FF1CB7B8A900832DE1 /* ResponseErrorManger.swift */; };
+		1030232D1CBB4B7000832DE1 /* VerifyCodeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1030232C1CBB4B7000832DE1 /* VerifyCodeCell.swift */; };
+		1030232F1CBB762300832DE1 /* LocalVerifyCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1030232E1CBB762300832DE1 /* LocalVerifyCell.swift */; };
+		1030238D1CBB791200832DE1 /* RandomCodeView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1030238C1CBB791200832DE1 /* RandomCodeView.m */; };
 		103261161CAA80C50075BBA8 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 103261151CAA80C50075BBA8 /* CFNetwork.framework */; };
 		103261181CAA80E50075BBA8 /* CoreFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 103261171CAA80E50075BBA8 /* CoreFoundation.framework */; };
 		1032611A1CAA80EF0075BBA8 /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 103261191CAA80EF0075BBA8 /* CoreTelephony.framework */; };
@@ -168,6 +171,10 @@
 		100B203F1C895FC600435EF0 /* GetPersonListReq.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetPersonListReq.swift; sourceTree = "<group>"; };
 		100EA8831CA819CE00C5FA59 /* GetUrlReq.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetUrlReq.swift; sourceTree = "<group>"; };
 		103022FF1CB7B8A900832DE1 /* ResponseErrorManger.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResponseErrorManger.swift; sourceTree = "<group>"; };
+		1030232C1CBB4B7000832DE1 /* VerifyCodeCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VerifyCodeCell.swift; sourceTree = "<group>"; };
+		1030232E1CBB762300832DE1 /* LocalVerifyCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocalVerifyCell.swift; sourceTree = "<group>"; };
+		1030238B1CBB791200832DE1 /* RandomCodeView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RandomCodeView.h; sourceTree = "<group>"; };
+		1030238C1CBB791200832DE1 /* RandomCodeView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RandomCodeView.m; sourceTree = "<group>"; };
 		103261151CAA80C50075BBA8 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 		103261171CAA80E50075BBA8 /* CoreFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreFoundation.framework; path = System/Library/Frameworks/CoreFoundation.framework; sourceTree = SDKROOT; };
 		103261191CAA80EF0075BBA8 /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
@@ -301,6 +308,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1030238A1CBB791200832DE1 /* RandomView */ = {
+			isa = PBXGroup;
+			children = (
+				1030238B1CBB791200832DE1 /* RandomCodeView.h */,
+				1030238C1CBB791200832DE1 /* RandomCodeView.m */,
+			);
+			path = RandomView;
+			sourceTree = "<group>";
+		};
 		1075055F1C905F9D00C9589E /* HTML */ = {
 			isa = PBXGroup;
 			children = (
@@ -328,6 +344,7 @@
 		10C0F12C1CA93D5F000BA06E /* ThirdPartys */ = {
 			isa = PBXGroup;
 			children = (
+				1030238A1CBB791200832DE1 /* RandomView */,
 				10C0F12D1CA93D9C000BA06E /* JPush */,
 			);
 			path = ThirdPartys;
@@ -434,6 +451,8 @@
 				100691B61C93B9F0000AEFEA /* CollectionViewCell.swift */,
 				1091C2021CB36475005140D5 /* PhotoBrowserView.swift */,
 				1091C2041CB36489005140D5 /* PhotoBrowserView.xib */,
+				1030232C1CBB4B7000832DE1 /* VerifyCodeCell.swift */,
+				1030232E1CBB762300832DE1 /* LocalVerifyCell.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -774,10 +793,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1030238D1CBB791200832DE1 /* RandomCodeView.m in Sources */,
 				10F1097F1C88156F0083D89D /* Activity.swift in Sources */,
 				10BD4DE61C9A4A14006179AB /* DeleteVariableReq.swift in Sources */,
 				10A6866D1C7DF12600D050F0 /* UserEntity+CoreDataProperties.swift in Sources */,
 				10DBF2191C8C0CF7007620BA /* NormalInfoCell.swift in Sources */,
+				1030232F1CBB762300832DE1 /* LocalVerifyCell.swift in Sources */,
 				10F9019E1C858B0100A4D767 /* CongressContentInfo.swift in Sources */,
 				10D0D5BB1C4E41230093F687 /* GestureLockViewController.swift in Sources */,
 				10F109831C881C960083D89D /* AddActivityReq.swift in Sources */,
@@ -836,6 +857,7 @@
 				100160351C8DB93E0095D023 /* QRCodeDownloadViewController.swift in Sources */,
 				10DBF20A1C8A5808007620BA /* DatePickerView.swift in Sources */,
 				105C19911C9A3E4A00103B38 /* EditVariableReq.swift in Sources */,
+				1030232D1CBB4B7000832DE1 /* VerifyCodeCell.swift in Sources */,
 				105C198F1C994DC700103B38 /* GetCongressInfoReq.swift in Sources */,
 				10A6176E1CB54D2600D8EEF8 /* SubmitDeviceTokenReq.swift in Sources */,
 				107505751C915C9E00C9589E /* Variable.swift in Sources */,
@@ -1001,7 +1023,9 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				ENABLE_BITCODE = NO;
+				HEADER_SEARCH_PATHS = "$(PROJECT_DIR)/PeopleCongressSystem/ThirdPartys/CACert/include";
 				INFOPLIST_FILE = PeopleCongressSystem/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -1009,6 +1033,7 @@
 					"$(inherited)",
 					"$(SDKROOT)/usr/lib/system",
 					"$(PROJECT_DIR)/PeopleCongressSystem/ThirdPartys/JPush",
+					"$(PROJECT_DIR)/PeopleCongressSystem/ThirdPartys/CACert",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.npc.pcsystem;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1023,7 +1048,9 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				ENABLE_BITCODE = NO;
+				HEADER_SEARCH_PATHS = "$(PROJECT_DIR)/PeopleCongressSystem/ThirdPartys/CACert/include";
 				INFOPLIST_FILE = PeopleCongressSystem/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -1031,6 +1058,7 @@
 					"$(inherited)",
 					"$(SDKROOT)/usr/lib/system",
 					"$(PROJECT_DIR)/PeopleCongressSystem/ThirdPartys/JPush",
+					"$(PROJECT_DIR)/PeopleCongressSystem/ThirdPartys/CACert",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.npc.pcsystem;
 				PRODUCT_NAME = "$(TARGET_NAME)";

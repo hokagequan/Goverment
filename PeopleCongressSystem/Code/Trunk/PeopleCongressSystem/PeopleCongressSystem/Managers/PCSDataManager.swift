@@ -20,7 +20,11 @@ class PCSDataManager {
     var isLaunch: Bool = true
     
     var deviceToken: String {
-        return JPUSHService.registrationID()
+        guard let token = JPUSHService.registrationID() else {
+            return "NonToken"
+        }
+        
+        return token
     }
     
     // MARK: - Class Functions
