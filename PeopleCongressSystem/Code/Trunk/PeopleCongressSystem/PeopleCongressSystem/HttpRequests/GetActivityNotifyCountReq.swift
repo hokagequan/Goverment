@@ -48,7 +48,7 @@ class GetActivityNotifyCountReq: HttpBaseReq {
                 
                 let countRsp = HttpBaseReq.parseResponse(value)
                 
-                if Int(count) < 0 {
+                if Int(countRsp as! String) < 0 {
                     errorCode = countRsp as? String
                 }
                 else {
