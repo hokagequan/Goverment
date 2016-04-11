@@ -24,6 +24,12 @@ class FindPwdViewController: UIViewController, UITableViewDataSource, UITableVie
             
             return titles[self.rawValue]
         }
+        
+        func icon() -> String {
+            let icons = ["phone", "phone", "phone", ""]
+            
+            return icons[self.rawValue]
+        }
     }
 
     @IBOutlet weak var inputTableView: UITableView!
@@ -149,6 +155,9 @@ class FindPwdViewController: UIViewController, UITableViewDataSource, UITableVie
             cell.layoutMargins = UIEdgeInsetsZero
             
             cell.titleTextField.placeholder = row.title()
+            cell.iconImageView.image = UIImage(named: row.icon())
+            
+            CustomObjectUtil.customObjectsLayout([cell.verifyCodeView], backgroundColor: UIColor.lightGrayColor(), borderWidth: 1.0, borderColor: UIColor.grayColor(), corner: 0)
             
             return cell
         }
@@ -161,6 +170,7 @@ class FindPwdViewController: UIViewController, UITableViewDataSource, UITableVie
         cell.delegate = self
         
         cell.titleTextField.placeholder = row.title()
+        cell.iconImageView.image = UIImage(named: row.icon())
         
         if row == Rows.SMSCode {
             cell.borderView.hidden = true
