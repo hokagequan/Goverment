@@ -309,20 +309,32 @@ class VariableDetailViewController: UIViewController, UITableViewDataSource, UIT
     }
     
     @IBAction func clickDelete(sender: AnyObject) {
-        EZLoadingActivity.show("", disableUI: true)
+        let alert = UIAlertController(title: nil, message: "是否删除此履职记录", preferredStyle: UIAlertControllerStyle.Alert)
         
-        let req = DeleteVariableReq()
-        req.variable = variable
-        req.requestSimpleCompletion { (success, message, errorCode) -> Void in
-            EZLoadingActivity.hide()
+        let cancelAction = UIAlertAction(title: "取消", style: UIAlertActionStyle.Default) { (action) in
             
-            if success == true {
-                self.showAlertWithDelegate("删除成功")
-            }
-            else {
-                ResponseErrorManger.defaultManager().handleError(errorCode, message: "删除失败，请检查您的网络状况")
+        }
+        let sureAction = UIAlertAction(title: "确定", style: UIAlertActionStyle.Default) { (action) in
+            EZLoadingActivity.show("", disableUI: true)
+            
+            let req = DeleteVariableReq()
+            req.variable = self.variable
+            req.requestSimpleCompletion { (success, message, errorCode) -> Void in
+                EZLoadingActivity.hide()
+                
+                if success == true {
+                    self.showAlertWithDelegate("删除成功")
+                }
+                else {
+                    ResponseErrorManger.defaultManager().handleError(errorCode, message: "删除失败，请检查您的网络状况")
+                }
             }
         }
+        
+        alert.addAction(cancelAction)
+        alert.addAction(sureAction)
+        
+        self.presentViewController(alert, animated: true, completion: nil)
     }
     
     // MARK: - AlertView
