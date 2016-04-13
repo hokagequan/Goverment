@@ -20,7 +20,7 @@ class ResponseErrorManger: NSObject, UIAlertViewDelegate {
         }
         
         if code == "-1" {
-            let alert = UIAlertView(title: "", message: "尊敬的人大代表，您的账号已在另外一台可信设备上登录，请重新登录", delegate: self, cancelButtonTitle: "取消", otherButtonTitles: "登录")
+            let alert = UIAlertView(title: "", message: "尊敬的人大代表，您的账号已在另外一台可信设备上登录，请重新登录", delegate: self, cancelButtonTitle: "确定")
             alert.show()
             
             return
@@ -43,7 +43,7 @@ class ResponseErrorManger: NSObject, UIAlertViewDelegate {
     // MARK: - AlertView
     
     func alertView(alertView: UIAlertView, clickedButtonAtIndex buttonIndex: Int) {
-        if buttonIndex == 1 {
+        if buttonIndex == 0 {
             NSNotificationCenter.defaultCenter().postNotificationName(kNotificationPresentLogin, object: nil)
         }
     }

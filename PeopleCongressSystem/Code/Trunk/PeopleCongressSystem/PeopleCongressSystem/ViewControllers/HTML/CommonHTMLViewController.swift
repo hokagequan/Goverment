@@ -45,7 +45,12 @@ class CommonHTMLViewController: UIViewController, WebViewHTMLProtocol, PCSNaviga
             return
         }
         
-        let req = NSURLRequest(URL: NSURL(string: URL!)!)
+        guard let htmlURL = NSURL(string: URL!) else {
+            self.navigationController?.popViewControllerAnimated(true)
+            return
+        }
+        
+        let req = NSURLRequest(URL: htmlURL)
         self.htmlWebView.loadRequest(req)
     }
     
