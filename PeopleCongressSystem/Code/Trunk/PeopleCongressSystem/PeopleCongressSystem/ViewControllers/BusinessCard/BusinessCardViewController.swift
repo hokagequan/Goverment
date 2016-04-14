@@ -55,7 +55,7 @@ class BusinessCardViewController: UITableViewController {
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
         
-        if PCSDataManager.defaultManager().accountManager.user?.photoName == nil {
+        if PCSDataManager.defaultManager().accountManager.user?.photoName == nil || photoImageView.image == nil {
             EZLoadingActivity.show("", disableUI: true)
             PCSDataManager.defaultManager().accountManager.getInfo { (success, message, errorCode) -> Void in
                 EZLoadingActivity.hide()

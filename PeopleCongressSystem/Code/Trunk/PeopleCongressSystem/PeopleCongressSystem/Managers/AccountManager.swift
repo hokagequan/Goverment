@@ -12,6 +12,12 @@ import UIKit
 
 class AccountManager {
     
+    //证书id
+    let certID = "Vh2Ayp+qlaEYsgRUtv8XE4NlKhI="
+    
+    //签名值
+    let strSignData = "123456"
+    
     var user: UserEntity? = nil
     
     init() {
@@ -31,6 +37,26 @@ class AccountManager {
             user = nil
         }
     }
+    
+    func loadCA() -> String {
+        let paths = NSSearchPathForDirectoriesInDomains(NSSearchPathDirectory.DocumentDirectory, NSSearchPathDomainMask.UserDomainMask, true)
+        
+        guard let path = paths.first?.stringByAppendingString("/lnca.db") else {
+            return ""
+        }
+        
+        if NSFileManager.defaultManager().fileExistsAtPath(path) {
+            let dbPath = NSBundle.mainBundle().pathForResource("lnca", ofType: "db")!
+            do {
+                try NSFileManager.defaultManager().copyItemAtPath(dbPath, toPath: path)
+            }
+            catch {}
+        }
+        
+        return path
+    }
+    
+    // MARK: - Server
     
     func changePassword(theOld: String, theNew: String, completion: SimpleCompletion?) {
         let req = ChangePasswordReq()
@@ -159,84 +185,114 @@ class AccountManager {
     }
     
     func signIn(account: String, password: String, completion: SimpleCompletion?) {
-        let req = SignInReq()
-        req.account = account
-        req.password = password
-        req.requestCompletion { (response) -> Void in
-            let result = response?.result
-            let errorCode: String? = nil
-            if result?.isFailure == true {
-                completion?(false, "用户名或密码错误", errorCode)
-                
-                return
-            }
-            
-            guard let _ = result?.value else {
-                completion?(false, "用户名或密码错误", errorCode)
-                
-                return
-            }
-            
-            guard let info = HttpBaseReq.parseResponse(result?.value) else {
-                completion?(false, "用户名或密码错误", errorCode)
-                
-                return
-            }
-            
-            guard let _ = info["user_ID"] as? String else {
-                completion?(false, "用户名或密码错误", errorCode)
-                
-                return
-            }
-            
-            let context = CoreDataManager.defalutManager().managedObjectContext
-            let fetchReq = NSFetchRequest(entityName: "UserEntity")
-            
-            do {
-                self.user = nil
-                let users = try context.executeFetchRequest(fetchReq) as! Array<UserEntity>
-                
-                for storeUser in users {
-                    storeUser.isDefault = false
+        let semaphore = dispatch_semaphore_create(0)
+        let queue = dispatch_queue_create("PCSSignInQueue", nil)
+        var error = false
+        let errorCode: String? = nil
+        
+        dispatch_async(queue) {
+            // 登录
+            let req = SignInReq()
+            req.account = account
+            req.password = password
+            req.requestCompletion { (response) -> Void in
+                let result = response?.result
+                if result?.isFailure == true {
+                    completion?(false, "用户名或密码错误", errorCode)
+                    dispatch_semaphore_signal(semaphore)
                     
-                    if storeUser.account == req.account {
-                        self.user = storeUser
+                    return
+                }
+                
+                guard let _ = result?.value else {
+                    completion?(false, "用户名或密码错误", errorCode)
+                    dispatch_semaphore_signal(semaphore)
+                    
+                    return
+                }
+                
+                guard let info = HttpBaseReq.parseResponse(result?.value) else {
+                    completion?(false, "用户名或密码错误", errorCode)
+                    dispatch_semaphore_signal(semaphore)
+                    
+                    return
+                }
+                
+                guard let _ = info["user_ID"] as? String else {
+                    completion?(false, "用户名或密码错误", errorCode)
+                    dispatch_semaphore_signal(semaphore)
+                    
+                    return
+                }
+                
+                let context = CoreDataManager.defalutManager().managedObjectContext
+                let fetchReq = NSFetchRequest(entityName: "UserEntity")
+                
+                do {
+                    self.user = nil
+                    let users = try context.executeFetchRequest(fetchReq) as! Array<UserEntity>
+                    
+                    for storeUser in users {
+                        storeUser.isDefault = false
+                        
+                        if storeUser.account == req.account {
+                            self.user = storeUser
+                        }
                     }
+                    
+                    if self.user == nil {
+                        self.user = NSEntityDescription.insertNewObjectForEntityForName("UserEntity", inManagedObjectContext: context) as? UserEntity
+                    }
+                    
+                    self.user?.account = account
+                    self.user?.password = password
+                    self.user?.isDefault = true
+                    
+                    self.user?.identifier = info["user_ID"] as? String
+                    self.user?.congressID = info["user_GUID"] as? String
+                    self.user?.name = info["User_FirstName"] as? String
+                    self.user?.token = info["CheckTicket"] as? String
+                    self.user?.memberType = info["MemberType"] as? String
+                    self.user?.field = info["STAFF_FieldID"] as? String
+                    
+                    CoreDataManager.defalutManager().saveContext(nil)
+                    
+                    if self.user?.memberType == "301" {
+                        PCSDataManager.defaultManager().content = CongressContentInfo()
+                    }
+                    else {
+                        PCSDataManager.defaultManager().content = WorderContentInfo()
+                    }
+                    
+                    let req = SubmitDeviceTokenReq()
+                    req.deviceToken = PCSDataManager.defaultManager().deviceToken
+                    req.requestSimpleCompletion()
+                    
+                    error = true
+                    dispatch_semaphore_signal(semaphore)
                 }
-                
-                if self.user == nil {
-                    self.user = NSEntityDescription.insertNewObjectForEntityForName("UserEntity", inManagedObjectContext: context) as? UserEntity
+                catch {
+                    completion?(false, "用户名或密码错误", errorCode)
+                    dispatch_semaphore_signal(semaphore)
                 }
-                
-                self.user?.account = account
-                self.user?.password = password
-                self.user?.isDefault = true
-                
-                self.user?.identifier = info["user_ID"] as? String
-                self.user?.congressID = info["user_GUID"] as? String
-                self.user?.name = info["User_FirstName"] as? String
-                self.user?.token = info["CheckTicket"] as? String
-                self.user?.memberType = info["MemberType"] as? String
-                self.user?.field = info["STAFF_FieldID"] as? String
-                
-                CoreDataManager.defalutManager().saveContext(nil)
-                
-                if self.user?.memberType == "301" {
-                    PCSDataManager.defaultManager().content = CongressContentInfo()
-                }
-                else {
-                    PCSDataManager.defaultManager().content = WorderContentInfo()
-                }
-                
-                let req = SubmitDeviceTokenReq()
-                req.deviceToken = PCSDataManager.defaultManager().deviceToken
-                req.requestSimpleCompletion()
-                
-                completion?(true, nil, errorCode)
             }
-            catch {
-                completion?(false, "用户名或密码错误", errorCode)
+            
+            dispatch_semaphore_wait(semaphore, DISPATCH_TIME_FOREVER)
+            
+            if error == false {
+                dispatch_semaphore_signal(semaphore)
+                
+                return
             }
+            // CA
+            //证书base64
+            let certBase64 = MiddlewareAPI.instance().getCertByID(self.certID, 1)
+            
+            //签名结果转成base64
+            let signedBase64 = MiddlewareAPI.instance().signByID(self.certID, self.strSignData)
+            
+            // TODO: 发送服务器验证CA
+            completion?(true, nil, errorCode)
         }
     }
     
