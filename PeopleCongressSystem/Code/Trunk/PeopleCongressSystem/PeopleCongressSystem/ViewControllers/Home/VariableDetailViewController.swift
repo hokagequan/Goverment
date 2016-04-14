@@ -146,7 +146,7 @@ class VariableDetailViewController: UIViewController, UITableViewDataSource, UIT
     func customUI() {
         if pageType == VariablePageType.Add {
             deleteButton.hidden = true
-            submitButton.hidden = true
+            submitButton.hidden = false
         }
         else {
             if variable.submitted == true {
@@ -287,23 +287,43 @@ class VariableDetailViewController: UIViewController, UITableViewDataSource, UIT
     }
     
     @IBAction func clickSubmit(sender: AnyObject) {
-        let toVariable = self.createVariable()
-        toVariable.submitted = true
-        
-        let req = EditVariableReq()
-        req.variable = toVariable
-        
-        EZLoadingActivity.show("", disableUI: true)
-        req.requestSimpleCompletion { (success, message, errorCode) -> Void in
-            EZLoadingActivity.hide()
+        if pageType == VariablePageType.Add {
+            variable.token = GlobalUtil.randomImageName()
+            variable.submitted = true
+            EZLoadingActivity.show("", disableUI: true)
             
-            let alertMessage = success ? "提交成功" : "提交失败，请检查您的网络状况"
-            
-            if success {
-                self.showAlertWithDelegate(alertMessage)
+            PCSDataManager.defaultManager().addVariable(self.createVariable()) { (success, message, errorCode) -> Void in
+                if success {
+                    self.uploadAddedPhotos({ () -> Void in
+                        EZLoadingActivity.hide()
+                        self.showAlertWithDelegate(message ?? "添加成功")
+                    })
+                }
+                else {
+                    EZLoadingActivity.hide()
+                    ResponseErrorManger.defaultManager().handleError(errorCode, message: message)
+                }
             }
-            else {
-                ResponseErrorManger.defaultManager().handleError(errorCode, message: alertMessage)
+        }
+        else {
+            let toVariable = self.createVariable()
+            toVariable.submitted = true
+            
+            let req = EditVariableReq()
+            req.variable = toVariable
+            
+            EZLoadingActivity.show("", disableUI: true)
+            req.requestSimpleCompletion { (success, message, errorCode) -> Void in
+                EZLoadingActivity.hide()
+                
+                let alertMessage = success ? "提交成功" : "提交失败，请检查您的网络状况"
+                
+                if success {
+                    self.showAlertWithDelegate(alertMessage)
+                }
+                else {
+                    ResponseErrorManger.defaultManager().handleError(errorCode, message: alertMessage)
+                }
             }
         }
     }
