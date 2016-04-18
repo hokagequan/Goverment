@@ -10,6 +10,12 @@ import UIKit
 
 class FindPwdViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, VerifyCodeDelegate {
     
+    class UserInfo: NSObject {
+        var mobile: String = ""
+        var smsCode: String = ""
+        var graphicCode: String = ""
+    }
+    
     enum Rows: Int {
         case Mobile = 0
         case VerifyCode
@@ -26,7 +32,7 @@ class FindPwdViewController: UIViewController, UITableViewDataSource, UITableVie
         }
         
         func icon() -> String {
-            let icons = ["phone", "phone", "phone", ""]
+            let icons = ["phone", "graphic_code", "sms_code", ""]
             
             return icons[self.rawValue]
         }
@@ -53,75 +59,90 @@ class FindPwdViewController: UIViewController, UITableViewDataSource, UITableVie
         // Dispose of any resources that can be recreated.
     }
     
+    func isInfoValiable(row: Rows) -> String? {
+        var repString: String? = nil
+        
+        switch row {
+        case .Mobile:
+            let cell = inputTableView.cellForRowAtIndexPath(NSIndexPath(forRow: row.rawValue, inSection: 0)) as! VerifyCodeCell
+            if cell.titleTextField.text == nil {
+                self.showAlert("请输入手机号码")
+                
+                return nil
+            }
+            
+            repString = cell.titleTextField.text
+            
+            break
+        case .VerifyCode:
+            let cell = inputTableView.cellForRowAtIndexPath(NSIndexPath(forRow: row.rawValue, inSection: 0)) as! LocalVerifyCell
+            if cell.titleTextField.text == nil {
+                self.showAlert("请输入图形码")
+                
+                return nil
+            }
+            else if cell.titleTextField.text?.lowercaseString != cell.code.lowercaseString {
+                self.showAlert("请输入正确的图形码")
+                
+                return nil
+            }
+            
+            repString = cell.titleTextField.text
+            
+            break
+        case .SMSCode:
+            let cell = inputTableView.cellForRowAtIndexPath(NSIndexPath(forRow: row.rawValue, inSection: 0)) as! VerifyCodeCell
+            if cell.titleTextField.text == nil {
+                self.showAlert("请输入短信验证码")
+                
+                return nil
+            }
+            
+            repString = cell.titleTextField.text
+            
+            break
+        default:
+            break
+        }
+        
+        return repString
+    }
+    
     // MARK: - Actions
     
     @IBAction func clickSubmit(sender: AnyObject) {
-        let req = ResetPasswordReq()
+        let userInfo = UserInfo()
         
-        for i in 0..<Rows.Max.rawValue {
-            let row = Rows(rawValue: i)!
-            
-            switch row {
-            case .Mobile:
-                let cell = inputTableView.cellForRowAtIndexPath(NSIndexPath(forRow: i, inSection: 0)) as! VerifyCodeCell
-                if cell.titleTextField.text == nil {
-                    self.showAlert("请输入手机号码")
-                    
-                    return
-                }
-                req.name = cell.titleTextField.text
-                
-                break
-            case .VerifyCode:
-                let cell = inputTableView.cellForRowAtIndexPath(NSIndexPath(forRow: i, inSection: 0)) as! LocalVerifyCell
-                if cell.titleTextField.text == nil {
-                    self.showAlert("请输入图形码")
-                    
-                    return
-                }
-                else if cell.titleTextField.text != cell.code {
-                    self.showAlert("请输入正确的图形码")
-                    
-                    return
-                }
-                
-                req.tel = cell.titleTextField.text
-                
-                break
-            case .SMSCode:
-                let cell = inputTableView.cellForRowAtIndexPath(NSIndexPath(forRow: i, inSection: 0)) as! VerifyCodeCell
-                if cell.titleTextField.text == nil {
-                    self.showAlert("请输入短信验证码")
-                    
-                    return
-                }
-                
-                break
-            default:
-                break
-            }
+        guard let mobile = self.isInfoValiable(Rows.Mobile) else {
+            return
         }
         
-        req.requestCompletion { (response) -> Void in
-            guard let result = response?.result else {
-                self.showAlert("提交失败")
+        userInfo.mobile = mobile
+        
+        guard let graphicCode = self.isInfoValiable(Rows.VerifyCode) else {
+            return
+        }
+        
+        userInfo.graphicCode = graphicCode
+        
+        guard let smsCode = self.isInfoValiable(Rows.SMSCode) else {
+            return
+        }
+        
+        userInfo.smsCode = smsCode
+        
+        let req = VerifySMSReq()
+        req.mobile = userInfo.mobile
+        req.smsCode = userInfo.smsCode
+        req.requestSimpleCompletion { (userInfo) in
+            if userInfo == nil {
+                self.showAlert("验证码错误")
                 
                 return
             }
             
-            if (result.isFailure == true) {
-                self.showAlert("提交失败")
-                
-                return
-            }
-            
-            if result.value == nil {
-                self.showAlert("提交失败")
-                
-                return
-            }
-            
-            self.showAlert("客服会尽快与您联系，请保持手机畅通")
+            PCSDataManager.defaultManager().accountManager.user = userInfo
+            self.performSegueWithIdentifier("ChangePwdSegue", sender: userInfo)
         }
     }
     
@@ -132,7 +153,19 @@ class FindPwdViewController: UIViewController, UITableViewDataSource, UITableVie
     // MARK: - VerifyCodeDelegate
     
     func didClickDetail(cell: VerifyCodeCell) {
-        // TODO: 获取短信验证码
+        guard let mobile = self.isInfoValiable(Rows.Mobile) else {
+            return
+        }
+        
+        guard let _ = self.isInfoValiable(Rows.VerifyCode) else {
+            return
+        }
+        
+        let req = GetSMSReq()
+        req.mobile = mobile
+        req.requestSimpleCompletion { (message) in
+            self.showAlert(message)
+        }
     }
     
     // MARK: - UITableView

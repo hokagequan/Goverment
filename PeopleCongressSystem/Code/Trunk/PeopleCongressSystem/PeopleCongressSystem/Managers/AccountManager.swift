@@ -285,11 +285,13 @@ class AccountManager {
                 return
             }
             // CA
+            #if CA
             //证书base64
             let certBase64 = MiddlewareAPI.instance().getCertByID(self.certID, 1)
             
             //签名结果转成base64
             let signedBase64 = MiddlewareAPI.instance().signByID(self.certID, self.strSignData)
+            #endif
             
             // TODO: 发送服务器验证CA
             completion?(true, nil, errorCode)

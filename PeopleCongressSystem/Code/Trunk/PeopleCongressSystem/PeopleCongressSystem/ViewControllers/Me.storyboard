@@ -194,7 +194,7 @@
         <!--View Controller-->
         <scene sceneID="gZG-Hu-gC3">
             <objects>
-                <viewController hidesBottomBarWhenPushed="YES" id="fdX-MZ-Yyh" customClass="ChangePasswordViewController" customModule="PeopleCongressSystem" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ChangePasswordViewController" hidesBottomBarWhenPushed="YES" useStoryboardIdentifierAsRestorationIdentifier="YES" id="fdX-MZ-Yyh" customClass="ChangePasswordViewController" customModule="PeopleCongressSystem" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="NBy-CK-aj3"/>
                         <viewControllerLayoutGuide type="bottom" id="Gzi-tJ-nRQ"/>

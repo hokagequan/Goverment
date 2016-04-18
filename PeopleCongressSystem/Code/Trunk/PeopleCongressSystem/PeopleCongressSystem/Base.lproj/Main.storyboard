@@ -552,6 +552,9 @@
                                                     <state key="normal" title="获取短信验证码">
                                                         <color key="titleColor" red="0.90196078430000004" green="0.1058823529" blue="0.1529411765" alpha="1" colorSpace="calibratedRGB"/>
                                                     </state>
+                                                    <connections>
+                                                        <action selector="clickDetail:" destination="81q-hM-Api" eventType="touchUpInside" id="Kh7-98-4us"/>
+                                                    </connections>
                                                 </button>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YeS-ec-AB7" userLabel="Border">
                                                     <rect key="frame" x="459" y="3" width="1" height="43.5"/>
@@ -646,7 +649,7 @@
                                                                 <constraint firstAttribute="width" constant="130" id="vpp-bZ-mjY"/>
                                                             </constraints>
                                                             <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                                            <state key="normal">
+                                                            <state key="normal" image="refresh_code">
                                                                 <color key="titleColor" red="0.90196078430000004" green="0.1058823529" blue="0.1529411765" alpha="1" colorSpace="calibratedRGB"/>
                                                             </state>
                                                             <variation key="default">
@@ -736,6 +739,7 @@
                         <outlet property="footerView" destination="YIF-w1-NXa" id="MEs-vz-a2e"/>
                         <outlet property="inputTableView" destination="mfD-wA-Ezw" id="pYV-VB-JGX"/>
                         <outlet property="submitButton" destination="o0i-N4-IjW" id="m65-Kr-KRP"/>
+                        <segue destination="j83-Sz-5cR" kind="show" identifier="ChangePwdSegue" id="0BA-XE-07J"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Lz8-MR-oqd" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -749,7 +753,7 @@
                                 <constraint firstAttribute="height" constant="46" id="uZg-b3-nJn"/>
                             </constraints>
                             <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                            <state key="normal" title="申请找回"/>
+                            <state key="normal" title="修改密码"/>
                             <connections>
                                 <action selector="clickSubmit:" destination="yWI-OB-52O" eventType="touchUpInside" id="n0t-e0-FSl"/>
                             </connections>
@@ -764,6 +768,14 @@
                 </view>
             </objects>
             <point key="canvasLocation" x="-638" y="1985"/>
+        </scene>
+        <!--ChangePasswordViewController-->
+        <scene sceneID="XAi-Jl-wg9">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Me" referencedIdentifier="ChangePasswordViewController" id="j83-Sz-5cR" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Hp3-Ph-UbQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-169.5" y="1674"/>
         </scene>
         <!--Main View Controller-->
         <scene sceneID="TPK-VZ-AKN">
@@ -894,6 +906,7 @@
         <image name="lock" width="13" height="19"/>
         <image name="more" width="12" height="11"/>
         <image name="phone" width="13" height="18"/>
+        <image name="refresh_code" width="16" height="13"/>
         <image name="server" width="14" height="12"/>
         <image name="sign_title" width="242" height="43"/>
         <image name="uncheck" width="21" height="21"/>
