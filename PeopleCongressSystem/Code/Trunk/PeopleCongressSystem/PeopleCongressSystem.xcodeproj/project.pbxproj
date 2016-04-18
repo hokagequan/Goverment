@@ -127,6 +127,7 @@
 		10F109851C8822A30083D89D /* Person.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10F109841C8822A30083D89D /* Person.swift */; };
 		10F197501CC48006007C28DC /* GetSMSReq.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10F1974F1CC48006007C28DC /* GetSMSReq.swift */; };
 		10F197521CC48A0D007C28DC /* VerifySMSReq.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10F197511CC48A0D007C28DC /* VerifySMSReq.swift */; };
+		10F197541CC4CEF9007C28DC /* CAAboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10F197531CC4CEF9007C28DC /* CAAboutViewController.swift */; };
 		10F5875B1C8F27BF00F2279B /* FeedbackViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10F5875A1C8F27BF00F2279B /* FeedbackViewController.swift */; };
 		10F5875D1C8F928A00F2279B /* FeedbackReq.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10F5875C1C8F928A00F2279B /* FeedbackReq.swift */; };
 		10F5875F1C8FB1A600F2279B /* AboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10F5875E1C8FB1A600F2279B /* AboutViewController.swift */; };
@@ -276,6 +277,7 @@
 		10F109841C8822A30083D89D /* Person.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Person.swift; sourceTree = "<group>"; };
 		10F1974F1CC48006007C28DC /* GetSMSReq.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetSMSReq.swift; sourceTree = "<group>"; };
 		10F197511CC48A0D007C28DC /* VerifySMSReq.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VerifySMSReq.swift; sourceTree = "<group>"; };
+		10F197531CC4CEF9007C28DC /* CAAboutViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CAAboutViewController.swift; sourceTree = "<group>"; };
 		10F5875A1C8F27BF00F2279B /* FeedbackViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedbackViewController.swift; sourceTree = "<group>"; };
 		10F5875C1C8F928A00F2279B /* FeedbackReq.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedbackReq.swift; sourceTree = "<group>"; };
 		10F5875E1C8FB1A600F2279B /* AboutViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AboutViewController.swift; sourceTree = "<group>"; };
@@ -513,6 +515,7 @@
 				1072E08B1C8F1BF1004DBA4D /* ChangeGestureViewController.swift */,
 				10F5875A1C8F27BF00F2279B /* FeedbackViewController.swift */,
 				10F5875E1C8FB1A600F2279B /* AboutViewController.swift */,
+				10F197531CC4CEF9007C28DC /* CAAboutViewController.swift */,
 			);
 			path = Me;
 			sourceTree = "<group>";
@@ -831,6 +834,7 @@
 				10DBF2101C8A8075007620BA /* ManageEditUIDelegate.swift in Sources */,
 				10D0D5A41C4DCA5A0093F687 /* SignInViewController.swift in Sources */,
 				100B20361C8883A700435EF0 /* PCSTypeInfo.swift in Sources */,
+				10F197541CC4CEF9007C28DC /* CAAboutViewController.swift in Sources */,
 				1075055C1C90576C00C9589E /* UIViewController+PreloadHtml.swift in Sources */,
 				103023001CB7B8A900832DE1 /* ResponseErrorManger.swift in Sources */,
 				100691AE1C929CA7000AEFEA /* ManageEditActivityEditDelegate.swift in Sources */,

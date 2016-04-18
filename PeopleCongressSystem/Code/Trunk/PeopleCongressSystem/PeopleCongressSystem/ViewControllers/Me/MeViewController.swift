@@ -18,6 +18,7 @@ class MeViewController: UITableViewController {
         case Help
         case Feedback
         case About
+        case CA
         case Max
         
         func title() -> String {
@@ -28,6 +29,7 @@ class MeViewController: UITableViewController {
                 "在线帮助",
                 "意见反馈",
                 "关于",
+                "CA认证",
                 ""]
             
             return titles[self.rawValue]
@@ -124,6 +126,10 @@ class MeViewController: UITableViewController {
             vc.URL = PCSDataManager.defaultManager().htmlURL(PCSDataManager.defaultManager().content.helpURL)
             vc.naviTitle = row.title()
             self.navigationController?.pushViewController(vc, animated: true)
+            break
+        case .CA:
+            self.performSegueWithIdentifier("CASegue", sender: self)
+            break
         default:
             break
         }

@@ -294,7 +294,9 @@ class AccountManager {
             #endif
             
             // TODO: 发送服务器验证CA
-            completion?(true, nil, errorCode)
+            dispatch_async(dispatch_get_main_queue(), { 
+                completion?(true, nil, errorCode)
+            })
         }
     }
     
