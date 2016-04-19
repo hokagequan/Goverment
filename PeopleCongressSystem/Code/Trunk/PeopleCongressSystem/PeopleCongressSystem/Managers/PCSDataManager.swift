@@ -10,7 +10,7 @@ import Foundation
 import CoreData
 import ReachabilitySwift
 
-class PCSDataManager {
+class PCSDataManager: NSObject {
     
     static let _pcsDataManager = PCSDataManager()
     
@@ -18,6 +18,9 @@ class PCSDataManager {
     var accountManager = AccountManager()
     var content: ContentInfo = ContentInfo()
     var isLaunch: Bool = true
+    var getSMSCount = 60
+//    var getSMSCountTimer: NSTimer? = nil
+    var getSMSBlock: ((Int) -> Void)? = nil
     
     var deviceToken: String {
         guard let token = JPUSHService.registrationID() else {
@@ -33,7 +36,9 @@ class PCSDataManager {
         return _pcsDataManager;
     }
     
-    init() {
+    override init() {
+        super.init()
+        
         do {
             reachability = try Reachability.reachabilityForInternetConnection()
         }
@@ -56,6 +61,16 @@ class PCSDataManager {
     
     deinit {
         reachability?.stopNotifier()
+    }
+    
+    func countingDown(timer: NSTimer) {
+        getSMSCount -= 1
+        getSMSBlock?(getSMSCount)
+        
+        if getSMSCount == 0 {
+            timer.invalidate()
+//            getSMSCountTimer = nil
+        }
     }
     
     func deleteLocalVariable(completion: () -> Void) {
@@ -81,6 +96,19 @@ class PCSDataManager {
         catch {
             completion()
         }
+    }
+    
+    func fireCountingDownGetSMS(block: (Int) -> Void) {
+//        if getSMSCountTimer != nil {
+//            getSMSCountTimer!.invalidate()
+//            getSMSCountTimer = nil
+//        }
+        
+        getSMSCount = 60
+        getSMSBlock = block
+
+        let timer = NSTimer.scheduledTimerWithTimeInterval(1.0, target: self, selector: #selector(PCSDataManager.countingDown(_:)), userInfo: nil, repeats: true)
+        timer.fire()
     }
     
     func getLocalVariable() -> Variable? {

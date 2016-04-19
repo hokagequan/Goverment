@@ -10,21 +10,33 @@ import UIKit
 
 class ResetPasswordReq: HttpBaseReq {
     
-    var name: String? = nil
+    var password: String? = nil
     var tel: String? = nil
     
     override init() {
         super.init()
     }
     
-    override func requestCompletion(completion: HttpReqCompletion?) {
+    func requestSimpleCompletion(completion: (String) -> Void) {
         var params = [String: AnyObject]()
-        params["rddb_name"] = name
-        params["rddb_phone"] = tel
+        params["phoneID"] = tel
+        params["newpwd"] = password
         params["theAPPid"] = "dalianrenda0001"
         params["thecharset"] = "gb2312"
         
-        self.request("resetpassword", nameSpace: "gonggong", params: params, completion: completion)
+        self.request("pwdreset", nameSpace: "gonggong", params: params) { (response) in
+            var message = "修改失败"
+            
+            defer {
+                completion(message)
+            }
+
+            guard let value = HttpBaseReq.parseResponse(response?.result.value) as? String else {
+                return
+            }
+            
+            message = value
+        }
     }
 
 }

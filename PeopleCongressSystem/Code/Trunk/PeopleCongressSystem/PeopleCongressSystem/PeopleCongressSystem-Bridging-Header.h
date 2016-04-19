@@ -4,7 +4,4 @@
 
 #import "JPUSHService.h"
 #import "RandomCodeView.h"
-
-#if CA
 #import "MiddlewareAPI.h"
-#endif

@@ -31,10 +31,11 @@ static MiddlewareAPI * shareAPI = nil;
     NSArray * arr = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
     NSString * strPath = [arr objectAtIndex:0];
     
-    strPath = [NSString stringWithFormat: @"%@/", strPath];
+    NSString *dbPath = [[NSBundle mainBundle] pathForResource:@"lnca" ofType:@"db"];
+    strPath = dbPath.stringByDeletingLastPathComponent;
     
-//    NSString *dbPath = [[NSBundle mainBundle] pathForResource:@"lnca" ofType:@"db"];
-//    
+    strPath = [NSString stringWithFormat: @"%@/", strPath];
+//
 //    NSData *data = [NSData dataWithContentsOfFile:dbPath];
 //    [data writeToFile:[strPath stringByAppendingPathComponent:@"lnca.db"] atomically:true];
     

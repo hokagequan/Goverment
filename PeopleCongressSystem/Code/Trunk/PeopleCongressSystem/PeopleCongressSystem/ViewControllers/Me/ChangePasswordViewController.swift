@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import EZLoadingActivity
 
 class ChangePasswordViewController: UIViewController, UITextFieldDelegate {
 
@@ -14,7 +15,12 @@ class ChangePasswordViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var theNewPwdTextField: UITextField!
     @IBOutlet weak var theVerifyPwdTextField: UITextField!
     @IBOutlet weak var saveButton: UIButton!
+    @IBOutlet weak var theOldPwdHeightLC: NSLayoutConstraint!
     
+    var isForgetReset = false
+    var mobile = ""
+    
+    @IBOutlet weak var containerHeightLC: NSLayoutConstraint!
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -23,6 +29,11 @@ class ChangePasswordViewController: UIViewController, UITextFieldDelegate {
         PCSCustomUtil.customNavigationController(self)
         
         CustomObjectUtil.customObjectsLayout([saveButton], backgroundColor: colorRed, borderWidth: 0.0, borderColor: nil, corner: 5.0)
+        
+        if isForgetReset == true {
+            theOldPwdHeightLC.constant = 0.0
+            containerHeightLC.constant = 128.0 - 44.0
+        }
     }
 
     override func didReceiveMemoryWarning() {
@@ -33,10 +44,12 @@ class ChangePasswordViewController: UIViewController, UITextFieldDelegate {
     // MARK: - Actions
     
     @IBAction func clickSave(sender: AnyObject) {
-        if theOldPwdTextField.text == nil {
-            self.showAlert("请输入旧密码")
-            
-            return
+        if isForgetReset == false {
+            if theOldPwdTextField.text == nil {
+                self.showAlert("请输入旧密码")
+                
+                return
+            }
         }
         
         if theNewPwdTextField.text == nil {
@@ -57,7 +70,24 @@ class ChangePasswordViewController: UIViewController, UITextFieldDelegate {
             return
         }
         
+        if isForgetReset == true {
+            EZLoadingActivity.show("", disableUI: true)
+            let req = ResetPasswordReq()
+            req.password = theNewPwdTextField.text
+            req.tel = mobile
+            req.requestSimpleCompletion({ (message) in
+                EZLoadingActivity.hide()
+                self.showAlert(message)
+                
+                self.navigationController?.popToRootViewControllerAnimated(true)
+            })
+            return
+        }
+        
+        EZLoadingActivity.show("", disableUI: true)
         PCSDataManager.defaultManager().accountManager.changePassword(theOldPwdTextField.text!, theNew: theNewPwdTextField!.text!) { (success, message, errorCode) -> Void in
+            EZLoadingActivity.hide()
+            
             if success == true {
                 self.showAlert("保存成功")
             }

@@ -16,6 +16,9 @@ class CAAboutViewController: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        self.navigationItem.hidesBackButton = true
+        PCSCustomUtil.customNavigationController(self)
+        
         CustomObjectUtil.customObjectsLayout([aboutTextView], backgroundColor: UIColor.whiteColor(), borderWidth: 0, borderColor: nil, corner: 5.0)
     }
 

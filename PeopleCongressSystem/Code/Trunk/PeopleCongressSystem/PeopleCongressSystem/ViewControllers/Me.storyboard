@@ -327,8 +327,10 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="containerHeightLC" destination="0Zw-Pd-BE9" id="13z-9a-O4e"/>
                         <outlet property="saveButton" destination="NLR-YO-mOr" id="1G0-l2-hUM"/>
                         <outlet property="theNewPwdTextField" destination="9Hd-4b-xoM" id="TrB-TI-2aM"/>
+                        <outlet property="theOldPwdHeightLC" destination="WfC-fT-aGq" id="PI4-O7-GiI"/>
                         <outlet property="theOldPwdTextField" destination="RAB-zg-2l0" id="GdE-wF-FiL"/>
                         <outlet property="theVerifyPwdTextField" destination="yZ2-E9-NzN" id="nUq-ZO-Oaw"/>
                     </connections>
@@ -649,7 +651,7 @@
             </objects>
             <point key="canvasLocation" x="1607" y="3480"/>
         </scene>
-        <!--About View Controller-->
+        <!--View Controller-->
         <scene sceneID="6mS-Tl-mF3">
             <objects>
                 <viewController id="zUe-ii-SNu" customClass="CAAboutViewController" customModule="PeopleCongressSystem" customModuleProvider="target" sceneMemberID="viewController">
@@ -671,7 +673,7 @@
                                     <userDefinedRuntimeAttribute type="string" keyPath="title" value="CA认证"/>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
-                                    <outlet property="viewController" destination="U9y-jI-Zhs" id="g3o-xu-zvB"/>
+                                    <outlet property="viewController" destination="zUe-ii-SNu" id="YJG-ic-dBp"/>
                                 </connections>
                             </view>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qtv-72-C89">

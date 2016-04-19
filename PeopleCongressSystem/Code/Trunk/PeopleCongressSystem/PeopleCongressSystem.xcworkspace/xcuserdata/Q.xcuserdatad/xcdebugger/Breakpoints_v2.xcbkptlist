@@ -67,5 +67,53 @@
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Pods/Alamofire/Source/Manager.swift"
+            timestampString = "482721069.26867"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "496"
+            endingLineNumber = "496"
+            landmarkName = "URLSession(_:dataTask:didReceiveResponse:completionHandler:)"
+            landmarkType = "5">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Alamofire.Manager.SessionDelegate.URLSession (__ObjC.NSURLSession, dataTask : __ObjC.NSURLSessionDataTask, didReceiveResponse : __ObjC.NSURLResponse, completionHandler : (__C.NSURLSessionResponseDisposition) -&gt; ()) -&gt; ()"
+                  moduleName = "Alamofire"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/Q/GitHub/Goverment/PeopleCongressSystem/Code/Trunk/PeopleCongressSystem/Pods/Alamofire/Source/Manager.swift"
+                  timestampString = "482752176.051799"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "496"
+                  endingLineNumber = "496"
+                  offsetFromSymbolStart = "44">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Alamofire.Manager.SessionDelegate.URLSession (__ObjC.NSURLSession, dataTask : __ObjC.NSURLSessionDataTask, didReceiveResponse : __ObjC.NSURLResponse, completionHandler : (__C.NSURLSessionResponseDisposition) -&gt; ()) -&gt; ()"
+                  moduleName = "Alamofire"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/Q/GitHub/Goverment/PeopleCongressSystem/Code/Trunk/PeopleCongressSystem/Pods/Alamofire/Source/Manager.swift"
+                  timestampString = "482752176.051902"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "496"
+                  endingLineNumber = "496"
+                  offsetFromSymbolStart = "120">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
    </Breakpoints>
 </Bucket>

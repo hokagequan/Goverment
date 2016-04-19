@@ -22,6 +22,7 @@ class AccountManager {
     
     init() {
         self.getDefaultUser()
+        self.loadCA()
     }
     
     func getDefaultUser() {
@@ -45,7 +46,7 @@ class AccountManager {
             return ""
         }
         
-        if NSFileManager.defaultManager().fileExistsAtPath(path) {
+        if NSFileManager.defaultManager().fileExistsAtPath(path) == false {
             let dbPath = NSBundle.mainBundle().pathForResource("lnca", ofType: "db")!
             do {
                 try NSFileManager.defaultManager().copyItemAtPath(dbPath, toPath: path)
@@ -278,24 +279,46 @@ class AccountManager {
             }
             
             dispatch_semaphore_wait(semaphore, DISPATCH_TIME_FOREVER)
-            
             if error == false {
                 dispatch_semaphore_signal(semaphore)
+                completion?(false, "用户名或密码错误", errorCode)
                 
                 return
             }
+            
             // CA
+            var randString: String? = nil
+            let caReq = GetCARandReq()
+            caReq.requestSimple({ (rand) in
+                randString = rand
+                dispatch_semaphore_signal(semaphore)
+            })
+            
+            dispatch_semaphore_wait(semaphore, DISPATCH_TIME_FOREVER)
+            if randString == nil {
+                dispatch_semaphore_signal(semaphore)
+                completion?(false, "用户名或密码错误", errorCode)
+                
+                return
+            }
+            
             #if CA
             //证书base64
             let certBase64 = MiddlewareAPI.instance().getCertByID(self.certID, 1)
             
             //签名结果转成base64
-            let signedBase64 = MiddlewareAPI.instance().signByID(self.certID, self.strSignData)
+            let signedBase64 = MiddlewareAPI.instance().signByID(self.certID, randString)
             #endif
             
-            // TODO: 发送服务器验证CA
-            dispatch_async(dispatch_get_main_queue(), { 
-                completion?(true, nil, errorCode)
+            let signedCAReq = SignCAReq()
+            signedCAReq.rand = randString!
+            signedCAReq.cert = certBase64.stringByAddingPercentEscapesUsingEncoding(NSUTF8StringEncoding)!
+            signedCAReq.signed = signedBase64.stringByAddingPercentEscapesUsingEncoding(NSUTF8StringEncoding)!
+            signedCAReq.requestSimple({ (success) in
+                dispatch_semaphore_signal(semaphore)
+                dispatch_async(dispatch_get_main_queue(), {
+                    completion?(true, "用户名或密码错误", errorCode)
+                })
             })
         }
     }

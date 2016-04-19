@@ -35,7 +35,11 @@ class VerifySMSReq: HttpBaseReq {
                 return
             }
             
-            guard let repValue = HttpBaseReq.parseResponse(value) as? Dictionary<String, AnyObject> else {
+            guard let rep = HttpBaseReq.parseResponse(value) as? Array<Dictionary<String, AnyObject>> else {
+                return
+            }
+            
+            guard let repValue = rep.first else {
                 return
             }
             
@@ -64,6 +68,7 @@ class VerifySMSReq: HttpBaseReq {
                 userEntity?.name = repValue["UserFirstName"] as? String
                 userEntity?.token = repValue["CheckTicket"] as? String
                 userEntity?.field = repValue["FieldID"] as? String
+                userEntity?.tel = self.mobile
                 
                 CoreDataManager.defalutManager().saveContext(nil)
             }

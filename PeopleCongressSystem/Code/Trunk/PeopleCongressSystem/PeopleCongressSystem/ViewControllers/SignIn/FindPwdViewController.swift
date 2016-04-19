@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import EZLoadingActivity
 
 class FindPwdViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, VerifyCodeDelegate {
     
@@ -131,10 +132,13 @@ class FindPwdViewController: UIViewController, UITableViewDataSource, UITableVie
         
         userInfo.smsCode = smsCode
         
+        EZLoadingActivity.show("", disableUI: true)
         let req = VerifySMSReq()
         req.mobile = userInfo.mobile
         req.smsCode = userInfo.smsCode
         req.requestSimpleCompletion { (userInfo) in
+            EZLoadingActivity.hide()
+            
             if userInfo == nil {
                 self.showAlert("验证码错误")
                 
@@ -165,6 +169,18 @@ class FindPwdViewController: UIViewController, UITableViewDataSource, UITableVie
         req.mobile = mobile
         req.requestSimpleCompletion { (message) in
             self.showAlert(message)
+            
+            PCSDataManager.defaultManager().fireCountingDownGetSMS({ (count) in
+                if count == 0 {
+                    cell.detailButton.userInteractionEnabled = true
+                    cell.detailButton.setTitle("获取短信验证码", forState: UIControlState.Normal)
+                    
+                    return
+                }
+                
+                cell.detailButton.userInteractionEnabled = false
+                cell.detailButton.setTitle("\(count)秒后重新获取", forState: UIControlState.Normal)
+            })
         }
     }
     
@@ -209,18 +225,36 @@ class FindPwdViewController: UIViewController, UITableViewDataSource, UITableVie
             cell.borderView.hidden = true
             cell.detailButton.hidden = true
         }
+        else if row == Rows.Mobile {
+            PCSDataManager.defaultManager().getSMSBlock = { (count) -> Void in
+                if count == 0 {
+                    cell.detailButton.userInteractionEnabled = true
+                    cell.detailButton.setTitle("获取短信验证码", forState: UIControlState.Normal)
+                    
+                    return
+                }
+                
+                cell.detailButton.userInteractionEnabled = false
+                cell.detailButton.setTitle("\(count)秒后重新获取", forState: UIControlState.Normal)
+            }
+        }
         
         return cell
     }
 
-    /*
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
+        if segue.identifier == "ChangePwdSegue" {
+            let viewController = segue.destinationViewController as! ChangePasswordViewController
+            viewController.isForgetReset = true
+            
+            let userInfo = sender as! UserEntity
+            viewController.mobile = userInfo.tel!
+        }
     }
-    */
 
 }
