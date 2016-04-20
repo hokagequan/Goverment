@@ -11,6 +11,10 @@ import UIKit
 
 class CongressHomeActionDelegate: ActionProtocol {
     
+    func didClickSpecial(viewController: UIViewController) {
+//        viewController.performSegueWithIdentifier("", sender: self)
+    }
+    
     func didClickIndexPath(viewController: UIViewController, indexPath: NSIndexPath) {
         guard let row = HomeElementContentCongress(rawValue: indexPath.row) else {
             return

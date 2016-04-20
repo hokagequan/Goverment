@@ -11,6 +11,10 @@ import UIKit
 
 class WorkerHomeActionDelegate: ActionProtocol {
     
+    func didClickSpecial(viewController: UIViewController) {
+        viewController.performSegueWithIdentifier("CheckInSegue", sender: self)
+    }
+    
     func didClickIndexPath(viewController: UIViewController, indexPath: NSIndexPath) {
         guard let row = HomeElementContentWorker(rawValue: indexPath.row) else {
             return

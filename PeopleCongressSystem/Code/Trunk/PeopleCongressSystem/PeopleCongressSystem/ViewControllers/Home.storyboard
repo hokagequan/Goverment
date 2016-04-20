@@ -114,25 +114,59 @@
                                     <outlet property="delegate" destination="drw-Ea-fjy" id="3NG-U2-z6j"/>
                                 </connections>
                             </collectionView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YQr-PZ-0gW" userLabel="Special">
+                                <rect key="frame" x="532" y="516" width="60" height="60"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="djp-Nk-gp8" userLabel="Special">
+                                        <rect key="frame" x="0.0" y="0.0" width="60" height="60"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="djp-Nk-gp8" secondAttribute="height" multiplier="23:15" id="6Bl-de-rRE"/>
+                                            <constraint firstAttribute="width" constant="46" id="BJG-Nc-XoC"/>
+                                        </constraints>
+                                        <variation key="default">
+                                            <mask key="constraints">
+                                                <exclude reference="6Bl-de-rRE"/>
+                                                <exclude reference="BJG-Nc-XoC"/>
+                                            </mask>
+                                        </variation>
+                                        <connections>
+                                            <action selector="clickSpecial:" destination="drw-Ea-fjy" eventType="touchUpInside" id="357-8K-v3C"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstItem="djp-Nk-gp8" firstAttribute="leading" secondItem="YQr-PZ-0gW" secondAttribute="leading" id="3pB-1V-cLz"/>
+                                    <constraint firstAttribute="trailing" secondItem="djp-Nk-gp8" secondAttribute="trailing" id="Ecx-sx-aof"/>
+                                    <constraint firstAttribute="width" constant="60" id="H6s-li-PGe"/>
+                                    <constraint firstAttribute="bottom" secondItem="djp-Nk-gp8" secondAttribute="bottom" id="W8L-Xv-2NE"/>
+                                    <constraint firstItem="djp-Nk-gp8" firstAttribute="top" secondItem="YQr-PZ-0gW" secondAttribute="top" id="XA7-yq-CmY"/>
+                                    <constraint firstAttribute="width" secondItem="YQr-PZ-0gW" secondAttribute="height" multiplier="1:1" id="hiw-Fh-k7I"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" red="0.94901960780000005" green="0.94901960780000005" blue="0.94901960780000005" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="E18-kk-YL3" firstAttribute="height" secondItem="46Y-lp-Xfn" secondAttribute="height" multiplier="204:667" id="530-k2-WVU"/>
                             <constraint firstAttribute="trailing" secondItem="E18-kk-YL3" secondAttribute="trailing" id="9dM-Dm-ZKo"/>
                             <constraint firstItem="E18-kk-YL3" firstAttribute="leading" secondItem="46Y-lp-Xfn" secondAttribute="leading" id="CAh-yf-gf7"/>
+                            <constraint firstItem="8ph-kt-EsP" firstAttribute="top" secondItem="YQr-PZ-0gW" secondAttribute="bottom" constant="24" id="Dua-qf-IO5"/>
                             <constraint firstItem="ISn-ia-tyM" firstAttribute="top" secondItem="E18-kk-YL3" secondAttribute="bottom" id="J9h-8x-kvE"/>
                             <constraint firstItem="8ph-kt-EsP" firstAttribute="top" secondItem="ISn-ia-tyM" secondAttribute="bottom" id="eXm-2J-5nh"/>
                             <constraint firstItem="E18-kk-YL3" firstAttribute="top" secondItem="46Y-lp-Xfn" secondAttribute="top" id="iLc-2u-LFO"/>
                             <constraint firstAttribute="trailing" secondItem="ISn-ia-tyM" secondAttribute="trailing" id="lGk-DO-Zde"/>
                             <constraint firstItem="ISn-ia-tyM" firstAttribute="leading" secondItem="46Y-lp-Xfn" secondAttribute="leading" id="oP6-gU-JjU"/>
+                            <constraint firstAttribute="trailing" secondItem="YQr-PZ-0gW" secondAttribute="trailing" constant="8" id="ri4-8i-Am5"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="Uer-Uc-GWQ"/>
                     <connections>
                         <outlet property="collectionView" destination="ISn-ia-tyM" id="wOa-uz-Khw"/>
+                        <outlet property="specialButton" destination="djp-Nk-gp8" id="g89-Pz-ca1"/>
                         <segue destination="BkH-2E-4Ca" kind="show" identifier="PerformanceRecordsSegue" id="etR-L0-hEV"/>
                         <segue destination="U5H-xC-1Bc" kind="show" identifier="VariableRecordsSegue" id="zE1-Qf-0eo"/>
                         <segue destination="6Oz-BJ-aFz" kind="show" identifier="SituationSegue" id="vwU-yL-8Y3"/>
+                        <segue destination="zgg-GR-0Qx" kind="show" identifier="CheckInSegue" id="XDy-ju-EWi"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Cc7-Qf-2qh" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -650,6 +684,14 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tQK-70-o0X" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1568" y="2015"/>
+        </scene>
+        <!--CheckInViewController-->
+        <scene sceneID="hmH-mf-zDb">
+            <objects>
+                <viewControllerPlaceholder storyboardName="CheckIn" referencedIdentifier="CheckInViewController" id="zgg-GR-0Qx" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="0Uw-7U-Bo8" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1503.5" y="2434"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="gdi-XG-cqO">

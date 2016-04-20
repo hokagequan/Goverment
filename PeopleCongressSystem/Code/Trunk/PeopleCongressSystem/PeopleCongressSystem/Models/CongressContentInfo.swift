@@ -33,6 +33,12 @@ enum HomeElementContentCongress: Int {
 
 class CongressContentInfo: ContentInfo {
     
+    override init() {
+        super.init()
+        
+        actionDelegate = CongressHomeActionDelegate()
+    }
+    
     override var helpURL: String {
         return pageHTMLHelpCongress
     }

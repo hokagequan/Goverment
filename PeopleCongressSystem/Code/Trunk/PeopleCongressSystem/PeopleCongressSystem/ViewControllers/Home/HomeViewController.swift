@@ -11,6 +11,7 @@ import UIKit
 class HomeViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
 
     @IBOutlet weak var collectionView: UICollectionView!
+    @IBOutlet weak var specialButton: UIButton!
     
     let content = PCSDataManager.defaultManager().content
     
@@ -20,6 +21,7 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        self.loadUI()
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -44,10 +46,26 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
             })
         }
     }
+    
+    func loadUI() {
+        if content is WorderContentInfo {
+            specialButton.setImage(UIImage(named: "home_checkin"), forState: UIControlState.Normal)
+        }
+        else if content is CongressContentInfo {
+            specialButton.hidden = true
+        }
+    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    // MARK: - Actions
+    
+    @IBAction func clickSpecial(sender: AnyObject) {
+        self.navigationController?.setNavigationBarHidden(false, animated: true)
+        content.actionDelegate?.didClickSpecial(self)
     }
     
     // MARK: - UICollectionView
@@ -86,17 +104,7 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
     
     func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
         self.navigationController?.setNavigationBarHidden(false, animated: true)
-        
-        if content is WorderContentInfo {
-            let actionDelegate = WorkerHomeActionDelegate()
-            
-            actionDelegate.didClickIndexPath(self, indexPath: indexPath)
-        }
-        else if content is CongressContentInfo {
-            let actionDelegate = CongressHomeActionDelegate()
-            
-            actionDelegate.didClickIndexPath(self, indexPath: indexPath)
-        }
+        content.actionDelegate?.didClickIndexPath(self, indexPath: indexPath)
     }
 
     // MARK: - Navigation

@@ -10,6 +10,9 @@ import Foundation
 
 class ContentInfo {
     
+    /// @brief 处理事件
+    var actionDelegate: ActionProtocol? = nil
+    
     /// @brief 帮助页面地址
     var helpURL: String {
         return ""

@@ -33,6 +33,12 @@ enum HomeElementContentWorker: Int {
 
 class WorderContentInfo: ContentInfo {
     
+    override init() {
+        super.init()
+        
+        actionDelegate = WorkerHomeActionDelegate()
+    }
+    
     override var helpURL: String {
         return pageHTMLHelpWorker
     }
