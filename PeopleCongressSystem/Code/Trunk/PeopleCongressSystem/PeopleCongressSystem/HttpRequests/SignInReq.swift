@@ -23,7 +23,7 @@ class SignInReq: HttpBaseReq {
         var params = [String: AnyObject]()
         params["loginname"] = account
         params["password"] = password
-        params["phonetype"] = "iPhone"
+        params["phonetype"] = "iPhone;\(GlobalUtil.phoneModel())"
         params["theAPPid"] = "dalianrenda0001"
         params["thecharset"] = "gb2312"
         

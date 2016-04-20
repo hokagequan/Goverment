@@ -561,7 +561,7 @@
                                     </mask>
                                 </variation>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="业务支持电话 : 0411-83722229" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="908-vk-h6s">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="技术支持电话 : 0411-83644972" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="908-vk-h6s">
                                 <rect key="frame" x="20" y="521" width="560" height="13"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="15" id="KSa-4t-xFk"/>
@@ -576,7 +576,22 @@
                                     </mask>
                                 </variation>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="技术支持电话 : 0411-83644972" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Zdb-M4-Bc6">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="业务支持电话 : 0411-83722229" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Iaf-jY-QBh">
+                                <rect key="frame" x="20" y="500" width="560" height="13"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="13" id="EoZ-LK-IFh"/>
+                                    <constraint firstAttribute="height" constant="15" id="eD6-2q-8c5"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="13"/>
+                                <color key="textColor" red="0.44705882349999998" green="0.44705882349999998" blue="0.44705882349999998" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="eD6-2q-8c5"/>
+                                    </mask>
+                                </variation>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="使用条款和隐私政策" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Zdb-M4-Bc6">
                                 <rect key="frame" x="20" y="544" width="560" height="13"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="15" id="CWW-zl-heA"/>
@@ -606,6 +621,15 @@
                                     </mask>
                                 </variation>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CBV-qA-CS0" userLabel="Policy">
+                                <rect key="frame" x="20" y="536" width="560" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="Jbw-xZ-QN7"/>
+                                </constraints>
+                                <connections>
+                                    <action selector="clickPolicy:" destination="U9y-jI-Zhs" eventType="touchUpInside" id="UTt-f9-udm"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -616,24 +640,30 @@
                             <constraint firstItem="EPU-Zg-bEy" firstAttribute="leading" secondItem="AdK-Jg-hgq" secondAttribute="leading" constant="20" id="4Oe-ur-Wuy"/>
                             <constraint firstAttribute="trailing" secondItem="908-vk-h6s" secondAttribute="trailing" constant="20" id="8pE-cw-cYe"/>
                             <constraint firstAttribute="trailing" secondItem="aVj-Bz-L4A" secondAttribute="trailing" constant="20" id="COD-3F-vOQ"/>
+                            <constraint firstItem="908-vk-h6s" firstAttribute="top" secondItem="Iaf-jY-QBh" secondAttribute="bottom" constant="10" id="FZb-dT-ufb"/>
                             <constraint firstItem="JfI-MH-FrN" firstAttribute="leading" secondItem="AdK-Jg-hgq" secondAttribute="leading" id="HN0-QW-CPm"/>
+                            <constraint firstItem="CBV-qA-CS0" firstAttribute="trailing" secondItem="Zdb-M4-Bc6" secondAttribute="trailing" id="JAq-no-bx6"/>
                             <constraint firstItem="OKk-bC-NhV" firstAttribute="top" secondItem="suu-S7-f0C" secondAttribute="bottom" constant="8" id="Jwn-0W-roz"/>
                             <constraint firstItem="Zdb-M4-Bc6" firstAttribute="leading" secondItem="AdK-Jg-hgq" secondAttribute="leading" constant="20" id="KQR-qB-QEc"/>
                             <constraint firstItem="OKk-bC-NhV" firstAttribute="leading" secondItem="AdK-Jg-hgq" secondAttribute="leading" constant="20" id="OGW-J7-zDO"/>
+                            <constraint firstItem="CBV-qA-CS0" firstAttribute="leading" secondItem="Zdb-M4-Bc6" secondAttribute="leading" id="P9X-nD-pgT"/>
                             <constraint firstAttribute="trailing" secondItem="kDR-pV-HQa" secondAttribute="trailing" constant="20" id="Rlw-8Q-rM0"/>
                             <constraint firstItem="kDR-pV-HQa" firstAttribute="leading" secondItem="AdK-Jg-hgq" secondAttribute="leading" constant="20" id="RzP-gU-ees"/>
                             <constraint firstItem="aVj-Bz-L4A" firstAttribute="top" secondItem="0Pl-S0-rBl" secondAttribute="bottom" constant="27" id="SaG-X4-e6L"/>
                             <constraint firstAttribute="trailing" secondItem="OKk-bC-NhV" secondAttribute="trailing" constant="20" id="UMq-UJ-ZyV"/>
                             <constraint firstItem="suu-S7-f0C" firstAttribute="leading" secondItem="AdK-Jg-hgq" secondAttribute="leading" constant="20" id="WZj-VM-8DB"/>
+                            <constraint firstItem="CBV-qA-CS0" firstAttribute="centerY" secondItem="Zdb-M4-Bc6" secondAttribute="centerY" id="XdP-AJ-Evt"/>
                             <constraint firstItem="EPU-Zg-bEy" firstAttribute="top" secondItem="aVj-Bz-L4A" secondAttribute="bottom" constant="37" id="dcM-2A-Vnu"/>
                             <constraint firstAttribute="trailing" secondItem="suu-S7-f0C" secondAttribute="trailing" constant="20" id="dhG-Lj-NTd"/>
                             <constraint firstAttribute="trailing" secondItem="Zdb-M4-Bc6" secondAttribute="trailing" constant="20" id="fkf-Z8-88I"/>
                             <constraint firstItem="aVj-Bz-L4A" firstAttribute="leading" secondItem="AdK-Jg-hgq" secondAttribute="leading" constant="20" id="hiO-9B-X70"/>
                             <constraint firstAttribute="trailing" secondItem="JfI-MH-FrN" secondAttribute="trailing" id="ltd-Op-qwv"/>
                             <constraint firstAttribute="trailing" secondItem="EPU-Zg-bEy" secondAttribute="trailing" constant="20" id="mU4-X0-KgZ"/>
+                            <constraint firstItem="908-vk-h6s" firstAttribute="leading" secondItem="Iaf-jY-QBh" secondAttribute="leading" id="obb-Ll-xEp"/>
                             <constraint firstItem="JfI-MH-FrN" firstAttribute="top" secondItem="TQn-p7-X1u" secondAttribute="bottom" id="ptn-Uq-SvL"/>
                             <constraint firstItem="908-vk-h6s" firstAttribute="leading" secondItem="AdK-Jg-hgq" secondAttribute="leading" constant="20" id="q68-9f-XBd"/>
                             <constraint firstItem="suu-S7-f0C" firstAttribute="top" secondItem="EPU-Zg-bEy" secondAttribute="bottom" constant="7" id="sQm-zf-bHk"/>
+                            <constraint firstItem="908-vk-h6s" firstAttribute="trailing" secondItem="Iaf-jY-QBh" secondAttribute="trailing" id="uAV-tP-yRk"/>
                             <constraint firstAttribute="bottom" secondItem="kDR-pV-HQa" secondAttribute="bottom" constant="20" id="vbM-wJ-WI4"/>
                             <constraint firstItem="jcv-bg-grE" firstAttribute="top" secondItem="kDR-pV-HQa" secondAttribute="bottom" constant="20" id="xXL-lV-kQp"/>
                             <constraint firstItem="0Pl-S0-rBl" firstAttribute="centerX" secondItem="AdK-Jg-hgq" secondAttribute="centerX" id="zuB-d1-wSb"/>
@@ -645,7 +675,6 @@
                             </mask>
                         </variation>
                     </view>
-                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="OSh-gp-kzc" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
