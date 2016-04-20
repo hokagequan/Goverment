@@ -41,6 +41,7 @@ class UserEntity: NSManagedObject {
     var addUser: String?
     var hasDeleted: Bool? = false
     var organizationID: String?
+    var huanxinAccount: String?
 
 // Insert code here to add functionality to your managed object subclass
 

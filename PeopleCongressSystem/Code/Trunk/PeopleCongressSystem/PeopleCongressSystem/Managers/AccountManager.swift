@@ -255,6 +255,7 @@ class AccountManager {
                     self.user?.token = info["CheckTicket"] as? String
                     self.user?.memberType = info["MemberType"] as? String
                     self.user?.field = info["STAFF_FieldID"] as? String
+                    self.user?.huanxinAccount = info["hunxinID"] as? String
                     
                     CoreDataManager.defalutManager().saveContext(nil)
                     

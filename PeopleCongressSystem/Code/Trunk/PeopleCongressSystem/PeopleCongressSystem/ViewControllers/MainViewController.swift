@@ -35,22 +35,11 @@ class MainViewController: UITabBarController {
         let homeTabItem = UITabBarItem(title: "首页", image: UIImage(named: "home_nor")?.imageWithRenderingMode(UIImageRenderingMode.AlwaysOriginal), selectedImage: UIImage(named: "home_sel")?.imageWithRenderingMode(UIImageRenderingMode.AlwaysOriginal))
         homeNavi.tabBarItem = homeTabItem
         
-        var customNavi: UIViewController?
-        var customTabItem: UITabBarItem?
-        if PCSDataManager.defaultManager().content is CongressContentInfo {
-            // 名片
-            storyboard = UIStoryboard(name: "BusinessCard", bundle: nil)
-            customNavi = storyboard.instantiateViewControllerWithIdentifier("BusinessCardNavi")
-            customTabItem = UITabBarItem(title: "名片", image: UIImage(named: "business_card_nor")?.imageWithRenderingMode(UIImageRenderingMode.AlwaysOriginal), selectedImage: UIImage(named: "business_card_sel")?.imageWithRenderingMode(UIImageRenderingMode.AlwaysOriginal))
-            customNavi!.tabBarItem = customTabItem
-        }
-        else {
-            // 签到
-            storyboard = UIStoryboard(name: "CheckIn", bundle: nil)
-            customNavi = storyboard.instantiateViewControllerWithIdentifier("CheckInNavi")
-            customTabItem = UITabBarItem(title: "签到", image: UIImage(named: "checkin_nor")?.imageWithRenderingMode(UIImageRenderingMode.AlwaysOriginal), selectedImage: UIImage(named: "checkin_sel")?.imageWithRenderingMode(UIImageRenderingMode.AlwaysOriginal))
-            customNavi!.tabBarItem = customTabItem
-        }
+        // 聊天
+        storyboard = UIStoryboard(name: "Chat", bundle: nil)
+        let chatNavi = storyboard.instantiateViewControllerWithIdentifier("ChatNavi")
+        let chatTabItem = UITabBarItem(title: "会话", image: UIImage(named: "home_nor")?.imageWithRenderingMode(UIImageRenderingMode.AlwaysOriginal), selectedImage: UIImage(named: "home_sel")?.imageWithRenderingMode(UIImageRenderingMode.AlwaysOriginal))
+        chatNavi.tabBarItem = chatTabItem
         
         // 我
         storyboard = UIStoryboard(name: "Me", bundle: nil)
@@ -58,10 +47,10 @@ class MainViewController: UITabBarController {
         let meTabItem = UITabBarItem(title: "我", image: UIImage(named: "me_nor")?.imageWithRenderingMode(UIImageRenderingMode.AlwaysOriginal), selectedImage: UIImage(named: "me_sel")?.imageWithRenderingMode(UIImageRenderingMode.AlwaysOriginal))
         meNavi.tabBarItem = meTabItem
         
-        CustomObjectUtil.customTabbarItem([homeTabItem, customTabItem!, meTabItem], titleColor: GlobalUtil.colorRGBA(132, g: 132, b: 132, a: 1.0), font: UIFont.systemFontOfSize(10.0), state: UIControlState.Normal)
-        CustomObjectUtil.customTabbarItem([homeTabItem, customTabItem!, meTabItem], titleColor: UIColor.redColor(), font: UIFont.systemFontOfSize(10.0), state: UIControlState.Selected)
+        CustomObjectUtil.customTabbarItem([homeTabItem, chatTabItem, meTabItem], titleColor: GlobalUtil.colorRGBA(132, g: 132, b: 132, a: 1.0), font: UIFont.systemFontOfSize(10.0), state: UIControlState.Normal)
+        CustomObjectUtil.customTabbarItem([homeTabItem, chatTabItem, meTabItem], titleColor: UIColor.redColor(), font: UIFont.systemFontOfSize(10.0), state: UIControlState.Selected)
         
-        self.setViewControllers([homeNavi, customNavi!, meNavi], animated: false)
+        self.setViewControllers([homeNavi, chatNavi, meNavi], animated: false)
     }
     
     // MARK: - Observer

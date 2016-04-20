@@ -1,0 +1,112 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta charset="utf-8">
+<meta http-equiv="Cache-Control" content="no-cache">
+<meta name="viewport" content="width=device-width">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+<meta name="format-detection" content="telephone=yes">
+
+
+<title></title>
+
+<script language="javascript" type="text/javascript">
+	window.onload = function() {
+		var json, i, newArray;
+		newArray = android.showToast();
+		json = eval('(' + newArray + ')');
+		var selections = document.getElementById("SignCertSN_login");
+		for (i = 0; i < json.length; i++) {
+			var obj = json[i];
+			var option = document.createElement("option");
+			option.value = obj.id;
+			option.text = obj.name;
+			selections.options.add(option);
+		}
+	};
+
+function btnLogin() {
+	var id = document.getElementById("SignCertSN_login").value;
+
+    var pwd = document.getElementById("inputPWD").value;
+    if (pwd == "") {
+        document.getElementById("inputPWD").style.borderColor = "red";
+        return;
+    } else {
+        document.getElementById("inputPWD").style.borderColor = "black";
+    }
+    window.loginInterface.login(id , pwd);
+
+}
+function loginRep(obj) {
+    var json = eval("(" + obj + ")");
+    document.getElementById("loginStatus").innerHTML = json.message;
+    document.getElementById("resultDiv").style.display = "block";
+    if (json.isSuccess == 1) {
+        document.getElementById("Label1").innerHTML = json.cert;
+        document.getElementById("Label2").innerHTML = json.rand;
+        document.getElementById("Label3").innerHTML = json.signed;
+		document.getElementById("Label4").innerHTML = json.token;
+    }
+}
+
+</script>
+
+</head>
+
+<body>
+
+<div id="helloweb">
+<table>
+    <tbody>
+    	<tr>
+        	<td>选择证书：</td>
+            <td>
+                <select id="SignCertSN_login" style="width: 200px;">
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <td>输入密码:</td>
+            <td><input type="password" id="inputPWD" /><br />(默认密码：111111)</td>
+        </tr>
+        <tr>
+            <td>&nbsp;</td>
+            <td><input type="button" value="登录" onclick="btnLogin()" /></td>
+        </tr>
+    </tbody>
+</table>
+</div>
+<br />
+<div id="resultDiv" style="display:none;">
+    <table>
+    <tbody>
+        <tr>
+            <td style="width:30%;">登录结果: </td>
+            <td style="width:70%;"><label id="loginStatus"></label></td>
+        </tr>
+        <tr>
+            <td>证书:</td>
+            <td><label id="Label1"></label></td>
+        </tr>
+        <tr>
+            <td>随机数: </td>
+            <td><label id="Label2"></label></td>
+        </tr>
+        <tr>
+            <td>签名结果:</td>
+            <td><label id="Label3"></label></td>
+        </tr>
+        <tr>
+            <td>token:</td>
+            <td><label id="Label4"></label></td>
+        </tr>
+    </tbody>
+</table>
+</div>
+
+</body>
+
+</html>
