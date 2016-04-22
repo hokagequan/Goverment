@@ -199,28 +199,28 @@ class AccountManager {
             req.requestCompletion { (response) -> Void in
                 let result = response?.result
                 if result?.isFailure == true {
-                    completion?(false, "用户名或密码错误", errorCode)
+//                    completion?(false, "用户名或密码错误", errorCode)
                     dispatch_semaphore_signal(semaphore)
                     
                     return
                 }
                 
                 guard let _ = result?.value else {
-                    completion?(false, "用户名或密码错误", errorCode)
+//                    completion?(false, "用户名或密码错误", errorCode)
                     dispatch_semaphore_signal(semaphore)
                     
                     return
                 }
                 
                 guard let info = HttpBaseReq.parseResponse(result?.value) else {
-                    completion?(false, "用户名或密码错误", errorCode)
+//                    completion?(false, "用户名或密码错误", errorCode)
                     dispatch_semaphore_signal(semaphore)
                     
                     return
                 }
                 
                 guard let _ = info["user_ID"] as? String else {
-                    completion?(false, "用户名或密码错误", errorCode)
+//                    completion?(false, "用户名或密码错误", errorCode)
                     dispatch_semaphore_signal(semaphore)
                     
                     return
@@ -273,7 +273,7 @@ class AccountManager {
                     dispatch_semaphore_signal(semaphore)
                 }
                 catch {
-                    completion?(false, "用户名或密码错误", errorCode)
+//                    completion?(false, "用户名或密码错误", errorCode)
                     dispatch_semaphore_signal(semaphore)
                 }
             }
@@ -308,7 +308,6 @@ class AccountManager {
             
             //签名结果转成base64
             let signedBase64 = MiddlewareAPI.instance().signByID(self.certID, randString)
-            #endif
             
             let signedCAReq = SignCAReq()
             signedCAReq.rand = randString!
@@ -320,6 +319,12 @@ class AccountManager {
                     completion?(true, "用户名或密码错误", errorCode)
                 })
             })
+            #else
+                dispatch_semaphore_signal(semaphore)
+                dispatch_async(dispatch_get_main_queue(), {
+                    completion?(true, "登录成功", errorCode)
+                })
+            #endif
         }
     }
     
