@@ -199,28 +199,24 @@ class AccountManager {
             req.requestCompletion { (response) -> Void in
                 let result = response?.result
                 if result?.isFailure == true {
-                    completion?(false, "用户名或密码错误", errorCode)
                     dispatch_semaphore_signal(semaphore)
                     
                     return
                 }
                 
                 guard let _ = result?.value else {
-                    completion?(false, "用户名或密码错误", errorCode)
                     dispatch_semaphore_signal(semaphore)
                     
                     return
                 }
                 
                 guard let info = HttpBaseReq.parseResponse(result?.value) else {
-                    completion?(false, "用户名或密码错误", errorCode)
                     dispatch_semaphore_signal(semaphore)
                     
                     return
                 }
                 
                 guard let _ = info["user_ID"] as? String else {
-                    completion?(false, "用户名或密码错误", errorCode)
                     dispatch_semaphore_signal(semaphore)
                     
                     return
@@ -274,7 +270,6 @@ class AccountManager {
                     dispatch_semaphore_signal(semaphore)
                 }
                 catch {
-                    completion?(false, "用户名或密码错误", errorCode)
                     dispatch_semaphore_signal(semaphore)
                 }
             }
