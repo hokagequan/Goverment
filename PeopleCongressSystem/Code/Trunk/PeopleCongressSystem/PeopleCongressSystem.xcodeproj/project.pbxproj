@@ -904,7 +904,7 @@
 				TargetAttributes = {
 					10D0D56B1C4CD1D00093F687 = {
 						CreatedOnToolsVersion = 7.2;
-						DevelopmentTeam = LR8TUH9QU6;
+						DevelopmentTeam = 7K4RN2G5B8;
 						SystemCapabilities = {
 							com.apple.Push = {
 								enabled = 1;
@@ -1270,7 +1270,7 @@
 					"$(PROJECT_DIR)/PeopleCongressSystem/ThirdPartys/CACert",
 				);
 				OTHER_SWIFT_FLAGS = "$(inherited) \"-D\" \"COCOAPODS\" -DCA";
-				PRODUCT_BUNDLE_IDENTIFIER = com.npc.pcsystem;
+				PRODUCT_BUNDLE_IDENTIFIER = com.npc.dlpcsystem;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "PeopleCongressSystem/PeopleCongressSystem-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -1296,7 +1296,7 @@
 					"$(PROJECT_DIR)/PeopleCongressSystem/ThirdPartys/CACert",
 				);
 				OTHER_SWIFT_FLAGS = "$(inherited) \"-D\" \"COCOAPODS\" -DCA";
-				PRODUCT_BUNDLE_IDENTIFIER = com.npc.pcsystem;
+				PRODUCT_BUNDLE_IDENTIFIER = com.npc.dlpcsystem;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "PeopleCongressSystem/PeopleCongressSystem-Bridging-Header.h";
 			};
