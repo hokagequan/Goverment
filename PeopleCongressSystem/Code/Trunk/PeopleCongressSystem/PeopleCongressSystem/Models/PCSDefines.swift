@@ -22,12 +22,6 @@ let serverSoapAction = "http://tempuri.org/"
 let photoDownloadURL = "http://dlrenda.dlpii.com:8099/File/headimage/"
 let qrCodeDownloadURL = "http://dlrenda.dlpii.com:8099/File/QRCode/"
 
-//let serverURL1 = "http://dlrenda.dlpii.com:8099/"
-//let imageDownloadURL = "http://175.170.128.160:8099/lvzhiImage/"
-//let serverSoapAction = "http://tempuri.org/"
-//let photoDownloadURL = "http://dlrenda.dlpii.com:8099/File/headimage/"
-//let qrCodeDownloadURL = "http://dlrenda.dlpii.com:8099/File/QRCode/"
-
 /// @brief HTML Page
 let pageHTMLVariableManagerWorker = "apph5/iphone/GZRY_lvzhiguanli.aspx?"
 let pageHTMLVariableAnalyzeWorker = "apph5/iphone/GZRY_lvzhitongji.aspx?"
