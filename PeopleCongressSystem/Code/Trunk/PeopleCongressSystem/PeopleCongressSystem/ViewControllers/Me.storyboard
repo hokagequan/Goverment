@@ -716,15 +716,24 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="seal" translatesAutoresizingMaskIntoConstraints="NO" id="ul0-Nl-xzt">
+                                <rect key="frame" x="458" y="194" width="72" height="72"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="ul0-Nl-xzt" secondAttribute="height" multiplier="1:1" id="2i7-PT-KYh"/>
+                                    <constraint firstAttribute="width" constant="72" id="V7e-ic-pX4"/>
+                                </constraints>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" red="0.96078431369999995" green="0.96078431369999995" blue="0.96078431369999995" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="Qtv-72-C89" secondAttribute="trailing" constant="10" id="7az-zd-flC"/>
                             <constraint firstItem="Qtv-72-C89" firstAttribute="leading" secondItem="w3g-vS-hrj" secondAttribute="leading" constant="10" id="9EG-w6-62q"/>
+                            <constraint firstItem="ul0-Nl-xzt" firstAttribute="trailing" secondItem="Qtv-72-C89" secondAttribute="trailing" constant="-60" id="9s1-jN-55j"/>
                             <constraint firstItem="DDd-f9-KSb" firstAttribute="top" secondItem="kYW-pR-uiV" secondAttribute="bottom" id="U9k-Bk-3tv"/>
                             <constraint firstItem="DDd-f9-KSb" firstAttribute="leading" secondItem="w3g-vS-hrj" secondAttribute="leading" id="UOM-pR-CJV"/>
                             <constraint firstAttribute="trailing" secondItem="DDd-f9-KSb" secondAttribute="trailing" id="VtM-eC-SuC"/>
                             <constraint firstItem="Qtv-72-C89" firstAttribute="top" secondItem="DDd-f9-KSb" secondAttribute="bottom" constant="8" id="ZHl-fX-EcC"/>
+                            <constraint firstItem="ul0-Nl-xzt" firstAttribute="bottom" secondItem="Qtv-72-C89" secondAttribute="bottom" constant="30" id="eiv-eG-n6c"/>
                         </constraints>
                     </view>
                     <connections>
@@ -740,5 +749,6 @@
         <image name="gesture_dot_nor" width="64" height="64"/>
         <image name="gesture_dot_sel" width="64" height="64"/>
         <image name="guo_hui_small" width="54" height="56"/>
+        <image name="seal" width="72" height="72"/>
     </resources>
 </document>
