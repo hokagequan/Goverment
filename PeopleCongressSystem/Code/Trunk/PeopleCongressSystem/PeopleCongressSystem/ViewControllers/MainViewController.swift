@@ -36,12 +36,16 @@ class MainViewController: UITabBarController {
         homeNavi.tabBarItem = homeTabItem
         
         // 聊天
-//        _chatListVC = [[ConversationListController alloc] initWithNibName:nil bundle:nil];
-//        [_chatListVC networkChanged:_connectionState];
         let chatViewController = ConversationListController(nibName: nil, bundle: nil)
         let chatNavi = UINavigationController(rootViewController: chatViewController)
-        let chatTabItem = UITabBarItem(title: "会话", image: UIImage(named: "home_nor")?.imageWithRenderingMode(UIImageRenderingMode.AlwaysOriginal), selectedImage: UIImage(named: "home_sel")?.imageWithRenderingMode(UIImageRenderingMode.AlwaysOriginal))
+        let chatTabItem = UITabBarItem(title: "会话", image: UIImage(named: "chat_nor")?.imageWithRenderingMode(UIImageRenderingMode.AlwaysOriginal), selectedImage: UIImage(named: "chat_sel")?.imageWithRenderingMode(UIImageRenderingMode.AlwaysOriginal))
         chatNavi.tabBarItem = chatTabItem
+        
+        // 联系人
+        let contactsViewController = ContactListViewController(nibName: nil, bundle: nil)
+        let contactsNavi = UINavigationController(rootViewController: contactsViewController)
+        let contactsTabItem = UITabBarItem(title: "通讯录", image: UIImage(named: "contacts_nor")?.imageWithRenderingMode(UIImageRenderingMode.AlwaysOriginal), selectedImage: UIImage(named: "contacts_sel")?.imageWithRenderingMode(UIImageRenderingMode.AlwaysOriginal))
+        contactsNavi.tabBarItem = contactsTabItem
         
         // 我
         storyboard = UIStoryboard(name: "Me", bundle: nil)
@@ -49,10 +53,10 @@ class MainViewController: UITabBarController {
         let meTabItem = UITabBarItem(title: "我", image: UIImage(named: "me_nor")?.imageWithRenderingMode(UIImageRenderingMode.AlwaysOriginal), selectedImage: UIImage(named: "me_sel")?.imageWithRenderingMode(UIImageRenderingMode.AlwaysOriginal))
         meNavi.tabBarItem = meTabItem
         
-        CustomObjectUtil.customTabbarItem([homeTabItem, chatTabItem, meTabItem], titleColor: GlobalUtil.colorRGBA(132, g: 132, b: 132, a: 1.0), font: UIFont.systemFontOfSize(10.0), state: UIControlState.Normal)
-        CustomObjectUtil.customTabbarItem([homeTabItem, chatTabItem, meTabItem], titleColor: UIColor.redColor(), font: UIFont.systemFontOfSize(10.0), state: UIControlState.Selected)
+        CustomObjectUtil.customTabbarItem([homeTabItem, chatTabItem, contactsTabItem, meTabItem], titleColor: GlobalUtil.colorRGBA(132, g: 132, b: 132, a: 1.0), font: UIFont.systemFontOfSize(10.0), state: UIControlState.Normal)
+        CustomObjectUtil.customTabbarItem([homeTabItem, chatTabItem, contactsTabItem, meTabItem], titleColor: UIColor.redColor(), font: UIFont.systemFontOfSize(10.0), state: UIControlState.Selected)
         
-        self.setViewControllers([homeNavi, chatNavi, meNavi], animated: false)
+        self.setViewControllers([homeNavi, chatNavi, contactsNavi, meNavi], animated: false)
     }
     
     // MARK: - Observer
