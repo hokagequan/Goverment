@@ -2413,6 +2413,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 68AE91901E434A8BE22D3071 /* Pods-PeopleCongressSystem.debug.xcconfig */;
 			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
@@ -2423,8 +2424,11 @@
 				);
 				GCC_PREFIX_HEADER = "$(PROJECT_DIR)/PeopleCongressSystem/PrefixHeader.pch";
 				HEADER_SEARCH_PATHS = (
-					"$(PROJECT_DIR)/../HyphenateSDK/include",
+					"$(PROJECT_DIR)/../HyphenateSDK/include/**",
 					"$(PROJECT_DIR)/PeopleCongressSystem/ThirdPartys/CACert/include",
+					"$(PROJECT_DIR)/../EaseUI/export/include/**",
+					"$(inherited)",
+					"$(PROJECT_DIR)/../EaseUI/export/include/ViewController",
 				);
 				INFOPLIST_FILE = PeopleCongressSystem/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
@@ -2469,6 +2473,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 7FC8BFEC67A9706088C1E7DA /* Pods-PeopleCongressSystem.release.xcconfig */;
 			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
@@ -2479,8 +2484,11 @@
 				);
 				GCC_PREFIX_HEADER = "$(PROJECT_DIR)/PeopleCongressSystem/PrefixHeader.pch";
 				HEADER_SEARCH_PATHS = (
-					"$(PROJECT_DIR)/../HyphenateSDK/include",
+					"$(PROJECT_DIR)/../HyphenateSDK/include/**",
 					"$(PROJECT_DIR)/PeopleCongressSystem/ThirdPartys/CACert/include",
+					"$(PROJECT_DIR)/../EaseUI/export/include/**",
+					"$(inherited)",
+					"$(PROJECT_DIR)/../EaseUI/export/include/ViewController",
 				);
 				INFOPLIST_FILE = PeopleCongressSystem/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
