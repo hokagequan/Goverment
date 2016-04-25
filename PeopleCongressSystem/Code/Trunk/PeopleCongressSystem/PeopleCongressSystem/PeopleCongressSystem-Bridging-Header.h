@@ -7,7 +7,7 @@
 #import "RandomCodeView.h"
 #import "MiddlewareAPI.h"
 #import "EMSDK.h"
+#import "EaseUI.h"
 
 // ViewController
 #import "ConversationListController.h"
-#import "ContactListViewController.h"

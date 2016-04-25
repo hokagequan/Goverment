@@ -38,7 +38,7 @@ class MainViewController: UITabBarController {
         // 聊天
 //        _chatListVC = [[ConversationListController alloc] initWithNibName:nil bundle:nil];
 //        [_chatListVC networkChanged:_connectionState];
-        let chatViewController = ConversationListController()
+        let chatViewController = ConversationListController(nibName: nil, bundle: nil)
         let chatNavi = UINavigationController(rootViewController: chatViewController)
         let chatTabItem = UITabBarItem(title: "会话", image: UIImage(named: "home_nor")?.imageWithRenderingMode(UIImageRenderingMode.AlwaysOriginal), selectedImage: UIImage(named: "home_sel")?.imageWithRenderingMode(UIImageRenderingMode.AlwaysOriginal))
         chatNavi.tabBarItem = chatTabItem
