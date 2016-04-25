@@ -11,7 +11,9 @@ import UIKit
 class MeViewController: UITableViewController {
     
     enum Rows: Int {
-        case QRCodeDownload = 0
+        case Push = 0
+        case BlackList
+        case QRCodeDownload
         case ChangePassword
         case ChangeGesture
 //        case Update
@@ -22,7 +24,10 @@ class MeViewController: UITableViewController {
         case Max
         
         func title() -> String {
-            let titles = ["下载二维码",
+            let titles = [
+                "消息推送设置",
+                "黑名单",
+                "下载二维码",
                 "修改登陆密码",
                 "修改手势密码",
 //                "版本升级",
@@ -38,6 +43,11 @@ class MeViewController: UITableViewController {
 
     @IBOutlet var footerView: UIView!
     @IBOutlet weak var quitButton: UIButton!
+    
+    @IBOutlet var headerView: UIView!
+    @IBOutlet weak var photoImageView: UIImageView!
+    @IBOutlet weak var nameLabel: UILabel!
+    @IBOutlet weak var nameWidthLC: NSLayoutConstraint!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -67,6 +77,10 @@ class MeViewController: UITableViewController {
     @IBAction func clickQuit(sender: AnyObject) {
     }
 
+    @IBAction func clickEdit(sender: AnyObject) {
+        // TODO: 编辑
+    }
+    
     // MARK: - Table view data source
 
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
@@ -77,11 +91,12 @@ class MeViewController: UITableViewController {
         return Rows.Max.rawValue
     }
     
+    override func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 100.0
+    }
+    
     override func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let view = UIView()
-        view.backgroundColor = UIColor.clearColor()
-        
-        return view
+        return headerView
     }
     
     override func tableView(tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {

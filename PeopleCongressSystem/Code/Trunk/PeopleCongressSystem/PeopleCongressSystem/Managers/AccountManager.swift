@@ -277,7 +277,9 @@ class AccountManager {
             dispatch_semaphore_wait(semaphore, DISPATCH_TIME_FOREVER)
             if error == false {
                 dispatch_semaphore_signal(semaphore)
-                completion?(false, "用户名或密码错误", errorCode)
+                dispatch_async(dispatch_get_main_queue(), {
+                    completion?(true, "用户名或密码错误", errorCode)
+                })
                 
                 return
             }
@@ -293,7 +295,9 @@ class AccountManager {
             dispatch_semaphore_wait(semaphore, DISPATCH_TIME_FOREVER)
             if randString == nil {
                 dispatch_semaphore_signal(semaphore)
-                completion?(false, "用户名或密码错误", errorCode)
+                dispatch_async(dispatch_get_main_queue(), {
+                    completion?(true, "用户名或密码错误", errorCode)
+                })
                 
                 return
             }
