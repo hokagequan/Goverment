@@ -299,23 +299,38 @@ class AccountManager {
             }
             
             #if CA
-            //证书base64
-            let certBase64 = MiddlewareAPI.instance().getCertByID(self.certID, 1)
-            
-            //签名结果转成base64
-            let signedBase64 = MiddlewareAPI.instance().signByID(self.certID, randString)
-            #endif
-            
-            let signedCAReq = SignCAReq()
-            signedCAReq.rand = randString!
-            signedCAReq.cert = certBase64.stringByAddingPercentEscapesUsingEncoding(NSUTF8StringEncoding)!
-            signedCAReq.signed = signedBase64.stringByAddingPercentEscapesUsingEncoding(NSUTF8StringEncoding)!
-            signedCAReq.requestSimple({ (success) in
+                //证书base64
+                let certBase64 = MiddlewareAPI.instance().getCertByID(self.certID, 1)
+                
+                //签名结果转成base64
+                let signedBase64 = MiddlewareAPI.instance().signByID(self.certID, randString)
+                
+                let signedCAReq = SignCAReq()
+                signedCAReq.rand = randString!
+                signedCAReq.cert = certBase64.stringByAddingPercentEscapesUsingEncoding(NSUTF8StringEncoding)!
+                signedCAReq.signed = signedBase64.stringByAddingPercentEscapesUsingEncoding(NSUTF8StringEncoding)!
+                signedCAReq.requestSimple({ (success) in
+                    dispatch_semaphore_signal(semaphore)
+                    dispatch_async(dispatch_get_main_queue(), {
+                        completion?(true, "用户名或密码错误", errorCode)
+                    })
+                })
+            #else
                 dispatch_semaphore_signal(semaphore)
                 dispatch_async(dispatch_get_main_queue(), {
                     completion?(true, "用户名或密码错误", errorCode)
                 })
-            })
+            #endif
+            
+            dispatch_semaphore_wait(semaphore, DISPATCH_TIME_FOREVER)
+            if self.user?.huanxinAccount == nil {
+                dispatch_semaphore_signal(semaphore)
+                
+                return
+            }
+            
+            EMClient.sharedClient().loginWithUsername(self.user?.huanxinAccount, password: "123456")
+            dispatch_semaphore_signal(semaphore)
         }
     }
     
