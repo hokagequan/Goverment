@@ -20,6 +20,8 @@
 #import "UserProfileManager.h"
 #import "RealtimeSearchUtil.h"
 
+#import "PeopleCongressSystem-Swift.h"
+
 @implementation EMConversation (search)
 
 //根据用户昵称,环信机器人名称,群名称进行搜索
@@ -55,6 +57,7 @@
     [super viewDidLoad];
     
     // Do any additional setup after loading the view.
+    self.view.backgroundColor = [UIColor whiteColor];
     self.showRefreshHeader = YES;
     self.delegate = self;
     self.dataSource = self;
@@ -68,6 +71,8 @@
     [self searchController];
     
     [self removeEmptyConversationsFromDB];
+    
+    [PCSCustomUtil customNavigationController:self];
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -125,7 +130,7 @@
 - (UISearchBar *)searchBar
 {
     if (!_searchBar) {
-        _searchBar = [[EMSearchBar alloc] initWithFrame: CGRectMake(0, 0, self.view.frame.size.width, 44)];
+        _searchBar = [[EMSearchBar alloc] initWithFrame: CGRectMake(0, 64, self.view.frame.size.width, 44)];
         _searchBar.delegate = self;
         _searchBar.placeholder = NSLocalizedString(@"search", @"Search");
         _searchBar.backgroundColor = [UIColor colorWithRed:0.747 green:0.756 blue:0.751 alpha:1.000];

@@ -1,0 +1,39 @@
+
+/* Class = "UIButton"; normalTitle = "手势登录"; ObjectID = "1lk-N4-8Ob"; */
+"1lk-N4-8Ob.normalTitle" = "手势登录";
+
+/* Class = "UITextField"; placeholder = "请输入手机号码"; ObjectID = "7WL-q1-6Js"; */
+"7WL-q1-6Js.placeholder" = "请输入手机号码";
+
+/* Class = "UITextField"; placeholder = "请输入密码"; ObjectID = "Amo-jT-wTT"; */
+"Amo-jT-wTT.placeholder" = "请输入密码";
+
+/* Class = "UILabel"; text = "绘制解锁图案"; ObjectID = "BL8-y1-Ohk"; */
+"BL8-y1-Ohk.text" = "绘制解锁图案";
+
+/* Class = "UIButton"; normalTitle = "自动登录"; ObjectID = "CPV-eB-aO4"; */
+"CPV-eB-aO4.normalTitle" = "自动登录";
+
+/* Class = "UIButton"; normalTitle = "登录"; ObjectID = "JCT-jS-5Y9"; */
+"JCT-jS-5Y9.normalTitle" = "登录";
+
+/* Class = "UIButton"; normalTitle = "找回密码"; ObjectID = "Mne-1g-kan"; */
+"Mne-1g-kan.normalTitle" = "找回密码";
+
+/* Class = "UILabel"; text = "版权所有：大连市人大常委会"; ObjectID = "Xyy-Ks-lPv"; */
+"Xyy-Ks-lPv.text" = "版权所有：大连市人大常委会";
+
+/* Class = "UIButton"; normalTitle = "记住密码"; ObjectID = "bzO-dB-bh8"; */
+"bzO-dB-bh8.normalTitle" = "记住密码";
+
+/* Class = "UIButton"; normalTitle = "获取短信验证码"; ObjectID = "c56-cv-Q6q"; */
+"c56-cv-Q6q.normalTitle" = "获取短信验证码";
+
+/* Class = "UILabel"; text = "技术支持：大连公众信息产业有限公司"; ObjectID = "gF4-TX-84W"; */
+"gF4-TX-84W.text" = "技术支持：大连公众信息产业有限公司";
+
+/* Class = "UIButton"; normalTitle = "服务器选择"; ObjectID = "nce-Xe-EIF"; */
+"nce-Xe-EIF.normalTitle" = "服务器选择";
+
+/* Class = "UIButton"; normalTitle = "修改密码"; ObjectID = "o0i-N4-IjW"; */
+"o0i-N4-IjW.normalTitle" = "修改密码";

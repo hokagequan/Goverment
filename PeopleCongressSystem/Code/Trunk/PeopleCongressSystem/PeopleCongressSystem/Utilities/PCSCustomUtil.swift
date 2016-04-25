@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-class PCSCustomUtil {
+class PCSCustomUtil: NSObject {
     
     class func customNavigationBar() {
         UINavigationBar.appearance().barTintColor = GlobalUtil.colorRGBA(230, g: 27, b: 39, a: 1.0)

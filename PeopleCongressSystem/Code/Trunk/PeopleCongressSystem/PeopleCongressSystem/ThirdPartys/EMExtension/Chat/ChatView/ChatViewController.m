@@ -19,6 +19,8 @@
 #import "ContactListSelectViewController.h"
 #import "ChatDemoHelper.h"
 
+#import "PeopleCongressSystem-Swift.h"
+
 @interface ChatViewController ()<UIAlertViewDelegate, EaseMessageViewControllerDelegate, EaseMessageViewControllerDataSource,EMClientDelegate>
 {
     UIMenuItem *_copyMenuItem;
@@ -58,6 +60,8 @@
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(insertCallMessage:) name:@"insertCallMessage" object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handleCallNotification:) name:@"callOutWithChatter" object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handleCallNotification:) name:@"callControllerClose" object:nil];
+    
+    [PCSCustomUtil customNavigationController:self];
     
     //通过会话管理者获取已收发消息
     [self tableViewDidTriggerHeaderRefresh];

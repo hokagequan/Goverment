@@ -74,12 +74,12 @@
                   moduleName = "Alamofire"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/Q/GitHub/Goverment/PeopleCongressSystem/Code/Trunk/PeopleCongressSystem/Pods/Alamofire/Source/Manager.swift"
-                  timestampString = "483247566.685712"
+                  timestampString = "483268040.732395"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "496"
                   endingLineNumber = "496"
-                  offsetFromSymbolStart = "44">
+                  offsetFromSymbolStart = "43">
                </Location>
                <Location
                   shouldBeEnabled = "Yes"
@@ -89,14 +89,30 @@
                   moduleName = "Alamofire"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/Q/GitHub/Goverment/PeopleCongressSystem/Code/Trunk/PeopleCongressSystem/Pods/Alamofire/Source/Manager.swift"
-                  timestampString = "483247566.685934"
+                  timestampString = "483268040.733385"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "496"
                   endingLineNumber = "496"
-                  offsetFromSymbolStart = "120">
+                  offsetFromSymbolStart = "152">
                </Location>
             </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "PeopleCongressSystem/ThirdPartys/EMExtension/Chat/ChatView/ChatViewController.m"
+            timestampString = "483256417.173418"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "64"
+            endingLineNumber = "64"
+            landmarkName = "-viewDidLoad"
+            landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

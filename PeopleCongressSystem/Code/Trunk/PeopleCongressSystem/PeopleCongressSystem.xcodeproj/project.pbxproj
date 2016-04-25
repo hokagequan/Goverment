@@ -168,6 +168,7 @@
 		10A6866E1C7DF12600D050F0 /* UserEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10A6866C1C7DF12600D050F0 /* UserEntity.swift */; };
 		10A686711C7DF7A200D050F0 /* ContentInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10A686701C7DF7A200D050F0 /* ContentInfo.swift */; };
 		10A686731C7DF8D000D050F0 /* WorkerContentInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10A686721C7DF8D000D050F0 /* WorkerContentInfo.swift */; };
+		10A914CA1CCDE62D002CC064 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 10A914CC1CCDE62D002CC064 /* Localizable.strings */; };
 		10BD4DE61C9A4A14006179AB /* DeleteVariableReq.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10BD4DE51C9A4A14006179AB /* DeleteVariableReq.swift */; };
 		10BD4DE81C9A50A2006179AB /* DeletePhotoReq.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10BD4DE71C9A50A2006179AB /* DeletePhotoReq.swift */; };
 		10C0F1301CA93D9C000BA06E /* jpush-ios-2.1.0.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 10C0F12E1CA93D9C000BA06E /* jpush-ios-2.1.0.a */; };
@@ -712,6 +713,11 @@
 		10A6866C1C7DF12600D050F0 /* UserEntity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserEntity.swift; sourceTree = "<group>"; };
 		10A686701C7DF7A200D050F0 /* ContentInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContentInfo.swift; sourceTree = "<group>"; };
 		10A686721C7DF8D000D050F0 /* WorkerContentInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WorkerContentInfo.swift; sourceTree = "<group>"; };
+		10A914C61CCDE5C6002CC064 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Main.strings"; sourceTree = "<group>"; };
+		10A914C71CCDE5C6002CC064 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/LaunchScreen.strings"; sourceTree = "<group>"; };
+		10A914CB1CCDE62D002CC064 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Localizable.strings; sourceTree = "<group>"; };
+		10A914CD1CCDE631002CC064 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		10A914CE1CCDE635002CC064 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		10BD4DE51C9A4A14006179AB /* DeleteVariableReq.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeleteVariableReq.swift; sourceTree = "<group>"; };
 		10BD4DE71C9A50A2006179AB /* DeletePhotoReq.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeletePhotoReq.swift; sourceTree = "<group>"; };
 		10C0F12E1CA93D9C000BA06E /* jpush-ios-2.1.0.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = "jpush-ios-2.1.0.a"; sourceTree = "<group>"; };
@@ -1690,6 +1696,7 @@
 				100691B81C93BEA6000AEFEA /* PeopleCongressSystem-Bridging-Header.h */,
 				1037709D1CC76E2300ECEBEA /* PrefixHeader.pch */,
 				1037709E1CC76F4A00ECEBEA /* ChatDemoUIDefine.h */,
+				10A914CC1CCDE62D002CC064 /* Localizable.strings */,
 			);
 			path = PeopleCongressSystem;
 			sourceTree = "<group>";
@@ -2046,6 +2053,7 @@
 				1037709B1CC76DE300ECEBEA /* MWPhotoBrowser.bundle in Resources */,
 				1037709C1CC76DE300ECEBEA /* EaseUIResource.bundle in Resources */,
 				103771741CC77BC400ECEBEA /* sr_refresh.png in Resources */,
+				10A914CA1CCDE62D002CC064 /* Localizable.strings in Resources */,
 				10DBF20C1C8A5817007620BA /* DatePickerView.xib in Resources */,
 				10376F921CC7354100ECEBEA /* Chat.storyboard in Resources */,
 				10D0D5991C4CDB330093F687 /* BusinessCard.storyboard in Resources */,
@@ -2308,10 +2316,21 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
+		10A914CC1CCDE62D002CC064 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				10A914CB1CCDE62D002CC064 /* Base */,
+				10A914CD1CCDE631002CC064 /* en */,
+				10A914CE1CCDE635002CC064 /* zh-Hans */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
 		10D0D5731C4CD1D00093F687 /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
 				10D0D5741C4CD1D00093F687 /* Base */,
+				10A914C61CCDE5C6002CC064 /* zh-Hans */,
 			);
 			name = Main.storyboard;
 			path = ..;
@@ -2321,6 +2340,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				10D0D57C1C4CD1D00093F687 /* Base */,
+				10A914C71CCDE5C6002CC064 /* zh-Hans */,
 			);
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";

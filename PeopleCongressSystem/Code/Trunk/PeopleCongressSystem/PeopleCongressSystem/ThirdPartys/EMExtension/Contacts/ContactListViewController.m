@@ -24,6 +24,8 @@
 #import "RealtimeSearchUtil.h"
 #import "UserProfileManager.h"
 
+#import "PeopleCongressSystem-Swift.h"
+
 @implementation NSString (search)
 
 //根据用户昵称进行搜索
@@ -55,6 +57,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     self.showRefreshHeader = YES;
+    self.view.backgroundColor = [UIColor whiteColor];
     
     _contactsSource = [NSMutableArray array];
     _sectionTitles = [NSMutableArray array];
@@ -62,13 +65,15 @@
     [self tableViewDidTriggerHeaderRefresh];
     
     [self searchController];
-    self.searchBar.frame = CGRectMake(0, 0, self.view.frame.size.width, 44);
+    self.searchBar.frame = CGRectMake(0, 64, self.view.frame.size.width, 44);
     [self.view addSubview:self.searchBar];
     
     self.tableView.frame = CGRectMake(0, self.searchBar.frame.size.height, self.view.frame.size.width, self.view.frame.size.height - self.searchBar.frame.size.height);
     
     // 环信UIdemo中有用到Parse, 加载用户好友个人信息
     [[UserProfileManager sharedInstance] loadUserProfileInBackgroundWithBuddy:self.contactsSource saveToLoacal:YES completion:NULL];
+    
+    [PCSCustomUtil customNavigationController:self];
 }
 
 - (void)viewWillAppear:(BOOL)animated
