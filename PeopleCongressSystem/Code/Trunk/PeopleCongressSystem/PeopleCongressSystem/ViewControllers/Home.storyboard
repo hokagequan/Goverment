@@ -115,7 +115,7 @@
                                 </connections>
                             </collectionView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YQr-PZ-0gW" userLabel="Special">
-                                <rect key="frame" x="532" y="516" width="60" height="60"/>
+                                <rect key="frame" x="532" y="530" width="60" height="60"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="djp-Nk-gp8" userLabel="Special">
                                         <rect key="frame" x="0.0" y="0.0" width="60" height="60"/>
@@ -150,7 +150,7 @@
                             <constraint firstItem="E18-kk-YL3" firstAttribute="height" secondItem="46Y-lp-Xfn" secondAttribute="height" multiplier="204:667" id="530-k2-WVU"/>
                             <constraint firstAttribute="trailing" secondItem="E18-kk-YL3" secondAttribute="trailing" id="9dM-Dm-ZKo"/>
                             <constraint firstItem="E18-kk-YL3" firstAttribute="leading" secondItem="46Y-lp-Xfn" secondAttribute="leading" id="CAh-yf-gf7"/>
-                            <constraint firstItem="8ph-kt-EsP" firstAttribute="top" secondItem="YQr-PZ-0gW" secondAttribute="bottom" constant="24" id="Dua-qf-IO5"/>
+                            <constraint firstItem="8ph-kt-EsP" firstAttribute="top" secondItem="YQr-PZ-0gW" secondAttribute="bottom" constant="10" id="Dua-qf-IO5"/>
                             <constraint firstItem="ISn-ia-tyM" firstAttribute="top" secondItem="E18-kk-YL3" secondAttribute="bottom" id="J9h-8x-kvE"/>
                             <constraint firstItem="8ph-kt-EsP" firstAttribute="top" secondItem="ISn-ia-tyM" secondAttribute="bottom" id="eXm-2J-5nh"/>
                             <constraint firstItem="E18-kk-YL3" firstAttribute="top" secondItem="46Y-lp-Xfn" secondAttribute="top" id="iLc-2u-LFO"/>
@@ -799,8 +799,63 @@
                                             <outlet property="titleTextField" destination="5ML-1o-M9v" id="Vma-q7-1Eg"/>
                                         </connections>
                                     </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="QRCodeCell" rowHeight="180" id="gdB-3S-r34" customClass="QRCodeCell" customModule="PeopleCongressSystem" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="93.5" width="600" height="180"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="gdB-3S-r34" id="xpz-UK-lnx">
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="179.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="activity_qr_code" translatesAutoresizingMaskIntoConstraints="NO" id="nd2-9M-o6s" userLabel="Icon">
+                                                    <rect key="frame" x="10" y="14" width="16" height="16"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" secondItem="nd2-9M-o6s" secondAttribute="height" multiplier="1:1" id="FRD-IF-VCV"/>
+                                                        <constraint firstAttribute="width" constant="16" id="spY-On-D7S"/>
+                                                    </constraints>
+                                                    <variation key="default">
+                                                        <mask key="constraints">
+                                                            <exclude reference="FRD-IF-VCV"/>
+                                                        </mask>
+                                                    </variation>
+                                                </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="活动二维码" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cyP-jJ-9Yr" userLabel="Title">
+                                                    <rect key="frame" x="39" y="11" width="541" height="21"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="21" id="1p7-BB-0Gs"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                    <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="LKC-Ee-hIe" userLabel="QR Code">
+                                                    <rect key="frame" x="236.5" y="42" width="127.5" height="127.5"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" secondItem="LKC-Ee-hIe" secondAttribute="height" multiplier="1:1" id="bIp-A9-C0l"/>
+                                                    </constraints>
+                                                </imageView>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="cyP-jJ-9Yr" firstAttribute="centerY" secondItem="nd2-9M-o6s" secondAttribute="centerY" id="5l7-aE-Twg"/>
+                                                <constraint firstItem="nd2-9M-o6s" firstAttribute="width" secondItem="nd2-9M-o6s" secondAttribute="height" multiplier="1:1" id="65Z-qs-Bij"/>
+                                                <constraint firstItem="cyP-jJ-9Yr" firstAttribute="leading" secondItem="nd2-9M-o6s" secondAttribute="trailing" constant="13" id="68Z-vm-z5Z"/>
+                                                <constraint firstItem="LKC-Ee-hIe" firstAttribute="centerX" secondItem="xpz-UK-lnx" secondAttribute="centerX" id="C3h-ab-gC1"/>
+                                                <constraint firstItem="cyP-jJ-9Yr" firstAttribute="centerY" secondItem="nd2-9M-o6s" secondAttribute="centerY" id="KZG-Xx-yra"/>
+                                                <constraint firstItem="nd2-9M-o6s" firstAttribute="leading" secondItem="xpz-UK-lnx" secondAttribute="leading" constant="10" id="LSC-1O-DuV"/>
+                                                <constraint firstItem="cyP-jJ-9Yr" firstAttribute="leading" secondItem="nd2-9M-o6s" secondAttribute="trailing" constant="13" id="QUh-aX-lut"/>
+                                                <constraint firstItem="LKC-Ee-hIe" firstAttribute="top" secondItem="cyP-jJ-9Yr" secondAttribute="bottom" constant="10" id="ZlJ-gP-38s"/>
+                                                <constraint firstAttribute="trailing" secondItem="cyP-jJ-9Yr" secondAttribute="trailing" constant="20" id="igI-qO-UC1"/>
+                                                <constraint firstItem="nd2-9M-o6s" firstAttribute="top" secondItem="xpz-UK-lnx" secondAttribute="top" constant="14" id="qib-ia-T67"/>
+                                                <constraint firstAttribute="bottom" secondItem="LKC-Ee-hIe" secondAttribute="bottom" constant="10" id="yOr-u5-fXD"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="iconImageView" destination="nd2-9M-o6s" id="9bl-3Q-8Za"/>
+                                            <outlet property="qrCodeImageView" destination="LKC-Ee-hIe" id="CX7-pq-Msb"/>
+                                            <outlet property="titleLabel" destination="cyP-jJ-9Yr" id="HbP-W2-Qzv"/>
+                                        </connections>
+                                    </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="TagListCell" rowHeight="100" id="VR1-io-LCu" customClass="TagListCell" customModule="PeopleCongressSystem" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="93.5" width="600" height="100"/>
+                                        <rect key="frame" x="0.0" y="273.5" width="600" height="100"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="VR1-io-LCu" id="lEW-nZ-InS">
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="99.5"/>
@@ -1223,6 +1278,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="activity_qr_code" width="15" height="15"/>
         <image name="add" width="20" height="20"/>
         <image name="delete" width="14" height="17"/>
         <image name="home_header" width="375" height="205"/>

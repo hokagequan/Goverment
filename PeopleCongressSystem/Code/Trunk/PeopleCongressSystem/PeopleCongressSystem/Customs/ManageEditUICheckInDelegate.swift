@@ -8,8 +8,16 @@
 
 import Foundation
 import UIKit
+import SwiftQRCode
 
 class ManageEditUICheckInDelegate: ManageEditActivityEditDelegate {
+    
+    var qrImage: UIImage? = nil
+    
+    override func prepare() {
+        // TODO: 二维码信息
+        qrImage = QRCode.generateImage("", avatarImage: nil)
+    }
     
     override func save() {
         let storyboard = UIStoryboard(name: "CheckIn", bundle: nil)
@@ -32,8 +40,22 @@ class ManageEditUICheckInDelegate: ManageEditActivityEditDelegate {
         return super.tableView(tableView, numberOfRowsInSection: section)
     }
     
+    override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+        if indexPath.section == EditSections.Max.rawValue {
+            return 180
+        }
+        
+        return super.tableView(tableView, heightForRowAtIndexPath: indexPath)
+    }
+    
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        // TODO: 签到二维码
+        if indexPath.section == EditSections.Max.rawValue {
+            let cell = tableView.dequeueReusableCellWithIdentifier("QRCodeCell", forIndexPath: indexPath) as! QRCodeCell
+            cell.selectionStyle = UITableViewCellSelectionStyle.None
+            cell.qrCodeImageView.image = qrImage
+            
+            return cell
+        }
         
         let cell = super.tableView(tableView, cellForRowAtIndexPath: indexPath)
         cell.userInteractionEnabled = false

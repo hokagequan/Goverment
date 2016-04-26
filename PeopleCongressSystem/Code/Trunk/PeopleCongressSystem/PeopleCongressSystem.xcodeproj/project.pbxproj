@@ -22,6 +22,7 @@
 		100AA8751CCF446A00EC40DC /* UIViewController+PCSNavi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 100AA8741CCF446A00EC40DC /* UIViewController+PCSNavi.swift */; };
 		100AA87A1CCF48A100EC40DC /* UnCheckedInListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 100AA8791CCF48A100EC40DC /* UnCheckedInListViewController.swift */; };
 		100AA87C1CCF4C0100EC40DC /* UnCheckedInCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 100AA87B1CCF4C0100EC40DC /* UnCheckedInCell.swift */; };
+		100AA87E1CCF60A400EC40DC /* QRCodeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 100AA87D1CCF60A400EC40DC /* QRCodeCell.swift */; };
 		100B202E1C88786700435EF0 /* UIViewController+Keyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 100B202D1C88786700435EF0 /* UIViewController+Keyboard.swift */; };
 		100B20301C887C1000435EF0 /* TypeSelectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 100B202F1C887C1000435EF0 /* TypeSelectView.swift */; };
 		100B20321C887C2600435EF0 /* TypeSelectView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 100B20311C887C2600435EF0 /* TypeSelectView.xib */; };
@@ -262,6 +263,7 @@
 		100AA8741CCF446A00EC40DC /* UIViewController+PCSNavi.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController+PCSNavi.swift"; sourceTree = "<group>"; };
 		100AA8791CCF48A100EC40DC /* UnCheckedInListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UnCheckedInListViewController.swift; sourceTree = "<group>"; };
 		100AA87B1CCF4C0100EC40DC /* UnCheckedInCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UnCheckedInCell.swift; sourceTree = "<group>"; };
+		100AA87D1CCF60A400EC40DC /* QRCodeCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QRCodeCell.swift; sourceTree = "<group>"; };
 		100B202D1C88786700435EF0 /* UIViewController+Keyboard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController+Keyboard.swift"; sourceTree = "<group>"; };
 		100B202F1C887C1000435EF0 /* TypeSelectView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TypeSelectView.swift; sourceTree = "<group>"; };
 		100B20311C887C2600435EF0 /* TypeSelectView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TypeSelectView.xib; sourceTree = "<group>"; };
@@ -1763,6 +1765,7 @@
 				1030232C1CBB4B7000832DE1 /* VerifyCodeCell.swift */,
 				1030232E1CBB762300832DE1 /* LocalVerifyCell.swift */,
 				100AA87B1CCF4C0100EC40DC /* UnCheckedInCell.swift */,
+				100AA87D1CCF60A400EC40DC /* QRCodeCell.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -2187,6 +2190,7 @@
 				107505581C9021A300C9589E /* ResetPasswordReq.swift in Sources */,
 				10DBF21C1C8D3927007620BA /* ManageEditUICheckInDelegate.swift in Sources */,
 				10F197521CC48A0D007C28DC /* VerifySMSReq.swift in Sources */,
+				100AA87E1CCF60A400EC40DC /* QRCodeCell.swift in Sources */,
 				10DBF2121C8A823C007620BA /* ManageEditUIActivityDelegate.swift in Sources */,
 				10F109851C8822A30083D89D /* Person.swift in Sources */,
 				104564C81CA22C530031FFCA /* GuideViewController.swift in Sources */,
