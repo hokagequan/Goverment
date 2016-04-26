@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import DKImagePickerController
+import EZLoadingActivity
 
 class MeViewController: UITableViewController {
     
@@ -25,7 +27,7 @@ class MeViewController: UITableViewController {
         
         func title() -> String {
             let titles = [
-                "消息推送设置",
+                "消息推送免打扰",
                 "黑名单",
                 "下载二维码",
                 "修改登陆密码",
@@ -58,13 +60,19 @@ class MeViewController: UITableViewController {
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
         
-        PCSCustomUtil.customNavigationController(self)
-        
         CustomObjectUtil.customObjectsLayout([quitButton], backgroundColor: GlobalUtil.colorRGBA(230, g: 27, b: 39, a: 1.0), borderWidth: 0, borderColor: UIColor.clearColor(), corner: 3.0)
     }
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
+        
+        PCSCustomUtil.customNavigationController(self)
+    }
+    
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        self.loadUserInfo()
     }
 
     override func didReceiveMemoryWarning() {
@@ -72,13 +80,101 @@ class MeViewController: UITableViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    func loadUserInfo() {
+        guard let user = UserProfileManager.sharedInstance().getCurUserProfile() else {
+            return
+        }
+        
+        // 名字
+        nameLabel.text = user.username
+        
+        // 图片
+        photoImageView.imageWithUsername(user.username, placeholderImage: nil)
+        
+        // 通知选项
+        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)) {
+            EMClient.sharedClient().getPushOptionsFromServerWithError(nil)
+            let indexPath = NSIndexPath(forRow: Rows.Push.rawValue, inSection: 0)
+            self.tableView.reloadRowsAtIndexPaths([indexPath], withRowAnimation: UITableViewRowAnimation.None)
+        }
+    }
+    
     // MARK: - Actions
     
     @IBAction func clickQuit(sender: AnyObject) {
+        EMClient.sharedClient().logout(true)
     }
 
     @IBAction func clickEdit(sender: AnyObject) {
         // TODO: 编辑
+        let alert = UIAlertController(title: nil, message: "更改昵称", preferredStyle: UIAlertControllerStyle.Alert)
+        let cancelAction = UIAlertAction(title: "取消", style: UIAlertActionStyle.Cancel, handler: nil)
+        let okAction = UIAlertAction(title: "确定", style: UIAlertActionStyle.Default) { (action) in
+            guard let textField = alert.textFields?.first else {
+                return
+            }
+            
+            if textField.text == nil || textField.text?.characters.count == 0 {
+                return
+            }
+            
+            EZLoadingActivity.show("", disableUI: true)
+            EMClient.sharedClient().setApnsNickname(textField.text)
+            UserProfileManager.sharedInstance().updateUserProfileInBackground([kPARSE_HXUSER_NICKNAME: textField.text!], completion: { (success, error) in
+                EZLoadingActivity.hide()
+                
+                if success == true {
+                    self.nameLabel.text = textField.text
+                }
+                else {
+                    self.showAlert("保存失败")
+                }
+            })
+        }
+        
+        alert.addAction(cancelAction)
+        alert.addAction(okAction)
+        
+        alert.addTextFieldWithConfigurationHandler(nil)
+        
+        self.presentViewController(alert, animated: true, completion: nil)
+    }
+    
+    @IBAction func clickEditPhoto(sender: AnyObject) {
+        UINavigationBar.appearance().tintColor = UIColor.whiteColor()
+        UINavigationBar.appearance().titleTextAttributes = [NSForegroundColorAttributeName: UIColor.whiteColor()]
+        let picker = DKImagePickerController()
+        picker.maxSelectableCount = 1
+        picker.assetType = DKImagePickerControllerAssetType.AllPhotos
+        picker.didSelectAssets = {(assets: [DKAsset]) in
+            EZLoadingActivity.show("", disableUI: true)
+            for asset in assets {
+                asset.fetchFullScreenImageWithCompleteBlock({ (image, info) -> Void in
+                    if image == nil {
+                        return
+                    }
+                    
+                    UserProfileManager.sharedInstance().uploadUserHeadImageProfileInBackground(image, completion: { (success, error) in
+                        EZLoadingActivity.hide()
+                        if success == true {
+                            let user = UserProfileManager.sharedInstance().getCurUserProfile()
+                            self.photoImageView.imageWithUsername(user.username, placeholderImage: image)
+                        }
+                        else {
+                            self.showAlert("保存失败")
+                        }
+                    })
+                })
+            }
+            
+            picker.dismissViewControllerAnimated(true, completion: nil)
+        }
+        
+        picker.didCancel = { () in
+            picker.dismissViewControllerAnimated(true, completion: nil)
+        }
+        
+        self.presentViewController(picker, animated: true, completion: nil)
     }
     
     // MARK: - Table view data source
@@ -106,6 +202,7 @@ class MeViewController: UITableViewController {
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath)
 
+        cell.selectionStyle = UITableViewCellSelectionStyle.None
         cell.accessoryType = UITableViewCellAccessoryType.DisclosureIndicator
         cell.separatorInset = UIEdgeInsetsMake(0, 0, 0, 0)
         
@@ -113,6 +210,24 @@ class MeViewController: UITableViewController {
         cell.textLabel?.text = row.title()
         cell.textLabel?.textColor = GlobalUtil.colorRGBA(59, g: 59, b: 59, a: 1)
         cell.textLabel?.font = UIFont.systemFontOfSize(15)
+        
+        cell.detailTextLabel?.textColor = cell.textLabel?.textColor
+        cell.detailTextLabel?.font = cell.textLabel?.font
+        
+        switch row {
+        case .Push:
+            let option = EMClient.sharedClient().pushOptions
+            var detail = option.noDisturbStatus == EMPushNoDisturbStatusDay ? "开启" : "关闭"
+            if option.noDisturbStatus == EMPushNoDisturbStatusCustom {
+                detail = "只在夜间开启（22:00 － 7:00）"
+            }
+            cell.detailTextLabel?.text = detail
+            
+            break
+        default:
+            cell.detailTextLabel?.text = nil
+            break
+        }
 
         return cell
     }
@@ -144,6 +259,57 @@ class MeViewController: UITableViewController {
             break
         case .CA:
             self.performSegueWithIdentifier("CASegue", sender: self)
+            break
+        case .Push:
+            let alert = UIAlertController(title: nil, message: nil, preferredStyle: UIAlertControllerStyle.ActionSheet)
+            
+            let onAction = UIAlertAction(title: "开启", style: UIAlertActionStyle.Default, handler: { (action) in
+                let option = EMClient.sharedClient().pushOptions
+                option.noDisturbStatus = EMPushNoDisturbStatusDay
+                option.noDisturbingStartH = 0
+                option.noDisturbingEndH = 24
+                self.loadUserInfo()
+                
+                dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), { 
+                    EMClient.sharedClient().updatePushOptionsToServer()
+                })
+            })
+            
+            let customAction = UIAlertAction(title: "只在夜间开启（22:00 － 7:00）", style: UIAlertActionStyle.Default, handler: { (action) in
+                let option = EMClient.sharedClient().pushOptions
+                option.noDisturbStatus = EMPushNoDisturbStatusCustom
+                option.noDisturbingStartH = 22
+                option.noDisturbingEndH = 7
+                self.loadUserInfo()
+                
+                dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), {
+                    EMClient.sharedClient().updatePushOptionsToServer()
+                })
+            })
+            
+            let offAction = UIAlertAction(title: "关闭", style: UIAlertActionStyle.Default, handler: { (action) in
+                let option = EMClient.sharedClient().pushOptions
+                option.noDisturbStatus = EMPushNoDisturbStatusClose
+                option.noDisturbingStartH = -1
+                option.noDisturbingEndH = -1
+                self.loadUserInfo()
+                
+                dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), {
+                    EMClient.sharedClient().updatePushOptionsToServer()
+                })
+            })
+            
+            let cancelAction = UIAlertAction(title: "取消", style: UIAlertActionStyle.Cancel, handler: { (action) in
+                
+            })
+            
+            alert.addAction(onAction)
+            alert.addAction(customAction)
+            alert.addAction(offAction)
+            alert.addAction(cancelAction)
+            
+            self.presentViewController(alert, animated: true, completion: nil)
+            
             break
         default:
             break

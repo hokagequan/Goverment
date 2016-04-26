@@ -12,3 +12,9 @@
 // ViewController
 #import "ConversationListController.h"
 #import "ContactListViewController.h"
+
+// Utils
+#import "UserProfileManager.h"
+
+// Categorys
+#import "UIImageView+HeadImage.h"
