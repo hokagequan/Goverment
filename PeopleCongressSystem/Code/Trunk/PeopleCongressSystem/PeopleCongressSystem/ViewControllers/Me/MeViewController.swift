@@ -106,7 +106,6 @@ class MeViewController: UITableViewController {
     }
 
     @IBAction func clickEdit(sender: AnyObject) {
-        // TODO: 编辑
         let alert = UIAlertController(title: nil, message: "更改昵称", preferredStyle: UIAlertControllerStyle.Alert)
         let cancelAction = UIAlertAction(title: "取消", style: UIAlertActionStyle.Cancel, handler: nil)
         let okAction = UIAlertAction(title: "确定", style: UIAlertActionStyle.Default) { (action) in
@@ -310,6 +309,10 @@ class MeViewController: UITableViewController {
             
             self.presentViewController(alert, animated: true, completion: nil)
             
+            break
+        case .BlackList:
+            let blackListViewController = BlackListViewController(nibName: nil, bundle: nil)
+            self.navigationController?.pushViewController(blackListViewController, animated: true)
             break
         default:
             break

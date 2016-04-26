@@ -12,6 +12,7 @@
 // ViewController
 #import "ConversationListController.h"
 #import "ContactListViewController.h"
+#import "BlackListViewController.h"
 
 // Utils
 #import "UserProfileManager.h"

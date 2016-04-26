@@ -19,6 +19,7 @@
 		100691C01C93C92F000AEFEA /* UIImageView+webImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 100691BF1C93C92F000AEFEA /* UIImageView+webImage.swift */; };
 		100691C91C969C32000AEFEA /* UploadPhotoReq.swift in Sources */ = {isa = PBXBuildFile; fileRef = 100691C81C969C32000AEFEA /* UploadPhotoReq.swift */; };
 		100691CB1C96AB35000AEFEA /* AddVariableReq.swift in Sources */ = {isa = PBXBuildFile; fileRef = 100691CA1C96AB35000AEFEA /* AddVariableReq.swift */; };
+		100AA8751CCF446A00EC40DC /* UIViewController+PCSNavi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 100AA8741CCF446A00EC40DC /* UIViewController+PCSNavi.swift */; };
 		100B202E1C88786700435EF0 /* UIViewController+Keyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 100B202D1C88786700435EF0 /* UIViewController+Keyboard.swift */; };
 		100B20301C887C1000435EF0 /* TypeSelectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 100B202F1C887C1000435EF0 /* TypeSelectView.swift */; };
 		100B20321C887C2600435EF0 /* TypeSelectView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 100B20311C887C2600435EF0 /* TypeSelectView.xib */; };
@@ -256,6 +257,7 @@
 		100691C31C969395000AEFEA /* libcommonCrypto.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libcommonCrypto.tbd; path = usr/lib/system/libcommonCrypto.tbd; sourceTree = SDKROOT; };
 		100691C81C969C32000AEFEA /* UploadPhotoReq.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UploadPhotoReq.swift; sourceTree = "<group>"; };
 		100691CA1C96AB35000AEFEA /* AddVariableReq.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddVariableReq.swift; sourceTree = "<group>"; };
+		100AA8741CCF446A00EC40DC /* UIViewController+PCSNavi.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController+PCSNavi.swift"; sourceTree = "<group>"; };
 		100B202D1C88786700435EF0 /* UIViewController+Keyboard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController+Keyboard.swift"; sourceTree = "<group>"; };
 		100B202F1C887C1000435EF0 /* TypeSelectView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TypeSelectView.swift; sourceTree = "<group>"; };
 		100B20311C887C2600435EF0 /* TypeSelectView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TypeSelectView.xib; sourceTree = "<group>"; };
@@ -1854,6 +1856,7 @@
 				10DBF2131C8BBDBB007620BA /* ManageUIDelegate.swift */,
 				1075055D1C9057B700C9589E /* UIWebView+HtmlInteract.swift */,
 				100691BF1C93C92F000AEFEA /* UIImageView+webImage.swift */,
+				100AA8741CCF446A00EC40DC /* UIViewController+PCSNavi.swift */,
 			);
 			path = Customs;
 			sourceTree = "<group>";
@@ -2254,6 +2257,7 @@
 				100B203E1C89222F00435EF0 /* PersonListViewController.swift in Sources */,
 				1037715C1CC776AE00ECEBEA /* EMMainViewController.m in Sources */,
 				105242921C9CFEF2005A55DC /* GetActivityPersonsReq.swift in Sources */,
+				100AA8751CCF446A00EC40DC /* UIViewController+PCSNavi.swift in Sources */,
 				1075055E1C9057B700C9589E /* UIWebView+HtmlInteract.swift in Sources */,
 				107505631C906D0200C9589E /* SituationViewController.swift in Sources */,
 				105242901C9CF909005A55DC /* GetActivityDetaildReq.swift in Sources */,
