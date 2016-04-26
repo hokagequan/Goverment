@@ -24,6 +24,7 @@ class UnCheckedInListViewController: UIViewController {
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
         
+        // TODO: 未签到列表
         EZLoadingActivity.show("", disableUI: true)
     }
 

@@ -12,12 +12,24 @@ import Photos
 @objc
 public protocol DKImagePickerControllerUIDelegate {
 	
-	// Returns a custom camera.
+	/**
+		Returns a custom camera.
+
+		**Note**
+
+		If you are using a UINavigationController as the custom camera,
+		you should also set the picker's modalPresentationStyle to .OverCurrentContext, like this:
+		
+		```
+		pickerController.modalPresentationStyle = .OverCurrentContext
+		```
+	*/
 	func imagePickerControllerCreateCamera(imagePickerController: DKImagePickerController,
-		didCancel: (() -> Void),
-		didFinishCapturingImage: ((image: UIImage) -> Void)) -> UIViewController
+	                                       didCancel: (() -> Void),
+	                                       didFinishCapturingImage: ((image: UIImage) -> Void),
+	                                       didFinishCapturingVideo: ((videoURL: NSURL) -> Void)) -> UIViewController
 	
-	// The camera image to be displayed in the album's first cell.
+	/// The camera image to be displayed in the album's first cell.
 	func imagePickerControllerCameraImage() -> UIImage
 	
 }
@@ -98,6 +110,20 @@ public class DKImagePickerController : UINavigationController {
 		}
 	}
 	
+	/// The predicate applies to images only.
+	public var imageFetchPredicate: NSPredicate? {
+		didSet {
+			getImageManager().groupDataManager.assetFetchOptions = self.createAssetFetchOptions()
+		}
+	}
+	
+	/// The predicate applies to videos only.
+	public var videoFetchPredicate: NSPredicate? {
+		didSet {
+			getImageManager().groupDataManager.assetFetchOptions = self.createAssetFetchOptions()
+		}
+	}
+	
     /// If sourceType is Camera will cause the assetType & maxSelectableCount & allowMultipleTypes & defaultSelectedAssets to be ignored.
     public var sourceType: DKImagePickerControllerSourceType = [.Camera, .Photo]
     
@@ -144,7 +170,7 @@ public class DKImagePickerController : UINavigationController {
     private lazy var doneButton: UIButton = {
         let button = UIButton(type: UIButtonType.Custom)
 		button.setTitleColor(UINavigationBar.appearance().tintColor ?? self.navigationBar.tintColor, forState: UIControlState.Normal)
-        button.addTarget(self, action: "done", forControlEvents: UIControlEvents.TouchUpInside)
+        button.addTarget(self, action: #selector(DKImagePickerController.done), forControlEvents: UIControlEvents.TouchUpInside)
       
         return button
     }()
@@ -186,7 +212,14 @@ public class DKImagePickerController : UINavigationController {
 			
 			if !self.sourceType.contains(.Photo) {
 				self.navigationBarHidden = true
-				self.setViewControllers([self.createCamera()], animated: false)
+				
+				let camera = self.createCamera()
+				if camera is UINavigationController {
+					self.presentViewController(self.createCamera(), animated: true, completion: nil)
+					self.setViewControllers([], animated: false)
+				} else {
+					self.setViewControllers([camera], animated: false)
+				}
 			} else {
 				let rootVC = DKAssetGroupDetailVC()
 				self.updateCancelButtonForVC(rootVC)
@@ -203,10 +236,37 @@ public class DKImagePickerController : UINavigationController {
 	}()
 	
 	private func createAssetFetchOptions() -> PHFetchOptions? {
-		if self.assetType != .AllAssets {
-			self.assetFetchOptions.predicate = NSPredicate(format: "mediaType == %d",
-				self.assetType == .AllPhotos ? PHAssetMediaType.Image.rawValue : PHAssetMediaType.Video.rawValue)
+		
+		let createImagePredicate = { () -> NSPredicate in
+			var imagePredicate = NSPredicate(format: "mediaType == %d", PHAssetMediaType.Image.rawValue)
+			if let imageFetchPredicate = self.imageFetchPredicate {
+				imagePredicate = NSCompoundPredicate(andPredicateWithSubpredicates: [imagePredicate, imageFetchPredicate])
+			}
+	
+			return imagePredicate
 		}
+		
+		let createVideoPredicate = { () -> NSPredicate in
+			var videoPredicate = NSPredicate(format: "mediaType == %d", PHAssetMediaType.Video.rawValue)
+			if let videoFetchPredicate = self.videoFetchPredicate {
+				videoPredicate = NSCompoundPredicate(andPredicateWithSubpredicates: [videoPredicate, videoFetchPredicate])
+			}
+			
+			return videoPredicate
+		}
+		
+		var predicate: NSPredicate?
+		switch self.assetType {
+		case .AllAssets:
+			predicate = NSCompoundPredicate(orPredicateWithSubpredicates: [createImagePredicate(), createVideoPredicate()])
+		case .AllPhotos:
+			predicate = createImagePredicate()
+		case .AllVideos:
+			predicate = createVideoPredicate()
+		}
+		
+		self.assetFetchOptions.predicate = predicate
+		
 		return self.assetFetchOptions
 	}
 	
@@ -214,7 +274,7 @@ public class DKImagePickerController : UINavigationController {
 		if self.showsCancelButton {
 			vc.navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .Cancel,
 				target: self,
-				action: "dismiss")
+				action: #selector(DKImagePickerController.dismiss))
 		} else {
 			vc.navigationItem.leftBarButtonItem = nil
 		}
@@ -231,27 +291,63 @@ public class DKImagePickerController : UINavigationController {
 	
 	private func createCamera() -> UIViewController {
 		
-		let camera = self.UIDelegate.imagePickerControllerCreateCamera(self,
-			didCancel: { () -> Void in
+		let didCancel = { () in
+			if self.viewControllers.count == 0 {
 				self.dismissViewControllerAnimated(true, completion: nil);
-			}) { (image) -> Void in
-				var newImageIdentifier: String!
-				PHPhotoLibrary.sharedPhotoLibrary().performChanges(
-					{ () in
-						let assetRequest = PHAssetChangeRequest.creationRequestForAssetFromImage(image)
-						newImageIdentifier = assetRequest.placeholderForCreatedAsset!.localIdentifier
-					}, completionHandler: { (success, error) -> Void in
-						dispatch_async(dispatch_get_main_queue(), { () -> Void in
-							if success {
-								if let newAsset = PHAsset.fetchAssetsWithLocalIdentifiers([newImageIdentifier], options: nil).firstObject as? PHAsset {
-									self.selectedImage(DKAsset(originalAsset: newAsset), needsToDismiss: true)
-								}
-							} else {
-								self.selectedImage(DKAsset(image: image), needsToDismiss: true)
-							}
-						})
-				})
+			}
+			self.dismiss()
 		}
+		
+		let didFinishCapturingImage = { (image: UIImage) in
+			var newImageIdentifier: String!
+			PHPhotoLibrary.sharedPhotoLibrary().performChanges( { () in
+				let assetRequest = PHAssetChangeRequest.creationRequestForAssetFromImage(image)
+				newImageIdentifier = assetRequest.placeholderForCreatedAsset!.localIdentifier
+			}, completionHandler: { (success, error) in
+				dispatch_async(dispatch_get_main_queue(), {
+					if success {
+						if let newAsset = PHAsset.fetchAssetsWithLocalIdentifiers([newImageIdentifier], options: nil).firstObject as? PHAsset {
+							if self.sourceType.contains(.Photo) || self.viewControllers.count == 0 {
+								self.dismissViewControllerAnimated(true, completion: nil)
+							}
+							self.selectedImage(DKAsset(originalAsset: newAsset))
+						}
+					} else {
+						if self.sourceType.contains(.Photo) {
+							self.dismissViewControllerAnimated(true, completion: nil)
+						}
+						self.selectedImage(DKAsset(image: image))
+					}
+				})
+			})
+		}
+		
+		let didFinishCapturingVideo = { (videoURL: NSURL) in
+			var newVideoIdentifier: String!
+			PHPhotoLibrary.sharedPhotoLibrary().performChanges({ 
+				let assetRequest = PHAssetChangeRequest.creationRequestForAssetFromVideoAtFileURL(videoURL)
+				newVideoIdentifier = assetRequest?.placeholderForCreatedAsset?.localIdentifier
+			}, completionHandler: { (success, error) in
+				dispatch_async(dispatch_get_main_queue(), { 
+					if success {
+						if let newAsset = PHAsset.fetchAssetsWithLocalIdentifiers([newVideoIdentifier], options: nil).firstObject as? PHAsset {
+							if self.sourceType.contains(.Photo) || self.viewControllers.count == 0 {
+								self.dismissViewControllerAnimated(true, completion: nil)
+							}
+							self.selectedImage(DKAsset(originalAsset: newAsset))
+						}
+
+					} else {
+						self.dismissViewControllerAnimated(true, completion: nil)
+					}
+				})
+			})
+		}
+		
+		let camera = self.UIDelegate.imagePickerControllerCreateCamera(self,
+		                                                               didCancel: didCancel,
+		                                                               didFinishCapturingImage: didFinishCapturingImage,
+		                                                               didFinishCapturingVideo: didFinishCapturingVideo)
 		
 		return camera
 	}
@@ -261,25 +357,21 @@ public class DKImagePickerController : UINavigationController {
 	}
 	
 	internal func dismiss() {
-		
-		self.dismissViewControllerAnimated(true, completion: nil)
+		self.presentingViewController?.dismissViewControllerAnimated(true, completion: nil)
 		self.didCancel?()
 	}
 	
     internal func done() {
-        self.dismissViewControllerAnimated(true, completion: nil)
+		self.presentingViewController?.dismissViewControllerAnimated(true, completion: nil)
         self.didSelectAssets?(assets: self.selectedAssets)
     }
     
     // MARK: - Selection Image
 	
 	internal func selectedImage(asset: DKAsset) {
-		self.selectedImage(asset, needsToDismiss: false)
-	}
-	
-	internal func selectedImage(asset: DKAsset, needsToDismiss: Bool) {
 		selectedAssets.append(asset)
-		if needsToDismiss {
+		
+		if !self.sourceType.contains(.Photo) {
 			self.done()
 		} else if self.singleSelect {
 			self.done()

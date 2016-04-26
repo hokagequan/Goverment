@@ -49,6 +49,11 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>SwiftQRCode.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>TagListView.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -62,12 +67,12 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>33F2EB236B04F6AA2B70147744D4D556</key>
+		<key>484E27DD6FBAE24C4AFD38BC016605AF</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>45515D899EF86A258890EFAB218BB76F</key>
+		<key>5D2CA509A19E3AC702428569419AEEEF</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -82,6 +87,11 @@
 			<key>primary</key>
 			<true/>
 		</dict>
+		<key>68EF027A0B38EDC3E954EB555410C925</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>7116AA14740A17264FF47B18C2B67020</key>
 		<dict>
 			<key>primary</key>
@@ -92,12 +102,12 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>903A108934E1A089B76F443DC34C8E54</key>
+		<key>83D714D89F121DB799A252E1D442D03C</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>C836F3AD1BB2C80E1F3ADCAF904C4729</key>
+		<key>903A108934E1A089B76F443DC34C8E54</key>
 		<dict>
 			<key>primary</key>
 			<true/>
