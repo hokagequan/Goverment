@@ -173,10 +173,10 @@
             </objects>
             <point key="canvasLocation" x="763" y="458"/>
         </scene>
-        <!--View Controller-->
+        <!--活动管理-->
         <scene sceneID="TYC-7W-BqQ">
             <objects>
-                <viewController hidesBottomBarWhenPushed="YES" id="BkH-2E-4Ca" customClass="PerformanceRecordsViewController" customModule="PeopleCongressSystem" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController hidesBottomBarWhenPushed="YES" id="BkH-2E-4Ca" userLabel="活动管理" customClass="PerformanceRecordsViewController" customModule="PeopleCongressSystem" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="M5D-nH-oLf"/>
                         <viewControllerLayoutGuide type="bottom" id="ooC-f0-1xe"/>
@@ -270,10 +270,10 @@
             </objects>
             <point key="canvasLocation" x="1568" y="458"/>
         </scene>
-        <!--View Controller-->
+        <!--履职记录-->
         <scene sceneID="skc-jp-X1p">
             <objects>
-                <viewController hidesBottomBarWhenPushed="YES" id="U5H-xC-1Bc" customClass="VariableRecordsViewController" customModule="PeopleCongressSystem" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController hidesBottomBarWhenPushed="YES" id="U5H-xC-1Bc" userLabel="履职记录" customClass="VariableRecordsViewController" customModule="PeopleCongressSystem" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="tLu-yJ-2sK"/>
                         <viewControllerLayoutGuide type="bottom" id="9ds-h1-BFQ"/>
@@ -399,10 +399,10 @@
             </objects>
             <point key="canvasLocation" x="1568" y="1238"/>
         </scene>
-        <!--View Controller-->
+        <!--履职详情-->
         <scene sceneID="tcj-Eu-cN2">
             <objects>
-                <viewController hidesBottomBarWhenPushed="YES" id="ZAL-RZ-HiG" customClass="VariableDetailViewController" customModule="PeopleCongressSystem" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController hidesBottomBarWhenPushed="YES" id="ZAL-RZ-HiG" userLabel="履职详情" customClass="VariableDetailViewController" customModule="PeopleCongressSystem" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="84D-cd-IyD"/>
                         <viewControllerLayoutGuide type="bottom" id="FRD-UW-H3c"/>
@@ -612,12 +612,12 @@
                     </variation>
                 </view>
             </objects>
-            <point key="canvasLocation" x="2374" y="1338"/>
+            <point key="canvasLocation" x="2374" y="1238"/>
         </scene>
-        <!--View Controller-->
+        <!--知情知政-->
         <scene sceneID="i2d-6s-yuK">
             <objects>
-                <viewController hidesBottomBarWhenPushed="YES" id="6Oz-BJ-aFz" customClass="SituationViewController" customModule="PeopleCongressSystem" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController hidesBottomBarWhenPushed="YES" id="6Oz-BJ-aFz" userLabel="知情知政" customClass="SituationViewController" customModule="PeopleCongressSystem" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="w3z-bS-0my"/>
                         <viewControllerLayoutGuide type="bottom" id="6X9-qr-YZq"/>
@@ -693,10 +693,10 @@
             </objects>
             <point key="canvasLocation" x="1503.5" y="2434"/>
         </scene>
-        <!--View Controller-->
+        <!--活动详情-->
         <scene sceneID="gdi-XG-cqO">
             <objects>
-                <viewController storyboardIdentifier="PerformanceEditViewController" hidesBottomBarWhenPushed="YES" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Kpt-zv-23Y" customClass="PerformanceEditViewController" customModule="PeopleCongressSystem" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="PerformanceEditViewController" hidesBottomBarWhenPushed="YES" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Kpt-zv-23Y" userLabel="活动详情" customClass="PerformanceEditViewController" customModule="PeopleCongressSystem" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="KQy-NR-eJn"/>
                         <viewControllerLayoutGuide type="bottom" id="ZmJ-Zf-DE6"/>
@@ -910,16 +910,157 @@
                         <outlet property="rightNaviButton" destination="Os3-SM-1WR" id="xPL-cR-q1W"/>
                         <outlet property="tableView" destination="94k-Ss-yKu" id="u0e-Cz-E9v"/>
                         <segue destination="rjg-z4-4KX" kind="show" identifier="GroupSegue" id="UB7-ah-CAp"/>
+                        <segue destination="fkk-ei-Xkl" kind="show" identifier="UnCheckedInListSegue" id="OJ0-ag-eKS"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ToJ-37-zrZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2374" y="458"/>
         </scene>
-        <!--View Controller-->
+        <!--未签到列表-->
+        <scene sceneID="2h2-76-nei">
+            <objects>
+                <viewController id="fkk-ei-Xkl" userLabel="未签到列表" customClass="UnCheckedInListViewController" customModule="PeopleCongressSystem" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="ltQ-rB-zIH"/>
+                        <viewControllerLayoutGuide type="bottom" id="dXC-Qr-mpC"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="79u-5D-Qjm">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Lqr-Fj-xA3" customClass="PCSNavigationView" customModule="PeopleCongressSystem" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="64" width="600" height="44"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="6H9-JN-lYz"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="title" value="未签到列表"/>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <outlet property="viewController" destination="fkk-ei-Xkl" id="J6w-et-R0c"/>
+                                </connections>
+                            </view>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="80" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="UYF-Ta-AZN">
+                                <rect key="frame" x="0.0" y="116" width="600" height="484"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="UnCheckedInCell" id="3w0-xF-guC" customClass="UnCheckedInCell" customModule="PeopleCongressSystem" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="600" height="80"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="3w0-xF-guC" id="ELx-Tj-EW4">
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="79.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UUa-Ca-MM6" userLabel="Container">
+                                                    <rect key="frame" x="8" y="0.0" width="584" height="71.5"/>
+                                                    <subviews>
+                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nzm-ZR-EFG">
+                                                            <rect key="frame" x="516" y="21" width="50" height="30"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="width" constant="50" id="3LS-Of-HCG"/>
+                                                                <constraint firstAttribute="height" constant="30" id="MgJ-RF-amU"/>
+                                                            </constraints>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                            <state key="normal" title="提醒">
+                                                                <color key="titleColor" red="0.98039215690000003" green="0.16862745100000001" blue="0.20392156859999999" alpha="1" colorSpace="calibratedRGB"/>
+                                                            </state>
+                                                            <connections>
+                                                                <action selector="clickNotify:" destination="3w0-xF-guC" eventType="touchUpInside" id="sQr-88-tUV"/>
+                                                            </connections>
+                                                        </button>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BCm-xH-Idi" userLabel="Title">
+                                                            <rect key="frame" x="20" y="10" width="476" height="18"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="height" constant="18" id="ru0-Dx-uIo"/>
+                                                            </constraints>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                            <color key="textColor" red="0.23137254900000001" green="0.23137254900000001" blue="0.23137254900000001" alpha="1" colorSpace="calibratedRGB"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="f5j-AF-tCw" userLabel="Detail">
+                                                            <rect key="frame" x="20" y="45" width="194.5" height="16"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="height" constant="16" id="Dvb-eI-TXT"/>
+                                                            </constraints>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                            <color key="textColor" red="0.58823529409999997" green="0.58823529409999997" blue="0.58823529409999997" alpha="1" colorSpace="calibratedRGB"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5UN-F4-Rgh" userLabel="Phone">
+                                                            <rect key="frame" x="222" y="45.5" width="274" height="16"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="height" constant="16" id="jJ9-aZ-PM1"/>
+                                                            </constraints>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                            <color key="textColor" red="0.23137254900000001" green="0.23137254900000001" blue="0.23137254900000001" alpha="1" colorSpace="calibratedRGB"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                    </subviews>
+                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <constraints>
+                                                        <constraint firstItem="f5j-AF-tCw" firstAttribute="leading" secondItem="BCm-xH-Idi" secondAttribute="leading" id="GC9-R8-1R6"/>
+                                                        <constraint firstAttribute="bottom" secondItem="f5j-AF-tCw" secondAttribute="bottom" constant="10" id="Rr3-cX-aQt"/>
+                                                        <constraint firstItem="nzm-ZR-EFG" firstAttribute="leading" secondItem="BCm-xH-Idi" secondAttribute="trailing" constant="20" id="TEp-pa-tWB"/>
+                                                        <constraint firstItem="nzm-ZR-EFG" firstAttribute="leading" secondItem="5UN-F4-Rgh" secondAttribute="trailing" constant="20" id="Uiu-re-rSb"/>
+                                                        <constraint firstItem="nzm-ZR-EFG" firstAttribute="centerY" secondItem="UUa-Ca-MM6" secondAttribute="centerY" id="WL4-so-UcO"/>
+                                                        <constraint firstItem="BCm-xH-Idi" firstAttribute="top" secondItem="UUa-Ca-MM6" secondAttribute="top" constant="10" id="aDX-DT-tWR"/>
+                                                        <constraint firstItem="5UN-F4-Rgh" firstAttribute="leading" secondItem="f5j-AF-tCw" secondAttribute="trailing" constant="8" id="bEd-Vh-I7c"/>
+                                                        <constraint firstItem="f5j-AF-tCw" firstAttribute="width" secondItem="UUa-Ca-MM6" secondAttribute="width" multiplier="1:3" id="h46-dt-HFt"/>
+                                                        <constraint firstItem="5UN-F4-Rgh" firstAttribute="centerY" secondItem="f5j-AF-tCw" secondAttribute="centerY" id="iq7-k1-wie"/>
+                                                        <constraint firstItem="BCm-xH-Idi" firstAttribute="leading" secondItem="UUa-Ca-MM6" secondAttribute="leading" constant="20" id="l76-tI-QjN"/>
+                                                        <constraint firstAttribute="trailing" secondItem="nzm-ZR-EFG" secondAttribute="trailing" constant="18" id="zTJ-UE-gUA"/>
+                                                    </constraints>
+                                                </view>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="UUa-Ca-MM6" firstAttribute="leading" secondItem="ELx-Tj-EW4" secondAttribute="leading" constant="8" id="KbT-st-LBb"/>
+                                                <constraint firstAttribute="bottom" secondItem="UUa-Ca-MM6" secondAttribute="bottom" constant="8" id="MT2-L8-gmp"/>
+                                                <constraint firstAttribute="trailing" secondItem="UUa-Ca-MM6" secondAttribute="trailing" constant="8" id="g8x-Y3-nuK"/>
+                                                <constraint firstItem="UUa-Ca-MM6" firstAttribute="top" secondItem="ELx-Tj-EW4" secondAttribute="top" id="qtf-MT-Wo0"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        <connections>
+                                            <outlet property="containerView" destination="UUa-Ca-MM6" id="Jbf-SA-lUI"/>
+                                            <outlet property="detailLabel" destination="f5j-AF-tCw" id="Kld-lz-lbr"/>
+                                            <outlet property="notifyButton" destination="nzm-ZR-EFG" id="DUI-SF-85F"/>
+                                            <outlet property="phoneLabel" destination="5UN-F4-Rgh" id="oYe-yC-TZO"/>
+                                            <outlet property="titleLabel" destination="BCm-xH-Idi" id="ud4-D6-bCF"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="fkk-ei-Xkl" id="djK-md-ZN2"/>
+                                    <outlet property="delegate" destination="fkk-ei-Xkl" id="bnb-04-9S9"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="Lqr-Fj-xA3" secondAttribute="trailing" id="5uD-Wt-tYv"/>
+                            <constraint firstItem="Lqr-Fj-xA3" firstAttribute="top" secondItem="ltQ-rB-zIH" secondAttribute="bottom" id="Aov-jo-fc9"/>
+                            <constraint firstItem="dXC-Qr-mpC" firstAttribute="top" secondItem="UYF-Ta-AZN" secondAttribute="bottom" id="EO1-rS-nd0"/>
+                            <constraint firstItem="Lqr-Fj-xA3" firstAttribute="leading" secondItem="79u-5D-Qjm" secondAttribute="leading" id="Zej-wr-v37"/>
+                            <constraint firstItem="UYF-Ta-AZN" firstAttribute="leading" secondItem="79u-5D-Qjm" secondAttribute="leading" id="eAv-8m-avp"/>
+                            <constraint firstItem="UYF-Ta-AZN" firstAttribute="top" secondItem="Lqr-Fj-xA3" secondAttribute="bottom" constant="8" id="fzK-hd-9Jb"/>
+                            <constraint firstAttribute="trailing" secondItem="UYF-Ta-AZN" secondAttribute="trailing" id="nFb-x8-J9s"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="listTableView" destination="UYF-Ta-AZN" id="gEx-Zz-rY3"/>
+                        <outlet property="naviView" destination="Lqr-Fj-xA3" id="LvY-kA-XX2"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="VWg-sc-Jw0" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3119" y="-234"/>
+        </scene>
+        <!--代表团选择-->
         <scene sceneID="P4R-cm-QJq">
             <objects>
-                <viewController id="rjg-z4-4KX" customClass="GroupViewController" customModule="PeopleCongressSystem" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="rjg-z4-4KX" userLabel="代表团选择" customClass="GroupViewController" customModule="PeopleCongressSystem" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="ckP-5t-4xg"/>
                         <viewControllerLayoutGuide type="bottom" id="erx-VY-VzO"/>
@@ -980,10 +1121,10 @@
             </objects>
             <point key="canvasLocation" x="3119" y="458"/>
         </scene>
-        <!--View Controller-->
+        <!--代表选择-->
         <scene sceneID="PlU-bX-cI8">
             <objects>
-                <viewController id="xDZ-fV-QcY" customClass="PersonListViewController" customModule="PeopleCongressSystem" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="xDZ-fV-QcY" userLabel="代表选择" customClass="PersonListViewController" customModule="PeopleCongressSystem" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="drx-dF-cwO"/>
                         <viewControllerLayoutGuide type="bottom" id="sjK-UG-1gL"/>

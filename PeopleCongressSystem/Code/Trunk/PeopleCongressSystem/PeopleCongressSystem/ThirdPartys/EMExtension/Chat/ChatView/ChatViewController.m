@@ -62,10 +62,10 @@
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handleCallNotification:) name:@"callControllerClose" object:nil];
     
     [PCSCustomUtil customNavigationController:self];
-    [self customPCSNavi:@"会话"];
+    CGFloat height = [self customPCSNavi:@"会话"];
     
     CGRect frame = self.tableView.frame;
-    frame.origin.y += 30;
+    frame.origin.y += height;
     self.tableView.frame = frame;
     
     //通过会话管理者获取已收发消息

@@ -20,6 +20,8 @@
 		100691C91C969C32000AEFEA /* UploadPhotoReq.swift in Sources */ = {isa = PBXBuildFile; fileRef = 100691C81C969C32000AEFEA /* UploadPhotoReq.swift */; };
 		100691CB1C96AB35000AEFEA /* AddVariableReq.swift in Sources */ = {isa = PBXBuildFile; fileRef = 100691CA1C96AB35000AEFEA /* AddVariableReq.swift */; };
 		100AA8751CCF446A00EC40DC /* UIViewController+PCSNavi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 100AA8741CCF446A00EC40DC /* UIViewController+PCSNavi.swift */; };
+		100AA87A1CCF48A100EC40DC /* UnCheckedInListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 100AA8791CCF48A100EC40DC /* UnCheckedInListViewController.swift */; };
+		100AA87C1CCF4C0100EC40DC /* UnCheckedInCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 100AA87B1CCF4C0100EC40DC /* UnCheckedInCell.swift */; };
 		100B202E1C88786700435EF0 /* UIViewController+Keyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 100B202D1C88786700435EF0 /* UIViewController+Keyboard.swift */; };
 		100B20301C887C1000435EF0 /* TypeSelectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 100B202F1C887C1000435EF0 /* TypeSelectView.swift */; };
 		100B20321C887C2600435EF0 /* TypeSelectView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 100B20311C887C2600435EF0 /* TypeSelectView.xib */; };
@@ -258,6 +260,8 @@
 		100691C81C969C32000AEFEA /* UploadPhotoReq.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UploadPhotoReq.swift; sourceTree = "<group>"; };
 		100691CA1C96AB35000AEFEA /* AddVariableReq.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddVariableReq.swift; sourceTree = "<group>"; };
 		100AA8741CCF446A00EC40DC /* UIViewController+PCSNavi.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController+PCSNavi.swift"; sourceTree = "<group>"; };
+		100AA8791CCF48A100EC40DC /* UnCheckedInListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UnCheckedInListViewController.swift; sourceTree = "<group>"; };
+		100AA87B1CCF4C0100EC40DC /* UnCheckedInCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UnCheckedInCell.swift; sourceTree = "<group>"; };
 		100B202D1C88786700435EF0 /* UIViewController+Keyboard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController+Keyboard.swift"; sourceTree = "<group>"; };
 		100B202F1C887C1000435EF0 /* TypeSelectView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TypeSelectView.swift; sourceTree = "<group>"; };
 		100B20311C887C2600435EF0 /* TypeSelectView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TypeSelectView.xib; sourceTree = "<group>"; };
@@ -1758,6 +1762,7 @@
 				1091C2041CB36489005140D5 /* PhotoBrowserView.xib */,
 				1030232C1CBB4B7000832DE1 /* VerifyCodeCell.swift */,
 				1030232E1CBB762300832DE1 /* LocalVerifyCell.swift */,
+				100AA87B1CCF4C0100EC40DC /* UnCheckedInCell.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -1790,6 +1795,7 @@
 				10DBF20D1C8A6CBD007620BA /* VariableRecordsViewController.swift */,
 				100691B21C930308000AEFEA /* VariableDetailViewController.swift */,
 				107505621C906D0200C9589E /* SituationViewController.swift */,
+				100AA8791CCF48A100EC40DC /* UnCheckedInListViewController.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -2193,6 +2199,7 @@
 				10D0D5C31C4E7D710093F687 /* FindPwdViewController.swift in Sources */,
 				10D0D5951C4CD9810093F687 /* MainViewController.swift in Sources */,
 				10D0D5C11C4E7B160093F687 /* PCSDataManager.swift in Sources */,
+				100AA87A1CCF48A100EC40DC /* UnCheckedInListViewController.swift in Sources */,
 				1091C2031CB36475005140D5 /* PhotoBrowserView.swift in Sources */,
 				1037713E1CC773F700ECEBEA /* AddFriendViewController.m in Sources */,
 				100B20301C887C1000435EF0 /* TypeSelectView.swift in Sources */,
@@ -2244,6 +2251,7 @@
 				10A6176E1CB54D2600D8EEF8 /* SubmitDeviceTokenReq.swift in Sources */,
 				1037712E1CC773F700ECEBEA /* ChatGroupDetailViewController.m in Sources */,
 				10F197581CC4E2A3007C28DC /* GetCARandReq.swift in Sources */,
+				100AA87C1CCF4C0100EC40DC /* UnCheckedInCell.swift in Sources */,
 				107505751C915C9E00C9589E /* Variable.swift in Sources */,
 				103771441CC773F700ECEBEA /* UserProfileViewController.m in Sources */,
 				10A6866A1C7DEF7400D050F0 /* GlobalUtil.swift in Sources */,

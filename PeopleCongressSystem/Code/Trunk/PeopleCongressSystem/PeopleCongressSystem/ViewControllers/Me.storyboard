@@ -816,7 +816,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="edit" width="64" height="64"/>
+        <image name="edit" width="16" height="16"/>
         <image name="gesture_dot_nor" width="64" height="64"/>
         <image name="gesture_dot_sel" width="64" height="64"/>
         <image name="guo_hui_small" width="54" height="56"/>

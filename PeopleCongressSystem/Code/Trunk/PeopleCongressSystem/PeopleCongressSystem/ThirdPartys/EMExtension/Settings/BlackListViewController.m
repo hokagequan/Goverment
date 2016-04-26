@@ -53,10 +53,10 @@
     // Uncomment the following line to preserve selection between presentations.
     self.view.backgroundColor = [UIColor whiteColor];
     [PCSCustomUtil customNavigationController:self];
-    [self customPCSNavi:NSLocalizedString(@"friend.black", @"Black List")];
+    CGFloat height = [self customPCSNavi:NSLocalizedString(@"friend.black", @"Black List")];
     
     _tableView = [[UITableView alloc] initWithFrame:CGRectZero style:UITableViewStylePlain];
-    _tableView.frame = CGRectMake(0, 30, self.view.frame.size.width, self.view.frame.size.height);
+    _tableView.frame = CGRectMake(0, height, self.view.frame.size.width, self.view.frame.size.height);
     _tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     _tableView.backgroundColor = [UIColor whiteColor];
     _tableView.autoresizingMask = UIViewAutoresizingFlexibleHeight;
