@@ -9,7 +9,7 @@
 import UIKit
 import EZLoadingActivity
 
-class BusinessCardViewController: UITableViewController {
+class BusinessCardViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
     enum Rows: Int {
         case Organization = 0
@@ -38,6 +38,8 @@ class BusinessCardViewController: UITableViewController {
     @IBOutlet weak var photoImageView: UIImageView!
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet var infoTableView: UITableView!
+    
+    @IBOutlet var specialView: UIView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -90,18 +92,19 @@ class BusinessCardViewController: UITableViewController {
         
         infoTableView.reloadData()
     }
+    
+    // MARK: - Actions
+    
+    @IBAction func clickScan(sender: AnyObject) {
+    }
 
     // MARK: - Table view data source
 
-    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        return 1
-    }
-
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return Rows.Max.rawValue
     }
 
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath)
         cell.selectionStyle = UITableViewCellSelectionStyle.None
         cell.separatorInset = UIEdgeInsetsMake(0, 0, 0, 0)
@@ -114,11 +117,15 @@ class BusinessCardViewController: UITableViewController {
         return cell
     }
     
-    override func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+    func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 192
+    }
+    
+    func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         return headerView
     }
     
-    override func tableView(tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
+    func tableView(tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
         let view = UIView()
         view.backgroundColor = UIColor.clearColor()
         

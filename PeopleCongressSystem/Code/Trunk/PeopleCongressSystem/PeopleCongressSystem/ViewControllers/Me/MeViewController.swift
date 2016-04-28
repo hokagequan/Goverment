@@ -12,37 +12,6 @@ import EZLoadingActivity
 
 class MeViewController: UITableViewController {
     
-    enum Rows: Int {
-        case Push = 0
-        case BlackList
-        case QRCodeDownload
-        case ChangePassword
-        case ChangeGesture
-//        case Update
-        case Help
-        case Feedback
-        case About
-        case CA
-        case Max
-        
-        func title() -> String {
-            let titles = [
-                "消息推送免打扰",
-                "黑名单",
-                "下载二维码",
-                "修改登陆密码",
-                "修改手势密码",
-//                "版本升级",
-                "在线帮助",
-                "意见反馈",
-                "关于",
-                "CA认证",
-                ""]
-            
-            return titles[self.rawValue]
-        }
-    }
-
     @IBOutlet var footerView: UIView!
     @IBOutlet weak var quitButton: UIButton!
     
@@ -50,6 +19,8 @@ class MeViewController: UITableViewController {
     @IBOutlet weak var photoImageView: UIImageView!
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var nameWidthLC: NSLayoutConstraint!
+    
+    var listItems = [Dictionary<String, String>]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -59,8 +30,9 @@ class MeViewController: UITableViewController {
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
-        
         CustomObjectUtil.customObjectsLayout([quitButton], backgroundColor: GlobalUtil.colorRGBA(230, g: 27, b: 39, a: 1.0), borderWidth: 0, borderColor: UIColor.clearColor(), corner: 3.0)
+        
+        self.loadListItems()
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -94,8 +66,40 @@ class MeViewController: UITableViewController {
         // 通知选项
         dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)) {
             EMClient.sharedClient().getPushOptionsFromServerWithError(nil)
-            let indexPath = NSIndexPath(forRow: Rows.Push.rawValue, inSection: 0)
+            
+            var index = -1
+            for i in 0..<self.listItems.count {
+                let dict = self.listItems[i]
+                if dict["title"] == "消息推送免打扰" {
+                    index = i
+                    break
+                }
+            }
+            
+            if index == -1 {
+                return
+            }
+            
+            let indexPath = NSIndexPath(forRow: index, inSection: 0)
             self.tableView.reloadRowsAtIndexPaths([indexPath], withRowAnimation: UITableViewRowAnimation.None)
+        }
+    }
+    
+    func loadListItems() {
+        listItems = [
+            ["title": "消息推送免打扰", "method": "clickPush"],
+            ["title": "黑名单", "method": "clickBlackList"],
+            ["title": "下载二维码", "method": "clickQRCodeDownload"],
+            ["title": "修改登陆密码", "method": "clickChangePassword"],
+            ["title": "修改手势密码", "method": "clickChangeGesture"],
+            ["title": "在线帮助", "method": "clickHelp"],
+            ["title": "意见反馈", "method": "clickFeedback"],
+            ["title": "关于", "method": "clickAbout"],
+            ["title": "CA认证", "method": "clickCA"]
+        ]
+        
+        if PCSDataManager.defaultManager().content is CongressContentInfo {
+            listItems.insert(["title": "名片", "method": "clickBusinessCard"], atIndex: 0)
         }
     }
     
@@ -176,6 +180,98 @@ class MeViewController: UITableViewController {
         self.presentViewController(picker, animated: true, completion: nil)
     }
     
+    func clickQRCodeDownload() {
+        self.performSegueWithIdentifier("QRDownloadSegue", sender: nil)
+    }
+    
+    func clickPush() {
+        let alert = UIAlertController(title: nil, message: nil, preferredStyle: UIAlertControllerStyle.ActionSheet)
+        
+        let onAction = UIAlertAction(title: "开启", style: UIAlertActionStyle.Default, handler: { (action) in
+            let option = EMClient.sharedClient().pushOptions
+            option.noDisturbStatus = EMPushNoDisturbStatusDay
+            option.noDisturbingStartH = 0
+            option.noDisturbingEndH = 24
+            self.loadUserInfo()
+            
+            dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), {
+                EMClient.sharedClient().updatePushOptionsToServer()
+            })
+        })
+        
+        let customAction = UIAlertAction(title: "只在夜间开启（22:00 － 7:00）", style: UIAlertActionStyle.Default, handler: { (action) in
+            let option = EMClient.sharedClient().pushOptions
+            option.noDisturbStatus = EMPushNoDisturbStatusCustom
+            option.noDisturbingStartH = 22
+            option.noDisturbingEndH = 7
+            self.loadUserInfo()
+            
+            dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), {
+                EMClient.sharedClient().updatePushOptionsToServer()
+            })
+        })
+        
+        let offAction = UIAlertAction(title: "关闭", style: UIAlertActionStyle.Default, handler: { (action) in
+            let option = EMClient.sharedClient().pushOptions
+            option.noDisturbStatus = EMPushNoDisturbStatusClose
+            option.noDisturbingStartH = -1
+            option.noDisturbingEndH = -1
+            self.loadUserInfo()
+            
+            dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), {
+                EMClient.sharedClient().updatePushOptionsToServer()
+            })
+        })
+        
+        let cancelAction = UIAlertAction(title: "取消", style: UIAlertActionStyle.Cancel, handler: { (action) in
+            
+        })
+        
+        alert.addAction(onAction)
+        alert.addAction(customAction)
+        alert.addAction(offAction)
+        alert.addAction(cancelAction)
+        
+        self.presentViewController(alert, animated: true, completion: nil)
+    }
+    
+    func clickBlackList() {
+        let blackListViewController = BlackListViewController(nibName: nil, bundle: nil)
+        self.navigationController?.pushViewController(blackListViewController, animated: true)
+    }
+    
+    func clickChangePassword() {
+        self.performSegueWithIdentifier("ChangePwdSegue", sender: self)
+    }
+    
+    func clickChangeGesture() {
+        self.performSegueWithIdentifier("ChangeGestureSegue", sender: self)
+    }
+    
+    func clickHelp() {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let vc = storyboard.instantiateViewControllerWithIdentifier("CommonHTMLViewController") as! CommonHTMLViewController
+        vc.URL = PCSDataManager.defaultManager().htmlURL(PCSDataManager.defaultManager().content.helpURL)
+        vc.naviTitle = "在线帮助"
+        self.navigationController?.pushViewController(vc, animated: true)
+    }
+    
+    func clickFeedback() {
+        self.performSegueWithIdentifier("FeedbackSegue", sender: self)
+    }
+    
+    func clickAbout() {
+        self.performSegueWithIdentifier("AboutSegue", sender: self)
+    }
+    
+    func clickCA() {
+        self.performSegueWithIdentifier("CASegue", sender: self)
+    }
+    
+    func clickBusinessCard() {
+        self.performSegueWithIdentifier("BusinessCardSegue", sender: self)
+    }
+    
     // MARK: - Table view data source
 
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
@@ -183,7 +279,7 @@ class MeViewController: UITableViewController {
     }
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return Rows.Max.rawValue
+        return listItems.count
     }
     
     override func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
@@ -205,16 +301,18 @@ class MeViewController: UITableViewController {
         cell.accessoryType = UITableViewCellAccessoryType.DisclosureIndicator
         cell.separatorInset = UIEdgeInsetsMake(0, 0, 0, 0)
         
-        let row = Rows(rawValue: indexPath.row)!
-        cell.textLabel?.text = row.title()
+        let dict = listItems[indexPath.row]
+        let title = dict["title"]!
+        
+        cell.textLabel?.text = title
         cell.textLabel?.textColor = GlobalUtil.colorRGBA(59, g: 59, b: 59, a: 1)
         cell.textLabel?.font = UIFont.systemFontOfSize(15)
         
         cell.detailTextLabel?.textColor = cell.textLabel?.textColor
         cell.detailTextLabel?.font = cell.textLabel?.font
         
-        switch row {
-        case .Push:
+        switch title {
+        case "消息推送免打扰":
             let option = EMClient.sharedClient().pushOptions
             var detail = option.noDisturbStatus == EMPushNoDisturbStatusDay ? "开启" : "关闭"
             if option.noDisturbStatus == EMPushNoDisturbStatusCustom {
@@ -232,91 +330,8 @@ class MeViewController: UITableViewController {
     }
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        let row = Rows(rawValue: indexPath.row)!
-        switch row {
-        case .QRCodeDownload:
-            self.performSegueWithIdentifier("QRDownloadSegue", sender: nil)
-            break
-        case .ChangePassword:
-            self.performSegueWithIdentifier("ChangePwdSegue", sender: self)
-            break
-        case .ChangeGesture:
-            self.performSegueWithIdentifier("ChangeGestureSegue", sender: self)
-            break
-        case .Feedback:
-            self.performSegueWithIdentifier("FeedbackSegue", sender: self)
-            break
-        case .About:
-            self.performSegueWithIdentifier("AboutSegue", sender: self)
-            break
-        case .Help:
-            let storyboard = UIStoryboard(name: "Main", bundle: nil)
-            let vc = storyboard.instantiateViewControllerWithIdentifier("CommonHTMLViewController") as! CommonHTMLViewController
-            vc.URL = PCSDataManager.defaultManager().htmlURL(PCSDataManager.defaultManager().content.helpURL)
-            vc.naviTitle = row.title()
-            self.navigationController?.pushViewController(vc, animated: true)
-            break
-        case .CA:
-            self.performSegueWithIdentifier("CASegue", sender: self)
-            break
-        case .Push:
-            let alert = UIAlertController(title: nil, message: nil, preferredStyle: UIAlertControllerStyle.ActionSheet)
-            
-            let onAction = UIAlertAction(title: "开启", style: UIAlertActionStyle.Default, handler: { (action) in
-                let option = EMClient.sharedClient().pushOptions
-                option.noDisturbStatus = EMPushNoDisturbStatusDay
-                option.noDisturbingStartH = 0
-                option.noDisturbingEndH = 24
-                self.loadUserInfo()
-                
-                dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), { 
-                    EMClient.sharedClient().updatePushOptionsToServer()
-                })
-            })
-            
-            let customAction = UIAlertAction(title: "只在夜间开启（22:00 － 7:00）", style: UIAlertActionStyle.Default, handler: { (action) in
-                let option = EMClient.sharedClient().pushOptions
-                option.noDisturbStatus = EMPushNoDisturbStatusCustom
-                option.noDisturbingStartH = 22
-                option.noDisturbingEndH = 7
-                self.loadUserInfo()
-                
-                dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), {
-                    EMClient.sharedClient().updatePushOptionsToServer()
-                })
-            })
-            
-            let offAction = UIAlertAction(title: "关闭", style: UIAlertActionStyle.Default, handler: { (action) in
-                let option = EMClient.sharedClient().pushOptions
-                option.noDisturbStatus = EMPushNoDisturbStatusClose
-                option.noDisturbingStartH = -1
-                option.noDisturbingEndH = -1
-                self.loadUserInfo()
-                
-                dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), {
-                    EMClient.sharedClient().updatePushOptionsToServer()
-                })
-            })
-            
-            let cancelAction = UIAlertAction(title: "取消", style: UIAlertActionStyle.Cancel, handler: { (action) in
-                
-            })
-            
-            alert.addAction(onAction)
-            alert.addAction(customAction)
-            alert.addAction(offAction)
-            alert.addAction(cancelAction)
-            
-            self.presentViewController(alert, animated: true, completion: nil)
-            
-            break
-        case .BlackList:
-            let blackListViewController = BlackListViewController(nibName: nil, bundle: nil)
-            self.navigationController?.pushViewController(blackListViewController, animated: true)
-            break
-        default:
-            break
-        }
+        let dict = listItems[indexPath.row]
+        self.performSelector(Selector(dict["method"]!), withObject: nil)
     }
 
     /*

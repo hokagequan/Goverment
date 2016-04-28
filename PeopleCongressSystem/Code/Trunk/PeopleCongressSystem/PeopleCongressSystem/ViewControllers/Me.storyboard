@@ -45,6 +45,7 @@
                         <segue destination="wyi-b5-NcW" kind="show" identifier="FeedbackSegue" id="GEB-N4-IvT"/>
                         <segue destination="U9y-jI-Zhs" kind="show" identifier="AboutSegue" id="CpW-KW-I3J"/>
                         <segue destination="zUe-ii-SNu" kind="show" identifier="CASegue" id="mNU-SZ-9B2"/>
+                        <segue destination="1c5-k4-4BS" kind="show" identifier="BusinessCardSegue" id="yj4-W0-80X"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bAU-Vd-wTp" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -140,6 +141,14 @@
                 <exit id="cCe-Bq-3Ph" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="794" y="404"/>
+        </scene>
+        <!--BusinessCardNavi-->
+        <scene sceneID="JLU-jI-rEp">
+            <objects>
+                <viewControllerPlaceholder storyboardName="BusinessCard" referencedIdentifier="BusinessCardNavi" id="1c5-k4-4BS" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ATH-5q-JJo" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1503.5" y="-48"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="9M1-Ql-UJM">
@@ -816,7 +825,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="edit" width="16" height="16"/>
+        <image name="edit" width="399" height="107"/>
         <image name="gesture_dot_nor" width="64" height="64"/>
         <image name="gesture_dot_sel" width="64" height="64"/>
         <image name="guo_hui_small" width="54" height="56"/>
