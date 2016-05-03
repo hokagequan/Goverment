@@ -540,8 +540,6 @@ class PCSDataManager: NSObject {
                     variable.token = dict["lvzhi_guid"] as? String
                     variable.submitted = dict["lvzhi_IsPost"] as! Bool
                     
-                    // TODO: 参与人未处理
-//                    let persons = dict["lvzhi_cyr"] as? String
                     relArray?.append(variable)
                 }
             }

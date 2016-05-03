@@ -16,16 +16,17 @@ enum HomeElementContentCongress: Int {
     case CongressInfo
     case Notify
     case Situation
+    case Review
     case Max
     
     func title() -> String {
-        let titles = ["活动提醒", "履职记录", "履职统计", "共享空间", "代表风采", "通知通报", "知情知政", ""]
+        let titles = ["活动提醒", "履职记录", "履职统计", "共享空间", "代表风采", "通知通报", "知情知政", "调查问卷", ""]
         
         return titles[self.rawValue]
     }
     
     func icon() -> String {
-        let icons = ["huo_dong_ti_xing", "lv_zhi_ji_lu", "lv_zhi_tong_ji", "gong_xiang_kong_jian", "dai_biao_xin_xi", "tong_zhi_tong_bao", "zhi_qing_zhi_zheng", ""]
+        let icons = ["huo_dong_ti_xing", "lv_zhi_ji_lu", "lv_zhi_tong_ji", "gong_xiang_kong_jian", "dai_biao_xin_xi", "tong_zhi_tong_bao", "zhi_qing_zhi_zheng", "diao_cha_wen_juan", ""]
         
         return icons[self.rawValue]
     }
