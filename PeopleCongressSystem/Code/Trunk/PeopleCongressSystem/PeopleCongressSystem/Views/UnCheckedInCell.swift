@@ -16,6 +16,8 @@ class UnCheckedInCell: UITableViewCell {
     @IBOutlet weak var phoneLabel: UILabel!
     @IBOutlet weak var notifyButton: UIButton!
     
+    var clickNotifyBlock: ((UITableViewCell) -> Void)? = nil
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -32,7 +34,7 @@ class UnCheckedInCell: UITableViewCell {
     // MARK: - Actions
 
     @IBAction func clickNotify(sender: AnyObject) {
-        // TODO: 提醒
+        clickNotifyBlock?(self)
     }
     
 }

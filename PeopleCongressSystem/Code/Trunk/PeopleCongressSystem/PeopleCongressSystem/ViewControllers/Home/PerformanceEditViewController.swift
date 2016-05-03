@@ -141,6 +141,12 @@ class PerformanceEditViewController: UIViewController {
             let vc = segue.destinationViewController as! GroupViewController
             vc.activity = myUIDelegate?.editObject as? Activity
         }
+        else if segue.identifier == "UnCheckedInListSegue" {
+            let vc = segue.destinationViewController as! UnCheckedInListViewController
+            if self.editObject != nil && self.editObject is Activity {
+                vc.activityID = (self.editObject as! Activity).identifier
+            }
+        }
     }
 
 }

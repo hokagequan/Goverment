@@ -218,6 +218,7 @@
 		10DBF21A1C8C0CF7007620BA /* NormalInfoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 10DBF2181C8C0CF7007620BA /* NormalInfoCell.xib */; };
 		10DBF21C1C8D3927007620BA /* ManageEditUICheckInDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10DBF21B1C8D3927007620BA /* ManageEditUICheckInDelegate.swift */; };
 		10DBF21E1C8D510E007620BA /* QRCodeScanViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10DBF21D1C8D510E007620BA /* QRCodeScanViewController.swift */; };
+		10DD80181CD892340001E1E8 /* GetUnCheckInListReq.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10DD80171CD892340001E1E8 /* GetUnCheckInListReq.swift */; };
 		10F1097F1C88156F0083D89D /* Activity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10F1097E1C88156F0083D89D /* Activity.swift */; };
 		10F109811C8816D10083D89D /* GetActivitiesReq.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10F109801C8816D10083D89D /* GetActivitiesReq.swift */; };
 		10F109831C881C960083D89D /* AddActivityReq.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10F109821C881C960083D89D /* AddActivityReq.swift */; };
@@ -778,6 +779,7 @@
 		10DBF2181C8C0CF7007620BA /* NormalInfoCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NormalInfoCell.xib; sourceTree = "<group>"; };
 		10DBF21B1C8D3927007620BA /* ManageEditUICheckInDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ManageEditUICheckInDelegate.swift; sourceTree = "<group>"; };
 		10DBF21D1C8D510E007620BA /* QRCodeScanViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QRCodeScanViewController.swift; sourceTree = "<group>"; };
+		10DD80171CD892340001E1E8 /* GetUnCheckInListReq.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetUnCheckInListReq.swift; sourceTree = "<group>"; };
 		10F1097E1C88156F0083D89D /* Activity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Activity.swift; sourceTree = "<group>"; };
 		10F109801C8816D10083D89D /* GetActivitiesReq.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetActivitiesReq.swift; sourceTree = "<group>"; };
 		10F109821C881C960083D89D /* AddActivityReq.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddActivityReq.swift; sourceTree = "<group>"; };
@@ -1910,6 +1912,7 @@
 				10F197511CC48A0D007C28DC /* VerifySMSReq.swift */,
 				10F197571CC4E2A3007C28DC /* GetCARandReq.swift */,
 				10376F351CC5C4B300ECEBEA /* SignCAReq.swift */,
+				10DD80171CD892340001E1E8 /* GetUnCheckInListReq.swift */,
 			);
 			path = HttpRequests;
 			sourceTree = "<group>";
@@ -2211,6 +2214,7 @@
 				10D0D5951C4CD9810093F687 /* MainViewController.swift in Sources */,
 				10D0D5C11C4E7B160093F687 /* PCSDataManager.swift in Sources */,
 				100AA87A1CCF48A100EC40DC /* UnCheckedInListViewController.swift in Sources */,
+				10DD80181CD892340001E1E8 /* GetUnCheckInListReq.swift in Sources */,
 				1091C2031CB36475005140D5 /* PhotoBrowserView.swift in Sources */,
 				1037713E1CC773F700ECEBEA /* AddFriendViewController.m in Sources */,
 				100B20301C887C1000435EF0 /* TypeSelectView.swift in Sources */,
