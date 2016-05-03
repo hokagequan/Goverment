@@ -22,10 +22,10 @@
             </objects>
             <point key="canvasLocation" x="-265" y="382"/>
         </scene>
-        <!--View Controller-->
+        <!--二维码签到-->
         <scene sceneID="Qr3-QO-l4Z">
             <objects>
-                <viewController storyboardIdentifier="QRCodeScanViewController" hidesBottomBarWhenPushed="YES" useStoryboardIdentifierAsRestorationIdentifier="YES" id="bHo-X1-jgW" customClass="QRCodeScanViewController" customModule="PeopleCongressSystem" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="QRCodeScanViewController" hidesBottomBarWhenPushed="YES" useStoryboardIdentifierAsRestorationIdentifier="YES" id="bHo-X1-jgW" userLabel="二维码签到" customClass="QRCodeScanViewController" customModule="PeopleCongressSystem" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="mQY-CD-tS5"/>
                         <viewControllerLayoutGuide type="bottom" id="5dR-Xd-Y8d"/>
@@ -90,10 +90,10 @@
             </objects>
             <point key="canvasLocation" x="1309" y="382"/>
         </scene>
-        <!--View Controller-->
+        <!--活动列表-->
         <scene sceneID="YCq-X1-XBi">
             <objects>
-                <viewController storyboardIdentifier="CheckInViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="8bq-KX-F3S" customClass="CheckInViewController" customModule="PeopleCongressSystem" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="CheckInViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="8bq-KX-F3S" userLabel="活动列表" customClass="CheckInViewController" customModule="PeopleCongressSystem" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Vv1-MH-vRx"/>
                         <viewControllerLayoutGuide type="bottom" id="iJ0-o0-DFz"/>

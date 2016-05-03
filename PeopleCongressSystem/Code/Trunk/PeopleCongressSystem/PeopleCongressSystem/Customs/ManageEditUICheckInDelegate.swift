@@ -15,8 +15,13 @@ class ManageEditUICheckInDelegate: ManageEditActivityEditDelegate {
     var qrImage: UIImage? = nil
     
     override func prepare() {
-        // TODO: 二维码信息
-        qrImage = QRCode.generateImage("", avatarImage: nil)
+        var codeString = "Non"
+        
+        let activity = (self.masterViewController as! PerformanceEditViewController).editObject as? Activity
+        if activity != nil {
+            codeString = "\(activity!.identifier):\(QRCodeType.ActivityID.rawValue)"
+        }
+        qrImage = QRCode.generateImage(codeString, avatarImage: nil)
     }
     
     override func save() {

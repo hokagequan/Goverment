@@ -69,6 +69,9 @@
                                                 <exclude reference="3wd-Ij-eWc"/>
                                             </mask>
                                         </variation>
+                                        <connections>
+                                            <segue destination="nRd-2D-fVh" kind="show" id="Bp9-KH-sP5"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -197,6 +200,14 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GYK-qb-l3g" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="761" y="1134"/>
+        </scene>
+        <!--QRCodeScanViewController-->
+        <scene sceneID="dhc-DT-5tN">
+            <objects>
+                <viewControllerPlaceholder storyboardName="CheckIn" referencedIdentifier="QRCodeScanViewController" id="nRd-2D-fVh" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="deC-rY-b13" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1264.5" y="983"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="huC-Gc-ar7">

@@ -8,8 +8,64 @@
 
 import Foundation
 import UIKit
+import EZLoadingActivity
 
 class WorkerHomeActionDelegate: ActionProtocol {
+    
+    func checkIn(code: String, identifier: String, completion: (Bool) -> Void) {
+        let range = code.rangeOfString(":")!
+        let personID = code.substringToIndex(range.startIndex)
+        let req = CheckInReq()
+        req.activityID = identifier
+        req.qrCodes = [personID]
+        EZLoadingActivity.show("", disableUI: true)
+        EZLoadingActivity.Settings.SuccessText = "签到成功"
+        EZLoadingActivity.Settings.FailText = "签到失败"
+        req.requestCompletion { (response) -> Void in
+            let result = response?.result
+            var success: Bool = false
+            var errorCode: String? = nil
+            
+            defer {
+                if success == true {
+                    EZLoadingActivity.hide(success: true, animated: false)
+                }
+                else {
+                    if errorCode != "-1" {
+                        EZLoadingActivity.hide(success: false, animated: false)
+                    }
+                    else {
+                        ResponseErrorManger.defaultManager().handleError(errorCode, message: nil)
+                    }
+                }
+                
+                completion(success)
+            }
+            
+            if result?.isSuccess == true {
+                guard let value = result?.value else {
+                    success = false
+                    
+                    return
+                }
+                
+                guard let responseString = HttpBaseReq.parseResponse(value) as? String else {
+                    return
+                }
+                
+                if ((responseString as NSString).intValue >= 1) {
+                    success = true
+                }
+                else {
+                    errorCode = responseString
+                    success = false
+                }
+            }
+            else {
+                success = false
+            }
+        }
+    }
     
     func didClickSpecial(viewController: UIViewController) {
         viewController.performSegueWithIdentifier("CheckInSegue", sender: self)

@@ -8,8 +8,23 @@
 
 import Foundation
 import UIKit
+import EZLoadingActivity
 
 class CongressHomeActionDelegate: ActionProtocol {
+    
+    func checkIn(code: String, identifier: String, completion: (Bool) -> Void) {
+        let manager = QRCodeManager()
+        EZLoadingActivity.show("", disableUI: true)
+        EZLoadingActivity.Settings.SuccessText = "签到成功"
+        EZLoadingActivity.Settings.FailText = "签到失败"
+        manager.handleCode(code, personID: PCSDataManager.defaultManager().accountManager.user!.identifier!) { (success, error) in
+            if error == nil {
+                EZLoadingActivity.hide(success: success, animated: false)
+            }
+            
+            completion(success)
+        }
+    }
     
     func didClickSpecial(viewController: UIViewController) {
 //        viewController.performSegueWithIdentifier("", sender: self)

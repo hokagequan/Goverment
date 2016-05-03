@@ -58,58 +58,9 @@ class QRCodeScanViewController: UIViewController, AVCaptureMetadataOutputObjects
     }
     
     func handleCode(code: String) {
-        let range = code.rangeOfString(":")!
-        let personID = code.substringToIndex(range.startIndex)
-        let req = CheckInReq()
-        req.activityID = "\(activity!.identifier)"
-        req.qrCodes = [personID]
-        EZLoadingActivity.show("", disableUI: true)
-        EZLoadingActivity.Settings.SuccessText = "签到成功"
-        EZLoadingActivity.Settings.FailText = "签到失败"
-        req.requestCompletion { (response) -> Void in
-            let result = response?.result
-            var success: Bool = false
-            var errorCode: String? = nil
-            
-            defer {
-                if success == true {
-                    EZLoadingActivity.hide(success: true, animated: false)
-                }
-                else {
-                    if errorCode != "-1" {
-                        EZLoadingActivity.hide(success: false, animated: false)
-                    }
-                    else {
-                        ResponseErrorManger.defaultManager().handleError(errorCode, message: nil)
-                    }
-                }
-                
-                self.performSelector(#selector(QRCodeScanViewController.startScan), withObject: nil, afterDelay: 1.0)
-            }
-            
-            if result?.isSuccess == true {
-                guard let value = result?.value else {
-                    success = false
-                    
-                    return
-                }
-                
-                guard let responseString = HttpBaseReq.parseResponse(value) as? String else {
-                    return
-                }
-                
-                if ((responseString as NSString).intValue >= 1) {
-                    success = true
-                }
-                else {
-                    errorCode = responseString
-                    success = false
-                }
-            }
-            else {
-                success = false
-            }
-        }
+        PCSDataManager.defaultManager().content.actionDelegate?.checkIn(code, identifier: "\(activity!.identifier)", completion: { (success) in
+            self.performSelector(#selector(QRCodeScanViewController.startScan), withObject: nil, afterDelay: 1.0)
+        })
     }
     
     func initializeScan() {

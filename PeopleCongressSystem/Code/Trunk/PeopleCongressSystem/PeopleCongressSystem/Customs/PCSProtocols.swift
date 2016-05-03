@@ -13,5 +13,6 @@ protocol ActionProtocol {
     
     func didClickIndexPath(viewController: UIViewController, indexPath: NSIndexPath)
     func didClickSpecial(viewController: UIViewController)
+    func checkIn(code: String, identifier: String, completion: (Bool) -> Void)
     
 }

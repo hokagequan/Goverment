@@ -176,6 +176,8 @@
 		10BD4DE61C9A4A14006179AB /* DeleteVariableReq.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10BD4DE51C9A4A14006179AB /* DeleteVariableReq.swift */; };
 		10BD4DE81C9A50A2006179AB /* DeletePhotoReq.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10BD4DE71C9A50A2006179AB /* DeletePhotoReq.swift */; };
 		10C0F1301CA93D9C000BA06E /* jpush-ios-2.1.0.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 10C0F12E1CA93D9C000BA06E /* jpush-ios-2.1.0.a */; };
+		10CFFCDB1CD83B2C00866C33 /* QRCodeManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10CFFCDA1CD83B2C00866C33 /* QRCodeManager.swift */; };
+		10CFFCDD1CD83EA200866C33 /* PCSError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10CFFCDC1CD83EA200866C33 /* PCSError.swift */; };
 		10D0D5701C4CD1D00093F687 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10D0D56F1C4CD1D00093F687 /* AppDelegate.swift */; };
 		10D0D5751C4CD1D00093F687 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 10D0D5731C4CD1D00093F687 /* Main.storyboard */; };
 		10D0D5781C4CD1D00093F687 /* PeopleCongressSystem.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 10D0D5761C4CD1D00093F687 /* PeopleCongressSystem.xcdatamodeld */; };
@@ -730,6 +732,8 @@
 		10BD4DE71C9A50A2006179AB /* DeletePhotoReq.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeletePhotoReq.swift; sourceTree = "<group>"; };
 		10C0F12E1CA93D9C000BA06E /* jpush-ios-2.1.0.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = "jpush-ios-2.1.0.a"; sourceTree = "<group>"; };
 		10C0F12F1CA93D9C000BA06E /* JPUSHService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JPUSHService.h; sourceTree = "<group>"; };
+		10CFFCDA1CD83B2C00866C33 /* QRCodeManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QRCodeManager.swift; sourceTree = "<group>"; };
+		10CFFCDC1CD83EA200866C33 /* PCSError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PCSError.swift; sourceTree = "<group>"; };
 		10D0D56C1C4CD1D00093F687 /* PeopleCongressSystem.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PeopleCongressSystem.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		10D0D56F1C4CD1D00093F687 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		10D0D5741C4CD1D00093F687 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -1633,6 +1637,7 @@
 				100B20351C8883A700435EF0 /* PCSTypeInfo.swift */,
 				100B20391C8894CA00435EF0 /* Group.swift */,
 				107505741C915C9E00C9589E /* Variable.swift */,
+				10CFFCDC1CD83EA200866C33 /* PCSError.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -1845,6 +1850,7 @@
 				10D0D5B81C4E37360093F687 /* AccountManager.swift */,
 				10D0D5C01C4E7B160093F687 /* PCSDataManager.swift */,
 				103022FF1CB7B8A900832DE1 /* ResponseErrorManger.swift */,
+				10CFFCDA1CD83B2C00866C33 /* QRCodeManager.swift */,
 			);
 			path = Managers;
 			sourceTree = "<group>";
@@ -2188,6 +2194,7 @@
 				1037712D1CC773F700ECEBEA /* ChatViewController.m in Sources */,
 				107505611C905FB700C9589E /* CommonHTMLViewController.swift in Sources */,
 				107505581C9021A300C9589E /* ResetPasswordReq.swift in Sources */,
+				10CFFCDB1CD83B2C00866C33 /* QRCodeManager.swift in Sources */,
 				10DBF21C1C8D3927007620BA /* ManageEditUICheckInDelegate.swift in Sources */,
 				10F197521CC48A0D007C28DC /* VerifySMSReq.swift in Sources */,
 				100AA87E1CCF60A400EC40DC /* QRCodeCell.swift in Sources */,
@@ -2219,6 +2226,7 @@
 				103770CA1CC773A500ECEBEA /* BaseTableViewCell.m in Sources */,
 				10D0D5AA1C4DEBFD0093F687 /* SettingsManager.swift in Sources */,
 				1072E08C1C8F1BF1004DBA4D /* ChangeGestureViewController.swift in Sources */,
+				10CFFCDD1CD83EA200866C33 /* PCSError.swift in Sources */,
 				100691B31C930308000AEFEA /* VariableDetailViewController.swift in Sources */,
 				103770D11CC773A500ECEBEA /* EMSearchDisplayController.m in Sources */,
 				10496F371C76012F0074CFC1 /* SignInReq.swift in Sources */,
