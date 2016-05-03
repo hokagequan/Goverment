@@ -934,6 +934,7 @@
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="iconImageView" destination="NNE-Pg-RlF" id="qP4-5f-KnU"/>
+                                            <outlet property="indicatorImageView" destination="9yx-Hg-PgF" id="0XX-3B-u2F"/>
                                             <outlet property="tagList" destination="T6C-uh-BuQ" id="kGA-HH-Cwj"/>
                                             <outlet property="titleLabel" destination="Lgw-jT-78m" id="f5m-jJ-0bs"/>
                                         </connections>

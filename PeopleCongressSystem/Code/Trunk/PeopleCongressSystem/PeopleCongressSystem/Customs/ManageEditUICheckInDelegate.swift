@@ -80,8 +80,11 @@ class ManageEditUICheckInDelegate: ManageEditActivityEditDelegate {
                 array.append("未到:\(activity!.totalPersonCount - activity!.checkedInPersonCount)")
                 (cell as! TagListCell).customTagSize(CGSizeMake(60, 40))
                 (cell as! TagListCell).loadInfo(array)
+                (cell as! TagListCell).indicatorImageView.hidden = true
             }
         }
+        
+        cell.accessoryType = UITableViewCellAccessoryType.None
         
         return cell
     }
