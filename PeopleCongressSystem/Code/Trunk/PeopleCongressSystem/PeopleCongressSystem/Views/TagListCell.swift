@@ -15,6 +15,8 @@ class TagListCell: UITableViewCell {
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var tagList: TagListView!
     
+    var tagSize: CGSize = CGSizeZero
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -24,6 +26,16 @@ class TagListCell: UITableViewCell {
         super.setSelected(selected, animated: animated)
 
         // Configure the view for the selected state
+    }
+    
+    func clean() {
+        tagList.removeAllTags()
+    }
+    
+    func customTagSize(size: CGSize) {
+        let textH = tagList.textFont.lineHeight
+        tagList.paddingY = (size.height - textH) / 2
+        tagList.paddingX = size.width / 2
     }
     
     func loadPersons(persons: Array<Person>?) {
@@ -42,6 +54,19 @@ class TagListCell: UITableViewCell {
             }
             
             self.tagList.addTag("\(person.organization!):\n\(person.name!)")
+        }
+    }
+    
+    func loadInfo(info: Array<String>?) {
+        tagList.removeAllTags()
+        
+        if info == nil {
+            return
+        }
+
+        for i in 0..<info!.count {
+            let string = info![i]
+            self.tagList.addTag(string)
         }
     }
     

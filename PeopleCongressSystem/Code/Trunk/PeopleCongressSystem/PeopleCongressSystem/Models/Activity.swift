@@ -24,6 +24,8 @@ class Activity: NSObject, NSCopying {
     var available: Bool = false
     var finished: Bool = false
     var persons: Array<Person>? = nil
+    var totalPersonCount: Int = 0
+    var checkedInPersonCount: Int = 0
     
     func serilizePersons() -> String? {
         if persons == nil {

@@ -46,6 +46,8 @@ class GetActivityDetaildReq: HttpBaseReq {
                 let activityInfo = (info as! Array<Dictionary<String, AnyObject>>).first
                 self.activity?.endTime = activityInfo?["huodong_shijian_js"] as? String
                 self.activity?.content = activityInfo?["huodong_shuoming"] as? String
+                self.activity?.totalPersonCount = activityInfo?["yingdao"] as! Int
+                self.activity?.checkedInPersonCount = activityInfo?["shidao"] as! Int
             }
         }
     }

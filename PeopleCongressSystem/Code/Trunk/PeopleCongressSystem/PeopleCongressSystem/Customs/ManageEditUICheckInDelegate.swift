@@ -15,6 +15,8 @@ class ManageEditUICheckInDelegate: ManageEditActivityEditDelegate {
     var qrImage: UIImage? = nil
     
     override func prepare() {
+        super.prepare()
+        // 生成二维码
         var codeString = "Non"
         
         let activity = (self.masterViewController as! PerformanceEditViewController).editObject as? Activity
@@ -50,6 +52,10 @@ class ManageEditUICheckInDelegate: ManageEditActivityEditDelegate {
             return 180
         }
         
+        if indexPath.section == EditSections.Persons.rawValue {
+            return 44 + 5 + 44
+        }
+        
         return super.tableView(tableView, heightForRowAtIndexPath: indexPath)
     }
     
@@ -64,6 +70,18 @@ class ManageEditUICheckInDelegate: ManageEditActivityEditDelegate {
         
         let cell = super.tableView(tableView, cellForRowAtIndexPath: indexPath)
         cell.userInteractionEnabled = false
+        
+        if cell is TagListCell {
+            var array = [String]()
+            let activity = (self.masterViewController as! PerformanceEditViewController).editObject as? Activity
+            if activity != nil {
+                array.append("应到:\(activity!.totalPersonCount)")
+                array.append("实到:\(activity!.checkedInPersonCount)")
+                array.append("未到:\(activity!.totalPersonCount - activity!.checkedInPersonCount)")
+                (cell as! TagListCell).customTagSize(CGSizeMake(60, 40))
+                (cell as! TagListCell).loadInfo(array)
+            }
+        }
         
         return cell
     }
