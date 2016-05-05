@@ -29,6 +29,12 @@
     return self;
 }
 
+- (void)setActive:(BOOL)visible animated:(BOOL)animated {
+    [super setActive:NO animated:NO];
+    
+    [self.searchContentsController.navigationController setNavigationBarHidden:NO animated:NO];
+}
+
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
