@@ -61,7 +61,6 @@
 		10376FCD1CC737E800ECEBEA /* libstdc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 10376FCC1CC737E800ECEBEA /* libstdc++.tbd */; };
 		10376FCF1CC737F600ECEBEA /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 10376FCE1CC737F600ECEBEA /* libsqlite3.tbd */; };
 		10376FD21CC73E0F00ECEBEA /* libEaseUI.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 10376FD11CC73E0F00ECEBEA /* libEaseUI.a */; };
-		10376FD51CC7699300ECEBEA /* AppDelegate+EaseMob.m in Sources */ = {isa = PBXBuildFile; fileRef = 10376FD41CC7699300ECEBEA /* AppDelegate+EaseMob.m */; };
 		103770001CC76C4600ECEBEA /* libHyphenateFullSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 10376FFE1CC76C4600ECEBEA /* libHyphenateFullSDK.a */; };
 		1037709A1CC76DE300ECEBEA /* MJRefresh.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 1037701D1CC76DE300ECEBEA /* MJRefresh.bundle */; };
 		1037709B1CC76DE300ECEBEA /* MWPhotoBrowser.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 103770411CC76DE300ECEBEA /* MWPhotoBrowser.bundle */; };
@@ -173,6 +172,7 @@
 		10A686711C7DF7A200D050F0 /* ContentInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10A686701C7DF7A200D050F0 /* ContentInfo.swift */; };
 		10A686731C7DF8D000D050F0 /* WorkerContentInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10A686721C7DF8D000D050F0 /* WorkerContentInfo.swift */; };
 		10A914CA1CCDE62D002CC064 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 10A914CC1CCDE62D002CC064 /* Localizable.strings */; };
+		10AC2E281CD9C4E900D58AAC /* AppDelegateEaseMob.m in Sources */ = {isa = PBXBuildFile; fileRef = 10AC2E271CD9C4E900D58AAC /* AppDelegateEaseMob.m */; };
 		10BD4DE61C9A4A14006179AB /* DeleteVariableReq.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10BD4DE51C9A4A14006179AB /* DeleteVariableReq.swift */; };
 		10BD4DE81C9A50A2006179AB /* DeletePhotoReq.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10BD4DE71C9A50A2006179AB /* DeletePhotoReq.swift */; };
 		10C0F1301CA93D9C000BA06E /* jpush-ios-2.1.0.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 10C0F12E1CA93D9C000BA06E /* jpush-ios-2.1.0.a */; };
@@ -219,6 +219,7 @@
 		10DBF21C1C8D3927007620BA /* ManageEditUICheckInDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10DBF21B1C8D3927007620BA /* ManageEditUICheckInDelegate.swift */; };
 		10DBF21E1C8D510E007620BA /* QRCodeScanViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10DBF21D1C8D510E007620BA /* QRCodeScanViewController.swift */; };
 		10DD80181CD892340001E1E8 /* GetUnCheckInListReq.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10DD80171CD892340001E1E8 /* GetUnCheckInListReq.swift */; };
+		10DD801A1CD8A7FE0001E1E8 /* SendAPNSReq.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10DD80191CD8A7FE0001E1E8 /* SendAPNSReq.swift */; };
 		10F1097F1C88156F0083D89D /* Activity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10F1097E1C88156F0083D89D /* Activity.swift */; };
 		10F109811C8816D10083D89D /* GetActivitiesReq.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10F109801C8816D10083D89D /* GetActivitiesReq.swift */; };
 		10F109831C881C960083D89D /* AddActivityReq.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10F109821C881C960083D89D /* AddActivityReq.swift */; };
@@ -384,8 +385,6 @@
 		10376FCC1CC737E800ECEBEA /* libstdc++.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libstdc++.tbd"; path = "usr/lib/libstdc++.tbd"; sourceTree = SDKROOT; };
 		10376FCE1CC737F600ECEBEA /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
 		10376FD11CC73E0F00ECEBEA /* libEaseUI.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libEaseUI.a; path = "../EaseUI/build/Debug-iphoneos/libEaseUI.a"; sourceTree = "<group>"; };
-		10376FD31CC7699300ECEBEA /* AppDelegate+EaseMob.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "AppDelegate+EaseMob.h"; sourceTree = "<group>"; };
-		10376FD41CC7699300ECEBEA /* AppDelegate+EaseMob.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "AppDelegate+EaseMob.m"; sourceTree = "<group>"; };
 		10376FD81CC76C4600ECEBEA /* EMCallLocalView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EMCallLocalView.h; sourceTree = "<group>"; };
 		10376FD91CC76C4600ECEBEA /* EMCallManagerDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EMCallManagerDelegate.h; sourceTree = "<group>"; };
 		10376FDA1CC76C4600ECEBEA /* EMCallRemoteView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EMCallRemoteView.h; sourceTree = "<group>"; };
@@ -729,6 +728,8 @@
 		10A914CB1CCDE62D002CC064 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Localizable.strings; sourceTree = "<group>"; };
 		10A914CD1CCDE631002CC064 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		10A914CE1CCDE635002CC064 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Localizable.strings"; sourceTree = "<group>"; };
+		10AC2E261CD9C4E900D58AAC /* AppDelegateEaseMob.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegateEaseMob.h; sourceTree = "<group>"; };
+		10AC2E271CD9C4E900D58AAC /* AppDelegateEaseMob.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegateEaseMob.m; sourceTree = "<group>"; };
 		10BD4DE51C9A4A14006179AB /* DeleteVariableReq.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeleteVariableReq.swift; sourceTree = "<group>"; };
 		10BD4DE71C9A50A2006179AB /* DeletePhotoReq.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeletePhotoReq.swift; sourceTree = "<group>"; };
 		10C0F12E1CA93D9C000BA06E /* jpush-ios-2.1.0.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = "jpush-ios-2.1.0.a"; sourceTree = "<group>"; };
@@ -780,6 +781,7 @@
 		10DBF21B1C8D3927007620BA /* ManageEditUICheckInDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ManageEditUICheckInDelegate.swift; sourceTree = "<group>"; };
 		10DBF21D1C8D510E007620BA /* QRCodeScanViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QRCodeScanViewController.swift; sourceTree = "<group>"; };
 		10DD80171CD892340001E1E8 /* GetUnCheckInListReq.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetUnCheckInListReq.swift; sourceTree = "<group>"; };
+		10DD80191CD8A7FE0001E1E8 /* SendAPNSReq.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SendAPNSReq.swift; sourceTree = "<group>"; };
 		10F1097E1C88156F0083D89D /* Activity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Activity.swift; sourceTree = "<group>"; };
 		10F109801C8816D10083D89D /* GetActivitiesReq.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetActivitiesReq.swift; sourceTree = "<group>"; };
 		10F109821C881C960083D89D /* AddActivityReq.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddActivityReq.swift; sourceTree = "<group>"; };
@@ -1703,8 +1705,8 @@
 				10D0D5921C4CD8F80093F687 /* ViewControllers */,
 				10D0D5931C4CD8F80093F687 /* Views */,
 				10D0D56F1C4CD1D00093F687 /* AppDelegate.swift */,
-				10376FD31CC7699300ECEBEA /* AppDelegate+EaseMob.h */,
-				10376FD41CC7699300ECEBEA /* AppDelegate+EaseMob.m */,
+				10AC2E261CD9C4E900D58AAC /* AppDelegateEaseMob.h */,
+				10AC2E271CD9C4E900D58AAC /* AppDelegateEaseMob.m */,
 				10D0D5791C4CD1D00093F687 /* Assets.xcassets */,
 				10D0D57B1C4CD1D00093F687 /* LaunchScreen.storyboard */,
 				10D0D57E1C4CD1D00093F687 /* Info.plist */,
@@ -1913,6 +1915,7 @@
 				10F197571CC4E2A3007C28DC /* GetCARandReq.swift */,
 				10376F351CC5C4B300ECEBEA /* SignCAReq.swift */,
 				10DD80171CD892340001E1E8 /* GetUnCheckInListReq.swift */,
+				10DD80191CD8A7FE0001E1E8 /* SendAPNSReq.swift */,
 			);
 			path = HttpRequests;
 			sourceTree = "<group>";
@@ -2191,9 +2194,9 @@
 				103771641CC7780B00ECEBEA /* UIImageView+HeadImage.m in Sources */,
 				103023001CB7B8A900832DE1 /* ResponseErrorManger.swift in Sources */,
 				1037712C1CC773F700ECEBEA /* ConversationListController.m in Sources */,
-				10376FD51CC7699300ECEBEA /* AppDelegate+EaseMob.m in Sources */,
 				1037714C1CC773F700ECEBEA /* DebugViewController.m in Sources */,
 				100691AE1C929CA7000AEFEA /* ManageEditActivityEditDelegate.swift in Sources */,
+				10AC2E281CD9C4E900D58AAC /* AppDelegateEaseMob.m in Sources */,
 				1037712D1CC773F700ECEBEA /* ChatViewController.m in Sources */,
 				107505611C905FB700C9589E /* CommonHTMLViewController.swift in Sources */,
 				107505581C9021A300C9589E /* ResetPasswordReq.swift in Sources */,
@@ -2266,6 +2269,7 @@
 				105C198F1C994DC700103B38 /* GetCongressInfoReq.swift in Sources */,
 				10A6176E1CB54D2600D8EEF8 /* SubmitDeviceTokenReq.swift in Sources */,
 				1037712E1CC773F700ECEBEA /* ChatGroupDetailViewController.m in Sources */,
+				10DD801A1CD8A7FE0001E1E8 /* SendAPNSReq.swift in Sources */,
 				10F197581CC4E2A3007C28DC /* GetCARandReq.swift in Sources */,
 				100AA87C1CCF4C0100EC40DC /* UnCheckedInCell.swift in Sources */,
 				107505751C915C9E00C9589E /* Variable.swift in Sources */,

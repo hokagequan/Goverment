@@ -19,6 +19,7 @@ class UnCheckedInListViewController: UIViewController, UITableViewDataSource, UI
     
     var activityID: Int = 0
     var personList: Array<Person>? = nil
+    var selectedIndex: Int = -1
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -53,32 +54,83 @@ class UnCheckedInListViewController: UIViewController, UITableViewDataSource, UI
         // Dispose of any resources that can be recreated.
     }
     
+    func hideNotifySelection() {
+        selectedIndex = -1
+        notifySelectionView.removeFromSuperview()
+    }
+    
     func layoutUI() {
         CustomObjectUtil.customObjectsLayout([notifyContainerView], backgroundColor: UIColor.whiteColor(), borderWidth: 0, borderColor: nil, corner: 5.0)
     }
     
     func showNotifySelection(index: Int) {
+        selectedIndex = index
+        
         let window = UIApplication.sharedApplication().keyWindow!
         notifySelectionView.frame = window.bounds
         window.addSubview(notifySelectionView)
     }
     
-    func hideNotifySelection() {
-        notifySelectionView.removeFromSuperview()
+    func sendNotify(type: SendType) {
+        if selectedIndex < 0 {
+            return
+        }
+        
+        EZLoadingActivity.show("", disableUI: true)
+        let person = personList?[selectedIndex]
+        let req = SendAPNSReq()
+        req.congressID = person!.congressID!
+        req.mobile = person!.mobile
+        req.type = type
+        req.requestSimpleCompletion { (success, errorCode) in
+            EZLoadingActivity.hide()
+            if success == true {
+                self.hideNotifySelection()
+            }
+            else {
+                ResponseErrorManger.defaultManager().handleError(errorCode, message: "网络异常，请稍后再试")
+            }
+        }
     }
     
     // MARK: - Actions
     
     @IBAction func clickAPNS(sender: AnyObject) {
+        self.sendNotify(SendType.APNS)
     }
     
     @IBAction func clickSMS(sender: AnyObject) {
+        self.sendNotify(SendType.SMS)
     }
     
     @IBAction func clickCall(sender: AnyObject) {
+        if selectedIndex < 0 {
+            return
+        }
+        
+        guard let mobile = personList?[selectedIndex].mobile else {
+            return
+        }
+        
+        guard let callURL = NSURL(string: "tel://\(mobile)") else {
+            return
+        }
+        
+        UIApplication.sharedApplication().openURL(callURL)
     }
     
     @IBAction func clickMessage(sender: AnyObject) {
+        if selectedIndex < 0 {
+            return
+        }
+        
+        guard let huanxin = personList?[selectedIndex].huanxin else {
+            return
+        }
+        
+        let chatViewController = ChatViewController(conversationChatter: huanxin, conversationType: EMConversationTypeChat)
+        chatViewController.title = huanxin
+        self.navigationController?.pushViewController(chatViewController, animated: true)
     }
     
     @IBAction func clickHideNotifySelection(sender: AnyObject) {

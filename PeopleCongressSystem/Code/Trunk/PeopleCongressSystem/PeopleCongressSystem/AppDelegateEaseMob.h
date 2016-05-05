@@ -10,9 +10,11 @@
  * from Hyphenate Inc.
  */
 
-#import "PeopleCongressSystem-Swift.h"
+//#import "PeopleCongressSystem-Swift.h"
 
-@interface AppDelegate (EaseMob)
+@interface AppDelegateEaseMob: NSObject
+
++ (instancetype)sharedInstance;
 
 - (void)easemobApplication:(UIApplication *)application
 didFinishLaunchingWithOptions:(NSDictionary *)launchOptions

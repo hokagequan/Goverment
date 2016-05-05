@@ -10,7 +10,7 @@
  * from Hyphenate Inc.
  */
 
-#import "AppDelegate+EaseMob.h"
+#import "AppDelegateEaseMob.h"
 #import "EMSDK.h"
 #import "ChatDemoHelper.h"
 //#import "MBProgressHUD.h"
@@ -19,7 +19,18 @@
  *  本类中做了EaseMob初始化和推送等操作
  */
 
-@implementation AppDelegate (EaseMob)
+@implementation AppDelegateEaseMob
+
++ (instancetype)sharedInstance {
+    static AppDelegateEaseMob *_sharedEaseMob = nil;
+    
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        _sharedEaseMob = [[AppDelegateEaseMob alloc] init];
+    });
+    
+    return _sharedEaseMob;
+}
 
 - (void)easemobApplication:(UIApplication *)application
 didFinishLaunchingWithOptions:(NSDictionary *)launchOptions

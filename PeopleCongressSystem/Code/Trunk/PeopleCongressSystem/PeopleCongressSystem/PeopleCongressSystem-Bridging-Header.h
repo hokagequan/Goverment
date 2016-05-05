@@ -13,9 +13,11 @@
 #import "ConversationListController.h"
 #import "ContactListViewController.h"
 #import "BlackListViewController.h"
+#import "ChatViewController.h"
 
 // Utils
 #import "UserProfileManager.h"
 
 // Categorys
 #import "UIImageView+HeadImage.h"
+#import "AppDelegateEaseMob.h"
