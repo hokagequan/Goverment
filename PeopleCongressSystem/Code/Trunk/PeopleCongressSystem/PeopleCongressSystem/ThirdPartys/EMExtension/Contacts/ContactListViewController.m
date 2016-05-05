@@ -326,6 +326,7 @@
         }
         ChatViewController *chatController = [[ChatViewController alloc] initWithConversationChatter:model.buddy conversationType:EMConversationTypeChat];
         chatController.title = model.nickname.length > 0 ? model.nickname : model.buddy;
+        chatController.hidesBottomBarWhenPushed = YES;
         [self.navigationController pushViewController:chatController animated:YES];
     }
 }

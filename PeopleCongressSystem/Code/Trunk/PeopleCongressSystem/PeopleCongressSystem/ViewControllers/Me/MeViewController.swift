@@ -237,6 +237,7 @@ class MeViewController: UITableViewController {
     
     func clickBlackList() {
         let blackListViewController = BlackListViewController(nibName: nil, bundle: nil)
+        blackListViewController.hidesBottomBarWhenPushed = true
         self.navigationController?.pushViewController(blackListViewController, animated: true)
     }
     

@@ -39,6 +39,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    self.edgesForExtendedLayout = UIRectEdgeNone;
+    
     self.showRefreshHeader = YES;
     self.delegate = self;
     self.dataSource = self;
