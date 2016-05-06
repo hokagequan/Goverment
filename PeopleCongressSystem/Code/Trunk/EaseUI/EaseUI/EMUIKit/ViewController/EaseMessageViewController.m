@@ -1281,6 +1281,8 @@
     [self.chatToolbar endEditing:YES];
     
     // 弹出照片选择
+    [[UINavigationBar appearance] setTintColor:[UIColor whiteColor]];
+    [[UINavigationBar appearance] setTitleTextAttributes:@{NSForegroundColorAttributeName: [UIColor whiteColor]}];
     self.imagePicker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
     self.imagePicker.mediaTypes = @[(NSString *)kUTTypeImage];
     [self presentViewController:self.imagePicker animated:YES completion:NULL];
