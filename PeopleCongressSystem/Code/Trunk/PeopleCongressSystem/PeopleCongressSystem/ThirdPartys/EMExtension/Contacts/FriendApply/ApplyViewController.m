@@ -14,6 +14,7 @@
 
 #import "ApplyFriendCell.h"
 #import "InvitationManager.h"
+#import "PeopleCongressSystem-Swift.h"
 
 static ApplyViewController *controller = nil;
 
@@ -57,6 +58,9 @@ static ApplyViewController *controller = nil;
     [backButton addTarget:self action:@selector(back) forControlEvents:UIControlEventTouchUpInside];
     UIBarButtonItem *backItem = [[UIBarButtonItem alloc] initWithCustomView:backButton];
     [self.navigationItem setLeftBarButtonItem:backItem];
+    
+    [PCSCustomUtil customNavigationController:self];
+    [self customPCSNavi:self.title];
     
     [self loadDataSourceFromLocalDB];
 }

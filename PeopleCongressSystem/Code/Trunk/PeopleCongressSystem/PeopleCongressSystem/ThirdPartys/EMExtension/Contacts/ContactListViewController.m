@@ -296,7 +296,8 @@
         else if (row == 1)
         {
             if (_groupController == nil) {
-                _groupController = [[GroupListViewController alloc] initWithStyle:UITableViewStylePlain];
+                _groupController = [[GroupListViewController alloc] init];
+                _groupController.hidesBottomBarWhenPushed = YES;
             }
             else{
                 [_groupController reloadDataSource];

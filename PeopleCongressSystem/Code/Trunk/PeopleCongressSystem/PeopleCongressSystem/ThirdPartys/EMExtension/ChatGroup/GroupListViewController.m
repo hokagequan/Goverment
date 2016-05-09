@@ -20,26 +20,26 @@
 #import "CreateGroupViewController.h"
 #import "PublicGroupListViewController.h"
 #import "RealtimeSearchUtil.h"
+#import "PeopleCongressSystem-Swift.h"
 
-@interface GroupListViewController ()<UISearchBarDelegate, UISearchDisplayDelegate, EMGroupManagerDelegate, SRRefreshDelegate>
+@interface GroupListViewController ()<UISearchBarDelegate, UISearchDisplayDelegate, EMGroupManagerDelegate, SRRefreshDelegate, UITableViewDelegate, UITableViewDataSource>
 
 @property (strong, nonatomic) NSMutableArray *dataSource;
 
 @property (strong, nonatomic) SRRefreshView *slimeView;
 @property (strong, nonatomic) EMSearchBar *searchBar;
 @property (strong, nonatomic) EMSearchDisplayController *searchController;
+@property (strong, nonatomic) UITableView *tableView;
 
 @end
 
 @implementation GroupListViewController
 
-- (id)initWithStyle:(UITableViewStyle)style
-{
-    self = [super initWithStyle:style];
-    if (self) {
-        // Custom initialization
+- (id)init {
+    if (self = [super init]) {
         _dataSource = [NSMutableArray array];
     }
+    
     return self;
 }
 
@@ -53,11 +53,14 @@
     }
     
     self.title = NSLocalizedString(@"title.group", @"Group");
+    self.view.backgroundColor = [UIColor whiteColor];
     
 #warning 把self注册为SDK的delegate
     [[EMClient sharedClient].groupManager removeDelegate:self];
     [[EMClient sharedClient].groupManager addDelegate:self delegateQueue:nil];
     
+    self.tableView.dataSource = self;
+    self.tableView.delegate = self;
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     self.tableView.backgroundColor = [UIColor whiteColor];
     self.tableView.tableFooterView = [[UIView alloc] init];
@@ -82,6 +85,13 @@
     [backButton addTarget:self.navigationController action:@selector(popViewControllerAnimated:) forControlEvents:UIControlEventTouchUpInside];
     UIBarButtonItem *backItem = [[UIBarButtonItem alloc] initWithCustomView:backButton];
     [self.navigationItem setLeftBarButtonItem:backItem];
+    
+    [PCSCustomUtil customNavigationController:self];
+    CGFloat height = [self customPCSNavi:@"会话"];
+    CGRect frame = self.tableView.frame;
+    frame.origin.y += height;
+    frame.size.height -= height;
+    self.tableView.frame = frame;
     
     [self reloadDataSource];
 }
@@ -171,6 +181,15 @@
     }
     
     return _searchController;
+}
+
+- (UITableView *)tableView {
+    if (!_tableView) {
+        _tableView = [[UITableView alloc] initWithFrame:self.view.bounds style:UITableViewStylePlain];
+        [self.view addSubview:_tableView];
+    }
+    
+    return _tableView;
 }
 
 #pragma mark - Table view data source
