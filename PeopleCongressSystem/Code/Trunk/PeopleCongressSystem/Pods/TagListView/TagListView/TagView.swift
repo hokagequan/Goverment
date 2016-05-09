@@ -162,6 +162,7 @@ public class TagView: UIButton {
     }
     
     private func setupView() {
+        titleLabel?.numberOfLines = 0
         frame.size = intrinsicContentSize()
         addSubview(removeButton)
         removeButton.tagView = self
@@ -180,7 +181,7 @@ public class TagView: UIButton {
     
     override public func intrinsicContentSize() -> CGSize {
         var size = titleLabel?.text?.sizeWithAttributes([NSFontAttributeName: textFont]) ?? CGSizeZero
-        size.height = textFont.pointSize + paddingY * 2
+        size.height += paddingY * 2
         size.width += paddingX * 2
         if enableRemoveButton {
             size.width += removeButtonIconSize + paddingX

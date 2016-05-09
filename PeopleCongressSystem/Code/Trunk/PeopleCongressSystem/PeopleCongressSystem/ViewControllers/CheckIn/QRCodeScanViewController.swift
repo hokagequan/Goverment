@@ -58,7 +58,8 @@ class QRCodeScanViewController: UIViewController, AVCaptureMetadataOutputObjects
     }
     
     func handleCode(code: String) {
-        PCSDataManager.defaultManager().content.actionDelegate?.checkIn(code, identifier: "\(activity!.identifier)", completion: { (success) in
+        let activityID = activity?.identifier ?? 0
+        PCSDataManager.defaultManager().content.actionDelegate?.checkIn(code, identifier: "\(activityID)", completion: { (success) in
             self.performSelector(#selector(QRCodeScanViewController.startScan), withObject: nil, afterDelay: 1.0)
         })
     }

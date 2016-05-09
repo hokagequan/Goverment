@@ -17,10 +17,10 @@ class CongressHomeActionDelegate: ActionProtocol {
         EZLoadingActivity.show("", disableUI: true)
         EZLoadingActivity.Settings.SuccessText = "签到成功"
         EZLoadingActivity.Settings.FailText = "签到失败"
-        manager.handleCode(code, personID: PCSDataManager.defaultManager().accountManager.user!.identifier!) { (success, error) in
-            if error == nil {
+        manager.handleCode(code, personID: PCSDataManager.defaultManager().accountManager.user!.congressID!) { (success, error) in
+//            if error == nil {
                 EZLoadingActivity.hide(success: success, animated: false)
-            }
+//            }
             
             completion(success)
         }
