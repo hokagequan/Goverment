@@ -125,7 +125,12 @@ class CollectionViewCell: UITableViewCell, UICollectionViewDataSource, UICollect
         delegate?.didSelectIndex(self, index: indexPath.row - 1)
         
         let cell = collectionView.cellForItemAtIndexPath(indexPath) as! SimpleImageCell
-        delegate?.didClickImage(self, image: cell.iconImageView.image!)
+        
+        guard let image = cell.iconImageView.image else {
+            return
+        }
+        
+        delegate?.didClickImage(self, image: image)
     }
 
 }

@@ -280,7 +280,7 @@ class AccountManager {
             if error == false {
                 dispatch_semaphore_signal(semaphore)
                 dispatch_async(dispatch_get_main_queue(), {
-                    completion?(true, "用户名或密码错误", errorCode)
+                    completion?(false, "用户名或密码错误", errorCode)
                 })
                 
                 return
@@ -298,7 +298,7 @@ class AccountManager {
             if randString == nil {
                 dispatch_semaphore_signal(semaphore)
                 dispatch_async(dispatch_get_main_queue(), {
-                    completion?(true, "用户名或密码错误", errorCode)
+                    completion?(false, "用户名或密码错误", errorCode)
                 })
                 
                 return
@@ -318,13 +318,13 @@ class AccountManager {
                 signedCAReq.requestSimple({ (success) in
                     dispatch_semaphore_signal(semaphore)
                     dispatch_async(dispatch_get_main_queue(), {
-                        completion?(true, "用户名或密码错误", errorCode)
+                        completion?(true, nil, errorCode)
                     })
                 })
             #else
                 dispatch_semaphore_signal(semaphore)
                 dispatch_async(dispatch_get_main_queue(), {
-                    completion?(true, "用户名或密码错误", errorCode)
+                    completion?(true, nil, errorCode)
                 })
             #endif
             
