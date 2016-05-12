@@ -15,6 +15,8 @@ class MainViewController: UITabBarController {
 
         // Do any additional setup after loading the view.
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(MainViewController.handleLogin(_:)), name: kNotificationPresentLogin, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(MainViewController.setupUntreatedApplyCount), name: "setupUntreatedApplyCount", object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(MainViewController.setupUnreadMessageCount), name: "setupUnreadMessageCount", object: nil)
         
         self.loadViewControllers()
     }
@@ -63,6 +65,64 @@ class MainViewController: UITabBarController {
     
     func handleLogin(notification: NSNotification) {
         self.performSegueWithIdentifier("BackToSignIn", sender: nil)
+    }
+    
+    func setupUnreadMessageCount() {
+        guard let conversations = EMClient.sharedClient().chatManager.getAllConversations() as? Array<EMConversation> else {
+            return
+        }
+        
+        var chatListViewController: ConversationListController? = nil
+        
+        for viewController in self.viewControllers! {
+            if viewController is ConversationListController {
+                chatListViewController = viewController as? ConversationListController
+                break
+            }
+        }
+        
+        if chatListViewController == nil {
+            return
+        }
+        
+        var unreadCount: Int32 = 0
+        
+        for conversation in conversations {
+            unreadCount += conversation.unreadMessagesCount
+        }
+        
+        if unreadCount > 0 {
+            chatListViewController?.tabBarItem.badgeValue = "\(unreadCount)"
+        }
+        else {
+            chatListViewController?.tabBarItem.badgeValue = nil
+        }
+        
+        UIApplication.sharedApplication().applicationIconBadgeNumber = Int(unreadCount)
+    }
+    
+    func setupUntreatedApplyCount() {
+        var contactsViewController: ContactListViewController? = nil
+        
+        for viewController in self.viewControllers! {
+            if viewController is ContactListViewController {
+                contactsViewController = viewController as? ContactListViewController
+                break
+            }
+        }
+        
+        if contactsViewController == nil {
+            return
+        }
+        
+        let unreadCount = ApplyViewController.shareController().dataSource.count
+        
+        if unreadCount > 0 {
+            contactsViewController?.tabBarItem.badgeValue = "\(unreadCount)"
+        }
+        else {
+            contactsViewController?.tabBarItem.badgeValue = nil
+        }
     }
 
     /*

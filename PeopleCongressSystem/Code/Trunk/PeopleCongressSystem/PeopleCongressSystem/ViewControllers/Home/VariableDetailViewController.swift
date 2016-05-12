@@ -638,7 +638,7 @@ class VariableDetailViewController: UIViewController, UITableViewDataSource, UIT
         switch row.title! {
         case "类型:":
             EZLoadingActivity.show("", disableUI: true)
-            PCSDataManager.defaultManager().getTypeInfo(PCSType.Congress) { (infos, errorCode) -> Void in
+            PCSDataManager.defaultManager().getTypeInfo(PCSType.Personal) { (infos, errorCode) -> Void in
                 EZLoadingActivity.hide()
                 if infos != nil {
                     self.types = infos!

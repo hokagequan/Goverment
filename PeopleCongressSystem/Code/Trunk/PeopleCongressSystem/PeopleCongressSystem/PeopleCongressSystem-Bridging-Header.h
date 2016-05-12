@@ -14,6 +14,7 @@
 #import "ContactListViewController.h"
 #import "BlackListViewController.h"
 #import "ChatViewController.h"
+#import "ApplyViewController.h"
 
 // Utils
 #import "UserProfileManager.h"
