@@ -14,6 +14,7 @@ pod 'AlamofireImage'
 pod 'DKImagePickerController'
 pod 'ReachabilitySwift', :git => 'https://github.com/ashleymills/Reachability.swift'
 pod 'SwiftQRCode'
+pod 'HyphenateFullSDK', :git => 'https://github.com/easemob/hyphenate-full-cocoapods.git'
 
 end
 
