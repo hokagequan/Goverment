@@ -10,8 +10,6 @@ PODS:
   - EZLoadingActivity (0.8)
   - GrowingTextView (0.1.6)
   - HUIPatternLockView-Swift (1.0.1)
-  - HyphenateFullSDK (3.1.2)
-  - ReachabilitySwift (2.3.3)
   - SwiftQRCode (2.0.2)
   - TagListView (1.0.0)
 
@@ -22,24 +20,8 @@ DEPENDENCIES:
   - EZLoadingActivity (~> 0.8)
   - GrowingTextView
   - HUIPatternLockView-Swift
-  - HyphenateFullSDK (from `https://github.com/easemob/hyphenate-full-cocoapods.git`)
-  - ReachabilitySwift (from `https://github.com/ashleymills/Reachability.swift`)
   - SwiftQRCode
   - TagListView (~> 1.0.0)
-
-EXTERNAL SOURCES:
-  HyphenateFullSDK:
-    :git: https://github.com/easemob/hyphenate-full-cocoapods.git
-  ReachabilitySwift:
-    :git: https://github.com/ashleymills/Reachability.swift
-
-CHECKOUT OPTIONS:
-  HyphenateFullSDK:
-    :commit: 97403d44258b04a874dee09b24d384327570752e
-    :git: https://github.com/easemob/hyphenate-full-cocoapods.git
-  ReachabilitySwift:
-    :commit: fa90df50c04f5743fbdf643cbe8d10562d75673d
-    :git: https://github.com/ashleymills/Reachability.swift
 
 SPEC CHECKSUMS:
   Alamofire: c19a627cefd6a95f840401c49ab1f124e07f54ee
@@ -48,9 +30,9 @@ SPEC CHECKSUMS:
   EZLoadingActivity: 6fd75a05765a4085f4b6fef6f62edf9f144b3139
   GrowingTextView: 5b431583ba0a401797d3edc8e4af1e2854aaa4e9
   HUIPatternLockView-Swift: 96d9bf8341a33be39d35eef51c4c2215a678138e
-  HyphenateFullSDK: f6ed4f5fed2b41f344eab73b451a27f1e8aa8ba2
-  ReachabilitySwift: e0f6b6f280effb47731acfaaa2d5ffe223703793
   SwiftQRCode: 68e920781686e376d70646b90c8ad87fd6523309
   TagListView: 6bf4bded034c4c90b1e90d8cd3d8e1d852dba0a8
 
-COCOAPODS: 0.39.0
+PODFILE CHECKSUM: 53c52c9119a332f6046c8909b2e6f1962e964295
+
+COCOAPODS: 1.0.0

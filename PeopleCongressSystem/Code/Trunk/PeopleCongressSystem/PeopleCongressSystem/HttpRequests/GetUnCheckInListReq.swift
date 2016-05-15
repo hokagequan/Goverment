@@ -53,6 +53,7 @@ class GetUnCheckInListReq: HttpBaseReq {
                 person.organizationID = info["RDDB_Org"]
                 person.organization = info["DBT_NAME"]
                 person.mobile = info["dianhua"]
+                person.huanxin = info["huanxinhao"]
                 
                 persons?.append(person)
             }

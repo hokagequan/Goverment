@@ -34,6 +34,8 @@
 		100B203E1C89222F00435EF0 /* PersonListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 100B203D1C89222F00435EF0 /* PersonListViewController.swift */; };
 		100B20401C895FC600435EF0 /* GetPersonListReq.swift in Sources */ = {isa = PBXBuildFile; fileRef = 100B203F1C895FC600435EF0 /* GetPersonListReq.swift */; };
 		100EA8841CA819CE00C5FA59 /* GetUrlReq.swift in Sources */ = {isa = PBXBuildFile; fileRef = 100EA8831CA819CE00C5FA59 /* GetUrlReq.swift */; };
+		10232B0B1CE8182A00BA58D9 /* Reachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10232B0A1CE8182A00BA58D9 /* Reachability.swift */; };
+		10232B361CE81A6600BA58D9 /* libHyphenateFullSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 10232B341CE81A6600BA58D9 /* libHyphenateFullSDK.a */; };
 		103023001CB7B8A900832DE1 /* ResponseErrorManger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 103022FF1CB7B8A900832DE1 /* ResponseErrorManger.swift */; };
 		1030232D1CBB4B7000832DE1 /* VerifyCodeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1030232C1CBB4B7000832DE1 /* VerifyCodeCell.swift */; };
 		1030232F1CBB762300832DE1 /* LocalVerifyCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1030232E1CBB762300832DE1 /* LocalVerifyCell.swift */; };
@@ -314,7 +316,7 @@
 		10F587661C90063800F2279B /* BusinessCardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10F587651C90063800F2279B /* BusinessCardViewController.swift */; };
 		10F7DE631C7863A3002A86CA /* PCSNavigationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10F7DE621C7863A3002A86CA /* PCSNavigationView.swift */; };
 		10F9019E1C858B0100A4D767 /* CongressContentInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10F9019D1C858B0100A4D767 /* CongressContentInfo.swift */; };
-		3E604AFB394FDCDDAD7A9BDE /* Pods_PeopleCongressSystem.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6BCFEC37E5EA0F7BF782CCBF /* Pods_PeopleCongressSystem.framework */; };
+		E7D7EE631EF6433BBA4DD0BA /* Pods_PeopleCongressSystem.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0FC9B07F7F80FF31B8E19C91 /* Pods_PeopleCongressSystem.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -328,6 +330,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0FC9B07F7F80FF31B8E19C91 /* Pods_PeopleCongressSystem.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PeopleCongressSystem.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		100160301C8D69290095D023 /* CheckInReq.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CheckInReq.swift; sourceTree = "<group>"; };
 		100160321C8D884D0095D023 /* MeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MeViewController.swift; sourceTree = "<group>"; };
 		100160341C8DB93E0095D023 /* QRCodeDownloadViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QRCodeDownloadViewController.swift; sourceTree = "<group>"; };
@@ -358,6 +361,45 @@
 		100B203D1C89222F00435EF0 /* PersonListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PersonListViewController.swift; sourceTree = "<group>"; };
 		100B203F1C895FC600435EF0 /* GetPersonListReq.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetPersonListReq.swift; sourceTree = "<group>"; };
 		100EA8831CA819CE00C5FA59 /* GetUrlReq.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetUrlReq.swift; sourceTree = "<group>"; };
+		10232B0A1CE8182A00BA58D9 /* Reachability.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Reachability.swift; sourceTree = "<group>"; };
+		10232B0E1CE81A6600BA58D9 /* EMCallLocalView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EMCallLocalView.h; sourceTree = "<group>"; };
+		10232B0F1CE81A6600BA58D9 /* EMCallManagerDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EMCallManagerDelegate.h; sourceTree = "<group>"; };
+		10232B101CE81A6600BA58D9 /* EMCallRemoteView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EMCallRemoteView.h; sourceTree = "<group>"; };
+		10232B111CE81A6600BA58D9 /* EMCallSession.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EMCallSession.h; sourceTree = "<group>"; };
+		10232B121CE81A6600BA58D9 /* EMChatManagerDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EMChatManagerDelegate.h; sourceTree = "<group>"; };
+		10232B131CE81A6600BA58D9 /* EMChatroom.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EMChatroom.h; sourceTree = "<group>"; };
+		10232B141CE81A6600BA58D9 /* EMChatroomManagerDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EMChatroomManagerDelegate.h; sourceTree = "<group>"; };
+		10232B151CE81A6600BA58D9 /* EMClient+Call.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "EMClient+Call.h"; sourceTree = "<group>"; };
+		10232B161CE81A6600BA58D9 /* EMClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EMClient.h; sourceTree = "<group>"; };
+		10232B171CE81A6600BA58D9 /* EMClientDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EMClientDelegate.h; sourceTree = "<group>"; };
+		10232B181CE81A6600BA58D9 /* EMCmdMessageBody.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EMCmdMessageBody.h; sourceTree = "<group>"; };
+		10232B191CE81A6600BA58D9 /* EMContactManagerDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EMContactManagerDelegate.h; sourceTree = "<group>"; };
+		10232B1A1CE81A6600BA58D9 /* EMConversation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EMConversation.h; sourceTree = "<group>"; };
+		10232B1B1CE81A6600BA58D9 /* EMCursorResult.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EMCursorResult.h; sourceTree = "<group>"; };
+		10232B1C1CE81A6600BA58D9 /* EMError.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EMError.h; sourceTree = "<group>"; };
+		10232B1D1CE81A6600BA58D9 /* EMErrorCode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EMErrorCode.h; sourceTree = "<group>"; };
+		10232B1E1CE81A6600BA58D9 /* EMFileMessageBody.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EMFileMessageBody.h; sourceTree = "<group>"; };
+		10232B1F1CE81A6600BA58D9 /* EMGroup.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EMGroup.h; sourceTree = "<group>"; };
+		10232B201CE81A6600BA58D9 /* EMGroupManagerDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EMGroupManagerDelegate.h; sourceTree = "<group>"; };
+		10232B211CE81A6600BA58D9 /* EMGroupOptions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EMGroupOptions.h; sourceTree = "<group>"; };
+		10232B221CE81A6600BA58D9 /* EMImageMessageBody.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EMImageMessageBody.h; sourceTree = "<group>"; };
+		10232B231CE81A6600BA58D9 /* EMLocationMessageBody.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EMLocationMessageBody.h; sourceTree = "<group>"; };
+		10232B241CE81A6600BA58D9 /* EMMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EMMessage.h; sourceTree = "<group>"; };
+		10232B251CE81A6600BA58D9 /* EMMessageBody.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EMMessageBody.h; sourceTree = "<group>"; };
+		10232B261CE81A6600BA58D9 /* EMOptions+PrivateDeploy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "EMOptions+PrivateDeploy.h"; sourceTree = "<group>"; };
+		10232B271CE81A6600BA58D9 /* EMOptions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EMOptions.h; sourceTree = "<group>"; };
+		10232B281CE81A6600BA58D9 /* EMPushOptions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EMPushOptions.h; sourceTree = "<group>"; };
+		10232B291CE81A6600BA58D9 /* EMSDK.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EMSDK.h; sourceTree = "<group>"; };
+		10232B2A1CE81A6600BA58D9 /* EMSDKFull.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EMSDKFull.h; sourceTree = "<group>"; };
+		10232B2B1CE81A6600BA58D9 /* EMTextMessageBody.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EMTextMessageBody.h; sourceTree = "<group>"; };
+		10232B2C1CE81A6600BA58D9 /* EMVideoMessageBody.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EMVideoMessageBody.h; sourceTree = "<group>"; };
+		10232B2D1CE81A6600BA58D9 /* EMVoiceMessageBody.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EMVoiceMessageBody.h; sourceTree = "<group>"; };
+		10232B2E1CE81A6600BA58D9 /* IEMCallManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IEMCallManager.h; sourceTree = "<group>"; };
+		10232B2F1CE81A6600BA58D9 /* IEMChatManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IEMChatManager.h; sourceTree = "<group>"; };
+		10232B301CE81A6600BA58D9 /* IEMChatroomManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IEMChatroomManager.h; sourceTree = "<group>"; };
+		10232B311CE81A6600BA58D9 /* IEMContactManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IEMContactManager.h; sourceTree = "<group>"; };
+		10232B321CE81A6600BA58D9 /* IEMGroupManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IEMGroupManager.h; sourceTree = "<group>"; };
+		10232B341CE81A6600BA58D9 /* libHyphenateFullSDK.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libHyphenateFullSDK.a; sourceTree = "<group>"; };
 		103022FF1CB7B8A900832DE1 /* ResponseErrorManger.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResponseErrorManger.swift; sourceTree = "<group>"; };
 		1030232C1CBB4B7000832DE1 /* VerifyCodeCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VerifyCodeCell.swift; sourceTree = "<group>"; };
 		1030232E1CBB762300832DE1 /* LocalVerifyCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocalVerifyCell.swift; sourceTree = "<group>"; };
@@ -918,9 +960,8 @@
 		10F587651C90063800F2279B /* BusinessCardViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BusinessCardViewController.swift; sourceTree = "<group>"; };
 		10F7DE621C7863A3002A86CA /* PCSNavigationView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PCSNavigationView.swift; sourceTree = "<group>"; };
 		10F9019D1C858B0100A4D767 /* CongressContentInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CongressContentInfo.swift; sourceTree = "<group>"; };
-		68AE91901E434A8BE22D3071 /* Pods-PeopleCongressSystem.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PeopleCongressSystem.debug.xcconfig"; path = "Pods/Target Support Files/Pods-PeopleCongressSystem/Pods-PeopleCongressSystem.debug.xcconfig"; sourceTree = "<group>"; };
-		6BCFEC37E5EA0F7BF782CCBF /* Pods_PeopleCongressSystem.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PeopleCongressSystem.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		7FC8BFEC67A9706088C1E7DA /* Pods-PeopleCongressSystem.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PeopleCongressSystem.release.xcconfig"; path = "Pods/Target Support Files/Pods-PeopleCongressSystem/Pods-PeopleCongressSystem.release.xcconfig"; sourceTree = "<group>"; };
+		73864A39689FB9815370BA8D /* Pods-PeopleCongressSystem.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PeopleCongressSystem.debug.xcconfig"; path = "Pods/Target Support Files/Pods-PeopleCongressSystem/Pods-PeopleCongressSystem.debug.xcconfig"; sourceTree = "<group>"; };
+		C40AE4A880515B26AA3B4A8E /* Pods-PeopleCongressSystem.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PeopleCongressSystem.release.xcconfig"; path = "Pods/Target Support Files/Pods-PeopleCongressSystem/Pods-PeopleCongressSystem.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -936,6 +977,7 @@
 				103771811CC77EA700ECEBEA /* CoreText.framework in Frameworks */,
 				1037717F1CC77E9400ECEBEA /* libstdc++.6.0.9.tbd in Frameworks */,
 				1037717D1CC77E7E00ECEBEA /* CoreData.framework in Frameworks */,
+				10232B361CE81A6600BA58D9 /* libHyphenateFullSDK.a in Frameworks */,
 				1037717B1CC77E7000ECEBEA /* Accounts.framework in Frameworks */,
 				103771791CC77E6400ECEBEA /* Social.framework in Frameworks */,
 				1037716A1CC77B8100ECEBEA /* Bolts.framework in Frameworks */,
@@ -959,8 +1001,8 @@
 				10376F8D1CC5C65800ECEBEA /* libcrypto.a in Frameworks */,
 				103261161CAA80C50075BBA8 /* CFNetwork.framework in Frameworks */,
 				10C0F1301CA93D9C000BA06E /* jpush-ios-2.1.0.a in Frameworks */,
-				3E604AFB394FDCDDAD7A9BDE /* Pods_PeopleCongressSystem.framework in Frameworks */,
 				10376F8F1CC5C65800ECEBEA /* libsqlcipher.a in Frameworks */,
+				E7D7EE631EF6433BBA4DD0BA /* Pods_PeopleCongressSystem.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -974,6 +1016,76 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		10232B091CE8182A00BA58D9 /* Reachability */ = {
+			isa = PBXGroup;
+			children = (
+				10232B0A1CE8182A00BA58D9 /* Reachability.swift */,
+			);
+			path = Reachability;
+			sourceTree = "<group>";
+		};
+		10232B0C1CE81A6600BA58D9 /* HyphenateSDK */ = {
+			isa = PBXGroup;
+			children = (
+				10232B0D1CE81A6600BA58D9 /* include */,
+				10232B331CE81A6600BA58D9 /* lib */,
+			);
+			name = HyphenateSDK;
+			path = ../../../HyphenateSDK;
+			sourceTree = "<group>";
+		};
+		10232B0D1CE81A6600BA58D9 /* include */ = {
+			isa = PBXGroup;
+			children = (
+				10232B0E1CE81A6600BA58D9 /* EMCallLocalView.h */,
+				10232B0F1CE81A6600BA58D9 /* EMCallManagerDelegate.h */,
+				10232B101CE81A6600BA58D9 /* EMCallRemoteView.h */,
+				10232B111CE81A6600BA58D9 /* EMCallSession.h */,
+				10232B121CE81A6600BA58D9 /* EMChatManagerDelegate.h */,
+				10232B131CE81A6600BA58D9 /* EMChatroom.h */,
+				10232B141CE81A6600BA58D9 /* EMChatroomManagerDelegate.h */,
+				10232B151CE81A6600BA58D9 /* EMClient+Call.h */,
+				10232B161CE81A6600BA58D9 /* EMClient.h */,
+				10232B171CE81A6600BA58D9 /* EMClientDelegate.h */,
+				10232B181CE81A6600BA58D9 /* EMCmdMessageBody.h */,
+				10232B191CE81A6600BA58D9 /* EMContactManagerDelegate.h */,
+				10232B1A1CE81A6600BA58D9 /* EMConversation.h */,
+				10232B1B1CE81A6600BA58D9 /* EMCursorResult.h */,
+				10232B1C1CE81A6600BA58D9 /* EMError.h */,
+				10232B1D1CE81A6600BA58D9 /* EMErrorCode.h */,
+				10232B1E1CE81A6600BA58D9 /* EMFileMessageBody.h */,
+				10232B1F1CE81A6600BA58D9 /* EMGroup.h */,
+				10232B201CE81A6600BA58D9 /* EMGroupManagerDelegate.h */,
+				10232B211CE81A6600BA58D9 /* EMGroupOptions.h */,
+				10232B221CE81A6600BA58D9 /* EMImageMessageBody.h */,
+				10232B231CE81A6600BA58D9 /* EMLocationMessageBody.h */,
+				10232B241CE81A6600BA58D9 /* EMMessage.h */,
+				10232B251CE81A6600BA58D9 /* EMMessageBody.h */,
+				10232B261CE81A6600BA58D9 /* EMOptions+PrivateDeploy.h */,
+				10232B271CE81A6600BA58D9 /* EMOptions.h */,
+				10232B281CE81A6600BA58D9 /* EMPushOptions.h */,
+				10232B291CE81A6600BA58D9 /* EMSDK.h */,
+				10232B2A1CE81A6600BA58D9 /* EMSDKFull.h */,
+				10232B2B1CE81A6600BA58D9 /* EMTextMessageBody.h */,
+				10232B2C1CE81A6600BA58D9 /* EMVideoMessageBody.h */,
+				10232B2D1CE81A6600BA58D9 /* EMVoiceMessageBody.h */,
+				10232B2E1CE81A6600BA58D9 /* IEMCallManager.h */,
+				10232B2F1CE81A6600BA58D9 /* IEMChatManager.h */,
+				10232B301CE81A6600BA58D9 /* IEMChatroomManager.h */,
+				10232B311CE81A6600BA58D9 /* IEMContactManager.h */,
+				10232B321CE81A6600BA58D9 /* IEMGroupManager.h */,
+			);
+			path = include;
+			sourceTree = "<group>";
+		};
+		10232B331CE81A6600BA58D9 /* lib */ = {
+			isa = PBXGroup;
+			children = (
+				10232B341CE81A6600BA58D9 /* libHyphenateFullSDK.a */,
+			);
+			path = lib;
+			sourceTree = "<group>";
+		};
 		1030238A1CBB791200832DE1 /* RandomView */ = {
 			isa = PBXGroup;
 			children = (
@@ -1691,6 +1803,8 @@
 		10C0F12C1CA93D5F000BA06E /* ThirdPartys */ = {
 			isa = PBXGroup;
 			children = (
+				10232B0C1CE81A6600BA58D9 /* HyphenateSDK */,
+				10232B091CE8182A00BA58D9 /* Reachability */,
 				10868FC11CE809CE00AF041A /* EaseUI */,
 				103770B41CC773A400ECEBEA /* EMExtension */,
 				1037709F1CC76FA600ECEBEA /* EMAlertView */,
@@ -1718,8 +1832,8 @@
 				10D0D56E1C4CD1D00093F687 /* PeopleCongressSystem */,
 				10D0D5861C4CD1D00093F687 /* PeopleCongressSystemUITests */,
 				10D0D56D1C4CD1D00093F687 /* Products */,
-				7F44DF50897CB1D5E2F7216F /* Pods */,
 				788B022D8203C53FB6ACC595 /* Frameworks */,
+				BED6F5615BFEB8DAB2EAF7E4 /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -2155,16 +2269,16 @@
 				103261151CAA80C50075BBA8 /* CFNetwork.framework */,
 				100691C31C969395000AEFEA /* libcommonCrypto.tbd */,
 				100691C11C9658CD000AEFEA /* MobileCoreServices.framework */,
-				6BCFEC37E5EA0F7BF782CCBF /* Pods_PeopleCongressSystem.framework */,
+				0FC9B07F7F80FF31B8E19C91 /* Pods_PeopleCongressSystem.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		7F44DF50897CB1D5E2F7216F /* Pods */ = {
+		BED6F5615BFEB8DAB2EAF7E4 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				68AE91901E434A8BE22D3071 /* Pods-PeopleCongressSystem.debug.xcconfig */,
-				7FC8BFEC67A9706088C1E7DA /* Pods-PeopleCongressSystem.release.xcconfig */,
+				73864A39689FB9815370BA8D /* Pods-PeopleCongressSystem.debug.xcconfig */,
+				C40AE4A880515B26AA3B4A8E /* Pods-PeopleCongressSystem.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -2176,12 +2290,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 10D0D58C1C4CD1D10093F687 /* Build configuration list for PBXNativeTarget "PeopleCongressSystem" */;
 			buildPhases = (
-				4BD4296E50B6FD0C21BDB389 /* Check Pods Manifest.lock */,
+				CBA8A13155361E9AB17BDE15 /* 📦 Check Pods Manifest.lock */,
 				10D0D5681C4CD1D00093F687 /* Sources */,
 				10D0D5691C4CD1D00093F687 /* Frameworks */,
 				10D0D56A1C4CD1D00093F687 /* Resources */,
-				51048EFF4B9B7662D919FFB7 /* Embed Pods Frameworks */,
-				86400D2EB8E0663100DC99D5 /* Copy Pods Resources */,
+				FCA9B956131A0AA6F45D3251 /* 📦 Embed Pods Frameworks */,
+				EEF01BE44033C6E057AE414A /* 📦 Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -2373,14 +2487,14 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		4BD4296E50B6FD0C21BDB389 /* Check Pods Manifest.lock */ = {
+		CBA8A13155361E9AB17BDE15 /* 📦 Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "Check Pods Manifest.lock";
+			name = "📦 Check Pods Manifest.lock";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -2388,34 +2502,34 @@
 			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
-		51048EFF4B9B7662D919FFB7 /* Embed Pods Frameworks */ = {
+		EEF01BE44033C6E057AE414A /* 📦 Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "Embed Pods Frameworks";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-PeopleCongressSystem/Pods-PeopleCongressSystem-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		86400D2EB8E0663100DC99D5 /* Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "Copy Pods Resources";
+			name = "📦 Copy Pods Resources";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-PeopleCongressSystem/Pods-PeopleCongressSystem-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		FCA9B956131A0AA6F45D3251 /* 📦 Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "📦 Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-PeopleCongressSystem/Pods-PeopleCongressSystem-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -2577,6 +2691,7 @@
 				10D0D5D31C4FDB440093F687 /* CustomNavigationView.swift in Sources */,
 				103771361CC773F700ECEBEA /* PublicGroupDetailViewController.m in Sources */,
 				103771371CC773F700ECEBEA /* PublicGroupListViewController.m in Sources */,
+				10232B0B1CE8182A00BA58D9 /* Reachability.swift in Sources */,
 				106E0E211CA55F7F004C48C0 /* GetActivityNotifyCountReq.swift in Sources */,
 				10F109811C8816D10083D89D /* GetActivitiesReq.swift in Sources */,
 				1084961A1CB3ABCF00B7BA03 /* VariableEntity.swift in Sources */,
@@ -2735,7 +2850,7 @@
 		};
 		10D0D58D1C4CD1D10093F687 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 68AE91901E434A8BE22D3071 /* Pods-PeopleCongressSystem.debug.xcconfig */;
+			baseConfigurationReference = 73864A39689FB9815370BA8D /* Pods-PeopleCongressSystem.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -2753,6 +2868,7 @@
 					"$(PROJECT_DIR)/PeopleCongressSystem/ThirdPartys/CACert/include",
 					"$(PROJECT_DIR)/../EaseUI/export/include/**",
 					"$(inherited)",
+					"$(PROJECT_DIR)/../HyphenateSDK/include",
 				);
 				INFOPLIST_FILE = PeopleCongressSystem/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
@@ -2765,6 +2881,7 @@
 					"$(PROJECT_DIR)/PeopleCongressSystem/ThirdPartys/EaseUI/EMUIKit/3rdparty/DeviceHelper/VoiceConvert/opencore-amrnb",
 					"$(PROJECT_DIR)/PeopleCongressSystem/ThirdPartys/EaseUI/EMUIKit/3rdparty/DeviceHelper/VoiceConvert/opencore-amrwb",
 					"$(PROJECT_DIR)/PeopleCongressSystem/ThirdPartys/EaseUI",
+					"$(PROJECT_DIR)/../HyphenateSDK/lib",
 				);
 				OTHER_LDFLAGS = (
 					"$(inherited)",
@@ -2796,7 +2913,7 @@
 		};
 		10D0D58E1C4CD1D10093F687 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 7FC8BFEC67A9706088C1E7DA /* Pods-PeopleCongressSystem.release.xcconfig */;
+			baseConfigurationReference = C40AE4A880515B26AA3B4A8E /* Pods-PeopleCongressSystem.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -2814,6 +2931,7 @@
 					"$(PROJECT_DIR)/PeopleCongressSystem/ThirdPartys/CACert/include",
 					"$(PROJECT_DIR)/../EaseUI/export/include/**",
 					"$(inherited)",
+					"$(PROJECT_DIR)/../HyphenateSDK/include",
 				);
 				INFOPLIST_FILE = PeopleCongressSystem/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
@@ -2826,6 +2944,7 @@
 					"$(PROJECT_DIR)/PeopleCongressSystem/ThirdPartys/EaseUI/EMUIKit/3rdparty/DeviceHelper/VoiceConvert/opencore-amrnb",
 					"$(PROJECT_DIR)/PeopleCongressSystem/ThirdPartys/EaseUI/EMUIKit/3rdparty/DeviceHelper/VoiceConvert/opencore-amrwb",
 					"$(PROJECT_DIR)/PeopleCongressSystem/ThirdPartys/EaseUI",
+					"$(PROJECT_DIR)/../HyphenateSDK/lib",
 				);
 				OTHER_LDFLAGS = (
 					"$(inherited)",
