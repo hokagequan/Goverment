@@ -20,8 +20,8 @@
 /* Class = "UIButton"; normalTitle = "找回密码"; ObjectID = "Mne-1g-kan"; */
 "Mne-1g-kan.normalTitle" = "找回密码";
 
-/* Class = "UILabel"; text = "版权所有：大连市人大常委会"; ObjectID = "Xyy-Ks-lPv"; */
-"Xyy-Ks-lPv.text" = "版权所有：大连市人大常委会";
+/* Class = "UILabel"; text = "版权所有：人大常委会"; ObjectID = "Xyy-Ks-lPv"; */
+"Xyy-Ks-lPv.text" = "版权所有：人大常委会";
 
 /* Class = "UIButton"; normalTitle = "记住密码"; ObjectID = "bzO-dB-bh8"; */
 "bzO-dB-bh8.normalTitle" = "记住密码";
