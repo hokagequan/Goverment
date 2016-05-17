@@ -39,6 +39,8 @@ let pageHTMLNotifyCongress = "apph5/iphone/RDDB_tongzhitongbao.aspx?"
 let pageHtMLSituationCongress = "apph5/iphone/RDDB_zhiqingzhizhenglist.aspx?"
 let pageHTMLHelpCongress = "apph5/iphone/RDDB_helper.aspx?"
 let pageHTMLPolicy = "/apph5/iphone/pub_affiche.aspx?"
+let pageHTMLQuestionnaire = "/apph5/iphone/RDDB_wenjuandati.aspx?"
+let pageHTMLSuggestion = ""
 
 /// @brief Notification Keys
 let kNotificationPresentLogin = "kNotificationPresentLogin"

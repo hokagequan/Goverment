@@ -134,7 +134,7 @@
                                         </connections>
                                     </button>
                                 </subviews>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstItem="djp-Nk-gp8" firstAttribute="leading" secondItem="YQr-PZ-0gW" secondAttribute="leading" id="3pB-1V-cLz"/>
                                     <constraint firstAttribute="trailing" secondItem="djp-Nk-gp8" secondAttribute="trailing" id="Ecx-sx-aof"/>

@@ -88,12 +88,19 @@ class CongressHomeActionDelegate: ActionProtocol {
             viewController.performSegueWithIdentifier("SituationSegue", sender: pageHtMLSituationCongress)
             break
         case .Review:
-            // TODO: 调查问卷
             let storyboard = UIStoryboard(name: "Main", bundle: nil)
             let vc = storyboard.instantiateViewControllerWithIdentifier("CommonHTMLViewController") as! CommonHTMLViewController
-            vc.URL = PCSDataManager.defaultManager().htmlURL(pageHTMLNotifyCongress)
+            vc.URL = PCSDataManager.defaultManager().htmlURL(pageHTMLQuestionnaire)
             vc.naviTitle = "调查问卷"
             viewController.navigationController?.pushViewController(vc, animated: true)
+            break
+        case .Suggestion:
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            let vc = storyboard.instantiateViewControllerWithIdentifier("CommonHTMLViewController") as! CommonHTMLViewController
+            vc.URL = PCSDataManager.defaultManager().htmlURL(pageHTMLQuestionnaire)
+            vc.naviTitle = "建议意见"
+            viewController.navigationController?.pushViewController(vc, animated: true)
+            break
         default:
             break
         }
