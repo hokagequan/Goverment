@@ -8,9 +8,8 @@
 
 import UIKit
 import EZLoadingActivity
-import MessageUI
 
-class UnCheckedInListViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, MFMessageComposeViewControllerDelegate {
+class UnCheckedInListViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
     @IBOutlet weak var naviView: PCSNavigationView!
     @IBOutlet weak var listTableView: UITableView!
@@ -102,27 +101,7 @@ class UnCheckedInListViewController: UIViewController, UITableViewDataSource, UI
     }
     
     @IBAction func clickSMS(sender: AnyObject) {
-        defer {
-            self.hideNotifySelection()
-        }
-        
-        guard let mobile = personList?[selectedIndex].mobile else {
-            return
-        }
-        
-        if MFMessageComposeViewController.canSendText() == true {
-            let smsViewController = MFMessageComposeViewController()
-            smsViewController.recipients = [mobile]
-            smsViewController.navigationBar.tintColor = UIColor.whiteColor()
-            smsViewController.messageComposeDelegate = self
-            self.presentViewController(smsViewController, animated: true, completion: nil)
-        }
-        else {
-            guard let smsURL = NSURL(string: "sms://\(mobile)") else {
-                return
-            }
-            UIApplication.sharedApplication().openURL(smsURL)
-        }
+        self.sendNotify(SendType.SMS)
     }
     
     @IBAction func clickCall(sender: AnyObject) {
@@ -158,19 +137,15 @@ class UnCheckedInListViewController: UIViewController, UITableViewDataSource, UI
             return
         }
         
-        let chatViewController = ChatViewController(conversationChatter: huanxin, conversationType: EMConversationTypeChat)
+        guard let chatViewController = ChatViewController(conversationChatter: huanxin, conversationType: EMConversationTypeChat) else {
+            return
+        }
         chatViewController.title = huanxin
         self.navigationController?.pushViewController(chatViewController, animated: true)
     }
     
     @IBAction func clickHideNotifySelection(sender: AnyObject) {
         self.hideNotifySelection()
-    }
-    
-    // MARK: - MFMessageViewController
-    
-    func messageComposeViewController(controller: MFMessageComposeViewController, didFinishWithResult result: MessageComposeResult) {
-        controller.dismissViewControllerAnimated(true, completion: nil)
     }
     
     // MARK: - UITableView
