@@ -8,8 +8,9 @@
 
 import UIKit
 import EZLoadingActivity
+import MessageUI
 
-class UnCheckedInListViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+class UnCheckedInListViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, MFMessageComposeViewControllerDelegate {
     
     @IBOutlet weak var naviView: PCSNavigationView!
     @IBOutlet weak var listTableView: UITableView!
@@ -72,6 +73,10 @@ class UnCheckedInListViewController: UIViewController, UITableViewDataSource, UI
     }
     
     func sendNotify(type: SendType) {
+        defer {
+            self.hideNotifySelection()
+        }
+        
         if selectedIndex < 0 {
             return
         }
@@ -84,10 +89,7 @@ class UnCheckedInListViewController: UIViewController, UITableViewDataSource, UI
         req.type = type
         req.requestSimpleCompletion { (success, errorCode) in
             EZLoadingActivity.hide()
-            if success == true {
-                self.hideNotifySelection()
-            }
-            else {
+            if success == false {
                 ResponseErrorManger.defaultManager().handleError(errorCode, message: "网络异常，请稍后再试")
             }
         }
@@ -100,10 +102,34 @@ class UnCheckedInListViewController: UIViewController, UITableViewDataSource, UI
     }
     
     @IBAction func clickSMS(sender: AnyObject) {
-        self.sendNotify(SendType.SMS)
+        defer {
+            self.hideNotifySelection()
+        }
+        
+        guard let mobile = personList?[selectedIndex].mobile else {
+            return
+        }
+        
+        if MFMessageComposeViewController.canSendText() == true {
+            let smsViewController = MFMessageComposeViewController()
+            smsViewController.recipients = [mobile]
+            smsViewController.navigationBar.tintColor = UIColor.whiteColor()
+            smsViewController.messageComposeDelegate = self
+            self.presentViewController(smsViewController, animated: true, completion: nil)
+        }
+        else {
+            guard let smsURL = NSURL(string: "sms://\(mobile)") else {
+                return
+            }
+            UIApplication.sharedApplication().openURL(smsURL)
+        }
     }
     
     @IBAction func clickCall(sender: AnyObject) {
+        defer {
+            self.hideNotifySelection()
+        }
+        
         if selectedIndex < 0 {
             return
         }
@@ -120,6 +146,10 @@ class UnCheckedInListViewController: UIViewController, UITableViewDataSource, UI
     }
     
     @IBAction func clickMessage(sender: AnyObject) {
+        defer {
+            self.hideNotifySelection()
+        }
+        
         if selectedIndex < 0 {
             return
         }
@@ -135,6 +165,12 @@ class UnCheckedInListViewController: UIViewController, UITableViewDataSource, UI
     
     @IBAction func clickHideNotifySelection(sender: AnyObject) {
         self.hideNotifySelection()
+    }
+    
+    // MARK: - MFMessageViewController
+    
+    func messageComposeViewController(controller: MFMessageComposeViewController, didFinishWithResult result: MessageComposeResult) {
+        controller.dismissViewControllerAnimated(true, completion: nil)
     }
     
     // MARK: - UITableView

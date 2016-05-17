@@ -302,6 +302,7 @@
 		10DC32771CDB5BFC0037149E /* newFriends@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 10DC32271CDB5BFB0037149E /* newFriends@2x.png */; };
 		10DD80181CD892340001E1E8 /* GetUnCheckInListReq.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10DD80171CD892340001E1E8 /* GetUnCheckInListReq.swift */; };
 		10DD801A1CD8A7FE0001E1E8 /* SendAPNSReq.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10DD80191CD8A7FE0001E1E8 /* SendAPNSReq.swift */; };
+		10EE77131CEAEE0A00BBA66D /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 10EE77121CEAEE0A00BBA66D /* MessageUI.framework */; };
 		10F1097F1C88156F0083D89D /* Activity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10F1097E1C88156F0083D89D /* Activity.swift */; };
 		10F109811C8816D10083D89D /* GetActivitiesReq.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10F109801C8816D10083D89D /* GetActivitiesReq.swift */; };
 		10F109831C881C960083D89D /* AddActivityReq.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10F109821C881C960083D89D /* AddActivityReq.swift */; };
@@ -948,6 +949,7 @@
 		10DC32271CDB5BFB0037149E /* newFriends@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "newFriends@2x.png"; sourceTree = "<group>"; };
 		10DD80171CD892340001E1E8 /* GetUnCheckInListReq.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetUnCheckInListReq.swift; sourceTree = "<group>"; };
 		10DD80191CD8A7FE0001E1E8 /* SendAPNSReq.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SendAPNSReq.swift; sourceTree = "<group>"; };
+		10EE77121CEAEE0A00BBA66D /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
 		10F1097E1C88156F0083D89D /* Activity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Activity.swift; sourceTree = "<group>"; };
 		10F109801C8816D10083D89D /* GetActivitiesReq.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetActivitiesReq.swift; sourceTree = "<group>"; };
 		10F109821C881C960083D89D /* AddActivityReq.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddActivityReq.swift; sourceTree = "<group>"; };
@@ -975,6 +977,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				10EE77131CEAEE0A00BBA66D /* MessageUI.framework in Frameworks */,
 				1037718B1CC77EF200ECEBEA /* AddressBook.framework in Frameworks */,
 				103771871CC77ED800ECEBEA /* libiconv.tbd in Frameworks */,
 				103771851CC77EBD00ECEBEA /* CoreLocation.framework in Frameworks */,
@@ -2249,6 +2252,7 @@
 		788B022D8203C53FB6ACC595 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				10EE77121CEAEE0A00BBA66D /* MessageUI.framework */,
 				1037718A1CC77EF200ECEBEA /* AddressBook.framework */,
 				103771881CC77EE000ECEBEA /* AddressBookUI.framework */,
 				103771861CC77ED800ECEBEA /* libiconv.tbd */,

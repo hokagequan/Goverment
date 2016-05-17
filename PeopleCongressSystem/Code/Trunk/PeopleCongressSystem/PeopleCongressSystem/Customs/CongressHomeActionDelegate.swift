@@ -97,6 +97,7 @@ class CongressHomeActionDelegate: ActionProtocol {
         case .Suggestion:
             let storyboard = UIStoryboard(name: "Main", bundle: nil)
             let vc = storyboard.instantiateViewControllerWithIdentifier("CommonHTMLViewController") as! CommonHTMLViewController
+            // TODO: 建议意见
             vc.URL = PCSDataManager.defaultManager().htmlURL(pageHTMLQuestionnaire)
             vc.naviTitle = "建议意见"
             viewController.navigationController?.pushViewController(vc, animated: true)
