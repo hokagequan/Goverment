@@ -1,6 +1,0 @@
-framework module Pods_PeopleCongressSystem {
-  umbrella header "Pods-PeopleCongressSystem-umbrella.h"
-
-  export *
-  module * { export * }
-}

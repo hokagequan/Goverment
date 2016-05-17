@@ -317,7 +317,7 @@
 		10F587661C90063800F2279B /* BusinessCardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10F587651C90063800F2279B /* BusinessCardViewController.swift */; };
 		10F7DE631C7863A3002A86CA /* PCSNavigationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10F7DE621C7863A3002A86CA /* PCSNavigationView.swift */; };
 		10F9019E1C858B0100A4D767 /* CongressContentInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10F9019D1C858B0100A4D767 /* CongressContentInfo.swift */; };
-		E7D7EE631EF6433BBA4DD0BA /* Pods_PeopleCongressSystem.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0FC9B07F7F80FF31B8E19C91 /* Pods_PeopleCongressSystem.framework */; };
+		F2461D7F736AF7792D053E30 /* Pods_PCSystem.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4709E099EF6691BC4E4A60BD /* Pods_PCSystem.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -963,8 +963,11 @@
 		10F587651C90063800F2279B /* BusinessCardViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BusinessCardViewController.swift; sourceTree = "<group>"; };
 		10F7DE621C7863A3002A86CA /* PCSNavigationView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PCSNavigationView.swift; sourceTree = "<group>"; };
 		10F9019D1C858B0100A4D767 /* CongressContentInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CongressContentInfo.swift; sourceTree = "<group>"; };
+		4709E099EF6691BC4E4A60BD /* Pods_PCSystem.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PCSystem.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		62D8969970C51E336B880791 /* Pods-PCSystem.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PCSystem.release.xcconfig"; path = "Pods/Target Support Files/Pods-PCSystem/Pods-PCSystem.release.xcconfig"; sourceTree = "<group>"; };
 		73864A39689FB9815370BA8D /* Pods-PeopleCongressSystem.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PeopleCongressSystem.debug.xcconfig"; path = "Pods/Target Support Files/Pods-PeopleCongressSystem/Pods-PeopleCongressSystem.debug.xcconfig"; sourceTree = "<group>"; };
 		C40AE4A880515B26AA3B4A8E /* Pods-PeopleCongressSystem.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PeopleCongressSystem.release.xcconfig"; path = "Pods/Target Support Files/Pods-PeopleCongressSystem/Pods-PeopleCongressSystem.release.xcconfig"; sourceTree = "<group>"; };
+		EB990D201314C30EE6D8F3D0 /* Pods-PCSystem.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PCSystem.debug.xcconfig"; path = "Pods/Target Support Files/Pods-PCSystem/Pods-PCSystem.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1005,7 +1008,7 @@
 				103261161CAA80C50075BBA8 /* CFNetwork.framework in Frameworks */,
 				10C0F1301CA93D9C000BA06E /* jpush-ios-2.1.0.a in Frameworks */,
 				10376F8F1CC5C65800ECEBEA /* libsqlcipher.a in Frameworks */,
-				E7D7EE631EF6433BBA4DD0BA /* Pods_PeopleCongressSystem.framework in Frameworks */,
+				F2461D7F736AF7792D053E30 /* Pods_PCSystem.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2275,6 +2278,7 @@
 				100691C31C969395000AEFEA /* libcommonCrypto.tbd */,
 				100691C11C9658CD000AEFEA /* MobileCoreServices.framework */,
 				0FC9B07F7F80FF31B8E19C91 /* Pods_PeopleCongressSystem.framework */,
+				4709E099EF6691BC4E4A60BD /* Pods_PCSystem.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -2284,6 +2288,8 @@
 			children = (
 				73864A39689FB9815370BA8D /* Pods-PeopleCongressSystem.debug.xcconfig */,
 				C40AE4A880515B26AA3B4A8E /* Pods-PeopleCongressSystem.release.xcconfig */,
+				EB990D201314C30EE6D8F3D0 /* Pods-PCSystem.debug.xcconfig */,
+				62D8969970C51E336B880791 /* Pods-PCSystem.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -2519,7 +2525,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-PeopleCongressSystem/Pods-PeopleCongressSystem-resources.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-PCSystem/Pods-PCSystem-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		FCA9B956131A0AA6F45D3251 /* 📦 Embed Pods Frameworks */ = {
@@ -2534,7 +2540,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-PeopleCongressSystem/Pods-PeopleCongressSystem-frameworks.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-PCSystem/Pods-PCSystem-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -2856,7 +2862,7 @@
 		};
 		10D0D58D1C4CD1D10093F687 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 73864A39689FB9815370BA8D /* Pods-PeopleCongressSystem.debug.xcconfig */;
+			baseConfigurationReference = EB990D201314C30EE6D8F3D0 /* Pods-PCSystem.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -2917,7 +2923,7 @@
 		};
 		10D0D58E1C4CD1D10093F687 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = C40AE4A880515B26AA3B4A8E /* Pods-PeopleCongressSystem.release.xcconfig */;
+			baseConfigurationReference = 62D8969970C51E336B880791 /* Pods-PCSystem.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
