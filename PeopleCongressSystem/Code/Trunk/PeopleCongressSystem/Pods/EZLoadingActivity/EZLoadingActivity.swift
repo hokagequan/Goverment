@@ -104,7 +104,12 @@ public struct EZLoadingActivity {
         var UIDisabled = false
         
         convenience init(text: String, disableUI: Bool) {
-            self.init(frame: CGRect(x: 0, y: 0, width: Settings.ActivityWidth, height: Settings.ActivityHeight))
+            var width = Settings.ActivityWidth
+            if text.characters.count == 0 {
+                width = Settings.ActivityHeight
+            }
+            
+            self.init(frame: CGRect(x: 0, y: 0, width: width, height: Settings.ActivityHeight))
             center = CGPoint(x: UIScreen.mainScreen().bounds.midX, y: UIScreen.mainScreen().bounds.midY)
             autoresizingMask = [.FlexibleTopMargin, .FlexibleLeftMargin, .FlexibleBottomMargin, .FlexibleRightMargin]
             backgroundColor = Settings.BackgroundColor
@@ -116,6 +121,11 @@ public struct EZLoadingActivity {
             
             activityView = UIActivityIndicatorView(activityIndicatorStyle: UIActivityIndicatorViewStyle.WhiteLarge)
             activityView.frame = CGRect(x: 10, y: yPosition, width: 40, height: 40)
+            
+            if text.characters.count == 0 {
+                activityView.center = CGPointMake(self.bounds.size.width / 2, self.bounds.size.height / 2)
+            }
+            
             activityView.color = Settings.ActivityColor
             activityView.startAnimating()
             
@@ -192,6 +202,12 @@ public struct EZLoadingActivity {
                     icon.text = Settings.FailIcon
                     textLabel.text = Settings.FailText
                 }
+                
+                var frame = self.frame
+                frame.size.width = Settings.ActivityWidth
+                self.frame = frame
+                
+                self.center = CGPoint(x: UIScreen.mainScreen().bounds.midX, y: UIScreen.mainScreen().bounds.midY)
             }
             
             addSubview(icon)
