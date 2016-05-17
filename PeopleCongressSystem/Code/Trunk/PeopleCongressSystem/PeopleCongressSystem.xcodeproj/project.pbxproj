@@ -140,6 +140,7 @@
 		105242921C9CFEF2005A55DC /* GetActivityPersonsReq.swift in Sources */ = {isa = PBXBuildFile; fileRef = 105242911C9CFEF2005A55DC /* GetActivityPersonsReq.swift */; };
 		105C198F1C994DC700103B38 /* GetCongressInfoReq.swift in Sources */ = {isa = PBXBuildFile; fileRef = 105C198E1C994DC700103B38 /* GetCongressInfoReq.swift */; };
 		105C19911C9A3E4A00103B38 /* EditVariableReq.swift in Sources */ = {isa = PBXBuildFile; fileRef = 105C19901C9A3E4A00103B38 /* EditVariableReq.swift */; };
+		10603EE71CE9C97A00842621 /* AppDelegateParse.m in Sources */ = {isa = PBXBuildFile; fileRef = 10603EE61CE9C97A00842621 /* AppDelegateParse.m */; };
 		106C64C91C83511400E6CD95 /* PCSProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 106C64C81C83511400E6CD95 /* PCSProtocols.swift */; };
 		106C64CB1C83522800E6CD95 /* WorkerHomeActionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 106C64CA1C83522800E6CD95 /* WorkerHomeActionDelegate.swift */; };
 		106C64CD1C84070A00E6CD95 /* PCSDefines.swift in Sources */ = {isa = PBXBuildFile; fileRef = 106C64CC1C84070A00E6CD95 /* PCSDefines.swift */; };
@@ -644,6 +645,8 @@
 		105242911C9CFEF2005A55DC /* GetActivityPersonsReq.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetActivityPersonsReq.swift; sourceTree = "<group>"; };
 		105C198E1C994DC700103B38 /* GetCongressInfoReq.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetCongressInfoReq.swift; sourceTree = "<group>"; };
 		105C19901C9A3E4A00103B38 /* EditVariableReq.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditVariableReq.swift; sourceTree = "<group>"; };
+		10603EE51CE9C97A00842621 /* AppDelegateParse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegateParse.h; sourceTree = "<group>"; };
+		10603EE61CE9C97A00842621 /* AppDelegateParse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegateParse.m; sourceTree = "<group>"; };
 		106C64C81C83511400E6CD95 /* PCSProtocols.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PCSProtocols.swift; sourceTree = "<group>"; };
 		106C64CA1C83522800E6CD95 /* WorkerHomeActionDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WorkerHomeActionDelegate.swift; sourceTree = "<group>"; };
 		106C64CC1C84070A00E6CD95 /* PCSDefines.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PCSDefines.swift; sourceTree = "<group>"; };
@@ -819,7 +822,7 @@
 		10C0F12F1CA93D9C000BA06E /* JPUSHService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JPUSHService.h; sourceTree = "<group>"; };
 		10CFFCDA1CD83B2C00866C33 /* QRCodeManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QRCodeManager.swift; sourceTree = "<group>"; };
 		10CFFCDC1CD83EA200866C33 /* PCSError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PCSError.swift; sourceTree = "<group>"; };
-		10D0D56C1C4CD1D00093F687 /* PeopleCongressSystem.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PeopleCongressSystem.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		10D0D56C1C4CD1D00093F687 /* PCSystem.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PCSystem.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		10D0D56F1C4CD1D00093F687 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		10D0D5741C4CD1D00093F687 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		10D0D5771C4CD1D00093F687 /* PeopleCongressSystem.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = PeopleCongressSystem.xcdatamodel; sourceTree = "<group>"; };
@@ -1840,7 +1843,7 @@
 		10D0D56D1C4CD1D00093F687 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				10D0D56C1C4CD1D00093F687 /* PeopleCongressSystem.app */,
+				10D0D56C1C4CD1D00093F687 /* PCSystem.app */,
 				10D0D5831C4CD1D00093F687 /* PeopleCongressSystemUITests.xctest */,
 			);
 			name = Products;
@@ -1862,6 +1865,8 @@
 				10D0D56F1C4CD1D00093F687 /* AppDelegate.swift */,
 				10AC2E261CD9C4E900D58AAC /* AppDelegateEaseMob.h */,
 				10AC2E271CD9C4E900D58AAC /* AppDelegateEaseMob.m */,
+				10603EE51CE9C97A00842621 /* AppDelegateParse.h */,
+				10603EE61CE9C97A00842621 /* AppDelegateParse.m */,
 				10D0D5791C4CD1D00093F687 /* Assets.xcassets */,
 				10D0D57B1C4CD1D00093F687 /* LaunchScreen.storyboard */,
 				10D0D57E1C4CD1D00093F687 /* Info.plist */,
@@ -2286,9 +2291,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		10D0D56B1C4CD1D00093F687 /* PeopleCongressSystem */ = {
+		10D0D56B1C4CD1D00093F687 /* PCSystem */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 10D0D58C1C4CD1D10093F687 /* Build configuration list for PBXNativeTarget "PeopleCongressSystem" */;
+			buildConfigurationList = 10D0D58C1C4CD1D10093F687 /* Build configuration list for PBXNativeTarget "PCSystem" */;
 			buildPhases = (
 				CBA8A13155361E9AB17BDE15 /* 📦 Check Pods Manifest.lock */,
 				10D0D5681C4CD1D00093F687 /* Sources */,
@@ -2301,9 +2306,9 @@
 			);
 			dependencies = (
 			);
-			name = PeopleCongressSystem;
+			name = PCSystem;
 			productName = PeopleCongressSystem;
-			productReference = 10D0D56C1C4CD1D00093F687 /* PeopleCongressSystem.app */;
+			productReference = 10D0D56C1C4CD1D00093F687 /* PCSystem.app */;
 			productType = "com.apple.product-type.application";
 		};
 		10D0D5821C4CD1D00093F687 /* PeopleCongressSystemUITests */ = {
@@ -2362,7 +2367,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				10D0D56B1C4CD1D00093F687 /* PeopleCongressSystem */,
+				10D0D56B1C4CD1D00093F687 /* PCSystem */,
 				10D0D5821C4CD1D00093F687 /* PeopleCongressSystemUITests */,
 			);
 		};
@@ -2556,6 +2561,7 @@
 				10D0D5CF1C4FC3420093F687 /* TagListCell.swift in Sources */,
 				107505711C914E8A00C9589E /* RecordCell.swift in Sources */,
 				100B20381C88923600435EF0 /* GroupViewController.swift in Sources */,
+				10603EE71CE9C97A00842621 /* AppDelegateParse.m in Sources */,
 				100B20401C895FC600435EF0 /* GetPersonListReq.swift in Sources */,
 				103771451CC773F700ECEBEA /* EMRobotChatTextBubbleView.m in Sources */,
 				103770D21CC773A500ECEBEA /* XHMessageTextView.m in Sources */,
@@ -2729,7 +2735,7 @@
 /* Begin PBXTargetDependency section */
 		10D0D5851C4CD1D00093F687 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 10D0D56B1C4CD1D00093F687 /* PeopleCongressSystem */;
+			target = 10D0D56B1C4CD1D00093F687 /* PCSystem */;
 			targetProxy = 10D0D5841C4CD1D00093F687 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -2855,7 +2861,7 @@
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -2897,8 +2903,6 @@
 					"\"GrowingTextView\"",
 					"-framework",
 					"\"HUIPatternLockView_Swift\"",
-					"-framework",
-					"\"ReachabilitySwift\"",
 					"-framework",
 					"\"TagListView\"",
 					"-ObjC",
@@ -2918,7 +2922,7 @@
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -2960,8 +2964,6 @@
 					"\"GrowingTextView\"",
 					"-framework",
 					"\"HUIPatternLockView_Swift\"",
-					"-framework",
-					"\"ReachabilitySwift\"",
 					"-framework",
 					"\"TagListView\"",
 					"-ObjC",
@@ -3009,7 +3011,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		10D0D58C1C4CD1D10093F687 /* Build configuration list for PBXNativeTarget "PeopleCongressSystem" */ = {
+		10D0D58C1C4CD1D10093F687 /* Build configuration list for PBXNativeTarget "PCSystem" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				10D0D58D1C4CD1D10093F687 /* Debug */,

@@ -19,7 +19,7 @@
 #import "ContactListSelectViewController.h"
 #import "ChatDemoHelper.h"
 
-#import "PeopleCongressSystem-Swift.h"
+#import "PCSystem-Swift.h"
 
 @interface ChatViewController ()<UIAlertViewDelegate, EaseMessageViewControllerDelegate, EaseMessageViewControllerDataSource,EMClientDelegate>
 {

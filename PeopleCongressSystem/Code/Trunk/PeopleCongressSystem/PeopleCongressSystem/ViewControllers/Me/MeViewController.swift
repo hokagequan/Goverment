@@ -53,15 +53,31 @@ class MeViewController: UITableViewController {
     }
     
     func loadUserInfo() {
-        guard let user = UserProfileManager.sharedInstance().getCurUserProfile() else {
-            return
-        }
+//        guard let user = UserProfileManager.sharedInstance().getCurUserProfile() else {
+//            return
+//        }
         
         // 名字
-        nameLabel.text = user.username
+//        nameLabel.text = user.username ?? user.nickname
+        nameLabel.text = PCSDataManager.defaultManager().accountManager.user?.name
         
         // 图片
-        photoImageView.imageWithUsername(user.username, placeholderImage: nil)
+//        photoImageView.imageWithUsername(user.username, placeholderImage: nil)
+        if PCSDataManager.defaultManager().accountManager.user?.photoName == nil || photoImageView.image == nil {
+            EZLoadingActivity.show("", disableUI: true)
+            PCSDataManager.defaultManager().accountManager.getInfo { (success, message, errorCode) -> Void in
+                EZLoadingActivity.hide()
+                if success == true {
+                    if let photoName = PCSDataManager.defaultManager().accountManager.user!.photoName {
+                        let photoURL = "\(photoDownloadURL)\(photoName)"
+                        self.photoImageView.loadImageURL(photoURL, name: photoName, placeholder: "")
+                    }
+                }
+                else {
+                    ResponseErrorManger.defaultManager().handleError(errorCode, message: message)
+                }
+            }
+        }
         
         // 通知选项
         dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)) {
@@ -81,7 +97,9 @@ class MeViewController: UITableViewController {
             }
             
             let indexPath = NSIndexPath(forRow: index, inSection: 0)
-            self.tableView.reloadRowsAtIndexPaths([indexPath], withRowAnimation: UITableViewRowAnimation.None)
+            dispatch_async(dispatch_get_main_queue(), { 
+                self.tableView.reloadRowsAtIndexPaths([indexPath], withRowAnimation: UITableViewRowAnimation.None)
+            })
         }
     }
     
@@ -110,6 +128,9 @@ class MeViewController: UITableViewController {
     }
 
     @IBAction func clickEdit(sender: AnyObject) {
+        // 更改昵称，暂时屏蔽
+        return
+        
         let alert = UIAlertController(title: nil, message: "更改昵称", preferredStyle: UIAlertControllerStyle.Alert)
         let cancelAction = UIAlertAction(title: "取消", style: UIAlertActionStyle.Cancel, handler: nil)
         let okAction = UIAlertAction(title: "确定", style: UIAlertActionStyle.Default) { (action) in
@@ -144,6 +165,9 @@ class MeViewController: UITableViewController {
     }
     
     @IBAction func clickEditPhoto(sender: AnyObject) {
+        // 更改头像，暂时屏蔽
+        return
+            
         UINavigationBar.appearance().tintColor = UIColor.whiteColor()
         UINavigationBar.appearance().titleTextAttributes = [NSForegroundColorAttributeName: UIColor.whiteColor()]
         let picker = DKImagePickerController()

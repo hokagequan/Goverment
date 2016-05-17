@@ -18,7 +18,7 @@
 #import "ChatDemoHelper.h"
 //#import "EaseChineseToPinyin.h"
 
-#import "PeopleCongressSystem-Swift.h"
+#import "PCSystem-Swift.h"
 
 @interface BlackListViewController ()<UITableViewDataSource, UITableViewDelegate, SRRefreshDelegate>
 {

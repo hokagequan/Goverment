@@ -11,6 +11,7 @@
  */
 
 #import "AppDelegateEaseMob.h"
+#import "AppDelegateParse.h"
 #import "EMSDK.h"
 #import "ChatDemoHelper.h"
 //#import "MBProgressHUD.h"
@@ -79,6 +80,8 @@ didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 //        }
 //        
 //        [ChatDemoHelper shareHelper].mainVC = self.mainController;
+        
+        [[AppDelegateParse sharedInstance] initParse];
         
         [[ChatDemoHelper shareHelper] asyncGroupFromServer];
         [[ChatDemoHelper shareHelper] asyncConversationFromDB];

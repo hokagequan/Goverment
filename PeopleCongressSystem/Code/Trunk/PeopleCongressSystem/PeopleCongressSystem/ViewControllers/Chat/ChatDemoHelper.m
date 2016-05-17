@@ -12,7 +12,7 @@
 
 #import "ChatDemoHelper.h"
 
-#import "PeopleCongressSystem-Swift.h"
+#import "PCSystem-Swift.h"
 #import "ApplyViewController.h"
 #import "MBProgressHUD.h"
 

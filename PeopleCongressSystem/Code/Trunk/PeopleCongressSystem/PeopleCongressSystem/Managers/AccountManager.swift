@@ -153,6 +153,10 @@ class AccountManager {
                 return
             }
             
+            if infos.count == 0 {
+                return
+            }
+            
             success = true
             let info = (infos as! Array<AnyObject>).first as! Dictionary<String, AnyObject>
             
@@ -252,8 +256,8 @@ class AccountManager {
                     self.user?.memberType = info["MemberType"] as? String
                     self.user?.field = info["STAFF_FieldID"] as? String
                     self.user?.huanxinAccount = info["hunxinID"] as? String
-                    // FIXME: 环信账号test
-                    self.user?.huanxinAccount = "quanchengwen"
+//                    // FIXME: 环信账号test
+//                    self.user?.huanxinAccount = "quanchengwen"
                     
                     CoreDataManager.defalutManager().saveContext(nil)
                     

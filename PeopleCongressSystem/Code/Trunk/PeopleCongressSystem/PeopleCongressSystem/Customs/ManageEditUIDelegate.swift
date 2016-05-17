@@ -23,7 +23,7 @@ class ManageEditUIDelegate: NSObject, UITableViewDataSource, UITableViewDelegate
         case Max
         
         func rows() -> Array<Row> {
-            let titles = [["标题:", "类型:", "组织:"],
+            let titles = [["标题:", "类型:", "组织单位:"],
                 ["开始时间:", "结束时间:"],
                 ["地址:", "内容:"],
                 ["人员:"]

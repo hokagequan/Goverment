@@ -14,7 +14,7 @@
 
 #import "ApplyFriendCell.h"
 #import "InvitationManager.h"
-#import "PeopleCongressSystem-Swift.h"
+#import "PCSystem-Swift.h"
 
 static ApplyViewController *controller = nil;
 
