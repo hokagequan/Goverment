@@ -87,7 +87,7 @@
     [self.navigationItem setLeftBarButtonItem:backItem];
     
     [PCSCustomUtil customNavigationController:self];
-    CGFloat height = [self customPCSNavi:@"会话"];
+    CGFloat height = [self customPCSNavi:self.title];
     CGRect frame = self.tableView.frame;
     frame.origin.y += height;
     frame.size.height -= height;

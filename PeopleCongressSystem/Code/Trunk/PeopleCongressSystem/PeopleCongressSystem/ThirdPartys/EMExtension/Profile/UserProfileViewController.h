@@ -12,7 +12,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface UserProfileViewController : UITableViewController
+@interface UserProfileViewController : UIViewController
 
 @property (strong, nonatomic, readonly) NSString *username;
 

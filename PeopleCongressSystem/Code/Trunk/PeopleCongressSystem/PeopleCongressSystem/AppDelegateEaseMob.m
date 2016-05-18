@@ -53,6 +53,8 @@ didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
     
 //    [ChatDemoHelper shareHelper];
     
+    
+    
     BOOL isAutoLogin = [EMClient sharedClient].isAutoLogin;
     if (isAutoLogin){
         [[NSNotificationCenter defaultCenter] postNotificationName:KNOTIFICATION_LOGINCHANGE object:@YES];

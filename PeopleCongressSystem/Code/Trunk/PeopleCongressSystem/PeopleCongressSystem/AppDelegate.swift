@@ -34,6 +34,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         JPUSHService.setupWithOption(launchOptions, appKey: "98ef8ff0ef607654540fc5ce", channel: "AppStore", apsForProduction: false)
         
         AppDelegateEaseMob.sharedInstance().easemobApplication(application, didFinishLaunchingWithOptions: launchOptions, appkey: easemobAppKey, apnsCertName: easemobAPNS, otherConfig: nil)
+        AppDelegateParse.sharedInstance().parseApplication(application, didFinishLaunchingWithOptions: launchOptions)
         
         return true
     }

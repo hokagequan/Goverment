@@ -16,12 +16,15 @@
 #import "UserProfileManager.h"
 #import "UIImageView+HeadImage.h"
 
-@interface UserProfileViewController ()
+#import "PCSystem-Swift.h"
+
+@interface UserProfileViewController ()<UITableViewDelegate, UITableViewDataSource>
 
 @property (strong, nonatomic) UserProfileEntity *user;
 
 @property (strong, nonatomic) UIImageView *headImageView;
 @property (strong, nonatomic) UILabel *usernameLabel;
+@property (strong, nonatomic) UITableView *tableView;
 
 @end
 
@@ -42,13 +45,29 @@
     [super viewDidLoad];
     self.title = NSLocalizedString(@"title.profile", @"Profile");
     
-    self.view.backgroundColor = [UIColor colorWithRed:0.88 green:0.88 blue:0.88 alpha:1.0];
+//    self.view.backgroundColor = [UIColor colorWithRed:0.88 green:0.88 blue:0.88 alpha:1.0];
+    if ([self respondsToSelector:@selector(setEdgesForExtendedLayout:)])
+    {
+        [self setEdgesForExtendedLayout:UIRectEdgeNone];
+    }
+    
+    self.view.backgroundColor = [UIColor whiteColor];
     
     self.tableView.backgroundColor = [UIColor whiteColor];
     self.tableView.tableFooterView = [[UIView alloc] init];
     self.tableView.allowsSelection = NO;
+    self.tableView.dataSource = self;
+    self.tableView.delegate = self;
     
-    [self setupBarButtonItem];
+    [PCSCustomUtil customNavigationController:self];
+    CGFloat height = [self customPCSNavi:self.title];
+    
+    CGRect frame = self.tableView.frame;
+    frame.origin.y += height;
+    frame.size.height -= height;
+    self.tableView.frame = frame;
+    
+//    [self setupBarButtonItem];
     [self loadUserProfile];
 }
 
@@ -72,6 +91,15 @@
         _usernameLabel.textColor = [UIColor lightGrayColor];
     }
     return _usernameLabel;
+}
+
+- (UITableView *)tableView {
+    if (!_tableView) {
+        _tableView = [[UITableView alloc] initWithFrame:self.view.bounds style:UITableViewStylePlain];
+        [self.view addSubview:_tableView];
+    }
+    
+    return _tableView;
 }
 
 #pragma mark - Table view datasource
@@ -139,7 +167,7 @@
     [self hideHud];
     [self showHudInView:self.view hint:NSLocalizedString(@"loadData", @"Load data...")];
     __weak typeof(self) weakself = self;
-    [[UserProfileManager sharedInstance] loadUserProfileInBackground:@[_username] saveToLoacal:YES completion:^(BOOL success, NSError *error) {
+    [[UserProfileManager sharedInstance] loadUserProfileInBackground:@[_username] saveToLoacal:NO completion:^(BOOL success, NSError *error) {
         [weakself hideHud];
         if (success) {
             [weakself.tableView reloadData];

@@ -21,4 +21,7 @@
 
 // Categorys
 #import "UIImageView+HeadImage.h"
+
+// Others
 #import "AppDelegateEaseMob.h"
+#import "AppDelegateParse.h"
