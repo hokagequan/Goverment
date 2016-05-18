@@ -68,6 +68,7 @@
     
     CGRect frame = self.tableView.frame;
     frame.origin.y += height;
+    frame.size.height -= height;
     self.tableView.frame = frame;
     
     //通过会话管理者获取已收发消息

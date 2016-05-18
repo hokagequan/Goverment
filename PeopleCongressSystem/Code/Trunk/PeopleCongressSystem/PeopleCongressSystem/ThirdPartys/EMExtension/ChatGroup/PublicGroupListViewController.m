@@ -154,6 +154,7 @@ typedef NS_ENUM(NSInteger, GettingMoreFooterViewState){
     CGFloat height = [self customPCSNavi:self.title];
     CGRect frame = self.tableView.frame;
     frame.origin.y += height;
+    frame.size.height -= height;
     self.tableView.frame = frame;
     
     [self reloadDataSource];
