@@ -10,7 +10,7 @@
         <!--我-->
         <scene sceneID="8YG-ob-Ula">
             <objects>
-                <tableViewController id="t4j-6S-mLD" userLabel="我" customClass="MeViewController" customModule="PCSystem" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="t4j-6S-mLD" userLabel="我" customClass="MeViewController" customModule="PeopleCongressSystem" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="50" sectionHeaderHeight="100" sectionFooterHeight="80" id="mtG-Gr-sgD">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -153,7 +153,7 @@
         <!--下载二维码-->
         <scene sceneID="9M1-Ql-UJM">
             <objects>
-                <viewController hidesBottomBarWhenPushed="YES" id="H7n-jz-d8G" userLabel="下载二维码" customClass="QRCodeDownloadViewController" customModule="PCSystem" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController hidesBottomBarWhenPushed="YES" id="H7n-jz-d8G" userLabel="下载二维码" customClass="QRCodeDownloadViewController" customModule="PeopleCongressSystem" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="SIB-ny-37N"/>
                         <viewControllerLayoutGuide type="bottom" id="xvG-0M-ELD"/>
@@ -162,7 +162,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VvY-Bw-DhU" customClass="PCSNavigationView" customModule="PCSystem" customModuleProvider="target">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VvY-Bw-DhU" customClass="PCSNavigationView" customModule="PeopleCongressSystem" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="64" width="600" height="44"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
@@ -179,7 +179,7 @@
                                 <rect key="frame" x="0.0" y="108" width="600" height="492"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="QRDownloadCell" id="xyq-ZT-bYG" customClass="QRDownloadCell" customModule="PCSystem" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="QRDownloadCell" id="xyq-ZT-bYG" customClass="QRDownloadCell" customModule="PeopleCongressSystem" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="600" height="200"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="xyq-ZT-bYG" id="Kld-p2-FsR">
@@ -274,7 +274,7 @@
         <!--修改密码-->
         <scene sceneID="gZG-Hu-gC3">
             <objects>
-                <viewController storyboardIdentifier="ChangePasswordViewController" hidesBottomBarWhenPushed="YES" useStoryboardIdentifierAsRestorationIdentifier="YES" id="fdX-MZ-Yyh" userLabel="修改密码" customClass="ChangePasswordViewController" customModule="PCSystem" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ChangePasswordViewController" hidesBottomBarWhenPushed="YES" useStoryboardIdentifierAsRestorationIdentifier="YES" id="fdX-MZ-Yyh" userLabel="修改密码" customClass="ChangePasswordViewController" customModule="PeopleCongressSystem" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="NBy-CK-aj3"/>
                         <viewControllerLayoutGuide type="bottom" id="Gzi-tJ-nRQ"/>
@@ -283,7 +283,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fvG-CJ-mH9" customClass="PCSNavigationView" customModule="PCSystem" customModuleProvider="target">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fvG-CJ-mH9" customClass="PCSNavigationView" customModule="PeopleCongressSystem" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="64" width="600" height="44"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
@@ -421,7 +421,7 @@
         <!--修改手势密码-->
         <scene sceneID="vEJ-pw-9qn">
             <objects>
-                <viewController hidesBottomBarWhenPushed="YES" id="5c4-Nr-5L0" userLabel="修改手势密码" customClass="ChangeGestureViewController" customModule="PCSystem" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController hidesBottomBarWhenPushed="YES" id="5c4-Nr-5L0" userLabel="修改手势密码" customClass="ChangeGestureViewController" customModule="PeopleCongressSystem" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="B9o-Yq-TLY"/>
                         <viewControllerLayoutGuide type="bottom" id="JzC-ss-nQg"/>
@@ -430,7 +430,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7vI-P2-l5G" customClass="PCSNavigationView" customModule="PCSystem" customModuleProvider="target">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7vI-P2-l5G" customClass="PCSNavigationView" customModule="PeopleCongressSystem" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="64" width="600" height="44"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
@@ -500,7 +500,7 @@
         <!--意见反馈-->
         <scene sceneID="mRa-Tv-R9d">
             <objects>
-                <viewController hidesBottomBarWhenPushed="YES" id="wyi-b5-NcW" userLabel="意见反馈" customClass="FeedbackViewController" customModule="PCSystem" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController hidesBottomBarWhenPushed="YES" id="wyi-b5-NcW" userLabel="意见反馈" customClass="FeedbackViewController" customModule="PeopleCongressSystem" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="95I-O4-1W8"/>
                         <viewControllerLayoutGuide type="bottom" id="LpQ-CT-gn7"/>
@@ -509,7 +509,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="shK-VT-A8f" customClass="PCSNavigationView" customModule="PCSystem" customModuleProvider="target">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="shK-VT-A8f" customClass="PCSNavigationView" customModule="PeopleCongressSystem" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="64" width="600" height="44"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
@@ -569,7 +569,7 @@
         <!--关于-->
         <scene sceneID="ta3-GT-ryR">
             <objects>
-                <viewController hidesBottomBarWhenPushed="YES" id="U9y-jI-Zhs" userLabel="关于" customClass="AboutViewController" customModule="PCSystem" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController hidesBottomBarWhenPushed="YES" id="U9y-jI-Zhs" userLabel="关于" customClass="AboutViewController" customModule="PeopleCongressSystem" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="TQn-p7-X1u"/>
                         <viewControllerLayoutGuide type="bottom" id="jcv-bg-grE"/>
@@ -578,7 +578,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JfI-MH-FrN" customClass="PCSNavigationView" customModule="PCSystem" customModuleProvider="target">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JfI-MH-FrN" customClass="PCSNavigationView" customModule="PeopleCongressSystem" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="64" width="600" height="44"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
@@ -616,7 +616,7 @@
                                 <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="技术支持 大连公众信息产业有限公司" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="suu-S7-f0C">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="技术支持 大连公众信息产业有限公司" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="suu-S7-f0C">
                                 <rect key="frame" x="20" y="297" width="560" height="15"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="15" id="yT2-NE-aeL"/>
@@ -626,7 +626,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="http://www.dlpii.com/" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OKk-bC-NhV">
-                                <rect key="frame" x="20" y="297" width="560" height="15"/>
+                                <rect key="frame" x="20" y="320" width="560" height="15"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="15" id="04k-6R-qW9"/>
                                     <constraint firstAttribute="height" constant="15" id="ZDw-Zd-dNJ"/>
@@ -737,9 +737,11 @@
                             <constraint firstItem="OKk-bC-NhV" firstAttribute="leading" secondItem="suu-S7-f0C" secondAttribute="leading" id="YJq-Ro-gB2"/>
                             <constraint firstItem="EPU-Zg-bEy" firstAttribute="top" secondItem="aVj-Bz-L4A" secondAttribute="bottom" constant="37" id="dcM-2A-Vnu"/>
                             <constraint firstAttribute="trailing" secondItem="suu-S7-f0C" secondAttribute="trailing" constant="20" id="dhG-Lj-NTd"/>
+                            <constraint firstItem="OKk-bC-NhV" firstAttribute="height" secondItem="suu-S7-f0C" secondAttribute="height" id="f9E-G9-0oX"/>
                             <constraint firstItem="OKk-bC-NhV" firstAttribute="top" secondItem="suu-S7-f0C" secondAttribute="top" id="fYM-Dm-buh"/>
                             <constraint firstAttribute="trailing" secondItem="Zdb-M4-Bc6" secondAttribute="trailing" constant="20" id="fkf-Z8-88I"/>
                             <constraint firstItem="OKk-bC-NhV" firstAttribute="bottom" secondItem="suu-S7-f0C" secondAttribute="bottom" id="g93-yV-y7I"/>
+                            <constraint firstItem="OKk-bC-NhV" firstAttribute="top" secondItem="suu-S7-f0C" secondAttribute="bottom" constant="8" id="gYR-Nz-VbN"/>
                             <constraint firstItem="aVj-Bz-L4A" firstAttribute="leading" secondItem="AdK-Jg-hgq" secondAttribute="leading" constant="20" id="hiO-9B-X70"/>
                             <constraint firstAttribute="trailing" secondItem="JfI-MH-FrN" secondAttribute="trailing" id="ltd-Op-qwv"/>
                             <constraint firstAttribute="trailing" secondItem="EPU-Zg-bEy" secondAttribute="trailing" constant="20" id="mU4-X0-KgZ"/>
@@ -757,6 +759,8 @@
                                 <exclude reference="Jwn-0W-roz"/>
                                 <exclude reference="OGW-J7-zDO"/>
                                 <exclude reference="UMq-UJ-ZyV"/>
+                                <exclude reference="fYM-Dm-buh"/>
+                                <exclude reference="g93-yV-y7I"/>
                                 <exclude reference="2kO-Zc-8Zc"/>
                                 <exclude reference="xXL-lV-kQp"/>
                             </mask>
@@ -770,7 +774,7 @@
         <!--CA认证-->
         <scene sceneID="6mS-Tl-mF3">
             <objects>
-                <viewController id="zUe-ii-SNu" userLabel="CA认证" customClass="CAAboutViewController" customModule="PCSystem" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="zUe-ii-SNu" userLabel="CA认证" customClass="CAAboutViewController" customModule="PeopleCongressSystem" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="kYW-pR-uiV"/>
                         <viewControllerLayoutGuide type="bottom" id="rhS-55-Ibv"/>
@@ -779,7 +783,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DDd-f9-KSb" customClass="PCSNavigationView" customModule="PCSystem" customModuleProvider="target">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DDd-f9-KSb" customClass="PCSNavigationView" customModule="PeopleCongressSystem" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="64" width="600" height="44"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
@@ -833,7 +837,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="edit" width="375" height="205"/>
+        <image name="edit" width="60" height="60"/>
         <image name="gesture_dot_nor" width="64" height="64"/>
         <image name="gesture_dot_sel" width="64" height="64"/>
         <image name="guo_hui_small" width="54" height="56"/>

@@ -65,8 +65,8 @@
                                         <state key="normal" image="card_scan"/>
                                         <variation key="default">
                                             <mask key="constraints">
-                                                <exclude reference="tWD-8X-TF2"/>
                                                 <exclude reference="3wd-Ij-eWc"/>
+                                                <exclude reference="tWD-8X-TF2"/>
                                             </mask>
                                         </variation>
                                         <connections>

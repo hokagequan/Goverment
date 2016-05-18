@@ -289,12 +289,6 @@
                                     <action selector="clickAutoSignIn:" destination="o5A-KL-8xA" eventType="touchUpInside" id="r3G-ZS-Yfj"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="技术支持：大连公众信息产业有限公司" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gF4-TX-84W">
-                                <rect key="frame" x="0.0" y="578.5" width="600" height="13.5"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="11"/>
-                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="版权所有：人大常委会" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xyy-Ks-lPv">
                                 <rect key="frame" x="0.0" y="557" width="600" height="13.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="11"/>
@@ -339,8 +333,8 @@
                             <constraint firstItem="JCT-jS-5Y9" firstAttribute="height" secondItem="ZMa-lJ-nGv" secondAttribute="height" id="9cn-Xe-IzA"/>
                             <constraint firstItem="gtw-Ji-US5" firstAttribute="top" secondItem="ZMa-lJ-nGv" secondAttribute="bottom" multiplier="59:667" id="9lA-2U-ho7"/>
                             <constraint firstItem="CPV-eB-aO4" firstAttribute="centerY" secondItem="bzO-dB-bh8" secondAttribute="centerY" id="Afb-gk-K7O"/>
-                            <constraint firstItem="uZt-Sk-p5Q" firstAttribute="top" secondItem="gF4-TX-84W" secondAttribute="bottom" constant="8" id="C8H-In-Mpv"/>
                             <constraint firstItem="7WL-q1-6Js" firstAttribute="top" secondItem="dI8-gx-vKe" secondAttribute="bottom" constant="20" id="EHG-Tj-OoG"/>
+                            <constraint firstItem="uZt-Sk-p5Q" firstAttribute="top" secondItem="Xyy-Ks-lPv" secondAttribute="bottom" constant="29.5" id="EyP-87-2OH"/>
                             <constraint firstItem="JCT-jS-5Y9" firstAttribute="top" secondItem="CPV-eB-aO4" secondAttribute="bottom" constant="10" id="HZ0-ED-a4u"/>
                             <constraint firstItem="dI8-gx-vKe" firstAttribute="top" secondItem="gtw-Ji-US5" secondAttribute="bottom" constant="12" id="Kh9-8i-LSL"/>
                             <constraint firstItem="JCT-jS-5Y9" firstAttribute="height" secondItem="Amo-jT-wTT" secondAttribute="height" id="Ky3-VI-GDH"/>
@@ -348,7 +342,6 @@
                             <constraint firstItem="nce-Xe-EIF" firstAttribute="width" secondItem="7WL-q1-6Js" secondAttribute="width" id="Mbo-mA-myL"/>
                             <constraint firstItem="JCT-jS-5Y9" firstAttribute="height" secondItem="nce-Xe-EIF" secondAttribute="height" id="Omx-1D-UbZ"/>
                             <constraint firstItem="Xyy-Ks-lPv" firstAttribute="leading" secondItem="ZMa-lJ-nGv" secondAttribute="leading" id="Phq-8O-t7r"/>
-                            <constraint firstItem="gF4-TX-84W" firstAttribute="leading" secondItem="ZMa-lJ-nGv" secondAttribute="leading" id="QSA-cQ-8lO"/>
                             <constraint firstItem="Amo-jT-wTT" firstAttribute="leading" secondItem="7WL-q1-6Js" secondAttribute="leading" id="ShB-Hy-xbt"/>
                             <constraint firstItem="gtw-Ji-US5" firstAttribute="centerX" secondItem="ZMa-lJ-nGv" secondAttribute="centerX" id="T56-1Q-SGc"/>
                             <constraint firstItem="1lk-N4-8Ob" firstAttribute="centerX" secondItem="JCT-jS-5Y9" secondAttribute="centerX" id="Tdc-Qx-trg"/>
@@ -368,11 +361,8 @@
                             <constraint firstItem="JCT-jS-5Y9" firstAttribute="width" secondItem="nce-Xe-EIF" secondAttribute="width" id="g8t-fT-NAL"/>
                             <constraint firstItem="bzO-dB-bh8" firstAttribute="top" secondItem="nce-Xe-EIF" secondAttribute="bottom" constant="10" id="hYv-yI-uHn"/>
                             <constraint firstItem="nce-Xe-EIF" firstAttribute="top" secondItem="Amo-jT-wTT" secondAttribute="bottom" constant="10" id="iDG-q6-qP3"/>
-                            <constraint firstAttribute="trailing" secondItem="gF4-TX-84W" secondAttribute="trailing" id="kSW-Qk-AvM"/>
                             <constraint firstItem="nce-Xe-EIF" firstAttribute="centerX" secondItem="7WL-q1-6Js" secondAttribute="centerX" id="kgq-xf-Tit"/>
-                            <constraint firstItem="gF4-TX-84W" firstAttribute="top" secondItem="Xyy-Ks-lPv" secondAttribute="bottom" constant="8" id="lKi-Eg-lub"/>
                             <constraint firstItem="Xyy-Ks-lPv" firstAttribute="centerX" secondItem="ZMa-lJ-nGv" secondAttribute="centerX" id="nSR-Xn-Pm3"/>
-                            <constraint firstItem="gF4-TX-84W" firstAttribute="centerX" secondItem="ZMa-lJ-nGv" secondAttribute="centerX" id="nmB-3p-xqA"/>
                             <constraint firstItem="1lk-N4-8Ob" firstAttribute="top" secondItem="JCT-jS-5Y9" secondAttribute="bottom" constant="16" id="q9R-5P-Ncy"/>
                             <constraint firstItem="7WL-q1-6Js" firstAttribute="height" secondItem="ZMa-lJ-nGv" secondAttribute="height" multiplier="42:667" id="rKn-bG-wQL"/>
                             <constraint firstItem="CPV-eB-aO4" firstAttribute="height" secondItem="bzO-dB-bh8" secondAttribute="height" id="rfD-pg-xzy"/>
@@ -384,8 +374,8 @@
                         </constraints>
                         <variation key="default">
                             <mask key="constraints">
-                                <exclude reference="e9B-kP-Lxy"/>
                                 <exclude reference="8tl-tT-Njg"/>
+                                <exclude reference="e9B-kP-Lxy"/>
                                 <exclude reference="eA8-3m-3vk"/>
                                 <exclude reference="x9g-eS-t17"/>
                                 <exclude reference="fWA-Bp-THQ"/>
@@ -418,8 +408,6 @@
                         <outletCollection property="topSpaceLCs" destination="hYv-yI-uHn" collectionClass="NSMutableArray" id="nrB-zw-TZL"/>
                         <outletCollection property="topSpaceLCs" destination="HZ0-ED-a4u" collectionClass="NSMutableArray" id="KCY-y9-kjQ"/>
                         <outletCollection property="topSpaceLCs" destination="q9R-5P-Ncy" collectionClass="NSMutableArray" id="O4j-If-aLA"/>
-                        <outletCollection property="topSpaceLCs" destination="C8H-In-Mpv" collectionClass="NSMutableArray" id="QIg-3y-qct"/>
-                        <outletCollection property="topSpaceLCs" destination="lKi-Eg-lub" collectionClass="NSMutableArray" id="BV7-Nd-d0d"/>
                         <outletCollection property="topSpaceLCs" destination="fem-no-FHq" collectionClass="NSMutableArray" id="oQI-Jt-l5f"/>
                         <segue destination="nuY-8n-wNE" kind="show" identifier="MainSegue" id="eEb-Ro-XCT"/>
                         <segue destination="BqY-Wb-uXP" kind="show" identifier="GestureSegue" id="JEG-m9-Z1h"/>
