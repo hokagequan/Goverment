@@ -204,7 +204,7 @@
 {
     // Return the number of rows in the section.
     if (section == 0) {
-        return 2;
+        return 1;
     }
     return [self.dataSource count];
 }
