@@ -19,6 +19,7 @@
 #import "RealtimeSearchUtil.h"
 #import "EMCursorResult.h"
 #import "BaseTableViewCell.h"
+#import "PeopleCongressSystem-Swift.h"
 
 typedef NS_ENUM(NSInteger, GettingMoreFooterViewState){
     eGettingMoreFooterViewStateInitial,
@@ -102,10 +103,11 @@ typedef NS_ENUM(NSInteger, GettingMoreFooterViewState){
 
 #define FetchPublicGroupsPageSize   50
 
-@interface PublicGroupListViewController ()<UISearchBarDelegate, UISearchDisplayDelegate, SRRefreshDelegate>
+@interface PublicGroupListViewController ()<UISearchBarDelegate, UISearchDisplayDelegate, SRRefreshDelegate, UITableViewDelegate, UITableViewDataSource>
 
 @property (strong, nonatomic) NSMutableArray *dataSource;
 
+@property (strong, nonatomic) UITableView *tableView;
 @property (strong, nonatomic) SRRefreshView *slimeView;
 @property (strong, nonatomic) EMSearchBar *searchBar;
 @property (strong, nonatomic) EMSearchDisplayController *searchController;
@@ -116,13 +118,12 @@ typedef NS_ENUM(NSInteger, GettingMoreFooterViewState){
 
 @implementation PublicGroupListViewController
 
-- (id)initWithStyle:(UITableViewStyle)style
-{
-    self = [super initWithStyle:style];
+- (id)init {
+    self = [super init];
     if (self) {
-        // Custom initialization
         _dataSource = [NSMutableArray array];
     }
+    
     return self;
 }
 
@@ -137,8 +138,11 @@ typedef NS_ENUM(NSInteger, GettingMoreFooterViewState){
     
     // Uncomment the following line to preserve selection between presentations.
     self.title = NSLocalizedString(@"title.publicGroup", @"Public group");
+    self.view.backgroundColor = [UIColor whiteColor];
     
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
+    self.tableView.delegate = self;
+    self.tableView.dataSource = self;
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     self.tableView.backgroundColor = [UIColor whiteColor];
     self.tableView.tableFooterView = self.footerView;
@@ -146,12 +150,12 @@ typedef NS_ENUM(NSInteger, GettingMoreFooterViewState){
     [self.tableView addSubview:self.slimeView];
     [self searchController];
     
-    UIButton *backButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 44, 44)];
-    [backButton setImage:[UIImage imageNamed:@"back.png"] forState:UIControlStateNormal];
-    [backButton addTarget:self.navigationController action:@selector(popViewControllerAnimated:) forControlEvents:UIControlEventTouchUpInside];
-    UIBarButtonItem *backItem = [[UIBarButtonItem alloc] initWithCustomView:backButton];
-    [self.navigationItem setLeftBarButtonItem:backItem];
-
+    [PCSCustomUtil customNavigationController:self];
+    CGFloat height = [self customPCSNavi:self.title];
+    CGRect frame = self.tableView.frame;
+    frame.origin.y += height;
+    self.tableView.frame = frame;
+    
     [self reloadDataSource];
 }
 
@@ -172,6 +176,16 @@ typedef NS_ENUM(NSInteger, GettingMoreFooterViewState){
 }
 
 #pragma mark - getter
+
+- (UITableView *)tableView
+{
+    if (_tableView == nil) {
+        _tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height) style:UITableViewStylePlain];
+        [self.view addSubview:_tableView];
+    }
+    
+    return _tableView;
+}
 
 - (SRRefreshView *)slimeView
 {

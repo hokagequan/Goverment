@@ -12,7 +12,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface PublicGroupDetailViewController : UITableViewController
+@interface PublicGroupDetailViewController : UIViewController
 
 - (instancetype)initWithGroupId:(NSString *)groupId;
 

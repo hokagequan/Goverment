@@ -410,7 +410,7 @@
 
 - (void)showPublicGroupList
 {
-    PublicGroupListViewController *publicController = [[PublicGroupListViewController alloc] initWithStyle:UITableViewStylePlain];
+    PublicGroupListViewController *publicController = [[PublicGroupListViewController alloc] init];
     [self.navigationController pushViewController:publicController animated:YES];
 }
 

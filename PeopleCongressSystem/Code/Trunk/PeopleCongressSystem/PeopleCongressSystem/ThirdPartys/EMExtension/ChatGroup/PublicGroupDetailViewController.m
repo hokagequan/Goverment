@@ -11,14 +11,16 @@
   */
 
 #import "PublicGroupDetailViewController.h"
+#import "PeopleCongressSystem-Swift.h"
 
-@interface PublicGroupDetailViewController ()<UIAlertViewDelegate>
+@interface PublicGroupDetailViewController ()<UIAlertViewDelegate, UITableViewDataSource, UITableViewDelegate>
 
 @property (strong, nonatomic) NSString *groupId;
 @property (strong, nonatomic) EMGroup *group;
 @property (strong, nonatomic) UIView *headerView;
 @property (strong, nonatomic) UIView *footerView;
 @property (strong, nonatomic) UIButton *footerButton;
+@property (strong, nonatomic) UITableView *tableView;
 
 @property (strong, nonatomic) UILabel *nameLabel;
 
@@ -28,7 +30,7 @@
 
 - (instancetype)initWithGroupId:(NSString *)groupId
 {
-    self = [self initWithStyle:UITableViewStylePlain];
+    self = [self init];
     if (self) {
         _groupId = groupId;
     }
@@ -36,9 +38,9 @@
     return self;
 }
 
-- (id)initWithStyle:(UITableViewStyle)style
+- (id)init
 {
-    self = [super initWithStyle:style];
+    self = [super init];
     if (self) {
         // Custom initialization
     }
@@ -50,16 +52,20 @@
     [super viewDidLoad];
     
     // Uncomment the following line to preserve selection between presentations.
+    self.view.backgroundColor = [UIColor whiteColor];
+    [self setEdgesForExtendedLayout:UIRectEdgeNone];
     
     self.tableView.backgroundColor = [UIColor whiteColor];
     self.tableView.tableHeaderView = self.headerView;
     self.tableView.tableFooterView = self.footerView;
+    self.tableView.dataSource = self;
+    self.tableView.delegate = self;
     
-    UIButton *backButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 44, 44)];
-    [backButton setImage:[UIImage imageNamed:@"back.png"] forState:UIControlStateNormal];
-    [backButton addTarget:self.navigationController action:@selector(popViewControllerAnimated:) forControlEvents:UIControlEventTouchUpInside];
-    UIBarButtonItem *backItem = [[UIBarButtonItem alloc] initWithCustomView:backButton];
-    [self.navigationItem setLeftBarButtonItem:backItem];
+    [PCSCustomUtil customNavigationController:self];
+    CGFloat height = [self customPCSNavi:self.title];
+    CGRect frame = self.tableView.frame;
+    frame.origin.y += height;
+    self.tableView.frame = frame;
     
     [self fetchGroupInfo];
 }
@@ -71,6 +77,16 @@
 }
 
 #pragma mark - getter
+
+- (UITableView *)tableView
+{
+    if (_tableView == nil) {
+        _tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height) style:UITableViewStylePlain];
+        [self.view addSubview:_tableView];
+    }
+    
+    return _tableView;
+}
 
 - (UIView *)headerView
 {
