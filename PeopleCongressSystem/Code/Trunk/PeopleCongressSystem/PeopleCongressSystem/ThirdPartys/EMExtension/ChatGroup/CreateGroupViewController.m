@@ -14,6 +14,7 @@
 
 #import "ContactSelectionViewController.h"
 #import "EMTextView.h"
+#import "PeopleCongressSystem-Swift.h"
 
 @interface CreateGroupViewController ()<UITextFieldDelegate, UITextViewDelegate, EMChooseViewDelegate>
 
@@ -29,6 +30,8 @@
 @property (strong, nonatomic) UILabel *groupMemberTitleLabel;
 @property (strong, nonatomic) UISwitch *groupMemberSwitch;
 @property (strong, nonatomic) UILabel *groupMemberLabel;
+
+@property (nonatomic) CGFloat deltaH;
 
 @end
 
@@ -59,17 +62,18 @@
     UIButton *addButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 60, 44)];
     addButton.titleLabel.font = [UIFont systemFontOfSize:14.0];
     [addButton setTitle:NSLocalizedString(@"group.create.addOccupant", @"add members") forState:UIControlStateNormal];
-    [addButton setTitleColor:[UIColor colorWithRed:32 / 255.0 green:134 / 255.0 blue:158 / 255.0 alpha:1.0] forState:UIControlStateNormal];
-    [addButton setTitleColor:[UIColor whiteColor] forState:UIControlStateHighlighted];
+    [addButton setTitleColor:[UIColor redColor] forState:UIControlStateNormal];
     [addButton addTarget:self action:@selector(addContacts:) forControlEvents:UIControlEventTouchUpInside];
-    _rightItem = [[UIBarButtonItem alloc] initWithCustomView:addButton];
-    [self.navigationItem setRightBarButtonItem:_rightItem];
+//    _rightItem = [[UIBarButtonItem alloc] initWithCustomView:addButton];
+//    [self.navigationItem setRightBarButtonItem:_rightItem];
     
-    UIButton *backButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 44, 44)];
-    [backButton setImage:[UIImage imageNamed:@"back.png"] forState:UIControlStateNormal];
-    [backButton addTarget:self.navigationController action:@selector(popViewControllerAnimated:) forControlEvents:UIControlEventTouchUpInside];
-    UIBarButtonItem *backItem = [[UIBarButtonItem alloc] initWithCustomView:backButton];
-    [self.navigationItem setLeftBarButtonItem:backItem];
+//    UIButton *backButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 44, 44)];
+//    [backButton setImage:[UIImage imageNamed:@"back.png"] forState:UIControlStateNormal];
+//    [backButton addTarget:self.navigationController action:@selector(popViewControllerAnimated:) forControlEvents:UIControlEventTouchUpInside];
+//    UIBarButtonItem *backItem = [[UIBarButtonItem alloc] initWithCustomView:backButton];
+//    [self.navigationItem setLeftBarButtonItem:backItem];
+    [PCSCustomUtil customNavigationController:self];
+    self.deltaH = [self customPCSNaviWithRightButton:self.title button:addButton];
     
     [self.view addSubview:self.textField];
     [self.view addSubview:self.textView];
@@ -87,7 +91,7 @@
 - (UITextField *)textField
 {
     if (_textField == nil) {
-        _textField = [[UITextField alloc] initWithFrame:CGRectMake(10, 10, 300, 40)];
+        _textField = [[UITextField alloc] initWithFrame:CGRectMake(10, 10 + self.deltaH, 300, 40)];
         _textField.layer.borderColor = [[UIColor lightGrayColor] CGColor];
         _textField.layer.borderWidth = 0.5;
         _textField.layer.cornerRadius = 3;
@@ -108,7 +112,7 @@
 - (EMTextView *)textView
 {
     if (_textView == nil) {
-        _textView = [[EMTextView alloc] initWithFrame:CGRectMake(10, 70, 300, 80)];
+        _textView = [[EMTextView alloc] initWithFrame:CGRectMake(10, 70 + self.deltaH, 300, 80)];
         _textView.layer.borderColor = [[UIColor lightGrayColor] CGColor];
         _textView.layer.borderWidth = 0.5;
         _textView.layer.cornerRadius = 3;
@@ -125,7 +129,7 @@
 - (UIView *)switchView
 {
     if (_switchView == nil) {
-        _switchView = [[UIView alloc] initWithFrame:CGRectMake(10, 160, 300, 90)];
+        _switchView = [[UIView alloc] initWithFrame:CGRectMake(10, 160 + self.deltaH, 300, 90)];
         _switchView.backgroundColor = [UIColor clearColor];
         
         CGFloat oY = 0;
