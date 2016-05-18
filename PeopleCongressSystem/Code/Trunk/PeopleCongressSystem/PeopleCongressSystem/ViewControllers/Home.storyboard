@@ -26,7 +26,7 @@
         <!--Home View Controller-->
         <scene sceneID="hcj-1O-jZG">
             <objects>
-                <viewController id="drw-Ea-fjy" customClass="HomeViewController" customModule="PCSystem" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="drw-Ea-fjy" customClass="HomeViewController" customModule="PeopleCongressSystem" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Yze-YW-zKn"/>
                         <viewControllerLayoutGuide type="bottom" id="8ph-kt-EsP"/>
@@ -56,7 +56,7 @@
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="NormalImageCell" id="iHO-nB-3Ub" customClass="NormalImageCell" customModule="PCSystem" customModuleProvider="target">
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="NormalImageCell" id="iHO-nB-3Ub" customClass="NormalImageCell" customModule="PeopleCongressSystem" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="70" height="100"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
@@ -176,7 +176,7 @@
         <!--活动管理-->
         <scene sceneID="TYC-7W-BqQ">
             <objects>
-                <viewController hidesBottomBarWhenPushed="YES" id="BkH-2E-4Ca" userLabel="活动管理" customClass="PerformanceRecordsViewController" customModule="PCSystem" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController hidesBottomBarWhenPushed="YES" id="BkH-2E-4Ca" userLabel="活动管理" customClass="PerformanceRecordsViewController" customModule="PeopleCongressSystem" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="M5D-nH-oLf"/>
                         <viewControllerLayoutGuide type="bottom" id="ooC-f0-1xe"/>
@@ -185,7 +185,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1ah-le-gNb" customClass="PCSNavigationView" customModule="PCSystem" customModuleProvider="target">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1ah-le-gNb" customClass="PCSNavigationView" customModule="PeopleCongressSystem" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="64" width="600" height="44"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SVr-vX-gKY">
@@ -273,7 +273,7 @@
         <!--履职记录-->
         <scene sceneID="skc-jp-X1p">
             <objects>
-                <viewController hidesBottomBarWhenPushed="YES" id="U5H-xC-1Bc" userLabel="履职记录" customClass="VariableRecordsViewController" customModule="PCSystem" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController hidesBottomBarWhenPushed="YES" id="U5H-xC-1Bc" userLabel="履职记录" customClass="VariableRecordsViewController" customModule="PeopleCongressSystem" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="tLu-yJ-2sK"/>
                         <viewControllerLayoutGuide type="bottom" id="9ds-h1-BFQ"/>
@@ -282,7 +282,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SnL-7g-SMJ" customClass="PCSNavigationView" customModule="PCSystem" customModuleProvider="target">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SnL-7g-SMJ" customClass="PCSNavigationView" customModule="PeopleCongressSystem" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="64" width="600" height="44"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vwm-HO-BCR" userLabel="Add">
@@ -321,7 +321,7 @@
                                 <rect key="frame" x="0.0" y="116" width="600" height="484"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="RecordCell" id="Pqv-nm-Ufe" customClass="RecordCell" customModule="PCSystem" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="RecordCell" id="Pqv-nm-Ufe" customClass="RecordCell" customModule="PeopleCongressSystem" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="600" height="83"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Pqv-nm-Ufe" id="vX9-7A-GFe">
@@ -402,7 +402,7 @@
         <!--履职详情-->
         <scene sceneID="tcj-Eu-cN2">
             <objects>
-                <viewController hidesBottomBarWhenPushed="YES" id="ZAL-RZ-HiG" userLabel="履职详情" customClass="VariableDetailViewController" customModule="PCSystem" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController hidesBottomBarWhenPushed="YES" id="ZAL-RZ-HiG" userLabel="履职详情" customClass="VariableDetailViewController" customModule="PeopleCongressSystem" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="84D-cd-IyD"/>
                         <viewControllerLayoutGuide type="bottom" id="FRD-UW-H3c"/>
@@ -411,7 +411,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fwe-CB-AdQ" customClass="PCSNavigationView" customModule="PCSystem" customModuleProvider="target">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fwe-CB-AdQ" customClass="PCSNavigationView" customModule="PeopleCongressSystem" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="64" width="600" height="44"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="j0i-55-GWH">
@@ -443,7 +443,7 @@
                                 <rect key="frame" x="0.0" y="116" width="600" height="484"/>
                                 <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="CollectionViewCell" id="T10-oy-POb" customClass="CollectionViewCell" customModule="PCSystem" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="CollectionViewCell" id="T10-oy-POb" customClass="CollectionViewCell" customModule="PeopleCongressSystem" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="49.5" width="600" height="130"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="T10-oy-POb" id="Eje-mo-vM5">
@@ -469,7 +469,7 @@
                                                         <inset key="sectionInset" minX="15" minY="15" maxX="15" maxY="15"/>
                                                     </collectionViewFlowLayout>
                                                     <cells>
-                                                        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="SimpleImageCell" id="5b9-5g-e3c" customClass="SimpleImageCell" customModule="PCSystem" customModuleProvider="target">
+                                                        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="SimpleImageCell" id="5b9-5g-e3c" customClass="SimpleImageCell" customModule="PeopleCongressSystem" customModuleProvider="target">
                                                             <rect key="frame" x="15" y="15" width="70" height="70"/>
                                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                             <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
@@ -617,7 +617,7 @@
         <!--知情知政-->
         <scene sceneID="i2d-6s-yuK">
             <objects>
-                <viewController hidesBottomBarWhenPushed="YES" id="6Oz-BJ-aFz" userLabel="知情知政" customClass="SituationViewController" customModule="PCSystem" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController hidesBottomBarWhenPushed="YES" id="6Oz-BJ-aFz" userLabel="知情知政" customClass="SituationViewController" customModule="PeopleCongressSystem" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="w3z-bS-0my"/>
                         <viewControllerLayoutGuide type="bottom" id="6X9-qr-YZq"/>
@@ -626,7 +626,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YWr-ZC-LrS" customClass="PCSNavigationView" customModule="PCSystem" customModuleProvider="target">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YWr-ZC-LrS" customClass="PCSNavigationView" customModule="PeopleCongressSystem" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="64" width="600" height="44"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
@@ -696,7 +696,7 @@
         <!--活动详情-->
         <scene sceneID="gdi-XG-cqO">
             <objects>
-                <viewController storyboardIdentifier="PerformanceEditViewController" hidesBottomBarWhenPushed="YES" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Kpt-zv-23Y" userLabel="活动详情" customClass="PerformanceEditViewController" customModule="PCSystem" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="PerformanceEditViewController" hidesBottomBarWhenPushed="YES" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Kpt-zv-23Y" userLabel="活动详情" customClass="PerformanceEditViewController" customModule="PeopleCongressSystem" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="KQy-NR-eJn"/>
                         <viewControllerLayoutGuide type="bottom" id="ZmJ-Zf-DE6"/>
@@ -705,7 +705,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="S2n-4Y-9bX" customClass="PCSNavigationView" customModule="PCSystem" customModuleProvider="target">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="S2n-4Y-9bX" customClass="PCSNavigationView" customModule="PeopleCongressSystem" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="64" width="600" height="44"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Os3-SM-1WR">
@@ -738,7 +738,7 @@
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <color key="sectionIndexBackgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="NormalImageTableCell" id="5jX-P3-4SD" customClass="NormalImageTableCell" customModule="PCSystem" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="NormalImageTableCell" id="5jX-P3-4SD" customClass="NormalImageTableCell" customModule="PeopleCongressSystem" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="49.5" width="600" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="5jX-P3-4SD" id="2Qx-Y6-5wh">
@@ -799,7 +799,7 @@
                                             <outlet property="titleTextField" destination="5ML-1o-M9v" id="Vma-q7-1Eg"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="QRCodeCell" rowHeight="180" id="gdB-3S-r34" customClass="QRCodeCell" customModule="PCSystem" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="QRCodeCell" rowHeight="180" id="gdB-3S-r34" customClass="QRCodeCell" customModule="PeopleCongressSystem" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="93.5" width="600" height="180"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="gdB-3S-r34" id="xpz-UK-lnx">
@@ -854,7 +854,7 @@
                                             <outlet property="titleLabel" destination="cyP-jJ-9Yr" id="HbP-W2-Qzv"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="TagListCell" rowHeight="100" id="VR1-io-LCu" customClass="TagListCell" customModule="PCSystem" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="TagListCell" rowHeight="100" id="VR1-io-LCu" customClass="TagListCell" customModule="PeopleCongressSystem" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="273.5" width="600" height="100"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="VR1-io-LCu" id="lEW-nZ-InS">
@@ -976,7 +976,7 @@
         <!--未签到列表-->
         <scene sceneID="2h2-76-nei">
             <objects>
-                <viewController id="fkk-ei-Xkl" userLabel="未签到列表" customClass="UnCheckedInListViewController" customModule="PCSystem" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="fkk-ei-Xkl" userLabel="未签到列表" customClass="UnCheckedInListViewController" customModule="PeopleCongressSystem" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="ltQ-rB-zIH"/>
                         <viewControllerLayoutGuide type="bottom" id="dXC-Qr-mpC"/>
@@ -985,7 +985,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Lqr-Fj-xA3" customClass="PCSNavigationView" customModule="PCSystem" customModuleProvider="target">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Lqr-Fj-xA3" customClass="PCSNavigationView" customModule="PeopleCongressSystem" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="64" width="600" height="44"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
@@ -1002,7 +1002,7 @@
                                 <rect key="frame" x="0.0" y="116" width="600" height="484"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="UnCheckedInCell" id="3w0-xF-guC" customClass="UnCheckedInCell" customModule="PCSystem" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="UnCheckedInCell" id="3w0-xF-guC" customClass="UnCheckedInCell" customModule="PeopleCongressSystem" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="600" height="80"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="3w0-xF-guC" id="ELx-Tj-EW4">
@@ -1125,7 +1125,7 @@
                                         <constraint firstAttribute="height" constant="40" id="uR4-uD-uPK"/>
                                     </constraints>
                                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tQs-8Y-5Ia" userLabel="Border">
@@ -1239,7 +1239,7 @@
         <!--代表团选择-->
         <scene sceneID="P4R-cm-QJq">
             <objects>
-                <viewController id="rjg-z4-4KX" userLabel="代表团选择" customClass="GroupViewController" customModule="PCSystem" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="rjg-z4-4KX" userLabel="代表团选择" customClass="GroupViewController" customModule="PeopleCongressSystem" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="ckP-5t-4xg"/>
                         <viewControllerLayoutGuide type="bottom" id="erx-VY-VzO"/>
@@ -1248,7 +1248,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Qoq-t4-TVY" customClass="PCSNavigationView" customModule="PCSystem" customModuleProvider="target">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Qoq-t4-TVY" customClass="PCSNavigationView" customModule="PeopleCongressSystem" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="64" width="600" height="44"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
@@ -1303,7 +1303,7 @@
         <!--代表选择-->
         <scene sceneID="PlU-bX-cI8">
             <objects>
-                <viewController id="xDZ-fV-QcY" userLabel="代表选择" customClass="PersonListViewController" customModule="PCSystem" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="xDZ-fV-QcY" userLabel="代表选择" customClass="PersonListViewController" customModule="PeopleCongressSystem" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="drx-dF-cwO"/>
                         <viewControllerLayoutGuide type="bottom" id="sjK-UG-1gL"/>
@@ -1312,7 +1312,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="U1Q-E4-AyP" customClass="PCSNavigationView" customModule="PCSystem" customModuleProvider="target">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="U1Q-E4-AyP" customClass="PCSNavigationView" customModule="PeopleCongressSystem" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="64" width="600" height="44"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Sxm-eH-KHl" userLabel="Selection">

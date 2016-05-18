@@ -10,7 +10,7 @@
         <!--View Controller-->
         <scene sceneID="TeG-vG-XKM">
             <objects>
-                <viewController id="BqY-Wb-uXP" customClass="GestureLockViewController" customModule="PCSystem" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BqY-Wb-uXP" customClass="GestureLockViewController" customModule="PeopleCongressSystem" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="aN8-hf-Mpg"/>
                         <viewControllerLayoutGuide type="bottom" id="UH7-ce-Xi3"/>
@@ -33,7 +33,7 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="49w-gv-Nfw" customClass="PCSNavigationView" customModule="PCSystem" customModuleProvider="target">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="49w-gv-Nfw" customClass="PCSNavigationView" customModule="PeopleCongressSystem" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="64" width="600" height="44"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
@@ -111,7 +111,7 @@
         <!--View Controller-->
         <scene sceneID="4jQ-zr-HJ1">
             <objects>
-                <viewController storyboardIdentifier="CommonHTMLViewController" hidesBottomBarWhenPushed="YES" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Ex3-YQ-gIp" customClass="CommonHTMLViewController" customModule="PCSystem" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="CommonHTMLViewController" hidesBottomBarWhenPushed="YES" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Ex3-YQ-gIp" customClass="CommonHTMLViewController" customModule="PeopleCongressSystem" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Hvv-W5-iNc"/>
                         <viewControllerLayoutGuide type="bottom" id="vvs-RE-69s"/>
@@ -120,7 +120,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="a4J-2G-SmD" customClass="PCSNavigationView" customModule="PCSystem" customModuleProvider="target">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="a4J-2G-SmD" customClass="PCSNavigationView" customModule="PeopleCongressSystem" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="64" width="600" height="44"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wIS-yF-eQe">
@@ -180,7 +180,7 @@
         <!--Sign In View Controller-->
         <scene sceneID="kSz-Nh-td6">
             <objects>
-                <viewController storyboardIdentifier="SignInViewController" automaticallyAdjustsScrollViewInsets="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" id="o5A-KL-8xA" customClass="SignInViewController" customModule="PCSystem" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="SignInViewController" automaticallyAdjustsScrollViewInsets="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" id="o5A-KL-8xA" customClass="SignInViewController" customModule="PeopleCongressSystem" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="qyp-06-suj"/>
                         <viewControllerLayoutGuide type="bottom" id="uZt-Sk-p5Q"/>
@@ -190,7 +190,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="请输入手机号码" textAlignment="natural" adjustsFontSizeToFit="NO" minimumFontSize="14" translatesAutoresizingMaskIntoConstraints="NO" id="7WL-q1-6Js" userLabel="Account">
-                                <rect key="frame" x="40" y="223" width="520" height="38"/>
+                                <rect key="frame" x="40" y="195" width="520" height="38"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="tw6-eJ-WGE"/>
@@ -207,7 +207,7 @@
                                 </connections>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="请输入密码" textAlignment="natural" adjustsFontSizeToFit="NO" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Amo-jT-wTT" userLabel="Password">
-                                <rect key="frame" x="40" y="271" width="520" height="37.5"/>
+                                <rect key="frame" x="40" y="243" width="520" height="37.5"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="AfG-VD-oTP"/>
@@ -224,7 +224,7 @@
                                 </connections>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nce-Xe-EIF" userLabel="Server Select">
-                                <rect key="frame" x="40" y="318.5" width="520" height="0.0"/>
+                                <rect key="frame" x="40" y="290.5" width="520" height="0.0"/>
                                 <constraints>
                                     <constraint firstAttribute="height" id="Rac-4t-Ozb"/>
                                 </constraints>
@@ -239,7 +239,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JCT-jS-5Y9" userLabel="Sign In">
-                                <rect key="frame" x="40" y="368.5" width="520" height="37.5"/>
+                                <rect key="frame" x="40" y="340.5" width="520" height="37.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                 <state key="normal" title="登录"/>
                                 <connections>
@@ -247,7 +247,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1lk-N4-8Ob" userLabel="Gesture Sign In">
-                                <rect key="frame" x="40" y="422" width="520" height="16.5"/>
+                                <rect key="frame" x="40" y="394" width="520" height="16.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                 <inset key="titleEdgeInsets" minX="-10" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 <inset key="imageEdgeInsets" minX="140" minY="0.0" maxX="0.0" maxY="0.0"/>
@@ -257,7 +257,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bzO-dB-bh8" userLabel="Remember Password">
-                                <rect key="frame" x="40" y="328.5" width="208" height="30"/>
+                                <rect key="frame" x="40" y="300.5" width="208" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="Hxx-ay-YcW"/>
                                 </constraints>
@@ -271,7 +271,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CPV-eB-aO4" userLabel="Auto Sign In">
-                                <rect key="frame" x="249" y="328.5" width="208.5" height="30"/>
+                                <rect key="frame" x="249" y="300.5" width="208.5" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="iMN-AP-9YX"/>
                                 </constraints>
@@ -323,9 +323,9 @@
                                 </variation>
                             </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="sign_title" translatesAutoresizingMaskIntoConstraints="NO" id="dI8-gx-vKe">
-                                <rect key="frame" x="162" y="150" width="276" height="53"/>
+                                <rect key="frame" x="162" y="150" width="276" height="25"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="53" id="Omi-Vf-S7v"/>
+                                    <constraint firstAttribute="height" constant="25" id="Omi-Vf-S7v"/>
                                     <constraint firstAttribute="width" constant="276" id="XRe-Jv-giR"/>
                                 </constraints>
                             </imageView>
@@ -487,7 +487,7 @@
         <!--View Controller-->
         <scene sceneID="v1l-do-Q7U">
             <objects>
-                <viewController id="yWI-OB-52O" customClass="FindPwdViewController" customModule="PCSystem" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="yWI-OB-52O" customClass="FindPwdViewController" customModule="PeopleCongressSystem" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="GSs-cO-lYq"/>
                         <viewControllerLayoutGuide type="bottom" id="0Fb-wN-e0M"/>
@@ -496,7 +496,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iJy-yc-pFW" customClass="PCSNavigationView" customModule="PCSystem" customModuleProvider="target">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iJy-yc-pFW" customClass="PCSNavigationView" customModule="PeopleCongressSystem" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="64" width="600" height="44"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
@@ -513,7 +513,7 @@
                                 <rect key="frame" x="0.0" y="116" width="600" height="484"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="VerifyCodeCell" id="81q-hM-Api" customClass="VerifyCodeCell" customModule="PCSystem" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="VerifyCodeCell" id="81q-hM-Api" customClass="VerifyCodeCell" customModule="PeopleCongressSystem" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="600" height="50"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="81q-hM-Api" id="moR-ir-lSu">
@@ -599,7 +599,7 @@
                                             <outlet property="titleTextField" destination="pJ9-Sx-sWk" id="zC4-u0-w89"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="LocalVerifyCell" id="XUX-ON-FgM" customClass="LocalVerifyCell" customModule="PCSystem" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="LocalVerifyCell" id="XUX-ON-FgM" customClass="LocalVerifyCell" customModule="PeopleCongressSystem" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="78" width="600" height="50"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="XUX-ON-FgM" id="43n-ZY-ZH8">
@@ -780,7 +780,7 @@
         <!--Main View Controller-->
         <scene sceneID="TPK-VZ-AKN">
             <objects>
-                <tabBarController storyboardIdentifier="MainViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="nuY-8n-wNE" customClass="MainViewController" customModule="PCSystem" customModuleProvider="target" sceneMemberID="viewController">
+                <tabBarController storyboardIdentifier="MainViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="nuY-8n-wNE" customClass="MainViewController" customModule="PeopleCongressSystem" customModuleProvider="target" sceneMemberID="viewController">
                     <tabBar key="tabBar" contentMode="scaleToFill" id="Gnb-Ak-eO2">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -798,7 +798,7 @@
         <!--Guide View Controller-->
         <scene sceneID="nDD-Yc-PAr">
             <objects>
-                <viewController storyboardIdentifier="GuideViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="391-Ry-MR7" customClass="GuideViewController" customModule="PCSystem" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="GuideViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="391-Ry-MR7" customClass="GuideViewController" customModule="PeopleCongressSystem" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="zUd-UI-vAB"/>
                         <viewControllerLayoutGuide type="bottom" id="IPA-HI-2CR"/>
@@ -908,7 +908,7 @@
         <image name="phone" width="13" height="18"/>
         <image name="refresh_code" width="16" height="13"/>
         <image name="server" width="14" height="12"/>
-        <image name="sign_title" width="242" height="43"/>
+        <image name="sign_title" width="276" height="24"/>
         <image name="uncheck" width="21" height="21"/>
     </resources>
     <inferredMetricsTieBreakers>

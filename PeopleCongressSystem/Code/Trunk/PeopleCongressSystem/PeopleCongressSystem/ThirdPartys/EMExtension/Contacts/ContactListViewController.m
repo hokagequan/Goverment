@@ -24,7 +24,7 @@
 #import "RealtimeSearchUtil.h"
 #import "UserProfileManager.h"
 
-#import "PCSystem-Swift.h"
+#import "PeopleCongressSystem-Swift.h"
 
 @implementation NSString (search)
 

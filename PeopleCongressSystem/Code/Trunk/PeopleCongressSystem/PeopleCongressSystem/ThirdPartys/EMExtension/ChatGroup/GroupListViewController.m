@@ -20,7 +20,7 @@
 #import "CreateGroupViewController.h"
 #import "PublicGroupListViewController.h"
 #import "RealtimeSearchUtil.h"
-#import "PCSystem-Swift.h"
+#import "PeopleCongressSystem-Swift.h"
 
 @interface GroupListViewController ()<UISearchBarDelegate, UISearchDisplayDelegate, EMGroupManagerDelegate, SRRefreshDelegate, UITableViewDelegate, UITableViewDataSource>
 

@@ -20,7 +20,7 @@
 #import "UserProfileManager.h"
 #import "RealtimeSearchUtil.h"
 
-#import "PCSystem-Swift.h"
+#import "PeopleCongressSystem-Swift.h"
 
 @implementation EMConversation (search)
 

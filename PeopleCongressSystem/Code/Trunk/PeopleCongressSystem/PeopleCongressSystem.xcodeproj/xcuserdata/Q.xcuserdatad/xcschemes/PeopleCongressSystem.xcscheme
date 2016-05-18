@@ -15,8 +15,8 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "10D0D56B1C4CD1D00093F687"
-               BuildableName = "PCSystem.app"
-               BlueprintName = "PCSystem"
+               BuildableName = "PeopleCongressSystem.app"
+               BlueprintName = "PeopleCongressSystem"
                ReferencedContainer = "container:PeopleCongressSystem.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -43,8 +43,8 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "10D0D56B1C4CD1D00093F687"
-            BuildableName = "PCSystem.app"
-            BlueprintName = "PCSystem"
+            BuildableName = "PeopleCongressSystem.app"
+            BlueprintName = "PeopleCongressSystem"
             ReferencedContainer = "container:PeopleCongressSystem.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
@@ -66,8 +66,8 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "10D0D56B1C4CD1D00093F687"
-            BuildableName = "PCSystem.app"
-            BlueprintName = "PCSystem"
+            BuildableName = "PeopleCongressSystem.app"
+            BlueprintName = "PeopleCongressSystem"
             ReferencedContainer = "container:PeopleCongressSystem.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
@@ -85,8 +85,8 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "10D0D56B1C4CD1D00093F687"
-            BuildableName = "PCSystem.app"
-            BlueprintName = "PCSystem"
+            BuildableName = "PeopleCongressSystem.app"
+            BlueprintName = "PeopleCongressSystem"
             ReferencedContainer = "container:PeopleCongressSystem.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>

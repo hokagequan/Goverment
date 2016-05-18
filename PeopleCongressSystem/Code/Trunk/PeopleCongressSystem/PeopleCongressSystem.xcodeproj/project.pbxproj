@@ -823,7 +823,7 @@
 		10C0F12F1CA93D9C000BA06E /* JPUSHService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JPUSHService.h; sourceTree = "<group>"; };
 		10CFFCDA1CD83B2C00866C33 /* QRCodeManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QRCodeManager.swift; sourceTree = "<group>"; };
 		10CFFCDC1CD83EA200866C33 /* PCSError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PCSError.swift; sourceTree = "<group>"; };
-		10D0D56C1C4CD1D00093F687 /* PCSystem.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PCSystem.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		10D0D56C1C4CD1D00093F687 /* PeopleCongressSystem.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PeopleCongressSystem.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		10D0D56F1C4CD1D00093F687 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		10D0D5741C4CD1D00093F687 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		10D0D5771C4CD1D00093F687 /* PeopleCongressSystem.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = PeopleCongressSystem.xcdatamodel; sourceTree = "<group>"; };
@@ -1849,7 +1849,7 @@
 		10D0D56D1C4CD1D00093F687 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				10D0D56C1C4CD1D00093F687 /* PCSystem.app */,
+				10D0D56C1C4CD1D00093F687 /* PeopleCongressSystem.app */,
 				10D0D5831C4CD1D00093F687 /* PeopleCongressSystemUITests.xctest */,
 			);
 			name = Products;
@@ -2301,9 +2301,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		10D0D56B1C4CD1D00093F687 /* PCSystem */ = {
+		10D0D56B1C4CD1D00093F687 /* PeopleCongressSystem */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 10D0D58C1C4CD1D10093F687 /* Build configuration list for PBXNativeTarget "PCSystem" */;
+			buildConfigurationList = 10D0D58C1C4CD1D10093F687 /* Build configuration list for PBXNativeTarget "PeopleCongressSystem" */;
 			buildPhases = (
 				CBA8A13155361E9AB17BDE15 /* 📦 Check Pods Manifest.lock */,
 				10D0D5681C4CD1D00093F687 /* Sources */,
@@ -2316,9 +2316,9 @@
 			);
 			dependencies = (
 			);
-			name = PCSystem;
+			name = PeopleCongressSystem;
 			productName = PeopleCongressSystem;
-			productReference = 10D0D56C1C4CD1D00093F687 /* PCSystem.app */;
+			productReference = 10D0D56C1C4CD1D00093F687 /* PeopleCongressSystem.app */;
 			productType = "com.apple.product-type.application";
 		};
 		10D0D5821C4CD1D00093F687 /* PeopleCongressSystemUITests */ = {
@@ -2377,7 +2377,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				10D0D56B1C4CD1D00093F687 /* PCSystem */,
+				10D0D56B1C4CD1D00093F687 /* PeopleCongressSystem */,
 				10D0D5821C4CD1D00093F687 /* PeopleCongressSystemUITests */,
 			);
 		};
@@ -2745,7 +2745,7 @@
 /* Begin PBXTargetDependency section */
 		10D0D5851C4CD1D00093F687 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 10D0D56B1C4CD1D00093F687 /* PCSystem */;
+			target = 10D0D56B1C4CD1D00093F687 /* PeopleCongressSystem */;
 			targetProxy = 10D0D5841C4CD1D00093F687 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -3021,7 +3021,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		10D0D58C1C4CD1D10093F687 /* Build configuration list for PBXNativeTarget "PCSystem" */ = {
+		10D0D58C1C4CD1D10093F687 /* Build configuration list for PBXNativeTarget "PeopleCongressSystem" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				10D0D58D1C4CD1D10093F687 /* Debug */,

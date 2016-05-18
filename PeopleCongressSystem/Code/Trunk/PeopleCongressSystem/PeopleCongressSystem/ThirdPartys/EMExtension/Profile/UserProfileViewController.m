@@ -16,7 +16,7 @@
 #import "UserProfileManager.h"
 #import "UIImageView+HeadImage.h"
 
-#import "PCSystem-Swift.h"
+#import "PeopleCongressSystem-Swift.h"
 
 @interface UserProfileViewController ()<UITableViewDelegate, UITableViewDataSource>
 
