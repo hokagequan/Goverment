@@ -19,6 +19,8 @@
 		100691C01C93C92F000AEFEA /* UIImageView+webImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 100691BF1C93C92F000AEFEA /* UIImageView+webImage.swift */; };
 		100691C91C969C32000AEFEA /* UploadPhotoReq.swift in Sources */ = {isa = PBXBuildFile; fileRef = 100691C81C969C32000AEFEA /* UploadPhotoReq.swift */; };
 		100691CB1C96AB35000AEFEA /* AddVariableReq.swift in Sources */ = {isa = PBXBuildFile; fileRef = 100691CA1C96AB35000AEFEA /* AddVariableReq.swift */; };
+		1007B09E1CECB3E9001E87D0 /* delete@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1007B09C1CECB3E9001E87D0 /* delete@2x.png */; };
+		1007B09F1CECB3E9001E87D0 /* group_detail@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1007B09D1CECB3E9001E87D0 /* group_detail@2x.png */; };
 		100AA8751CCF446A00EC40DC /* UIViewController+PCSNavi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 100AA8741CCF446A00EC40DC /* UIViewController+PCSNavi.swift */; };
 		100AA87A1CCF48A100EC40DC /* UnCheckedInListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 100AA8791CCF48A100EC40DC /* UnCheckedInListViewController.swift */; };
 		100AA87C1CCF4C0100EC40DC /* UnCheckedInCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 100AA87B1CCF4C0100EC40DC /* UnCheckedInCell.swift */; };
@@ -348,6 +350,8 @@
 		100691C31C969395000AEFEA /* libcommonCrypto.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libcommonCrypto.tbd; path = usr/lib/system/libcommonCrypto.tbd; sourceTree = SDKROOT; };
 		100691C81C969C32000AEFEA /* UploadPhotoReq.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UploadPhotoReq.swift; sourceTree = "<group>"; };
 		100691CA1C96AB35000AEFEA /* AddVariableReq.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddVariableReq.swift; sourceTree = "<group>"; };
+		1007B09C1CECB3E9001E87D0 /* delete@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "delete@2x.png"; sourceTree = "<group>"; };
+		1007B09D1CECB3E9001E87D0 /* group_detail@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "group_detail@2x.png"; sourceTree = "<group>"; };
 		100AA8741CCF446A00EC40DC /* UIViewController+PCSNavi.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController+PCSNavi.swift"; sourceTree = "<group>"; };
 		100AA8791CCF48A100EC40DC /* UnCheckedInListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UnCheckedInListViewController.swift; sourceTree = "<group>"; };
 		100AA87B1CCF4C0100EC40DC /* UnCheckedInCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UnCheckedInCell.swift; sourceTree = "<group>"; };
@@ -2121,6 +2125,8 @@
 		10DC31D31CDB5BFB0037149E /* ChatView */ = {
 			isa = PBXGroup;
 			children = (
+				1007B09C1CECB3E9001E87D0 /* delete@2x.png */,
+				1007B09D1CECB3E9001E87D0 /* group_detail@2x.png */,
 				10DC31D41CDB5BFB0037149E /* call_out.png */,
 				10DC31D51CDB5BFB0037149E /* call_out@2x.png */,
 				10DC31D61CDB5BFB0037149E /* call_out_h.png */,
@@ -2407,6 +2413,7 @@
 				10DC32601CDB5BFC0037149E /* icon_022.gif in Resources */,
 				10DC323E1CDB5BFC0037149E /* imageDownloadFail@2x.png in Resources */,
 				108690591CE809CE00AF041A /* MJRefresh.bundle in Resources */,
+				1007B09E1CECB3E9001E87D0 /* delete@2x.png in Resources */,
 				1091C2051CB36489005140D5 /* PhotoBrowserView.xib in Resources */,
 				10DC32281CDB5BFB0037149E /* chatListCellHead.png in Resources */,
 				10DC324F1CDB5BFC0037149E /* icon_002_cover.png in Resources */,
@@ -2484,6 +2491,7 @@
 				10DC322D1CDB5BFC0037149E /* call_out_h@2x.png in Resources */,
 				10DC32401CDB5BFC0037149E /* chat_receiver_audio_playing000@2x.png in Resources */,
 				10DC32611CDB5BFC0037149E /* icon_022_cover.png in Resources */,
+				1007B09F1CECB3E9001E87D0 /* group_detail@2x.png in Resources */,
 				10DC32741CDB5BFC0037149E /* groupPrivateHeader@2x.png in Resources */,
 				10DC32541CDB5BFC0037149E /* icon_012.gif in Resources */,
 				10D0D5971C4CDAEA0093F687 /* Home.storyboard in Resources */,

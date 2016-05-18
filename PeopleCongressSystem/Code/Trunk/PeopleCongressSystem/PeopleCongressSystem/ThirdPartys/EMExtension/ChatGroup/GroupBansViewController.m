@@ -14,6 +14,7 @@
 
 #import "ContactView.h"
 #import "EMGroup.h"
+#import "PeopleCongressSystem-Swift.h"
 
 #define kColOfRow 5
 #define kContactSize 60
@@ -54,18 +55,21 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     self.title = NSLocalizedString(@"title.groupBlackList", @"Group black list");
-    
-    UIButton *backButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 44, 44)];
-    [backButton setImage:[UIImage imageNamed:@"back.png"] forState:UIControlStateNormal];
-    [backButton addTarget:self action:@selector(back) forControlEvents:UIControlEventTouchUpInside];
-    UIBarButtonItem *backItem = [[UIBarButtonItem alloc] initWithCustomView:backButton];
-    [self.navigationItem setLeftBarButtonItem:backItem];
+    [self setEdgesForExtendedLayout:UIRectEdgeNone];
     
     UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapView:)];
     tap.cancelsTouchesInView = NO;
     [self.view addGestureRecognizer:tap];
     
     [self.view addSubview:self.scrollView];
+    
+    [PCSCustomUtil customNavigationController:self];
+    CGFloat height = [self customPCSNavi:self.title];
+    CGRect frame = self.scrollView.frame;
+    frame.origin.y += height;
+    frame.size.height -= height;
+    self.scrollView.frame = frame;
+    
     [self fetchGroupBans];
 }
 

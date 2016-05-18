@@ -11,8 +11,9 @@
  */
 
 #import "GroupSettingViewController.h"
+#import "PeopleCongressSystem-Swift.h"
 
-@interface GroupSettingViewController ()
+@interface GroupSettingViewController ()<UITableViewDataSource, UITableViewDelegate>
 {
     EMGroup *_group;
     BOOL _isOwner;
@@ -20,13 +21,15 @@
     UISwitch *_blockSwitch;
 }
 
+@property (strong, nonatomic) UITableView *tableView;
+
 @end
 
 @implementation GroupSettingViewController
 
-- (id)initWithStyle:(UITableViewStyle)style
+- (id)init
 {
-    self = [super initWithStyle:style];
+    self = [super init];
     if (self) {
         // Custom initialization
     }
@@ -35,7 +38,7 @@
 
 - (instancetype)initWithGroup:(EMGroup *)group
 {
-    self = [self initWithStyle:UITableViewStylePlain];
+    self = [self init];
     if (self) {
         _group = group;
         
@@ -50,13 +53,9 @@
 {
     [super viewDidLoad];
     
+    [self setEdgesForExtendedLayout:UIRectEdgeNone];
+    self.view.backgroundColor = [UIColor whiteColor];
     self.title = NSLocalizedString(@"title.groupSetting", @"Group Setting");
-    
-    UIButton *backButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 44, 44)];
-    [backButton setImage:[UIImage imageNamed:@"back.png"] forState:UIControlStateNormal];
-    [backButton addTarget:self action:@selector(back) forControlEvents:UIControlEventTouchUpInside];
-    UIBarButtonItem *backItem = [[UIBarButtonItem alloc] initWithCustomView:backButton];
-    [self.navigationItem setLeftBarButtonItem:backItem];
     
     if (!_isOwner) {
         UIBarButtonItem *saveItem = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"save", @"Save") style:UIBarButtonItemStylePlain target:self action:@selector(saveAction:)];
@@ -71,7 +70,17 @@
     [_blockSwitch addTarget:self action:@selector(blockSwitchChanged:) forControlEvents:UIControlEventValueChanged];
     [_blockSwitch setOn:_group.isBlocked animated:YES];
     
+    self.tableView.dataSource = self;
+    self.tableView.delegate = self;
     self.tableView.tableFooterView = [[UIView alloc] init];
+    
+    [PCSCustomUtil customNavigationController:self];
+    CGFloat height = [self customPCSNavi:self.title];
+    CGRect frame = self.tableView.frame;
+    frame.origin.y += height;
+    frame.size.height -= height;
+    self.tableView.frame = frame;
+    
     [self.tableView reloadData];
 }
 
@@ -86,6 +95,16 @@
     [super viewWillDisappear:animated];
     
     [self hideHud];
+}
+
+- (UITableView *)tableView
+{
+    if (_tableView == nil) {
+        _tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height) style:UITableViewStylePlain];
+        [self.view addSubview:_tableView];
+    }
+    
+    return _tableView;
 }
 
 #pragma mark - Table view data source

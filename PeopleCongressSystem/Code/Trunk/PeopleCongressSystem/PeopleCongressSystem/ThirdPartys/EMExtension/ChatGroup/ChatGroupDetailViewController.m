@@ -18,13 +18,14 @@
 #import "ContactView.h"
 #import "GroupBansViewController.h"
 #import "GroupSubjectChangingViewController.h"
+#import "PeopleCongressSystem-Swift.h"
 
 #pragma mark - ChatGroupDetailViewController
 
 #define kColOfRow 5
 #define kContactSize 60
 
-@interface ChatGroupDetailViewController ()<EMGroupManagerDelegate, EMChooseViewDelegate, UIActionSheetDelegate>
+@interface ChatGroupDetailViewController ()<EMGroupManagerDelegate, EMChooseViewDelegate, UIActionSheetDelegate, UITableViewDelegate, UITableViewDataSource>
 
 - (void)unregisterNotifications;
 - (void)registerNotifications;
@@ -35,6 +36,7 @@
 @property (strong, nonatomic) NSMutableArray *dataSource;
 @property (strong, nonatomic) UIScrollView *scrollView;
 @property (strong, nonatomic) UIButton *addButton;
+@property (strong, nonatomic) UITableView *tableView;
 
 @property (strong, nonatomic) UIView *footerView;
 @property (strong, nonatomic) UIButton *clearButton;
@@ -106,14 +108,19 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    [self setEdgesForExtendedLayout:UIRectEdgeNone];
+    self.view.backgroundColor = [UIColor whiteColor];
     
-    UIButton *backButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 44, 44)];
-    [backButton setImage:[UIImage imageNamed:@"back.png"] forState:UIControlStateNormal];
-    [backButton addTarget:self.navigationController action:@selector(popViewControllerAnimated:) forControlEvents:UIControlEventTouchUpInside];
-    UIBarButtonItem *backItem = [[UIBarButtonItem alloc] initWithCustomView:backButton];
-    [self.navigationItem setLeftBarButtonItem:backItem];
-    
+    self.tableView.dataSource = self;
+    self.tableView.delegate = self;
     self.tableView.tableFooterView = self.footerView;
+    
+    [PCSCustomUtil customNavigationController:self];
+    CGFloat height = [self customPCSNavi:self.title];
+    CGRect frame = self.tableView.frame;
+    frame.origin.y += height;
+    frame.size.height -= height;
+    self.tableView.frame = frame;
     
     UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapView:)];
     tap.cancelsTouchesInView = NO;
@@ -136,6 +143,16 @@
 }
 
 #pragma mark - getter
+
+- (UITableView *)tableView
+{
+    if (_tableView == nil) {
+        _tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height) style:UITableViewStylePlain];
+        [self.view addSubview:_tableView];
+    }
+    
+    return _tableView;
+}
 
 - (UIScrollView *)scrollView
 {

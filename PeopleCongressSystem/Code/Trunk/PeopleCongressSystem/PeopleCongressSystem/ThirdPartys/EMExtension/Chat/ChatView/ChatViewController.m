@@ -56,15 +56,30 @@
     
     [[EaseChatBarMoreView appearance] setMoreViewBackgroundColor:[UIColor colorWithRed:240 / 255.0 green:242 / 255.0 blue:247 / 255.0 alpha:1.0]];
     
-    [self _setupBarButtonItem];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(deleteAllMessages:) name:KNOTIFICATIONNAME_DELETEALLMESSAGE object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(exitGroup) name:@"ExitGroup" object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(insertCallMessage:) name:@"insertCallMessage" object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handleCallNotification:) name:@"callOutWithChatter" object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handleCallNotification:) name:@"callControllerClose" object:nil];
     
+    //单聊
+    UIButton *rightButton = nil;
+    if (self.conversation.type == EMConversationTypeChat) {
+        rightButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 44, 44)];
+        [rightButton setImage:[UIImage imageNamed:@"delete"] forState:UIControlStateNormal];
+        [rightButton addTarget:self action:@selector(deleteAllMessages:) forControlEvents:UIControlEventTouchUpInside];
+        //        self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:clearButton];
+    }
+    else{//群聊
+        rightButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 60, 44)];
+        UIImage *image = [UIImage imageNamed:@"group_detail"];
+        [rightButton setImage:[UIImage imageNamed:@"group_detail"] forState:UIControlStateNormal];
+        [rightButton addTarget:self action:@selector(showGroupDetailAction) forControlEvents:UIControlEventTouchUpInside];
+        //        self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:detailButton];
+    }
+    
     [PCSCustomUtil customNavigationController:self];
-    CGFloat height = [self customPCSNavi:@"会话"];
+    CGFloat height = [self customPCSNaviWithRightButton:@"会话" button:rightButton];
     
     CGRect frame = self.tableView.frame;
     frame.origin.y += height;
@@ -109,31 +124,6 @@
         {
             self.title = [self.conversation.ext objectForKey:@"subject"];
         }
-    }
-}
-
-#pragma mark - setup subviews
-
-- (void)_setupBarButtonItem
-{
-    UIButton *backButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 44, 44)];
-    [backButton setImage:[UIImage imageNamed:@"back.png"] forState:UIControlStateNormal];
-    [backButton addTarget:self action:@selector(backAction) forControlEvents:UIControlEventTouchUpInside];
-    UIBarButtonItem *backItem = [[UIBarButtonItem alloc] initWithCustomView:backButton];
-    [self.navigationItem setLeftBarButtonItem:backItem];
-    
-    //单聊
-    if (self.conversation.type == EMConversationTypeChat) {
-        UIButton *clearButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 44, 44)];
-        [clearButton setImage:[UIImage imageNamed:@"delete"] forState:UIControlStateNormal];
-        [clearButton addTarget:self action:@selector(deleteAllMessages:) forControlEvents:UIControlEventTouchUpInside];
-//        self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:clearButton];
-    }
-    else{//群聊
-        UIButton *detailButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 60, 44)];
-        [detailButton setImage:[UIImage imageNamed:@"group_detail"] forState:UIControlStateNormal];
-        [detailButton addTarget:self action:@selector(showGroupDetailAction) forControlEvents:UIControlEventTouchUpInside];
-//        self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:detailButton];
     }
 }
 
