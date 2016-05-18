@@ -256,8 +256,6 @@ class AccountManager {
                     self.user?.memberType = info["MemberType"] as? String
                     self.user?.field = info["STAFF_FieldID"] as? String
                     self.user?.huanxinAccount = info["hunxinID"] as? String
-                    // FIXME: 环信账号test
-                    self.user?.huanxinAccount = "quanchengwen"
                     
                     CoreDataManager.defalutManager().saveContext(nil)
                     
