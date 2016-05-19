@@ -17,5 +17,6 @@ class Person: NSObject {
     var organization: String? = nil
     var mobile: String? = nil
     var huanxin: String? = nil
+    var photoName: String? = nil
     
 }

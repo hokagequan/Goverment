@@ -13,6 +13,10 @@ class PCSDataManager: NSObject {
     
     static let _pcsDataManager = PCSDataManager()
     
+    var photoURL: String {
+        return photoDownloadURL
+    }
+    
     var reachability: Reachability?
     var accountManager = AccountManager()
     var content: ContentInfo = ContentInfo()

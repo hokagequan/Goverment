@@ -25,3 +25,4 @@
 // Others
 #import "AppDelegateEaseMob.h"
 #import "AppDelegateParse.h"
+#import "EaseUserModel.h"

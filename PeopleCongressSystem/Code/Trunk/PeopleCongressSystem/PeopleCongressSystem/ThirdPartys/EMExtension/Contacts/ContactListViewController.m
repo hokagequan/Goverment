@@ -71,7 +71,7 @@
     self.tableView.frame = CGRectMake(0, self.searchBar.frame.size.height, self.view.frame.size.width, self.view.frame.size.height - self.searchBar.frame.size.height);
     
     // 环信UIdemo中有用到Parse, 加载用户好友个人信息
-    [[UserProfileManager sharedInstance] loadUserProfileInBackgroundWithBuddy:self.contactsSource saveToLoacal:NO completion:NULL];
+    [[UserProfileManager sharedInstance] loadUserProfileInBackgroundWithBuddy:self.contactsSource saveToLoacal:YES completion:NULL];
     
     [PCSCustomUtil customNavigationController:self];
 }
@@ -86,6 +86,33 @@
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (void)synthronizedUserInfo:(NSArray *)sourceArray completion:(void (^)(NSArray *responseArray))completion {
+    NSMutableArray *huanxinIDs = [NSMutableArray array];
+    NSMutableArray *users = [NSMutableArray array];
+    for (NSArray *array in sourceArray) {
+        for (EaseUserModel *user in array) {
+            [huanxinIDs addObject:user.buddy];
+            [users addObject:user];
+        }
+    }
+    
+    GetUserInfoReq *req = [[GetUserInfoReq alloc] init];
+    req.key = @"huanxinID";
+    req.values = huanxinIDs;
+    [req requestSimpleCompletion:^(NSArray<Person *> * _Nullable response) {
+        for (EaseUserModel *model in users) {
+            for (Person *person in response) {
+                if ([person.huanxin isEqualToString:model.buddy]) {
+                    model.avatarURLPath = [NSString stringWithFormat:@"%@%@", [PCSDataManager defaultManager].photoURL, person.photoName];
+                    model.nickname = person.name;
+                }
+            }
+        }
+        
+        completion(sourceArray);
+    }];
 }
 
 #pragma mark - getter
@@ -232,11 +259,11 @@
         
         NSArray *userSection = [self.dataArray objectAtIndex:(indexPath.section - 1)];
         EaseUserModel *model = [userSection objectAtIndex:indexPath.row];
-        UserProfileEntity *profileEntity = [[UserProfileManager sharedInstance] getUserProfileByUsername:model.buddy];
-        if (profileEntity) {
-            model.avatarURLPath = profileEntity.imageUrl;
-            model.nickname = profileEntity.nickname == nil ? profileEntity.username : profileEntity.nickname;
-        }
+//        UserProfileEntity *profileEntity = [[UserProfileManager sharedInstance] getUserProfileByUsername:model.buddy];
+//        if (profileEntity) {
+//            model.avatarURLPath = profileEntity.imageUrl;
+//            model.nickname = profileEntity.nickname == nil ? profileEntity.username : profileEntity.nickname;
+//        }
         cell.indexPath = indexPath;
         cell.delegate = self;
         cell.model = model;
@@ -506,8 +533,10 @@
         }
     }
     
-    [self.dataArray addObjectsFromArray:sortedArray];
-    [self.tableView reloadData];
+    [self synthronizedUserInfo:sortedArray completion:^(NSArray *responseArray) {
+        [self.dataArray addObjectsFromArray:responseArray];
+        [self.tableView reloadData];
+    }];
 }
 
 #pragma mark - EaseUserCellDelegate

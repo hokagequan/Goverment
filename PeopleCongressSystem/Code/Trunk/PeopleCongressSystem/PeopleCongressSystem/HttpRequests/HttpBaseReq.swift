@@ -12,7 +12,7 @@ import Alamofire
 typealias HttpReqCompletion = (response: Response<String, NSError>?) -> Void
 typealias HttpReqJSONCompletion = (response: Response<AnyObject, NSError>?) -> Void
 
-class HttpBaseReq {
+class HttpBaseReq: NSObject {
     
 //    var httpReqURL = SettingsManager.getData(SettingKey.Server.rawValue) as! String
     var httpReqURL = serverURL1
