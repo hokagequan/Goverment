@@ -51,6 +51,7 @@
 		1032611E1CAA81010075BBA8 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1032611D1CAA81010075BBA8 /* CoreGraphics.framework */; };
 		103261201CAA810A0075BBA8 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1032611F1CAA810A0075BBA8 /* Security.framework */; };
 		103261221CAA81100075BBA8 /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 103261211CAA81100075BBA8 /* libz.tbd */; };
+		103393211CEEF417009D0404 /* GetAppInfoReq.swift in Sources */ = {isa = PBXBuildFile; fileRef = 103393201CEEF417009D0404 /* GetAppInfoReq.swift */; };
 		10376F361CC5C4B300ECEBEA /* SignCAReq.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10376F351CC5C4B300ECEBEA /* SignCAReq.swift */; };
 		10376F8D1CC5C65800ECEBEA /* libcrypto.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 10376F881CC5C65800ECEBEA /* libcrypto.a */; };
 		10376F8E1CC5C65800ECEBEA /* libiPhoneSecurityFrame.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 10376F891CC5C65800ECEBEA /* libiPhoneSecurityFrame.a */; };
@@ -423,6 +424,7 @@
 		1032611D1CAA81010075BBA8 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		1032611F1CAA810A0075BBA8 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		103261211CAA81100075BBA8 /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
+		103393201CEEF417009D0404 /* GetAppInfoReq.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetAppInfoReq.swift; sourceTree = "<group>"; };
 		10376F351CC5C4B300ECEBEA /* SignCAReq.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignCAReq.swift; sourceTree = "<group>"; };
 		10376F391CC5C65800ECEBEA /* lnca_crypto.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = lnca_crypto.h; sourceTree = "<group>"; };
 		10376F3A1CC5C65800ECEBEA /* MemSelfFree.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MemSelfFree.h; sourceTree = "<group>"; };
@@ -2094,6 +2096,7 @@
 				10DD80171CD892340001E1E8 /* GetUnCheckInListReq.swift */,
 				10DD80191CD8A7FE0001E1E8 /* SendAPNSReq.swift */,
 				1007B0A51CED9C25001E87D0 /* GetUserInfoReq.swift */,
+				103393201CEEF417009D0404 /* GetAppInfoReq.swift */,
 			);
 			path = HttpRequests;
 			sourceTree = "<group>";
@@ -2669,6 +2672,7 @@
 				103771421CC773F700ECEBEA /* InvitationManager.m in Sources */,
 				103770A81CC76FA600ECEBEA /* EMAlertView.m in Sources */,
 				10DBF20E1C8A6CBD007620BA /* VariableRecordsViewController.swift in Sources */,
+				103393211CEEF417009D0404 /* GetAppInfoReq.swift in Sources */,
 				100B202E1C88786700435EF0 /* UIViewController+Keyboard.swift in Sources */,
 				106C64CD1C84070A00E6CD95 /* PCSDefines.swift in Sources */,
 				10D0D5AD1C4DF6030093F687 /* UIViewController+AlertView.swift in Sources */,

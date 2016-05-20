@@ -199,6 +199,13 @@ class AccountManager: NSObject {
         
         dispatch_async(queue) {
             // 登录
+            var isUseCA = false
+            
+            let appReq = GetAppInfoReq()
+            appReq.requestSimpleCompletion({ (response) in
+                isUseCA = response
+            })
+            
             let req = SignInReq()
             req.account = account
             req.password = password
@@ -292,7 +299,7 @@ class AccountManager: NSObject {
                 return
             }
             
-            #if CA
+            if isUseCA == true {
                 // CA
                 var randString: String? = nil
                 let caReq = GetCARandReq()
@@ -326,12 +333,13 @@ class AccountManager: NSObject {
                         completion?(true, nil, errorCode)
                     })
                 })
-            #else
+            }
+            else {
                 dispatch_semaphore_signal(semaphore)
                 dispatch_async(dispatch_get_main_queue(), {
                     completion?(true, nil, errorCode)
                 })
-            #endif
+            }
             
             dispatch_semaphore_wait(semaphore, DISPATCH_TIME_FOREVER)
             if self.user?.huanxinAccount == nil {
