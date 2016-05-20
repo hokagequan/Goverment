@@ -203,7 +203,7 @@ class AccountManager: NSObject {
             
             let appReq = GetAppInfoReq()
             appReq.requestSimpleCompletion({ (response) in
-                isUseCA = response
+//                isUseCA = response
             })
             
             let req = SignInReq()
@@ -265,8 +265,6 @@ class AccountManager: NSObject {
                     self.user?.memberType = info["MemberType"] as? String
                     self.user?.field = info["STAFF_FieldID"] as? String
                     self.user?.huanxinAccount = info["hunxinID"] as? String
-                    
-                    self.user?.huanxinAccount = "quanchengwen"
                     
                     CoreDataManager.defalutManager().saveContext(nil)
                     

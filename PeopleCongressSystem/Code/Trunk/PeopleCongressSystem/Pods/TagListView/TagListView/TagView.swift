@@ -79,6 +79,7 @@ public class TagView: UIButton {
     var textFont: UIFont = UIFont.systemFontOfSize(12) {
         didSet {
             titleLabel?.font = textFont
+            titleLabel?.numberOfLines = 0
         }
     }
     
