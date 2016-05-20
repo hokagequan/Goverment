@@ -10,7 +10,7 @@ import Foundation
 import CoreData
 import UIKit
 
-class AccountManager {
+class AccountManager: NSObject {
     
     //证书id
     let certID = "Vh2Ayp+qlaEYsgRUtv8XE4NlKhI="
@@ -20,7 +20,9 @@ class AccountManager {
     
     var user: UserEntity? = nil
     
-    init() {
+    override init() {
+        super.init()
+        
         self.getDefaultUser()
         self.loadCA()
     }
@@ -257,6 +259,8 @@ class AccountManager {
                     self.user?.field = info["STAFF_FieldID"] as? String
                     self.user?.huanxinAccount = info["hunxinID"] as? String
                     
+                    self.user?.huanxinAccount = "quanchengwen"
+                    
                     CoreDataManager.defalutManager().saveContext(nil)
                     
                     if self.user?.memberType == "301" {
@@ -288,25 +292,24 @@ class AccountManager {
                 return
             }
             
-            // CA
-            var randString: String? = nil
-            let caReq = GetCARandReq()
-            caReq.requestSimple({ (rand) in
-                randString = rand
-                dispatch_semaphore_signal(semaphore)
-            })
-            
-            dispatch_semaphore_wait(semaphore, DISPATCH_TIME_FOREVER)
-            if randString == nil {
-                dispatch_semaphore_signal(semaphore)
-                dispatch_async(dispatch_get_main_queue(), {
-                    completion?(false, "用户名或密码错误", errorCode)
+            #if CA
+                // CA
+                var randString: String? = nil
+                let caReq = GetCARandReq()
+                caReq.requestSimple({ (rand) in
+                    randString = rand
+                    dispatch_semaphore_signal(semaphore)
                 })
                 
-                return
-            }
-            
-            #if CA
+                dispatch_semaphore_wait(semaphore, DISPATCH_TIME_FOREVER)
+                if randString == nil {
+                    dispatch_semaphore_signal(semaphore)
+                    dispatch_async(dispatch_get_main_queue(), {
+                        completion?(false, "用户名或密码错误", errorCode)
+                    })
+                    
+                    return
+                }
                 //证书base64
                 let certBase64 = MiddlewareAPI.instance().getCertByID(self.certID, 1)
                 
@@ -338,6 +341,9 @@ class AccountManager {
             }
             
             EMClient.sharedClient().loginWithUsername(self.user?.huanxinAccount, password: "123456")
+            EMClient.sharedClient().setApnsNickname(self.user?.name)
+            UserProfileManager.sharedInstance().updateUserProfileInBackground([kPARSE_HXUSER_NICKNAME: self.user!.name!], completion: { (success, error) in
+            })
             dispatch_semaphore_signal(semaphore)
         }
     }

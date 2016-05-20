@@ -72,6 +72,9 @@
  */
 - (NSString*)getNickNameWithUsername:(NSString*)username;
 
+
+- (void)syncLocalUserInfo:(NSArray *)list completion:(void (^)())completion;
+
 @end
 
 

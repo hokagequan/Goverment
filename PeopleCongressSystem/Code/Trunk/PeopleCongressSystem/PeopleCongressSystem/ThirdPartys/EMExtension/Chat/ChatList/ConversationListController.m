@@ -90,6 +90,7 @@
 {
     NSArray *conversations = [[EMClient sharedClient].chatManager getAllConversations];
     NSMutableArray *needRemoveConversations;
+    
     for (EMConversation *conversation in conversations) {
         if (!conversation.latestMessage || (conversation.type == EMConversationTypeChatRoom)) {
             if (!needRemoveConversations) {
@@ -348,6 +349,19 @@
 }
 
 #pragma mark - public
+
+- (void)tableViewDidTriggerFooterRefresh {
+    NSArray *list = [[EMClient sharedClient].chatManager getAllConversations];
+    
+    NSMutableArray *users = [NSMutableArray array];
+    for (EMConversation *conversation in list) {
+        [users addObject:conversation.conversationId];
+    }
+    
+    [[UserProfileManager sharedInstance] syncLocalUserInfo:users completion:^{
+        [super tableViewDidTriggerHeaderRefresh];
+    }];
+}
 
 -(void)refresh
 {

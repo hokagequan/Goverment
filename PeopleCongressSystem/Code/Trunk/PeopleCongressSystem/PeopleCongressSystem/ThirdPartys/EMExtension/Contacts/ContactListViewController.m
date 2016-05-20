@@ -58,6 +58,7 @@
     // Do any additional setup after loading the view.
     self.showRefreshHeader = YES;
     self.view.backgroundColor = [UIColor whiteColor];
+    self.edgesForExtendedLayout = UIRectEdgeBottom;
     
     _contactsSource = [NSMutableArray array];
     _sectionTitles = [NSMutableArray array];
@@ -74,6 +75,17 @@
     [[UserProfileManager sharedInstance] loadUserProfileInBackgroundWithBuddy:self.contactsSource saveToLoacal:YES completion:NULL];
     
     [PCSCustomUtil customNavigationController:self];
+    
+    UIButton *addButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 44, 44)];
+    [addButton setImage:[UIImage imageNamed:@"add"] forState:UIControlStateNormal];
+    [addButton addTarget:self action:@selector(addContactAction) forControlEvents:UIControlEventTouchUpInside];
+    [PCSCustomUtil customNavigationController:self];
+    CGFloat height = [self customPCSNaviWithRightButton:@"通讯录" button:addButton hideBack:true];
+    
+    CGRect frame = self.searchBar.frame;
+    frame.origin.y += height;
+    frame.size.height -= height;
+    self.searchBar.frame = frame;
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -98,6 +110,10 @@
         }
     }
     
+    [[UserProfileManager sharedInstance] syncLocalUserInfo:huanxinIDs completion:^{
+        
+    }];
+    
     GetUserInfoReq *req = [[GetUserInfoReq alloc] init];
     req.key = @"huanxinID";
     req.values = huanxinIDs;
@@ -117,18 +133,18 @@
 
 #pragma mark - getter
 
-- (NSArray *)rightItems
-{
-    if (_rightItems == nil) {
-        UIButton *addButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 44, 44)];
-        [addButton setImage:[UIImage imageNamed:@"addContact.png"] forState:UIControlStateNormal];
-        [addButton addTarget:self action:@selector(addContactAction) forControlEvents:UIControlEventTouchUpInside];
-        UIBarButtonItem *addItem = [[UIBarButtonItem alloc] initWithCustomView:addButton];
-        _rightItems = @[addItem];
-    }
-    
-    return _rightItems;
-}
+//- (NSArray *)rightItems
+//{
+//    if (_rightItems == nil) {
+//        UIButton *addButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 44, 44)];
+//        [addButton setImage:[UIImage imageNamed:@"addContact.png"] forState:UIControlStateNormal];
+//        [addButton addTarget:self action:@selector(addContactAction) forControlEvents:UIControlEventTouchUpInside];
+//        UIBarButtonItem *addItem = [[UIBarButtonItem alloc] initWithCustomView:addButton];
+//        _rightItems = @[addItem];
+//    }
+//    
+//    return _rightItems;
+//}
 
 - (UISearchBar *)searchBar
 {
@@ -462,7 +478,8 @@
 
 - (void)addContactAction
 {
-    AddFriendViewController *addController = [[AddFriendViewController alloc] initWithStyle:UITableViewStylePlain];
+    AddFriendViewController *addController = [[AddFriendViewController alloc] init];
+    self.hidesBottomBarWhenPushed = YES;
     [self.navigationController pushViewController:addController animated:YES];
 }
 
@@ -659,7 +676,7 @@
 
 - (void)addFriendAction
 {
-    AddFriendViewController *addController = [[AddFriendViewController alloc] initWithStyle:UITableViewStylePlain];
+    AddFriendViewController *addController = [[AddFriendViewController alloc] init];
     [self.navigationController pushViewController:addController animated:YES];
 }
 

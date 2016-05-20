@@ -13,6 +13,8 @@
 #import "UserProfileManager.h"
 #import <Parse/Parse.h>
 
+#import "PeopleCongressSystem-Swift.h"
+
 //#import "MessageModel.h"
 
 #define kCURRENT_USERNAME [[EMClient sharedClient] currentUsername]
@@ -132,6 +134,7 @@ static UserProfileManager *sharedInstance = nil;
         if (objects && [objects count] > 0) {
             for (id user in objects) {
                 if ([user isKindOfClass:[PFObject class]]) {
+                    user[kPARSE_HXUSER_NICKNAME] = [PCSDataManager defaultManager].accountManager.user.name;
                     UserProfileEntity *entity = [UserProfileEntity initWithPFObject:user];
                     if (entity.username.length > 0) {
                         [self.users setObject:entity forKey:entity.username];
@@ -263,24 +266,79 @@ static UserProfileManager *sharedInstance = nil;
     [query whereKey:kPARSE_HXUSER_USERNAME containedIn:usernames];
     [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
         if (!error) {
-            for (id user in objects) {
-                if ([user isKindOfClass:[PFObject class]]) {
-                    PFObject *pfuser = (PFObject*)user;
-                    if (save) {
-                        [self savePFUserInDisk:pfuser];
-                    } else {
-                        [self savePFUserInMemory:pfuser];
+            [self synthronizedUserInfo:objects completion:^(NSArray *responseArray) {
+                if (responseArray) {
+                    for (id user in objects) {
+                        if ([user isKindOfClass:[PFObject class]]) {
+                            PFObject *pfuser = (PFObject*)user;
+                            if (save) {
+                                [self savePFUserInDisk:pfuser];
+                            } else {
+                                [self savePFUserInMemory:pfuser];
+                            }
+                        }
+                    }
+                    if (completion) {
+                        completion(YES, nil);
                     }
                 }
-            }
-            if (completion) {
-                completion(YES, nil);
-            }
+                else {
+                    if (completion) {
+                        completion(NO, error);
+                    }
+                }
+            }];
         } else {
             if (completion) {
                 completion(NO, error);
             }
         }
+    }];
+}
+
+- (void)syncLocalUserInfo:(NSArray *)list completion:(void (^)())completion {
+    GetUserInfoReq *req = [[GetUserInfoReq alloc] init];
+    req.key = @"huanxinID";
+    req.values = list;
+    [req requestSimpleCompletion:^(NSArray<Person *> * _Nullable response) {
+        for (NSString *userName in list) {
+            for (Person *person in response) {
+                if ([person.huanxin isEqualToString:userName]) {
+                    UserProfileEntity *entity = [[UserProfileEntity alloc] init];
+                    entity.username = userName;
+                    entity.nickname = person.name;
+                    entity.imageUrl = [NSString stringWithFormat:@"%@%@", [PCSDataManager defaultManager].photoURL, person.photoName];
+                    [self.users setObject:entity forKey:entity.username];
+                }
+            }
+        }
+        
+        completion();
+    }];
+}
+
+- (void)synthronizedUserInfo:(NSArray *)sourceArray completion:(void (^)(NSArray *responseArray))completion {
+    NSMutableArray *huanxinIDs = [NSMutableArray array];
+    NSMutableArray *users = [NSMutableArray array];
+    for (PFObject *user in sourceArray) {
+        [huanxinIDs addObject:user[kPARSE_HXUSER_USERNAME]];
+        [users addObject:user];
+    }
+    
+    GetUserInfoReq *req = [[GetUserInfoReq alloc] init];
+    req.key = @"huanxinID";
+    req.values = huanxinIDs;
+    [req requestSimpleCompletion:^(NSArray<Person *> * _Nullable response) {
+        for (PFObject *model in users) {
+            for (Person *person in response) {
+                if ([person.huanxin isEqualToString:model[kPARSE_HXUSER_USERNAME]]) {
+                    model[kPARSE_HXUSER_AVATAR] = [NSString stringWithFormat:@"%@%@", [PCSDataManager defaultManager].photoURL, person.photoName];
+                    model[kPARSE_HXUSER_NICKNAME] = person.name;
+                }
+            }
+        }
+        
+        completion(sourceArray);
     }];
 }
 

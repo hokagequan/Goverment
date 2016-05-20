@@ -15,22 +15,24 @@
 #import "ApplyViewController.h"
 #import "AddFriendCell.h"
 #import "InvitationManager.h"
+#import "PeopleCongressSystem-Swift.h"
 
-@interface AddFriendViewController ()<UITextFieldDelegate, UIAlertViewDelegate>
+@interface AddFriendViewController ()<UITextFieldDelegate, UIAlertViewDelegate, UITableViewDelegate, UITableViewDataSource>
 
 @property (strong, nonatomic) NSMutableArray *dataSource;
 
 @property (strong, nonatomic) UIView *headerView;
 @property (strong, nonatomic) UITextField *textField;
 @property (strong, nonatomic) NSIndexPath *selectedIndexPath;
+@property (strong, nonatomic) UITableView *tableView;
 
 @end
 
 @implementation AddFriendViewController
 
-- (id)initWithStyle:(UITableViewStyle)style
+- (id)init
 {
-    self = [super initWithStyle:style];
+    self = [super init];
     if (self) {
         // Custom initialization
         _dataSource = [NSMutableArray array];
@@ -48,6 +50,8 @@
     }
     self.title = NSLocalizedString(@"friend.add", @"Add friend");
     self.view.backgroundColor = [UIColor whiteColor];
+    self.tableView.delegate = self;
+    self.tableView.dataSource = self;
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     self.tableView.tableHeaderView = self.headerView;
     
@@ -57,18 +61,29 @@
     
     UIButton *searchButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 60, 44)];
     [searchButton setTitle:NSLocalizedString(@"search", @"Search") forState:UIControlStateNormal];
-    [searchButton setTitleColor:[UIColor colorWithRed:32 / 255.0 green:134 / 255.0 blue:158 / 255.0 alpha:1.0] forState:UIControlStateNormal];
-    [searchButton setTitleColor:[UIColor whiteColor] forState:UIControlStateHighlighted];
+    [searchButton setTitleColor:[UIColor redColor] forState:UIControlStateNormal];
+    searchButton.titleLabel.font = [UIFont systemFontOfSize:14.0];
     [searchButton addTarget:self action:@selector(searchAction) forControlEvents:UIControlEventTouchUpInside];
-    [self.navigationItem setRightBarButtonItem:[[UIBarButtonItem alloc] initWithCustomView:searchButton]];
+//    [self.navigationItem setRightBarButtonItem:[[UIBarButtonItem alloc] initWithCustomView:searchButton]];
     
-    UIButton *backButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 44, 44)];
-    [backButton setImage:[UIImage imageNamed:@"back.png"] forState:UIControlStateNormal];
-    [backButton addTarget:self.navigationController action:@selector(popViewControllerAnimated:) forControlEvents:UIControlEventTouchUpInside];
-    UIBarButtonItem *backItem = [[UIBarButtonItem alloc] initWithCustomView:backButton];
-    [self.navigationItem setLeftBarButtonItem:backItem];
+//    UIButton *backButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 44, 44)];
+//    [backButton setImage:[UIImage imageNamed:@"back.png"] forState:UIControlStateNormal];
+//    [backButton addTarget:self.navigationController action:@selector(popViewControllerAnimated:) forControlEvents:UIControlEventTouchUpInside];
+//    UIBarButtonItem *backItem = [[UIBarButtonItem alloc] initWithCustomView:backButton];
+//    [self.navigationItem setLeftBarButtonItem:backItem];
     
     [self.view addSubview:self.textField];
+    
+    [PCSCustomUtil customNavigationController:self];
+    CGFloat height = [self customPCSNaviWithRightButton:self.title button:searchButton];
+    CGRect frame = self.tableView.frame;
+    frame.origin.y += height;
+    frame.size.height -= height;
+    self.tableView.frame = frame;
+    
+    frame = self.textField.frame;
+    frame.origin.y += height;
+    self.textField.frame = frame;
 }
 
 - (void)didReceiveMemoryWarning
@@ -78,6 +93,15 @@
 }
 
 #pragma mark - getter
+
+- (UITableView *)tableView {
+    if (!_tableView) {
+        _tableView = [[UITableView alloc] initWithFrame:self.view.bounds style:UITableViewStylePlain];
+        [self.view addSubview:_tableView];
+    }
+    
+    return _tableView;
+}
 
 - (UITextField *)textField
 {
@@ -281,15 +305,23 @@
     NSString *buddyName = [self.dataSource objectAtIndex:indexPath.row];
     if (buddyName && buddyName.length > 0) {
         [self showHudInView:self.view hint:NSLocalizedString(@"friend.sendApply", @"sending application...")];
-        EMError *error = [[EMClient sharedClient].contactManager addContact:buddyName message:message];
-        [self hideHud];
-        if (error) {
-            [self showHint:NSLocalizedString(@"friend.sendApplyFail", @"send application fails, please operate again")];
-        }
-        else{
-            [self showHint:NSLocalizedString(@"friend.sendApplySuccess", @"send successfully")];
-            [self.navigationController popViewControllerAnimated:YES];
-        }
+        
+        GetUserInfoReq *req = [[GetUserInfoReq alloc] init];
+        req.key = @"UserFirstName";
+        req.values = @[buddyName];
+        [req requestSimpleCompletion:^(NSArray<Person *> * _Nullable response) {
+            Person *person = response.firstObject;
+            
+            EMError *error = [[EMClient sharedClient].contactManager addContact:person.huanxin message:message];
+            [self hideHud];
+            if (error) {
+                [self showHint:NSLocalizedString(@"friend.sendApplyFail", @"send application fails, please operate again")];
+            }
+            else{
+                [self showHint:NSLocalizedString(@"friend.sendApplySuccess", @"send successfully")];
+                [self.navigationController popViewControllerAnimated:YES];
+            }
+        }];
     }
 }
 
