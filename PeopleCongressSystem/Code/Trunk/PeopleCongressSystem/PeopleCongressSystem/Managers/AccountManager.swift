@@ -203,7 +203,7 @@ class AccountManager: NSObject {
             
             let appReq = GetAppInfoReq()
             appReq.requestSimpleCompletion({ (response) in
-//                isUseCA = response
+                isUseCA = response
             })
             
             let req = SignInReq()

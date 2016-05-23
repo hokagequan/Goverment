@@ -91,7 +91,7 @@
     self.searchBar.frame = frame;
     
     self.tableView.editing = YES;
-    self.tableView.frame = CGRectMake(0, self.searchBar.frame.size.height, self.view.frame.size.width, self.view.frame.size.height - self.searchBar.frame.size.height - self.footerView.frame.size.height - height);
+    self.tableView.frame = CGRectMake(0, self.searchBar.frame.size.height + height, self.view.frame.size.width, self.view.frame.size.height - self.searchBar.frame.size.height - self.footerView.frame.size.height - height);
     [self searchController];
     
     if ([_blockSelectedUsernames count] > 0) {
