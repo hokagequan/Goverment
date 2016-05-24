@@ -427,9 +427,12 @@ static UserProfileManager *sharedInstance = nil;
     UserProfileEntity *entity = [[UserProfileEntity alloc] init];
     entity.username = object[kPARSE_HXUSER_USERNAME];
     entity.nickname = object[kPARSE_HXUSER_NICKNAME];
-    PFFile *userImageFile = object[kPARSE_HXUSER_AVATAR];
-    if (userImageFile) {
-        entity.imageUrl = userImageFile.url;
+    id userImageFile = object[kPARSE_HXUSER_AVATAR];
+    if ([userImageFile isKindOfClass:[PFFile class]]) {
+        entity.imageUrl = ((PFFile *)userImageFile).url;
+    }
+    else if ([userImageFile isKindOfClass:[NSString class]]) {
+        entity.imageUrl = userImageFile;
     }
     return entity;
 }
