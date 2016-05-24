@@ -479,7 +479,7 @@
 - (void)addContactAction
 {
     AddFriendViewController *addController = [[AddFriendViewController alloc] init];
-    self.hidesBottomBarWhenPushed = YES;
+    addController.hidesBottomBarWhenPushed = YES;
     [self.navigationController pushViewController:addController animated:YES];
 }
 
