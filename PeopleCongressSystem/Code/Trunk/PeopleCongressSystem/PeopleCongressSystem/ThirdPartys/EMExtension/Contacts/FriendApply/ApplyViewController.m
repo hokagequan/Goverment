@@ -18,15 +18,17 @@
 
 static ApplyViewController *controller = nil;
 
-@interface ApplyViewController ()<ApplyFriendCellDelegate>
+@interface ApplyViewController ()<ApplyFriendCellDelegate, UITableViewDelegate, UITableViewDataSource>
+
+@property (strong, nonatomic) UITableView *tableView;
 
 @end
 
 @implementation ApplyViewController
 
-- (id)initWithStyle:(UITableViewStyle)style
+- (id)init
 {
-    self = [super initWithStyle:style];
+    self = [super init];
     if (self) {
         // Custom initialization
         _dataSource = [[NSMutableArray alloc] init];
@@ -38,7 +40,7 @@ static ApplyViewController *controller = nil;
 {
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
-        controller = [[self alloc] initWithStyle:UITableViewStylePlain];
+        controller = [[self alloc] init];
     });
     
     return controller;
@@ -50,17 +52,19 @@ static ApplyViewController *controller = nil;
     
     // Uncomment the following line to preserve selection between presentations.
     self.title = NSLocalizedString(@"title.apply", @"Application and notification");
+    self.edgesForExtendedLayout = UIRectEdgeNone;
+    self.tableView.dataSource = self;
+    self.tableView.delegate = self;
     self.tableView.tableFooterView = [[UIView alloc] init];
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     
-    UIButton *backButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 44, 44)];
-    [backButton setImage:[UIImage imageNamed:@"back.png"] forState:UIControlStateNormal];
-    [backButton addTarget:self action:@selector(back) forControlEvents:UIControlEventTouchUpInside];
-    UIBarButtonItem *backItem = [[UIBarButtonItem alloc] initWithCustomView:backButton];
-    [self.navigationItem setLeftBarButtonItem:backItem];
-    
     [PCSCustomUtil customNavigationController:self];
-    [self customPCSNavi:self.title];
+    CGFloat height = [self customPCSNavi:self.title];
+    CGRect frame = self.tableView.frame;
+    frame.origin.y += height;
+    frame.size.height -= height;
+    self.tableView.frame = frame;
+    
     
     [self loadDataSourceFromLocalDB];
 }
@@ -79,6 +83,16 @@ static ApplyViewController *controller = nil;
 }
 
 #pragma mark - getter
+
+- (UITableView *)tableView
+{
+    if (_tableView == nil) {
+        _tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height) style:UITableViewStylePlain];
+        [self.view addSubview:_tableView];
+    }
+    
+    return _tableView;
+}
 
 - (NSMutableArray *)dataSource
 {

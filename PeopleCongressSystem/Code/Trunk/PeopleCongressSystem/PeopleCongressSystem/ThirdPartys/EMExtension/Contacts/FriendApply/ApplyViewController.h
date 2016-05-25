@@ -18,7 +18,7 @@ typedef enum{
     ApplyStyleJoinGroup,
 }ApplyStyle;
 
-@interface ApplyViewController : UITableViewController
+@interface ApplyViewController : UIViewController
 {
     NSMutableArray *_dataSource;
 }

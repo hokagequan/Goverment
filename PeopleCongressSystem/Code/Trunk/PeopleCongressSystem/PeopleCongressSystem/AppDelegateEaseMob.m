@@ -51,7 +51,7 @@ didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
                                      apnsCertName:apnsCertName
                                       otherConfig:@{kSDKConfigEnableConsoleLogger:[NSNumber numberWithBool:YES]}];
     
-//    [ChatDemoHelper shareHelper];
+    [ChatDemoHelper shareHelper];
     
     
     

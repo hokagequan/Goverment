@@ -15,7 +15,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
 
     let easemobAppKey = "dlbc#rdsys"
-    let easemobAPNS = "rdsys_dis"
+    let easemobAPNS = "rdsys_dev"
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.

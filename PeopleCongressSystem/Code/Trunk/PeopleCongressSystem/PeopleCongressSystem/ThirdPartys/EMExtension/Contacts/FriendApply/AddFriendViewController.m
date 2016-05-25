@@ -306,6 +306,17 @@
     if (buddyName && buddyName.length > 0) {
         [self showHudInView:self.view hint:NSLocalizedString(@"friend.sendApply", @"sending application...")];
         
+//        EMError *error = [[EMClient sharedClient].contactManager addContact:buddyName message:message];
+//        [self hideHud];
+//        if (error) {
+//            [self showHint:NSLocalizedString(@"friend.sendApplyFail", @"send application fails, please operate again")];
+//        }
+//        else{
+//            [self showHint:NSLocalizedString(@"friend.sendApplySuccess", @"send successfully")];
+//            [self.navigationController popViewControllerAnimated:YES];
+//        }
+        
+        // 转换帐户后提交申请
         GetUserInfoReq *req = [[GetUserInfoReq alloc] init];
         req.key = @"UserFirstName";
         req.values = @[buddyName];
