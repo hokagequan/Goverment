@@ -97,14 +97,13 @@ class CongressHomeActionDelegate: ActionProtocol {
         case .Suggestion:
             let storyboard = UIStoryboard(name: "Main", bundle: nil)
             let vc = storyboard.instantiateViewControllerWithIdentifier("CommonHTMLViewController") as! CommonHTMLViewController
-            // TODO: 建议意见
-            vc.URL = PCSDataManager.defaultManager().htmlURL(pageHTMLSuggestion)
+            vc.URL = PCSDataManager.defaultManager().htmlURL(pageHTMLAddSuggestion)
             vc.naviTitle = "建议意见"
-            vc.rightItemTitle = "添加"
+            vc.rightItemTitle = "列表"
             vc.rightItemBlock = {() -> Void in
                 let storyboard = UIStoryboard(name: "Main", bundle: nil)
                 let childVC = storyboard.instantiateViewControllerWithIdentifier("CommonHTMLViewController") as! CommonHTMLViewController
-                childVC.URL = PCSDataManager.defaultManager().htmlURL(pageHTMLAddSuggestion)
+                childVC.URL = PCSDataManager.defaultManager().htmlURL(pageHTMLSuggestion)
                 childVC.naviTitle = "添加建议"
                 vc.navigationController?.pushViewController(childVC, animated: true)
             }

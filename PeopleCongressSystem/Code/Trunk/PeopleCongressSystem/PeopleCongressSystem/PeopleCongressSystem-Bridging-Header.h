@@ -8,6 +8,7 @@
 #import "MiddlewareAPI.h"
 #import "EMSDK.h"
 #import "EaseUI.h"
+#import "ChatDemoHelper.h"
 
 // ViewController
 #import "ConversationListController.h"

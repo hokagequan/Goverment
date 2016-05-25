@@ -52,6 +52,7 @@ static ApplyViewController *controller = nil;
     
     // Uncomment the following line to preserve selection between presentations.
     self.title = NSLocalizedString(@"title.apply", @"Application and notification");
+    self.view.backgroundColor = [UIColor whiteColor];
     self.edgesForExtendedLayout = UIRectEdgeNone;
     self.tableView.dataSource = self;
     self.tableView.delegate = self;

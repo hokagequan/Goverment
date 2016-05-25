@@ -19,6 +19,9 @@ class MainViewController: UITabBarController {
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(MainViewController.setupUnreadMessageCount), name: "setupUnreadMessageCount", object: nil)
         
         self.loadViewControllers()
+        
+        self.setupUnreadMessageCount()
+        self.setupUntreatedApplyCount()
     }
     
     deinit {
@@ -42,12 +45,14 @@ class MainViewController: UITabBarController {
         let chatNavi = UINavigationController(rootViewController: chatViewController)
         let chatTabItem = UITabBarItem(title: "会话", image: UIImage(named: "chat_nor")?.imageWithRenderingMode(UIImageRenderingMode.AlwaysOriginal), selectedImage: UIImage(named: "chat_sel")?.imageWithRenderingMode(UIImageRenderingMode.AlwaysOriginal))
         chatNavi.tabBarItem = chatTabItem
+        ChatDemoHelper.shareHelper().conversationListVC = chatViewController
         
         // 联系人
         let contactsViewController = ContactListViewController(nibName: nil, bundle: nil)
         let contactsNavi = UINavigationController(rootViewController: contactsViewController)
         let contactsTabItem = UITabBarItem(title: "通讯录", image: UIImage(named: "contacts_nor")?.imageWithRenderingMode(UIImageRenderingMode.AlwaysOriginal), selectedImage: UIImage(named: "contacts_sel")?.imageWithRenderingMode(UIImageRenderingMode.AlwaysOriginal))
         contactsNavi.tabBarItem = contactsTabItem
+        ChatDemoHelper.shareHelper().contactViewVC = contactsViewController
         
         // 我
         storyboard = UIStoryboard(name: "Me", bundle: nil)
