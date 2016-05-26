@@ -99,7 +99,7 @@ class CongressHomeActionDelegate: ActionProtocol {
             let vc = storyboard.instantiateViewControllerWithIdentifier("CommonHTMLViewController") as! CommonHTMLViewController
             vc.URL = PCSDataManager.defaultManager().htmlURL(pageHTMLAddSuggestion)
             vc.naviTitle = "建议意见"
-            vc.rightItemTitle = "列表"
+            vc.rightItemTitle = "已提交列表"
             vc.rightItemBlock = {() -> Void in
                 let storyboard = UIStoryboard(name: "Main", bundle: nil)
                 let childVC = storyboard.instantiateViewControllerWithIdentifier("CommonHTMLViewController") as! CommonHTMLViewController
