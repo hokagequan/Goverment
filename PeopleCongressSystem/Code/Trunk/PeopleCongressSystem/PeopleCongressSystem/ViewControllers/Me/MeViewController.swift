@@ -117,6 +117,7 @@ class MeViewController: UITableViewController {
         ]
         
         if PCSDataManager.defaultManager().content is CongressContentInfo {
+            listItems.insert(["title": "扫一扫签到", "method": "clickCheckIn"], atIndex: 0)
             listItems.insert(["title": "名片", "method": "clickBusinessCard"], atIndex: 0)
         }
     }
@@ -295,6 +296,12 @@ class MeViewController: UITableViewController {
     
     func clickBusinessCard() {
         self.performSegueWithIdentifier("BusinessCardSegue", sender: self)
+    }
+    
+    func clickCheckIn() {
+        let storyboard = UIStoryboard(name: "CheckIn", bundle: nil)
+        let vc = storyboard.instantiateViewControllerWithIdentifier("QRCodeScanViewController")
+        self.navigationController?.pushViewController(vc, animated: true)
     }
     
     // MARK: - Table view data source
