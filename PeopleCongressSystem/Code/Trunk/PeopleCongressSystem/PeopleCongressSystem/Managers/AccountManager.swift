@@ -348,8 +348,6 @@ class AccountManager: NSObject {
             
             EMClient.sharedClient().loginWithUsername(self.user?.huanxinAccount, password: "123456")
             EMClient.sharedClient().setApnsNickname(self.user?.name)
-            UserProfileManager.sharedInstance().updateUserProfileInBackground([kPARSE_HXUSER_NICKNAME: self.user!.name!], completion: { (success, error) in
-            })
             dispatch_semaphore_signal(semaphore)
         }
     }

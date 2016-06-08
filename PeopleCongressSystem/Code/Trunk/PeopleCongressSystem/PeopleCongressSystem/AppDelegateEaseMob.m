@@ -14,6 +14,8 @@
 #import "AppDelegateParse.h"
 #import "EMSDK.h"
 #import "ChatDemoHelper.h"
+#import "UserProfileManager.h"
+#import "PeopleCongressSystem-Swift.h"
 //#import "MBProgressHUD.h"
 
 /**
@@ -88,8 +90,12 @@ didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
         [[ChatDemoHelper shareHelper] asyncGroupFromServer];
         [[ChatDemoHelper shareHelper] asyncConversationFromDB];
         [[ChatDemoHelper shareHelper] asyncPushOptions];
+        [[UserProfileManager sharedInstance] updateUserProfileInBackground:@{kPARSE_HXUSER_NICKNAME: [PCSDataManager defaultManager].accountManager.user.name} completion:^(BOOL success, NSError *error) {
+            
+        }];
     }
     else{//登陆失败加载登陆页面控制器
+        [[AppDelegateParse sharedInstance] clearParse];
     }
 }
 
