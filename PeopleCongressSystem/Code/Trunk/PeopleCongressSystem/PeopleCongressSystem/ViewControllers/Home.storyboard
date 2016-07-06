@@ -10,7 +10,7 @@
         <!--Navigation Controller-->
         <scene sceneID="64D-de-a7J">
             <objects>
-                <navigationController storyboardIdentifier="HomeNavi" useStoryboardIdentifierAsRestorationIdentifier="YES" navigationBarHidden="YES" id="wA1-H8-5SO" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="HomeNavi" useStoryboardIdentifierAsRestorationIdentifier="YES" id="wA1-H8-5SO" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="nEI-w7-uhO">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -36,7 +36,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="home_header" translatesAutoresizingMaskIntoConstraints="NO" id="E18-kk-YL3">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="160"/>
+                                <rect key="frame" x="0.0" y="64" width="600" height="160"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="160" id="7Af-YK-nKr"/>
                                     <constraint firstAttribute="height" constant="130" id="jC7-R5-Dxr"/>
@@ -48,7 +48,7 @@
                                 </variation>
                             </imageView>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="ISn-ia-tyM">
-                                <rect key="frame" x="0.0" y="160" width="600" height="440"/>
+                                <rect key="frame" x="0.0" y="224" width="600" height="376"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="20" minimumInteritemSpacing="10" id="BQn-Nc-CnW">
                                     <size key="itemSize" width="70" height="100"/>
@@ -155,6 +155,7 @@
                             <constraint firstItem="ISn-ia-tyM" firstAttribute="top" secondItem="E18-kk-YL3" secondAttribute="bottom" id="J9h-8x-kvE"/>
                             <constraint firstItem="8ph-kt-EsP" firstAttribute="top" secondItem="ISn-ia-tyM" secondAttribute="bottom" id="eXm-2J-5nh"/>
                             <constraint firstItem="E18-kk-YL3" firstAttribute="top" secondItem="46Y-lp-Xfn" secondAttribute="top" id="iLc-2u-LFO"/>
+                            <constraint firstItem="E18-kk-YL3" firstAttribute="top" secondItem="Yze-YW-zKn" secondAttribute="bottom" id="kLP-Xy-uW3"/>
                             <constraint firstAttribute="trailing" secondItem="ISn-ia-tyM" secondAttribute="trailing" id="lGk-DO-Zde"/>
                             <constraint firstItem="ISn-ia-tyM" firstAttribute="leading" secondItem="46Y-lp-Xfn" secondAttribute="leading" id="oP6-gU-JjU"/>
                             <constraint firstAttribute="trailing" secondItem="YQr-PZ-0gW" secondAttribute="trailing" constant="8" id="ri4-8i-Am5"/>
@@ -162,6 +163,7 @@
                         <variation key="default">
                             <mask key="constraints">
                                 <exclude reference="530-k2-WVU"/>
+                                <exclude reference="iLc-2u-LFO"/>
                             </mask>
                         </variation>
                     </view>
