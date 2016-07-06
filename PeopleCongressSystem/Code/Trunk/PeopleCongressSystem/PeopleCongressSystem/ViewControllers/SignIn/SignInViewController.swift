@@ -103,16 +103,26 @@ class SignInViewController: UIViewController, UIActionSheetDelegate, UITextField
         }
         
         EZLoadingActivity.show("", disableUI: true)
-        PCSDataManager.defaultManager().accountManager.signIn(accountTextField.text!, password: passwordTextField.text!) { (success, errorMessage, errorCode) -> Void in
-            EZLoadingActivity.hide()
-            
-            if success == true {
-                SettingsManager.saveData(self.rememberButton.selected, key: SettingKey.RememberPassword.rawValue)
-                SettingsManager.saveData(self.autoButton.selected, key: SettingKey.AutoSignIn.rawValue)
-                self.performSegueWithIdentifier("MainSegue", sender: self)
+        
+        PCSDataManager.defaultManager().appAvaliable { (valid, errMsg) in
+            if valid == false {
+                EZLoadingActivity.hide()
+                self.showAlert(errMsg ?? "请稍后再试")
+                
+                return
             }
-            else {
-                self.showAlert(errorMessage!)
+            
+            PCSDataManager.defaultManager().accountManager.signIn(self.accountTextField.text!, password: self.passwordTextField.text!) { (success, errorMessage, errorCode) -> Void in
+                EZLoadingActivity.hide()
+                
+                if success == true {
+                    SettingsManager.saveData(self.rememberButton.selected, key: SettingKey.RememberPassword.rawValue)
+                    SettingsManager.saveData(self.autoButton.selected, key: SettingKey.AutoSignIn.rawValue)
+                    self.performSegueWithIdentifier("MainSegue", sender: self)
+                }
+                else {
+                    self.showAlert(errorMessage!)
+                }
             }
         }
     }

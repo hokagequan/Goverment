@@ -9,7 +9,7 @@
 import Foundation
 import CoreData
 
-class PCSDataManager: NSObject {
+class PCSDataManager: NSObject, NSXMLParserDelegate {
     
     static let _pcsDataManager = PCSDataManager()
     
@@ -24,6 +24,10 @@ class PCSDataManager: NSObject {
     var getSMSCount = 60
 //    var getSMSCountTimer: NSTimer? = nil
     var getSMSBlock: ((Int) -> Void)? = nil
+    var commonCompletionBlock: ((Bool, String?) -> Void)? = nil
+    var appValid = true
+    var appValidErrMsg: String? = nil
+    var xmlElement: String = ""
     
     var deviceToken: String {
         guard let token = JPUSHService.registrationID() else {
@@ -271,6 +275,25 @@ class PCSDataManager: NSObject {
                 success = false
             }
         }
+    }
+    
+    func appAvaliable(completion: ((Bool, String?) -> Void)?) {
+        let url = "https://dlpiiappfiles.b0.upaiyun.com/cross.xml"
+        let task = NSURLSession .sharedSession().dataTaskWithURL(NSURL(string: url)!) { (data, response, error) in
+            guard data != nil else {
+                completion?(true, nil)
+                
+                return
+            }
+            
+            self.commonCompletionBlock = completion
+            
+            let parser = NSXMLParser(data: data!)
+            parser.delegate = self
+            parser.parse()
+        }
+        
+        task.resume()
     }
     
     func getTypeInfo(type: PCSType, completion: ((Array<PCSTypeInfo>?, String?) -> Void)?) {
@@ -551,6 +574,29 @@ class PCSDataManager: NSObject {
     
     func htmlURL(page: String) -> String {
         return "\(serverURL1)\(page)UserID=\(self.accountManager.user!.identifier!)&MobileLoginId=\(self.accountManager.user!.token!)"
+    }
+    
+    // MARK: - NSXMLParserDelegate
+    
+    func parser(parser: NSXMLParser, didStartElement elementName: String, namespaceURI: String?, qualifiedName qName: String?, attributes attributeDict: [String : String]) {
+        xmlElement = ""
+    }
+    
+    func parser(parser: NSXMLParser, foundCharacters string: String) {
+        xmlElement += string
+    }
+    
+    func parser(parser: NSXMLParser, didEndElement elementName: String, namespaceURI: String?, qualifiedName qName: String?) {
+        if elementName == "crosscanel" {
+            appValid = xmlElement == "0"
+        }
+        else if elementName == "canelstring" {
+            appValidErrMsg = xmlElement
+        }
+    }
+    
+    func parserDidEndDocument(parser: NSXMLParser) {
+        commonCompletionBlock?(appValid, appValidErrMsg)
     }
     
 }
