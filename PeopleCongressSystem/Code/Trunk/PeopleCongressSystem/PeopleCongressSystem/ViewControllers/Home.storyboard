@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="wA1-H8-5SO">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="wA1-H8-5SO">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
@@ -36,8 +36,9 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="home_header" translatesAutoresizingMaskIntoConstraints="NO" id="E18-kk-YL3">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="184"/>
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="160"/>
                                 <constraints>
+                                    <constraint firstAttribute="height" constant="160" id="7Af-YK-nKr"/>
                                     <constraint firstAttribute="height" constant="130" id="jC7-R5-Dxr"/>
                                 </constraints>
                                 <variation key="default">
@@ -47,7 +48,7 @@
                                 </variation>
                             </imageView>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="ISn-ia-tyM">
-                                <rect key="frame" x="0.0" y="184" width="600" height="416"/>
+                                <rect key="frame" x="0.0" y="160" width="600" height="440"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="20" minimumInteritemSpacing="10" id="BQn-Nc-CnW">
                                     <size key="itemSize" width="70" height="100"/>
@@ -147,7 +148,7 @@
                         </subviews>
                         <color key="backgroundColor" red="0.94901960780000005" green="0.94901960780000005" blue="0.94901960780000005" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstItem="E18-kk-YL3" firstAttribute="height" secondItem="46Y-lp-Xfn" secondAttribute="height" multiplier="204:667" id="530-k2-WVU"/>
+                            <constraint firstItem="E18-kk-YL3" firstAttribute="height" secondItem="46Y-lp-Xfn" secondAttribute="height" constant="204" id="530-k2-WVU"/>
                             <constraint firstAttribute="trailing" secondItem="E18-kk-YL3" secondAttribute="trailing" id="9dM-Dm-ZKo"/>
                             <constraint firstItem="E18-kk-YL3" firstAttribute="leading" secondItem="46Y-lp-Xfn" secondAttribute="leading" id="CAh-yf-gf7"/>
                             <constraint firstItem="8ph-kt-EsP" firstAttribute="top" secondItem="YQr-PZ-0gW" secondAttribute="bottom" constant="10" id="Dua-qf-IO5"/>
@@ -158,6 +159,11 @@
                             <constraint firstItem="ISn-ia-tyM" firstAttribute="leading" secondItem="46Y-lp-Xfn" secondAttribute="leading" id="oP6-gU-JjU"/>
                             <constraint firstAttribute="trailing" secondItem="YQr-PZ-0gW" secondAttribute="trailing" constant="8" id="ri4-8i-Am5"/>
                         </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="530-k2-WVU"/>
+                            </mask>
+                        </variation>
                     </view>
                     <navigationItem key="navigationItem" id="Uer-Uc-GWQ"/>
                     <connections>
@@ -1405,7 +1411,7 @@
         <image name="activity_qr_code" width="15" height="15"/>
         <image name="add" width="20" height="20"/>
         <image name="delete" width="14" height="17"/>
-        <image name="home_header" width="375" height="205"/>
+        <image name="home_header" width="375" height="160"/>
         <image name="indicator" width="9" height="15"/>
         <image name="mark_nor" width="22" height="22"/>
         <image name="mark_sel" width="22" height="22"/>

@@ -14,6 +14,7 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
     @IBOutlet weak var specialButton: UIButton!
     
     let content = PCSDataManager.defaultManager().content
+    let cellSize: CGFloat = 52.0
     
     var message: String? = "0"
     
@@ -71,16 +72,16 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
     // MARK: - UICollectionView
     
     func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAtIndex section: Int) -> CGFloat {
-        return (self.view.bounds.size.width - 3 * 70.0 * GlobalUtil.rateForWidth()) / 3.0 - 5
+        return (self.view.bounds.size.width - 3 * cellSize * GlobalUtil.rateForWidth()) / 3.0 - 5
     }
     
     func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAtIndex section: Int) -> UIEdgeInsets {
-        let distance = (self.view.bounds.size.width - 3 * 70.0 * GlobalUtil.rateForWidth()) / 6.0
-        return UIEdgeInsetsMake(20, distance, 20, distance)
+        let distance = (self.view.bounds.size.width - 3 * cellSize * GlobalUtil.rateForWidth()) / 6.0
+        return UIEdgeInsetsMake(40, distance, 20, distance)
     }
     
     func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
-        return CGSizeMake(70.0 * GlobalUtil.rateForWidth(), 70 * GlobalUtil.rateForWidth() + 30)
+        return CGSizeMake(cellSize * GlobalUtil.rateForWidth(), cellSize * GlobalUtil.rateForWidth() + 30)
     }
     
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
