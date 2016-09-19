@@ -1,0 +1,124 @@
+//
+//  HomeViewController.swift
+//  PeopleCongressSystem
+//
+//  Created by Matt Quan on 16/1/19.
+//  Copyright © 2016年 CoolRabbit. All rights reserved.
+//
+
+import UIKit
+
+class HomeViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+
+    @IBOutlet weak var collectionView: UICollectionView!
+    @IBOutlet weak var specialButton: UIButton!
+    
+    let content = PCSDataManager.defaultManager().content
+    let cellSize: CGFloat = 52.0
+    
+    var message: String? = "0"
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+
+        // Do any additional setup after loading the view.
+        self.navigationItem.hidesBackButton = true
+        PCSCustomUtil.customNavigationController(self)
+        
+        self.loadUI()
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+    }
+    
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        if content is CongressContentInfo {
+            let req = GetActivityNotifyCountReq()
+            req.requestSimpleCompletion({ (success, count, errorCode) -> Void in
+                if success {
+                    self.message = count
+                    self.collectionView.reloadItemsAtIndexPaths([NSIndexPath(forRow: 0, inSection: 0)])
+                }
+                else {
+                    ResponseErrorManger.defaultManager().handleError(errorCode, message: nil)
+                }
+            })
+        }
+    }
+    
+    func loadUI() {
+        if content is WorderContentInfo {
+            specialButton.setImage(UIImage(named: "home_checkin"), forState: UIControlState.Normal)
+        }
+        else if content is CongressContentInfo {
+            specialButton.hidden = true
+        }
+    }
+
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
+    }
+    
+    // MARK: - Actions
+    
+    @IBAction func clickSpecial(sender: AnyObject) {
+        self.navigationController?.setNavigationBarHidden(false, animated: true)
+        content.actionDelegate?.didClickSpecial(self)
+    }
+    
+    // MARK: - UICollectionView
+    
+    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAtIndex section: Int) -> CGFloat {
+        return (self.view.bounds.size.width - 3 * cellSize * GlobalUtil.rateForWidth()) / 3.0 - 5
+    }
+    
+    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAtIndex section: Int) -> UIEdgeInsets {
+        let distance = (self.view.bounds.size.width - 3 * cellSize * GlobalUtil.rateForWidth()) / 6.0
+        return UIEdgeInsetsMake(40, distance, 20, distance)
+    }
+    
+    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
+        return CGSizeMake(cellSize * GlobalUtil.rateForWidth(), cellSize * GlobalUtil.rateForWidth() + 30)
+    }
+    
+    func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return content.homeElementCount()
+    }
+    
+    func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCellWithReuseIdentifier("NormalImageCell", forIndexPath: indexPath) as! NormalImageCell
+        
+        cell.titleLabel.text = content.homeElementTitle(indexPath.row)
+        cell.iconImageView.image = UIImage(named: content.homeElementIcon(indexPath.row))
+        cell.markLabel.hidden = true
+        
+        if content is CongressContentInfo && indexPath.row == 0 && message != "0" {
+            cell.markLabel.text = message
+            cell.markLabel.hidden = false
+        }
+        
+        return cell
+    }
+    
+    func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
+        self.navigationController?.setNavigationBarHidden(false, animated: true)
+        content.actionDelegate?.didClickIndexPath(self, indexPath: indexPath)
+    }
+
+    // MARK: - Navigation
+
+    // In a storyboard-based application, you will often want to do a little preparation before navigation
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        // Get the new view controller using segue.destinationViewController.
+        // Pass the selected object to the new view controller.
+        if segue.identifier == "SituationSegue" {
+            let vc = segue.destinationViewController as! SituationViewController
+            vc.header = sender as! String
+        }
+    }
+
+}

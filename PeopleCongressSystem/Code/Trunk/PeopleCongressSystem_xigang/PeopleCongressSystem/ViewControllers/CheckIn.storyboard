@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="8fh-fA-8fB">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+    </dependencies>
+    <scenes>
+        <!--Navigation Controller-->
+        <scene sceneID="4E0-gd-IH0">
+            <objects>
+                <navigationController storyboardIdentifier="CheckInNavi" useStoryboardIdentifierAsRestorationIdentifier="YES" id="8fh-fA-8fB" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="4sj-aO-7Gp">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="8bq-KX-F3S" kind="relationship" relationship="rootViewController" id="ktp-Mj-89W"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="hBT-W6-Dak" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-265" y="382"/>
+        </scene>
+        <!--二维码签到-->
+        <scene sceneID="Qr3-QO-l4Z">
+            <objects>
+                <viewController storyboardIdentifier="QRCodeScanViewController" hidesBottomBarWhenPushed="YES" useStoryboardIdentifierAsRestorationIdentifier="YES" id="bHo-X1-jgW" userLabel="二维码签到" customClass="QRCodeScanViewController" customModule="PeopleCongressSystem" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="mQY-CD-tS5"/>
+                        <viewControllerLayoutGuide type="bottom" id="5dR-Xd-Y8d"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Be2-aG-0fZ">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qAU-WF-5ap" customClass="PCSNavigationView" customModule="PeopleCongressSystem" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="64" width="600" height="44"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="cNL-aI-Ifx"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="title" value="签到"/>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <outlet property="viewController" destination="bHo-X1-jgW" id="KkM-vK-C3q"/>
+                                </connections>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="feY-8v-lBL" userLabel="Container">
+                                <rect key="frame" x="0.0" y="108" width="600" height="492"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="180" id="5KB-T7-2i8"/>
+                                    <constraint firstAttribute="width" secondItem="feY-8v-lBL" secondAttribute="height" multiplier="1:1" id="mJG-Lz-XeI"/>
+                                </constraints>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="5KB-T7-2i8"/>
+                                        <exclude reference="mJG-Lz-XeI"/>
+                                    </mask>
+                                </variation>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" red="0.94901960780000005" green="0.94901960780000005" blue="0.94901960780000005" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="feY-8v-lBL" firstAttribute="leading" secondItem="Be2-aG-0fZ" secondAttribute="leading" id="4st-jF-cov"/>
+                            <constraint firstItem="qAU-WF-5ap" firstAttribute="top" secondItem="mQY-CD-tS5" secondAttribute="bottom" id="8na-Hw-4YN"/>
+                            <constraint firstItem="5dR-Xd-Y8d" firstAttribute="top" secondItem="feY-8v-lBL" secondAttribute="bottom" id="BcW-4q-iYD"/>
+                            <constraint firstAttribute="trailing" secondItem="feY-8v-lBL" secondAttribute="trailing" id="ZlX-Xg-5Bl"/>
+                            <constraint firstItem="qAU-WF-5ap" firstAttribute="leading" secondItem="Be2-aG-0fZ" secondAttribute="leading" id="gbd-0l-wBj"/>
+                            <constraint firstItem="feY-8v-lBL" firstAttribute="top" secondItem="qAU-WF-5ap" secondAttribute="bottom" id="hlj-Ei-EM4"/>
+                            <constraint firstItem="feY-8v-lBL" firstAttribute="centerX" secondItem="Be2-aG-0fZ" secondAttribute="centerX" id="idq-Yt-JIs"/>
+                            <constraint firstAttribute="trailing" secondItem="qAU-WF-5ap" secondAttribute="trailing" id="wW2-Dz-SvF"/>
+                            <constraint firstItem="feY-8v-lBL" firstAttribute="top" secondItem="qAU-WF-5ap" secondAttribute="bottom" constant="60" id="yg4-xQ-QLB"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="idq-Yt-JIs"/>
+                                <exclude reference="yg4-xQ-QLB"/>
+                            </mask>
+                        </variation>
+                    </view>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
+                    <connections>
+                        <outlet property="containerView" destination="feY-8v-lBL" id="AeH-fC-hcb"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="4uH-Cv-F4J" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1309" y="382"/>
+        </scene>
+        <!--活动列表-->
+        <scene sceneID="YCq-X1-XBi">
+            <objects>
+                <viewController storyboardIdentifier="CheckInViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="8bq-KX-F3S" userLabel="活动列表" customClass="CheckInViewController" customModule="PeopleCongressSystem" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Vv1-MH-vRx"/>
+                        <viewControllerLayoutGuide type="bottom" id="iJ0-o0-DFz"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="O58-bc-o44">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cUz-AP-SGU" customClass="PCSNavigationView" customModule="PeopleCongressSystem" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="64" width="600" height="36"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="36" id="efL-og-fKZ"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="title" value="活动列表"/>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="backHidden" value="NO"/>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <outlet property="viewController" destination="8bq-KX-F3S" id="ndg-3x-LTJ"/>
+                                </connections>
+                            </view>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="83" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="SEU-2y-pAn">
+                                <rect key="frame" x="0.0" y="108" width="600" height="492"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="8bq-KX-F3S" id="YeD-m8-a5X"/>
+                                    <outlet property="delegate" destination="8bq-KX-F3S" id="Gi7-PO-8Et"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" red="0.94901960780000005" green="0.94901960780000005" blue="0.94901960780000005" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="cUz-AP-SGU" secondAttribute="trailing" id="0wd-aJ-cNp"/>
+                            <constraint firstItem="cUz-AP-SGU" firstAttribute="leading" secondItem="O58-bc-o44" secondAttribute="leading" id="FtC-Qb-ote"/>
+                            <constraint firstItem="SEU-2y-pAn" firstAttribute="leading" secondItem="O58-bc-o44" secondAttribute="leading" id="bVf-5f-jfk"/>
+                            <constraint firstItem="SEU-2y-pAn" firstAttribute="top" secondItem="cUz-AP-SGU" secondAttribute="bottom" constant="8" id="i0n-EL-nl9"/>
+                            <constraint firstItem="cUz-AP-SGU" firstAttribute="top" secondItem="Vv1-MH-vRx" secondAttribute="bottom" id="jwC-Jh-pn1"/>
+                            <constraint firstItem="iJ0-o0-DFz" firstAttribute="top" secondItem="SEU-2y-pAn" secondAttribute="bottom" id="sSn-Xy-a2z"/>
+                            <constraint firstAttribute="trailing" secondItem="SEU-2y-pAn" secondAttribute="trailing" id="yBc-lO-BwE"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="tpG-Fb-q4u"/>
+                    <connections>
+                        <outlet property="listTableView" destination="SEU-2y-pAn" id="qfS-5D-FtY"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="AoH-9j-rTC" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="534" y="382"/>
+        </scene>
+    </scenes>
+</document>

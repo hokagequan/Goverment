@@ -1,0 +1,38 @@
+PODS:
+  - Alamofire (3.4.0)
+  - AlamofireImage (2.4.0):
+    - Alamofire (~> 3.3)
+  - DKImagePickerController (3.2.0):
+    - DKImagePickerController/Camera (= 3.2.0)
+    - DKImagePickerController/ImageManager (= 3.2.0)
+  - DKImagePickerController/Camera (3.2.0)
+  - DKImagePickerController/ImageManager (3.2.0)
+  - EZLoadingActivity (0.8)
+  - GrowingTextView (0.1.6)
+  - HUIPatternLockView-Swift (1.0.1)
+  - SwiftQRCode (2.0.2)
+  - TagListView (1.0.0)
+
+DEPENDENCIES:
+  - Alamofire
+  - AlamofireImage
+  - DKImagePickerController
+  - EZLoadingActivity (~> 0.8)
+  - GrowingTextView
+  - HUIPatternLockView-Swift
+  - SwiftQRCode
+  - TagListView (~> 1.0.0)
+
+SPEC CHECKSUMS:
+  Alamofire: c19a627cefd6a95f840401c49ab1f124e07f54ee
+  AlamofireImage: 87408b652e0f5ae5fe364035f15aea8b9b24c77e
+  DKImagePickerController: fe26175578a740283320c392e950532abc6db3ea
+  EZLoadingActivity: 6fd75a05765a4085f4b6fef6f62edf9f144b3139
+  GrowingTextView: 5b431583ba0a401797d3edc8e4af1e2854aaa4e9
+  HUIPatternLockView-Swift: 96d9bf8341a33be39d35eef51c4c2215a678138e
+  SwiftQRCode: 68e920781686e376d70646b90c8ad87fd6523309
+  TagListView: 6bf4bded034c4c90b1e90d8cd3d8e1d852dba0a8
+
+PODFILE CHECKSUM: bf8d5b72d94c9a3baa1918dd7e3c278fe9766aa0
+
+COCOAPODS: 1.0.0
