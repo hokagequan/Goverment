@@ -17,14 +17,14 @@ class GetUserInfoReq: HttpBaseReq {
         super.init()
     }
     
-    func requestSimpleCompletion(completion: ((Array<Person>?) -> Void)?) {
+    func requestSimpleCompletion(_ completion: ((Array<Person>?) -> Void)?) {
         var params = [String: AnyObject]()
-        params["SQKcel"] = key
-        params["ustringlist"] = (values as NSArray).componentsJoinedByString(",")
-        params["orderstring"] = ""
-        params["CheckTicket"] = PCSDataManager.defaultManager().accountManager.user!.token
-        params["FieldID"] = PCSDataManager.defaultManager().accountManager.user!.field
-        params["thecharset"] = "gb2312"
+        params["SQKcel"] = key as AnyObject?
+        params["ustringlist"] = (values as NSArray).componentsJoined(by: ",") as AnyObject?
+        params["orderstring"] = "" as AnyObject?
+        params["CheckTicket"] = PCSDataManager.defaultManager().accountManager.user!.token as AnyObject?
+        params["FieldID"] = PCSDataManager.defaultManager().accountManager.user!.field as AnyObject?
+        params["thecharset"] = "gb2312" as AnyObject?
         
         self.request("GetUserinformation2", nameSpace: "gonggong", params: params) { (response) -> Void in
             var relArray: Array<Person>? = nil

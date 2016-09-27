@@ -17,7 +17,7 @@ extension UIViewController: UIWebViewDelegate {
     
     typealias HtmlLoadCompletion = @convention(block)(Bool) -> Void
     
-    private struct AssociatedKeys {
+    fileprivate struct AssociatedKeys {
         static var htmlWebView = "htmlWebView"
         static var loadCompletion = "loadCompletion"
         static var parentViewController = "parentViewController"
@@ -29,7 +29,7 @@ extension UIViewController: UIWebViewDelegate {
             
             if webView == nil {
                 webView = UIWebView()
-                webView?.backgroundColor = UIColor.clearColor()
+                webView?.backgroundColor = UIColor.clear
                 objc_setAssociatedObject(self, &AssociatedKeys.htmlWebView, webView, objc_AssociationPolicy.OBJC_ASSOCIATION_RETAIN_NONATOMIC)
             }
             
@@ -43,14 +43,14 @@ extension UIViewController: UIWebViewDelegate {
     var loadCompletion: HtmlLoadCompletion? {
         get {
             if let block = objc_getAssociatedObject(self, &AssociatedKeys.loadCompletion) {
-                return unsafeBitCast(block, HtmlLoadCompletion.self)
+                return unsafeBitCast(block, to: HtmlLoadCompletion.self)
             }
             
             return nil
         }
         set {
             if let value = newValue {
-                objc_setAssociatedObject(self, &AssociatedKeys.loadCompletion, unsafeBitCast(value, AnyObject.self), objc_AssociationPolicy.OBJC_ASSOCIATION_RETAIN_NONATOMIC)
+                objc_setAssociatedObject(self, &AssociatedKeys.loadCompletion, unsafeBitCast(value, to: AnyObject.self), objc_AssociationPolicy.OBJC_ASSOCIATION_RETAIN_NONATOMIC)
             }
             else {
                 objc_setAssociatedObject(self, &AssociatedKeys.loadCompletion, nil, objc_AssociationPolicy.OBJC_ASSOCIATION_RETAIN_NONATOMIC)
@@ -58,7 +58,7 @@ extension UIViewController: UIWebViewDelegate {
         }
     }
     
-    private weak var parentViewController: UIViewController? {
+    fileprivate weak var parentViewController: UIViewController? {
         get {
             let vc = objc_getAssociatedObject(self, &AssociatedKeys.parentViewController) as? UIViewController
             
@@ -69,41 +69,41 @@ extension UIViewController: UIWebViewDelegate {
         }
     }
     
-    public func loadPageCompletion(fromViewController: UIViewController?, completion: ((Bool) -> Void)?) {
-        fromViewController?.view.userInteractionEnabled = false
+    public func loadPageCompletion(_ fromViewController: UIViewController?, completion: ((Bool) -> Void)?) {
+        fromViewController?.view.isUserInteractionEnabled = false
         self.parentViewController = fromViewController
         
         loadCompletion = completion
         htmlWebView.delegate = self
         htmlWebView.frame = self.view.bounds
-        htmlWebView.scrollView.scrollEnabled = false
-        if self.respondsToSelector(Selector("loadMainPage")) {
-            self.performSelector(Selector("loadMainPage"))
+        htmlWebView.scrollView.isScrollEnabled = false
+        if self.responds(to: Selector("loadMainPage")) {
+            self.perform(Selector("loadMainPage"))
         }
     }
     
-    func loadWebView(container: UIView) {
+    func loadWebView(_ container: UIView) {
         self.htmlWebView.translatesAutoresizingMaskIntoConstraints = false
         self.htmlWebView.delegate = self
         container.addSubview(self.htmlWebView)
         
-        let HLC = NSLayoutConstraint.constraintsWithVisualFormat("H:|-0-[view]-0-|", options: NSLayoutFormatOptions(rawValue: 0), metrics: nil, views: ["view": self.htmlWebView])
-        let VLC = NSLayoutConstraint.constraintsWithVisualFormat("V:|-0-[view]-0-|", options: NSLayoutFormatOptions(rawValue: 0), metrics: nil, views: ["view": self.htmlWebView])
+        let HLC = NSLayoutConstraint.constraints(withVisualFormat: "H:|-0-[view]-0-|", options: NSLayoutFormatOptions(rawValue: 0), metrics: nil, views: ["view": self.htmlWebView])
+        let VLC = NSLayoutConstraint.constraints(withVisualFormat: "V:|-0-[view]-0-|", options: NSLayoutFormatOptions(rawValue: 0), metrics: nil, views: ["view": self.htmlWebView])
         container.addConstraints(HLC)
         container.addConstraints(VLC)
     }
     
     // MARK: - UIWebViewDelegate
     
-    public func webViewDidFinishLoad(webView: UIWebView) {
-        self.parentViewController?.view.userInteractionEnabled = true
-    webView.stringByEvaluatingJavaScriptFromString("document.documentElement.style.webkitUserSelect='none';")
+    public func webViewDidFinishLoad(_ webView: UIWebView) {
+        self.parentViewController?.view.isUserInteractionEnabled = true
+    webView.stringByEvaluatingJavaScript(from: "document.documentElement.style.webkitUserSelect='none';")
         
         loadCompletion?(true)
         loadCompletion = nil
     }
     
-    public func webView(webView: UIWebView, shouldStartLoadWithRequest request: NSURLRequest, navigationType: UIWebViewNavigationType) -> Bool {
+    public func webView(_ webView: UIWebView, shouldStartLoadWith request: URLRequest, navigationType: UIWebViewNavigationType) -> Bool {
         if webView.hasHtmlCall(request) {
             webView.analysisHtmlCall(request)
             
@@ -113,8 +113,8 @@ extension UIViewController: UIWebViewDelegate {
         return true
     }
     
-    public func webView(webView: UIWebView, didFailLoadWithError error: NSError?) {
-        self.parentViewController?.view.userInteractionEnabled = true
+    public func webView(_ webView: UIWebView, didFailLoadWithError error: Error) {
+        self.parentViewController?.view.isUserInteractionEnabled = true
         
         loadCompletion?(false)
         loadCompletion = nil

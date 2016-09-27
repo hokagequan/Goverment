@@ -8,19 +8,22 @@
 
 import Foundation
 
+#if Debug
 /// @brief Server 测试
 let serverURL1 = "http://218.61.34.40:8301/"
 let imageDownloadURL = "http://218.61.34.40:8301/lvzhiImage/"
 let serverSoapAction = "http://tempuri.org/"
 let photoDownloadURL = "http://218.61.34.40:8301/File/headimage/"
-let qrCodeDownloadURL = "http://218.61.34.40:8301/File/QRCode/"
+let qrCodeDownloadURL = "http://218.61.34.40:8301/download/appdownload.aspx/"
+#else
 
 /// @brief Server 正式
-//let serverURL1 = "http://rdlz.xigang.gov.cn/"
-//let imageDownloadURL = "http://rdlz.xigang.gov.cn/lvzhiImage/"
-//let serverSoapAction = "http://tempuri.org/"
-//let photoDownloadURL = "http://rdlz.xigang.gov.cn/File/headimage/"
-//let qrCodeDownloadURL = "http://rdlz.xigang.gov.cn/File/QRCode/"
+let serverURL1 = "http://rdlz.xigang.gov.cn:8099/"
+let imageDownloadURL = "http://rdlz.xigang.gov.cn:8099/lvzhiImage/"
+let serverSoapAction = "http://tempuri.org/"
+let photoDownloadURL = "http://rdlz.xigang.gov.cn:8099/File/headimage/"
+let qrCodeDownloadURL = "http://rdlz.xigang.gov.cn:8099/download/appdownload.aspx/"
+#endif
 
 /// @brief HTML Page
 let pageHTMLVariableManagerWorker = "apph5/iphone/GZRY_lvzhiguanli.aspx?"

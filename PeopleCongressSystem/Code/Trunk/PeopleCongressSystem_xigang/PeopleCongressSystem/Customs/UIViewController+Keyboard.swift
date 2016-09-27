@@ -16,38 +16,38 @@ class KeyboardInfo: NSObject {
 
 extension UIViewController {
     
-    func registerKeyboardListener(handler: Selector) {
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(UIViewController.handleKeyboardShow(_:)), name: UIKeyboardWillShowNotification, object: nil)
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(UIViewController.handleKeyboardShow(_:)), name: UIKeyboardWillChangeFrameNotification, object: nil)
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(UIViewController.handleKeyboardHide(_:)), name: UIKeyboardWillHideNotification, object: nil)
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: handler, name: "SGKeyboardChanged", object: nil)
+    func registerKeyboardListener(_ handler: Selector) {
+        NotificationCenter.default.addObserver(self, selector: #selector(UIViewController.handleKeyboardShow(_:)), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(UIViewController.handleKeyboardShow(_:)), name: NSNotification.Name.UIKeyboardWillChangeFrame, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(UIViewController.handleKeyboardHide(_:)), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
+        NotificationCenter.default.addObserver(self, selector: handler, name: NSNotification.Name(rawValue: "SGKeyboardChanged"), object: nil)
     }
     
     func unregisterKeyboardListener() {
-        NSNotificationCenter.defaultCenter().removeObserver(self)
+        NotificationCenter.default.removeObserver(self)
     }
     
-    func handleKeyboardShow(notification: NSNotification) {
-        let userInfo = notification.userInfo
+    func handleKeyboardShow(_ notification: Notification) {
+        let userInfo = (notification as NSNotification).userInfo
         let keyboardBoundsValue = userInfo![UIKeyboardFrameEndUserInfoKey] as! NSValue
         let duration = userInfo![UIKeyboardAnimationDurationUserInfoKey] as! NSNumber
         
         let info = KeyboardInfo()
-        info.height = keyboardBoundsValue.CGRectValue().height
+        info.height = keyboardBoundsValue.cgRectValue.height
         info.duration = duration.doubleValue
         
-        NSNotificationCenter.defaultCenter().postNotificationName("SGKeyboardChanged", object:info)
+        NotificationCenter.default.post(name: Notification.Name(rawValue: "SGKeyboardChanged"), object:info)
     }
     
-    func handleKeyboardHide(notification: NSNotification) {
-        let userInfo = notification.userInfo
+    func handleKeyboardHide(_ notification: Notification) {
+        let userInfo = (notification as NSNotification).userInfo
         let duration = userInfo![UIKeyboardAnimationDurationUserInfoKey] as! NSNumber
         
         let info = KeyboardInfo()
         info.height = 0
         info.duration = duration.doubleValue
         
-        NSNotificationCenter.defaultCenter().postNotificationName("SGKeyboardChanged", object: info)
+        NotificationCenter.default.post(name: Notification.Name(rawValue: "SGKeyboardChanged"), object: info)
     }
     
 }

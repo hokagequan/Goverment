@@ -23,9 +23,9 @@ class AboutViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    @IBAction func clickPolicy(sender: AnyObject) {
+    @IBAction func clickPolicy(_ sender: AnyObject) {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let vc = storyboard.instantiateViewControllerWithIdentifier("CommonHTMLViewController") as! CommonHTMLViewController
+        let vc = storyboard.instantiateViewController(withIdentifier: "CommonHTMLViewController") as! CommonHTMLViewController
         vc.URL = PCSDataManager.defaultManager().htmlURL(pageHTMLPolicy)
         vc.naviTitle = "隐私政策"
         self.navigationController?.pushViewController(vc, animated: true)

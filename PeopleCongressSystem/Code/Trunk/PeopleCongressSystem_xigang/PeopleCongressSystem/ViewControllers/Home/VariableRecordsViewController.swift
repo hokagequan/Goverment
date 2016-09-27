@@ -14,7 +14,7 @@ class VariableRecordsViewController: UIViewController, UITableViewDataSource, UI
     @IBOutlet weak var listTableView: UITableView!
     
     var variables = [Variable]()
-    var gotoPageType = VariablePageType.Detail
+    var gotoPageType = VariablePageType.detail
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,14 +22,14 @@ class VariableRecordsViewController: UIViewController, UITableViewDataSource, UI
         // Do any additional setup after loading the view.
     }
     
-    override func viewWillAppear(animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
         self.navigationItem.hidesBackButton = true
         PCSCustomUtil.customNavigationController(self)
     }
     
-    override func viewDidAppear(animated: Bool) {
+    override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
         EZLoadingActivity.show("", disableUI: true)
@@ -53,35 +53,35 @@ class VariableRecordsViewController: UIViewController, UITableViewDataSource, UI
     
     // MARK: - Actions
     
-    @IBAction func clickAdd(sender: AnyObject) {
-        gotoPageType = VariablePageType.Add
-        self.performSegueWithIdentifier("VariableDetailSegue", sender: nil)
+    @IBAction func clickAdd(_ sender: AnyObject) {
+        gotoPageType = VariablePageType.add
+        self.performSegue(withIdentifier: "VariableDetailSegue", sender: nil)
     }
     
     // MARK: - UITableView
     
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return variables.count
     }
     
-    func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         if cell.contentView.viewWithTag(1000) != nil {
             return
         }
         
-        let frame = CGRectMake(5, 4, cell.bounds.size.width - 10, cell.bounds.size.height - 8)
+        let frame = CGRect(x: 5, y: 4, width: cell.bounds.size.width - 10, height: cell.bounds.size.height - 8)
         let view = UIView(frame: frame)
         view.tag = 1000
-        CustomObjectUtil.customObjectsLayout([view], backgroundColor: UIColor.whiteColor(), borderWidth: 1, borderColor: GlobalUtil.colorRGBA(240, g: 240, b: 240, a: 1.0), corner: 2)
+        CustomObjectUtil.customObjectsLayout([view], backgroundColor: UIColor.white, borderWidth: 1, borderColor: GlobalUtil.colorRGBA(240, g: 240, b: 240, a: 1.0), corner: 2)
         cell.contentView.addSubview(view)
-        cell.contentView.sendSubviewToBack(view)
+        cell.contentView.sendSubview(toBack: view)
     }
     
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("RecordCell", forIndexPath: indexPath) as! RecordCell
-        cell.selectionStyle = UITableViewCellSelectionStyle.None
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "RecordCell", for: indexPath) as! RecordCell
+        cell.selectionStyle = UITableViewCellSelectionStyle.none
         
-        let variable = variables[indexPath.row]
+        let variable = variables[(indexPath as NSIndexPath).row]
         cell.titleLabel.text = variable.title
         
         let checkedString = variable.checked ? "已通过" : "未通过"
@@ -91,22 +91,22 @@ class VariableRecordsViewController: UIViewController, UITableViewDataSource, UI
         return cell
     }
     
-    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        tableView.deselectRowAtIndexPath(indexPath, animated: true)
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
         
-        let variable = variables[indexPath.row]
-        gotoPageType = VariablePageType.Detail
-        self.performSegueWithIdentifier("VariableDetailSegue", sender: variable)
+        let variable = variables[(indexPath as NSIndexPath).row]
+        gotoPageType = VariablePageType.detail
+        self.performSegue(withIdentifier: "VariableDetailSegue", sender: variable)
     }
 
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
         if segue.identifier == "VariableDetailSegue" {
-            let vc = segue.destinationViewController as! VariableDetailViewController
+            let vc = segue.destination as! VariableDetailViewController
             var object = sender as? Variable
             if object == nil {
                 object = Variable()

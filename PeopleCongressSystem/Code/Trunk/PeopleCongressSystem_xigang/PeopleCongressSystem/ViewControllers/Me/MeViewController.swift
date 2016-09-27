@@ -7,8 +7,8 @@
 //
 
 import UIKit
-import DKImagePickerController
 import EZLoadingActivity
+import DKImagePickerController
 
 class MeViewController: UITableViewController {
     
@@ -30,18 +30,18 @@ class MeViewController: UITableViewController {
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
-        CustomObjectUtil.customObjectsLayout([quitButton], backgroundColor: GlobalUtil.colorRGBA(230, g: 27, b: 39, a: 1.0), borderWidth: 0, borderColor: UIColor.clearColor(), corner: 3.0)
+        CustomObjectUtil.customObjectsLayout([quitButton], backgroundColor: GlobalUtil.colorRGBA(230, g: 27, b: 39, a: 1.0), borderWidth: 0, borderColor: UIColor.clear, corner: 3.0)
         
         self.loadListItems()
     }
     
-    override func viewWillAppear(animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
         PCSCustomUtil.customNavigationController(self)
     }
     
-    override func viewDidAppear(animated: Bool) {
+    override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
         self.loadUserInfo()
@@ -80,8 +80,8 @@ class MeViewController: UITableViewController {
         }
         
         // 通知选项
-        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)) {
-            EMClient.sharedClient().getPushOptionsFromServerWithError(nil)
+        DispatchQueue.global(priority: DispatchQueue.GlobalQueuePriority.default).async {
+            EMClient.shared().getPushOptionsFromServerWithError(nil)
             
             var index = -1
             for i in 0..<self.listItems.count {
@@ -96,9 +96,9 @@ class MeViewController: UITableViewController {
                 return
             }
             
-            let indexPath = NSIndexPath(forRow: index, inSection: 0)
-            dispatch_async(dispatch_get_main_queue(), { 
-                self.tableView.reloadRowsAtIndexPaths([indexPath], withRowAnimation: UITableViewRowAnimation.None)
+            let indexPath = IndexPath(row: index, section: 0)
+            DispatchQueue.main.async(execute: { 
+                self.tableView.reloadRows(at: [indexPath], with: UITableViewRowAnimation.none)
             })
         }
     }
@@ -117,24 +117,24 @@ class MeViewController: UITableViewController {
         ]
         
         if PCSDataManager.defaultManager().content is CongressContentInfo {
-            listItems.insert(["title": "扫一扫签到", "method": "clickCheckIn"], atIndex: 0)
-            listItems.insert(["title": "名片", "method": "clickBusinessCard"], atIndex: 0)
+            listItems.insert(["title": "扫一扫签到", "method": "clickCheckIn"], at: 0)
+            listItems.insert(["title": "名片", "method": "clickBusinessCard"], at: 0)
         }
     }
     
     // MARK: - Actions
     
-    @IBAction func clickQuit(sender: AnyObject) {
-        EMClient.sharedClient().logout(true)
+    @IBAction func clickQuit(_ sender: AnyObject) {
+        EMClient.shared().logout(true)
     }
 
-    @IBAction func clickEdit(sender: AnyObject) {
+    @IBAction func clickEdit(_ sender: AnyObject) {
         // 更改昵称，暂时屏蔽
         return
         
-        let alert = UIAlertController(title: nil, message: "更改昵称", preferredStyle: UIAlertControllerStyle.Alert)
-        let cancelAction = UIAlertAction(title: "取消", style: UIAlertActionStyle.Cancel, handler: nil)
-        let okAction = UIAlertAction(title: "确定", style: UIAlertActionStyle.Default) { (action) in
+        let alert = UIAlertController(title: nil, message: "更改昵称", preferredStyle: UIAlertControllerStyle.alert)
+        let cancelAction = UIAlertAction(title: "取消", style: UIAlertActionStyle.cancel, handler: nil)
+        let okAction = UIAlertAction(title: "确定", style: UIAlertActionStyle.default) { (action) in
             guard let textField = alert.textFields?.first else {
                 return
             }
@@ -144,8 +144,8 @@ class MeViewController: UITableViewController {
             }
             
             EZLoadingActivity.show("", disableUI: true)
-            EMClient.sharedClient().setApnsNickname(textField.text)
-            UserProfileManager.sharedInstance().updateUserProfileInBackground([kPARSE_HXUSER_NICKNAME: textField.text!], completion: { (success, error) in
+            EMClient.shared().setApnsNickname(textField.text)
+            UserProfileManager.sharedInstance().updateUserProfile(inBackground: [kPARSE_HXUSER_NICKNAME: textField.text!], completion: { (success, error) in
                 EZLoadingActivity.hide()
                 
                 if success == true {
@@ -160,20 +160,20 @@ class MeViewController: UITableViewController {
         alert.addAction(cancelAction)
         alert.addAction(okAction)
         
-        alert.addTextFieldWithConfigurationHandler(nil)
+        alert.addTextField(configurationHandler: nil)
         
-        self.presentViewController(alert, animated: true, completion: nil)
+        self.present(alert, animated: true, completion: nil)
     }
     
-    @IBAction func clickEditPhoto(sender: AnyObject) {
+    @IBAction func clickEditPhoto(_ sender: AnyObject) {
         // 更改头像，暂时屏蔽
         return
             
-        UINavigationBar.appearance().tintColor = UIColor.whiteColor()
-        UINavigationBar.appearance().titleTextAttributes = [NSForegroundColorAttributeName: UIColor.whiteColor()]
+        UINavigationBar.appearance().tintColor = UIColor.white
+        UINavigationBar.appearance().titleTextAttributes = [NSForegroundColorAttributeName: UIColor.white]
         let picker = DKImagePickerController()
         picker.maxSelectableCount = 1
-        picker.assetType = DKImagePickerControllerAssetType.AllPhotos
+        picker.assetType = DKImagePickerControllerAssetType.allPhotos
         picker.didSelectAssets = {(assets: [DKAsset]) in
             EZLoadingActivity.show("", disableUI: true)
             for asset in assets {
@@ -182,11 +182,11 @@ class MeViewController: UITableViewController {
                         return
                     }
                     
-                    UserProfileManager.sharedInstance().uploadUserHeadImageProfileInBackground(image, completion: { (success, error) in
+                    UserProfileManager.sharedInstance().uploadUserHeadImageProfile(inBackground: image, completion: { (success, error) in
                         EZLoadingActivity.hide()
                         if success == true {
-                            let user = UserProfileManager.sharedInstance().getCurUserProfile()
-                            self.photoImageView.imageWithUsername(user.username, placeholderImage: image)
+                            let user = UserProfileManager.sharedInstance().getCurUserProfile()!
+                            self.photoImageView.image(withUsername: user.username, placeholderImage: image)
                         }
                         else {
                             self.showAlert("保存失败")
@@ -195,60 +195,60 @@ class MeViewController: UITableViewController {
                 })
             }
             
-            picker.dismissViewControllerAnimated(true, completion: nil)
+            picker.dismiss(animated: true, completion: nil)
         }
         
         picker.didCancel = { () in
-            picker.dismissViewControllerAnimated(true, completion: nil)
+            picker.dismiss(animated: true, completion: nil)
         }
         
-        self.presentViewController(picker, animated: true, completion: nil)
+        self.present(picker, animated: true, completion: nil)
     }
     
     func clickQRCodeDownload() {
-        self.performSegueWithIdentifier("QRDownloadSegue", sender: nil)
+        self.performSegue(withIdentifier: "QRDownloadSegue", sender: nil)
     }
     
     func clickPush() {
-        let alert = UIAlertController(title: nil, message: nil, preferredStyle: UIAlertControllerStyle.ActionSheet)
+        let alert = UIAlertController(title: nil, message: nil, preferredStyle: UIAlertControllerStyle.actionSheet)
         
-        let onAction = UIAlertAction(title: "开启", style: UIAlertActionStyle.Default, handler: { (action) in
-            let option = EMClient.sharedClient().pushOptions
-            option.noDisturbStatus = EMPushNoDisturbStatusDay
-            option.noDisturbingStartH = 0
-            option.noDisturbingEndH = 24
+        let onAction = UIAlertAction(title: "开启", style: UIAlertActionStyle.default, handler: { (action) in
+            let option = EMClient.shared().pushOptions
+            option?.noDisturbStatus = EMPushNoDisturbStatusDay
+            option?.noDisturbingStartH = 0
+            option?.noDisturbingEndH = 24
             self.loadUserInfo()
             
-            dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), {
-                EMClient.sharedClient().updatePushOptionsToServer()
+            DispatchQueue.global(priority: DispatchQueue.GlobalQueuePriority.default).async(execute: {
+                EMClient.shared().updatePushOptionsToServer()
             })
         })
         
-        let customAction = UIAlertAction(title: "只在夜间开启（22:00 － 7:00）", style: UIAlertActionStyle.Default, handler: { (action) in
-            let option = EMClient.sharedClient().pushOptions
-            option.noDisturbStatus = EMPushNoDisturbStatusCustom
-            option.noDisturbingStartH = 22
-            option.noDisturbingEndH = 7
+        let customAction = UIAlertAction(title: "只在夜间开启（22:00 － 7:00）", style: UIAlertActionStyle.default, handler: { (action) in
+            let option = EMClient.shared().pushOptions
+            option?.noDisturbStatus = EMPushNoDisturbStatusCustom
+            option?.noDisturbingStartH = 22
+            option?.noDisturbingEndH = 7
             self.loadUserInfo()
             
-            dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), {
-                EMClient.sharedClient().updatePushOptionsToServer()
+            DispatchQueue.global(priority: DispatchQueue.GlobalQueuePriority.default).async(execute: {
+                EMClient.shared().updatePushOptionsToServer()
             })
         })
         
-        let offAction = UIAlertAction(title: "关闭", style: UIAlertActionStyle.Default, handler: { (action) in
-            let option = EMClient.sharedClient().pushOptions
-            option.noDisturbStatus = EMPushNoDisturbStatusClose
-            option.noDisturbingStartH = -1
-            option.noDisturbingEndH = -1
+        let offAction = UIAlertAction(title: "关闭", style: UIAlertActionStyle.default, handler: { (action) in
+            let option = EMClient.shared().pushOptions
+            option?.noDisturbStatus = EMPushNoDisturbStatusClose
+            option?.noDisturbingStartH = -1
+            option?.noDisturbingEndH = -1
             self.loadUserInfo()
             
-            dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), {
-                EMClient.sharedClient().updatePushOptionsToServer()
+            DispatchQueue.global(priority: DispatchQueue.GlobalQueuePriority.default).async(execute: {
+                EMClient.shared().updatePushOptionsToServer()
             })
         })
         
-        let cancelAction = UIAlertAction(title: "取消", style: UIAlertActionStyle.Cancel, handler: { (action) in
+        let cancelAction = UIAlertAction(title: "取消", style: UIAlertActionStyle.cancel, handler: { (action) in
             
         })
         
@@ -257,7 +257,7 @@ class MeViewController: UITableViewController {
         alert.addAction(offAction)
         alert.addAction(cancelAction)
         
-        self.presentViewController(alert, animated: true, completion: nil)
+        self.present(alert, animated: true, completion: nil)
     }
     
     func clickBlackList() {
@@ -267,87 +267,87 @@ class MeViewController: UITableViewController {
     }
     
     func clickChangePassword() {
-        self.performSegueWithIdentifier("ChangePwdSegue", sender: self)
+        self.performSegue(withIdentifier: "ChangePwdSegue", sender: self)
     }
     
     func clickChangeGesture() {
-        self.performSegueWithIdentifier("ChangeGestureSegue", sender: self)
+        self.performSegue(withIdentifier: "ChangeGestureSegue", sender: self)
     }
     
     func clickHelp() {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let vc = storyboard.instantiateViewControllerWithIdentifier("CommonHTMLViewController") as! CommonHTMLViewController
+        let vc = storyboard.instantiateViewController(withIdentifier: "CommonHTMLViewController") as! CommonHTMLViewController
         vc.URL = PCSDataManager.defaultManager().htmlURL(PCSDataManager.defaultManager().content.helpURL)
         vc.naviTitle = "在线帮助"
         self.navigationController?.pushViewController(vc, animated: true)
     }
     
     func clickFeedback() {
-        self.performSegueWithIdentifier("FeedbackSegue", sender: self)
+        self.performSegue(withIdentifier: "FeedbackSegue", sender: self)
     }
     
     func clickAbout() {
-        self.performSegueWithIdentifier("AboutSegue", sender: self)
+        self.performSegue(withIdentifier: "AboutSegue", sender: self)
     }
     
     func clickCA() {
-        self.performSegueWithIdentifier("CASegue", sender: self)
+        self.performSegue(withIdentifier: "CASegue", sender: self)
     }
     
     func clickBusinessCard() {
-        self.performSegueWithIdentifier("BusinessCardSegue", sender: self)
+        self.performSegue(withIdentifier: "BusinessCardSegue", sender: self)
     }
     
     func clickCheckIn() {
         let storyboard = UIStoryboard(name: "CheckIn", bundle: nil)
-        let vc = storyboard.instantiateViewControllerWithIdentifier("QRCodeScanViewController")
+        let vc = storyboard.instantiateViewController(withIdentifier: "QRCodeScanViewController")
         self.navigationController?.pushViewController(vc, animated: true)
     }
     
     // MARK: - Table view data source
 
-    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    override func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
 
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return listItems.count
     }
     
-    override func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+    override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return 100.0
     }
     
-    override func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+    override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         return headerView
     }
     
-    override func tableView(tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
+    override func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
         return footerView
     }
 
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath)
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
 
-        cell.selectionStyle = UITableViewCellSelectionStyle.None
-        cell.accessoryType = UITableViewCellAccessoryType.DisclosureIndicator
+        cell.selectionStyle = UITableViewCellSelectionStyle.none
+        cell.accessoryType = UITableViewCellAccessoryType.disclosureIndicator
         cell.separatorInset = UIEdgeInsetsMake(0, 0, 0, 0)
         
-        let dict = listItems[indexPath.row]
+        let dict = listItems[(indexPath as NSIndexPath).row]
         let title = dict["title"]!
         
         cell.textLabel?.text = title
         cell.textLabel?.textColor = GlobalUtil.colorRGBA(59, g: 59, b: 59, a: 1)
-        cell.textLabel?.font = UIFont.systemFontOfSize(15)
+        cell.textLabel?.font = UIFont.systemFont(ofSize: 15)
         
         cell.detailTextLabel?.textColor = cell.textLabel?.textColor
         cell.detailTextLabel?.font = cell.textLabel?.font
         
         switch title {
         case "消息推送免打扰":
-            let option = EMClient.sharedClient().pushOptions
-            var detail = option.noDisturbStatus == EMPushNoDisturbStatusDay ? "开启" : "关闭"
-            if option.noDisturbStatus == EMPushNoDisturbStatusCustom {
+            let option = EMClient.shared().pushOptions
+            var detail = option?.noDisturbStatus == EMPushNoDisturbStatusDay ? "开启" : "关闭"
+            if option?.noDisturbStatus == EMPushNoDisturbStatusCustom {
                 detail = "只在夜间开启（22:00 － 7:00）"
             }
             cell.detailTextLabel?.text = detail
@@ -361,9 +361,9 @@ class MeViewController: UITableViewController {
         return cell
     }
     
-    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        let dict = listItems[indexPath.row]
-        self.performSelector(Selector(dict["method"]!), withObject: nil)
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let dict = listItems[(indexPath as NSIndexPath).row]
+        self.perform(Selector(dict["method"]!), with: nil)
     }
 
     /*

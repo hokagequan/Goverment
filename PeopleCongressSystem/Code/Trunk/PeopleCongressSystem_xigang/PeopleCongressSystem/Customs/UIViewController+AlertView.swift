@@ -11,12 +11,12 @@ import UIKit
 
 extension UIViewController {
     
-    func showAlert(message: String) {
+    func showAlert(_ message: String) {
         let alert = UIAlertView(title: nil, message: message, delegate: nil, cancelButtonTitle: "确定")
         alert.show()
     }
     
-    func showAlertWithDelegate(message: String) {
+    func showAlertWithDelegate(_ message: String) {
         let alert = UIAlertView(title: nil, message: message, delegate: self, cancelButtonTitle: "确定")
         alert.show()
     }

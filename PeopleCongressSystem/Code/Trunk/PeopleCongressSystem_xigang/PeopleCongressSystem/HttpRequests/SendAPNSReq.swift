@@ -23,7 +23,7 @@ class SendAPNSReq: HttpBaseReq {
         super.init()
     }
     
-    func requestSimpleCompletion(completion: (Bool, String?) -> Void) {
+    func requestSimpleCompletion(_ completion: @escaping (Bool, String?) -> Void) {
         var params = [String: String]()
         params["rddb_guid"] = congressID
         params["rddb_phone"] = mobile
@@ -44,7 +44,7 @@ class SendAPNSReq: HttpBaseReq {
                 return
             }
             
-            if Int(repValue) > 0 {
+            if Int(repValue)! > 0 {
                 success = true
                 
                 return

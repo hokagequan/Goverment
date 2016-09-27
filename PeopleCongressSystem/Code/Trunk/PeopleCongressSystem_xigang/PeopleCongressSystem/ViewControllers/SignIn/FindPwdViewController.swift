@@ -18,10 +18,10 @@ class FindPwdViewController: UIViewController, UITableViewDataSource, UITableVie
     }
     
     enum Rows: Int {
-        case Mobile = 0
-        case VerifyCode
-        case SMSCode
-        case Max
+        case mobile = 0
+        case verifyCode
+        case smsCode
+        case max
         
         func title() -> String {
             let titles = ["请输入手机号码",
@@ -52,7 +52,7 @@ class FindPwdViewController: UIViewController, UITableViewDataSource, UITableVie
         
         CustomObjectUtil.customObjectsLayout([submitButton], backgroundColor: colorRed, borderWidth: 0, borderColor: nil, corner: 5.0)
 //        inputTableView.registerNib(UINib(nibName: "VerifyCodeCell", bundle: nil), forCellReuseIdentifier: "VerifyCodeCell")
-        inputTableView.layoutMargins = UIEdgeInsetsZero
+        inputTableView.layoutMargins = UIEdgeInsets.zero
     }
 
     override func didReceiveMemoryWarning() {
@@ -60,12 +60,12 @@ class FindPwdViewController: UIViewController, UITableViewDataSource, UITableVie
         // Dispose of any resources that can be recreated.
     }
     
-    func isInfoValiable(row: Rows) -> String? {
+    func isInfoValiable(_ row: Rows) -> String? {
         var repString: String? = nil
         
         switch row {
-        case .Mobile:
-            let cell = inputTableView.cellForRowAtIndexPath(NSIndexPath(forRow: row.rawValue, inSection: 0)) as! VerifyCodeCell
+        case .mobile:
+            let cell = inputTableView.cellForRow(at: IndexPath(row: row.rawValue, section: 0)) as! VerifyCodeCell
             if cell.titleTextField.text == nil {
                 self.showAlert("请输入手机号码")
                 
@@ -75,14 +75,14 @@ class FindPwdViewController: UIViewController, UITableViewDataSource, UITableVie
             repString = cell.titleTextField.text
             
             break
-        case .VerifyCode:
-            let cell = inputTableView.cellForRowAtIndexPath(NSIndexPath(forRow: row.rawValue, inSection: 0)) as! LocalVerifyCell
+        case .verifyCode:
+            let cell = inputTableView.cellForRow(at: IndexPath(row: row.rawValue, section: 0)) as! LocalVerifyCell
             if cell.titleTextField.text == nil {
                 self.showAlert("请输入图形码")
                 
                 return nil
             }
-            else if cell.titleTextField.text?.lowercaseString != cell.code.lowercaseString {
+            else if cell.titleTextField.text?.lowercased() != cell.code.lowercased() {
                 self.showAlert("请输入正确的图形码")
                 
                 return nil
@@ -91,8 +91,8 @@ class FindPwdViewController: UIViewController, UITableViewDataSource, UITableVie
             repString = cell.titleTextField.text
             
             break
-        case .SMSCode:
-            let cell = inputTableView.cellForRowAtIndexPath(NSIndexPath(forRow: row.rawValue, inSection: 0)) as! VerifyCodeCell
+        case .smsCode:
+            let cell = inputTableView.cellForRow(at: IndexPath(row: row.rawValue, section: 0)) as! VerifyCodeCell
             if cell.titleTextField.text == nil {
                 self.showAlert("请输入短信验证码")
                 
@@ -111,22 +111,22 @@ class FindPwdViewController: UIViewController, UITableViewDataSource, UITableVie
     
     // MARK: - Actions
     
-    @IBAction func clickSubmit(sender: AnyObject) {
+    @IBAction func clickSubmit(_ sender: AnyObject) {
         let userInfo = UserInfo()
         
-        guard let mobile = self.isInfoValiable(Rows.Mobile) else {
+        guard let mobile = self.isInfoValiable(Rows.mobile) else {
             return
         }
         
         userInfo.mobile = mobile
         
-        guard let graphicCode = self.isInfoValiable(Rows.VerifyCode) else {
+        guard let graphicCode = self.isInfoValiable(Rows.verifyCode) else {
             return
         }
         
         userInfo.graphicCode = graphicCode
         
-        guard let smsCode = self.isInfoValiable(Rows.SMSCode) else {
+        guard let smsCode = self.isInfoValiable(Rows.smsCode) else {
             return
         }
         
@@ -146,22 +146,22 @@ class FindPwdViewController: UIViewController, UITableViewDataSource, UITableVie
             }
             
             PCSDataManager.defaultManager().accountManager.user = userInfo
-            self.performSegueWithIdentifier("ChangePwdSegue", sender: userInfo)
+            self.performSegue(withIdentifier: "ChangePwdSegue", sender: userInfo)
         }
     }
     
-    @IBAction func hideKeyboard(sender: AnyObject) {
+    @IBAction func hideKeyboard(_ sender: AnyObject) {
         self.view.endEditing(true)
     }
     
     // MARK: - VerifyCodeDelegate
     
-    func didClickDetail(cell: VerifyCodeCell) {
-        guard let mobile = self.isInfoValiable(Rows.Mobile) else {
+    func didClickDetail(_ cell: VerifyCodeCell) {
+        guard let mobile = self.isInfoValiable(Rows.mobile) else {
             return
         }
         
-        guard let _ = self.isInfoValiable(Rows.VerifyCode) else {
+        guard let _ = self.isInfoValiable(Rows.verifyCode) else {
             return
         }
         
@@ -172,70 +172,70 @@ class FindPwdViewController: UIViewController, UITableViewDataSource, UITableVie
             
             PCSDataManager.defaultManager().fireCountingDownGetSMS({ (count) in
                 if count == 0 {
-                    cell.detailButton.userInteractionEnabled = true
-                    cell.detailButton.setTitle("获取短信验证码", forState: UIControlState.Normal)
+                    cell.detailButton.isUserInteractionEnabled = true
+                    cell.detailButton.setTitle("获取短信验证码", for: UIControlState())
                     
                     return
                 }
                 
-                cell.detailButton.userInteractionEnabled = false
-                cell.detailButton.setTitle("\(count)秒后重新获取", forState: UIControlState.Normal)
+                cell.detailButton.isUserInteractionEnabled = false
+                cell.detailButton.setTitle("\(count)秒后重新获取", for: UIControlState())
             })
         }
     }
     
     // MARK: - UITableView
     
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return Rows.Max.rawValue
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return Rows.max.rawValue
     }
     
-    func tableView(tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
+    func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
         return footerView
     }
     
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let row = Rows(rawValue: indexPath.row)!
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let row = Rows(rawValue: (indexPath as NSIndexPath).row)!
         
-        if row == Rows.VerifyCode {
-            let cell = tableView.dequeueReusableCellWithIdentifier("LocalVerifyCell", forIndexPath: indexPath) as! LocalVerifyCell
-            cell.selectionStyle = UITableViewCellSelectionStyle.None
+        if row == Rows.verifyCode {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "LocalVerifyCell", for: indexPath) as! LocalVerifyCell
+            cell.selectionStyle = UITableViewCellSelectionStyle.none
             cell.separatorInset = UIEdgeInsetsMake(0, 0, 0, 0)
-            cell.layoutMargins = UIEdgeInsetsZero
+            cell.layoutMargins = UIEdgeInsets.zero
             
             cell.titleTextField.placeholder = row.title()
             cell.iconImageView.image = UIImage(named: row.icon())
             
-            CustomObjectUtil.customObjectsLayout([cell.verifyCodeView], backgroundColor: UIColor.lightGrayColor(), borderWidth: 1.0, borderColor: UIColor.grayColor(), corner: 0)
+            CustomObjectUtil.customObjectsLayout([cell.verifyCodeView], backgroundColor: UIColor.lightGray, borderWidth: 1.0, borderColor: UIColor.gray, corner: 0)
             
             return cell
         }
         
-        let cell = tableView.dequeueReusableCellWithIdentifier("VerifyCodeCell", forIndexPath: indexPath) as! VerifyCodeCell
-        cell.selectionStyle = UITableViewCellSelectionStyle.None
+        let cell = tableView.dequeueReusableCell(withIdentifier: "VerifyCodeCell", for: indexPath) as! VerifyCodeCell
+        cell.selectionStyle = UITableViewCellSelectionStyle.none
         cell.separatorInset = UIEdgeInsetsMake(0, 0, 0, 0)
-        cell.layoutMargins = UIEdgeInsetsZero
-        cell.accessoryType = UITableViewCellAccessoryType.None
+        cell.layoutMargins = UIEdgeInsets.zero
+        cell.accessoryType = UITableViewCellAccessoryType.none
         cell.delegate = self
         
         cell.titleTextField.placeholder = row.title()
         cell.iconImageView.image = UIImage(named: row.icon())
         
-        if row == Rows.SMSCode {
-            cell.borderView.hidden = true
-            cell.detailButton.hidden = true
+        if row == Rows.smsCode {
+            cell.borderView.isHidden = true
+            cell.detailButton.isHidden = true
         }
-        else if row == Rows.Mobile {
+        else if row == Rows.mobile {
             PCSDataManager.defaultManager().getSMSBlock = { (count) -> Void in
                 if count == 0 {
-                    cell.detailButton.userInteractionEnabled = true
-                    cell.detailButton.setTitle("获取短信验证码", forState: UIControlState.Normal)
+                    cell.detailButton.isUserInteractionEnabled = true
+                    cell.detailButton.setTitle("获取短信验证码", for: UIControlState())
                     
                     return
                 }
                 
-                cell.detailButton.userInteractionEnabled = false
-                cell.detailButton.setTitle("\(count)秒后重新获取", forState: UIControlState.Normal)
+                cell.detailButton.isUserInteractionEnabled = false
+                cell.detailButton.setTitle("\(count)秒后重新获取", for: UIControlState())
             }
         }
         
@@ -245,11 +245,11 @@ class FindPwdViewController: UIViewController, UITableViewDataSource, UITableVie
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
         if segue.identifier == "ChangePwdSegue" {
-            let viewController = segue.destinationViewController as! ChangePasswordViewController
+            let viewController = segue.destination as! ChangePasswordViewController
             viewController.isForgetReset = true
             
             let userInfo = sender as! UserEntity

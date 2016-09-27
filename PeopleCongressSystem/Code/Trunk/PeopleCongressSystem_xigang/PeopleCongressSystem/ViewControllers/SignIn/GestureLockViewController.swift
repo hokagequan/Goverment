@@ -23,7 +23,7 @@ class GestureLockViewController: UIViewController {
         self.customLockView()
     }
     
-    override func viewWillAppear(animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
     }
 
@@ -54,7 +54,7 @@ class GestureLockViewController: UIViewController {
                 lockView.normalDotImage = correctImage
                 lockView.highlightedDotImage = correctImage
                 
-                dispatch_after(dispatch_time(DISPATCH_TIME_NOW, Int64(1 * Double(NSEC_PER_SEC))), dispatch_get_main_queue(), { () -> Void in
+                DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + Double(1 * Double(NSEC_PER_SEC)), execute: { 
                     lockView.resetDotsState()
                     lockView.normalDotImage = normalImage
                     lockView.highlightedDotImage = selectImage
@@ -63,7 +63,7 @@ class GestureLockViewController: UIViewController {
                     manager.signIn(manager.user!.account!, password: manager.user!.password!) { (success, errorMessage, errorCode) -> Void in
                         if success == true {
                             self.navigationController?.setNavigationBarHidden(true, animated: true)
-                            self.performSegueWithIdentifier("MainSegue", sender: self)
+                            self.performSegue(withIdentifier: "MainSegue", sender: self)
                         }
                         else {
                             self.showAlert(errorMessage!)
@@ -75,7 +75,7 @@ class GestureLockViewController: UIViewController {
                 lockView.normalDotImage = wrongImage
                 lockView.highlightedDotImage = wrongImage
                 
-                dispatch_after(dispatch_time(DISPATCH_TIME_NOW, Int64(1 * Double(NSEC_PER_SEC))), dispatch_get_main_queue(), { () -> Void in
+                DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + Double(1 * Double(NSEC_PER_SEC)), execute: {
                     lockView.resetDotsState()
                     lockView.normalDotImage = normalImage
                     lockView.highlightedDotImage = wrongImage

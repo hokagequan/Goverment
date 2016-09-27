@@ -11,10 +11,10 @@ import UIKit
 
 extension UIViewController {
     
-    func customPCSNavi(title: String) -> CGFloat {
+    func customPCSNavi(_ title: String) -> CGFloat {
         let naviHeight: CGFloat = 44.0
-        let navi = PCSNavigationView(frame: CGRectMake(0, 0, self.view.bounds.size.width, naviHeight))
-        navi.backgroundColor = UIColor.clearColor()
+        let navi = PCSNavigationView(frame: CGRect(x: 0, y: 0, width: self.view.bounds.size.width, height: naviHeight))
+        navi.backgroundColor = UIColor.clear
         navi.title = title
         navi.viewController = self
         self.view.addSubview(navi)
@@ -22,10 +22,10 @@ extension UIViewController {
         return naviHeight
     }
     
-    func customPCSNaviWithRightButton(title: String, button: UIButton) -> CGFloat {
+    func customPCSNaviWithRightButton(_ title: String, button: UIButton) -> CGFloat {
         let naviHeight: CGFloat = 44.0
-        let navi = PCSNavigationView(frame: CGRectMake(0, 0, self.view.bounds.size.width, naviHeight))
-        navi.backgroundColor = UIColor.clearColor()
+        let navi = PCSNavigationView(frame: CGRect(x: 0, y: 0, width: self.view.bounds.size.width, height: naviHeight))
+        navi.backgroundColor = UIColor.clear
         navi.title = title
         navi.viewController = self
         self.view.addSubview(navi)
@@ -34,16 +34,16 @@ extension UIViewController {
         frame.origin.x = navi.bounds.size.width - frame.size.width - 15
         button.frame = frame
         
-        button.center = CGPointMake(button.center.x, navi.bounds.size.height / 2)
+        button.center = CGPoint(x: button.center.x, y: navi.bounds.size.height / 2)
         navi.addSubview(button)
         
         return naviHeight
     }
     
-    func customPCSNaviWithRightButton(title: String, button: UIButton, hideBack: Bool) -> CGFloat {
+    func customPCSNaviWithRightButton(_ title: String, button: UIButton, hideBack: Bool) -> CGFloat {
         let naviHeight: CGFloat = 44.0
-        let navi = PCSNavigationView(frame: CGRectMake(0, 0, self.view.bounds.size.width, naviHeight))
-        navi.backgroundColor = UIColor.clearColor()
+        let navi = PCSNavigationView(frame: CGRect(x: 0, y: 0, width: self.view.bounds.size.width, height: naviHeight))
+        navi.backgroundColor = UIColor.clear
         navi.title = title
         navi.viewController = self
         navi.backHidden = hideBack
@@ -53,7 +53,7 @@ extension UIViewController {
         frame.origin.x = navi.bounds.size.width - frame.size.width - 15
         button.frame = frame
         
-        button.center = CGPointMake(button.center.x, navi.bounds.size.height / 2)
+        button.center = CGPoint(x: button.center.x, y: navi.bounds.size.height / 2)
         navi.addSubview(button)
         
         return naviHeight

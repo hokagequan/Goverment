@@ -24,7 +24,7 @@ class FeedbackViewController: UIViewController {
         CustomObjectUtil.customObjectsLayout([submitButton], backgroundColor: colorRed, borderWidth: 0, borderColor: nil, corner: 5.0)
         
         feedbackTextView.placeHolder = "请简要描述你的问题和建议"
-        feedbackTextView.placeHolderColor = UIColor.lightGrayColor()
+        feedbackTextView.placeHolderColor = UIColor.lightGray
         feedbackTextView.maxHeight = 160.0
     }
 
@@ -35,7 +35,7 @@ class FeedbackViewController: UIViewController {
     
     // MARK: - Actions
 
-    @IBAction func clickSubmit(sender: AnyObject) {
+    @IBAction func clickSubmit(_ sender: AnyObject) {
         let req = FeedbackReq()
         req.message = feedbackTextView.text
         req.requestCompletion { (response) -> Void in

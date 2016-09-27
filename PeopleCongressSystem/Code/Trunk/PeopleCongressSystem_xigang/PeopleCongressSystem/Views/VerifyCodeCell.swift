@@ -9,7 +9,7 @@
 import UIKit
 
 @objc protocol VerifyCodeDelegate {
-    optional func didClickDetail(cell: VerifyCodeCell)
+    @objc optional func didClickDetail(_ cell: VerifyCodeCell)
 }
 
 class VerifyCodeCell: UITableViewCell, UITextFieldDelegate {
@@ -28,19 +28,19 @@ class VerifyCodeCell: UITableViewCell, UITextFieldDelegate {
         // Initialization code
     }
 
-    override func setSelected(selected: Bool, animated: Bool) {
+    override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
 
         // Configure the view for the selected state
     }
 
-    @IBAction func clickDetail(sender: AnyObject) {
+    @IBAction func clickDetail(_ sender: AnyObject) {
         delegate?.didClickDetail?(self)
     }
     
     // MARK: - UITextFieldDelegate
     
-    func textFieldShouldReturn(textField: UITextField) -> Bool {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
         return true
     }

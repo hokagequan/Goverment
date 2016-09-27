@@ -28,11 +28,11 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
         self.loadUI()
     }
     
-    override func viewWillAppear(animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
     }
     
-    override func viewDidAppear(animated: Bool) {
+    override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
         if content is CongressContentInfo {
@@ -40,7 +40,7 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
             req.requestSimpleCompletion({ (success, count, errorCode) -> Void in
                 if success {
                     self.message = count
-                    self.collectionView.reloadItemsAtIndexPaths([NSIndexPath(forRow: 0, inSection: 0)])
+                    self.collectionView.reloadItems(at: [IndexPath(row: 0, section: 0)])
                 }
                 else {
                     ResponseErrorManger.defaultManager().handleError(errorCode, message: nil)
@@ -51,10 +51,10 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
     
     func loadUI() {
         if content is WorderContentInfo {
-            specialButton.setImage(UIImage(named: "home_checkin"), forState: UIControlState.Normal)
+            specialButton.setImage(UIImage(named: "home_checkin"), for: UIControlState())
         }
         else if content is CongressContentInfo {
-            specialButton.hidden = true
+            specialButton.isHidden = true
         }
     }
 
@@ -65,46 +65,46 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
     
     // MARK: - Actions
     
-    @IBAction func clickSpecial(sender: AnyObject) {
+    @IBAction func clickSpecial(_ sender: AnyObject) {
         self.navigationController?.setNavigationBarHidden(false, animated: true)
         content.actionDelegate?.didClickSpecial(self)
     }
     
     // MARK: - UICollectionView
     
-    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAtIndex section: Int) -> CGFloat {
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
         return (self.view.bounds.size.width - 3 * cellSize * GlobalUtil.rateForWidth()) / 3.0 - 5
     }
     
-    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAtIndex section: Int) -> UIEdgeInsets {
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
         let distance = (self.view.bounds.size.width - 3 * cellSize * GlobalUtil.rateForWidth()) / 6.0
         return UIEdgeInsetsMake(40, distance, 20, distance)
     }
     
-    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
-        return CGSizeMake(cellSize * GlobalUtil.rateForWidth(), cellSize * GlobalUtil.rateForWidth() + 30)
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return CGSize(width: cellSize * GlobalUtil.rateForWidth(), height: cellSize * GlobalUtil.rateForWidth() + 30)
     }
     
-    func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return content.homeElementCount()
     }
     
-    func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCellWithReuseIdentifier("NormalImageCell", forIndexPath: indexPath) as! NormalImageCell
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "NormalImageCell", for: indexPath) as! NormalImageCell
         
-        cell.titleLabel.text = content.homeElementTitle(indexPath.row)
-        cell.iconImageView.image = UIImage(named: content.homeElementIcon(indexPath.row))
-        cell.markLabel.hidden = true
+        cell.titleLabel.text = content.homeElementTitle((indexPath as NSIndexPath).row)
+        cell.iconImageView.image = UIImage(named: content.homeElementIcon((indexPath as NSIndexPath).row))
+        cell.markLabel.isHidden = true
         
-        if content is CongressContentInfo && indexPath.row == 0 && message != "0" {
+        if content is CongressContentInfo && (indexPath as NSIndexPath).row == 0 && message != "0" {
             cell.markLabel.text = message
-            cell.markLabel.hidden = false
+            cell.markLabel.isHidden = false
         }
         
         return cell
     }
     
-    func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         self.navigationController?.setNavigationBarHidden(false, animated: true)
         content.actionDelegate?.didClickIndexPath(self, indexPath: indexPath)
     }
@@ -112,11 +112,11 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
         if segue.identifier == "SituationSegue" {
-            let vc = segue.destinationViewController as! SituationViewController
+            let vc = segue.destination as! SituationViewController
             vc.header = sender as! String
         }
     }

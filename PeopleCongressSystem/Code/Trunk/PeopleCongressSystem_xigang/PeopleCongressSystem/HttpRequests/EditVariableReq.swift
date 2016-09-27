@@ -16,8 +16,8 @@ class EditVariableReq: HttpBaseReq {
         super.init()
     }
     
-    override func requestCompletion(completion: HttpReqCompletion?) {
-        var params = [String: AnyObject]()
+    override func requestCompletion(_ completion: HttpReqCompletion?) {
+        var params = [String: Any]()
         params["Lvzhi_guid"] = variable.identifier
         params["Title"] = variable.title
         params["type"] = variable.type
@@ -34,8 +34,8 @@ class EditVariableReq: HttpBaseReq {
         self.request("LvZhiMod", nameSpace: "rendadaibiao", params: params, completion: completion)
     }
     
-    func requestSimpleCompletion(completion: SimpleCompletion?) {
-        var params = [String: AnyObject]()
+    func requestSimpleCompletion(_ completion: SimpleCompletion?) {
+        var params = [String: Any]()
         params["lvzhi_guid"] = variable.token
         params["Title"] = variable.title
         params["Type"] = variable.type

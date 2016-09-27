@@ -19,13 +19,13 @@ class SignInReq: HttpBaseReq {
 //        self.httpReqURL = self.httpReqURL + "/appjiekout/jiekou/gonggong.asmx?op=CheckLogin"
     }
     
-    override func requestCompletion(completion: HttpReqCompletion?) {
+    override func requestCompletion(_ completion: HttpReqCompletion?) {
         var params = [String: AnyObject]()
-        params["loginname"] = account
-        params["password"] = password
-        params["phonetype"] = "iPhone;\(GlobalUtil.phoneModel())"
-        params["theAPPid"] = "dalianrenda0001"
-        params["thecharset"] = "gb2312"
+        params["loginname"] = account as AnyObject?
+        params["password"] = password as AnyObject?
+        params["phonetype"] = "iPhone;\(GlobalUtil.phoneModel())" as AnyObject?
+        params["theAPPid"] = "dalianrenda0001" as AnyObject?
+        params["thecharset"] = "gb2312" as AnyObject?
         
 //        self.request(params, completion: completion)
         self.request("CheckLogin", nameSpace: "gonggong", params: params, completion: completion)

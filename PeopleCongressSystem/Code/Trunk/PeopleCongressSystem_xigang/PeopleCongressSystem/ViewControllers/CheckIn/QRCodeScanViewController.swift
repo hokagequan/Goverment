@@ -16,10 +16,10 @@ class QRCodeScanViewController: UIViewController, AVCaptureMetadataOutputObjects
     
     var activity: Activity? = nil
     
-    private var captureSession: AVCaptureSession? = AVCaptureSession()
-    private var captureMetadataOutput: AVCaptureMetadataOutput? = AVCaptureMetadataOutput()
-    private var captureDeviceInput: AVCaptureDeviceInput? = nil
-    private var videoPreviewLayer: AVCaptureVideoPreviewLayer? = nil
+    fileprivate var captureSession: AVCaptureSession? = AVCaptureSession()
+    fileprivate var captureMetadataOutput: AVCaptureMetadataOutput? = AVCaptureMetadataOutput()
+    fileprivate var captureDeviceInput: AVCaptureDeviceInput? = nil
+    fileprivate var videoPreviewLayer: AVCaptureVideoPreviewLayer? = nil
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,11 +29,11 @@ class QRCodeScanViewController: UIViewController, AVCaptureMetadataOutputObjects
         PCSCustomUtil.customNavigationController(self)
     }
     
-    override func viewDidAppear(animated: Bool) {
+    override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
-        let status = AVCaptureDevice.authorizationStatusForMediaType(AVMediaTypeVideo)
-        if status == AVAuthorizationStatus.Denied {
+        let status = AVCaptureDevice.authorizationStatus(forMediaType: AVMediaTypeVideo)
+        if status == AVAuthorizationStatus.denied {
             self.showAlert("无相机访问权限")
             return
         }
@@ -42,7 +42,7 @@ class QRCodeScanViewController: UIViewController, AVCaptureMetadataOutputObjects
         self.startScan()
     }
     
-    override func viewWillDisappear(animated: Bool) {
+    override func viewWillDisappear(_ animated: Bool) {
         self.stopScan()
         captureSession?.removeInput(captureDeviceInput)
         captureSession?.removeOutput(captureMetadataOutput)
@@ -57,22 +57,22 @@ class QRCodeScanViewController: UIViewController, AVCaptureMetadataOutputObjects
         // Dispose of any resources that can be recreated.
     }
     
-    func handleCode(code: String) {
+    func handleCode(_ code: String) {
         let activityID = activity?.identifier ?? 0
         PCSDataManager.defaultManager().content.actionDelegate?.checkIn(code, identifier: "\(activityID)", completion: { (success) in
-            self.performSelector(#selector(QRCodeScanViewController.startScan), withObject: nil, afterDelay: 1.0)
+            self.perform(#selector(QRCodeScanViewController.startScan), with: nil, afterDelay: 1.0)
         })
     }
     
     func initializeScan() {
-        let captureDevice = AVCaptureDevice.defaultDeviceWithMediaType(AVMediaTypeVideo)
+        let captureDevice = AVCaptureDevice.defaultDevice(withMediaType: AVMediaTypeVideo)
         do {
             captureDeviceInput = try AVCaptureDeviceInput(device: captureDevice)
 //            captureSession.sessionPreset = AVCaptureSessionPreset1920x1080;
             captureSession?.addInput(captureDeviceInput)
             captureSession?.addOutput(captureMetadataOutput)
             
-            let dispatchQueue = dispatch_queue_create("ScanCodeQueue", nil)
+            let dispatchQueue = DispatchQueue(label: "ScanCodeQueue", attributes: [])
             captureMetadataOutput?.setMetadataObjectsDelegate(self, queue: dispatchQueue)
             captureMetadataOutput?.metadataObjectTypes = [AVMetadataObjectTypeQRCode,
                 AVMetadataObjectTypeUPCECode,
@@ -86,15 +86,15 @@ class QRCodeScanViewController: UIViewController, AVCaptureMetadataOutputObjects
                 AVMetadataObjectTypeAztecCode]
             
             let size = containerView.bounds.size
-            captureMetadataOutput?.rectOfInterest = CGRectMake(64.0 / size.height, ((size.width - 220) / 2.0) / size.width, 220.0 / size.height, 220.0 / size.width);
+            captureMetadataOutput?.rectOfInterest = CGRect(x: 64.0 / size.height, y: ((size.width - 220) / 2.0) / size.width, width: 220.0 / size.height, height: 220.0 / size.width);
             
             videoPreviewLayer = AVCaptureVideoPreviewLayer(session: captureSession)
             videoPreviewLayer!.videoGravity = AVLayerVideoGravityResizeAspectFill
             videoPreviewLayer!.frame = containerView.bounds
             containerView.layer.addSublayer(videoPreviewLayer!)
             
-            let boxView = UIView(frame: CGRectMake((size.width - 220) / 2.0, 64.0, 220.0, 220.0))
-            boxView.layer.borderColor = UIColor.grayColor().CGColor
+            let boxView = UIView(frame: CGRect(x: (size.width - 220) / 2.0, y: 64.0, width: 220.0, height: 220.0))
+            boxView.layer.borderColor = UIColor.gray.cgColor
             boxView.layer.borderWidth = 2.0
             containerView.addSubview(boxView)
         }
@@ -113,9 +113,9 @@ class QRCodeScanViewController: UIViewController, AVCaptureMetadataOutputObjects
     
     // MARK: - AVCaptureMetadataOutputObjectsDelegate
     
-    func captureOutput(captureOutput: AVCaptureOutput!, didOutputMetadataObjects metadataObjects: [AnyObject]!, fromConnection connection: AVCaptureConnection!) {
+    func captureOutput(_ captureOutput: AVCaptureOutput!, didOutputMetadataObjects metadataObjects: [Any]!, from connection: AVCaptureConnection!) {
         
-        if captureSession?.running == false {
+        if captureSession?.isRunning == false {
             return
         }
         
@@ -123,7 +123,7 @@ class QRCodeScanViewController: UIViewController, AVCaptureMetadataOutputObjects
             captureSession?.stopRunning()
             
             for metadataObject in metadataObjects {
-                self.handleCode(metadataObject.stringValue)
+                self.handleCode((metadataObject as AnyObject).stringValue)
                 break
             }
         }

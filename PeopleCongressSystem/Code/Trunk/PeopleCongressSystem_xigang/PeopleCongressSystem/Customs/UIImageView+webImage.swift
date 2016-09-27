@@ -13,7 +13,7 @@ import AlamofireImage
 
 extension UIImageView {
     
-    func loadImageURL(url: String?, name: String, placeholder: String) {
+    func loadImageURL(_ url: String?, name: String, placeholder: String) {
         self.image = UIImage(named: placeholder)
         
         if url == nil {
@@ -21,34 +21,37 @@ extension UIImageView {
         }
         
         let imageName = name
-        let localPath = UIImageView.pathForTempImage().stringByAppendingString("/\(imageName)")
+        let localPath = UIImageView.pathForTempImage() + "/\(imageName)"
         
-        if NSFileManager.defaultManager().fileExistsAtPath(localPath, isDirectory: nil) == true {
+        if FileManager.default.fileExists(atPath: localPath, isDirectory: nil) == true {
             self.image = UIImage(contentsOfFile: localPath)
             
             return
         }
         
-        Alamofire.request(.GET, url!)
-            .responseImage { response in
-                if let image = response.result.value {
-                    self.image = image
-                    
-                    let imageData = UIImageJPEGRepresentation(image, 1.0)
-                    imageData?.writeToFile(localPath, atomically: true)
+        Alamofire.request(url!).responseImage { (response) in
+            if let image = response.result.value {
+                self.image = image
+                
+                let imageData = UIImageJPEGRepresentation(image, 1.0)
+                let toURL = URL(string: localPath)
+                do {
+                    try imageData?.write(to: toURL!, options: .atomic)
                 }
+                catch {}
+            }
         }
     }
     
     class func pathForTempImage() -> String {
-        let paths = NSSearchPathForDirectoriesInDomains(NSSearchPathDirectory.DocumentationDirectory, NSSearchPathDomainMask.UserDomainMask, true)
+        let paths = NSSearchPathForDirectoriesInDomains(FileManager.SearchPathDirectory.documentationDirectory, FileManager.SearchPathDomainMask.userDomainMask, true)
         var path = paths.first
         
-        path = path?.stringByAppendingString("/PCSCacheImage")
+        path = path! + "/PCSCacheImage"
         
-        if NSFileManager.defaultManager().fileExistsAtPath(path!, isDirectory: nil) == false {
+        if FileManager.default.fileExists(atPath: path!, isDirectory: nil) == false {
             do {
-                try NSFileManager.defaultManager().createDirectoryAtPath(path!, withIntermediateDirectories: true, attributes: nil)
+                try FileManager.default.createDirectory(atPath: path!, withIntermediateDirectories: true, attributes: nil)
             }
             catch {}
         }

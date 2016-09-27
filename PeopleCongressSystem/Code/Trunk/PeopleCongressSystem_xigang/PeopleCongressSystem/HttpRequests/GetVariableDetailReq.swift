@@ -16,12 +16,12 @@ class GetVariableDetailReq: HttpBaseReq {
         super.init()
     }
     
-    func requestSimpleCompletion(completion: ((Bool, String?) -> Void)?) {
+    func requestSimpleCompletion(_ completion: ((Bool, String?) -> Void)?) {
         var params = [String: AnyObject]()
-        params["lvZhiId"] = variable?.token
-        params["CheckTicket"] = PCSDataManager.defaultManager().accountManager.user!.token
-        params["FieldID"] = PCSDataManager.defaultManager().accountManager.user!.field
-        params["thecharset"] = "gb2312"
+        params["lvZhiId"] = variable?.token as AnyObject?
+        params["CheckTicket"] = PCSDataManager.defaultManager().accountManager.user!.token as AnyObject?
+        params["FieldID"] = PCSDataManager.defaultManager().accountManager.user!.field as AnyObject?
+        params["thecharset"] = "gb2312" as AnyObject?
         
         self.request("GetLvZhiDetails", nameSpace: "rendadaibiao", params: params) { (response) -> Void in
             let result = response?.result
@@ -51,7 +51,7 @@ class GetVariableDetailReq: HttpBaseReq {
                 let photos = variableInfo?["urls"] as? String
                 
                 if photos != nil && photos != "" {
-                    self.variable?.photos = (photos?.componentsSeparatedByString(","))!
+                    self.variable?.photos = (photos?.components(separatedBy: ","))!
                 }
             }
         }

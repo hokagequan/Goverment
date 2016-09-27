@@ -43,7 +43,7 @@ class ChangePasswordViewController: UIViewController, UITextFieldDelegate {
     
     // MARK: - Actions
     
-    @IBAction func clickSave(sender: AnyObject) {
+    @IBAction func clickSave(_ sender: AnyObject) {
         if isForgetReset == false {
             if theOldPwdTextField.text == nil {
                 self.showAlert("请输入旧密码")
@@ -79,7 +79,7 @@ class ChangePasswordViewController: UIViewController, UITextFieldDelegate {
                 EZLoadingActivity.hide()
                 self.showAlert(message)
                 
-                self.navigationController?.popToRootViewControllerAnimated(true)
+                self.navigationController?.popToRootViewController(animated: true)
             })
             return
         }
@@ -100,7 +100,7 @@ class ChangePasswordViewController: UIViewController, UITextFieldDelegate {
     
     // MARK: - UITextField
     
-    func textFieldShouldReturn(textField: UITextField) -> Bool {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
         
         return true

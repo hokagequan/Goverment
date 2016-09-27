@@ -7,13 +7,13 @@
 //
 
 import UIKit
-import DKImagePickerController
 import EZLoadingActivity
+import DKImagePickerController
 
 enum VariablePageType {
     
-    case Detail
-    case Add
+    case detail
+    case add
     
 }
 
@@ -21,10 +21,10 @@ class VariableDetailViewController: UIViewController, UITableViewDataSource, UIT
     
     enum Sections: Int {
         
-        case MainContent = 0
-        case Detail
-        case Photos
-        case Max
+        case mainContent = 0
+        case detail
+        case photos
+        case max
         
         func rows() -> Array<Row> {
             let titles = [["标题:", "类型:", "人员:"],
@@ -81,7 +81,7 @@ class VariableDetailViewController: UIViewController, UITableViewDataSource, UIT
     @IBOutlet weak var deleteButton: UIButton!
     
     var variable: Variable = Variable()
-    var pageType = VariablePageType.Detail
+    var pageType = VariablePageType.detail
     var selectedInfo: PCSTypeInfo? = nil
     var types = [PCSTypeInfo]()
     var addPhotoCount = 0
@@ -96,12 +96,12 @@ class VariableDetailViewController: UIViewController, UITableViewDataSource, UIT
         naviView.delegate = self
         oldPhotos = variable.photos
         
-        tableView.registerNib(UINib(nibName: "NormalImageTableCell", bundle: nil), forCellReuseIdentifier: "NormalImageTableCell")
+        tableView.register(UINib(nibName: "NormalImageTableCell", bundle: nil), forCellReuseIdentifier: "NormalImageTableCell")
         CustomObjectUtil.customObjectsLayout([saveButton, submitButton], backgroundColor: colorRed, borderWidth: 0.0, borderColor: nil, corner: 3.0)
         
         self.customUI()
         
-        if pageType == VariablePageType.Add {
+        if pageType == VariablePageType.add {
             guard let localVariable = PCSDataManager.defaultManager().getLocalVariable() else {
                 return
             }
@@ -127,14 +127,14 @@ class VariableDetailViewController: UIViewController, UITableViewDataSource, UIT
         }
     }
     
-    override func viewWillAppear(animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
         self.navigationItem.hidesBackButton = true
         PCSCustomUtil.customNavigationController(self)
     }
     
-    override func viewDidAppear(animated: Bool) {
+    override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
     }
 
@@ -144,15 +144,15 @@ class VariableDetailViewController: UIViewController, UITableViewDataSource, UIT
     }
     
     func customUI() {
-        if pageType == VariablePageType.Add {
-            deleteButton.hidden = true
-            submitButton.hidden = false
+        if pageType == VariablePageType.add {
+            deleteButton.isHidden = true
+            submitButton.isHidden = false
         }
         else {
             if variable.submitted == true {
-                deleteButton.hidden = true
-                submitButton.hidden = true
-                saveButton.hidden = true
+                deleteButton.isHidden = true
+                submitButton.isHidden = true
+                saveButton.isHidden = true
             }
         }
     }
@@ -160,12 +160,12 @@ class VariableDetailViewController: UIViewController, UITableViewDataSource, UIT
     func createVariable() -> Variable {
         let tempVariable = variable.copy() as! Variable
         
-        for section in 0..<Sections.Max.rawValue {
+        for section in 0..<Sections.max.rawValue {
             let sec = Sections(rawValue: section)
             let rowCount = sec?.rows().count
             
             for row in 0..<rowCount! {
-                let cell = tableView!.cellForRowAtIndexPath(NSIndexPath(forRow: row, inSection: section))
+                let cell = tableView!.cellForRow(at: IndexPath(row: row, section: section))
                 if cell is NormalImageTableCell {
                     let row = sec!.rows()[row]
                     tempVariable.setValue((cell as! NormalImageTableCell).titleTextField.text, forKey: row.key!)
@@ -177,14 +177,14 @@ class VariableDetailViewController: UIViewController, UITableViewDataSource, UIT
             tempVariable.type = selectedInfo?.code
         }
         
-        let formatter = NSDateFormatter()
+        let formatter = DateFormatter()
         formatter.dateFormat = "yyyy-MM-dd HH:mm"
-        tempVariable.createTime = formatter.stringFromDate(NSDate())
+        tempVariable.createTime = formatter.string(from: Date())
         
         return tempVariable
     }
     
-    func finishAddPhotos(cell: CollectionViewCell) {
+    func finishAddPhotos(_ cell: CollectionViewCell) {
         addPhotoCount -= 1
         
         if addPhotoCount == 0 {
@@ -194,18 +194,18 @@ class VariableDetailViewController: UIViewController, UITableViewDataSource, UIT
         }
     }
     
-    func saveToLocal(completion: () -> Void) {
+    func saveToLocal(_ completion: @escaping () -> Void) {
         let variable = self.createVariable()
         variable.token = GlobalUtil.randomImageName()
         PCSDataManager.defaultManager().saveVariableToLocal(variable, completion: completion)
     }
     
-    func cancelSaveToLocal(completion: () -> Void) {
+    func cancelSaveToLocal(_ completion: @escaping () -> Void) {
         PCSDataManager.defaultManager().deleteLocalVariable(completion)
     }
     
-    func uploadAddedPhotos(completion: (() -> Void)?) {
-        func filter(element: String) -> String? {
+    func uploadAddedPhotos(_ completion: (() -> Void)?) {
+        func filter(_ element: String) -> String? {
             if oldPhotos.contains(element) == false {
                 return element
             }
@@ -213,41 +213,41 @@ class VariableDetailViewController: UIViewController, UITableViewDataSource, UIT
             return nil
         }
         
-        let cell = tableView.cellForRowAtIndexPath(NSIndexPath(forRow: 0, inSection: 2)) as! CollectionViewCell
+        let cell = tableView.cellForRow(at: IndexPath(row: 0, section: 2)) as! CollectionViewCell
         let images = cell.images
         let toAddImages = images.flatMap{filter($0)}
         
-        let semaphore = dispatch_semaphore_create(1)
-        let queue = dispatch_queue_create("UploadPhotos", nil)
-        let dispatchTimeout = dispatch_time(DISPATCH_TIME_NOW, Int64(5 * 60 * NSEC_PER_SEC))
+        let semaphore = DispatchSemaphore(value: 1)
+        let queue = DispatchQueue(label: "UploadPhotos", attributes: [])
+        let dispatchTimeout = DispatchTime.now() + Double(Int64(5 * 60 * NSEC_PER_SEC)) / Double(NSEC_PER_SEC)
         
-        dispatch_async(queue, { () -> Void in
+        queue.async(execute: { () -> Void in
             for image in toAddImages {
-                dispatch_semaphore_wait(semaphore, dispatchTimeout)
-                autoreleasepool({ () -> () in
-                    let imageData = NSData(contentsOfFile: UIImageView.pathForTempImage() + "/\(image)")
+                semaphore.wait(timeout: dispatchTimeout)
+                autoreleasepool(invoking: { () -> () in
+                    let imageData = try? Data(contentsOf: URL(fileURLWithPath: UIImageView.pathForTempImage() + "/\(image)"))
                     let req = UploadPhotoReq()
                     req.variableID = self.variable.token!
                     req.fileName = image
                     req.file = imageData
                     req.requestCompletion({ (response) -> Void in
-                        dispatch_semaphore_signal(semaphore)
+                        semaphore.signal()
                     })
                 })
             }
             
-            dispatch_semaphore_wait(semaphore, dispatchTimeout)
-            dispatch_async(dispatch_get_main_queue(), { () -> Void in
+            semaphore.wait(timeout: dispatchTimeout)
+            DispatchQueue.main.async(execute: { () -> Void in
                 completion?()
             })
-            dispatch_semaphore_signal(semaphore)
+            semaphore.signal()
         })
     }
     
     // MARK: - Actions
     
-    @IBAction func clickSave(sender: AnyObject) {
-        if pageType == VariablePageType.Add {
+    @IBAction func clickSave(_ sender: AnyObject) {
+        if pageType == VariablePageType.add {
             variable.token = GlobalUtil.randomImageName()
             EZLoadingActivity.show("", disableUI: true)
             
@@ -286,8 +286,8 @@ class VariableDetailViewController: UIViewController, UITableViewDataSource, UIT
         }
     }
     
-    @IBAction func clickSubmit(sender: AnyObject) {
-        if pageType == VariablePageType.Add {
+    @IBAction func clickSubmit(_ sender: AnyObject) {
+        if pageType == VariablePageType.add {
             variable.token = GlobalUtil.randomImageName()
             variable.submitted = true
             EZLoadingActivity.show("", disableUI: true)
@@ -328,13 +328,13 @@ class VariableDetailViewController: UIViewController, UITableViewDataSource, UIT
         }
     }
     
-    @IBAction func clickDelete(sender: AnyObject) {
-        let alert = UIAlertController(title: nil, message: "是否删除此履职记录", preferredStyle: UIAlertControllerStyle.Alert)
+    @IBAction func clickDelete(_ sender: AnyObject) {
+        let alert = UIAlertController(title: nil, message: "是否删除此履职记录", preferredStyle: UIAlertControllerStyle.alert)
         
-        let cancelAction = UIAlertAction(title: "取消", style: UIAlertActionStyle.Default) { (action) in
+        let cancelAction = UIAlertAction(title: "取消", style: UIAlertActionStyle.default) { (action) in
             
         }
-        let sureAction = UIAlertAction(title: "确定", style: UIAlertActionStyle.Default) { (action) in
+        let sureAction = UIAlertAction(title: "确定", style: UIAlertActionStyle.default) { (action) in
             EZLoadingActivity.show("", disableUI: true)
             
             let req = DeleteVariableReq()
@@ -354,28 +354,28 @@ class VariableDetailViewController: UIViewController, UITableViewDataSource, UIT
         alert.addAction(cancelAction)
         alert.addAction(sureAction)
         
-        self.presentViewController(alert, animated: true, completion: nil)
+        self.present(alert, animated: true, completion: nil)
     }
     
     // MARK: - AlertView
     
-    func alertView(alertView: UIAlertView, clickedButtonAtIndex buttonIndex: Int) {
-        self.navigationController?.popViewControllerAnimated(true)
+    func alertView(_ alertView: UIAlertView, clickedButtonAt buttonIndex: Int) {
+        self.navigationController?.popViewController(animated: true)
     }
     
     // MARK: - CollectionViewCellDelegate
     
-    func didClickAdd(cell: CollectionViewCell) {
+    func didClickAdd(_ cell: CollectionViewCell) {
         if variable.submitted == true {
             return
         }
         
         self.view.endEditing(true)
-        UINavigationBar.appearance().tintColor = UIColor.whiteColor()
-        UINavigationBar.appearance().titleTextAttributes = [NSForegroundColorAttributeName: UIColor.whiteColor()]
+        UINavigationBar.appearance().tintColor = UIColor.white
+        UINavigationBar.appearance().titleTextAttributes = [NSForegroundColorAttributeName: UIColor.white]
         let picker = DKImagePickerController()
         picker.maxSelectableCount = 6
-        picker.assetType = DKImagePickerControllerAssetType.AllPhotos
+        picker.assetType = DKImagePickerControllerAssetType.allPhotos
         picker.didSelectAssets = {(assets: [DKAsset]) in
             self.addPhotoCount = assets.count
             self.addPhotos.removeAll()
@@ -392,37 +392,42 @@ class VariableDetailViewController: UIViewController, UITableViewDataSource, UIT
                     
                     let imageData = UIImageJPEGRepresentation(image!, 0.5)
                     let imageName = GlobalUtil.randomImageName() + ".jpg"
-                    imageData?.writeToFile(UIImageView.pathForTempImage().stringByAppendingString("/\(imageName)"), atomically: true)
-                    self.addPhotos.append(imageName)
+                    let url = URL(string: UIImageView.pathForTempImage().appending("/\(imageName)"))
+                    
+                    do {
+                        try imageData?.write(to: url!, options: .atomic)
+                        self.addPhotos.append(imageName)
+                    }
+                    catch {}
                 })
             }
             
-            picker.dismissViewControllerAnimated(true, completion: nil)
+            picker.dismiss(animated: true, completion: nil)
         }
         
         picker.didCancel = { () in
-            picker.dismissViewControllerAnimated(true, completion: nil)
+            picker.dismiss(animated: true, completion: nil)
         }
         
-        self.presentViewController(picker, animated: true, completion: nil)
+        self.present(picker, animated: true, completion: nil)
     }
     
-    func didSelectIndex(cell: CollectionViewCell, index: Int) {
+    func didSelectIndex(_ cell: CollectionViewCell, index: Int) {
         if variable.submitted == true {
             return
         }
     }
     
-    func didClickImage(cell: CollectionViewCell, image: UIImage) {
+    func didClickImage(_ cell: CollectionViewCell, image: UIImage) {
         let photoBrowser = PhotoBrowserView.view()
         photoBrowser.show(image)
     }
     
-    func didLongPressIndex(cell: CollectionViewCell, index: Int) {
-        let alert = UIAlertController(title: nil, message: "确定要删除照片吗？", preferredStyle: UIAlertControllerStyle.ActionSheet)
+    func didLongPressIndex(_ cell: CollectionViewCell, index: Int) {
+        let alert = UIAlertController(title: nil, message: "确定要删除照片吗？", preferredStyle: UIAlertControllerStyle.actionSheet)
         
-        let sureAction = UIAlertAction(title: "确定", style: UIAlertActionStyle.Default) { (action) -> Void in
-            alert.dismissViewControllerAnimated(true, completion: nil)
+        let sureAction = UIAlertAction(title: "确定", style: UIAlertActionStyle.default) { (action) -> Void in
+            alert.dismiss(animated: true, completion: nil)
             
             let photoName = cell.images[index]
             if self.variable.photos.contains(photoName) {
@@ -436,7 +441,7 @@ class VariableDetailViewController: UIViewController, UITableViewDataSource, UIT
                         cell.deleteCollectionCell(index)
                         
                         if self.variable.photos.contains(req.photoID!) {
-                            self.variable.photos.removeAtIndex(self.variable.photos.indexOf(req.photoID!)!)
+                            self.variable.photos.remove(at: self.variable.photos.index(of: req.photoID!)!)
                         }
                     }
                     else {
@@ -449,101 +454,101 @@ class VariableDetailViewController: UIViewController, UITableViewDataSource, UIT
             }
         }
         
-        let cancelAction = UIAlertAction(title: "取消", style: UIAlertActionStyle.Default) { (action) -> Void in
-            alert.dismissViewControllerAnimated(true, completion: nil)
+        let cancelAction = UIAlertAction(title: "取消", style: UIAlertActionStyle.default) { (action) -> Void in
+            alert.dismiss(animated: true, completion: nil)
         }
         
         alert.addAction(sureAction)
         alert.addAction(cancelAction)
         
-        self.presentViewController(alert, animated: true, completion: nil)
+        self.present(alert, animated: true, completion: nil)
     }
     
     // MARK: - TypeSelectView
     
-    func didSelectIndex(view: TypeSelectView, indexPath: NSIndexPath) {
-        selectedInfo = types[indexPath.row]
-        tableView.reloadRowsAtIndexPaths([NSIndexPath(forRow: 1, inSection: 0)], withRowAnimation: UITableViewRowAnimation.None)
+    func didSelectIndex(_ view: TypeSelectView, indexPath: IndexPath) {
+        selectedInfo = types[(indexPath as NSIndexPath).row]
+        tableView.reloadRows(at: [IndexPath(row: 1, section: 0)], with: UITableViewRowAnimation.none)
     }
     
     // MARK: - NormalImageTableCellDelegate
     
-    func didEditing(cell: NormalImageTableCell) {
-        tableView?.scrollEnabled = false
+    func didEditing(_ cell: NormalImageTableCell) {
+        tableView?.isScrollEnabled = false
         let keyboardHeight: CGFloat = 246.0
         let deltaY = cell.frame.origin.y + 50.0 - (tableView!.bounds.size.height - keyboardHeight) + tableView!.frame.origin.y
         
         if deltaY > 0 {
-            tableView?.setContentOffset(CGPointMake(0, deltaY), animated: true)
+            tableView?.setContentOffset(CGPoint(x: 0, y: deltaY), animated: true)
         }
     }
     
-    func didEndEditing(cell: NormalImageTableCell) {
-        tableView?.setContentOffset(CGPointZero, animated: true)
-        tableView?.scrollEnabled = true
+    func didEndEditing(_ cell: NormalImageTableCell) {
+        tableView?.setContentOffset(CGPoint.zero, animated: true)
+        tableView?.isScrollEnabled = true
         
-        let indexPath = tableView.indexPathForCell(cell)
-        let section = Sections(rawValue: indexPath!.section)!
-        let row = section.rows()[indexPath!.row]
+        let indexPath = tableView.indexPath(for: cell)
+        let section = Sections(rawValue: (indexPath! as NSIndexPath).section)!
+        let row = section.rows()[(indexPath! as NSIndexPath).row]
         variable.setValue(cell.titleTextField.text, forKey: row.key!)
     }
     
-    func didEditingTime(cell: NormalImageTableCell, datePicker: DatePickerView) {
+    func didEditingTime(_ cell: NormalImageTableCell, datePicker: DatePickerView) {
         self.view.endEditing(true)
         let keyboardHeight: CGFloat = datePicker.datePickerContainer.bounds.size.height
         let deltaY = cell.frame.origin.y + 50.0 - (tableView!.bounds.size.height - keyboardHeight) + tableView!.frame.origin.y
         
         if deltaY > 0 {
-            tableView?.setContentOffset(CGPointMake(0, deltaY), animated: true)
+            tableView?.setContentOffset(CGPoint(x: 0, y: deltaY), animated: true)
         }
     }
     
-    func didEndEditingTime(cell: NormalImageTableCell) {
-        tableView?.setContentOffset(CGPointZero, animated: true)
+    func didEndEditingTime(_ cell: NormalImageTableCell) {
+        tableView?.setContentOffset(CGPoint.zero, animated: true)
         
-        let indexPath = tableView.indexPathForCell(cell)
-        let section = Sections(rawValue: indexPath!.section)!
-        let row = section.rows()[indexPath!.row]
+        let indexPath = tableView.indexPath(for: cell)
+        let section = Sections(rawValue: (indexPath! as NSIndexPath).section)!
+        let row = section.rows()[(indexPath! as NSIndexPath).row]
         variable.setValue(cell.titleTextField.text, forKey: row.key!)
     }
     
     // MARK: - UIImagePicker
     
-    func imagePickerController(picker: UIImagePickerController, didFinishPickingImage image: UIImage, editingInfo: [String : AnyObject]?) {
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingImage image: UIImage, editingInfo: [String : AnyObject]?) {
         print("")
     }
     
-    func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]) {
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
         print("")
     }
     
-    func imagePickerControllerDidCancel(picker: UIImagePickerController) {
-        picker.dismissViewControllerAnimated(true, completion: nil)
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        picker.dismiss(animated: true, completion: nil)
     }
     
     // MARK: - UITableView
     
-    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        return Sections.Max.rawValue
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return Sections.max.rawValue
     }
     
-    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-        let section = Sections(rawValue: indexPath.section)!
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        let section = Sections(rawValue: (indexPath as NSIndexPath).section)!
         
-        if section == Sections.Photos {
+        if section == Sections.photos {
             return 130.0
         }
         
         return 50.0
     }
     
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         let sec = Sections(rawValue: section)!
         
         return sec.rows().count
     }
     
-    func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         if section == 0 {
             return 1
         }
@@ -551,89 +556,89 @@ class VariableDetailViewController: UIViewController, UITableViewDataSource, UIT
         return 18.0
     }
     
-    func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let view = UIView()
-        view.backgroundColor = UIColor.clearColor()
+        view.backgroundColor = UIColor.clear
         
         return view
     }
     
-    func tableView(tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+    func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
         let sec = Sections(rawValue: section)!
         
-        if sec == Sections.Photos {
+        if sec == Sections.photos {
             return 60.0
         }
         
         return 1.0
     }
     
-    func tableView(tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
+    func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
         let sec = Sections(rawValue: section)!
         
-        if sec == Sections.Photos {
+        if sec == Sections.photos {
             return footerView
         }
         
         let view = UIView()
-        view.backgroundColor = UIColor.clearColor()
+        view.backgroundColor = UIColor.clear
         
         return view
     }
     
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let section = Sections(rawValue: indexPath.section)!
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let section = Sections(rawValue: (indexPath as NSIndexPath).section)!
         
-        if section == Sections.Photos {
-            let cell = tableView.dequeueReusableCellWithIdentifier("CollectionViewCell", forIndexPath: indexPath) as! CollectionViewCell
-            cell.selectionStyle = UITableViewCellSelectionStyle.None
+        if section == Sections.photos {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "CollectionViewCell", for: indexPath) as! CollectionViewCell
+            cell.selectionStyle = UITableViewCellSelectionStyle.none
             cell.delegate = self
-            let row = section.rows()[indexPath.row]
+            let row = section.rows()[(indexPath as NSIndexPath).row]
             cell.titleLabel.text = row.title
             cell.loadImages(variable.photos)
             
             return cell
         }
         
-        let cell = tableView.dequeueReusableCellWithIdentifier("NormalImageTableCell", forIndexPath: indexPath) as! NormalImageTableCell
-        cell.selectionStyle = UITableViewCellSelectionStyle.None
+        let cell = tableView.dequeueReusableCell(withIdentifier: "NormalImageTableCell", for: indexPath) as! NormalImageTableCell
+        cell.selectionStyle = UITableViewCellSelectionStyle.none
         
         let rows = section.rows()
-        let row = rows[indexPath.row]
-        cell.headerText = row.title
+        let row = rows[(indexPath as NSIndexPath).row]
+        cell.headerText = row.title as NSString?
         cell.iconImageView.image = UIImage(named: row.icon!)
-        cell.titleTextField.text = variable.valueForKey(row.key!) as? String
+        cell.titleTextField.text = variable.value(forKey: row.key!) as? String
         cell.editable = !variable.submitted
         cell.delegate = self
         
         switch row.title! {
         case "类型:":
-            cell.accessoryType = UITableViewCellAccessoryType.DisclosureIndicator
+            cell.accessoryType = UITableViewCellAccessoryType.disclosureIndicator
             cell.editable = false
             if selectedInfo != nil {
                 cell.titleTextField.text = selectedInfo?.title
             }
             break
         case "时间:":
-            cell.accessoryType = UITableViewCellAccessoryType.None
+            cell.accessoryType = UITableViewCellAccessoryType.none
             cell.timeEditable = true
             break
         default:
-            cell.accessoryType = UITableViewCellAccessoryType.None
+            cell.accessoryType = UITableViewCellAccessoryType.none
             break
         }
         
         return cell
     }
     
-    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if variable.submitted == true {
             return
         }
         
-        let section = Sections(rawValue: indexPath.section)!
+        let section = Sections(rawValue: (indexPath as NSIndexPath).section)!
         let rows = section.rows()
-        let row = rows[indexPath.row]
+        let row = rows[(indexPath as NSIndexPath).row]
         
         switch row.title! {
         case "类型:":
@@ -659,12 +664,12 @@ class VariableDetailViewController: UIViewController, UITableViewDataSource, UIT
     func willDismiss() -> Bool {
         self.view.endEditing(true)
         
-        if pageType == VariablePageType.Add {
+        if pageType == VariablePageType.add {
             var hasValue = false
             let tempVariable = self.createVariable()
             
             for key in Sections.allKeys() {
-                hasValue = (tempVariable.valueForKey(key) as? String != "" && tempVariable.valueForKey(key) as? String != nil)
+                hasValue = (tempVariable.value(forKey: key) as? String != "" && tempVariable.value(forKey: key) as? String != nil)
                 
                 if key == "photos" {
                     hasValue = tempVariable.photos.count > 0
@@ -679,23 +684,23 @@ class VariableDetailViewController: UIViewController, UITableViewDataSource, UIT
                 return false
             }
             
-            let alert = UIAlertController(title: nil, message: "是否保存？", preferredStyle: UIAlertControllerStyle.Alert)
+            let alert = UIAlertController(title: nil, message: "是否保存？", preferredStyle: UIAlertControllerStyle.alert)
             
-            let cancelAction = UIAlertAction(title: "取消", style: UIAlertActionStyle.Cancel) { (action) in
+            let cancelAction = UIAlertAction(title: "取消", style: UIAlertActionStyle.cancel) { (action) in
                 self.cancelSaveToLocal({ 
-                    self.navigationController?.popViewControllerAnimated(true)
+                    self.navigationController?.popViewController(animated: true)
                 })
             }
-            let saveAction = UIAlertAction(title: "保存", style: UIAlertActionStyle.Default) { (action) in
+            let saveAction = UIAlertAction(title: "保存", style: UIAlertActionStyle.default) { (action) in
                 self.saveToLocal({ 
-                    self.navigationController?.popViewControllerAnimated(true)
+                    self.navigationController?.popViewController(animated: true)
                 })
             }
             
             alert.addAction(cancelAction)
             alert.addAction(saveAction)
             
-            self.presentViewController(alert, animated: true, completion: nil)
+            self.present(alert, animated: true, completion: nil)
             
             return true
         }
@@ -704,7 +709,7 @@ class VariableDetailViewController: UIViewController, UITableViewDataSource, UIT
     }
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
     }

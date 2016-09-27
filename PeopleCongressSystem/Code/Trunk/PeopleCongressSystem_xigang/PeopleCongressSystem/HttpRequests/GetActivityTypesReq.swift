@@ -16,11 +16,11 @@ class GetActivityTypesReq: HttpBaseReq {
         super.init()
     }
     
-    override func requestCompletion(completion: HttpReqCompletion?) {
+    override func requestCompletion(_ completion: HttpReqCompletion?) {
         var params = [String: AnyObject]()
-        params["Code"] = type.rawValue
-        params["FieldID"] = PCSDataManager.defaultManager().accountManager.user!.field
-        params["thecharset"] = "gb2312"
+        params["Code"] = type.rawValue as AnyObject?
+        params["FieldID"] = PCSDataManager.defaultManager().accountManager.user!.field as AnyObject?
+        params["thecharset"] = "gb2312" as AnyObject?
         
         self.request("GetDic", nameSpace: "gonggong", params: params, completion: completion)
     }

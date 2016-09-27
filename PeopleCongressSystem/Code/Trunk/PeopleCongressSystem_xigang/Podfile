@@ -1,18 +1,19 @@
 # Uncomment this line to define a global platform for your project
-platform :ios, ‘8.0’
+platform :ios, ‘9.0’
 # Uncomment this line if you're using Swift
 use_frameworks!
 
 target 'PeopleCongressSystemxg' do
 
-pod 'Alamofire'
-pod 'HUIPatternLockView-Swift'
 pod 'TagListView', '~> 1.0.0'
 pod 'EZLoadingActivity', '~> 0.8'
+pod 'Alamofire'
+pod 'HUIPatternLockView-Swift'
 pod 'GrowingTextView'
 pod 'AlamofireImage'
-pod 'DKImagePickerController'
 pod 'SwiftQRCode'
+pod 'ReachabilitySwift'
+pod 'DKImagePickerController'
 
 end
 

@@ -21,7 +21,7 @@ extension VariableEntity {
     @NSManaged var remark: String?
     @NSManaged var time: String?
     @NSManaged var persons: String?
-    @NSManaged var photos: NSData?
+    @NSManaged var photos: Data?
     @NSManaged var identifier: String?
 
 }

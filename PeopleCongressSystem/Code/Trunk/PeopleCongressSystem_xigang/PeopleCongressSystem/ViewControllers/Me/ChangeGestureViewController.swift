@@ -25,7 +25,7 @@ class ChangeGestureViewController: UIViewController {
         PCSCustomUtil.customNavigationController(self)
     }
     
-    override func viewWillAppear(animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
         hasOldGesture = PCSDataManager.defaultManager().accountManager.user?.gesturePassword != nil
@@ -42,7 +42,7 @@ class ChangeGestureViewController: UIViewController {
         }
     }
     
-    override func viewDidAppear(animated: Bool) {
+    override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
         self.customLockView()
@@ -60,7 +60,7 @@ class ChangeGestureViewController: UIViewController {
             self.verfyNewGesture(password, completion: { (success, message) -> Void in
                 self.showAlert(message)
                 if success {
-                    self.navigationController?.popViewControllerAnimated(true)
+                    self.navigationController?.popViewController(animated: true)
                 }
                 else {
                     self.processCreatNewGesture()
@@ -69,7 +69,7 @@ class ChangeGestureViewController: UIViewController {
         }
     }
     
-    func verifyOldGesture(completion: (Bool) -> Void) {
+    func verifyOldGesture(_ completion: @escaping (Bool) -> Void) {
         promptLabel.text = "请绘制旧的解锁图案"
         lockView.didDrawPatternWithPassword = {(lockView: HUIPatternLockView, count: Int, password: String?) -> Void in
             guard count > 0 else {
@@ -78,8 +78,8 @@ class ChangeGestureViewController: UIViewController {
             
             let normalImage = UIImage(named: "gesture_dot_nor")
             let selectImage = UIImage(named: "gesture_dot_sel")
-
-            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, Int64(1 * Double(NSEC_PER_SEC))), dispatch_get_main_queue(), { () -> Void in
+            
+            DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + Double(1 * Double(NSEC_PER_SEC)), execute: { 
                 lockView.resetDotsState()
                 lockView.normalDotImage = normalImage
                 lockView.highlightedDotImage = selectImage
@@ -90,7 +90,7 @@ class ChangeGestureViewController: UIViewController {
         }
     }
     
-    func drawNewGesture(completion: (String) -> Void) {
+    func drawNewGesture(_ completion: @escaping (String) -> Void) {
         promptLabel.text = "请绘制新的解锁图案"
         lockView.didDrawPatternWithPassword = {(lockView: HUIPatternLockView, count: Int, password: String?) -> Void in
             guard count > 0 else {
@@ -100,7 +100,7 @@ class ChangeGestureViewController: UIViewController {
             let normalImage = UIImage(named: "gesture_dot_nor")
             let selectImage = UIImage(named: "gesture_dot_sel")
             
-            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, Int64(1 * Double(NSEC_PER_SEC))), dispatch_get_main_queue(), { () -> Void in
+            DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + Double(1 * Double(NSEC_PER_SEC)), execute: {
                 lockView.resetDotsState()
                 lockView.normalDotImage = normalImage
                 lockView.highlightedDotImage = selectImage
@@ -110,7 +110,7 @@ class ChangeGestureViewController: UIViewController {
         }
     }
     
-    func verfyNewGesture(lastPassword: String, completion:(Bool, String) -> Void) {
+    func verfyNewGesture(_ lastPassword: String, completion:@escaping (Bool, String) -> Void) {
         promptLabel.text = "请再一次绘制解锁图案"
         lockView.didDrawPatternWithPassword = {(lockView: HUIPatternLockView, count: Int, password: String?) -> Void in
             guard count > 0 else {
@@ -120,14 +120,14 @@ class ChangeGestureViewController: UIViewController {
             let normalImage = UIImage(named: "gesture_dot_nor")
             let selectImage = UIImage(named: "gesture_dot_sel")
             
-            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, Int64(1 * Double(NSEC_PER_SEC))), dispatch_get_main_queue(), { () -> Void in
+            DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + Double(1 * Double(NSEC_PER_SEC)), execute: { 
                 lockView.resetDotsState()
                 lockView.normalDotImage = normalImage
                 lockView.highlightedDotImage = selectImage
                 
                 if password == lastPassword {
                     let context = CoreDataManager.defalutManager().childContext()
-                    context.performBlock({ () -> Void in
+                    context.perform({ () -> Void in
                         let manager = PCSDataManager.defaultManager().accountManager
                         manager.user?.gesturePassword = password
                         manager.user?.isDefault = true
@@ -135,13 +135,13 @@ class ChangeGestureViewController: UIViewController {
                         do {
                             try context.save()
                             CoreDataManager.defalutManager().saveContext({ () -> Void in
-                                dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                                DispatchQueue.main.async(execute: { () -> Void in
                                     completion(true, "修改成功")
                                 })
                             })
                         }
                         catch {
-                            dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                            DispatchQueue.main.async(execute: { () -> Void in
                                 completion(false, "修改失败")
                             })
                         }

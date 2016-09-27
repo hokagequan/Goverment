@@ -30,7 +30,7 @@ class CommonHTMLViewController: UIViewController, WebViewHTMLProtocol, PCSNaviga
         
         naviView.title = naviTitle
         naviView.delegate = self
-        rightItem.setTitle(rightItemTitle, forState: UIControlState.Normal)
+        rightItem.setTitle(rightItemTitle, for: UIControlState())
         self.loadWebView(webViewContainer)
         self.loadMainPage()
     }
@@ -45,18 +45,18 @@ class CommonHTMLViewController: UIViewController, WebViewHTMLProtocol, PCSNaviga
             return
         }
         
-        guard let htmlURL = NSURL(string: URL!) else {
-            self.navigationController?.popViewControllerAnimated(true)
+        guard let htmlURL = Foundation.URL(string: URL!) else {
+            self.navigationController?.popViewController(animated: true)
             return
         }
         
-        let req = NSURLRequest(URL: htmlURL)
+        let req = URLRequest(url: htmlURL)
         self.htmlWebView.loadRequest(req)
     }
     
     // MARK: - Actions
     
-    @IBAction func clickRightItem(sender: AnyObject) {
+    @IBAction func clickRightItem(_ sender: AnyObject) {
         rightItemBlock?()
     }
     
@@ -70,7 +70,7 @@ class CommonHTMLViewController: UIViewController, WebViewHTMLProtocol, PCSNaviga
             
             if url == nil {
                 ResponseErrorManger.defaultManager().handleError(errorCode, message: nil)
-                self.navigationController?.popViewControllerAnimated(true)
+                self.navigationController?.popViewController(animated: true)
                 return
             }
             
@@ -83,16 +83,17 @@ class CommonHTMLViewController: UIViewController, WebViewHTMLProtocol, PCSNaviga
     
     // MARK: - UIWebView
     
-    override func webView(webView: UIWebView, shouldStartLoadWithRequest request: NSURLRequest, navigationType: UIWebViewNavigationType) -> Bool {
-        super.webView(webView, shouldStartLoadWithRequest: request, navigationType: navigationType)
+    override func webView(_ webView: UIWebView, shouldStartLoadWith request: URLRequest, navigationType: UIWebViewNavigationType) -> Bool {
+        super.webView(webView, shouldStartLoadWith: request, navigationType: navigationType)
         
 //        if firstLoad == true {
 //            firstLoad = false
 //            return rel
 //        }
         
-        if request.URL != nil && request.URL!.absoluteString.containsString("login.aspx") {
-            self.performSegueWithIdentifier("LogoutSegue", sender: nil)
+        
+        if request.url != nil && request.url!.absoluteString.contains("login.aspx") {
+            self.performSegue(withIdentifier: "LogoutSegue", sender: nil)
             
             return false
         }

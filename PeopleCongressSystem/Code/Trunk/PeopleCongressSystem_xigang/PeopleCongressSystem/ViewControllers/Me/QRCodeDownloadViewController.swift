@@ -24,30 +24,36 @@ class QRCodeDownloadViewController: UIViewController, UITableViewDataSource, UIT
 
     // MARK: - Table view data source
 
-    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
         return 1
     }
 
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
         return 1
     }
     
-    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return tableView.bounds.size.height / 2.0
     }
 
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("QRDownloadCell", forIndexPath: indexPath) as! QRDownloadCell
-        cell.selectionStyle = UITableViewCellSelectionStyle.None
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "QRDownloadCell", for: indexPath) as! QRDownloadCell
+        cell.selectionStyle = UITableViewCellSelectionStyle.none
         
-        if indexPath.row == 0 {
+        if (indexPath as NSIndexPath).row == 0 {
             cell.imageView?.image = UIImage()
             cell.titleLabel.text = "App下载二维码"
-            cell.qrImageView?.image = UIImage(named: "qr_code")
+            #if Debug
+                let qrCode = "qr_code"
+            #else
+                let qrCode = "downpic-zhengshi"
+            #endif
+            
+            cell.qrImageView?.image = UIImage(named: qrCode)
         }
-        else if indexPath.row == 1 {
+        else if (indexPath as NSIndexPath).row == 1 {
             cell.imageView?.image = UIImage()
             cell.titleLabel.text = "苹果下载二维码"
         }

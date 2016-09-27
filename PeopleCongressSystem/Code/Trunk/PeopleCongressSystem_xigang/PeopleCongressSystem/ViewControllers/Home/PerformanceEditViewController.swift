@@ -10,31 +10,31 @@ import UIKit
 import EZLoadingActivity
 
 enum EditPageType {
-    case Activity
-    case ActivityEdit
-    case Variable
-    case CheckIn
+    case activity
+    case activityEdit
+    case variable
+    case checkIn
     
-    func customNavi(naviView: PCSNavigationView, rightNaviButton: UIButton) {
+    func customNavi(_ naviView: PCSNavigationView, rightNaviButton: UIButton) {
         switch self {
-        case .Activity:
+        case .activity:
             naviView.title = "添加活动"
             break
-        case .ActivityEdit:
+        case .activityEdit:
             naviView.title = "活动详情"
             break
-        case .CheckIn:
+        case .checkIn:
             naviView.title = "签到"
-            rightNaviButton.setTitle("", forState: UIControlState.Normal)
-            rightNaviButton.setImage(UIImage(named: "qr_scan"), forState: UIControlState.Normal)
+            rightNaviButton.setTitle("", for: UIControlState())
+            rightNaviButton.setImage(UIImage(named: "qr_scan"), for: UIControlState())
             break
         default:
             break
         }
     }
     
-    func loadDelegate(viewController: PerformanceEditViewController, tableView: UITableView) -> ManageEditUIDelegate {
-        func loadTableView(viewController: PerformanceEditViewController, delegate: ManageEditUIDelegate, tableView: UITableView) {
+    func loadDelegate(_ viewController: PerformanceEditViewController, tableView: UITableView) -> ManageEditUIDelegate {
+        func loadTableView(_ viewController: PerformanceEditViewController, delegate: ManageEditUIDelegate, tableView: UITableView) {
             delegate.tableView = tableView
             tableView.dataSource = delegate
             tableView.delegate = delegate
@@ -42,17 +42,17 @@ enum EditPageType {
         }
         
         switch self {
-        case .Activity:
+        case .activity:
             let delegate = ManageEditUIActivityDelegate()
             loadTableView(viewController, delegate: delegate, tableView: tableView)
             
             return delegate
-        case .ActivityEdit:
+        case .activityEdit:
             let delegate = ManageEditActivityEditDelegate()
             loadTableView(viewController, delegate: delegate, tableView: tableView)
             
             return delegate
-        case .CheckIn:
+        case .checkIn:
             let delegate = ManageEditUICheckInDelegate()
             loadTableView(viewController, delegate: delegate, tableView: tableView)
             
@@ -86,19 +86,19 @@ class PerformanceEditViewController: UIViewController {
         myUIDelegate?.prepare()
     }
     
-    override func viewWillAppear(animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
         self.registerKeyboardListener(#selector(self.handleKeyboardChange(_:)))
     }
     
-    override func viewDidAppear(animated: Bool) {
+    override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
-        tableView.reloadRowsAtIndexPaths([NSIndexPath(forRow: 0, inSection: 3)], withRowAnimation: UITableViewRowAnimation.None)
+        tableView.reloadRows(at: [IndexPath(row: 0, section: 3)], with: UITableViewRowAnimation.none)
     }
     
-    override func viewWillDisappear(animated: Bool) {
+    override func viewWillDisappear(_ animated: Bool) {
         self.unregisterKeyboardListener()
         
         super.viewWillDisappear(animated)
@@ -111,38 +111,38 @@ class PerformanceEditViewController: UIViewController {
     
     // MARK: - Actions
     
-    @IBAction func clickSave(sender: AnyObject) {
+    @IBAction func clickSave(_ sender: AnyObject) {
         myUIDelegate?.save()
     }
     
     // MARK: - Observer
     
-    func handleKeyboardChange(notification: NSNotification) {
+    func handleKeyboardChange(_ notification: Notification) {
         guard let info = notification.object as? KeyboardInfo else {
             return
         }
         
-        UIView.animateWithDuration(info.duration) { () -> Void in
+        UIView.animate(withDuration: info.duration, animations: { () -> Void in
             self.view.layoutIfNeeded()
-        }
+        }) 
     }
 
     // MARK: - Navigation
     
-    @IBAction func unwindToActivityDetail(segue: UIStoryboardSegue) {
+    @IBAction func unwindToActivityDetail(_ segue: UIStoryboardSegue) {
         
     }
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
         if segue.identifier == "GroupSegue" {
-            let vc = segue.destinationViewController as! GroupViewController
+            let vc = segue.destination as! GroupViewController
             vc.activity = myUIDelegate?.editObject as? Activity
         }
         else if segue.identifier == "UnCheckedInListSegue" {
-            let vc = segue.destinationViewController as! UnCheckedInListViewController
+            let vc = segue.destination as! UnCheckedInListViewController
             if self.editObject != nil && self.editObject is Activity {
                 vc.activityID = (self.editObject as! Activity).identifier
             }

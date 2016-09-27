@@ -41,12 +41,12 @@ class Activity: NSObject, NSCopying {
             personsIDs.append(person.congressID!)
         }
         
-        return personsIDs.joinWithSeparator(",")
+        return personsIDs.joined(separator: ",")
     }
     
     // MARK: - NSCopying
     
-    func copyWithZone(zone: NSZone) -> AnyObject {
+    func copy(with zone: NSZone?) -> Any {
         let activity = Activity()
         activity.identifier = self.identifier
         activity.title = self.title

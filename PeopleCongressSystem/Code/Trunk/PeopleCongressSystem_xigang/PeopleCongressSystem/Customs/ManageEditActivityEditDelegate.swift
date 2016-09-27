@@ -17,22 +17,22 @@ class ManageEditActivityEditDelegate: ManageEditUIActivityDelegate {
             return
         }
         
-        let group = dispatch_group_create()
-        let semaphore = dispatch_semaphore_create(1)
-        let queue = dispatch_queue_create("GetActivityDetail", nil)
+        let group = DispatchGroup()
+        let semaphore = DispatchSemaphore(value: 1)
+        let queue = DispatchQueue(label: "GetActivityDetail", attributes: [])
         
         EZLoadingActivity.show("", disableUI: true)
         
-        dispatch_async(queue) { () -> Void in
-            dispatch_group_enter(group)
-            dispatch_semaphore_wait(semaphore, DISPATCH_TIME_FOREVER)
+        queue.async { () -> Void in
+            group.enter()
+            semaphore.wait(timeout: DispatchTime.distantFuture)
             PCSDataManager.defaultManager().getPersonList("\((self.editObject as! Activity).identifier)") { (info, errorCode) -> Void in
                 (self.editObject as! Activity).persons = info
-                dispatch_semaphore_signal(semaphore)
+                semaphore.signal()
                 //            self.tableView?.reloadRowsAtIndexPaths([NSIndexPath(forRow: 0, inSection: 3)], withRowAnimation: UITableViewRowAnimation.None)
             }
             
-            dispatch_semaphore_wait(semaphore, DISPATCH_TIME_FOREVER)
+            semaphore.wait(timeout: DispatchTime.distantFuture)
             let gapReq = GetActivityPersonsReq()
             gapReq.activity = self.editObject as? Activity
             gapReq.requestSimpleCompletion { (info, errorCode) -> Void in
@@ -40,18 +40,18 @@ class ManageEditActivityEditDelegate: ManageEditUIActivityDelegate {
                     person.organization = info[person.organizationID!]
                 }
                 
-                dispatch_semaphore_signal(semaphore)
-                dispatch_group_leave(group)
+                semaphore.signal()
+                group.leave()
             }
             
-            dispatch_group_enter(group)
+            group.enter()
             let req = GetActivityDetaildReq()
             req.activity = self.editObject as? Activity
             req.requestSimpleCompletion { (success, errorCode) -> Void in
-                dispatch_group_leave(group)
+                group.leave()
             }
             
-            dispatch_group_notify(group, dispatch_get_main_queue()) { () -> Void in
+            group.notify(queue: DispatchQueue.main) { () -> Void in
                 EZLoadingActivity.hide()
                 self.tableView?.reloadData()
             }

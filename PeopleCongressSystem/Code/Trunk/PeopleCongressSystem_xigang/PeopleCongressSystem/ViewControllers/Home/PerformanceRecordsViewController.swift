@@ -10,8 +10,8 @@ import UIKit
 import EZLoadingActivity
 
 enum ManagePageType {
-    case Activity
-    case Variable
+    case activity
+    case variable
 }
 
 class PerformanceRecordsViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, TypeSelectViewDelegate {
@@ -23,7 +23,7 @@ class PerformanceRecordsViewController: UIViewController, UITableViewDataSource,
     var types = [PCSTypeInfo]()
     var selectedObject: AnyObject? = nil
     var selectedType: PCSTypeInfo?
-    var gotoPageType: EditPageType = EditPageType.Activity
+    var gotoPageType: EditPageType = EditPageType.activity
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,16 +32,16 @@ class PerformanceRecordsViewController: UIViewController, UITableViewDataSource,
         self.navigationItem.hidesBackButton = true
         PCSCustomUtil.customNavigationController(self)
         
-        listTableView.registerNib(UINib(nibName: "NormalInfoCell", bundle: nil), forCellReuseIdentifier: "NormalInfoCell")
+        listTableView.register(UINib(nibName: "NormalInfoCell", bundle: nil), forCellReuseIdentifier: "NormalInfoCell")
     }
     
-    override func viewWillAppear(animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
         selectedObject = nil
     }
     
-    override func viewDidAppear(animated: Bool) {
+    override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
         EZLoadingActivity.show("", disableUI: true)
@@ -78,49 +78,49 @@ class PerformanceRecordsViewController: UIViewController, UITableViewDataSource,
     
     // MARK: - Actions
     
-    @IBAction func clickAdd(sender: AnyObject) {
-        gotoPageType = EditPageType.Activity
-        self.performSegueWithIdentifier("EditSegue", sender: self)
+    @IBAction func clickAdd(_ sender: AnyObject) {
+        gotoPageType = EditPageType.activity
+        self.performSegue(withIdentifier: "EditSegue", sender: self)
     }
     
     // MARK: - TypeSelectViewDelegate
     
-    func didSelectIndex(view: TypeSelectView, indexPath: NSIndexPath) {
-        selectedType = types[indexPath.row]
+    func didSelectIndex(_ view: TypeSelectView, indexPath: IndexPath) {
+        selectedType = types[(indexPath as NSIndexPath).row]
         
         self.refreshTableView()
     }
     
     // MARK: - UITableView
     
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return activitys.count + 1
     }
     
-    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-        if indexPath.row == 0 {
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        if (indexPath as NSIndexPath).row == 0 {
             return 52.0
         }
         
         return 83.0
     }
     
-    func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         if cell.contentView.viewWithTag(1000) != nil {
             return
         }
         
-        let frame = CGRectMake(5, 4, cell.bounds.size.width - 10, cell.bounds.size.height - 8)
+        let frame = CGRect(x: 5, y: 4, width: cell.bounds.size.width - 10, height: cell.bounds.size.height - 8)
         let view = UIView(frame: frame)
         view.tag = 1000
-        CustomObjectUtil.customObjectsLayout([view], backgroundColor: UIColor.whiteColor(), borderWidth: 1, borderColor: GlobalUtil.colorRGBA(230, g: 230, b: 230, a: 1.0), corner: 2)
+        CustomObjectUtil.customObjectsLayout([view], backgroundColor: UIColor.white, borderWidth: 1, borderColor: GlobalUtil.colorRGBA(230, g: 230, b: 230, a: 1.0), corner: 2)
         cell.contentView.addSubview(view)
-        cell.contentView.sendSubviewToBack(view)
+        cell.contentView.sendSubview(toBack: view)
     }
     
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        if indexPath.row == 0 {
-            let cell = tableView.dequeueReusableCellWithIdentifier("HeaderCell", forIndexPath: indexPath)
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        if (indexPath as NSIndexPath).row == 0 {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "HeaderCell", for: indexPath)
             cell.imageView?.image = UIImage(named: "categroy")
             cell.textLabel?.text = "活动分类"
             
@@ -134,23 +134,23 @@ class PerformanceRecordsViewController: UIViewController, UITableViewDataSource,
             return cell
         }
         
-        let cell = tableView.dequeueReusableCellWithIdentifier("NormalInfoCell", forIndexPath: indexPath) as! NormalInfoCell
-        cell.backgroundColor = UIColor.clearColor()
+        let cell = tableView.dequeueReusableCell(withIdentifier: "NormalInfoCell", for: indexPath) as! NormalInfoCell
+        cell.backgroundColor = UIColor.clear
         
-        let index = indexPath.row - 1
+        let index = (indexPath as NSIndexPath).row - 1
         let activity = activitys[index]
         cell.titleLabel.text = activity.title
         cell.locationLabel.text = activity.organization
-        cell.dateLabel.text = activity.beginTime?.substringToIndex(activity.beginTime!.startIndex.advancedBy(10))
-        cell.iconImageView.hidden = true
+        cell.dateLabel.text = activity.beginTime?.substring(to: activity.beginTime!.characters.index(activity.beginTime!.startIndex, offsetBy: 10))
+        cell.iconImageView.isHidden = true
         
         return cell
     }
     
-    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        tableView.deselectRowAtIndexPath(indexPath, animated: true)
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
         
-        if indexPath.row == 0 {
+        if (indexPath as NSIndexPath).row == 0 {
             EZLoadingActivity.show("", disableUI: true)
             PCSDataManager.defaultManager().getTypeInfo(PCSType.Congress) { (infos, errorCode) -> Void in
                 EZLoadingActivity.hide()
@@ -166,20 +166,20 @@ class PerformanceRecordsViewController: UIViewController, UITableViewDataSource,
             return
         }
         
-        let activity = activitys[indexPath.row - 1]
+        let activity = activitys[(indexPath as NSIndexPath).row - 1]
         selectedObject = activity
-        gotoPageType = EditPageType.ActivityEdit
-        self.performSegueWithIdentifier("EditSegue", sender: nil)
+        gotoPageType = EditPageType.activityEdit
+        self.performSegue(withIdentifier: "EditSegue", sender: nil)
     }
 
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
         if segue.identifier == "EditSegue" {
-            let vc = segue.destinationViewController as! PerformanceEditViewController
+            let vc = segue.destination as! PerformanceEditViewController
             vc.pageType = gotoPageType
             vc.editObject = selectedObject ?? Activity()
         }

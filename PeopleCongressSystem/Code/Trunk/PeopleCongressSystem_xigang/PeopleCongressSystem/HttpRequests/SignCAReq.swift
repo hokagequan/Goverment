@@ -14,14 +14,14 @@ class SignCAReq: HttpBaseCAReq {
     var cert = ""
     var signed = ""
 
-    func requestSimple(completion: (Bool) -> Void) {
+    func requestSimple(_ completion: @escaping (Bool) -> Void) {
         var params = [String: String]()
         params["rand"] = rand
         params["cert"] = cert
         params["signed"] = signed
         
         self.request("certlogin", params: params) { (response) in
-            guard let value = response?.result.value else {
+            guard let value = response?.result.value as? [String: Any] else {
                 completion(false)
                 
                 return

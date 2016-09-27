@@ -18,10 +18,10 @@ class QRDownloadCell: UITableViewCell {
         super.awakeFromNib()
         // Initialization code
         
-        CustomObjectUtil.customObjectsLayout([containerView], backgroundColor: UIColor.whiteColor(), borderWidth: 0, borderColor: UIColor.clearColor(), corner: 3)
+        CustomObjectUtil.customObjectsLayout([containerView], backgroundColor: UIColor.white, borderWidth: 0, borderColor: UIColor.clear, corner: 3)
     }
 
-    override func setSelected(selected: Bool, animated: Bool) {
+    override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
 
         // Configure the view for the selected state

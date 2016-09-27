@@ -9,20 +9,20 @@
 import Foundation
 
 enum HomeElementContentCongress: Int {
-    case ActivityNotify = 0
-    case VariableRecords
-    case Analyze
-    case ShareSpace
-    case CongressInfo
-    case Notify
-    case Situation
-    case Review
-    case Suggestion
-    case Vote
-    case Max
+    case activityNotify = 0
+    case variableRecords
+    case analyze
+    case shareSpace
+    case congressInfo
+    case notify
+    case situation
+    case review
+    case suggestion
+    case vote
+    case max
     
     func title() -> String {
-        let titles = ["活动提醒", "履职记录", "履职统计", "共享空间", "代表风采", "通知通报", "知情知政", "调查问卷", "建议意见", "表决权", ""]
+        let titles = ["活动提醒", "履职记录", "履职统计", "共享空间", "代表风采", "通知通报", "知情知政", "调查问卷", "建议意见", "投票表决", ""]
         
         return titles[self.rawValue]
     }
@@ -47,10 +47,10 @@ class CongressContentInfo: ContentInfo {
     }
     
     override func homeElementCount() -> Int {
-        return HomeElementContentCongress.Max.rawValue
+        return HomeElementContentCongress.max.rawValue
     }
     
-    override func homeElementTitle(index: Int) -> String? {
+    override func homeElementTitle(_ index: Int) -> String? {
         guard let row = HomeElementContentCongress(rawValue: index) else {
             return nil
         }
@@ -58,7 +58,7 @@ class CongressContentInfo: ContentInfo {
         return row.title()
     }
     
-    override func homeElementIcon(index: Int) -> String {
+    override func homeElementIcon(_ index: Int) -> String {
         guard let row = HomeElementContentCongress(rawValue: index) else {
             return ""
         }

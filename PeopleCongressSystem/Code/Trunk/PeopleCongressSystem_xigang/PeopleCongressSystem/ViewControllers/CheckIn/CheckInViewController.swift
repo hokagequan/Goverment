@@ -21,14 +21,14 @@ class CheckInViewController: UIViewController, UITableViewDataSource, UITableVie
         // Do any additional setup after loading the view.
         PCSCustomUtil.customNavigationController(self)
         
-        listTableView.registerNib(UINib(nibName: "NormalInfoCell", bundle: nil), forCellReuseIdentifier: "NormalInfoCell")
+        listTableView.register(UINib(nibName: "NormalInfoCell", bundle: nil), forCellReuseIdentifier: "NormalInfoCell")
     }
     
-    override func viewWillAppear(animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
     }
     
-    override func viewDidAppear(animated: Bool) {
+    override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
         EZLoadingActivity.show("", disableUI: true)
@@ -51,52 +51,52 @@ class CheckInViewController: UIViewController, UITableViewDataSource, UITableVie
     
     // MARK: - UITableView
     
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return activitys.count
     }
     
-    func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         if cell.contentView.viewWithTag(1000) != nil {
             return
         }
         
-        let frame = CGRectMake(5, 4, cell.bounds.size.width - 10, cell.bounds.size.height - 8)
+        let frame = CGRect(x: 5, y: 4, width: cell.bounds.size.width - 10, height: cell.bounds.size.height - 8)
         let view = UIView(frame: frame)
         view.tag = 1000
-        CustomObjectUtil.customObjectsLayout([view], backgroundColor: UIColor.whiteColor(), borderWidth: 1, borderColor: GlobalUtil.colorRGBA(240, g: 240, b: 240, a: 1.0), corner: 2)
+        CustomObjectUtil.customObjectsLayout([view], backgroundColor: UIColor.white, borderWidth: 1, borderColor: GlobalUtil.colorRGBA(240, g: 240, b: 240, a: 1.0), corner: 2)
         cell.contentView.addSubview(view)
-        cell.contentView.sendSubviewToBack(view)
+        cell.contentView.sendSubview(toBack: view)
     }
     
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("NormalInfoCell", forIndexPath: indexPath) as! NormalInfoCell
-        cell.selectionStyle = UITableViewCellSelectionStyle.None
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "NormalInfoCell", for: indexPath) as! NormalInfoCell
+        cell.selectionStyle = UITableViewCellSelectionStyle.none
         
-        let activity = activitys[indexPath.row]
+        let activity = activitys[(indexPath as NSIndexPath).row]
         cell.titleLabel.text = activity.title
         cell.locationLabel.text = activity.organization
-        cell.dateLabel.text = activity.beginTime?.substringToIndex(activity.beginTime!.startIndex.advancedBy(10))
-        cell.backgroundColor = UIColor.clearColor()
-        cell.iconImageView.hidden = true
+        cell.dateLabel.text = activity.beginTime?.substring(to: activity.beginTime!.characters.index(activity.beginTime!.startIndex, offsetBy: 10))
+        cell.backgroundColor = UIColor.clear
+        cell.iconImageView.isHidden = true
         
         return cell
     }
     
-    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        tableView.deselectRowAtIndexPath(indexPath, animated: true)
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
         
         let storyboard = UIStoryboard(name: "Home", bundle: nil)
-        let vc = storyboard.instantiateViewControllerWithIdentifier("PerformanceEditViewController") as! PerformanceEditViewController
-        vc.pageType = EditPageType.CheckIn
-        let activity = activitys[indexPath.row]
-        vc.editObject = activity.copy()
+        let vc = storyboard.instantiateViewController(withIdentifier: "PerformanceEditViewController") as! PerformanceEditViewController
+        vc.pageType = EditPageType.checkIn
+        let activity = activitys[(indexPath as NSIndexPath).row]
+        vc.editObject = activity.copy() as AnyObject?
         self.navigationController?.pushViewController(vc, animated: true)
     }
 
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
     }

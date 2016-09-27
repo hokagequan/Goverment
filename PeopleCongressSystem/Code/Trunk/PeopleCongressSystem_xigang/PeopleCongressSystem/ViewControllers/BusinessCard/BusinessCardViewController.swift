@@ -12,13 +12,13 @@ import EZLoadingActivity
 class BusinessCardViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
     enum Rows: Int {
-        case Organization = 0
-        case Gender
-        case Tel
-        case Birthday
-        case Nation
-        case Job
-        case Max
+        case organization = 0
+        case gender
+        case tel
+        case birthday
+        case nation
+        case job
+        case max
         
         func title() -> String {
             let titles = ["代表团:", "性别:", "电话:", "生日:", "民族:", "职位:", ""]
@@ -51,10 +51,10 @@ class BusinessCardViewController: UIViewController, UITableViewDataSource, UITab
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
         self.navigationItem.hidesBackButton = true
         PCSCustomUtil.customNavigationController(self)
-        infoTableView.layoutMargins = UIEdgeInsetsZero
+        infoTableView.layoutMargins = UIEdgeInsets.zero
     }
     
-    override func viewDidAppear(animated: Bool) {
+    override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
         if PCSDataManager.defaultManager().accountManager.user?.photoName == nil || photoImageView.image == nil {
@@ -95,39 +95,39 @@ class BusinessCardViewController: UIViewController, UITableViewDataSource, UITab
     
     // MARK: - Actions
     
-    @IBAction func clickScan(sender: AnyObject) {
+    @IBAction func clickScan(_ sender: AnyObject) {
     }
 
     // MARK: - Table view data source
 
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return Rows.Max.rawValue
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return Rows.max.rawValue
     }
 
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath)
-        cell.selectionStyle = UITableViewCellSelectionStyle.None
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
+        cell.selectionStyle = UITableViewCellSelectionStyle.none
         cell.separatorInset = UIEdgeInsetsMake(0, 0, 0, 0)
-        cell.layoutMargins = UIEdgeInsetsZero
+        cell.layoutMargins = UIEdgeInsets.zero
         
-        let row = Rows(rawValue: indexPath.row)!
+        let row = Rows(rawValue: (indexPath as NSIndexPath).row)!
         cell.textLabel?.text = row.title()
-        cell.detailTextLabel?.text = PCSDataManager.defaultManager().accountManager.user?.valueForKey(row.key()) as? String
+        cell.detailTextLabel?.text = PCSDataManager.defaultManager().accountManager.user?.value(forKey: row.key()) as? String
 
         return cell
     }
     
-    func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return 192
     }
     
-    func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         return headerView
     }
     
-    func tableView(tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
+    func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
         let view = UIView()
-        view.backgroundColor = UIColor.clearColor()
+        view.backgroundColor = UIColor.clear
         
         return view
     }

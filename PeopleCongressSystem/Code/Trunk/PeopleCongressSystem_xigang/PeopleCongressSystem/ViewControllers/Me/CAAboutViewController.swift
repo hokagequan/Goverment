@@ -19,7 +19,7 @@ class CAAboutViewController: UIViewController {
         self.navigationItem.hidesBackButton = true
         PCSCustomUtil.customNavigationController(self)
         
-        CustomObjectUtil.customObjectsLayout([aboutTextView], backgroundColor: UIColor.whiteColor(), borderWidth: 0, borderColor: nil, corner: 5.0)
+        CustomObjectUtil.customObjectsLayout([aboutTextView], backgroundColor: UIColor.white, borderWidth: 0, borderColor: nil, corner: 5.0)
     }
 
     override func didReceiveMemoryWarning() {

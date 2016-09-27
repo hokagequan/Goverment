@@ -15,13 +15,13 @@ class FeedbackReq: HttpBaseReq {
         super.init()
     }
     
-    override func requestCompletion(completion: HttpReqCompletion?) {
+    override func requestCompletion(_ completion: HttpReqCompletion?) {
         var params = [String: AnyObject]()
-        params["yijianneirong"] = message
-        params["Userid"] = PCSDataManager.defaultManager().accountManager.user!.identifier
-        params["CheckTicket"] = PCSDataManager.defaultManager().accountManager.user!.token
-        params["FieldID"] = PCSDataManager.defaultManager().accountManager.user!.field
-        params["thecharset"] = "gb2312"
+        params["yijianneirong"] = message as AnyObject?
+        params["Userid"] = PCSDataManager.defaultManager().accountManager.user!.identifier as AnyObject?
+        params["CheckTicket"] = PCSDataManager.defaultManager().accountManager.user!.token as AnyObject?
+        params["FieldID"] = PCSDataManager.defaultManager().accountManager.user!.field as AnyObject?
+        params["thecharset"] = "gb2312" as AnyObject?
         
         self.request("yijianfankui", nameSpace: "gonggong", params: params, completion: completion)
     }

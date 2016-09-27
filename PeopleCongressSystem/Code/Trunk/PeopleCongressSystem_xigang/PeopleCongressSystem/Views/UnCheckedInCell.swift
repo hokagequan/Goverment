@@ -21,11 +21,11 @@ class UnCheckedInCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
-        CustomObjectUtil.customObjectsLayout([containerView], backgroundColor: UIColor.whiteColor(), borderWidth: 0, borderColor: nil, corner: 3.0)
-        CustomObjectUtil.customObjectsLayout([notifyButton], backgroundColor: UIColor.clearColor(), borderWidth: 1, borderColor: colorRed, corner: 3.0)
+        CustomObjectUtil.customObjectsLayout([containerView], backgroundColor: UIColor.white, borderWidth: 0, borderColor: nil, corner: 3.0)
+        CustomObjectUtil.customObjectsLayout([notifyButton], backgroundColor: UIColor.clear, borderWidth: 1, borderColor: colorRed, corner: 3.0)
     }
 
-    override func setSelected(selected: Bool, animated: Bool) {
+    override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
 
         // Configure the view for the selected state
@@ -33,7 +33,7 @@ class UnCheckedInCell: UITableViewCell {
     
     // MARK: - Actions
 
-    @IBAction func clickNotify(sender: AnyObject) {
+    @IBAction func clickNotify(_ sender: AnyObject) {
         clickNotifyBlock?(self)
     }
     

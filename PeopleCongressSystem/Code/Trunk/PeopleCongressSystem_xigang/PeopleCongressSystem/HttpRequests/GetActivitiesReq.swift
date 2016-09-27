@@ -16,13 +16,13 @@ class GetActivitiesReq: HttpBaseReq {
         super.init()
     }
     
-    override func requestCompletion(completion: HttpReqCompletion?) {
+    override func requestCompletion(_ completion: HttpReqCompletion?) {
         var params = [String: AnyObject]()
-        params["user_ID"] = PCSDataManager.defaultManager().accountManager.user!.identifier
-        params["huodonglx"] = type
-        params["CheckTicket"] = PCSDataManager.defaultManager().accountManager.user!.token
-        params["FieldID"] = PCSDataManager.defaultManager().accountManager.user!.field
-        params["thecharset"] = "gb2312"
+        params["user_ID"] = PCSDataManager.defaultManager().accountManager.user!.identifier as AnyObject?
+        params["huodonglx"] = type as AnyObject?
+        params["CheckTicket"] = PCSDataManager.defaultManager().accountManager.user!.token as AnyObject?
+        params["FieldID"] = PCSDataManager.defaultManager().accountManager.user!.field as AnyObject?
+        params["thecharset"] = "gb2312" as AnyObject?
         
         self.request("Gethuodonglist", nameSpace: "gongzuorenyuan", params: params, completion: completion)
     }

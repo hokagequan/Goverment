@@ -16,40 +16,40 @@ class EditActivityReq: HttpBaseReq {
         super.init()
     }
     
-    override func requestCompletion(completion: HttpReqCompletion?) {
+    override func requestCompletion(_ completion: HttpReqCompletion?) {
         var params = [String: AnyObject]()
-        params["huodong_id"] = activity.identifier
-        params["huodongName"] = activity.title
-        params["hdlx"] = activity.type
-        params["hddd"] = activity.location
-        params["hdsj"] = activity.beginTime
-        params["hdsjover"] = activity.endTime
-        params["hdsm"] = activity.content
-        params["zzdw"] = activity.organization
-        params["user_list"] = activity.serilizePersons()
-        params["UserId"] = PCSDataManager.defaultManager().accountManager.user!.identifier
-        params["CheckTicket"] = PCSDataManager.defaultManager().accountManager.user!.token
-        params["FieldID"] = PCSDataManager.defaultManager().accountManager.user!.field
-        params["thecharset"] = "gb2312"
+        params["huodong_id"] = activity.identifier as AnyObject?
+        params["huodongName"] = activity.title as AnyObject?
+        params["hdlx"] = activity.type as AnyObject?
+        params["hddd"] = activity.location as AnyObject?
+        params["hdsj"] = activity.beginTime as AnyObject?
+        params["hdsjover"] = activity.endTime as AnyObject?
+        params["hdsm"] = activity.content as AnyObject?
+        params["zzdw"] = activity.organization as AnyObject?
+        params["user_list"] = activity.serilizePersons() as AnyObject?
+        params["UserId"] = PCSDataManager.defaultManager().accountManager.user!.identifier as AnyObject?
+        params["CheckTicket"] = PCSDataManager.defaultManager().accountManager.user!.token as AnyObject?
+        params["FieldID"] = PCSDataManager.defaultManager().accountManager.user!.field as AnyObject?
+        params["thecharset"] = "gb2312" as AnyObject?
         
         self.request("HuoDongMod", nameSpace: "gongzuorenyuan", params: params, completion: completion)
     }
     
-    func requestSimpleCompletion(completion: SimpleCompletion?) {
+    func requestSimpleCompletion(_ completion: SimpleCompletion?) {
         var params = [String: AnyObject]()
-        params["huodong_id"] = activity.identifier
-        params["huodongName"] = activity.title
-        params["hdlx"] = activity.type
-        params["hddd"] = activity.location
-        params["hdsj"] = activity.beginTime
-        params["hdsjover"] = activity.endTime
-        params["hdsm"] = activity.content
-        params["zzdw"] = activity.organization
-        params["user_list"] = activity.serilizePersons()
-        params["UserId"] = PCSDataManager.defaultManager().accountManager.user!.identifier
-        params["CheckTicket"] = PCSDataManager.defaultManager().accountManager.user!.token
-        params["FieldID"] = PCSDataManager.defaultManager().accountManager.user!.field
-        params["thecharset"] = "gb2312"
+        params["huodong_id"] = activity.identifier as AnyObject?
+        params["huodongName"] = activity.title as AnyObject?
+        params["hdlx"] = activity.type as AnyObject?
+        params["hddd"] = activity.location as AnyObject?
+        params["hdsj"] = activity.beginTime as AnyObject?
+        params["hdsjover"] = activity.endTime as AnyObject?
+        params["hdsm"] = activity.content as AnyObject?
+        params["zzdw"] = activity.organization as AnyObject?
+        params["user_list"] = activity.serilizePersons() as AnyObject?
+        params["UserId"] = PCSDataManager.defaultManager().accountManager.user!.identifier as AnyObject?
+        params["CheckTicket"] = PCSDataManager.defaultManager().accountManager.user!.token as AnyObject?
+        params["FieldID"] = PCSDataManager.defaultManager().accountManager.user!.field as AnyObject?
+        params["thecharset"] = "gb2312" as AnyObject?
         
         self.request("HuoDongMod", nameSpace: "gongzuorenyuan", params: params) { (response) -> Void in
             let result = response?.result

@@ -19,7 +19,7 @@ enum SettingKey: String {
         return SettingsManager.getData(self.rawValue)
     }
     
-    func setValue(value: AnyObject) {
+    func setValue(_ value: AnyObject) {
         SettingsManager.saveData(value, key: self.rawValue)
     }
 }
@@ -28,13 +28,13 @@ class SettingsManager {
     
     // MARK: - Class Function
     
-    class func getData(key: String) -> AnyObject? {
-        return NSUserDefaults.standardUserDefaults().objectForKey(key)
+    class func getData(_ key: String) -> AnyObject? {
+        return UserDefaults.standard.object(forKey: key) as AnyObject?
     }
     
-    class func saveData(object: AnyObject, key: String) {
-        NSUserDefaults.standardUserDefaults().setObject(object, forKey: key)
-        NSUserDefaults.standardUserDefaults().synchronize()
+    class func saveData(_ object: AnyObject, key: String) {
+        UserDefaults.standard.set(object, forKey: key)
+        UserDefaults.standard.synchronize()
     }
     
 }

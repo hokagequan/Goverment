@@ -1,17 +1,18 @@
 PODS:
-  - Alamofire (3.4.0)
-  - AlamofireImage (2.4.0):
-    - Alamofire (~> 3.3)
-  - DKImagePickerController (3.2.0):
-    - DKImagePickerController/Camera (= 3.2.0)
-    - DKImagePickerController/ImageManager (= 3.2.0)
-  - DKImagePickerController/Camera (3.2.0)
-  - DKImagePickerController/ImageManager (3.2.0)
-  - EZLoadingActivity (0.8)
-  - GrowingTextView (0.1.6)
-  - HUIPatternLockView-Swift (1.0.1)
+  - Alamofire (4.0.1)
+  - AlamofireImage (3.0.0):
+    - Alamofire (~> 4.0)
+  - DKImagePickerController (3.3.4):
+    - DKImagePickerController/Camera (= 3.3.4)
+    - DKImagePickerController/ImageManager (= 3.3.4)
+  - DKImagePickerController/Camera (3.3.4)
+  - DKImagePickerController/ImageManager (3.3.4)
+  - EZLoadingActivity (0.9)
+  - GrowingTextView (0.2.0)
+  - HUIPatternLockView-Swift (1.0.2)
+  - ReachabilitySwift (3)
   - SwiftQRCode (2.0.2)
-  - TagListView (1.0.0)
+  - TagListView (1.0.1)
 
 DEPENDENCIES:
   - Alamofire
@@ -20,19 +21,21 @@ DEPENDENCIES:
   - EZLoadingActivity (~> 0.8)
   - GrowingTextView
   - HUIPatternLockView-Swift
+  - ReachabilitySwift
   - SwiftQRCode
   - TagListView (~> 1.0.0)
 
 SPEC CHECKSUMS:
-  Alamofire: c19a627cefd6a95f840401c49ab1f124e07f54ee
-  AlamofireImage: 87408b652e0f5ae5fe364035f15aea8b9b24c77e
-  DKImagePickerController: fe26175578a740283320c392e950532abc6db3ea
-  EZLoadingActivity: 6fd75a05765a4085f4b6fef6f62edf9f144b3139
-  GrowingTextView: 5b431583ba0a401797d3edc8e4af1e2854aaa4e9
-  HUIPatternLockView-Swift: 96d9bf8341a33be39d35eef51c4c2215a678138e
+  Alamofire: 7682d43245de14874acd142ec137b144aa1dd335
+  AlamofireImage: 6594aa1139a67dcd36cde6da79ea4e5b318e60fb
+  DKImagePickerController: 4de1703ad3ba8bc216753447cbb00e482d8d4604
+  EZLoadingActivity: 7ebb84c1f2510a62d2bc0a17cc9d75634f92606d
+  GrowingTextView: 048c6ef8da6adfa89f010a9f11d5be6f569c75d7
+  HUIPatternLockView-Swift: 6ce93391b40b7f0088c483be50214835cf7d58aa
+  ReachabilitySwift: f5b9bb30a0777fac8f09ce8b067e32faeb29bb64
   SwiftQRCode: 68e920781686e376d70646b90c8ad87fd6523309
-  TagListView: 6bf4bded034c4c90b1e90d8cd3d8e1d852dba0a8
+  TagListView: cd871de4ab3ae4c4c67a2e67f6503ea6fc55c2a6
 
-PODFILE CHECKSUM: bf8d5b72d94c9a3baa1918dd7e3c278fe9766aa0
+PODFILE CHECKSUM: 03e2800b548612fdac0cae637095e8322aa760d5
 
-COCOAPODS: 1.0.0
+COCOAPODS: 1.1.0.beta.2

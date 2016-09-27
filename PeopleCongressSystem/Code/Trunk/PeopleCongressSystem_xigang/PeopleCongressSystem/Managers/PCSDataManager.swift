@@ -8,8 +8,9 @@
 
 import Foundation
 import CoreData
+import ReachabilitySwift
 
-class PCSDataManager: NSObject, NSXMLParserDelegate {
+class PCSDataManager: NSObject, XMLParserDelegate {
     
     static let _pcsDataManager = PCSDataManager()
     
@@ -46,15 +47,9 @@ class PCSDataManager: NSObject, NSXMLParserDelegate {
     override init() {
         super.init()
         
-        do {
-            reachability = try Reachability.reachabilityForInternetConnection()
-        }
-        catch {
-            return
-        }
-        
+        reachability = Reachability.init()
         reachability?.whenUnreachable = { reach in
-            dispatch_async(dispatch_get_main_queue(), { () -> Void in
+            DispatchQueue.main.async(execute: { () -> Void in
                 let alert = UIAlertView(title: nil, message: "", delegate: nil, cancelButtonTitle: "确定")
                 alert.show()
             })
@@ -70,7 +65,7 @@ class PCSDataManager: NSObject, NSXMLParserDelegate {
         reachability?.stopNotifier()
     }
     
-    func countingDown(timer: NSTimer) {
+    func countingDown(_ timer: Timer) {
         getSMSCount -= 1
         getSMSBlock?(getSMSCount)
         
@@ -80,22 +75,22 @@ class PCSDataManager: NSObject, NSXMLParserDelegate {
         }
     }
     
-    func deleteLocalVariable(completion: () -> Void) {
-        let fetchReq = NSFetchRequest(entityName: "VariableEntity")
+    func deleteLocalVariable(_ completion: @escaping () -> Void) {
+        let fetchReq: NSFetchRequest<VariableEntity> = NSFetchRequest(entityName: "VariableEntity")
         let context = CoreDataManager.defalutManager().managedObjectContext
         
         do {
-            let fetchObjects = try context.executeFetchRequest(fetchReq)
+            let fetchObjects = try context.fetch(fetchReq)
             guard let localVariable = fetchObjects.first else {
                 completion()
                 
                 return
             }
             
-            context.deleteObject(localVariable as! NSManagedObject)
+            context.delete(localVariable as! NSManagedObject)
             
             CoreDataManager.defalutManager().saveContext({
-                dispatch_async(dispatch_get_main_queue(), {
+                DispatchQueue.main.async(execute: {
                     completion()
                 })
             })
@@ -105,7 +100,7 @@ class PCSDataManager: NSObject, NSXMLParserDelegate {
         }
     }
     
-    func fireCountingDownGetSMS(block: (Int) -> Void) {
+    func fireCountingDownGetSMS(_ block: @escaping (Int) -> Void) {
 //        if getSMSCountTimer != nil {
 //            getSMSCountTimer!.invalidate()
 //            getSMSCountTimer = nil
@@ -114,17 +109,17 @@ class PCSDataManager: NSObject, NSXMLParserDelegate {
         getSMSCount = 60
         getSMSBlock = block
 
-        let timer = NSTimer.scheduledTimerWithTimeInterval(1.0, target: self, selector: #selector(PCSDataManager.countingDown(_:)), userInfo: nil, repeats: true)
+        let timer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(PCSDataManager.countingDown(_:)), userInfo: nil, repeats: true)
         timer.fire()
     }
     
     func getLocalVariable() -> Variable? {
-        let fetchReq = NSFetchRequest(entityName: "VariableEntity")
+        let fetchReq: NSFetchRequest<VariableEntity> = NSFetchRequest(entityName: "VariableEntity")
         let context = CoreDataManager.defalutManager().managedObjectContext
         
         do {
-            let fetchObjects = try context.executeFetchRequest(fetchReq)
-            guard let localVariable = fetchObjects.first as? VariableEntity else {
+            let fetchObjects = try context.fetch(fetchReq)
+            guard let localVariable = fetchObjects.first else {
                 return nil
             }
             
@@ -139,7 +134,7 @@ class PCSDataManager: NSObject, NSXMLParserDelegate {
             variable.persons = localVariable.persons
             
             if localVariable.photos != nil {
-                variable.photos = NSKeyedUnarchiver.unarchiveObjectWithData(localVariable.photos!) as! Array<String>
+                variable.photos = NSKeyedUnarchiver.unarchiveObject(with: localVariable.photos!) as! Array<String>
             }
             
             return variable
@@ -149,19 +144,19 @@ class PCSDataManager: NSObject, NSXMLParserDelegate {
         }
     }
     
-    func saveVariableToLocal(variable: Variable, completion: () -> Void) {
-        let fetchReq = NSFetchRequest(entityName: "VariableEntity")
+    func saveVariableToLocal(_ variable: Variable, completion: @escaping () -> Void) {
+        let fetchReq: NSFetchRequest<VariableEntity> = NSFetchRequest(entityName: "VariableEntity")
         let context = CoreDataManager.defalutManager().managedObjectContext
         
         do {
-            let fetchObjects = try context.executeFetchRequest(fetchReq)
+            let fetchObjects = try context.fetch(fetchReq)
             var localVariable: VariableEntity? = nil
             
             if fetchObjects.count > 0 {
-                localVariable = fetchObjects.first as? VariableEntity
+                localVariable = fetchObjects.first
             }
             else {
-                localVariable = NSEntityDescription.insertNewObjectForEntityForName("VariableEntity", inManagedObjectContext: context) as? VariableEntity
+                localVariable = NSEntityDescription.insertNewObject(forEntityName: "VariableEntity", into: context) as? VariableEntity
             }
             
             localVariable?.identifier = variable.token
@@ -174,11 +169,11 @@ class PCSDataManager: NSObject, NSXMLParserDelegate {
             localVariable?.remark = variable.remark
             
             if variable.photos.count > 0 {
-                localVariable?.photos = NSKeyedArchiver.archivedDataWithRootObject(variable.photos)
+                localVariable?.photos = NSKeyedArchiver.archivedData(withRootObject: variable.photos)
             }
             
             CoreDataManager.defalutManager().saveContext({
-                dispatch_async(dispatch_get_main_queue(), { 
+                DispatchQueue.main.async(execute: { 
                     completion()
                 })
             })
@@ -191,7 +186,7 @@ class PCSDataManager: NSObject, NSXMLParserDelegate {
     // MARK: - Server Interface
     
     /// @brief 添加活动
-    func addActivity(activity: Activity, completion: SimpleCompletion?) {
+    func addActivity(_ activity: Activity, completion: SimpleCompletion?) {
         let req = AddActivityReq()
         req.activity = activity
         
@@ -234,7 +229,7 @@ class PCSDataManager: NSObject, NSXMLParserDelegate {
         }
     }
     
-    func addVariable(variable: Variable, completion: SimpleCompletion?) {
+    func addVariable(_ variable: Variable, completion: SimpleCompletion?) {
         let req = AddVariableReq()
         req.variable = variable
         
@@ -277,9 +272,9 @@ class PCSDataManager: NSObject, NSXMLParserDelegate {
         }
     }
     
-    func appAvaliable(completion: ((Bool, String?) -> Void)?) {
+    func appAvaliable(_ completion: ((Bool, String?) -> Void)?) {
         let url = "https://dlpiiappfiles.b0.upaiyun.com/cross.xml"
-        let task = NSURLSession .sharedSession().dataTaskWithURL(NSURL(string: url)!) { (data, response, error) in
+        let task = URLSession.shared.dataTask(with: URL(string: url)!, completionHandler: { (data, response, error) in
             guard data != nil else {
                 completion?(true, nil)
                 
@@ -288,15 +283,15 @@ class PCSDataManager: NSObject, NSXMLParserDelegate {
             
             self.commonCompletionBlock = completion
             
-            let parser = NSXMLParser(data: data!)
+            let parser = XMLParser(data: data!)
             parser.delegate = self
             parser.parse()
-        }
+        }) 
         
         task.resume()
     }
     
-    func getTypeInfo(type: PCSType, completion: ((Array<PCSTypeInfo>?, String?) -> Void)?) {
+    func getTypeInfo(_ type: PCSType, completion: ((Array<PCSTypeInfo>?, String?) -> Void)?) {
         let req = GetActivityTypesReq()
         req.type = type
         
@@ -338,7 +333,7 @@ class PCSDataManager: NSObject, NSXMLParserDelegate {
         }
     }
     
-    func getGroup(completion: ((Array<Group>?, String?) -> Void)?) {
+    func getGroup(_ completion: ((Array<Group>?, String?) -> Void)?) {
         let req = GetGroupReq()
         
         req.requestCompletion { (response) -> Void in
@@ -381,7 +376,7 @@ class PCSDataManager: NSObject, NSXMLParserDelegate {
         }
     }
     
-    func getPersonList(activityID: String, completion: ((Array<Person>?, String?) -> Void)?) {
+    func getPersonList(_ activityID: String, completion: ((Array<Person>?, String?) -> Void)?) {
         let req = GetPersonListReq()
         req.activityID = activityID
         
@@ -423,7 +418,7 @@ class PCSDataManager: NSObject, NSXMLParserDelegate {
         }
     }
     
-    func getCongressList(organizationID: String, completion: ((Array<Person>?, String?) -> Void)?) {
+    func getCongressList(_ organizationID: String, completion: ((Array<Person>?, String?) -> Void)?) {
         let req = GetCongressListReq()
         req.organizationID = organizationID
         
@@ -465,7 +460,7 @@ class PCSDataManager: NSObject, NSXMLParserDelegate {
         }
     }
     
-    func getActivityList(type: String, completion: ((Array<Activity>?, String?) -> Void)?) {
+    func getActivityList(_ type: String, completion: ((Array<Activity>?, String?) -> Void)?) {
         let req = GetActivitiesReq()
         req.type = type
         
@@ -516,7 +511,7 @@ class PCSDataManager: NSObject, NSXMLParserDelegate {
         }
     }
     
-    func getVariableList(completion: ((Array<Variable>?, String?) -> Void)?) {
+    func getVariableList(_ completion: ((Array<Variable>?, String?) -> Void)?) {
         let req = GetVariablesReq()
         
         req.requestCompletion { (response) -> Void in
@@ -572,21 +567,21 @@ class PCSDataManager: NSObject, NSXMLParserDelegate {
         }
     }
     
-    func htmlURL(page: String) -> String {
+    func htmlURL(_ page: String) -> String {
         return "\(serverURL1)\(page)UserID=\(self.accountManager.user!.identifier!)&MobileLoginId=\(self.accountManager.user!.token!)"
     }
     
     // MARK: - NSXMLParserDelegate
     
-    func parser(parser: NSXMLParser, didStartElement elementName: String, namespaceURI: String?, qualifiedName qName: String?, attributes attributeDict: [String : String]) {
+    func parser(_ parser: XMLParser, didStartElement elementName: String, namespaceURI: String?, qualifiedName qName: String?, attributes attributeDict: [String : String]) {
         xmlElement = ""
     }
     
-    func parser(parser: NSXMLParser, foundCharacters string: String) {
+    func parser(_ parser: XMLParser, foundCharacters string: String) {
         xmlElement += string
     }
     
-    func parser(parser: NSXMLParser, didEndElement elementName: String, namespaceURI: String?, qualifiedName qName: String?) {
+    func parser(_ parser: XMLParser, didEndElement elementName: String, namespaceURI: String?, qualifiedName qName: String?) {
         if elementName == "crosscanel" {
             appValid = xmlElement == "0"
         }
@@ -595,7 +590,7 @@ class PCSDataManager: NSObject, NSXMLParserDelegate {
         }
     }
     
-    func parserDidEndDocument(parser: NSXMLParser) {
+    func parserDidEndDocument(_ parser: XMLParser) {
         commonCompletionBlock?(appValid, appValidErrMsg)
     }
     

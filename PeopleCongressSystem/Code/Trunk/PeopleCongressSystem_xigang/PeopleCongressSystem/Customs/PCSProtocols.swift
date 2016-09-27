@@ -11,8 +11,8 @@ import UIKit
 
 protocol ActionProtocol {
     
-    func didClickIndexPath(viewController: UIViewController, indexPath: NSIndexPath)
-    func didClickSpecial(viewController: UIViewController)
-    func checkIn(code: String, identifier: String, completion: (Bool) -> Void)
+    func didClickIndexPath(_ viewController: UIViewController, indexPath: IndexPath)
+    func didClickSpecial(_ viewController: UIViewController)
+    func checkIn(_ code: String, identifier: String, completion: @escaping (Bool) -> Void)
     
 }

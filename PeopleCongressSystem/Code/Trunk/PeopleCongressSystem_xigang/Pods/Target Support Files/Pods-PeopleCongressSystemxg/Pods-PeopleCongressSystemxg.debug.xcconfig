@@ -1,0 +1,11 @@
+ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES
+EMBEDDED_CONTENT_CONTAINS_SWIFT = YES
+FRAMEWORK_SEARCH_PATHS = $(inherited) "$PODS_CONFIGURATION_BUILD_DIR/Alamofire" "$PODS_CONFIGURATION_BUILD_DIR/AlamofireImage" "$PODS_CONFIGURATION_BUILD_DIR/DKImagePickerController" "$PODS_CONFIGURATION_BUILD_DIR/EZLoadingActivity" "$PODS_CONFIGURATION_BUILD_DIR/GrowingTextView" "$PODS_CONFIGURATION_BUILD_DIR/HUIPatternLockView-Swift" "$PODS_CONFIGURATION_BUILD_DIR/ReachabilitySwift" "$PODS_CONFIGURATION_BUILD_DIR/SwiftQRCode" "$PODS_CONFIGURATION_BUILD_DIR/TagListView"
+GCC_PREPROCESSOR_DEFINITIONS = $(inherited) COCOAPODS=1
+LD_RUNPATH_SEARCH_PATHS = $(inherited) '@executable_path/Frameworks' '@loader_path/Frameworks'
+OTHER_CFLAGS = $(inherited) -iquote "$PODS_CONFIGURATION_BUILD_DIR/Alamofire/Alamofire.framework/Headers" -iquote "$PODS_CONFIGURATION_BUILD_DIR/AlamofireImage/AlamofireImage.framework/Headers" -iquote "$PODS_CONFIGURATION_BUILD_DIR/DKImagePickerController/DKImagePickerController.framework/Headers" -iquote "$PODS_CONFIGURATION_BUILD_DIR/EZLoadingActivity/EZLoadingActivity.framework/Headers" -iquote "$PODS_CONFIGURATION_BUILD_DIR/GrowingTextView/GrowingTextView.framework/Headers" -iquote "$PODS_CONFIGURATION_BUILD_DIR/HUIPatternLockView-Swift/HUIPatternLockView_Swift.framework/Headers" -iquote "$PODS_CONFIGURATION_BUILD_DIR/ReachabilitySwift/ReachabilitySwift.framework/Headers" -iquote "$PODS_CONFIGURATION_BUILD_DIR/SwiftQRCode/SwiftQRCode.framework/Headers" -iquote "$PODS_CONFIGURATION_BUILD_DIR/TagListView/TagListView.framework/Headers"
+OTHER_LDFLAGS = $(inherited) -framework "Alamofire" -framework "AlamofireImage" -framework "DKImagePickerController" -framework "EZLoadingActivity" -framework "GrowingTextView" -framework "HUIPatternLockView_Swift" -framework "ReachabilitySwift" -framework "SwiftQRCode" -framework "TagListView"
+OTHER_SWIFT_FLAGS = $(inherited) "-D" "COCOAPODS"
+PODS_BUILD_DIR = $BUILD_DIR
+PODS_CONFIGURATION_BUILD_DIR = $PODS_BUILD_DIR/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)
+PODS_ROOT = ${SRCROOT}/Pods

@@ -9,77 +9,69 @@
 import Foundation
 import Alamofire
 
-typealias HttpReqCompletion = (response: Response<String, NSError>?) -> Void
-typealias HttpReqJSONCompletion = (response: Response<AnyObject, NSError>?) -> Void
+typealias HttpReqCompletion = (_ response: DataResponse<String>?) -> Void
+typealias HttpReqJSONCompletion = (_ response: DataResponse<Any>?) -> Void
 
 class HttpBaseReq: NSObject {
     
 //    var httpReqURL = SettingsManager.getData(SettingKey.Server.rawValue) as! String
     var httpReqURL = serverURL1
     
-    /// @brief JSON
-    func request(method: String, params: Dictionary<String, AnyObject>, completion: HttpReqJSONCompletion?) {
-        Alamofire.request(.POST, httpReqURL + method, parameters: params, encoding: .JSON, headers: nil)
-                 .responseJSON { (rsp) -> Void in
-                    completion?(response: rsp)
-                 }
-    }
-    
     /// @brief SOAP
-    func request(method: String, nameSpace: String, params: Dictionary<String, AnyObject>, completion: HttpReqCompletion?) {
+    func request(_ method: String, nameSpace: String, params: Dictionary<String, Any>, completion: HttpReqCompletion?) {
         let soapMessage = self.soapMessage(method, params: params)
-        let mutableURLRequest = NSMutableURLRequest(URL: NSURL(string: self.httpReqURL + "appjiekout/jiekou/\(nameSpace).asmx")!)
+        let mutableURLRequest = NSMutableURLRequest(url: URL(string: self.httpReqURL + "appjiekout/jiekou/\(nameSpace).asmx")!)
         mutableURLRequest.setValue("text/xml; charset=utf-8", forHTTPHeaderField: "Content-Type")
         mutableURLRequest.setValue(self.soapAction(method), forHTTPHeaderField: "SOAPAction")
         mutableURLRequest.setValue(String(soapMessage.characters.count), forHTTPHeaderField: "Content-Length")
-        mutableURLRequest.HTTPMethod = "POST"
-        mutableURLRequest.HTTPBody = soapMessage.dataUsingEncoding(NSUTF8StringEncoding)
+        mutableURLRequest.httpMethod = "POST"
+        mutableURLRequest.httpBody = soapMessage.data(using: String.Encoding.utf8)
         
-        let request = Alamofire.request(mutableURLRequest)
+        let request = Alamofire.request(mutableURLRequest as! URLRequestConvertible)
 //        request.responseString { (rsp) -> Void in
 //            completion?(response: rsp)
 //        }
         let gbkEncoding = CFStringConvertEncodingToNSStringEncoding(UInt32(CFStringEncodings.GB_18030_2000.rawValue))
-        request.responseString(encoding: gbkEncoding) { (rsp) -> Void in
-            completion?(response: rsp)
+        request.responseString(encoding: String.Encoding(rawValue: gbkEncoding)) { (rsp) -> Void in
+            completion?(rsp)
         }
     }
     
-    func requestUpload(params: Dictionary<String, AnyObject>, data: NSData, key: String, name: String, completion: HttpReqCompletion?) {
+    func requestUpload(_ params: Dictionary<String, AnyObject>, data: Data, key: String, name: String, completion: HttpReqCompletion?) {
         let spaceName = "BatchUploaderImg2.ashx" // 正式
 //        let spaceName = "BatchUploaderImg3.ashx" // 测试
-        Alamofire.upload(.POST, NSURL(string: self.httpReqURL + spaceName)!, multipartFormData: { (formData) -> Void in
+        Alamofire.upload(multipartFormData: { (formData) in
             for key in params.keys {
                 let object = params[key]
                 
                 if object is NSData {
-                    formData.appendBodyPart(data: object as! NSData, name: key)
+                    formData.append(object as! Data, withName: key)
                 }
                 else {
                     let value = (object as! NSObject).description
-                    let valueData = value.dataUsingEncoding(NSUTF8StringEncoding)
-                    formData.appendBodyPart(data: valueData!, name: key)
+                    let valueData = value.data(using: String.Encoding.utf8)
+                    formData.append(valueData!, withName: key)
                 }
             }
             
-            formData.appendBodyPart(data: data, name: key, fileName: name, mimeType: "application/octet-stream")
-            }) { (result) -> Void in
+            formData.append(data, withName: key, fileName: name, mimeType: "application/octet-stream")
+            }, to: URL(string: self.httpReqURL + spaceName)!) { (result) in
                 switch result {
-                case .Success(let upload, _, _):
+                case .success(let upload, _, _):
                     upload.responseString(completionHandler: { (response) -> Void in
-                        completion?(response: response)
+                        completion?(response)
                     })
                     break
                 default:
-                    completion?(response: nil)
+                    completion?(nil)
                     break
                 }
         }
     }
     
-    func requestCompletion(completion: HttpReqCompletion?) {}
+    func requestCompletion(_ completion: HttpReqCompletion?) {}
     
-    func soapMessage(method: String, params: Dictionary<String, AnyObject>) -> String {
+    func soapMessage(_ method: String, params: Dictionary<String, Any>) -> String {
         var message: String = String()
         message += "<?xml version='1.0' encoding='utf-8'?>"
         message += "<soap:Envelope xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance' xmlns:xsd='http://www.w3.org/2001/XMLSchema' xmlns:soap='http://schemas.xmlsoap.org/soap/envelope/'>"
@@ -93,38 +85,38 @@ class HttpBaseReq: NSObject {
         message += "</soap:Body>"
         message += "</soap:Envelope>"
         
-        message = message.stringByReplacingOccurrencesOfString("\\", withString: "")
+        message = message.replacingOccurrences(of: "\\", with: "")
         
         return message
     }
     
-    func soapAction(method: String) -> String {
+    func soapAction(_ method: String) -> String {
         return (serverSoapAction + method)
     }
     
     // MARK: - Class Function
     
-    class func parseResponse(response: String?) -> AnyObject? {
+    class func parseResponse(_ response: String?) -> AnyObject? {
         if response == nil {
             return nil
         }
         
-        guard let index = response!.rangeOfString("<?xml version=")?.startIndex else {
+        guard let index = response!.range(of: "<?xml version=")?.lowerBound else {
             return nil
         }
         
-        let jsonString = response?.substringToIndex(index)
+        let jsonString = response?.substring(to: index)
         
-        guard let data = jsonString?.dataUsingEncoding(NSUTF8StringEncoding) else {
+        guard let data = jsonString?.data(using: String.Encoding.utf8) else {
             return nil
         }
         do {
-            let object = try NSJSONSerialization.JSONObjectWithData(data, options: [NSJSONReadingOptions.MutableContainers])
+            let object = try JSONSerialization.jsonObject(with: data, options: [JSONSerialization.ReadingOptions.mutableContainers])
             
-            return object ?? jsonString
+            return object as AnyObject?? ?? jsonString as AnyObject?
         }
         catch {
-            return jsonString
+            return jsonString as AnyObject?
         }
     }
     

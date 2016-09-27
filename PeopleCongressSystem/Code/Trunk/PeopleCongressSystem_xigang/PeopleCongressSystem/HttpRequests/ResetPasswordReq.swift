@@ -17,12 +17,12 @@ class ResetPasswordReq: HttpBaseReq {
         super.init()
     }
     
-    func requestSimpleCompletion(completion: (String) -> Void) {
+    func requestSimpleCompletion(_ completion: @escaping (String) -> Void) {
         var params = [String: AnyObject]()
-        params["phoneID"] = tel
-        params["newpwd"] = password
-        params["theAPPid"] = "dalianrenda0001"
-        params["thecharset"] = "gb2312"
+        params["phoneID"] = tel as AnyObject?
+        params["newpwd"] = password as AnyObject?
+        params["theAPPid"] = "dalianrenda0001" as AnyObject?
+        params["thecharset"] = "gb2312" as AnyObject?
         
         self.request("pwdreset", nameSpace: "gonggong", params: params) { (response) in
             var message = "修改失败"

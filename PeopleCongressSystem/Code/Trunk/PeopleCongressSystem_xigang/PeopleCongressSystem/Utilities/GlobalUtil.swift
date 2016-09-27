@@ -11,29 +11,29 @@ import UIKit
 
 class GlobalUtil {
     
-    class func colorRGBA(r:CGFloat, g: CGFloat, b: CGFloat, a: CGFloat) -> UIColor {
+    class func colorRGBA(_ r:CGFloat, g: CGFloat, b: CGFloat, a: CGFloat) -> UIColor {
         return UIColor(red: r / 255.0, green: g / 255.0, blue: b / 255.0, alpha: a)
     }
     
     class func rateForHeight() -> CGFloat {
-        let app = UIApplication.sharedApplication().delegate as! AppDelegate
+        let app = UIApplication.shared.delegate as! AppDelegate
         
         return app.window!.bounds.size.height / CGFloat(667.0)
     }
     
     class func rateForWidth() -> CGFloat {
-        let app = UIApplication.sharedApplication().delegate as! AppDelegate
+        let app = UIApplication.shared.delegate as! AppDelegate
         
         return app.window!.bounds.size.width / CGFloat(320.0)
     }
     
     class func randomImageName() -> String {
-        let uuid = NSUUID().UUIDString
+        let uuid = UUID().uuidString
         
-        return uuid.stringByReplacingOccurrencesOfString("-", withString: "")
+        return uuid.replacingOccurrences(of: "-", with: "")
     }
     
-    class func showAlert(message: String) {
+    class func showAlert(_ message: String) {
         let alert = UIAlertView(title: nil, message: message, delegate: nil, cancelButtonTitle: "确定")
         alert.show()
     }
@@ -47,7 +47,7 @@ class GlobalUtil {
         
         let identifier = machineMirror.children.reduce("") { identifier, element in
             
-            guard let value = element.value as? Int8 where value != 0 else {return identifier }
+            guard let value = element.value as? Int8 , value != 0 else {return identifier }
             
             return identifier + String(UnicodeScalar(UInt8(value)))
         }

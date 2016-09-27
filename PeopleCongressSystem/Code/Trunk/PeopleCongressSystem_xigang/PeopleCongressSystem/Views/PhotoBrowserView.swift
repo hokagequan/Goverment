@@ -18,8 +18,8 @@ class PhotoBrowserView: UIView {
         self.addGestureRecognizer(tapGesture)
     }
     
-    func show(image: UIImage) {
-        guard let window = UIApplication.sharedApplication().keyWindow else {
+    func show(_ image: UIImage) {
+        guard let window = UIApplication.shared.keyWindow else {
             return
         }
         
@@ -32,30 +32,30 @@ class PhotoBrowserView: UIView {
         window.addSubview(self)
         self.alpha = 0.0
         
-        UIView.animateWithDuration(0.3, animations: { 
+        UIView.animate(withDuration: 0.3, animations: { 
             self.setNeedsLayout()
             self.alpha = 1.0
-            }) { (finished) in
-        }
+            }, completion: { (finished) in
+        }) 
     }
     
     func dismiss() {
-        UIView.animateWithDuration(0.3, animations: { 
+        UIView.animate(withDuration: 0.3, animations: { 
             self.alpha = 0.0
-            }) { (finished) in
+            }, completion: { (finished) in
                 self.removeFromSuperview()
-        }
+        }) 
     }
     
-    func handleTapGesture(gesture: UITapGestureRecognizer) {
+    func handleTapGesture(_ gesture: UITapGestureRecognizer) {
         self.dismiss()
     }
     
     // MARK: - Class Function
     
     class func view() -> PhotoBrowserView {
-        let views = NSBundle.mainBundle().loadNibNamed("PhotoBrowserView", owner: self, options: nil)
-        for view in views {
+        let views = Bundle.main.loadNibNamed("PhotoBrowserView", owner: self, options: nil)
+        for view in views! {
             if view is PhotoBrowserView {
                 return view as! PhotoBrowserView
             }

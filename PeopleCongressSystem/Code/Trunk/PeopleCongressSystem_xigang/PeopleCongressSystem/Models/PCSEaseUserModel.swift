@@ -10,7 +10,7 @@ import Foundation
 
 extension EaseUserModel {
     
-    private struct AssociatedKeys {
+    fileprivate struct AssociatedKeys {
         static var pcsName = "pcsName"
         static var pcsPhotoName = "pcsPhotoName"
     }

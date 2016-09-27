@@ -30,7 +30,7 @@ class UnCheckedInListViewController: UIViewController, UITableViewDataSource, UI
         self.layoutUI()
     }
     
-    override func viewDidAppear(animated: Bool) {
+    override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
         EZLoadingActivity.show("", disableUI: true)
@@ -60,18 +60,18 @@ class UnCheckedInListViewController: UIViewController, UITableViewDataSource, UI
     }
     
     func layoutUI() {
-        CustomObjectUtil.customObjectsLayout([notifyContainerView], backgroundColor: UIColor.whiteColor(), borderWidth: 0, borderColor: nil, corner: 5.0)
+        CustomObjectUtil.customObjectsLayout([notifyContainerView], backgroundColor: UIColor.white, borderWidth: 0, borderColor: nil, corner: 5.0)
     }
     
-    func showNotifySelection(index: Int) {
+    func showNotifySelection(_ index: Int) {
         selectedIndex = index
         
-        let window = UIApplication.sharedApplication().keyWindow!
+        let window = UIApplication.shared.keyWindow!
         notifySelectionView.frame = window.bounds
         window.addSubview(notifySelectionView)
     }
     
-    func sendNotify(type: SendType) {
+    func sendNotify(_ type: SendType) {
         defer {
             self.hideNotifySelection()
         }
@@ -96,15 +96,15 @@ class UnCheckedInListViewController: UIViewController, UITableViewDataSource, UI
     
     // MARK: - Actions
     
-    @IBAction func clickAPNS(sender: AnyObject) {
+    @IBAction func clickAPNS(_ sender: AnyObject) {
         self.sendNotify(SendType.APNS)
     }
     
-    @IBAction func clickSMS(sender: AnyObject) {
+    @IBAction func clickSMS(_ sender: AnyObject) {
         self.sendNotify(SendType.SMS)
     }
     
-    @IBAction func clickCall(sender: AnyObject) {
+    @IBAction func clickCall(_ sender: AnyObject) {
         defer {
             self.hideNotifySelection()
         }
@@ -117,14 +117,14 @@ class UnCheckedInListViewController: UIViewController, UITableViewDataSource, UI
             return
         }
         
-        guard let callURL = NSURL(string: "tel://\(mobile)") else {
+        guard let callURL = URL(string: "tel://\(mobile)") else {
             return
         }
         
-        UIApplication.sharedApplication().openURL(callURL)
+        UIApplication.shared.openURL(callURL)
     }
     
-    @IBAction func clickMessage(sender: AnyObject) {
+    @IBAction func clickMessage(_ sender: AnyObject) {
         defer {
             self.hideNotifySelection()
         }
@@ -144,27 +144,27 @@ class UnCheckedInListViewController: UIViewController, UITableViewDataSource, UI
         self.navigationController?.pushViewController(chatViewController, animated: true)
     }
     
-    @IBAction func clickHideNotifySelection(sender: AnyObject) {
+    @IBAction func clickHideNotifySelection(_ sender: AnyObject) {
         self.hideNotifySelection()
     }
     
     // MARK: - UITableView
     
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return (personList != nil) ? personList!.count : 0
     }
     
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("UnCheckedInCell", forIndexPath: indexPath) as! UnCheckedInCell
-        cell.selectionStyle = UITableViewCellSelectionStyle.None
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "UnCheckedInCell", for: indexPath) as! UnCheckedInCell
+        cell.selectionStyle = UITableViewCellSelectionStyle.none
         
-        let person = personList?[indexPath.row]
+        let person = personList?[(indexPath as NSIndexPath).row]
         cell.titleLabel.text = person?.name
         cell.detailLabel.text = person?.organization
         cell.phoneLabel.text = person?.mobile
         
         cell.clickNotifyBlock = {(cell) -> Void in
-            let index = tableView.indexPathForCell(cell)?.row
+            let index = (tableView.indexPath(for: cell) as NSIndexPath?)?.row
             self.showNotifySelection(index!)
         }
         

@@ -16,11 +16,11 @@ class ManageEditUIDelegate: NSObject, UITableViewDataSource, UITableViewDelegate
     var editObject: AnyObject? = nil
 
     enum EditSections: Int {
-        case MainContent = 0
-        case Time
-        case Detail
-        case Persons
-        case Max
+        case mainContent = 0
+        case time
+        case detail
+        case persons
+        case max
         
         func rows() -> Array<Row> {
             let titles = [["标题:", "类型:", "组织单位:"],
@@ -67,13 +67,13 @@ class ManageEditUIDelegate: NSObject, UITableViewDataSource, UITableViewDelegate
         
     }
     
-    func cellForMainRow(indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView!.dequeueReusableCellWithIdentifier("NormalImageTableCell", forIndexPath: indexPath) as! NormalImageTableCell
+    func cellForMainRow(_ indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView!.dequeueReusableCell(withIdentifier: "NormalImageTableCell", for: indexPath) as! NormalImageTableCell
         
-        let sec = EditSections(rawValue: indexPath.section)!
-        let row = sec.rows()[indexPath.row]
+        let sec = EditSections(rawValue: (indexPath as NSIndexPath).section)!
+        let row = sec.rows()[(indexPath as NSIndexPath).row]
         cell.iconImageView.image = UIImage(named: row.icon!)
-        cell.headerText = row.title
+        cell.headerText = row.title as NSString?
         cell.delegate = self
         cell.editable = true
         cell.timeEditable = false
@@ -81,24 +81,24 @@ class ManageEditUIDelegate: NSObject, UITableViewDataSource, UITableViewDelegate
         switch row.title! {
         case "类型:":
             cell.editable = false
-            cell.accessoryType = UITableViewCellAccessoryType.DisclosureIndicator
+            cell.accessoryType = UITableViewCellAccessoryType.disclosureIndicator
             break
         case "开始时间:", "结束时间:":
             cell.timeEditable = true
             break
         default:
-            cell.accessoryType = UITableViewCellAccessoryType.None
+            cell.accessoryType = UITableViewCellAccessoryType.none
             break
         }
         
         return cell
     }
     
-    func cellForPersonRow(indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView!.dequeueReusableCellWithIdentifier("TagListCell", forIndexPath: indexPath) as! TagListCell
+    func cellForPersonRow(_ indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView!.dequeueReusableCell(withIdentifier: "TagListCell", for: indexPath) as! TagListCell
         
-        let sec = EditSections(rawValue: indexPath.section)!
-        let row = sec.rows()[indexPath.row]
+        let sec = EditSections(rawValue: (indexPath as NSIndexPath).section)!
+        let row = sec.rows()[(indexPath as NSIndexPath).row]
         
         cell.iconImageView.image = UIImage(named: row.icon!)
         cell.titleLabel.text = row.title
@@ -112,54 +112,54 @@ class ManageEditUIDelegate: NSObject, UITableViewDataSource, UITableViewDelegate
     
     // MARK: - NormalImageTableCellDelegate
     
-    func didEditing(cell: NormalImageTableCell) {
-        tableView?.scrollEnabled = false
+    func didEditing(_ cell: NormalImageTableCell) {
+        tableView?.isScrollEnabled = false
         let keyboardHeight: CGFloat = 246.0
         let deltaY = cell.frame.origin.y + 50.0 - (tableView!.bounds.size.height - keyboardHeight) + tableView!.frame.origin.y
         
         if deltaY > 0 {
-            tableView?.setContentOffset(CGPointMake(0, deltaY), animated: true)
+            tableView?.setContentOffset(CGPoint(x: 0, y: deltaY), animated: true)
         }
     }
     
-    func didEndEditing(cell: NormalImageTableCell) {
-        tableView?.setContentOffset(CGPointZero, animated: true)
-        tableView?.scrollEnabled = true
+    func didEndEditing(_ cell: NormalImageTableCell) {
+        tableView?.setContentOffset(CGPoint.zero, animated: true)
+        tableView?.isScrollEnabled = true
     }
     
-    func didEditingTime(cell: NormalImageTableCell, datePicker: DatePickerView) {
+    func didEditingTime(_ cell: NormalImageTableCell, datePicker: DatePickerView) {
         masterViewController?.view.endEditing(true)
         let keyboardHeight: CGFloat = datePicker.datePickerContainer.bounds.size.height
         let deltaY = cell.frame.origin.y + 50.0 - (tableView!.bounds.size.height - keyboardHeight) + tableView!.frame.origin.y
         
         if deltaY > 0 {
-            tableView?.setContentOffset(CGPointMake(0, deltaY), animated: true)
+            tableView?.setContentOffset(CGPoint(x: 0, y: deltaY), animated: true)
         }
     }
     
-    func didEndEditingTime(cell: NormalImageTableCell) {
-        tableView?.setContentOffset(CGPointZero, animated: true)
+    func didEndEditingTime(_ cell: NormalImageTableCell) {
+        tableView?.setContentOffset(CGPoint.zero, animated: true)
     }
     
     // MARK: - UITableView
     
-    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        return EditSections.Max.rawValue
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return EditSections.max.rawValue
     }
     
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         let sec = EditSections(rawValue: section)!
         
         return sec.rows().count
     }
     
-    func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return 10.0
     }
     
-    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-        let section = EditSections(rawValue: indexPath.section)!
-        let row = section.rows()[indexPath.row]
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        let section = EditSections(rawValue: (indexPath as NSIndexPath).section)!
+        let row = section.rows()[(indexPath as NSIndexPath).row]
         
         switch row.title! {
         case "人员:":
@@ -169,9 +169,9 @@ class ManageEditUIDelegate: NSObject, UITableViewDataSource, UITableViewDelegate
         }
     }
     
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let section = EditSections(rawValue: indexPath.section)!
-        let row = section.rows()[indexPath.row]
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let section = EditSections(rawValue: (indexPath as NSIndexPath).section)!
+        let row = section.rows()[(indexPath as NSIndexPath).row]
         
         switch row.title! {
         case "人员:":
@@ -181,7 +181,7 @@ class ManageEditUIDelegate: NSObject, UITableViewDataSource, UITableViewDelegate
         }
     }
     
-    func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         cell.separatorInset = UIEdgeInsetsMake(0, 39, 0, 0)
     }
     

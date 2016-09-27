@@ -16,14 +16,14 @@ class TagListCell: UITableViewCell {
     @IBOutlet weak var tagList: TagListView!
     @IBOutlet weak var indicatorImageView: UIImageView!
     
-    var tagSize: CGSize = CGSizeZero
+    var tagSize: CGSize = CGSize.zero
     
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
     }
 
-    override func setSelected(selected: Bool, animated: Bool) {
+    override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
 
         // Configure the view for the selected state
@@ -33,13 +33,13 @@ class TagListCell: UITableViewCell {
         tagList.removeAllTags()
     }
     
-    func customTagSize(size: CGSize) {
+    func customTagSize(_ size: CGSize) {
         let textH = tagList.textFont.lineHeight
         tagList.paddingY = (size.height - textH) / 2
         tagList.paddingX = size.width / 2
     }
     
-    func loadPersons(persons: Array<Person>?) {
+    func loadPersons(_ persons: Array<Person>?) {
         tagList.removeAllTags()
         
         if persons == nil {
@@ -58,7 +58,7 @@ class TagListCell: UITableViewCell {
         }
     }
     
-    func loadInfo(info: Array<String>?) {
+    func loadInfo(_ info: Array<String>?) {
         tagList.removeAllTags()
         
         if info == nil {
@@ -71,12 +71,12 @@ class TagListCell: UITableViewCell {
         }
     }
     
-    class func cellHeight(persons: Array<Person>?) -> CGFloat {
+    class func cellHeight(_ persons: Array<Person>?) -> CGFloat {
         if persons != nil {
             let tempTagList = TagListView()
             tempTagList.paddingY = 5.0
             tempTagList.marginY = 5.0
-            tempTagList.frame = CGRectMake(0, 0, GlobalUtil.rateForWidth() * 320.0, 0)
+            tempTagList.frame = CGRect(x: 0, y: 0, width: GlobalUtil.rateForWidth() * 320.0, height: 0)
             
             for i in 0..<persons!.count {
                 let person = persons![i]
@@ -89,7 +89,7 @@ class TagListCell: UITableViewCell {
                 tempTagList.addTag("\(person.organization!):\n\(person.name!)")
             }
             
-            return tempTagList.intrinsicContentSize().height + 44.0 + 5.0
+            return tempTagList.intrinsicContentSize.height + 44.0 + 5.0
         }
         
         return 44.0

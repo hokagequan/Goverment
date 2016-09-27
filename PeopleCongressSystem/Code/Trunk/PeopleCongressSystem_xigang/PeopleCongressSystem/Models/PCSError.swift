@@ -8,8 +8,8 @@
 
 import Foundation
 
-enum PCSError: ErrorType {
+enum PCSError: Error {
     
-    case QRCodeError(String)
+    case qrCodeError(String)
     
 }

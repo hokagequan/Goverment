@@ -14,12 +14,12 @@ class GetUrlReq: HttpBaseReq {
         super.init()
     }
     
-    func requestSimpleCompletion(completion: SimpleCompletion?) {
+    func requestSimpleCompletion(_ completion: SimpleCompletion?) {
         var params = [String: AnyObject]()
-        params["UserId"] = PCSDataManager.defaultManager().accountManager.user!.identifier
-        params["CheckTicket"] = PCSDataManager.defaultManager().accountManager.user!.token
-        params["FieldID"] = PCSDataManager.defaultManager().accountManager.user!.field
-        params["thecharset"] = "gb2312"
+        params["UserId"] = PCSDataManager.defaultManager().accountManager.user!.identifier as AnyObject?
+        params["CheckTicket"] = PCSDataManager.defaultManager().accountManager.user!.token as AnyObject?
+        params["FieldID"] = PCSDataManager.defaultManager().accountManager.user!.field as AnyObject?
+        params["thecharset"] = "gb2312" as AnyObject?
         
         self.request("getbackurl", nameSpace: "gonggong", params: params) { (response) -> Void in
             let result = response?.result
@@ -51,14 +51,14 @@ class GetUrlReq: HttpBaseReq {
                 }
                 
                 url = "\(countRsp)"
-                guard let headerRange = url?.rangeOfString("?") else {
+                guard let headerRange = url?.range(of: "?") else {
                     url = nil
                     errorCode = countRsp
                     
                     return
                 }
-                
-                let header = url?.substringToIndex(headerRange.startIndex)
+               
+                let header = url?.substring(to: headerRange.lowerBound)
                 
                 switch header! {
                 case "indexofRDDB", "zqzzofRDDB", "indexofGZRY", "zqzzofGZRY":

@@ -28,60 +28,60 @@ class ManageEditUICheckInDelegate: ManageEditActivityEditDelegate {
     
     override func save() {
         let storyboard = UIStoryboard(name: "CheckIn", bundle: nil)
-        let vc = storyboard.instantiateViewControllerWithIdentifier("QRCodeScanViewController") as! QRCodeScanViewController
+        let vc = storyboard.instantiateViewController(withIdentifier: "QRCodeScanViewController") as! QRCodeScanViewController
         vc.activity = (self.masterViewController as! PerformanceEditViewController).editObject as? Activity
         self.masterViewController?.navigationController?.pushViewController(vc, animated: true)
     }
     
     // MARK: - UITableView
     
-    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        return super.numberOfSectionsInTableView(tableView) + 1
+    override func numberOfSections(in tableView: UITableView) -> Int {
+        return super.numberOfSections(in: tableView) + 1
     }
     
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if section == EditSections.Max.rawValue {
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if section == EditSections.max.rawValue {
             return 1
         }
-        else if section == EditSections.Persons.rawValue {
+        else if section == EditSections.persons.rawValue {
             return 2
         }
         
         return super.tableView(tableView, numberOfRowsInSection: section)
     }
     
-    override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-        if indexPath.section == EditSections.Max.rawValue {
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        if (indexPath as NSIndexPath).section == EditSections.max.rawValue {
             return 180
         }
         
-        if indexPath.section == EditSections.Persons.rawValue {
-            if indexPath.row == 0 {
+        if (indexPath as NSIndexPath).section == EditSections.persons.rawValue {
+            if (indexPath as NSIndexPath).row == 0 {
                 return 44 + 5 + 44
             }
-            else if indexPath.row == 1 {
+            else if (indexPath as NSIndexPath).row == 1 {
                 return 44
             }
         }
         
-        return super.tableView(tableView, heightForRowAtIndexPath: indexPath)
+        return super.tableView(tableView, heightForRowAt: indexPath)
     }
     
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        if indexPath.section == EditSections.Max.rawValue {
-            let cell = tableView.dequeueReusableCellWithIdentifier("QRCodeCell", forIndexPath: indexPath) as! QRCodeCell
-            cell.selectionStyle = UITableViewCellSelectionStyle.None
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        if (indexPath as NSIndexPath).section == EditSections.max.rawValue {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "QRCodeCell", for: indexPath) as! QRCodeCell
+            cell.selectionStyle = UITableViewCellSelectionStyle.none
             cell.qrCodeImageView.image = qrImage
             
             return cell
         }
         
-        if indexPath.section == EditSections.Persons.rawValue && indexPath.row == 1 {
-            let cell = tableView.dequeueReusableCellWithIdentifier("NormalImageTableCell", forIndexPath: indexPath) as! NormalImageTableCell
-            cell.accessoryType = UITableViewCellAccessoryType.DisclosureIndicator
-            cell.selectionStyle = UITableViewCellSelectionStyle.None
+        if (indexPath as NSIndexPath).section == EditSections.persons.rawValue && (indexPath as NSIndexPath).row == 1 {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "NormalImageTableCell", for: indexPath) as! NormalImageTableCell
+            cell.accessoryType = UITableViewCellAccessoryType.disclosureIndicator
+            cell.selectionStyle = UITableViewCellSelectionStyle.none
             
-            let sec = EditSections(rawValue: indexPath.section)!
+            let sec = EditSections(rawValue: (indexPath as NSIndexPath).section)!
             let row = sec.rows()[0]
             cell.iconImageView.image = UIImage(named: row.icon!)
             cell.headerText = "未签到列表"
@@ -92,8 +92,8 @@ class ManageEditUICheckInDelegate: ManageEditActivityEditDelegate {
             return cell
         }
         
-        let cell = super.tableView(tableView, cellForRowAtIndexPath: indexPath)
-        cell.userInteractionEnabled = false
+        let cell = super.tableView(tableView, cellForRowAt: indexPath)
+        cell.isUserInteractionEnabled = false
         
         if cell is TagListCell {
             var array = [String]()
@@ -102,20 +102,20 @@ class ManageEditUICheckInDelegate: ManageEditActivityEditDelegate {
                 array.append("应到:\(activity!.totalPersonCount)")
                 array.append("实到:\(activity!.checkedInPersonCount)")
                 array.append("未到:\(activity!.totalPersonCount - activity!.checkedInPersonCount)")
-                (cell as! TagListCell).customTagSize(CGSizeMake(60, 40))
+                (cell as! TagListCell).customTagSize(CGSize(width: 60, height: 40))
                 (cell as! TagListCell).loadInfo(array)
-                (cell as! TagListCell).indicatorImageView.hidden = true
+                (cell as! TagListCell).indicatorImageView.isHidden = true
             }
         }
         
-        cell.accessoryType = UITableViewCellAccessoryType.None
+        cell.accessoryType = UITableViewCellAccessoryType.none
         
         return cell
     }
     
-    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        if indexPath.section == EditSections.Persons.rawValue && indexPath.row == 1 {
-            self.masterViewController?.performSegueWithIdentifier("UnCheckedInListSegue", sender: self)
+    override func tableView(_ tableView: UITableView, didSelectRowAtIndexPath indexPath: IndexPath) {
+        if (indexPath as NSIndexPath).section == EditSections.persons.rawValue && (indexPath as NSIndexPath).row == 1 {
+            self.masterViewController?.performSegue(withIdentifier: "UnCheckedInListSegue", sender: self)
         }
     }
     

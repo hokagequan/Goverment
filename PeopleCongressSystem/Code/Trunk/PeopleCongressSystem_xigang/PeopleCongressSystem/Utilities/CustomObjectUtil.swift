@@ -11,19 +11,19 @@ import UIKit
 
 class CustomObjectUtil {
     
-    class func customObjectsLayout(objects: Array<UIView>, backgroundColor: UIColor?, borderWidth: CGFloat, borderColor: UIColor?, corner: CGFloat) {
+    class func customObjectsLayout(_ objects: Array<UIView>, backgroundColor: UIColor?, borderWidth: CGFloat, borderColor: UIColor?, corner: CGFloat) {
         for view in objects {
             view.backgroundColor = backgroundColor;
             view.layer.borderWidth = borderWidth;
-            view.layer.borderColor = borderColor?.CGColor;
+            view.layer.borderColor = borderColor?.cgColor;
             view.layer.cornerRadius = corner;
             view.layer.masksToBounds = true;
         }
     }
     
-    class func customTabbarItem(items: Array<UITabBarItem>, titleColor: UIColor, font: UIFont, state: UIControlState) {
+    class func customTabbarItem(_ items: Array<UITabBarItem>, titleColor: UIColor, font: UIFont, state: UIControlState) {
         for item in items {
-            item.setTitleTextAttributes([NSForegroundColorAttributeName: titleColor, NSFontAttributeName: font], forState: state)
+            item.setTitleTextAttributes([NSForegroundColorAttributeName: titleColor, NSFontAttributeName: font], for: state)
         }
     }
     

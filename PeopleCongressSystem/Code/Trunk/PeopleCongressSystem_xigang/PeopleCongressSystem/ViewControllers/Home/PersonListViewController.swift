@@ -30,7 +30,7 @@ class PersonListViewController: UIViewController, UITableViewDelegate, UITableVi
         naviView.delegate = self
     }
     
-    override func viewDidAppear(animated: Bool) {
+    override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
         self.navigationItem.hidesBackButton = true
@@ -58,13 +58,13 @@ class PersonListViewController: UIViewController, UITableViewDelegate, UITableVi
             }
             
             let personsTemp = info!
-            var selectedIndexPaths = [NSIndexPath]()
+            var selectedIndexPaths = [IndexPath]()
             var index = 0
             self.persons = personsTemp.map({ (person) -> Person in
                 person.organization = self.group?.title
                 
                 if selectedNames.contains(person.name!) {
-                    selectedIndexPaths.append(NSIndexPath(forRow: index, inSection: 0))
+                    selectedIndexPaths.append(IndexPath(row: index, section: 0))
                 }
                 
                 index += 1
@@ -76,7 +76,7 @@ class PersonListViewController: UIViewController, UITableViewDelegate, UITableVi
             
             if selectedIndexPaths.count > 0 {
                 for indexPath in selectedIndexPaths {
-                    self.personsTableView.selectRowAtIndexPath(indexPath, animated: false, scrollPosition: UITableViewScrollPosition.None)
+                    self.personsTableView.selectRow(at: indexPath, animated: false, scrollPosition: UITableViewScrollPosition.none)
                 }
             }
         }
@@ -89,7 +89,7 @@ class PersonListViewController: UIViewController, UITableViewDelegate, UITableVi
     
     func markImageView() -> UIImageView {
         let mark = UIImageView(image: UIImage(named: "mark_nor"))
-        mark.frame = CGRectMake(0, 0, 22, 22)
+        mark.frame = CGRect(x: 0, y: 0, width: 22, height: 22)
         
         return mark
     }
@@ -107,7 +107,7 @@ class PersonListViewController: UIViewController, UITableViewDelegate, UITableVi
         if memPersons == nil {
             memPersons = [Person]()
         }
-        let selectedPersons = selection?.map{return persons[$0.row]}
+        let selectedPersons = selection?.map{return persons[($0 as NSIndexPath).row]}
         memPersons! += selectedPersons!
         
         activity?.persons = memPersons
@@ -121,7 +121,7 @@ class PersonListViewController: UIViewController, UITableViewDelegate, UITableVi
         }
         
         for indexPath in selection {
-            let person = persons[indexPath.row]
+            let person = persons[(indexPath as NSIndexPath).row]
             let memPerson = activity?.persons?.filter({ (objc) -> Bool in
                 return objc.name == person.name
             })
@@ -132,7 +132,7 @@ class PersonListViewController: UIViewController, UITableViewDelegate, UITableVi
         }
     }
     
-    func updateSelectionState(cell: UITableViewCell, selected: Bool) {
+    func updateSelectionState(_ cell: UITableViewCell, selected: Bool) {
         let imageName = selected ? "mark_sel" : "mark_nor"
         let markImage = UIImage(named: imageName)
         
@@ -141,77 +141,77 @@ class PersonListViewController: UIViewController, UITableViewDelegate, UITableVi
     
     // MARK: - Actions
     
-    @IBAction func clickSelectAll(sender: AnyObject) {
+    @IBAction func clickSelectAll(_ sender: AnyObject) {
         let button = sender as! UIButton
         
-        button.selected = !button.selected
+        button.isSelected = !button.isSelected
         
-        activity?.persons = button.selected ? persons : nil
+        activity?.persons = button.isSelected ? persons : nil
         
         for i in 0..<persons.count {
-            let indexPath = NSIndexPath(forRow: i, inSection: 0)
+            let indexPath = IndexPath(row: i, section: 0)
             
-            if button.selected {
-                personsTableView.selectRowAtIndexPath(indexPath, animated: false, scrollPosition: UITableViewScrollPosition.None)
+            if button.isSelected {
+                personsTableView.selectRow(at: indexPath, animated: false, scrollPosition: UITableViewScrollPosition.none)
             }
             else {
-                personsTableView.deselectRowAtIndexPath(indexPath, animated: false)
+                personsTableView.deselectRow(at: indexPath, animated: false)
             }
             
-            guard let cell = personsTableView.cellForRowAtIndexPath(indexPath) else {
+            guard let cell = personsTableView.cellForRow(at: indexPath) else {
                 continue
             }
             
-            self.updateSelectionState(cell, selected: button.selected)
+            self.updateSelectionState(cell, selected: button.isSelected)
         }
     }
     
     // MARK: - UITableView
     
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return persons.count
     }
     
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath)
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
         
         if cell.accessoryView == nil {
             cell.accessoryView = self.markImageView()
         }
         
-        self.updateSelectionState(cell, selected: cell.selected)
+        self.updateSelectionState(cell, selected: cell.isSelected)
         
-        let person = persons[indexPath.row]
+        let person = persons[(indexPath as NSIndexPath).row]
         cell.textLabel?.text = person.name
         cell.detailTextLabel?.text = group?.title
-        cell.textLabel?.font = UIFont.systemFontOfSize(16.0)
-        cell.detailTextLabel?.font = UIFont.systemFontOfSize(15.0)
+        cell.textLabel?.font = UIFont.systemFont(ofSize: 16.0)
+        cell.detailTextLabel?.font = UIFont.systemFont(ofSize: 15.0)
         cell.textLabel?.textColor = GlobalUtil.colorRGBA(51, g: 51, b: 51, a: 1)
         cell.detailTextLabel?.textColor = GlobalUtil.colorRGBA(60, g: 60, b: 60, a: 1)
         
         return cell
     }
     
-    func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         if cell.contentView.viewWithTag(1000) != nil {
             return
         }
         
-        let frame = CGRectMake(5, 4, cell.bounds.size.width - 10, cell.bounds.size.height - 8)
+        let frame = CGRect(x: 5, y: 4, width: cell.bounds.size.width - 10, height: cell.bounds.size.height - 8)
         let view = UIView(frame: frame)
         view.tag = 1000
-        CustomObjectUtil.customObjectsLayout([view], backgroundColor: UIColor.whiteColor(), borderWidth: 1, borderColor: GlobalUtil.colorRGBA(240, g: 240, b: 240, a: 1.0), corner: 2)
+        CustomObjectUtil.customObjectsLayout([view], backgroundColor: UIColor.white, borderWidth: 1, borderColor: GlobalUtil.colorRGBA(240, g: 240, b: 240, a: 1.0), corner: 2)
         cell.contentView.addSubview(view)
-        cell.contentView.sendSubviewToBack(view)
+        cell.contentView.sendSubview(toBack: view)
     }
     
-    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        let cell = tableView.cellForRowAtIndexPath(indexPath)!
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let cell = tableView.cellForRow(at: indexPath)!
         self.updateSelectionState(cell, selected: true)
     }
     
-    func tableView(tableView: UITableView, didDeselectRowAtIndexPath indexPath: NSIndexPath) {
-        let cell = tableView.cellForRowAtIndexPath(indexPath)!
+    func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
+        let cell = tableView.cellForRow(at: indexPath)!
         self.updateSelectionState(cell, selected: false)
     }
     

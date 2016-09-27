@@ -13,7 +13,7 @@ class ResponseErrorManger: NSObject, UIAlertViewDelegate {
     
     static let _responseErrorManager = ResponseErrorManger()
     
-    func handleError(code: String?, message: String?) {
+    func handleError(_ code: String?, message: String?) {
         
         if message == nil && code == nil {
             return
@@ -42,9 +42,9 @@ class ResponseErrorManger: NSObject, UIAlertViewDelegate {
     
     // MARK: - AlertView
     
-    func alertView(alertView: UIAlertView, clickedButtonAtIndex buttonIndex: Int) {
+    func alertView(_ alertView: UIAlertView, clickedButtonAt buttonIndex: Int) {
         if buttonIndex == 0 {
-            NSNotificationCenter.defaultCenter().postNotificationName(kNotificationPresentLogin, object: nil)
+            NotificationCenter.default.post(name: Notification.Name(rawValue: kNotificationPresentLogin), object: nil)
         }
     }
     

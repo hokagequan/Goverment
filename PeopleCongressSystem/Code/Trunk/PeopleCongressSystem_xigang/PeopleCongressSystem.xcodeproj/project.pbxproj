@@ -38,7 +38,6 @@
 		100B203E1C89222F00435EF0 /* PersonListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 100B203D1C89222F00435EF0 /* PersonListViewController.swift */; };
 		100B20401C895FC600435EF0 /* GetPersonListReq.swift in Sources */ = {isa = PBXBuildFile; fileRef = 100B203F1C895FC600435EF0 /* GetPersonListReq.swift */; };
 		100EA8841CA819CE00C5FA59 /* GetUrlReq.swift in Sources */ = {isa = PBXBuildFile; fileRef = 100EA8831CA819CE00C5FA59 /* GetUrlReq.swift */; };
-		10232B0B1CE8182A00BA58D9 /* Reachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10232B0A1CE8182A00BA58D9 /* Reachability.swift */; };
 		10232B361CE81A6600BA58D9 /* libHyphenateFullSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 10232B341CE81A6600BA58D9 /* libHyphenateFullSDK.a */; };
 		103023001CB7B8A900832DE1 /* ResponseErrorManger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 103022FF1CB7B8A900832DE1 /* ResponseErrorManger.swift */; };
 		1030232D1CBB4B7000832DE1 /* VerifyCodeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1030232C1CBB4B7000832DE1 /* VerifyCodeCell.swift */; };
@@ -324,7 +323,7 @@
 		10F7DE631C7863A3002A86CA /* PCSNavigationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10F7DE621C7863A3002A86CA /* PCSNavigationView.swift */; };
 		10F9019E1C858B0100A4D767 /* CongressContentInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10F9019D1C858B0100A4D767 /* CongressContentInfo.swift */; };
 		10FE3F211CEEDADF00E18D2E /* add@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 10FE3F201CEEDADF00E18D2E /* add@2x.png */; };
-		F2461D7F736AF7792D053E30 /* Pods_PCSystem.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4709E099EF6691BC4E4A60BD /* Pods_PCSystem.framework */; };
+		484904254F340A2BD2EA44C6 /* Pods_PeopleCongressSystemxg.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 22BF7E06983B7CEBE707C865 /* Pods_PeopleCongressSystemxg.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -373,7 +372,6 @@
 		100B203D1C89222F00435EF0 /* PersonListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PersonListViewController.swift; sourceTree = "<group>"; };
 		100B203F1C895FC600435EF0 /* GetPersonListReq.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetPersonListReq.swift; sourceTree = "<group>"; };
 		100EA8831CA819CE00C5FA59 /* GetUrlReq.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetUrlReq.swift; sourceTree = "<group>"; };
-		10232B0A1CE8182A00BA58D9 /* Reachability.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Reachability.swift; sourceTree = "<group>"; };
 		10232B0E1CE81A6600BA58D9 /* EMCallLocalView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EMCallLocalView.h; sourceTree = "<group>"; };
 		10232B0F1CE81A6600BA58D9 /* EMCallManagerDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EMCallManagerDelegate.h; sourceTree = "<group>"; };
 		10232B101CE81A6600BA58D9 /* EMCallRemoteView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EMCallRemoteView.h; sourceTree = "<group>"; };
@@ -977,11 +975,10 @@
 		10F7DE621C7863A3002A86CA /* PCSNavigationView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PCSNavigationView.swift; sourceTree = "<group>"; };
 		10F9019D1C858B0100A4D767 /* CongressContentInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CongressContentInfo.swift; sourceTree = "<group>"; };
 		10FE3F201CEEDADF00E18D2E /* add@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "add@2x.png"; sourceTree = "<group>"; };
+		22BF7E06983B7CEBE707C865 /* Pods_PeopleCongressSystemxg.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PeopleCongressSystemxg.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		2B34F261D8702F7E3C5E6E82 /* Pods-PeopleCongressSystemxg.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PeopleCongressSystemxg.release.xcconfig"; path = "Pods/Target Support Files/Pods-PeopleCongressSystemxg/Pods-PeopleCongressSystemxg.release.xcconfig"; sourceTree = "<group>"; };
 		4709E099EF6691BC4E4A60BD /* Pods_PCSystem.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PCSystem.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		62D8969970C51E336B880791 /* Pods-PCSystem.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PCSystem.release.xcconfig"; path = "Pods/Target Support Files/Pods-PCSystem/Pods-PCSystem.release.xcconfig"; sourceTree = "<group>"; };
-		73864A39689FB9815370BA8D /* Pods-PeopleCongressSystem.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PeopleCongressSystem.debug.xcconfig"; path = "Pods/Target Support Files/Pods-PeopleCongressSystem/Pods-PeopleCongressSystem.debug.xcconfig"; sourceTree = "<group>"; };
-		C40AE4A880515B26AA3B4A8E /* Pods-PeopleCongressSystem.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PeopleCongressSystem.release.xcconfig"; path = "Pods/Target Support Files/Pods-PeopleCongressSystem/Pods-PeopleCongressSystem.release.xcconfig"; sourceTree = "<group>"; };
-		EB990D201314C30EE6D8F3D0 /* Pods-PCSystem.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PCSystem.debug.xcconfig"; path = "Pods/Target Support Files/Pods-PCSystem/Pods-PCSystem.debug.xcconfig"; sourceTree = "<group>"; };
+		DAECB3DE6E5074E7842706A2 /* Pods-PeopleCongressSystemxg.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PeopleCongressSystemxg.debug.xcconfig"; path = "Pods/Target Support Files/Pods-PeopleCongressSystemxg/Pods-PeopleCongressSystemxg.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1023,7 +1020,7 @@
 				103261161CAA80C50075BBA8 /* CFNetwork.framework in Frameworks */,
 				10C0F1301CA93D9C000BA06E /* jpush-ios-2.1.0.a in Frameworks */,
 				10376F8F1CC5C65800ECEBEA /* libsqlcipher.a in Frameworks */,
-				F2461D7F736AF7792D053E30 /* Pods_PCSystem.framework in Frameworks */,
+				484904254F340A2BD2EA44C6 /* Pods_PeopleCongressSystemxg.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1037,14 +1034,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		10232B091CE8182A00BA58D9 /* Reachability */ = {
-			isa = PBXGroup;
-			children = (
-				10232B0A1CE8182A00BA58D9 /* Reachability.swift */,
-			);
-			path = Reachability;
-			sourceTree = "<group>";
-		};
 		10232B0C1CE81A6600BA58D9 /* HyphenateSDK */ = {
 			isa = PBXGroup;
 			children = (
@@ -1826,7 +1815,6 @@
 			isa = PBXGroup;
 			children = (
 				10232B0C1CE81A6600BA58D9 /* HyphenateSDK */,
-				10232B091CE8182A00BA58D9 /* Reachability */,
 				10868FC11CE809CE00AF041A /* EaseUI */,
 				103770B41CC773A400ECEBEA /* EMExtension */,
 				1037709F1CC76FA600ECEBEA /* EMAlertView */,
@@ -2301,6 +2289,7 @@
 				100691C11C9658CD000AEFEA /* MobileCoreServices.framework */,
 				0FC9B07F7F80FF31B8E19C91 /* Pods_PeopleCongressSystem.framework */,
 				4709E099EF6691BC4E4A60BD /* Pods_PCSystem.framework */,
+				22BF7E06983B7CEBE707C865 /* Pods_PeopleCongressSystemxg.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -2308,10 +2297,8 @@
 		BED6F5615BFEB8DAB2EAF7E4 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				73864A39689FB9815370BA8D /* Pods-PeopleCongressSystem.debug.xcconfig */,
-				C40AE4A880515B26AA3B4A8E /* Pods-PeopleCongressSystem.release.xcconfig */,
-				EB990D201314C30EE6D8F3D0 /* Pods-PCSystem.debug.xcconfig */,
-				62D8969970C51E336B880791 /* Pods-PCSystem.release.xcconfig */,
+				DAECB3DE6E5074E7842706A2 /* Pods-PeopleCongressSystemxg.debug.xcconfig */,
+				2B34F261D8702F7E3C5E6E82 /* Pods-PeopleCongressSystemxg.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -2323,12 +2310,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 10D0D58C1C4CD1D10093F687 /* Build configuration list for PBXNativeTarget "PeopleCongressSystemxg" */;
 			buildPhases = (
-				CBA8A13155361E9AB17BDE15 /* 📦 Check Pods Manifest.lock */,
+				CBA8A13155361E9AB17BDE15 /* [CP] Check Pods Manifest.lock */,
 				10D0D5681C4CD1D00093F687 /* Sources */,
 				10D0D5691C4CD1D00093F687 /* Frameworks */,
 				10D0D56A1C4CD1D00093F687 /* Resources */,
-				FCA9B956131A0AA6F45D3251 /* 📦 Embed Pods Frameworks */,
-				EEF01BE44033C6E057AE414A /* 📦 Copy Pods Resources */,
+				FCA9B956131A0AA6F45D3251 /* [CP] Embed Pods Frameworks */,
+				EEF01BE44033C6E057AE414A /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -2364,12 +2351,14 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0720;
-				LastUpgradeCheck = 0720;
+				LastUpgradeCheck = 0800;
 				ORGANIZATIONNAME = CoolRabbit;
 				TargetAttributes = {
 					10D0D56B1C4CD1D00093F687 = {
 						CreatedOnToolsVersion = 7.2;
 						DevelopmentTeam = 9U2MD2KWA8;
+						LastSwiftMigration = 0800;
+						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
 							com.apple.Push = {
 								enabled = 1;
@@ -2378,6 +2367,7 @@
 					};
 					10D0D5821C4CD1D00093F687 = {
 						CreatedOnToolsVersion = 7.2;
+						LastSwiftMigration = 0800;
 						TestTargetID = 10D0D56B1C4CD1D00093F687;
 					};
 				};
@@ -2523,49 +2513,49 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		CBA8A13155361E9AB17BDE15 /* 📦 Check Pods Manifest.lock */ = {
+		CBA8A13155361E9AB17BDE15 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "📦 Check Pods Manifest.lock";
+			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
-		EEF01BE44033C6E057AE414A /* 📦 Copy Pods Resources */ = {
+		EEF01BE44033C6E057AE414A /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "📦 Copy Pods Resources";
+			name = "[CP] Copy Pods Resources";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-PCSystem/Pods-PCSystem-resources.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-PeopleCongressSystemxg/Pods-PeopleCongressSystemxg-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		FCA9B956131A0AA6F45D3251 /* 📦 Embed Pods Frameworks */ = {
+		FCA9B956131A0AA6F45D3251 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "📦 Embed Pods Frameworks";
+			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-PCSystem/Pods-PCSystem-frameworks.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-PeopleCongressSystemxg/Pods-PeopleCongressSystemxg-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -2731,7 +2721,6 @@
 				10D0D5D31C4FDB440093F687 /* CustomNavigationView.swift in Sources */,
 				103771361CC773F700ECEBEA /* PublicGroupDetailViewController.m in Sources */,
 				103771371CC773F700ECEBEA /* PublicGroupListViewController.m in Sources */,
-				10232B0B1CE8182A00BA58D9 /* Reachability.swift in Sources */,
 				106E0E211CA55F7F004C48C0 /* GetActivityNotifyCountReq.swift in Sources */,
 				10F109811C8816D10083D89D /* GetActivitiesReq.swift in Sources */,
 				1084961A1CB3ABCF00B7BA03 /* VariableEntity.swift in Sources */,
@@ -2811,6 +2800,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
@@ -2820,8 +2810,10 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -2855,6 +2847,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
@@ -2864,8 +2857,10 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -2884,18 +2879,22 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
 		};
 		10D0D58D1C4CD1D10093F687 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = EB990D201314C30EE6D8F3D0 /* Pods-PCSystem.debug.xcconfig */;
+			baseConfigurationReference = DAECB3DE6E5074E7842706A2 /* Pods-PeopleCongressSystemxg.debug.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = "";
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -2911,7 +2910,7 @@
 					"$(PROJECT_DIR)/../HyphenateSDK/include",
 				);
 				INFOPLIST_FILE = PeopleCongressSystem/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
@@ -2941,22 +2940,28 @@
 					"\"TagListView\"",
 					"-ObjC",
 				);
-				OTHER_SWIFT_FLAGS = "$(inherited) \"-D\" \"COCOAPODS\"";
+				OTHER_SWIFT_FLAGS = "$(inherited) \"-D\" \"COCOAPODS\" -DDebug";
 				PRODUCT_BUNDLE_IDENTIFIER = com.npc.dlxgpcsystem;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "PeopleCongressSystem/PeopleCongressSystem-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
 		};
 		10D0D58E1C4CD1D10093F687 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 62D8969970C51E336B880791 /* Pods-PCSystem.release.xcconfig */;
+			baseConfigurationReference = 2B34F261D8702F7E3C5E6E82 /* Pods-PeopleCongressSystemxg.release.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = "";
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -2972,7 +2977,7 @@
 					"$(PROJECT_DIR)/../HyphenateSDK/include",
 				);
 				INFOPLIST_FILE = PeopleCongressSystem/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
@@ -3005,7 +3010,10 @@
 				OTHER_SWIFT_FLAGS = "$(inherited) \"-D\" \"COCOAPODS\"";
 				PRODUCT_BUNDLE_IDENTIFIER = com.npc.dlxgpcsystem;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "PeopleCongressSystem/PeopleCongressSystem-Bridging-Header.h";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
 		};
@@ -3016,6 +3024,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.coolrabbit.PeopleCongressSystemUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 				TEST_TARGET_NAME = PeopleCongressSystem;
 				USES_XCTRUNNER = YES;
 			};
@@ -3028,6 +3037,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.coolrabbit.PeopleCongressSystemUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 				TEST_TARGET_NAME = PeopleCongressSystem;
 				USES_XCTRUNNER = YES;
 			};

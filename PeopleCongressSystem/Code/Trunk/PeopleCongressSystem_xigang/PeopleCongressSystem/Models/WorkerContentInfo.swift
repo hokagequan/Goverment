@@ -9,14 +9,14 @@
 import Foundation
 
 enum HomeElementContentWorker: Int {
-    case ActivityManage = 0
-    case VariableManage
-    case Analyze
-    case ShareSpace
-    case CongressInfo
-    case Notify
-    case Situation
-    case Max
+    case activityManage = 0
+    case variableManage
+    case analyze
+    case shareSpace
+    case congressInfo
+    case notify
+    case situation
+    case max
     
     func title() -> String {
         let titles = ["活动管理", "履职管理", "履职统计", "共享空间", "代表信息", "通知通报", "知情知政", ""]
@@ -44,10 +44,10 @@ class WorderContentInfo: ContentInfo {
     }
     
     override func homeElementCount() -> Int {
-        return HomeElementContentWorker.Max.rawValue
+        return HomeElementContentWorker.max.rawValue
     }
     
-    override func homeElementTitle(index: Int) -> String? {
+    override func homeElementTitle(_ index: Int) -> String? {
         guard let row = HomeElementContentWorker(rawValue: index) else {
             return nil
         }
@@ -55,7 +55,7 @@ class WorderContentInfo: ContentInfo {
         return row.title()
     }
     
-    override func homeElementIcon(index: Int) -> String {
+    override func homeElementIcon(_ index: Int) -> String {
         guard let row = HomeElementContentWorker(rawValue: index) else {
             return ""
         }

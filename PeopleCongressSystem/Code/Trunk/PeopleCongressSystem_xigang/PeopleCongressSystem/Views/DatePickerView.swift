@@ -10,8 +10,8 @@ import UIKit
 
 @objc protocol DatePickerViewDelegate {
     
-    optional func didPickDateCompletion(view: DatePickerView, date: NSDate, dateString: String)
-    optional func willDismiss()
+    @objc optional func didPickDateCompletion(_ view: DatePickerView, date: Date, dateString: String)
+    @objc optional func willDismiss()
 }
 
 class DatePickerView: UIControl {
@@ -22,7 +22,7 @@ class DatePickerView: UIControl {
     weak var delegate: DatePickerViewDelegate?
 
     override func awakeFromNib() {
-        self.addTarget(self, action: #selector(DatePickerView.dismiss), forControlEvents: UIControlEvents.TouchUpInside)
+        self.addTarget(self, action: #selector(DatePickerView.dismiss), for: UIControlEvents.touchUpInside)
     }
     
     func dismiss() {
@@ -32,7 +32,7 @@ class DatePickerView: UIControl {
     }
     
     func show() {
-        guard let window = UIApplication.sharedApplication().keyWindow else {
+        guard let window = UIApplication.shared.keyWindow else {
             return
         }
         
@@ -43,8 +43,8 @@ class DatePickerView: UIControl {
     // MARK: - Class Functions
     
     class func view() -> DatePickerView {
-        let views = NSBundle.mainBundle().loadNibNamed("DatePickerView", owner: self, options: nil)
-        for view in views {
+        let views = Bundle.main.loadNibNamed("DatePickerView", owner: self, options: nil)
+        for view in views! {
             if view is DatePickerView {
                 return view as! DatePickerView
             }
@@ -55,19 +55,19 @@ class DatePickerView: UIControl {
     
     // MARK: - Actions
     
-    @IBAction func clickCompletion(sender: AnyObject) {
+    @IBAction func clickCompletion(_ sender: AnyObject) {
         let date = datePicker.date
         
-        let formatter = NSDateFormatter()
+        let formatter = DateFormatter()
         formatter.dateFormat = "yyyy-MM-dd HH:mm"
-        let dateString = formatter.stringFromDate(date)
+        let dateString = formatter.string(from: date)
         
         delegate?.didPickDateCompletion?(self, date: date, dateString: dateString)
         
         self.dismiss()
     }
     
-    @IBAction func clickCancel(sender: AnyObject) {
+    @IBAction func clickCancel(_ sender: AnyObject) {
         self.dismiss()
     }
     

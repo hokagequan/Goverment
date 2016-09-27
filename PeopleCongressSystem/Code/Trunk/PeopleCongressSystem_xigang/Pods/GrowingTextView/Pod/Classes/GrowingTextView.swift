@@ -10,34 +10,34 @@ import Foundation
 import UIKit
 
 @objc public protocol GrowingTextViewDelegate: UITextViewDelegate {
-    optional func textViewDidChangeHeight(height: CGFloat)
+    @objc optional func textViewDidChangeHeight(_ height: CGFloat)
 }
 
-@objc public class GrowingTextView: UITextView {
+@objc open class GrowingTextView: UITextView {
     
     // Maximum length of text. 0 means no limit.
-    public var maxLength = 0
+    open var maxLength = 0
     
     // Trim white space and newline characters when end editing. Default is true
-    public var trimWhiteSpaceWhenEndEditing = true
+    open var trimWhiteSpaceWhenEndEditing = true
     
     // Maximm height of the textview
-    public var maxHeight = CGFloat(0)
+    open var maxHeight = CGFloat(0)
     
     // Placeholder properties
     // Need to set both placeHolder and placeHolderColor in order to show placeHolder in the textview
-    public var placeHolder: NSString? {
+    open var placeHolder: NSString? {
         didSet { setNeedsDisplay() }
     }
-    public var placeHolderColor: UIColor? {
+    open var placeHolderColor: UIColor? {
         didSet { setNeedsDisplay() }
     }
-    public var placeHolderLeftMargin: CGFloat = 5 {
+    open var placeHolderLeftMargin: CGFloat = 5 {
         didSet { setNeedsDisplay() }
     }
-
-    private weak var heightConstraint: NSLayoutConstraint?
-
+    
+    fileprivate weak var heightConstraint: NSLayoutConstraint?
+    
     // Initialize
     override public init(frame: CGRect, textContainer: NSTextContainer?) {
         super.init(frame: frame, textContainer: textContainer)
@@ -50,27 +50,30 @@ import UIKit
     }
     
     // Listen to UITextView notification to handle trimming, placeholder and maximum length
-    private func commonInit() {
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "textDidChange:", name: UITextViewTextDidChangeNotification, object: self)
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "textDidEndEditing:", name: UITextViewTextDidEndEditingNotification, object: self)
+    fileprivate func commonInit() {
+        
+        self.contentMode = .redraw
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(textDidChange), name: NSNotification.Name.UITextViewTextDidChange, object: self)
+        NotificationCenter.default.addObserver(self, selector: #selector(textDidEndEditing), name: NSNotification.Name.UITextViewTextDidEndEditing, object: self)
     }
     
     // Remove notification observer when deinit
     deinit {
-        NSNotificationCenter.defaultCenter().removeObserver(self)
+        NotificationCenter.default.removeObserver(self)
     }
     
     // Calculate height of textview
-    override public func layoutSubviews() {
+    override open func layoutSubviews() {
         super.layoutSubviews()
-        let size = sizeThatFits(CGSizeMake(bounds.size.width, CGFloat.max))
+        let size = sizeThatFits(CGSize(width:bounds.size.width, height: CGFloat.greatestFiniteMagnitude))
         var height = size.height
         if maxHeight > 0 {
             height = min(size.height, maxHeight)
         }
-    
+        
         if (heightConstraint == nil) {
-            heightConstraint = NSLayoutConstraint(item: self, attribute: .Height, relatedBy: .Equal, toItem: nil, attribute: .NotAnAttribute, multiplier: 1.0, constant: height)
+            heightConstraint = NSLayoutConstraint(item: self, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1.0, constant: height)
             addConstraint(heightConstraint!)
         }
         
@@ -84,18 +87,18 @@ import UIKit
     }
     
     // Show placeholder
-    override public func drawRect(rect: CGRect) {
-        super.drawRect(rect)
+    override open func draw(_ rect: CGRect) {
+        super.draw(rect)
         if text.isEmpty {
             guard let placeHolder = placeHolder else { return }
             guard let placeHolderColor = placeHolderColor else { return }
             let paragraphStyle = NSMutableParagraphStyle()
             paragraphStyle.alignment = textAlignment
             
-            let rect = CGRectMake(textContainerInset.left + placeHolderLeftMargin,
-                textContainerInset.top,
-                frame.size.width - textContainerInset.left - textContainerInset.right,
-                frame.size.height)
+            let rect = CGRect(x: textContainerInset.left + placeHolderLeftMargin,
+                              y: textContainerInset.top,
+                              width:   frame.size.width - textContainerInset.left - textContainerInset.right,
+                              height: frame.size.height)
             
             var attributes = [
                 NSForegroundColorAttributeName: placeHolderColor,
@@ -105,29 +108,34 @@ import UIKit
                 attributes[NSFontAttributeName] = font
             }
             
-            placeHolder.drawInRect(rect, withAttributes: attributes)
+            placeHolder.draw(in: rect, withAttributes: attributes)
         }
     }
     
     // Trim white space and new line characters when end editing.
-    func textDidEndEditing(notification: NSNotification) {
-        if notification.object === self {
-            if trimWhiteSpaceWhenEndEditing {
-                text = text?.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceAndNewlineCharacterSet())
-                setNeedsDisplay()
+    func textDidEndEditing(notification: Notification) {
+        if let notificationObject = notification.object as? GrowingTextView {
+            if notificationObject === self {
+                if trimWhiteSpaceWhenEndEditing {
+                    text = text?.trimmingCharacters(in: .whitespacesAndNewlines)
+                    setNeedsDisplay()
+                }
             }
         }
     }
-
+    
     // Limit the length of text
-    func textDidChange(notification: NSNotification) {
-        if notification.object === self {
-            if maxLength > 0 && text.characters.count > maxLength {
-                let endIndex = text.startIndex.advancedBy(maxLength)
-                text = text.substringToIndex(endIndex)
-                undoManager?.removeAllActions()
+    func textDidChange(notification: Notification) {
+        if let notificationObject = notification.object as? GrowingTextView {
+            if notificationObject === self {
+                if maxLength > 0 && text.characters.count > maxLength {
+                    
+                    let endIndex = text.index(text.startIndex, offsetBy: maxLength)
+                    text = text.substring(to: endIndex)
+                    undoManager?.removeAllActions()
+                }
+                setNeedsDisplay()
             }
-            setNeedsDisplay()
         }
     }
 }

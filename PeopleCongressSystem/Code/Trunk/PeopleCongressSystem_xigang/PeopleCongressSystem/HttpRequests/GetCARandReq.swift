@@ -10,7 +10,7 @@ import UIKit
 
 class GetCARandReq: HttpBaseCAReq {
 
-    func requestSimple(completion: (String?) -> Void) {
+    func requestSimple(_ completion: @escaping (String?) -> Void) {
         self.request("getrand", params: nil) { (response) in
             guard let info = response?.result.value as? Dictionary<String, AnyObject> else {
                 completion(nil)

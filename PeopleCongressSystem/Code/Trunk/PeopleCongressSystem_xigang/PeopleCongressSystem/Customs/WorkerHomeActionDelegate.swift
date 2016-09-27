@@ -12,9 +12,9 @@ import EZLoadingActivity
 
 class WorkerHomeActionDelegate: ActionProtocol {
     
-    func checkIn(code: String, identifier: String, completion: (Bool) -> Void) {
-        let range = code.rangeOfString(":")!
-        let personID = code.substringToIndex(range.startIndex)
+    func checkIn(_ code: String, identifier: String, completion: @escaping (Bool) -> Void) {
+        let range = code.range(of: ":")!
+        let personID = code.substring(to: range.lowerBound)
         let req = CheckInReq()
         req.activityID = identifier
         req.qrCodes = [personID]
@@ -28,11 +28,11 @@ class WorkerHomeActionDelegate: ActionProtocol {
             
             defer {
                 if success == true {
-                    EZLoadingActivity.hide(success: true, animated: false)
+                    EZLoadingActivity.hide(true, animated: false)
                 }
                 else {
                     if errorCode != "-1" {
-                        EZLoadingActivity.hide(success: false, animated: false)
+                        EZLoadingActivity.hide(false, animated: false)
                     }
                     else {
                         ResponseErrorManger.defaultManager().handleError(errorCode, message: nil)
@@ -67,58 +67,58 @@ class WorkerHomeActionDelegate: ActionProtocol {
         }
     }
     
-    func didClickSpecial(viewController: UIViewController) {
-        viewController.performSegueWithIdentifier("CheckInSegue", sender: self)
+    func didClickSpecial(_ viewController: UIViewController) {
+        viewController.performSegue(withIdentifier: "CheckInSegue", sender: self)
     }
     
-    func didClickIndexPath(viewController: UIViewController, indexPath: NSIndexPath) {
-        guard let row = HomeElementContentWorker(rawValue: indexPath.row) else {
+    func didClickIndexPath(_ viewController: UIViewController, indexPath: IndexPath) {
+        guard let row = HomeElementContentWorker(rawValue: (indexPath as NSIndexPath).row) else {
             return
         }
         
         viewController.navigationController?.setNavigationBarHidden(false, animated: true)
         
         switch row {
-        case .ActivityManage:
-            viewController.performSegueWithIdentifier("PerformanceRecordsSegue", sender: self)
+        case .activityManage:
+            viewController.performSegue(withIdentifier: "PerformanceRecordsSegue", sender: self)
             break
-        case .VariableManage:
+        case .variableManage:
             let storyboard = UIStoryboard(name: "Main", bundle: nil)
-            let vc = storyboard.instantiateViewControllerWithIdentifier("CommonHTMLViewController") as! CommonHTMLViewController
+            let vc = storyboard.instantiateViewController(withIdentifier: "CommonHTMLViewController") as! CommonHTMLViewController
             vc.URL = PCSDataManager.defaultManager().htmlURL(pageHTMLVariableManagerWorker)
             vc.naviTitle = "履职管理"
             viewController.navigationController?.pushViewController(vc, animated: true)
             break
-        case .Analyze:
+        case .analyze:
             let storyboard = UIStoryboard(name: "Main", bundle: nil)
-            let vc = storyboard.instantiateViewControllerWithIdentifier("CommonHTMLViewController") as! CommonHTMLViewController
+            let vc = storyboard.instantiateViewController(withIdentifier: "CommonHTMLViewController") as! CommonHTMLViewController
             vc.URL = PCSDataManager.defaultManager().htmlURL(pageHTMLVariableAnalyzeWorker)
             vc.naviTitle = "履职统计"
             viewController.navigationController?.pushViewController(vc, animated: true)
             break
-        case .ShareSpace:
+        case .shareSpace:
             let storyboard = UIStoryboard(name: "Main", bundle: nil)
-            let vc = storyboard.instantiateViewControllerWithIdentifier("CommonHTMLViewController") as! CommonHTMLViewController
+            let vc = storyboard.instantiateViewController(withIdentifier: "CommonHTMLViewController") as! CommonHTMLViewController
             vc.URL = PCSDataManager.defaultManager().htmlURL(pageHTMLShareSpaceWorker)
             vc.naviTitle = "共享空间"
             viewController.navigationController?.pushViewController(vc, animated: true)
             break
-        case .CongressInfo:
+        case .congressInfo:
             let storyboard = UIStoryboard(name: "Main", bundle: nil)
-            let vc = storyboard.instantiateViewControllerWithIdentifier("CommonHTMLViewController") as! CommonHTMLViewController
+            let vc = storyboard.instantiateViewController(withIdentifier: "CommonHTMLViewController") as! CommonHTMLViewController
             vc.URL = PCSDataManager.defaultManager().htmlURL(pageHTMLCongressInfoWorker)
             vc.naviTitle = "代表信息"
             viewController.navigationController?.pushViewController(vc, animated: true)
             break
-        case .Notify:
+        case .notify:
             let storyboard = UIStoryboard(name: "Main", bundle: nil)
-            let vc = storyboard.instantiateViewControllerWithIdentifier("CommonHTMLViewController") as! CommonHTMLViewController
+            let vc = storyboard.instantiateViewController(withIdentifier: "CommonHTMLViewController") as! CommonHTMLViewController
             vc.URL = PCSDataManager.defaultManager().htmlURL(pageHTMLNotifyWorker)
             vc.naviTitle = "通知通报"
             viewController.navigationController?.pushViewController(vc, animated: true)
             break
-        case .Situation:
-            viewController.performSegueWithIdentifier("SituationSegue", sender: pageHTMLSituationWorker)
+        case .situation:
+            viewController.performSegue(withIdentifier: "SituationSegue", sender: pageHTMLSituationWorker)
             break
         default:
             break

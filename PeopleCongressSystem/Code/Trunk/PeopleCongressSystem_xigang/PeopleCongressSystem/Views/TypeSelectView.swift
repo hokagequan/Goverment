@@ -11,8 +11,8 @@ import EZLoadingActivity
 
 @objc protocol TypeSelectViewDelegate {
 
-    optional
-    func didSelectIndex(view: TypeSelectView, indexPath: NSIndexPath)
+    @objc optional
+    func didSelectIndex(_ view: TypeSelectView, indexPath: IndexPath)
     
 }
 
@@ -26,12 +26,12 @@ class TypeSelectView: UIControl, UITableViewDataSource, UITableViewDelegate {
     weak var delegate: TypeSelectViewDelegate?
 
     override func awakeFromNib() {
-        self.addTarget(self, action: #selector(self.dismiss), forControlEvents: UIControlEvents.TouchUpInside)
+        self.addTarget(self, action: #selector(self.dismiss), for: UIControlEvents.touchUpInside)
         
-        typeTableView.registerClass(UITableViewCell.self, forCellReuseIdentifier: "Cell")
-        typeTableView.layoutMargins = UIEdgeInsetsZero
+        typeTableView.register(UITableViewCell.self, forCellReuseIdentifier: "Cell")
+        typeTableView.layoutMargins = UIEdgeInsets.zero
         
-        CustomObjectUtil.customObjectsLayout([containerView], backgroundColor: UIColor.whiteColor(), borderWidth: 0.0, borderColor: nil, corner: 8.0)
+        CustomObjectUtil.customObjectsLayout([containerView], backgroundColor: UIColor.white, borderWidth: 0.0, borderColor: nil, corner: 8.0)
     }
     
     func dismiss() {
@@ -39,7 +39,7 @@ class TypeSelectView: UIControl, UITableViewDataSource, UITableViewDelegate {
     }
     
     func show() {
-        guard let window = UIApplication.sharedApplication().keyWindow else {
+        guard let window = UIApplication.shared.keyWindow else {
             return
         }
         
@@ -51,8 +51,8 @@ class TypeSelectView: UIControl, UITableViewDataSource, UITableViewDelegate {
     // MARK: - Class Functions
     
     class func view() -> TypeSelectView {
-        let views = NSBundle.mainBundle().loadNibNamed("TypeSelectView", owner: self, options: nil)
-        for view in views {
+        let views = Bundle.main.loadNibNamed("TypeSelectView", owner: self, options: nil)
+        for view in views! {
             if view is TypeSelectView {
                 return view as! TypeSelectView
             }
@@ -63,43 +63,43 @@ class TypeSelectView: UIControl, UITableViewDataSource, UITableViewDelegate {
     
     // MARK: - UITableView
     
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return dataSource.count
     }
     
-    func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let view = UIView()
-        view.backgroundColor = UIColor.clearColor()
+        view.backgroundColor = UIColor.clear
         
         return view
     }
     
-    func tableView(tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
+    func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
         let view = UIView()
-        view.backgroundColor = UIColor.clearColor()
+        view.backgroundColor = UIColor.clear
         
         return view
     }
     
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath)
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
         
-        let string = dataSource[indexPath.row]
+        let string = dataSource[(indexPath as NSIndexPath).row]
         
         cell.textLabel?.text = string
         cell.textLabel?.textColor = GlobalUtil.colorRGBA(38, g: 38, b: 38, a: 1)
-        cell.textLabel?.font = UIFont.systemFontOfSize(17.0)
-        cell.textLabel?.textAlignment = NSTextAlignment.Center
+        cell.textLabel?.font = UIFont.systemFont(ofSize: 17.0)
+        cell.textLabel?.textAlignment = NSTextAlignment.center
         
         return cell
     }
     
-    func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
-        cell.separatorInset = UIEdgeInsetsZero
-        cell.layoutMargins = UIEdgeInsetsZero
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        cell.separatorInset = UIEdgeInsets.zero
+        cell.layoutMargins = UIEdgeInsets.zero
     }
     
-    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         delegate?.didSelectIndex?(self, indexPath: indexPath)
         self.dismiss()
     }

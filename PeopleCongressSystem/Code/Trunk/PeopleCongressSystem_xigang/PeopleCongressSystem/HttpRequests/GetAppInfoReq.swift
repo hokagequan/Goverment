@@ -15,8 +15,8 @@ class GetAppInfoReq: HttpBaseReq {
         super.init()
     }
     
-    func requestSimpleCompletion(completion: ((Bool) -> Void)?) {
-        let requestURL = NSURLRequest(URL: NSURL(string: serverURL1 + "appjiekout/jiekou/npc-android-version.xml")!)
+    func requestSimpleCompletion(_ completion: ((Bool) -> Void)?) {
+        let requestURL = URLRequest(url: URL(string: serverURL1 + "appjiekout/jiekou/npc-android-version.xml")!)
         let request = Alamofire.request(requestURL)
         request.responseString(completionHandler: { (response) in
             guard let value = response.result.value else {
@@ -25,13 +25,16 @@ class GetAppInfoReq: HttpBaseReq {
                 return
             }
             
-            guard let range = value.rangeOfString("<needca>") else {
+            guard let range = value.range(of: "<needca>") else {
                 completion?(false)
                 
                 return
             }
             
-            let relValue = value.substringWithRange(Range(range.endIndex..<range.endIndex.advancedBy(1)))
+            let lo = value.index(range.upperBound, offsetBy: 0)
+            let hi = value.index(after: range.upperBound)
+            let subRange = lo..<hi
+            let relValue = value.substring(with: subRange)
             
             completion?(relValue == "1")
         })

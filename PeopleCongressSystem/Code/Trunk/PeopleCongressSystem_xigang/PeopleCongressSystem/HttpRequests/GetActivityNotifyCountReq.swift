@@ -16,12 +16,12 @@ class GetActivityNotifyCountReq: HttpBaseReq {
         super.init()
     }
     
-    func requestSimpleCompletion(completion: SimpleCompletion?) {
+    func requestSimpleCompletion(_ completion: SimpleCompletion?) {
         var params = [String: AnyObject]()
-        params["rddb_guid"] = PCSDataManager.defaultManager().accountManager.user!.congressID
-        params["CheckTicket"] = PCSDataManager.defaultManager().accountManager.user!.token
-        params["FieldID"] = PCSDataManager.defaultManager().accountManager.user!.field
-        params["thecharset"] = "gb2312"
+        params["rddb_guid"] = PCSDataManager.defaultManager().accountManager.user!.congressID as AnyObject?
+        params["CheckTicket"] = PCSDataManager.defaultManager().accountManager.user!.token as AnyObject?
+        params["FieldID"] = PCSDataManager.defaultManager().accountManager.user!.field as AnyObject?
+        params["thecharset"] = "gb2312" as AnyObject?
         
         self.request("get_HDTXSL", nameSpace: "rendadaibiao", params: params) { (response) -> Void in
             let result = response?.result
@@ -48,7 +48,7 @@ class GetActivityNotifyCountReq: HttpBaseReq {
                 
                 let countRsp = HttpBaseReq.parseResponse(value)
                 
-                if Int(countRsp as! String) < 0 {
+                if Int(countRsp as! String)! < 0 {
                     errorCode = countRsp as? String
                 }
                 else {

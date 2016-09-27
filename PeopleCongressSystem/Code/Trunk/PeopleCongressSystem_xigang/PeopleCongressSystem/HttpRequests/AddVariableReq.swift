@@ -16,14 +16,14 @@ class AddVariableReq: HttpBaseReq {
         super.init()
     }
     
-    override func requestCompletion(completion: HttpReqCompletion?) {
-        var params = [String: AnyObject]()
+    override func requestCompletion(_ completion: HttpReqCompletion?) {
+        var params = [String: Any]()
         params["lvzhi_guid"] = variable.token
         params["Title"] = variable.title
         params["Type"] = variable.type
         params["content"] = variable.content
         params["remark"] = variable.remark
-        params["IsPost"] = variable.submitted ? "1" : "0"
+        params["IsPost"] = (variable.submitted ? "1" : "0")
         params["lvzhi_cyr"] = variable.persons
         params["lvzhi_Time"] = variable.createTime
         params["AddUser"] = PCSDataManager.defaultManager().accountManager.user!.congressID

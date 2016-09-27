@@ -16,13 +16,13 @@ class DeletePhotoReq: HttpBaseReq {
         super.init()
     }
     
-    func requestSimpleCompletion(completion: SimpleCompletion?) {
+    func requestSimpleCompletion(_ completion: SimpleCompletion?) {
         var params = [String: AnyObject]()
-        params["imgid"] = photoID
+        params["imgid"] = photoID as AnyObject?
 //        params["AddUser"] = PCSDataManager.defaultManager().accountManager.user!.identifier
-        params["CheckTicket"] = PCSDataManager.defaultManager().accountManager.user!.token
-        params["FieldID"] = PCSDataManager.defaultManager().accountManager.user!.field
-        params["thecharset"] = "gb2312"
+        params["CheckTicket"] = PCSDataManager.defaultManager().accountManager.user!.token as AnyObject?
+        params["FieldID"] = PCSDataManager.defaultManager().accountManager.user!.field as AnyObject?
+        params["thecharset"] = "gb2312" as AnyObject?
         
         self.request("LvZhiImgDel", nameSpace: "rendadaibiao", params: params) { (response) -> Void in
             let result = response?.result

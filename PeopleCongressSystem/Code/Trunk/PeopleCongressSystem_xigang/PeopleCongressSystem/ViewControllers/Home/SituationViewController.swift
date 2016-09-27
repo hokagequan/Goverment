@@ -11,13 +11,13 @@ import UIKit
 class SituationViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
     
     enum Items: Int {
-        case News = 0
-        case CongressMeeting
-        case Notice
-        case StandingMeeting
-        case CongressInfo
-        case Others
-        case Max
+        case news = 0
+        case congressMeeting
+        case notice
+        case standingMeeting
+        case congressInfo
+        case others
+        case max
         
         func title() -> String {
             let titles = ["人大要闻", "人民代表大会", "常委会公告", "常委会会议", "人大信息", "其它", ""]
@@ -42,7 +42,7 @@ class SituationViewController: UIViewController, UICollectionViewDataSource, UIC
         // Do any additional setup after loading the view.
         self.navigationItem.hidesBackButton = true
         PCSCustomUtil.customNavigationController(self)
-        collectionView.registerNib(UINib(nibName: "NormalImageCell", bundle: nil), forCellWithReuseIdentifier: "NormalImageCell")
+        collectionView.register(UINib(nibName: "NormalImageCell", bundle: nil), forCellWithReuseIdentifier: "NormalImageCell")
     }
 
     override func didReceiveMemoryWarning() {
@@ -52,54 +52,54 @@ class SituationViewController: UIViewController, UICollectionViewDataSource, UIC
     
     // MARK: - UICollectionView
     
-    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAtIndex section: Int) -> CGFloat {
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
         return (self.view.bounds.size.width - 3 * 70.0 * GlobalUtil.rateForWidth()) / 3.0
     }
     
-    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAtIndex section: Int) -> UIEdgeInsets {
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
         let distance = (self.view.bounds.size.width - 3 * 70.0 * GlobalUtil.rateForWidth()) / 6.0
         return UIEdgeInsetsMake(20, distance, 20, distance)
     }
     
-    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
-        return CGSizeMake(70.0 * GlobalUtil.rateForWidth(), 70 * GlobalUtil.rateForWidth() + 30)
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return CGSize(width: 70.0 * GlobalUtil.rateForWidth(), height: 70 * GlobalUtil.rateForWidth() + 30)
     }
     
-    func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return Items.Max.rawValue
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return Items.max.rawValue
     }
     
-    func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCellWithReuseIdentifier("NormalImageCell", forIndexPath: indexPath) as! NormalImageCell
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "NormalImageCell", for: indexPath) as! NormalImageCell
         
-        let item = Items(rawValue: indexPath.row)!
+        let item = Items(rawValue: (indexPath as NSIndexPath).row)!
         cell.titleLabel.text = item.title()
         cell.iconImageView.image = UIImage(named: item.icon())
         
         return cell
     }
     
-    func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
-        let item = Items(rawValue: indexPath.row)!
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let item = Items(rawValue: (indexPath as NSIndexPath).row)!
         
         var page = ""
         switch item {
-        case .News:
+        case .news:
             page = "newstype=010401"
             break
-        case .CongressMeeting:
+        case .congressMeeting:
             page = "newstype=010402"
             break
-        case .Notice:
+        case .notice:
             page = "newstype=010404"
             break
-        case .StandingMeeting:
+        case .standingMeeting:
             page = "newstype=010403"
             break
-        case .CongressInfo:
+        case .congressInfo:
             page = "newstype=010405"
             break
-        case .Others:
+        case .others:
             page = "newstype=010406"
             break
         default:
@@ -107,12 +107,12 @@ class SituationViewController: UIViewController, UICollectionViewDataSource, UIC
         }
         
         let headerPage = PCSDataManager.defaultManager().htmlURL(header)
-        let range = headerPage.rangeOfString("?")
-        let partOne = headerPage.substringToIndex(range!.endIndex)
-        let partTwo = headerPage.substringFromIndex(range!.endIndex)
+        let range = headerPage.range(of: "?")
+        let partOne = headerPage.substring(to: range!.upperBound)
+        let partTwo = headerPage.substring(from: range!.upperBound)
         let totalPage = "\(partOne)\(page)&\(partTwo)"
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let vc = storyboard.instantiateViewControllerWithIdentifier("CommonHTMLViewController") as! CommonHTMLViewController
+        let vc = storyboard.instantiateViewController(withIdentifier: "CommonHTMLViewController") as! CommonHTMLViewController
         vc.URL = totalPage
         vc.naviTitle = item.title()
         self.navigationController?.pushViewController(vc, animated: true)

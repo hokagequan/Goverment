@@ -10,11 +10,11 @@ import UIKit
 
 @objc protocol NormalImageTableCellDelegate {
 
-    optional
-    func didEditing(cell: NormalImageTableCell)
-    func didEndEditing(cell: NormalImageTableCell)
-    func didEditingTime(cell: NormalImageTableCell, datePicker: DatePickerView)
-    func didEndEditingTime(cell: NormalImageTableCell)
+    @objc optional
+    func didEditing(_ cell: NormalImageTableCell)
+    func didEndEditing(_ cell: NormalImageTableCell)
+    func didEditingTime(_ cell: NormalImageTableCell, datePicker: DatePickerView)
+    func didEndEditingTime(_ cell: NormalImageTableCell)
     
 }
 
@@ -40,7 +40,7 @@ class NormalImageTableCell: UITableViewCell, UITextFieldDelegate, DatePickerView
                 return
             }
             
-            let bounds = headerText?.boundingRectWithSize(CGSizeMake(CGFloat.max, headerLabel.bounds.size.height), options: NSStringDrawingOptions.UsesFontLeading, attributes: [NSFontAttributeName: headerLabel.font], context: nil)
+            let bounds = headerText?.boundingRect(with: CGSize(width: CGFloat.greatestFiniteMagnitude, height: headerLabel.bounds.size.height), options: NSStringDrawingOptions.usesFontLeading, attributes: [NSFontAttributeName: headerLabel.font], context: nil)
             headerWidthLC.constant = bounds!.size.width + 8
             
             self.setNeedsLayout()
@@ -49,10 +49,10 @@ class NormalImageTableCell: UITableViewCell, UITextFieldDelegate, DatePickerView
     
     var editable: Bool {
         get {
-            return titleTextField.enabled
+            return titleTextField.isEnabled
         }
         set {
-            titleTextField.enabled = newValue
+            titleTextField.isEnabled = newValue
         }
     }
     
@@ -61,7 +61,7 @@ class NormalImageTableCell: UITableViewCell, UITextFieldDelegate, DatePickerView
         // Initialization code
     }
 
-    override func setSelected(selected: Bool, animated: Bool) {
+    override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
 
         // Configure the view for the selected state
@@ -69,7 +69,7 @@ class NormalImageTableCell: UITableViewCell, UITextFieldDelegate, DatePickerView
     
     // MARK: - DatePicker
     
-    func didPickDateCompletion(view: DatePickerView, date: NSDate, dateString: String) {
+    func didPickDateCompletion(_ view: DatePickerView, date: Date, dateString: String) {
         titleTextField.text = dateString
     }
     
@@ -79,7 +79,7 @@ class NormalImageTableCell: UITableViewCell, UITextFieldDelegate, DatePickerView
     
     // MARK: - UITextField
     
-    func textFieldShouldBeginEditing(textField: UITextField) -> Bool {
+    func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
         if timeEditable {
             let datePickerView = DatePickerView.view()
             datePickerView.delegate = self
@@ -91,15 +91,15 @@ class NormalImageTableCell: UITableViewCell, UITextFieldDelegate, DatePickerView
         return !timeEditable
     }
     
-    func textFieldDidBeginEditing(textField: UITextField) {
+    func textFieldDidBeginEditing(_ textField: UITextField) {
         delegate?.didEditing?(self)
     }
     
-    func textFieldDidEndEditing(textField: UITextField) {
+    func textFieldDidEndEditing(_ textField: UITextField) {
         delegate?.didEndEditing(self)
     }
     
-    func textFieldShouldReturn(textField: UITextField) -> Bool {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
         
         return true

@@ -16,7 +16,7 @@ class GetSMSReq: HttpBaseReq {
         super.init()
     }
     
-    func requestSimpleCompletion(completion: (String) -> Void) {
+    func requestSimpleCompletion(_ completion: @escaping (String) -> Void) {
         var params = [String: String]()
         params["phoneID"] = mobile
         params["theAPPid"] = "dalianrenda0001"

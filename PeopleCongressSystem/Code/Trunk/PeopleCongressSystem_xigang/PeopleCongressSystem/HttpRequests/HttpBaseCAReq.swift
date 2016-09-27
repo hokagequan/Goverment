@@ -12,7 +12,7 @@ import Alamofire
 class HttpBaseCAReq {
     let serverCA = "http://218.25.86.214:2010/ssoworker"
     
-    func request(method: String, params: Dictionary<String, String>?, completion: HttpReqJSONCompletion) {
+    func request(_ method: String, params: Dictionary<String, String>?, completion: @escaping HttpReqJSONCompletion) {
         var expandParams = "cmd=\(method)"
         if params != nil {
             for key in params!.keys {
@@ -20,10 +20,10 @@ class HttpBaseCAReq {
             }
         }
         
-        let request = NSMutableURLRequest(URL: NSURL(string: serverCA)!)
-        request.HTTPMethod = "POST"
-        request.HTTPBody = expandParams.dataUsingEncoding(NSUTF8StringEncoding)
-        Alamofire.request(request)
+        let request = NSMutableURLRequest(url: URL(string: serverCA)!)
+        request.httpMethod = "POST"
+        request.httpBody = expandParams.data(using: String.Encoding.utf8)
+        Alamofire.request(request as! URLRequestConvertible)
                 .responseJSON(completionHandler: completion)
     }
     

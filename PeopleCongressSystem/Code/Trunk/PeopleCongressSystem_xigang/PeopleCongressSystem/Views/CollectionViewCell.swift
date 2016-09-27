@@ -10,11 +10,11 @@ import UIKit
 
 @objc protocol CollectionViewCellDelegate {
     
-    optional
-    func didClickAdd(cell: CollectionViewCell)
-    func didClickImage(cell: CollectionViewCell, image: UIImage)
-    func didSelectIndex(cell: CollectionViewCell, index: Int)
-    func didLongPressIndex(cell: CollectionViewCell, index: Int)
+    @objc optional
+    func didClickAdd(_ cell: CollectionViewCell)
+    func didClickImage(_ cell: CollectionViewCell, image: UIImage)
+    func didSelectIndex(_ cell: CollectionViewCell, index: Int)
+    func didLongPressIndex(_ cell: CollectionViewCell, index: Int)
     
 }
 
@@ -36,13 +36,13 @@ class CollectionViewCell: UITableViewCell, UICollectionViewDataSource, UICollect
         collectionView.addGestureRecognizer(longPress)
     }
 
-    override func setSelected(selected: Bool, animated: Bool) {
+    override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
 
         // Configure the view for the selected state
     }
     
-    func addImages(imageNames: Array<String>) {
+    func addImages(_ imageNames: Array<String>) {
         if imageNames.count == 0 {
             return
         }
@@ -50,81 +50,81 @@ class CollectionViewCell: UITableViewCell, UICollectionViewDataSource, UICollect
         let range = NSMakeRange(images.count, imageNames.count)
         images += imageNames
         
-        let index = NSIndexSet(indexesInRange: range)
-        var indexPaths = [NSIndexPath]()
+        let index = IndexSet(integersIn: range.toRange() ?? 0..<0)
+        var indexPaths = [IndexPath]()
         
-        index.enumerateIndexesUsingBlock { (index, stop) -> Void in
-            let indexPath = NSIndexPath(forRow: index + 1, inSection: 0)
+        for theIndex in index {
+            let indexPath = IndexPath(row: theIndex + 1, section: 0)
             indexPaths.append(indexPath)
         }
         
-        collectionView.insertItemsAtIndexPaths(indexPaths)
+        collectionView.insertItems(at: indexPaths)
     }
     
-    func deleteCollectionCell(index: Int) {
+    func deleteCollectionCell(_ index: Int) {
         if index >= images.count {
             return
         }
         
-        let indexPath = NSIndexPath(forRow: index + 1, inSection: 0)
-        images.removeAtIndex(index)
+        let indexPath = IndexPath(row: index + 1, section: 0)
+        images.remove(at: index)
         
-        collectionView.deleteItemsAtIndexPaths([indexPath])
+        collectionView.deleteItems(at: [indexPath])
     }
     
-    func loadImages(sourceImages: Array<String>) {
+    func loadImages(_ sourceImages: Array<String>) {
         images = sourceImages
         collectionView.reloadData()
     }
     
-    func handleLongPress(gesture: UILongPressGestureRecognizer) {
-        if gesture.state != UIGestureRecognizerState.Began {
+    func handleLongPress(_ gesture: UILongPressGestureRecognizer) {
+        if gesture.state != UIGestureRecognizerState.began {
             return
         }
         
-        let point = gesture.locationInView(collectionView)
-        guard let indexPath = collectionView.indexPathForItemAtPoint(point) else {
+        let point = gesture.location(in: collectionView)
+        guard let indexPath = collectionView.indexPathForItem(at: point) else {
             return
         }
         
-        if indexPath.row == 0 {
+        if (indexPath as NSIndexPath).row == 0 {
             return
         }
         
-        delegate?.didLongPressIndex(self, index: indexPath.row - 1)
+        delegate?.didLongPressIndex(self, index: (indexPath as NSIndexPath).row - 1)
     }
     
     // MARK: - UICollectionView
     
-    func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return images.count + 1
     }
     
-    func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCellWithReuseIdentifier("SimpleImageCell", forIndexPath: indexPath) as! SimpleImageCell
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "SimpleImageCell", for: indexPath) as! SimpleImageCell
         
-        if indexPath.row == 0 {
+        if (indexPath as NSIndexPath).row == 0 {
             cell.iconImageView.image = UIImage(named: "add_white")
         }
         else {
-            let photoName = images[indexPath.row - 1]
+            let photoName = images[(indexPath as NSIndexPath).row - 1]
             let stringURL = "\(imageDownloadURL)\(photoName)"
-            cell.iconImageView.loadImageURL(stringURL, name: photoName, placeholder: UIImageView.pathForTempImage().stringByAppendingString("/\(photoName)"))
+            cell.iconImageView.loadImageURL(stringURL, name: photoName, placeholder: UIImageView.pathForTempImage() + "/\(photoName)")
         }
         
         return cell
     }
     
-    func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
-        if indexPath.row == 0 {
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        if (indexPath as NSIndexPath).row == 0 {
             delegate?.didClickAdd?(self)
             
             return
         }
         
-        delegate?.didSelectIndex(self, index: indexPath.row - 1)
+        delegate?.didSelectIndex(self, index: (indexPath as NSIndexPath).row - 1)
         
-        let cell = collectionView.cellForItemAtIndexPath(indexPath) as! SimpleImageCell
+        let cell = collectionView.cellForItem(at: indexPath) as! SimpleImageCell
         
         guard let image = cell.iconImageView.image else {
             return

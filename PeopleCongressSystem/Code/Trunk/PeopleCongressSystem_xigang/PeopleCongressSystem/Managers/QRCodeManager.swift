@@ -14,23 +14,23 @@ enum QRCodeType: String {
 
 class QRCodeManager {
     
-    func handleCode(code: String, personID: String, completion: (Bool, PCSError?) -> Void) {
+    func handleCode(_ code: String, personID: String, completion: @escaping (Bool, PCSError?) -> Void) {
         if code == "Non" {
-            completion(false, PCSError.QRCodeError("未识别的二维码"))
+            completion(false, PCSError.qrCodeError("未识别的二维码"))
             
             return
         }
         
-        let array = code.componentsSeparatedByString(":")
+        let array = code.components(separatedBy: ":")
         
         if array.count != 2 {
-            completion(false, PCSError.QRCodeError("未识别的二维码"))
+            completion(false, PCSError.qrCodeError("未识别的二维码"))
             
             return
         }
         
         guard let qrCodeType = QRCodeType(rawValue: array.last!) else {
-            completion(false, PCSError.QRCodeError("未识别的二维码"))
+            completion(false, PCSError.qrCodeError("未识别的二维码"))
             
             return
         }
@@ -46,7 +46,7 @@ class QRCodeManager {
     
     // Private
     
-    private func checkInActivity(activityID: String, personID: String, completion: (Bool, PCSError?) -> Void) {
+    fileprivate func checkInActivity(_ activityID: String, personID: String, completion: @escaping (Bool, PCSError?) -> Void) {
         let req = CheckInReq()
         req.activityID = activityID
         req.qrCodes = [personID]
@@ -60,7 +60,7 @@ class QRCodeManager {
                 
                 if success == false {
                     if errorCode != "-1" {
-                        error = PCSError.QRCodeError("签到失败")
+                        error = PCSError.qrCodeError("签到失败")
                     }
                     else {
                         ResponseErrorManger.defaultManager().handleError(errorCode, message: nil)

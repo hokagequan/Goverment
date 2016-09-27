@@ -23,7 +23,7 @@ class GroupViewController: UIViewController, UITableViewDataSource, UITableViewD
         self.navigationItem.hidesBackButton = true
         PCSCustomUtil.customNavigationController(self)
         
-        groupTableView.layoutMargins = UIEdgeInsetsZero
+        groupTableView.layoutMargins = UIEdgeInsets.zero
         
         EZLoadingActivity.show("", disableUI: true)
         PCSDataManager.defaultManager().getGroup { (info, errorCode) -> Void in
@@ -39,7 +39,7 @@ class GroupViewController: UIViewController, UITableViewDataSource, UITableViewD
         }
     }
     
-    override func viewDidAppear(animated: Bool) {
+    override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
     }
 
@@ -50,51 +50,51 @@ class GroupViewController: UIViewController, UITableViewDataSource, UITableViewD
     
     // MARK: - UITableView
     
-    func tableView(tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
+    func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
         let view = UIView()
-        view.backgroundColor = UIColor.clearColor()
+        view.backgroundColor = UIColor.clear
         
         return view
     }
     
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return groups.count
     }
     
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath)
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
         
         cell.imageView?.image = UIImage(named: "star")
-        cell.accessoryType = UITableViewCellAccessoryType.DisclosureIndicator
+        cell.accessoryType = UITableViewCellAccessoryType.disclosureIndicator
         cell.textLabel?.textColor = GlobalUtil.colorRGBA(38, g: 38, b: 38, a: 1)
-        cell.textLabel?.font = UIFont.systemFontOfSize(15.0)
+        cell.textLabel?.font = UIFont.systemFont(ofSize: 15.0)
         
-        let group = groups[indexPath.row]
+        let group = groups[(indexPath as NSIndexPath).row]
         cell.textLabel?.text = group.title! + "（\(group.personCount)）"
         
         return cell
     }
     
-    func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
-        cell.separatorInset = UIEdgeInsetsZero
-        cell.layoutMargins = UIEdgeInsetsZero
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        cell.separatorInset = UIEdgeInsets.zero
+        cell.layoutMargins = UIEdgeInsets.zero
     }
     
-    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        tableView.deselectRowAtIndexPath(indexPath, animated: true)
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
         
-        let group = groups[indexPath.row]
-        self.performSegueWithIdentifier("PersonListSegue", sender: group)
+        let group = groups[(indexPath as NSIndexPath).row]
+        self.performSegue(withIdentifier: "PersonListSegue", sender: group)
     }
 
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
         if segue.identifier == "PersonListSegue" {
-            let vc = segue.destinationViewController as! PersonListViewController
+            let vc = segue.destination as! PersonListViewController
             vc.activity = activity
             vc.group = sender as? Group
             vc.backTitle = "完成"

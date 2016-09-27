@@ -29,7 +29,7 @@ class Variable: NSObject, NSCopying {
     
     // MARK: - NSCopying
     
-    func copyWithZone(zone: NSZone) -> AnyObject {
+    func copy(with zone: NSZone?) -> Any {
         let variable = Variable()
         variable.identifier = self.identifier
         variable.token = self.token

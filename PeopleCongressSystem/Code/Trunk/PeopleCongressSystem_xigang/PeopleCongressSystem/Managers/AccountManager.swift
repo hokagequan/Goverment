@@ -29,12 +29,12 @@ class AccountManager: NSObject {
     
     func getDefaultUser() {
         let context = CoreDataManager.defalutManager().managedObjectContext
-        let fetchReq = NSFetchRequest(entityName: "UserEntity")
-        fetchReq.predicate = NSPredicate(format: "isDefault == %@", true)
+        let fetchReq: NSFetchRequest<UserEntity> = NSFetchRequest(entityName: "UserEntity")
+        fetchReq.predicate = NSPredicate(format: "isDefault == %@", NSNumber(value: true))
         
         do {
-            let fetchObjects = try context.executeFetchRequest(fetchReq)
-            user = fetchObjects.first as? UserEntity
+            let fetchObjects = try context.fetch(fetchReq)
+            user = fetchObjects.first
         }
         catch {
             user = nil
@@ -42,16 +42,14 @@ class AccountManager: NSObject {
     }
     
     func loadCA() -> String {
-        let paths = NSSearchPathForDirectoriesInDomains(NSSearchPathDirectory.DocumentDirectory, NSSearchPathDomainMask.UserDomainMask, true)
+        let paths = NSSearchPathForDirectoriesInDomains(FileManager.SearchPathDirectory.documentDirectory, FileManager.SearchPathDomainMask.userDomainMask, true)
         
-        guard let path = paths.first?.stringByAppendingString("/lnca.db") else {
-            return ""
-        }
+        let path = (paths.first)! + "/lnca.db"
         
-        if NSFileManager.defaultManager().fileExistsAtPath(path) == false {
-            let dbPath = NSBundle.mainBundle().pathForResource("lnca", ofType: "db")!
+        if FileManager.default.fileExists(atPath: path) == false {
+            let dbPath = Bundle.main.path(forResource: "lnca", ofType: "db")!
             do {
-                try NSFileManager.defaultManager().copyItemAtPath(dbPath, toPath: path)
+                try FileManager.default.copyItem(atPath: dbPath, toPath: path)
             }
             catch {}
         }
@@ -61,7 +59,7 @@ class AccountManager: NSObject {
     
     // MARK: - Server
     
-    func changePassword(theOld: String, theNew: String, completion: SimpleCompletion?) {
+    func changePassword(_ theOld: String, theNew: String, completion: SimpleCompletion?) {
         let req = ChangePasswordReq()
         req.theNew = theNew
         req.theOld = theOld
@@ -95,11 +93,11 @@ class AccountManager: NSObject {
                     success = true
                     
                     let context = CoreDataManager.defalutManager().managedObjectContext
-                    let fetchReq = NSFetchRequest(entityName: "UserEntity")
+                    let fetchReq: NSFetchRequest<UserEntity> = NSFetchRequest(entityName: "UserEntity")
                     fetchReq.predicate = NSPredicate(format: "account == %@", self.user!.account!)
                     
                     do {
-                        let users = try context.executeFetchRequest(fetchReq) as! Array<UserEntity>
+                        let users = try context.fetch(fetchReq)
                         let storeUser = users.first
                         
                         if storeUser == nil {
@@ -125,7 +123,7 @@ class AccountManager: NSObject {
         }
     }
     
-    func getInfo(completion: SimpleCompletion?) {
+    func getInfo(_ completion: SimpleCompletion?) {
         let req = GetCongressInfoReq()
         req.requestCompletion { (response) -> Void in
             let result = response?.result
@@ -191,13 +189,13 @@ class AccountManager: NSObject {
         }
     }
     
-    func signIn(account: String, password: String, completion: SimpleCompletion?) {
-        let semaphore = dispatch_semaphore_create(0)
-        let queue = dispatch_queue_create("PCSSignInQueue", nil)
+    func signIn(_ account: String, password: String, completion: SimpleCompletion?) {
+        let semaphore = DispatchSemaphore(value: 0)
+        let queue = DispatchQueue(label: "PCSSignInQueue", attributes: [])
         var error = false
         let errorCode: String? = nil
         
-        dispatch_async(queue) {
+        queue.async {
             // 登录
             var isUseCA = false
             
@@ -212,35 +210,35 @@ class AccountManager: NSObject {
             req.requestCompletion { (response) -> Void in
                 let result = response?.result
                 if result?.isFailure == true {
-                    dispatch_semaphore_signal(semaphore)
+                    semaphore.signal()
                     
                     return
                 }
                 
                 guard let _ = result?.value else {
-                    dispatch_semaphore_signal(semaphore)
+                    semaphore.signal()
                     
                     return
                 }
                 
-                guard let info = HttpBaseReq.parseResponse(result?.value) else {
-                    dispatch_semaphore_signal(semaphore)
+                guard let info = HttpBaseReq.parseResponse(result?.value) as? [String: Any] else {
+                    semaphore.signal()
                     
                     return
                 }
                 
                 guard let _ = info["user_ID"] as? String else {
-                    dispatch_semaphore_signal(semaphore)
+                    semaphore.signal()
                     
                     return
                 }
                 
                 let context = CoreDataManager.defalutManager().managedObjectContext
-                let fetchReq = NSFetchRequest(entityName: "UserEntity")
+                let fetchReq: NSFetchRequest<UserEntity> = NSFetchRequest(entityName: "UserEntity")
                 
                 do {
                     self.user = nil
-                    let users = try context.executeFetchRequest(fetchReq) as! Array<UserEntity>
+                    let users = try context.fetch(fetchReq)
                     
                     for storeUser in users {
                         storeUser.isDefault = false
@@ -251,7 +249,7 @@ class AccountManager: NSObject {
                     }
                     
                     if self.user == nil {
-                        self.user = NSEntityDescription.insertNewObjectForEntityForName("UserEntity", inManagedObjectContext: context) as? UserEntity
+                        self.user = NSEntityDescription.insertNewObject(forEntityName: "UserEntity", into: context) as? UserEntity
                     }
                     
                     self.user?.account = account
@@ -280,17 +278,17 @@ class AccountManager: NSObject {
                     req.requestSimpleCompletion()
                     
                     error = true
-                    dispatch_semaphore_signal(semaphore)
+                    semaphore.signal()
                 }
                 catch {
-                    dispatch_semaphore_signal(semaphore)
+                    semaphore.signal()
                 }
             }
             
-            dispatch_semaphore_wait(semaphore, DISPATCH_TIME_FOREVER)
+            semaphore.wait(timeout: DispatchTime.distantFuture)
             if error == false {
-                dispatch_semaphore_signal(semaphore)
-                dispatch_async(dispatch_get_main_queue(), {
+                semaphore.signal()
+                DispatchQueue.main.async(execute: {
                     completion?(false, "用户名或密码错误", errorCode)
                 })
                 
@@ -303,13 +301,13 @@ class AccountManager: NSObject {
                 let caReq = GetCARandReq()
                 caReq.requestSimple({ (rand) in
                     randString = rand
-                    dispatch_semaphore_signal(semaphore)
+                    semaphore.signal()
                 })
                 
-                dispatch_semaphore_wait(semaphore, DISPATCH_TIME_FOREVER)
+                semaphore.wait(timeout: DispatchTime.distantFuture)
                 if randString == nil {
-                    dispatch_semaphore_signal(semaphore)
-                    dispatch_async(dispatch_get_main_queue(), {
+                    semaphore.signal()
+                    DispatchQueue.main.async(execute: {
                         completion?(false, "用户名或密码错误", errorCode)
                     })
                     
@@ -319,36 +317,36 @@ class AccountManager: NSObject {
                 let certBase64 = MiddlewareAPI.instance().getCertByID(self.certID, 1)
                 
                 //签名结果转成base64
-                let signedBase64 = MiddlewareAPI.instance().signByID(self.certID, randString)
+                let signedBase64 = MiddlewareAPI.instance().sign(byID: self.certID, randString)
                 
                 let signedCAReq = SignCAReq()
                 signedCAReq.rand = randString!
-                signedCAReq.cert = certBase64.stringByAddingPercentEscapesUsingEncoding(NSUTF8StringEncoding)!
-                signedCAReq.signed = signedBase64.stringByAddingPercentEscapesUsingEncoding(NSUTF8StringEncoding)!
+                signedCAReq.cert = (certBase64?.addingPercentEscapes(using: String.Encoding.utf8)!)!
+                signedCAReq.signed = (signedBase64?.addingPercentEscapes(using: String.Encoding.utf8)!)!
                 signedCAReq.requestSimple({ (success) in
-                    dispatch_semaphore_signal(semaphore)
-                    dispatch_async(dispatch_get_main_queue(), {
+                    semaphore.signal()
+                    DispatchQueue.main.async(execute: {
                         completion?(true, nil, errorCode)
                     })
                 })
             }
             else {
-                dispatch_semaphore_signal(semaphore)
-                dispatch_async(dispatch_get_main_queue(), {
+                semaphore.signal()
+                DispatchQueue.main.async(execute: {
                     completion?(true, nil, errorCode)
                 })
             }
             
-            dispatch_semaphore_wait(semaphore, DISPATCH_TIME_FOREVER)
+            semaphore.wait(timeout: DispatchTime.distantFuture)
             if self.user?.huanxinAccount == nil {
-                dispatch_semaphore_signal(semaphore)
+                semaphore.signal()
                 
                 return
             }
             
-            EMClient.sharedClient().loginWithUsername(self.user?.huanxinAccount, password: "123456")
-            EMClient.sharedClient().setApnsNickname(self.user?.name)
-            dispatch_semaphore_signal(semaphore)
+            EMClient.shared().login(withUsername: self.user?.huanxinAccount, password: "123456")
+            EMClient.shared().setApnsNickname(self.user?.name)
+            semaphore.signal()
         }
     }
     

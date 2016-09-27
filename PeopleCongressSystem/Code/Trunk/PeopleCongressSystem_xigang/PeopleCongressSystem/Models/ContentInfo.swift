@@ -24,12 +24,12 @@ class ContentInfo {
     }
     
     /// @brief 主页元素Title
-    func homeElementTitle(index: Int) -> String? {
+    func homeElementTitle(_ index: Int) -> String? {
         return nil
     }
     
     /// @brief 主页元素Icon
-    func homeElementIcon(index: Int) -> String {
+    func homeElementIcon(_ index: Int) -> String {
         return ""
     }
     

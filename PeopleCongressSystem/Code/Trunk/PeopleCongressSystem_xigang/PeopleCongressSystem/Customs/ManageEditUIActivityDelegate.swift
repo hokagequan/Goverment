@@ -22,12 +22,12 @@ class ManageEditUIActivityDelegate: ManageEditUIDelegate {
             activity = (self.editObject as! Activity).copy() as! Activity
         }
         
-        for section in 0..<EditSections.Max.rawValue {
+        for section in 0..<EditSections.max.rawValue {
             let sec = EditSections(rawValue: section)
             let rowCount = sec?.rows().count
             
             for row in 0..<rowCount! {
-                let cell = tableView!.cellForRowAtIndexPath(NSIndexPath(forRow: row, inSection: section))
+                let cell = tableView!.cellForRow(at: IndexPath(row: row, section: section))
                 if cell is NormalImageTableCell {
                     let row = sec!.rows()[row]
                     activity.setValue((cell as! NormalImageTableCell).titleTextField.text, forKey: row.key!)
@@ -110,7 +110,7 @@ class ManageEditUIActivityDelegate: ManageEditUIDelegate {
             
             if success {
                 GlobalUtil.showAlert("添加成功")
-                self.masterViewController?.navigationController?.popViewControllerAnimated(true)
+                self.masterViewController?.navigationController?.popViewController(animated: true)
             }
             else {
                 ResponseErrorManger.defaultManager().handleError(errorCode, message: message)
@@ -120,43 +120,43 @@ class ManageEditUIActivityDelegate: ManageEditUIDelegate {
     
     // MARK: - TypeSelectViewDelegate
     
-    func didSelectIndex(view: TypeSelectView, indexPath: NSIndexPath) {
-        selectedInfo = types[indexPath.row]
-        tableView?.reloadRowsAtIndexPaths([NSIndexPath(forRow: 1, inSection: 0)], withRowAnimation: UITableViewRowAnimation.None)
+    func didSelectIndex(_ view: TypeSelectView, indexPath: IndexPath) {
+        selectedInfo = types[(indexPath as NSIndexPath).row]
+        tableView?.reloadRows(at: [IndexPath(row: 1, section: 0)], with: UITableViewRowAnimation.none)
     }
     
     // MARK: - CellDelegate
     
-    override func didEndEditing(cell: NormalImageTableCell) {
+    override func didEndEditing(_ cell: NormalImageTableCell) {
         super.didEndEditing(cell)
-        let indexPath = tableView?.indexPathForCell(cell)
+        let indexPath = tableView?.indexPath(for: cell)
         let activity = self.editObject as? Activity
-        let section = EditSections(rawValue: indexPath!.section)!
-        let row = section.rows()[indexPath!.row]
+        let section = EditSections(rawValue: (indexPath! as NSIndexPath).section)!
+        let row = section.rows()[(indexPath! as NSIndexPath).row]
         activity?.setValue(cell.titleTextField.text, forKey: row.key!)
     }
     
     // MARK: - UITableView
     
-    override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-        let section = EditSections(rawValue: indexPath.section)!
-        let row = section.rows()[indexPath.row]
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        let section = EditSections(rawValue: (indexPath as NSIndexPath).section)!
+        let row = section.rows()[(indexPath as NSIndexPath).row]
         
         switch row.title! {
         case "人员:":
             let activity = self.editObject as? Activity
             return TagListCell.cellHeight(activity?.persons)
         default:
-            return super.tableView(tableView, heightForRowAtIndexPath: indexPath)
+            return super.tableView(tableView, heightForRowAt: indexPath)
         }
     }
     
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = super.tableView(tableView, cellForRowAtIndexPath: indexPath)
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = super.tableView(tableView, cellForRowAt: indexPath)
         
         let activity = self.editObject as? Activity
-        let section = EditSections(rawValue: indexPath.section)!
-        let row = section.rows()[indexPath.row]
+        let section = EditSections(rawValue: (indexPath as NSIndexPath).section)!
+        let row = section.rows()[(indexPath as NSIndexPath).row]
         if cell is NormalImageTableCell {
             switch row.title! {
             case "标题:":
@@ -191,11 +191,11 @@ class ManageEditUIActivityDelegate: ManageEditUIDelegate {
         return cell
     }
 
-    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        tableView.deselectRowAtIndexPath(indexPath, animated: true)
+    func tableView(_ tableView: UITableView, didSelectRowAtIndexPath indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
         
-        let section = EditSections(rawValue: indexPath.section)!
-        let row = section.rows()[indexPath.row]
+        let section = EditSections(rawValue: (indexPath as NSIndexPath).section)!
+        let row = section.rows()[(indexPath as NSIndexPath).row]
         switch row.title! {
         case "类型:":
             EZLoadingActivity.show("", disableUI: true)
@@ -212,14 +212,14 @@ class ManageEditUIActivityDelegate: ManageEditUIDelegate {
             
             break
         case "开始时间:", "结束时间:":
-            let cell = tableView.cellForRowAtIndexPath(indexPath) as! NormalImageTableCell
+            let cell = tableView.cellForRow(at: indexPath) as! NormalImageTableCell
             cell.titleTextField.becomeFirstResponder()
             break
         case "人员:":
             if self.editObject == nil {
                 self.editObject = self.createActivity()
             }
-            self.masterViewController?.performSegueWithIdentifier("GroupSegue", sender: self)
+            self.masterViewController?.performSegue(withIdentifier: "GroupSegue", sender: self)
             break
         default:
             break

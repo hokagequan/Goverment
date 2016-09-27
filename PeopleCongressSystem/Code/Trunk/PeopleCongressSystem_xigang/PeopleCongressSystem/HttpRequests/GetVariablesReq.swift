@@ -22,18 +22,18 @@ class GetVariablesReq: HttpBaseReq {
         super.init()
     }
     
-    override func requestCompletion(completion: HttpReqCompletion?) {
+    override func requestCompletion(_ completion: HttpReqCompletion?) {
         var params = [String: AnyObject]()
-        params["pageIndex"] = from
-        params["pageSize"] = to
-        params["Name"] = ""
-        params["IsPost"] = ""
-        params["ZT"] = ""
-        params["UserGuid"] = PCSDataManager.defaultManager().accountManager.user!.congressID
-        params["Type"] = type
-        params["CheckTicket"] = PCSDataManager.defaultManager().accountManager.user!.token
-        params["FieldID"] = PCSDataManager.defaultManager().accountManager.user!.field
-        params["thecharset"] = "gb2312"
+        params["pageIndex"] = from as AnyObject?
+        params["pageSize"] = to as AnyObject?
+        params["Name"] = "" as AnyObject?
+        params["IsPost"] = "" as AnyObject?
+        params["ZT"] = "" as AnyObject?
+        params["UserGuid"] = PCSDataManager.defaultManager().accountManager.user!.congressID as AnyObject?
+        params["Type"] = type as AnyObject?
+        params["CheckTicket"] = PCSDataManager.defaultManager().accountManager.user!.token as AnyObject?
+        params["FieldID"] = PCSDataManager.defaultManager().accountManager.user!.field as AnyObject?
+        params["thecharset"] = "gb2312" as AnyObject?
         
         self.request("GetLvZhiList", nameSpace: "rendadaibiao", params: params, completion: completion)
     }

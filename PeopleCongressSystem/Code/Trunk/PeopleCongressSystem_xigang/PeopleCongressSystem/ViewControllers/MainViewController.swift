@@ -14,9 +14,9 @@ class MainViewController: UITabBarController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(MainViewController.handleLogin(_:)), name: kNotificationPresentLogin, object: nil)
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(MainViewController.setupUntreatedApplyCount), name: "setupUntreatedApplyCount", object: nil)
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(MainViewController.setupUnreadMessageCount), name: "setupUnreadMessageCount", object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(MainViewController.handleLogin(_:)), name: NSNotification.Name(rawValue: kNotificationPresentLogin), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(MainViewController.setupUntreatedApplyCount), name: NSNotification.Name(rawValue: "setupUntreatedApplyCount"), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(MainViewController.setupUnreadMessageCount), name: NSNotification.Name(rawValue: "setupUnreadMessageCount"), object: nil)
         
         self.loadViewControllers()
         
@@ -25,7 +25,7 @@ class MainViewController: UITabBarController {
     }
     
     deinit {
-        NSNotificationCenter.defaultCenter().removeObserver(self)
+        NotificationCenter.default.removeObserver(self)
     }
 
     override func didReceiveMemoryWarning() {
@@ -36,44 +36,44 @@ class MainViewController: UITabBarController {
     func loadViewControllers() {
         // 首页
         var storyboard = UIStoryboard(name: "Home", bundle: nil)
-        let homeNavi = storyboard.instantiateViewControllerWithIdentifier("HomeNavi")
-        let homeTabItem = UITabBarItem(title: "首页", image: UIImage(named: "home_nor")?.imageWithRenderingMode(UIImageRenderingMode.AlwaysOriginal), selectedImage: UIImage(named: "home_sel")?.imageWithRenderingMode(UIImageRenderingMode.AlwaysOriginal))
+        let homeNavi = storyboard.instantiateViewController(withIdentifier: "HomeNavi")
+        let homeTabItem = UITabBarItem(title: "首页", image: UIImage(named: "home_nor")?.withRenderingMode(UIImageRenderingMode.alwaysOriginal), selectedImage: UIImage(named: "home_sel")?.withRenderingMode(UIImageRenderingMode.alwaysOriginal))
         homeNavi.tabBarItem = homeTabItem
         
         // 聊天
         let chatViewController = ConversationListController(nibName: nil, bundle: nil)
         let chatNavi = UINavigationController(rootViewController: chatViewController)
-        let chatTabItem = UITabBarItem(title: "会话", image: UIImage(named: "chat_nor")?.imageWithRenderingMode(UIImageRenderingMode.AlwaysOriginal), selectedImage: UIImage(named: "chat_sel")?.imageWithRenderingMode(UIImageRenderingMode.AlwaysOriginal))
+        let chatTabItem = UITabBarItem(title: "会话", image: UIImage(named: "chat_nor")?.withRenderingMode(UIImageRenderingMode.alwaysOriginal), selectedImage: UIImage(named: "chat_sel")?.withRenderingMode(UIImageRenderingMode.alwaysOriginal))
         chatNavi.tabBarItem = chatTabItem
-        ChatDemoHelper.shareHelper().conversationListVC = chatViewController
+        ChatDemoHelper.share().conversationListVC = chatViewController
         
         // 联系人
         let contactsViewController = ContactListViewController(nibName: nil, bundle: nil)
         let contactsNavi = UINavigationController(rootViewController: contactsViewController)
-        let contactsTabItem = UITabBarItem(title: "通讯录", image: UIImage(named: "contacts_nor")?.imageWithRenderingMode(UIImageRenderingMode.AlwaysOriginal), selectedImage: UIImage(named: "contacts_sel")?.imageWithRenderingMode(UIImageRenderingMode.AlwaysOriginal))
+        let contactsTabItem = UITabBarItem(title: "通讯录", image: UIImage(named: "contacts_nor")?.withRenderingMode(UIImageRenderingMode.alwaysOriginal), selectedImage: UIImage(named: "contacts_sel")?.withRenderingMode(UIImageRenderingMode.alwaysOriginal))
         contactsNavi.tabBarItem = contactsTabItem
-        ChatDemoHelper.shareHelper().contactViewVC = contactsViewController
+        ChatDemoHelper.share().contactViewVC = contactsViewController
         
         // 我
         storyboard = UIStoryboard(name: "Me", bundle: nil)
-        let meNavi = storyboard.instantiateViewControllerWithIdentifier("MeNavi")
-        let meTabItem = UITabBarItem(title: "我", image: UIImage(named: "me_nor")?.imageWithRenderingMode(UIImageRenderingMode.AlwaysOriginal), selectedImage: UIImage(named: "me_sel")?.imageWithRenderingMode(UIImageRenderingMode.AlwaysOriginal))
+        let meNavi = storyboard.instantiateViewController(withIdentifier: "MeNavi")
+        let meTabItem = UITabBarItem(title: "我", image: UIImage(named: "me_nor")?.withRenderingMode(UIImageRenderingMode.alwaysOriginal), selectedImage: UIImage(named: "me_sel")?.withRenderingMode(UIImageRenderingMode.alwaysOriginal))
         meNavi.tabBarItem = meTabItem
         
-        CustomObjectUtil.customTabbarItem([homeTabItem, chatTabItem, contactsTabItem, meTabItem], titleColor: GlobalUtil.colorRGBA(132, g: 132, b: 132, a: 1.0), font: UIFont.systemFontOfSize(10.0), state: UIControlState.Normal)
-        CustomObjectUtil.customTabbarItem([homeTabItem, chatTabItem, contactsTabItem, meTabItem], titleColor: UIColor.redColor(), font: UIFont.systemFontOfSize(10.0), state: UIControlState.Selected)
+        CustomObjectUtil.customTabbarItem([homeTabItem, chatTabItem, contactsTabItem, meTabItem], titleColor: GlobalUtil.colorRGBA(132, g: 132, b: 132, a: 1.0), font: UIFont.systemFont(ofSize: 10.0), state: UIControlState())
+        CustomObjectUtil.customTabbarItem([homeTabItem, chatTabItem, contactsTabItem, meTabItem], titleColor: UIColor.red, font: UIFont.systemFont(ofSize: 10.0), state: UIControlState.selected)
         
         self.setViewControllers([homeNavi, chatNavi, contactsNavi, meNavi], animated: false)
     }
     
     // MARK: - Observer
     
-    func handleLogin(notification: NSNotification) {
-        self.performSegueWithIdentifier("BackToSignIn", sender: nil)
+    func handleLogin(_ notification: Notification) {
+        self.performSegue(withIdentifier: "BackToSignIn", sender: nil)
     }
     
     func setupUnreadMessageCount() {
-        guard let conversations = EMClient.sharedClient().chatManager.getAllConversations() as? Array<EMConversation> else {
+        guard let conversations = EMClient.shared().chatManager.getAllConversations() as? Array<EMConversation> else {
             return
         }
         
@@ -103,7 +103,7 @@ class MainViewController: UITabBarController {
             chatListViewController?.tabBarItem.badgeValue = nil
         }
         
-        UIApplication.sharedApplication().applicationIconBadgeNumber = Int(unreadCount)
+        UIApplication.shared.applicationIconBadgeNumber = Int(unreadCount)
     }
     
     func setupUntreatedApplyCount() {
@@ -120,7 +120,7 @@ class MainViewController: UITabBarController {
             return
         }
         
-        let unreadCount = ApplyViewController.shareController().dataSource.count
+        let unreadCount = ApplyViewController.share().dataSource.count
         
         if unreadCount > 0 {
             contactsViewController?.tabBarItem.badgeValue = "\(unreadCount)"

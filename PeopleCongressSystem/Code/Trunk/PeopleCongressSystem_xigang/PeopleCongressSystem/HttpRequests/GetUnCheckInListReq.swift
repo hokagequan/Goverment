@@ -16,12 +16,12 @@ class GetUnCheckInListReq: HttpBaseReq {
         super.init()
     }
     
-    func requestSimpleCompletion(completion: ((Bool, Array<Person>?, String?) -> Void)?) {
+    func requestSimpleCompletion(_ completion: ((Bool, Array<Person>?, String?) -> Void)?) {
         var params = [String: AnyObject]()
-        params["huodongid"] = activityID
-        params["CheckTicket"] = PCSDataManager.defaultManager().accountManager.user!.token
-        params["FieldID"] = PCSDataManager.defaultManager().accountManager.user!.field
-        params["thecharset"] = "gb2312"
+        params["huodongid"] = activityID as AnyObject?
+        params["CheckTicket"] = PCSDataManager.defaultManager().accountManager.user!.token as AnyObject?
+        params["FieldID"] = PCSDataManager.defaultManager().accountManager.user!.field as AnyObject?
+        params["thecharset"] = "gb2312" as AnyObject?
         
         self.request("getuncomelist", nameSpace: "gongzuorenyuan", params: params) { (response) -> Void in
             var success: Bool = false

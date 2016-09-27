@@ -18,7 +18,7 @@ class VerifySMSReq: HttpBaseReq {
         super.init()
     }
     
-    func requestSimpleCompletion(completion: (UserEntity?) -> Void) {
+    func requestSimpleCompletion(_ completion: @escaping (UserEntity?) -> Void) {
         var params = [String: String]()
         params["phoneID"] = mobile
         params["checkcode"] = smsCode
@@ -45,10 +45,10 @@ class VerifySMSReq: HttpBaseReq {
             
             let account = repValue["UserName"] as? String
             let context = CoreDataManager.defalutManager().managedObjectContext
-            let fetchReq = NSFetchRequest(entityName: "UserEntity")
+            let fetchReq: NSFetchRequest<UserEntity> = NSFetchRequest(entityName: "UserEntity")
             
             do {
-                let users = try context.executeFetchRequest(fetchReq) as! Array<UserEntity>
+                let users = try context.fetch(fetchReq)
                 
                 for storeUser in users {
                     if storeUser.account == account {
@@ -57,7 +57,7 @@ class VerifySMSReq: HttpBaseReq {
                 }
                 
                 if userEntity == nil {
-                    userEntity = NSEntityDescription.insertNewObjectForEntityForName("UserEntity", inManagedObjectContext: context) as? UserEntity
+                    userEntity = NSEntityDescription.insertNewObject(forEntityName: "UserEntity", into: context) as? UserEntity
                 }
                 
                 userEntity?.account = account

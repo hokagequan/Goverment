@@ -22,11 +22,11 @@ class LocalVerifyCell: UITableViewCell, UITextFieldDelegate {
         super.awakeFromNib()
         // Initialization code
         verifyCodeView.didChangeCode { (code) in
-            self.code = code
+            self.code = code!
         }
     }
 
-    override func setSelected(selected: Bool, animated: Bool) {
+    override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
 
         // Configure the view for the selected state
@@ -34,16 +34,16 @@ class LocalVerifyCell: UITableViewCell, UITextFieldDelegate {
     
     // MARK: - Actions
     
-    @IBAction func clickRefresh(sender: AnyObject) {
+    @IBAction func clickRefresh(_ sender: AnyObject) {
         verifyCodeView.changeCode()
         verifyCodeView.didChangeCode { (code) in
-            self.code = code
+            self.code = code!
         }
     }
     
     // MARK: - UITextFieldDelegate
     
-    func textFieldShouldReturn(textField: UITextField) -> Bool {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
         return true
     }

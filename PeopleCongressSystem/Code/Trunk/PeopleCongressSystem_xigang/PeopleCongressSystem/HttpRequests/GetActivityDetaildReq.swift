@@ -16,12 +16,12 @@ class GetActivityDetaildReq: HttpBaseReq {
         super.init()
     }
     
-    func requestSimpleCompletion(completion: ((Bool, String?) -> Void)?) {
+    func requestSimpleCompletion(_ completion: ((Bool, String?) -> Void)?) {
         var params = [String: AnyObject]()
-        params["huodongId"] = activity?.identifier
-        params["CheckTicket"] = PCSDataManager.defaultManager().accountManager.user!.token
-        params["FieldID"] = PCSDataManager.defaultManager().accountManager.user!.field
-        params["thecharset"] = "gb2312"
+        params["huodongId"] = activity?.identifier as AnyObject?
+        params["CheckTicket"] = PCSDataManager.defaultManager().accountManager.user!.token as AnyObject?
+        params["FieldID"] = PCSDataManager.defaultManager().accountManager.user!.field as AnyObject?
+        params["thecharset"] = "gb2312" as AnyObject?
         
         self.request("GetHuoDonginfo", nameSpace: "gongzuorenyuan", params: params) { (response) -> Void in
             let result = response?.result
