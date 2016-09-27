@@ -20,14 +20,14 @@ class HttpBaseReq: NSObject {
     /// @brief SOAP
     func request(_ method: String, nameSpace: String, params: Dictionary<String, Any>, completion: HttpReqCompletion?) {
         let soapMessage = self.soapMessage(method, params: params)
-        let mutableURLRequest = NSMutableURLRequest(url: URL(string: self.httpReqURL + "appjiekout/jiekou/\(nameSpace).asmx")!)
+        var mutableURLRequest = URLRequest(url: URL(string: self.httpReqURL + "appjiekout/jiekou/\(nameSpace).asmx")!)
         mutableURLRequest.setValue("text/xml; charset=utf-8", forHTTPHeaderField: "Content-Type")
         mutableURLRequest.setValue(self.soapAction(method), forHTTPHeaderField: "SOAPAction")
         mutableURLRequest.setValue(String(soapMessage.characters.count), forHTTPHeaderField: "Content-Length")
         mutableURLRequest.httpMethod = "POST"
         mutableURLRequest.httpBody = soapMessage.data(using: String.Encoding.utf8)
         
-        let request = Alamofire.request(mutableURLRequest as! URLRequestConvertible)
+        let request = Alamofire.request(mutableURLRequest as URLRequestConvertible)
 //        request.responseString { (rsp) -> Void in
 //            completion?(response: rsp)
 //        }
