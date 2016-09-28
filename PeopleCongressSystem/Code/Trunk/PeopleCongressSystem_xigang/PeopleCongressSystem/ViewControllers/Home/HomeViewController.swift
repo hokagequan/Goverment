@@ -93,6 +93,7 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "NormalImageCell", for: indexPath) as! NormalImageCell
         
         cell.titleLabel.text = content.homeElementTitle((indexPath as NSIndexPath).row)
+        cell.titleLabel.font = UIFont.systemFont(ofSize: 14)
         cell.iconImageView.image = UIImage(named: content.homeElementIcon((indexPath as NSIndexPath).row))
         cell.markLabel.isHidden = true
         
